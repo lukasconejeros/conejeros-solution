@@ -1,70 +1,211 @@
-<section style="position: relative; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; text-align: center; color: white;">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conejeros Solutions</title>
+<style>
+/* --- GLOBAL --- */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #000a12;
+  color: white;
+  overflow-x: hidden;
+}
 
-  <!-- Fondo animado -->
-  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-              background: linear-gradient(120deg, #001a33, #001f3f, #000a1a);
-              background-size: 400% 400%;
-              animation: gradientMove 12s ease infinite;
-              z-index: 0; filter: brightness(1.1);">
+/* --- ANIMATED BACKGROUND --- */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(120deg, #001a33, #002b4f, #001a33);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  z-index: 0;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- HERO CONTENT --- */
+.hero-content {
+  z-index: 2;
+  animation: fadeIn 2s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero h4 {
+  letter-spacing: 3px;
+  color: #00bfff;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #00bfff, #00e6ff, #00bfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+.hero p {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  max-width: 700px;
+  margin: 20px auto 40px;
+}
+.hero a {
+  display: inline-block;
+  background: linear-gradient(90deg, #00bfff, #007fff);
+  padding: 14px 38px;
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(0,191,255,0.5);
+  transition: all 0.3s ease;
+}
+.hero a:hover {
+  background: linear-gradient(90deg, #009fff, #00e6ff);
+  box-shadow: 0 0 25px rgba(0,191,255,0.8);
+  transform: scale(1.05);
+}
+
+/* --- PROCESS SECTION --- */
+.proceso {
+  background: #010d18;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+}
+.proceso h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+}
+.proceso p {
+  color: #9db4c0;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  font-size: 1.1rem;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.card {
+  background: rgba(0, 20, 40, 0.7);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  border-radius: 12px;
+  width: 300px;
+  padding: 30px 20px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  border-color: #00bfff;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.3);
+  transform: translateY(-10px);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at top right, rgba(0,191,255,0.1), transparent);
+}
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #00bfff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.card h3 {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+.card p {
+  color: #a8b8c6;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.3rem; }
+  .hero p { font-size: 1rem; }
+  .cards { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h4>Consultoría en Automatización Inteligente</h4>
+    <h1>Automatiza <span style="color:white;">Hoy.</span><br><span style="color:#00bfff;">Lidera</span> Mañana.</h1>
+    <p>Rediseñamos tu operación para el futuro: más simple, más rápida, más inteligente.</p>
+    <a href="#contacto">Solicita tu diagnóstico</a>
   </div>
-
-  <!-- Contenido principal -->
-  <div style="z-index: 2; padding: 0 20px; animation: fadeIn 2s ease forwards;">
-
-    <h4 style="letter-spacing: 3px; color: #00bfff; font-weight: 400; text-transform: uppercase; margin-bottom: 12px;">
-      Consultoría en Automatización Inteligente
-    </h4>
-
-    <h1 style="font-size: 3.5rem; font-weight: 700; line-height: 1.2;
-               background: linear-gradient(90deg, #00bfff, #00e6ff, #00bfff);
-               -webkit-background-clip: text;
-               -webkit-text-fill-color: transparent;
-               background-size: 200% auto;
-               animation: shine 4s linear infinite;">
-      Automatiza <span style="color:white; text-shadow:0 0 15px rgba(0,191,255,0.6);">Hoy.</span><br>
-      <span style="color:#00bfff; text-shadow:0 0 25px rgba(0,191,255,0.8);">Lidera</span> Mañana.
-    </h1>
-
-    <p style="font-size: 1.2rem; color: #b0b0b0; max-width: 700px; margin-top: 20px;">
-      Rediseñamos tu operación para el futuro: más simple, más rápida, más inteligente.
-    </p>
-
-    <a href="#contacto" style="margin-top: 40px; display: inline-block; background: linear-gradient(90deg, #00bfff, #007fff);
-       padding: 14px 38px; color: white; border-radius: 50px; font-weight: 600;
-       font-size: 1.1rem; text-decoration: none; box-shadow: 0 0 15px rgba(0,191,255,0.5);
-       transition: all 0.3s ease;">
-       Solicita tu diagnóstico
-    </a>
-  </div>
-
-  <!-- Animaciones -->
-  <style>
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes shine {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    a:hover {
-      background: linear-gradient(90deg, #009fff, #00e6ff);
-      box-shadow: 0 0 25px rgba(0,191,255,0.8);
-      transform: scale(1.05);
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2.3rem; }
-      p { font-size: 1rem; }
-    }
-  </style>
-
 </section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <h2>Un Método Probado para Resultados Garantizados</h2>
+  <p>Nuestro enfoque simplifica la automatización para que cualquier empresa pueda implementarla sin complicaciones.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h3>Estudiamos</h3>
+      <p>Analizamos tu negocio para detectar oportunidades reales de automatización.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚙️</div>
+      <h3>Aplicamos</h3>
+      <p>Desarrollamos e implementamos soluciones con IA adaptadas a tus procesos.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>Optimizamos</h3>
+      <p>Medimos resultados y refinamos cada flujo para alcanzar la máxima eficiencia.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
