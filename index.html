@@ -1,80 +1,70 @@
-<section style="display:flex; flex-direction:column; align-items:center; justify-content:center; 
-height:100vh; background:radial-gradient(circle at top, #00111a 0%, #000a0f 100%); text-align:center; overflow:hidden;">
+<section style="position: relative; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; text-align: center; color: white;">
 
+  <!-- Fondo animado -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+              background: linear-gradient(120deg, #001a33, #001f3f, #000a1a);
+              background-size: 400% 400%;
+              animation: gradientMove 12s ease infinite;
+              z-index: 0; filter: brightness(1.1);">
+  </div>
+
+  <!-- Contenido principal -->
+  <div style="z-index: 2; padding: 0 20px; animation: fadeIn 2s ease forwards;">
+
+    <h4 style="letter-spacing: 3px; color: #00bfff; font-weight: 400; text-transform: uppercase; margin-bottom: 12px;">
+      Consultoría en Automatización Inteligente
+    </h4>
+
+    <h1 style="font-size: 3.5rem; font-weight: 700; line-height: 1.2;
+               background: linear-gradient(90deg, #00bfff, #00e6ff, #00bfff);
+               -webkit-background-clip: text;
+               -webkit-text-fill-color: transparent;
+               background-size: 200% auto;
+               animation: shine 4s linear infinite;">
+      Automatiza <span style="color:white; text-shadow:0 0 15px rgba(0,191,255,0.6);">Hoy.</span><br>
+      <span style="color:#00bfff; text-shadow:0 0 25px rgba(0,191,255,0.8);">Lidera</span> Mañana.
+    </h1>
+
+    <p style="font-size: 1.2rem; color: #b0b0b0; max-width: 700px; margin-top: 20px;">
+      Rediseñamos tu operación para el futuro: más simple, más rápida, más inteligente.
+    </p>
+
+    <a href="#contacto" style="margin-top: 40px; display: inline-block; background: linear-gradient(90deg, #00bfff, #007fff);
+       padding: 14px 38px; color: white; border-radius: 50px; font-weight: 600;
+       font-size: 1.1rem; text-decoration: none; box-shadow: 0 0 15px rgba(0,191,255,0.5);
+       transition: all 0.3s ease;">
+       Solicita tu diagnóstico
+    </a>
+  </div>
+
+  <!-- Animaciones -->
   <style>
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    h4 {
-      letter-spacing: 3px;
-      color: #00bfff;
-      font-weight: 400;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
+    @keyframes shine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
     }
 
-    h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: white;
-      line-height: 1.2;
-      text-shadow: 0 0 12px rgba(0, 191, 255, 0.4);
-      opacity: 0;
-      animation: fadeInUp 1.2s ease forwards;
-      animation-delay: 0.2s;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    h1 span {
-      color: #00bfff;
-      text-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
-    }
-
-    p {
-      font-size: 1.2rem;
-      color: #b0b0b0;
-      max-width: 700px;
-      margin-top: 20px;
-      line-height: 1.6;
-      opacity: 0;
-      animation: fadeInUp 1.4s ease forwards;
-      animation-delay: 0.4s;
-    }
-
-    a.cta {
-      display: inline-block;
-      margin-top: 40px;
-      background: linear-gradient(90deg, #00bfff, #007fff);
-      padding: 14px 38px;
-      color: white;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-      box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
-      transition: all 0.3s ease;
-      opacity: 0;
-      animation: fadeInUp 1.6s ease forwards;
-      animation-delay: 0.6s;
-    }
-
-    a.cta:hover {
+    a:hover {
       background: linear-gradient(90deg, #009fff, #00e6ff);
-      box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
+      box-shadow: 0 0 25px rgba(0,191,255,0.8);
       transform: scale(1.05);
     }
 
     @media (max-width: 768px) {
       h1 { font-size: 2.3rem; }
-      p { font-size: 1rem; padding: 0 20px; }
+      p { font-size: 1rem; }
     }
   </style>
 
-  <h4>Consultoría en Automatización Inteligente</h4>
-  <h1>Automatiza <span>Hoy.</span> <br><span>Lidera</span> Mañana.</h1>
-  <p>Rediseñamos tu operación para el futuro: más simple, más rápida, más inteligente.</p>
-  <a href="#contacto" class="cta">Solicita tu diagnóstico</a>
 </section>
