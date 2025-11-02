@@ -1,258 +1,92 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conejeros Solutions</title>
-  <style>
-    /* --- Estilos globales --- */
-    body {
-      margin: 0;
-      background: radial-gradient(circle at center, #001F3F, #000814);
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, p {
-      margin: 0;
-    }
-
-    /* --- Hero principal --- */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: radial-gradient(circle at center, #001F3F, #000814);
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      animation: glow 3s ease-in-out infinite alternate;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      opacity: 0.8;
-      margin-top: 10px;
-    }
-
-    .hero button {
-      margin-top: 25px;
-      padding: 12px 28px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      color: white;
-      background: linear-gradient(90deg, #007BFF, #00BFFF);
-      transition: all 0.3s ease;
-    }
-
-    .hero button:hover {
-      background: linear-gradient(90deg, #00BFFF, #007BFF);
-      transform: scale(1.05);
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00bfff; }
-      to { text-shadow: 0 0 25px #00ffff; }
-    }
-
-    /* --- Sección Beneficios --- */
-    .benefits {
-      text-align: center;
-      padding: 120px 20px;
-      background: radial-gradient(circle at top center, #001f3f, #000814);
-      animation: backgroundMove 10s ease-in-out infinite alternate;
-    }
-
-    @keyframes backgroundMove {
-      0% { background-position: top; }
-      100% { background-position: bottom; }
-    }
-
-    .benefits h2 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      animation: fadeIn 2s ease forwards;
-    }
-
-    .benefits .subtitle {
-      font-size: 1.1rem;
-      opacity: 0.8;
-      margin-bottom: 60px;
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      width: 300px;
-      padding: 30px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(0, 191, 255, 0.05);
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(0, 191, 255, 0.4);
-      box-shadow: 0 0 25px rgba(0, 191, 255, 0.2);
-    }
-
-    .card h3 {
-      color: #00bfff;
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      opacity: 0.85;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* --- Sección Servicios --- */
-    .services {
-      background: linear-gradient(180deg, #000814, #001f3f);
-      color: white;
-      padding: 120px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .services::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0,191,255,0.05) 0%, transparent 70%);
-      animation: lightMove 10s linear infinite;
-    }
-
-    @keyframes lightMove {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .services h2 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .services .subtitle {
-      font-size: 1.1rem;
-      opacity: 0.8;
-      margin-bottom: 60px;
-    }
-
-    .service-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .service-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      width: 300px;
-      padding: 40px 25px;
-      transition: 0.4s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .service-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      border-color: rgba(0,191,255,0.4);
-      box-shadow: 0 0 25px rgba(0,191,255,0.25);
-    }
-
-    .icon {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      color: #00bfff;
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- HERO -->
-  <section class="hero">
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
     <h1>Impulsamos el futuro de tu empresa</h1>
-    <p>Unimos análisis, automatización y resultados medibles.</p>
-    <button onclick="window.location.href='https://tu-cuestionario.com'">Ir al cuestionario</button>
-  </section>
+    <p>Automatización, inteligencia y eficiencia en un solo lugar.</p>
+    <button onclick="window.location.href='https://tu-cuestionario.com'">Agendar diagnóstico gratuito</button>
+  </div>
+</section>
 
-  <!-- BENEFICIOS -->
-  <section class="benefits">
-    <h2>Optimiza, Acelera y Automatiza</h2>
-    <p class="subtitle">Reduce los costes operativos y elimina tareas repetitivas con soluciones inteligentes.</p>
+<style>
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 20%, #003366, #000814 80%);
+}
 
-    <div class="cards">
-      <div class="card">
-        <h3>🔁 Reducción del Trabajo Manual</h3>
-        <p>Automatiza tareas repetitivas y ahorra tiempo. Desde respuestas a clientes hasta documentos: la IA se encarga, tu equipo se enfoca en lo importante.</p>
-      </div>
-      <div class="card">
-        <h3>⚡ Mayor Velocidad Operativa</h3>
-        <p>Respuestas en segundos, decisiones en tiempo real. Elimina cuellos de botella con flujos automatizados y agentes que trabajan 24/7.</p>
-      </div>
-      <div class="card">
-        <h3>🧠 Menos Errores Humanos</h3>
-        <p>Toma de decisiones más precisa y estandarizada. Automatizar significa menos fallos, menos retrabajos y más calidad en cada proceso.</p>
-      </div>
-    </div>
-  </section>
+/* fondo animado */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 20%, #00bfff22, transparent 60%),
+              radial-gradient(circle at 80% 60%, #007bff22, transparent 60%);
+  animation: moveBg 10s ease-in-out infinite alternate;
+}
+@keyframes moveBg {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
 
-  <!-- SERVICIOS -->
-  <section class="services">
-    <h2>Nuestros Servicios</h2>
-    <p class="subtitle">Soluciones diseñadas para escalar, automatizar y hacer más eficiente tu negocio.</p>
+/* capa sutil de blur */
+.overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(30px);
+  background: rgba(0,0,0,0.3);
+}
 
-    <div class="service-grid">
-      <div class="service-card">
-        <div class="icon">🤖</div>
-        <h3>Automatización de Procesos</h3>
-        <p>Transformamos tareas manuales en flujos automáticos inteligentes que ahorran tiempo y eliminan errores.</p>
-      </div>
+/* contenido */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 0 20px;
+}
 
-      <div class="service-card">
-        <div class="icon">💬</div>
-        <h3>Chatbots Inteligentes</h3>
-        <p>Diseñamos agentes virtuales con IA que atienden, informan y convierten clientes las 24 horas del día.</p>
-      </div>
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  animation: fadeIn 2s ease forwards;
+  text-shadow: 0 0 30px rgba(0,191,255,0.2);
+}
 
-      <div class="service-card">
-        <div class="icon">📊</div>
-        <h3>Integraciones Personalizadas</h3>
-        <p>Conectamos tus sistemas (CRM, redes, planillas, etc.) para centralizar datos y optimizar tus operaciones.</p>
-      </div>
-    </div>
-  </section>
+.hero p {
+  font-size: 1.3rem;
+  opacity: 0.85;
+  margin: 20px 0 35px;
+  animation: fadeIn 3s ease forwards;
+}
 
-</body>
-</html>
+.hero button {
+  padding: 14px 36px;
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(90deg, #007BFF, #00BFFF);
+  transition: all 0.4s ease;
+  box-shadow: 0 0 15px rgba(0,191,255,0.25);
+}
+
+.hero button:hover {
+  background: linear-gradient(90deg, #00BFFF, #007BFF);
+  transform: scale(1.07);
+  box-shadow: 0 0 25px rgba(0,191,255,0.4);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+
