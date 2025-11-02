@@ -54,6 +54,95 @@
   <p>Unimos análisis, automatización y resultados medibles.</p>
   <button onclick="window.location.href='https://tu-cuestionario.com'">Ir al cuestionario</button>
 </body>
+  <section class="benefits">
+  <h2>Optimiza, Acelera y Automatiza</h2>
+  <p class="subtitle">Reduce los costes operativos y elimina tareas repetitivas con soluciones inteligentes.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>🔁 Reducción del Trabajo Manual</h3>
+      <p>Automatiza tareas repetitivas y ahorra tiempo. Desde respuestas a clientes hasta documentos: la IA se encarga, tu equipo se enfoca en lo importante.</p>
+    </div>
+    <div class="card">
+      <h3>⚡ Mayor Velocidad Operativa</h3>
+      <p>Respuestas en segundos, decisiones en tiempo real. Elimina cuellos de botella con flujos automatizados y agentes que trabajan 24/7.</p>
+    </div>
+    <div class="card">
+      <h3>🧠 Menos Errores Humanos</h3>
+      <p>Toma de decisiones más precisa y estandarizada. Automatizar significa menos fallos, menos retrabajos y más calidad en cada proceso.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.benefits {
+  text-align: center;
+  padding: 120px 20px;
+  background: radial-gradient(circle at top center, #001f3f, #000814);
+  color: #fff;
+  animation: backgroundMove 10s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundMove {
+  0% { background-position: top; }
+  100% { background-position: bottom; }
+}
+
+.benefits h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  animation: fadeIn 2s ease forwards;
+}
+
+.benefits .subtitle {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-bottom: 60px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  width: 300px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(0, 191, 255, 0.4);
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.2);
+}
+
+.card h3 {
+  color: #00bfff;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
 </html>
+
 
 
