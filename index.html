@@ -48,7 +48,6 @@
         linear-gradient(#0c2941, #07182b);
       filter:saturate(1.06);
     }
-    /* Quitamos los puntitos molestos, dejamos sólo un glow muy suave */
     .scene::after{
       content:""; position:fixed; inset:-10% -10%; z-index:-2; pointer-events:none;
       background:radial-gradient(900px 600px at 50% 10%, rgba(99,181,255,.25), transparent 70%);
@@ -185,11 +184,8 @@
 
     /* GARANTÍA */
     .guarantee{
-  padding:70px 0 170px; /* antes 120px */
-}
-    #form{
-  padding-top:90px; /* más espacio sobre el título “Solicita tu AI Full System” */
-}
+      padding:70px 0 170px; /* MÁS espacio debajo en desktop/tablet */
+    }
     .guarantee .panel{
       position:relative; border-radius:var(--radius);
       padding:32px 26px; text-align:center;
@@ -207,7 +203,6 @@
         radial-gradient(140% 120% at 50% -20%, rgba(195,236,255,.35), transparent 60%),
         radial-gradient(120% 120% at 110% 40%, rgba(99,181,255,.35), transparent 60%);
     }
-    /* Cinta más abajo, más oscura y menos glow */
     .ribbon{
       position:absolute; left:50%; bottom:-18px; transform:translateX(-50%);
       width:clamp(260px,70%,740px); text-align:center;
@@ -277,14 +272,17 @@
       .audience .grid{grid-template-columns:1fr}
       .hero-card{padding:32px 22px}
       .nav{padding:14px 0}
-      /* FORM en una columna en móvil para que quede simétrico */
+      /* FORM en una columna en móvil */
       .form-grid{
         grid-template-columns:1fr;
       }
       .form-grid .full{
         grid-column:1 / -1;
       }
-      .guarantee{padding-bottom:100px;} /* un pelín menos espacio bajo la cinta en mobile */
+      /* AQUÍ el truco: todavía más espacio bajo la garantía en CELU */
+      .guarantee{
+        padding-bottom:230px; /* antes 170, antes 100 => ahora sí queda lejos de la siguiente sección */
+      }
     }
 
     /* Reveal */
@@ -545,4 +543,3 @@
   </script>
 </body>
 </html>
-
