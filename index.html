@@ -48,6 +48,7 @@
         linear-gradient(#0c2941, #07182b);
       filter:saturate(1.06);
     }
+    /* Glow suave, sin puntitos */
     .scene::after{
       content:""; position:fixed; inset:-10% -10%; z-index:-2; pointer-events:none;
       background:radial-gradient(900px 600px at 50% 10%, rgba(99,181,255,.25), transparent 70%);
@@ -127,7 +128,7 @@
     }
     .hero-actions{display:flex; gap:14px; justify-content:center; margin-top:30px}
 
-    /* SECCIONES */
+    /* SECCIONES GENERALES */
     section{padding:70px 0}
     .title{
       font-family:"Playfair Display", serif;
@@ -182,9 +183,9 @@
       box-shadow:0 18px 50px rgba(255,91,122,.55);
     }
 
-    /* GARANTÍA */
+    /* GARANTÍA (con mucho espacio abajo) */
     .guarantee{
-      padding:70px 0 170px; /* MÁS espacio debajo en desktop/tablet */
+      padding:70px 0 210px; /* MÁS ESPACIO BAJO LA CINTA */
     }
     .guarantee .panel{
       position:relative; border-radius:var(--radius);
@@ -204,7 +205,7 @@
         radial-gradient(120% 120% at 110% 40%, rgba(99,181,255,.35), transparent 60%);
     }
     .ribbon{
-      position:absolute; left:50%; bottom:-18px; transform:translateX(-50%);
+      position:absolute; left:50%; bottom:-26px; transform:translateX(-50%);
       width:clamp(260px,70%,740px); text-align:center;
       padding:10px 16px;
       border:1px solid rgba(7,31,77,1);
@@ -225,7 +226,7 @@
       grid-template-columns:repeat(2,minmax(0,1fr));
     }
     .form-grid .full{
-      grid-column:1 / -1; /* Teléfono ocupa ambas columnas en desktop */
+      grid-column:1 / -1;
     }
     label{font-weight:700; font-size:.9rem}
     input,
@@ -246,10 +247,11 @@
     textarea::placeholder{color:#94a4d5}
     textarea{min-height:120px; resize:vertical}
     .hint{font-size:.86rem; color:var(--muted)}
+    button.btn{font-family:inherit;font-size:0.95rem;}
 
-    button.btn{
-      font-family:inherit;
-      font-size:0.95rem;
+    /* ESPACIO EXTRA ANTES DEL FORM (AFECTA DESKTOP Y MOBILE) */
+    section#form{
+      padding-top:140px; /* separa fuerte del bloque de garantía */
     }
 
     /* FOOTER */
@@ -272,17 +274,12 @@
       .audience .grid{grid-template-columns:1fr}
       .hero-card{padding:32px 22px}
       .nav{padding:14px 0}
-      /* FORM en una columna en móvil */
-      .form-grid{
-        grid-template-columns:1fr;
-      }
-      .form-grid .full{
-        grid-column:1 / -1;
-      }
-      /* AQUÍ el truco: todavía más espacio bajo la garantía en CELU */
-      .guarantee{
-        padding-bottom:230px; /* antes 170, antes 100 => ahora sí queda lejos de la siguiente sección */
-      }
+      /* Form UNA sola columna en mobile */
+      .form-grid{grid-template-columns:1fr;}
+      .form-grid .full{grid-column:1 / -1;}
+      /* aún más aire bajo garantía y sobre el form en pantallas chicas */
+      .guarantee{padding-bottom:230px;}
+      section#form{padding-top:150px;}
     }
 
     /* Reveal */
