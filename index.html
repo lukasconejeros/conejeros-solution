@@ -1,430 +1,537 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conejeros Solutions</title>
-<style>
-/* -------------------- GLOBAL -------------------- */
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #000a12;
-  color: white;
-  overflow-x: hidden;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Full System — Diagnóstico IA + Ciberseguridad</title>
+  <meta name="description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad. Resultados accionables en 15 días o menos." />
 
-/* -------------------- NAVBAR -------------------- */
-nav {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 10, 20, 0.8);
-  backdrop-filter: blur(8px);
-  padding: 15px 50px;
-  z-index: 10;
-  border-bottom: 1px solid rgba(0, 191, 255, 0.1);
-}
-nav .logo {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #00bfff;
-}
-nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-nav ul li a {
-  color: #d8e6ef;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-nav ul li a:hover {
-  color: #00bfff;
-}
-nav .cta {
-  background: linear-gradient(90deg, #00bfff, #007fff);
-  padding: 10px 24px;
-  border-radius: 40px;
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 0 10px rgba(0,191,255,0.5);
-  transition: all 0.3s;
-}
-nav .cta:hover {
-  background: linear-gradient(90deg, #009fff, #00e6ff);
-  box-shadow: 0 0 20px rgba(0,191,255,0.8);
-}
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-/* -------------------- HERO -------------------- */
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  padding-top: 70px;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(120deg, #001a33, #002b4f, #001a33);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
-  z-index: 0;
-}
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.hero-content {
-  z-index: 2;
-  animation: fadeIn 2s ease forwards;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero h4 {
-  letter-spacing: 3px;
-  color: #00bfff;
-  font-weight: 400;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.hero h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-  background: linear-gradient(90deg, #00bfff, #00e6ff, #00bfff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: shine 4s linear infinite;
-}
-@keyframes shine {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
-.hero p {
-  font-size: 1.2rem;
-  color: #b0b0b0;
-  max-width: 700px;
-  margin: 20px auto 40px;
-}
-.hero a {
-  display: inline-block;
-  background: linear-gradient(90deg, #00bfff, #007fff);
-  padding: 14px 38px;
-  color: white;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-decoration: none;
-  box-shadow: 0 0 15px rgba(0,191,255,0.5);
-  transition: all 0.3s ease;
-}
-.hero a:hover {
-  background: linear-gradient(90deg, #009fff, #00e6ff);
-  box-shadow: 0 0 25px rgba(0,191,255,0.8);
-  transform: scale(1.05);
-}
+  <style>
+    :root{
+      /* Base azul clara / celeste metálico */
+      --bg:#0b2238;
+      --ink:#f6f8ff;
+      --muted:#8c9ed0;
+      --line:#355386;
+      --card:#123058;
 
-/* -------------------- BENEFICIOS -------------------- */
-.beneficios {
-  background: #010d18;
-  padding: 100px 20px;
-  text-align: center;
-}
-.beneficios h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 10px;
-}
-.beneficios p {
-  color: #9db4c0;
-  max-width: 700px;
-  margin: 0 auto 50px;
-  font-size: 1.1rem;
-}
-.beneficio-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-.beneficio-card {
-  background: rgba(40, 0, 0, 0.3);
-  border: 1px solid rgba(255, 0, 0, 0.2);
-  border-radius: 12px;
-  width: 320px;
-  padding: 30px 25px;
-  text-align: left;
-  transition: all 0.3s ease;
-}
-.beneficio-card:hover {
-  border-color: #ff3b3b;
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
-  transform: translateY(-10px);
-}
-.beneficio-card h3 {
-  color: white;
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
-.beneficio-card p {
-  color: #c5c5c5;
-}
+      /* Acentos (celeste metálico) */
+      --gold-1:#c3ecff;
+      --gold-2:#63b5ff;
+      --gold-3:#3580e8;
+      --danger:#ff5b7a;
 
-/* -------------------- SERVICIOS -------------------- */
-.servicios {
-  background: #010d18;
-  padding: 100px 20px;
-  text-align: center;
-}
-.servicios h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 10px;
-}
-.servicios p {
-  color: #9db4c0;
-  max-width: 700px;
-  margin: 0 auto 50px;
-  font-size: 1.1rem;
-}
-.servicio-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-.servicio-card {
-  background: rgba(0, 20, 40, 0.7);
-  border: 1px solid rgba(0, 191, 255, 0.2);
-  border-radius: 12px;
-  width: 320px;
-  padding: 30px 25px;
-  text-align: left;
-  transition: all 0.3s ease;
-}
-.servicio-card:hover {
-  border-color: #00bfff;
-  box-shadow: 0 0 25px rgba(0, 191, 255, 0.3);
-  transform: translateY(-10px);
-}
+      --max:1160px;
+      --radius:22px;
+      --shadow-lg:0 26px 70px rgba(0,0,0,.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink); background:var(--bg);
+      font:15px/1.6 Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      overflow-x:hidden;
+    }
 
-/* -------------------- PROCESO -------------------- */
-.proceso {
-  background: #000914;
-  padding: 100px 20px;
-  text-align: center;
-}
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-.card {
-  background: rgba(0, 20, 40, 0.7);
-  border: 1px solid rgba(0, 191, 255, 0.2);
-  border-radius: 12px;
-  width: 300px;
-  padding: 30px 20px;
-  text-align: left;
-  transition: all 0.3s ease;
-}
-.card:hover {
-  border-color: #00bfff;
-  box-shadow: 0 0 25px rgba(0, 191, 255, 0.3);
-  transform: translateY(-10px);
-}
+    .scene{position:relative}
+    .scene::before{
+      content:""; position:fixed; inset:-15% -15%; z-index:-3; pointer-events:none;
+      background:
+        radial-gradient(1100px 700px at 70% -10%, rgba(99,181,255,.45), transparent 60%),
+        radial-gradient(900px 600px at -10% 30%, rgba(79,183,255,.32), transparent 55%),
+        radial-gradient(1000px 700px at 110% 70%, rgba(70,210,255,.28), transparent 60%),
+        repeating-linear-gradient(180deg, rgba(255,255,255,.03) 0 2px, transparent 2px 4px),
+        linear-gradient(#0c2941, #07182b);
+      filter:saturate(1.06);
+    }
+    .scene::after{
+      content:""; position:fixed; inset:-10% -10%; z-index:-2; pointer-events:none; opacity:.55; mix-blend-mode:screen;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(195,236,255,.95) 60%, transparent 62%),
+        radial-gradient(2px 2px at 62% 12%, rgba(99,181,255,.95) 60%, transparent 62%),
+        radial-gradient(2px 2px at 85% 70%, rgba(195,236,255,.95) 60%, transparent 62%),
+        radial-gradient(2px 2px at 30% 80%, rgba(99,181,255,.95) 60%, transparent 62%),
+        radial-gradient(2px 2px at 10% 60%, rgba(195,236,255,.95) 60%, transparent 62%);
+      animation:spark 18s linear infinite;
+    }
+    @keyframes spark{from{transform:translateY(0)}to{transform:translateY(-90px)}}
 
-/* -------------------- CONTACTO -------------------- */
-.contacto {
-  background: radial-gradient(circle at center, #001a33 0%, #000a12 100%);
-  padding: 120px 20px;
-  text-align: center;
-}
-.contacto h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.contacto p {
-  color: #9db4c0;
-  max-width: 700px;
-  margin: 0 auto 50px;
-}
-form {
-  background: rgba(0, 20, 40, 0.6);
-  border: 1px solid rgba(0, 191, 255, 0.2);
-  border-radius: 16px;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 40px 30px;
-  box-shadow: 0 0 30px rgba(0,191,255,0.2);
-}
-input, textarea, select {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 18px;
-  border-radius: 8px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  font-size: 1rem;
-}
-button {
-  width: 100%;
-  background: linear-gradient(90deg, #00bfff, #007fff);
-  padding: 14px;
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-weight: 600;
-  font-size: 1.1rem;
-  box-shadow: 0 0 15px rgba(0,191,255,0.5);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-button:hover {
-  background: linear-gradient(90deg, #009fff, #00e6ff);
-  box-shadow: 0 0 25px rgba(0,191,255,0.8);
-  transform: scale(1.03);
-}
+    .wrapper{width:min(100%,var(--max)); margin-inline:auto; padding:0 22px}
 
-/* -------------------- RESPONSIVE -------------------- */
-@media (max-width: 768px) {
-  nav { flex-direction: column; gap: 10px; }
-  nav ul { flex-direction: column; align-items: center; }
-  .hero h1 { font-size: 2.3rem; }
-  .cards, .servicio-grid, .beneficio-grid { flex-direction: column; align-items: center; }
-}
-</style>
+    /* HEADER */
+    header.site{
+      position:sticky; top:0; z-index:30; backdrop-filter: blur(10px);
+      background:linear-gradient(180deg, rgba(6,18,40,.95), rgba(6,18,40,.6), transparent);
+      border-bottom:1px solid rgba(147,184,255,.6);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0}
+    .brand{display:flex; gap:10px; align-items:center}
+    .brand .logo{
+      width:24px; height:24px; display:grid; place-items:center;
+      border-radius:8px;
+      background:radial-gradient(circle at 20% 0%, #e9f8ff, var(--gold-2));
+      color:#02101f; font-weight:900; font-size:.8rem;
+      box-shadow:0 0 20px rgba(99,181,255,.9);
+    }
+    .brand b{
+      font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.5px;
+      text-shadow:0 0 20px rgba(0,0,0,.8);
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      border-radius:999px; font-weight:700; text-decoration:none; cursor:pointer;
+      border:none; font-size:.95rem;
+      transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+    .btn.gold{
+      padding:13px 22px; color:#02101f;
+      background:radial-gradient(circle at 20% 0%, #e9f8ff, var(--gold-2));
+      box-shadow:0 18px 45px rgba(99,181,255,.8);
+    }
+    .btn.gold:hover{
+      transform:translateY(-1px);
+      box-shadow:0 26px 60px rgba(99,181,255,1);
+    }
+
+    /* HERO */
+    .hero{padding:80px 0 44px}
+    .hero-card{
+      max-width:980px; margin:0 auto; text-align:center; position:relative;
+      border-radius:var(--radius);
+      padding:42px 38px;
+      background:
+        radial-gradient(140% 160% at 50% 0%, rgba(243,248,255,.35), transparent 60%),
+        linear-gradient(180deg, rgba(32,95,170,.6), rgba(9,39,82,.96));
+      border:1.5px solid rgba(195,236,255,.85);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.06),
+        0 34px 80px rgba(0,0,0,.7),
+        0 0 70px rgba(99,181,255,.55);
+    }
+    .hero-card::after{
+      content:""; position:absolute; inset:-1px; border-radius:inherit; pointer-events:none; filter:blur(16px); opacity:.7;
+      background:
+        radial-gradient(140% 120% at 50% -20%, rgba(195,236,255,.35), transparent 60%),
+        radial-gradient(120% 120% at 110% 40%, rgba(99,181,255,.32), transparent 60%);
+    }
+    h1{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(36px,5vw,62px);
+      line-height:1.06; margin:10px 0 14px;
+      text-shadow:0 0 22px rgba(0,0,0,.75);
+    }
+    h1 span{color:var(--gold-1)}
+    h1 em{font-style:italic}
+    .lead{
+      max-width:760px; margin:0 auto;
+      font-size:clamp(15px,1.3vw,18px); color:#e0e7ff;
+    }
+    .hero-actions{display:flex; gap:14px; justify-content:center; margin-top:30px}
+
+    /* SECCIONES */
+    section{padding:70px 0}
+    .title{
+      font-family:"Playfair Display", serif;
+      font-size:clamp(26px,3vw,42px); margin:0 0 22px;
+      text-shadow:0 0 18px rgba(0,0,0,.8);
+    }
+    .muted{color:var(--muted)}
+    .grid{display:grid; gap:20px}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow-lg);
+      position:relative;
+    }
+    .card.soft{
+      background:linear-gradient(180deg, rgba(248,250,255,.05), rgba(9,40,84,.98));
+      border:1px solid rgba(157,190,255,.6);
+    }
+    .card.gold{
+      border-color:rgba(195,236,255,.9);
+    }
+    .card.gold::after{
+      content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.05),
+        0 0 0 1px rgba(195,236,255,.75),
+        0 0 40px rgba(99,181,255,.7);
+    }
+
+    .benefits .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .benefits .grid > *{min-height:220px}
+    .benefit i{font-style:normal; font-size:24px}
+
+    .metricbar{
+      max-width:960px; margin:26px auto 0; padding:18px;
+      border-radius:14px;
+      border:1px dashed rgba(195,236,255,.9);
+      background:rgba(37,110,184,.7);
+      text-align:center;
+      box-shadow:0 18px 45px rgba(0,0,0,.7);
+    }
+
+    .features .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+    .audience .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .audience .warn{
+      border-color:var(--danger);
+      background:linear-gradient(180deg, rgba(255,91,122,.2), rgba(255,91,122,.1));
+      box-shadow:0 18px 50px rgba(255,91,122,.55);
+    }
+
+    /* GARANTÍA */
+    .guarantee{padding:70px 0 120px}
+    .guarantee .panel{
+      position:relative; border-radius:var(--radius);
+      padding:32px 26px; text-align:center;
+      border:1.5px solid rgba(195,236,255,.9);
+      background:
+        radial-gradient(130% 160% at 50% 0%, rgba(246,249,255,.2), transparent 60%),
+        linear-gradient(180deg, rgba(34,93,177,.7), rgba(9,36,82,.98));
+      box-shadow:
+        0 30px 90px rgba(0,0,0,.8),
+        0 0 60px rgba(99,181,255,.7);
+    }
+    .guarantee .panel::after{
+      content:""; position:absolute; inset:-1px; filter:blur(16px); border-radius:inherit; pointer-events:none; opacity:.7;
+      background:
+        radial-gradient(140% 120% at 50% -20%, rgba(195,236,255,.35), transparent 60%),
+        radial-gradient(120% 120% at 110% 40%, rgba(99,181,255,.35), transparent 60%);
+    }
+    .ribbon{
+      position:absolute; left:50%; bottom:-26px; transform:translateX(-50%);
+      width:clamp(260px,70%,740px); text-align:center;
+      padding:14px 16px;
+      border:1px solid rgba(12,42,96,1);
+      border-radius:16px;
+      background:linear-gradient(90deg, rgba(12,42,96,.98), rgba(67,149,239,.98));
+      box-shadow:0 22px 60px rgba(0,0,0,.9);
+      font-weight:700;
+      color:#f6f8ff;
+      text-shadow:0 0 10px rgba(0,0,0,.7);
+    }
+
+    /* FORMULARIO */
+    form{display:grid; gap:14px}
+    .form-grid{
+      display:grid;
+      gap:14px;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+    .form-grid .full{
+      grid-column:1 / -1; /* Teléfono ocupa ambas columnas */
+    }
+    label{font-weight:700; font-size:.9rem}
+    input,
+    select,
+    textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid rgba(157,190,255,.7);
+      background:#081a35;
+      color:var(--ink);
+      box-shadow:0 10px 28px rgba(0,0,0,.7) inset;
+      font-family:inherit;
+      font-size:0.95rem;
+      line-height:1.4;
+    }
+    input::placeholder,
+    textarea::placeholder{color:#94a4d5}
+    textarea{min-height:120px; resize:vertical}
+    .hint{font-size:.86rem; color:var(--muted)}
+
+    button.btn{
+      font-family:inherit;
+      font-size:0.95rem;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:46px 0;
+      border-top:1px solid rgba(157,190,255,.7);
+      color:#dde5ff;
+      background:radial-gradient(800px 400px at 50% 0%, rgba(99,181,255,.38), transparent 70%);
+    }
+    .links{display:flex; gap:18px; flex-wrap:wrap}
+
+    @media (max-width: 1100px){
+      .benefits .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .features .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .audience .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width: 640px){
+      .benefits .grid{grid-template-columns:1fr}
+      .features .grid{grid-template-columns:1fr}
+      .audience .grid{grid-template-columns:1fr}
+      .hero-card{padding:32px 22px}
+      .nav{padding:14px 0}
+    }
+
+    /* Reveal */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease}
+    .reveal.visible{opacity:1; transform:none}
+  </style>
 </head>
-
-<body>
-
-<!-- NAVBAR -->
-<nav>
-  <div class="logo">Conejeros Solutions</div>
-  <ul>
-    <li><a href="#beneficios">Beneficios</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#proceso">Proceso</a></li>
-  </ul>
-  <a href="#contacto" class="cta">Agenda tu diagnóstico</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h4>Consultoría en Automatización Inteligente</h4>
-    <h1>Automatiza <span style="color:white;">Hoy.</span><br><span style="color:#00bfff;">Lidera</span> Mañana.</h1>
-    <p>Rediseñamos tu operación para el futuro: más simple, más rápida, más inteligente.</p>
-    <a href="#contacto">Solicita tu diagnóstico</a>
-  </div>
-</section>
-
-<!-- BENEFICIOS -->
-<section class="beneficios" id="beneficios">
-  <h2>Optimiza, Acelera y Automatiza</h2>
-  <p>Reduce los costes operativos y elimina tareas repetitivas con soluciones inteligentes que mejoran la eficiencia y la precisión.</p>
-  <div class="beneficio-grid">
-    <div class="beneficio-card">
-      <h3>Reducción del Trabajo Manual</h3>
-      <p>Automatiza tareas repetitivas y ahorra tiempo. Desde respuestas a clientes hasta documentos: la IA se encarga, tu equipo se enfoca en lo importante.</p>
+<body class="scene">
+  <!-- HEADER -->
+  <header class="site">
+    <div class="wrapper nav">
+      <div class="brand" aria-label="Marca">
+        <div class="logo">AI</div>
+        <b>AI Full System</b>
+      </div>
+      <a class="btn gold" href="#form">Solicitar diagnóstico</a>
     </div>
-    <div class="beneficio-card">
-      <h3>Mayor Velocidad Operativa</h3>
-      <p>Respuestas en segundos, decisiones en tiempo real. Elimina cuellos de botella con flujos automatizados y agentes que trabajan 24/7.</p>
-    </div>
-    <div class="beneficio-card">
-      <h3>Menos Errores Humanos</h3>
-      <p>Toma de decisiones más precisa y estandarizada. Automatizar significa menos fallos, menos retrabajos y más calidad.</p>
-    </div>
-  </div>
-</section>
+  </header>
 
-<!-- SERVICIOS -->
-<section class="servicios" id="servicios">
-  <h2>Transformamos tu Operación con Inteligencia Artificial</h2>
-  <p>Desde la captación de clientes hasta la gestión documental y operativa, optimizamos cada fase con tecnología avanzada.</p>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrapper">
+        <div class="hero-card reveal">
+          <h1>Escala y blinda tu empresa con <span>IA</span> y Ciberseguridad en <em>15 días</em> o menos</h1>
+          <p class="lead">Accede a un diagnóstico técnico y estratégico para identificar riesgos críticos, oportunidades de automatización y arquitectura IA escalable.</p>
+          <div class="hero-actions">
+            <a class="btn gold" href="#form">Solicitar Análisis Personalizado</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="servicio-grid">
-    <div class="servicio-card">
-      <h3>Automatización de Leads</h3>
-      <p>Convierte más leads, más rápido. Automatiza la calificación, seguimiento y programación de citas con agentes de IA, aumentando tu conversión sin esfuerzo.</p>
-    </div>
-    <div class="servicio-card">
-      <h3>Automatización de Base de Conocimientos</h3>
-      <p>Responde todo, al instante. Implementa agentes RAG que entregan respuestas precisas desde tus documentos internos.</p>
-    </div>
-    <div class="servicio-card">
-      <h3>Flujos de Trabajo para Documentos</h3>
-      <p>Del caos a la claridad. Optimiza cotizaciones, facturas y contratos con flujos de trabajo impulsados por IA como n8n + GPT.</p>
-    </div>
-  </div>
-</section>
+    <!-- BENEFICIOS -->
+    <section id="beneficios" class="benefits">
+      <div class="wrapper">
+        <h2 class="title reveal">Beneficios clave</h2>
+        <div class="grid">
+          <article class="card soft gold reveal benefit">
+            <i>🚀</i>
+            <h3>Escala sin fricción</h3>
+            <p class="muted">Identifica procesos con alto impacto donde la IA libera horas y reduce costes.</p>
+          </article>
+          <article class="card soft gold reveal benefit">
+            <i>🔒</i>
+            <h3>Mitiga riesgos operativos</h3>
+            <p class="muted">Detecta brechas y malas prácticas antes de que comprometan el negocio.</p>
+          </article>
+          <article class="card soft gold reveal benefit">
+            <i>🧠</i>
+            <h3>Decisiones con datos</h3>
+            <p class="muted">Roadmap accionable diseñado por ingenieros y estrategas de IA.</p>
+          </article>
+          <article class="card soft gold reveal benefit">
+            <i>⚡</i>
+            <h3>Velocidad</h3>
+            <p class="muted">Resultados en 2 semanas sin interrumpir la operación actual.</p>
+          </article>
+        </div>
+        <div class="metricbar reveal">
+          ✔ <strong>100% del coste</strong> se descuenta si contratas la implantación en los 30 días siguientes.
+        </div>
+      </div>
+    </section>
 
-<!-- PROCESO -->
-<section class="proceso" id="proceso">
-  <h2>Un Método Probado para Resultados Garantizados</h2>
-  <p>Nuestro enfoque simplifica la automatización para que cualquier empresa pueda implementarla sin complicaciones.</p>
-  <div class="cards">
-    <div class="card">
-      <h3>Estudiamos</h3>
-      <p>Analizamos tu negocio para detectar oportunidades reales de automatización.</p>
-    </div>
-    <div class="card">
-      <h3>Aplicamos</h3>
-      <p>Desarrollamos e implementamos soluciones con IA adaptadas a tus procesos.</p>
-    </div>
-    <div class="card">
-      <h3>Optimizamos</h3>
-      <p>Medimos resultados y refinamos cada flujo para alcanzar la máxima eficiencia.</p>
-    </div>
-  </div>
-</section>
+    <!-- QUÉ OBTIENES -->
+    <section class="features">
+      <div class="wrapper">
+        <h2 class="title reveal">¿Qué obtienes con AI Full System?</h2>
+        <div class="grid">
+          <article class="card reveal">
+            <h3>Auditoría de procesos & stack</h3>
+            <p class="muted">Mapeo de flujos clave, cuellos de botella y herramientas actuales.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Evaluación de ciberseguridad</h3>
+            <p class="muted">Revisión de accesos, datos sensibles, backups y políticas.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Análisis de oportunidades IA</h3>
+            <p class="muted">Casos de uso priorizados por ROI/viabilidad y quick wins.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Roadmap técnico</h3>
+            <p class="muted">Arquitectura propuesta, integraciones y plan por fases.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Reunión 1:1 con CTO</h3>
+            <p class="muted">Sesión ejecutiva para dudas y alineamiento estratégico.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Informe accionable</h3>
+            <p class="muted">Documento final con prioridades, riesgos y KPIs sugeridos.</p>
+          </article>
+        </div>
+        <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:16px">
+          <div class="card soft gold reveal">
+            <strong>Duración</strong>
+            <div class="muted">10–15 días</div>
+          </div>
+          <div class="card soft gold reveal">
+            <strong>Inversión</strong>
+            <div class="muted">$1.000 – $5.000 <small>(según alcance)</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- CONTACTO -->
-<section class="contacto" id="contacto">
-  <h2>Haz Crecer tu Negocio Hoy</h2>
-  <p>Descubre cómo nuestras soluciones pueden optimizar tu operativa y permitirte enfocarte en lo importante.</p>
+    <!-- PARA QUIÉN ES -->
+    <section class="audience">
+      <div class="wrapper">
+        <h2 class="title reveal">¿Es para ti?</h2>
+        <div class="grid">
+          <article class="card soft gold reveal">
+            <h3>Procesos no escalables</h3>
+            <p class="muted">Dependencia operativa alta, tareas manuales.</p>
+          </article>
+          <article class="card soft gold reveal">
+            <h3>Datos/PI sensibles</h3>
+            <p class="muted">O expansión internacional con regulación.</p>
+          </article>
+          <article class="card soft gold reveal">
+            <h3>Necesidad de claridad</h3>
+            <p class="muted">Hoja de ruta y acción antes de invertir.</p>
+          </article>
+          <article class="card soft warn reveal">
+            <h3>No recomendado</h3>
+            <p class="muted">Negocios sin urgencia ni recursos asignados.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <form>
-    <input type="text" placeholder="Tu nombre" required>
-    <input type="text" placeholder="Nombre de tu empresa o proyecto" required>
-    <input type="email" placeholder="Tu correo electrónico" required>
-    <select>
-      <option>Elige tu rango de inversión...</option>
-      <option>Menos de $500.000 CLP</option>
-      <option>$500.000 - $1.000.000 CLP</option>
-      <option>Más de $1.000.000 CLP</option>
-    </select>
-    <textarea rows="4" placeholder="Cuéntanos más sobre tu idea..."></textarea>
-    <button type="submit">Enviar Solicitud</button>
-  </form>
-</section>
+    <!-- GARANTÍA -->
+    <section class="guarantee">
+      <div class="wrapper">
+        <div class="panel reveal">
+          <h2 class="title" style="margin-bottom:8px">Garantía total</h2>
+          <p class="muted">Descontamos el 100% del diagnóstico si avanzas con la implantación completa en los próximos 30 días.</p>
+          <div class="ribbon">¡Limitado a 2 empresas por mes para garantizar calidad técnica!</div>
+        </div>
+      </div>
+    </section>
 
+    <!-- FORMULARIO -->
+    <section id="form">
+      <div class="wrapper">
+        <h2 class="title reveal">Solicita tu AI Full System</h2>
+        <div class="card gold reveal">
+          <form id="lead-form" action="#" method="post">
+            <div class="form-grid">
+              <div>
+                <label>Nombre completo *</label>
+                <input name="nombre" required placeholder="Tu nombre" />
+              </div>
+              <div>
+                <label>Empresa *</label>
+                <input name="empresa" required placeholder="Razón social" />
+              </div>
+
+              <div>
+                <label>Cargo *</label>
+                <input name="cargo" required placeholder="CEO, CTO, etc." />
+              </div>
+              <div>
+                <label>Email corporativo *</label>
+                <input name="email" type="email" required placeholder="nombre@empresa.com" />
+              </div>
+
+              <div class="full">
+                <label>Teléfono *</label>
+                <input name="telefono" required placeholder="+56 9 …" />
+              </div>
+            </div>
+
+            <div>
+              <label>¿Qué te gustaría mejorar con IA? *</label>
+              <textarea name="objetivo" required placeholder="Cuéntanos brevemente tus procesos o dolores principales"></textarea>
+            </div>
+
+            <div class="hint">
+              Al enviar aceptas que te contactemos para coordinar la sesión inicial. Protegemos tus datos.
+            </div>
+
+            <div style="margin-top:10px; text-align:left">
+              <button class="btn gold" type="submit">Enviar solicitud</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrapper">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
+        <div>© <span id="y"></span> TuMarca — Todos los derechos reservados</div>
+        <div class="links">
+          <a class="muted" href="#">Política de Privacidad</a>
+          <a class="muted" href="#">Política de Cookies</a>
+          <a class="muted" href="#">Aviso Legal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // Envío al webhook n8n
+    const form = document.getElementById('lead-form');
+    if (form) {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const data = {
+          nombre: form.elements['nombre'].value.trim(),
+          empresa: form.elements['empresa'].value.trim(),
+          cargo: form.elements['cargo'].value.trim(),
+          email: form.elements['email'].value.trim(),
+          telefono: form.elements['telefono'].value.trim(),
+          objetivoIA: form.elements['objetivo'].value.trim(),
+          origen: 'landing-ai-full-system-blue-light'
+        };
+
+        try {
+          const response = await fetch('https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/afb70f27-dd2d-4853-9270-3faf35ddcd5e', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+
+          if (!response.ok) throw new Error('Error en el envío');
+
+          alert('Gracias. Te contactaremos pronto.');
+          form.reset();
+        } catch (err) {
+          console.error(err);
+          alert('Hubo un problema al enviar el formulario. Intenta nuevamente en unos minutos.');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
-
-
