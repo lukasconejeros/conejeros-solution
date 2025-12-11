@@ -128,7 +128,7 @@
     }
     .hero-actions{display:flex; gap:14px; justify-content:center; margin-top:30px}
 
-    /* SECCIONES GENERALES */
+    /* SECCIONES */
     section{padding:70px 0}
     .title{
       font-family:"Playfair Display", serif;
@@ -183,9 +183,9 @@
       box-shadow:0 18px 50px rgba(255,91,122,.55);
     }
 
-    /* GARANTÍA (con mucho espacio abajo) */
+    /* GARANTÍA */
     .guarantee{
-      padding:70px 0 210px; /* MÁS ESPACIO BAJO LA CINTA */
+      padding:70px 0 210px; /* extra espacio bajo el panel para la cinta separada */
     }
     .guarantee .panel{
       position:relative; border-radius:var(--radius);
@@ -204,8 +204,12 @@
         radial-gradient(140% 120% at 50% -20%, rgba(195,236,255,.35), transparent 60%),
         radial-gradient(120% 120% at 110% 40%, rgba(99,181,255,.35), transparent 60%);
     }
+    /* Cinta MÁS ABAJO, ya no pegada al panel */
     .ribbon{
-      position:absolute; left:50%; bottom:-26px; transform:translateX(-50%);
+      position:absolute;
+      left:50%;
+      bottom:-110px; /* antes -18px: ahora queda claramente separada del cuadrado de garantía */
+      transform:translateX(-50%);
       width:clamp(260px,70%,740px); text-align:center;
       padding:10px 16px;
       border:1px solid rgba(7,31,77,1);
@@ -247,11 +251,10 @@
     textarea::placeholder{color:#94a4d5}
     textarea{min-height:120px; resize:vertical}
     .hint{font-size:.86rem; color:var(--muted)}
-    button.btn{font-family:inherit;font-size:0.95rem;}
 
-    /* ESPACIO EXTRA ANTES DEL FORM (AFECTA DESKTOP Y MOBILE) */
-    section#form{
-      padding-top:140px; /* separa fuerte del bloque de garantía */
+    button.btn{
+      font-family:inherit;
+      font-size:0.95rem;
     }
 
     /* FOOTER */
@@ -274,12 +277,17 @@
       .audience .grid{grid-template-columns:1fr}
       .hero-card{padding:32px 22px}
       .nav{padding:14px 0}
-      /* Form UNA sola columna en mobile */
-      .form-grid{grid-template-columns:1fr;}
-      .form-grid .full{grid-column:1 / -1;}
-      /* aún más aire bajo garantía y sobre el form en pantallas chicas */
-      .guarantee{padding-bottom:230px;}
-      section#form{padding-top:150px;}
+      /* FORM en una columna en móvil */
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+      .form-grid .full{
+        grid-column:1 / -1;
+      }
+      /* un pelín más de espacio extra para la cinta en mobile */
+      .guarantee{
+        padding:60px 0 230px;
+      }
     }
 
     /* Reveal */
