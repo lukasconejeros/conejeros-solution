@@ -48,17 +48,12 @@
         linear-gradient(#0c2941, #07182b);
       filter:saturate(1.06);
     }
+    /* Quitamos los puntitos molestos, dejamos sólo un glow muy suave */
     .scene::after{
-      content:""; position:fixed; inset:-10% -10%; z-index:-2; pointer-events:none; opacity:.55; mix-blend-mode:screen;
-      background-image:
-        radial-gradient(2px 2px at 20% 30%, rgba(195,236,255,.95) 60%, transparent 62%),
-        radial-gradient(2px 2px at 62% 12%, rgba(99,181,255,.95) 60%, transparent 62%),
-        radial-gradient(2px 2px at 85% 70%, rgba(195,236,255,.95) 60%, transparent 62%),
-        radial-gradient(2px 2px at 30% 80%, rgba(99,181,255,.95) 60%, transparent 62%),
-        radial-gradient(2px 2px at 10% 60%, rgba(195,236,255,.95) 60%, transparent 62%);
-      animation:spark 18s linear infinite;
+      content:""; position:fixed; inset:-10% -10%; z-index:-2; pointer-events:none;
+      background:radial-gradient(900px 600px at 50% 10%, rgba(99,181,255,.25), transparent 70%);
+      opacity:.4; mix-blend-mode:screen;
     }
-    @keyframes spark{from{transform:translateY(0)}to{transform:translateY(-90px)}}
 
     .wrapper{width:min(100%,var(--max)); margin-inline:auto; padding:0 22px}
 
@@ -207,17 +202,19 @@
         radial-gradient(140% 120% at 50% -20%, rgba(195,236,255,.35), transparent 60%),
         radial-gradient(120% 120% at 110% 40%, rgba(99,181,255,.35), transparent 60%);
     }
+    /* Cinta más abajo, más oscura y menos glow */
     .ribbon{
-      position:absolute; left:50%; bottom:-26px; transform:translateX(-50%);
+      position:absolute; left:50%; bottom:-18px; transform:translateX(-50%);
       width:clamp(260px,70%,740px); text-align:center;
-      padding:14px 16px;
-      border:1px solid rgba(12,42,96,1);
+      padding:10px 16px;
+      border:1px solid rgba(7,31,77,1);
       border-radius:16px;
-      background:linear-gradient(90deg, rgba(12,42,96,.98), rgba(67,149,239,.98));
-      box-shadow:0 22px 60px rgba(0,0,0,.9);
+      background:linear-gradient(90deg, #092556, #16488c);
+      box-shadow:0 16px 40px rgba(0,0,0,.85);
       font-weight:700;
       color:#f6f8ff;
-      text-shadow:0 0 10px rgba(0,0,0,.7);
+      text-shadow:0 0 8px rgba(0,0,0,.7);
+      font-size:0.96rem;
     }
 
     /* FORMULARIO */
@@ -228,7 +225,7 @@
       grid-template-columns:repeat(2,minmax(0,1fr));
     }
     .form-grid .full{
-      grid-column:1 / -1; /* Teléfono ocupa ambas columnas */
+      grid-column:1 / -1; /* Teléfono ocupa ambas columnas en desktop */
     }
     label{font-weight:700; font-size:.9rem}
     input,
@@ -275,6 +272,14 @@
       .audience .grid{grid-template-columns:1fr}
       .hero-card{padding:32px 22px}
       .nav{padding:14px 0}
+      /* FORM en una columna en móvil para que quede simétrico */
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+      .form-grid .full{
+        grid-column:1 / -1;
+      }
+      .guarantee{padding-bottom:100px;} /* un pelín menos espacio bajo la cinta en mobile */
     }
 
     /* Reveal */
