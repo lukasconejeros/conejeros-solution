@@ -6,32 +6,33 @@
   <title>AI Full System — Diagnóstico IA + Ciberseguridad</title>
   <meta name="description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad. Resultados accionables en 15 días o menos." />
 
-  <!-- =========================================================
-       ✅ SEO/BRAND: URL ABSOLUTA (cambia si tu dominio es sin www)
-       ========================================================= -->
+  <!-- URL CANÓNICA -->
   <link rel="canonical" href="https://www.conejeros-solutions.cl/" />
-  <meta property="og:url" content="https://www.conejeros-solutions.cl/" />
-  <meta property="og:site_name" content="Conejeros Solutions" />
-  <meta property="og:locale" content="es_CL" />
 
-  <!-- ✅ FAVICON / ICONOS (ABSOLUTOS para evitar cache raro) -->
-  <link rel="icon" href="https://www.conejeros-solutions.cl/logo/logo.png" type="image/png" />
-  <link rel="apple-touch-icon" href="https://www.conejeros-solutions.cl/logo/logo.png" />
+  <!-- FAVICON (Bing/Google lo usan en resultados) -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="theme-color" content="#0b2238" />
 
-  <!-- ✅ SOCIAL PREVIEW (OG / TWITTER) -->
+  <!-- Open Graph / Social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="Conejeros Solutions" />
+  <meta property="og:url" content="https://www.conejeros-solutions.cl/" />
   <meta property="og:title" content="AI Full System — Diagnóstico IA + Ciberseguridad" />
   <meta property="og:description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad. Resultados accionables en 15 días o menos." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://www.conejeros-solutions.cl/logo/logo.png" />
-  <meta property="og:image:secure_url" content="https://www.conejeros-solutions.cl/logo/logo.png" />
+  <meta property="og:image" content="https://www.conejeros-solutions.cl/apple-touch-icon.png" />
+  <meta property="og:image:secure_url" content="https://www.conejeros-solutions.cl/apple-touch-icon.png" />
   <meta property="og:image:type" content="image/png" />
-  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="AI Full System — Diagnóstico IA + Ciberseguridad" />
   <meta name="twitter:description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad. Resultados accionables en 15 días o menos." />
-  <meta name="twitter:image" content="https://www.conejeros-solutions.cl/logo/logo.png" />
+  <meta name="twitter:image" content="https://www.conejeros-solutions.cl/apple-touch-icon.png" />
 
-  <!-- ✅ Schema.org: esto es lo que ayuda a “logo de marca” en buscadores -->
+  <!-- Schema.org (ayuda a entender logo/marca) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,7 +41,7 @@
         "@type": "Organization",
         "name": "Conejeros Solutions",
         "url": "https://www.conejeros-solutions.cl/",
-        "logo": "https://www.conejeros-solutions.cl/logo/logo.png"
+        "logo": "https://www.conejeros-solutions.cl/apple-touch-icon.png"
       },
       {
         "@type": "WebSite",
@@ -56,14 +57,12 @@
 
   <style>
     :root{
-      /* Base azul clara / celeste metálico */
       --bg:#0b2238;
       --ink:#f6f8ff;
       --muted:#8c9ed0;
       --line:#355386;
       --card:#123058;
 
-      /* Acentos (celeste metálico) */
       --gold-1:#c3ecff;
       --gold-2:#63b5ff;
       --gold-3:#3580e8;
@@ -93,7 +92,6 @@
         linear-gradient(#0c2941, #07182b);
       filter:saturate(1.06);
     }
-    /* Glow suave, sin puntitos */
     .scene::after{
       content:""; position:fixed; inset:-10% -10%; z-index:-2; pointer-events:none;
       background:radial-gradient(900px 600px at 50% 10%, rgba(99,181,255,.25), transparent 70%);
@@ -102,7 +100,6 @@
 
     .wrapper{width:min(100%,var(--max)); margin-inline:auto; padding:0 22px}
 
-    /* HEADER */
     header.site{
       position:sticky; top:0; z-index:30; backdrop-filter: blur(10px);
       background:linear-gradient(180deg, rgba(6,18,40,.95), rgba(6,18,40,.6), transparent);
@@ -111,16 +108,13 @@
     .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0}
     .brand{display:flex; gap:10px; align-items:center}
 
-    /* ✅ Logo visible en la web (sin cambiar layout) */
+    /* MISMO LAYOUT, solo cambié el contenido de la cajita por tu ícono */
     .brand .logo{
-      width:28px; height:28px;
+      width:24px; height:24px; display:grid; place-items:center;
       border-radius:8px;
-      background:rgba(255,255,255,.92);
-      box-shadow:0 0 20px rgba(99,181,255,.85);
+      background:radial-gradient(circle at 20% 0%, #e9f8ff, var(--gold-2));
+      box-shadow:0 0 20px rgba(99,181,255,.9);
       overflow:hidden;
-      display:grid;
-      place-items:center;
-      flex:0 0 auto;
     }
     .brand .logo img{
       width:100%;
@@ -150,7 +144,6 @@
       box-shadow:0 26px 60px rgba(99,181,255,1);
     }
 
-    /* HERO */
     .hero{padding:80px 0 44px}
     .hero-card{
       max-width:980px; margin:0 auto; text-align:center; position:relative;
@@ -185,7 +178,6 @@
     }
     .hero-actions{display:flex; gap:14px; justify-content:center; margin-top:30px}
 
-    /* SECCIONES */
     section{padding:70px 0}
     .title{
       font-family:"Playfair Display", serif;
@@ -207,9 +199,7 @@
       background:linear-gradient(180deg, rgba(248,250,255,.05), rgba(9,40,84,.98));
       border:1px solid rgba(157,190,255,.6);
     }
-    .card.gold{
-      border-color:rgba(195,236,255,.9);
-    }
+    .card.gold{border-color:rgba(195,236,255,.9);}
     .card.gold::after{
       content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
       box-shadow:
@@ -240,10 +230,7 @@
       box-shadow:0 18px 50px rgba(255,91,122,.55);
     }
 
-    /* GARANTÍA */
-    .guarantee{
-      padding:70px 0 210px;
-    }
+    .guarantee{padding:70px 0 210px;}
     .guarantee .panel{
       position:relative; border-radius:var(--radius);
       padding:32px 26px; text-align:center;
@@ -262,36 +249,20 @@
         radial-gradient(120% 120% at 110% 40%, rgba(99,181,255,.35), transparent 60%);
     }
     .ribbon{
-      position:absolute;
-      left:50%;
-      bottom:-110px;
-      transform:translateX(-50%);
+      position:absolute; left:50%; bottom:-110px; transform:translateX(-50%);
       width:clamp(260px,70%,740px); text-align:center;
-      padding:10px 16px;
-      border:1px solid rgba(7,31,77,1);
-      border-radius:16px;
-      background:linear-gradient(90deg, #092556, #16488c);
+      padding:10px 16px; border:1px solid rgba(7,31,77,1);
+      border-radius:16px; background:linear-gradient(90deg, #092556, #16488c);
       box-shadow:0 16px 40px rgba(0,0,0,.85);
-      font-weight:700;
-      color:#f6f8ff;
-      text-shadow:0 0 8px rgba(0,0,0,.7);
+      font-weight:700; color:#f6f8ff; text-shadow:0 0 8px rgba(0,0,0,.7);
       font-size:0.96rem;
     }
 
-    /* FORMULARIO */
     form{display:grid; gap:14px}
-    .form-grid{
-      display:grid;
-      gap:14px;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-    .form-grid .full{
-      grid-column:1 / -1;
-    }
+    .form-grid{display:grid; gap:14px; grid-template-columns:repeat(2,minmax(0,1fr));}
+    .form-grid .full{grid-column:1 / -1;}
     label{font-weight:700; font-size:.9rem}
-    input,
-    select,
-    textarea{
+    input, select, textarea{
       width:100%;
       padding:12px 12px;
       border-radius:12px;
@@ -303,17 +274,11 @@
       font-size:0.95rem;
       line-height:1.4;
     }
-    input::placeholder,
-    textarea::placeholder{color:#94a4d5}
+    input::placeholder, textarea::placeholder{color:#94a4d5}
     textarea{min-height:120px; resize:vertical}
     .hint{font-size:.86rem; color:var(--muted)}
+    button.btn{font-family:inherit; font-size:0.95rem;}
 
-    button.btn{
-      font-family:inherit;
-      font-size:0.95rem;
-    }
-
-    /* FOOTER */
     footer{
       padding:46px 0;
       border-top:1px solid rgba(157,190,255,.7);
@@ -338,18 +303,17 @@
       .guarantee{padding:60px 0 230px;}
     }
 
-    /* Reveal */
     .reveal{opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease}
     .reveal.visible{opacity:1; transform:none}
   </style>
 </head>
+
 <body class="scene">
-  <!-- HEADER -->
   <header class="site">
     <div class="wrapper nav">
       <div class="brand" aria-label="Marca">
         <div class="logo" aria-hidden="true">
-          <img src="./logo/logo.png" alt="" />
+          <img src="/apple-touch-icon.png" alt="" />
         </div>
         <b>AI Full System</b>
       </div>
@@ -358,7 +322,6 @@
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero">
       <div class="wrapper">
         <div class="hero-card reveal">
@@ -371,7 +334,6 @@
       </div>
     </section>
 
-    <!-- BENEFICIOS -->
     <section id="beneficios" class="benefits">
       <div class="wrapper">
         <h2 class="title reveal">Beneficios clave</h2>
@@ -403,7 +365,6 @@
       </div>
     </section>
 
-    <!-- QUÉ OBTIENES -->
     <section class="features">
       <div class="wrapper">
         <h2 class="title reveal">¿Qué obtienes con AI Full System?</h2>
@@ -446,7 +407,6 @@
       </div>
     </section>
 
-    <!-- PARA QUIÉN ES -->
     <section class="audience">
       <div class="wrapper">
         <h2 class="title reveal">¿Es para ti?</h2>
@@ -471,7 +431,6 @@
       </div>
     </section>
 
-    <!-- GARANTÍA -->
     <section class="guarantee">
       <div class="wrapper">
         <div class="panel reveal">
@@ -482,7 +441,6 @@
       </div>
     </section>
 
-    <!-- FORMULARIO -->
     <section id="form">
       <div class="wrapper">
         <h2 class="title reveal">Solicita tu AI Full System</h2>
@@ -497,7 +455,6 @@
                 <label>Empresa *</label>
                 <input name="empresa" required placeholder="Razón social" />
               </div>
-
               <div>
                 <label>Cargo *</label>
                 <input name="cargo" required placeholder="CEO, CTO, etc." />
@@ -506,7 +463,6 @@
                 <label>Email corporativo *</label>
                 <input name="email" type="email" required placeholder="nombre@empresa.com" />
               </div>
-
               <div class="full">
                 <label>Teléfono *</label>
                 <input name="telefono" required placeholder="+56 9 …" />
@@ -531,7 +487,6 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="wrapper">
       <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
@@ -546,10 +501,8 @@
   </footer>
 
   <script>
-    // Año footer
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Reveal on scroll
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
@@ -560,7 +513,6 @@
     },{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
 
-    // Envío al webhook n8n
     const form = document.getElementById('lead-form');
     if (form) {
       form.addEventListener('submit', async (event) => {
