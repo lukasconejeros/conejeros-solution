@@ -6,6 +6,19 @@
   <title>AI Full System — Diagnóstico IA + Ciberseguridad</title>
   <meta name="description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad. Resultados accionables en 15 días o menos." />
 
+  <!-- ✅ FAVICON / ICONOS -->
+  <link rel="icon" href="./logo/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./logo/logo.png" />
+  <meta name="theme-color" content="#0b2238" />
+
+  <!-- ✅ SOCIAL PREVIEW (OG / TWITTER) -->
+  <meta property="og:title" content="AI Full System — Diagnóstico IA + Ciberseguridad" />
+  <meta property="og:description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad. Resultados accionables en 15 días o menos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./logo/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="./logo/logo.png" />
+
   <!-- Tipografías -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -65,12 +78,20 @@
     }
     .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0}
     .brand{display:flex; gap:10px; align-items:center}
+    /* ✅ LOGO REAL (usa tu PNG) */
     .brand .logo{
-      width:24px; height:24px; display:grid; place-items:center;
+      width:28px; height:28px; display:grid; place-items:center;
       border-radius:8px;
-      background:radial-gradient(circle at 20% 0%, #e9f8ff, var(--gold-2));
-      color:#02101f; font-weight:900; font-size:.8rem;
-      box-shadow:0 0 20px rgba(99,181,255,.9);
+      background:rgba(255,255,255,.92);
+      box-shadow:0 0 20px rgba(99,181,255,.85);
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .brand .logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
     }
     .brand b{
       font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.5px;
@@ -208,7 +229,7 @@
     .ribbon{
       position:absolute;
       left:50%;
-      bottom:-110px; /* antes -18px: ahora queda claramente separada del cuadrado de garantía */
+      bottom:-110px;
       transform:translateX(-50%);
       width:clamp(260px,70%,740px); text-align:center;
       padding:10px 16px;
@@ -266,6 +287,23 @@
     }
     .links{display:flex; gap:18px; flex-wrap:wrap}
 
+    /* ✅ mini-logo footer */
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .footer-brand img{
+      width:22px;
+      height:22px;
+      border-radius:6px;
+      background:rgba(255,255,255,.92);
+      padding:2px;
+      display:block;
+      box-shadow:0 0 16px rgba(99,181,255,.65);
+    }
+
     @media (max-width: 1100px){
       .benefits .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .features .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -278,16 +316,10 @@
       .hero-card{padding:32px 22px}
       .nav{padding:14px 0}
       /* FORM en una columna en móvil */
-      .form-grid{
-        grid-template-columns:1fr;
-      }
-      .form-grid .full{
-        grid-column:1 / -1;
-      }
+      .form-grid{grid-template-columns:1fr;}
+      .form-grid .full{grid-column:1 / -1;}
       /* un pelín más de espacio extra para la cinta en mobile */
-      .guarantee{
-        padding:60px 0 230px;
-      }
+      .guarantee{padding:60px 0 230px;}
     }
 
     /* Reveal */
@@ -300,7 +332,9 @@
   <header class="site">
     <div class="wrapper nav">
       <div class="brand" aria-label="Marca">
-        <div class="logo">AI</div>
+        <div class="logo" aria-hidden="true">
+          <img src="./logo/logo.png" alt="" />
+        </div>
         <b>AI Full System</b>
       </div>
       <a class="btn gold" href="#form">Solicitar diagnóstico</a>
@@ -485,7 +519,10 @@
   <footer>
     <div class="wrapper">
       <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
-        <div>© <span id="y"></span> TuMarca — Todos los derechos reservados</div>
+        <div class="footer-brand">
+          <img src="./logo/logo.png" alt="Logo" />
+          <div>© <span id="y"></span> TuMarca — Todos los derechos reservados</div>
+        </div>
         <div class="links">
           <a class="muted" href="#">Política de Privacidad</a>
           <a class="muted" href="#">Política de Cookies</a>
@@ -529,9 +566,7 @@
         try {
           const response = await fetch('https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/afb70f27-dd2d-4853-9270-3faf35ddcd5e', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
           });
 
@@ -548,3 +583,4 @@
   </script>
 </body>
 </html>
+
