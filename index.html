@@ -6,18 +6,50 @@
   <title>AI Full System — Diagnóstico IA + Ciberseguridad</title>
   <meta name="description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad. Resultados accionables en 15 días o menos." />
 
-  <!-- ✅ FAVICON / ICONOS -->
-  <link rel="icon" href="./logo/logo.png" type="image/png" />
-  <link rel="apple-touch-icon" href="./logo/logo.png" />
+  <!-- =========================================================
+       ✅ SEO/BRAND: URL ABSOLUTA (cambia si tu dominio es sin www)
+       ========================================================= -->
+  <link rel="canonical" href="https://www.conejeros-solutions.cl/" />
+  <meta property="og:url" content="https://www.conejeros-solutions.cl/" />
+  <meta property="og:site_name" content="Conejeros Solutions" />
+  <meta property="og:locale" content="es_CL" />
+
+  <!-- ✅ FAVICON / ICONOS (ABSOLUTOS para evitar cache raro) -->
+  <link rel="icon" href="https://www.conejeros-solutions.cl/logo/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="https://www.conejeros-solutions.cl/logo/logo.png" />
   <meta name="theme-color" content="#0b2238" />
 
   <!-- ✅ SOCIAL PREVIEW (OG / TWITTER) -->
   <meta property="og:title" content="AI Full System — Diagnóstico IA + Ciberseguridad" />
   <meta property="og:description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad. Resultados accionables en 15 días o menos." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./logo/logo.png" />
+  <meta property="og:image" content="https://www.conejeros-solutions.cl/logo/logo.png" />
+  <meta property="og:image:secure_url" content="https://www.conejeros-solutions.cl/logo/logo.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="./logo/logo.png" />
+  <meta name="twitter:title" content="AI Full System — Diagnóstico IA + Ciberseguridad" />
+  <meta name="twitter:description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad. Resultados accionables en 15 días o menos." />
+  <meta name="twitter:image" content="https://www.conejeros-solutions.cl/logo/logo.png" />
+
+  <!-- ✅ Schema.org: esto es lo que ayuda a “logo de marca” en buscadores -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Conejeros Solutions",
+        "url": "https://www.conejeros-solutions.cl/",
+        "logo": "https://www.conejeros-solutions.cl/logo/logo.png"
+      },
+      {
+        "@type": "WebSite",
+        "name": "Conejeros Solutions",
+        "url": "https://www.conejeros-solutions.cl/"
+      }
+    ]
+  }
+  </script>
 
   <!-- Tipografías -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -78,13 +110,16 @@
     }
     .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0}
     .brand{display:flex; gap:10px; align-items:center}
-    /* ✅ LOGO REAL (usa tu PNG) */
+
+    /* ✅ Logo visible en la web (sin cambiar layout) */
     .brand .logo{
-      width:28px; height:28px; display:grid; place-items:center;
+      width:28px; height:28px;
       border-radius:8px;
       background:rgba(255,255,255,.92);
       box-shadow:0 0 20px rgba(99,181,255,.85);
       overflow:hidden;
+      display:grid;
+      place-items:center;
       flex:0 0 auto;
     }
     .brand .logo img{
@@ -93,6 +128,7 @@
       object-fit:contain;
       display:block;
     }
+
     .brand b{
       font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.5px;
       text-shadow:0 0 20px rgba(0,0,0,.8);
@@ -206,7 +242,7 @@
 
     /* GARANTÍA */
     .guarantee{
-      padding:70px 0 210px; /* extra espacio bajo el panel para la cinta separada */
+      padding:70px 0 210px;
     }
     .guarantee .panel{
       position:relative; border-radius:var(--radius);
@@ -225,7 +261,6 @@
         radial-gradient(140% 120% at 50% -20%, rgba(195,236,255,.35), transparent 60%),
         radial-gradient(120% 120% at 110% 40%, rgba(99,181,255,.35), transparent 60%);
     }
-    /* Cinta MÁS ABAJO, ya no pegada al panel */
     .ribbon{
       position:absolute;
       left:50%;
@@ -287,23 +322,6 @@
     }
     .links{display:flex; gap:18px; flex-wrap:wrap}
 
-    /* ✅ mini-logo footer */
-    .footer-brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .footer-brand img{
-      width:22px;
-      height:22px;
-      border-radius:6px;
-      background:rgba(255,255,255,.92);
-      padding:2px;
-      display:block;
-      box-shadow:0 0 16px rgba(99,181,255,.65);
-    }
-
     @media (max-width: 1100px){
       .benefits .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .features .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -315,10 +333,8 @@
       .audience .grid{grid-template-columns:1fr}
       .hero-card{padding:32px 22px}
       .nav{padding:14px 0}
-      /* FORM en una columna en móvil */
       .form-grid{grid-template-columns:1fr;}
       .form-grid .full{grid-column:1 / -1;}
-      /* un pelín más de espacio extra para la cinta en mobile */
       .guarantee{padding:60px 0 230px;}
     }
 
@@ -519,10 +535,7 @@
   <footer>
     <div class="wrapper">
       <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
-        <div class="footer-brand">
-          <img src="./logo/logo.png" alt="Logo" />
-          <div>© <span id="y"></span> TuMarca — Todos los derechos reservados</div>
-        </div>
+        <div>© <span id="y"></span> TuMarca — Todos los derechos reservados</div>
         <div class="links">
           <a class="muted" href="#">Política de Privacidad</a>
           <a class="muted" href="#">Política de Cookies</a>
@@ -583,4 +596,3 @@
   </script>
 </body>
 </html>
-
