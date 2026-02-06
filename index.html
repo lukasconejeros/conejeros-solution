@@ -2,579 +2,408 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>AI Full System — Diagnóstico IA + Ciberseguridad</title>
-  <meta name="description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad." />
-
-  <link rel="canonical" href="https://www.conejeros-solutions.cl/" />
-
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="AI Full System — Diagnóstico IA + Ciberseguridad" />
-  <meta property="og:description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA." />
-  <meta property="og:url" content="https://www.conejeros-solutions.cl/" />
-  <meta property="og:image" content="https://www.conejeros-solutions.cl/logo/logo.png" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Conejeros Solutions",
-    "url": "https://www.conejeros-solutions.cl/",
-    "logo": "https://www.conejeros-solutions.cl/logo/logo.png"
-  }
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI System - La Revolución Operativa</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      /* --- FONDO BLANCO Y ACENTOS NARANJA --- */
-      
-      /* Fondo: Blanco puro */
-      --bg: #ffffff; 
-      /* Texto: Gris oscuro casi negro para contraste */
-      --ink: #1a0a05; 
-      /* Texto secundario: Gris cálido */
-      --muted: #665550; 
-      /* Líneas: Naranja muy suave */
-      --line: #ffe5d9; 
-      /* Tarjetas base: Blanco */
-      --card: #ffffff; 
-
-     /* PEGAR ESTO DENTRO*/
-  --brand-main: #ca6702;  /* Bronce/Cobre */
-  --brand-light: #fff8f0; /* Crema muy suave */
-  --brand-dark: #5e3005;  /* Café oscuro intenso */
-  --danger: #9b2226;
-      --danger: #d00000;
-
-      --max:1160px;
-      --radius:22px;
-      /* Sombra naranja suave */
-      --shadow-lg: 0 20px 60px rgba(232, 93, 4, 0.12);
+    :root {
+      /* Colores extraídos del estilo de la imagen */
+      --bg-dark: #030610;       /* Negro azulado profundo */
+      --primary-blue: #0066FF;  /* Azul eléctrico Vambe */
+      --primary-hover: #0052cc;
+      --text-white: #ffffff;
+      --text-gray: #94a3b8;
+      --accent-glow: #4f46e5;   /* Púrpura para el fondo */
+      --border-color: rgba(255, 255, 255, 0.1);
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; color:var(--ink); background:var(--bg);
-      font:15px/1.6 Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-      overflow-x:hidden;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Fondo decorativo muy sutil en blanco */
-    .scene{position:relative}
-    .scene::before{
-      content:""; position:fixed; inset:0; z-index:-3; pointer-events:none;
-      background:
-        radial-gradient(800px 800px at 100% 0%, rgba(232, 93, 4, 0.08), transparent 60%),
-        radial-gradient(600px 600px at 0% 100%, rgba(232, 93, 4, 0.05), transparent 60%);
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
     }
 
-    .wrapper{width:min(100%,var(--max)); margin-inline:auto; padding:0 22px}
-
-    /* HEADER */
-    header.site{
-      position:sticky; top:0; z-index:30; backdrop-filter: blur(12px);
-      background:rgba(255, 255, 255, 0.9);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0}
-    .brand{display:flex; gap:10px; align-items:center}
-    .brand .logo{
-      width:28px; height:28px; display:grid; place-items:center;
-      border-radius:8px;
-      /* Icono naranja */
-      background:linear-gradient(135deg, #ffba08, var(--brand-main));
-      color:#fff; font-weight:900; font-size:.8rem;
-      box-shadow:0 4px 12px rgba(232, 93, 4, 0.3);
-    }
-    .brand b{
-      font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.5px;
-      color: var(--brand-dark);
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      border-radius:999px; font-weight:700; text-decoration:none; cursor:pointer;
-      border:none; font-size:.95rem;
-      transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
-    }
-    .btn.gold{
-      padding:13px 22px; color:#ffffff;
-      /* Degradado naranja fuerte */
-      background:linear-gradient(135deg, var(--brand-main), var(--brand-dark));
-      box-shadow:0 10px 25px rgba(232, 93, 4, 0.35);
-    }
-    .btn.gold:hover{
-      transform:translateY(-2px);
-      box-shadow:0 15px 35px rgba(232, 93, 4, 0.5);
-    }
-
-    /* HERO: El "Cartel" principal naranja */
-    .hero{padding:80px 0 44px}
-    .hero-card{
-      max-width:980px; margin:0 auto; text-align:center; position:relative;
-      border-radius:var(--radius);
-      padding:48px 38px;
-      /* FONDO NARANJA DEGRADADO */
-      background: linear-gradient(135deg, #fb8500, #e85d04, #9d0208);
-      color: #ffffff; /* Texto blanco sobre fondo naranja */
-      box-shadow:
-        0 30px 80px rgba(232, 93, 4, 0.35),
-        inset 0 0 0 1px rgba(255,255,255,.2);
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-    /* Partículas de brillo sutiles en el hero */
-    .hero-card::after{
-      content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.3), transparent 70%);
-      opacity:0.6;
-    }
-
-    h1{
-      font-family:"Playfair Display", serif;
-      font-size:clamp(36px,5vw,62px);
-      line-height:1.06; margin:10px 0 14px;
-      text-shadow:0 2px 10px rgba(0,0,0,.2);
-    }
-    h1 span{
-      /* En fondo blanco usaríamos naranja, pero sobre el cartel naranja usamos blanco o amarillo pálido */
-      color: #ffdaae; 
-    }
-    .hero-card p.lead{
-      color: #ffe6d6;
-      font-size:clamp(15px,1.3vw,18px); 
-      max-width:760px; margin:0 auto;
-    }
-    .hero-actions{display:flex; gap:14px; justify-content:center; margin-top:30px}
-    /* Botón dentro del hero (blanco para contrastar con el fondo naranja) */
-    .hero-actions .btn.gold{
-      background: #ffffff;
-      color: var(--brand-main);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-    .hero-actions .btn.gold:hover{
-      background: #fff8f5;
-      color: var(--brand-dark);
-    }
-
-    /* SECCIONES */
-    section{padding:70px 0}
-    .title{
-      font-family:"Playfair Display", serif;
-      font-size:clamp(26px,3vw,42px); margin:0 0 22px;
-      color: var(--brand-dark); /* Títulos en rojo oscuro/naranja */
-    }
-    
-    .grid{display:grid; gap:20px}
-
-    /* Tarjetas generales en fondo blanco */
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-      position:relative;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .card:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(232, 93, 4, 0.15);
-      border-color: #ffccb0;
-    }
-    
-    /* Carteles "Soft" (Fondo naranjo muy suave) */
-    .card.soft{
-      background: linear-gradient(180deg, #fffcfb, #fff0e6);
-      border:1px solid #ffdcd1;
-    }
-    .card.soft h3 { color: var(--brand-main); margin-top: 10px; }
-    
-    /* Iconos */
-    .benefit i{
-        font-style:normal; font-size:28px; 
-        background: #ffe3d4; 
-        width: 50px; height: 50px; display: grid; place-items: center;
-        border-radius: 50%;
-        margin-bottom: 10px;
-        color: var(--brand-main);
-    }
-
-    .benefits .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .benefits .grid > *{min-height:220px}
-
-    /* Barra de métrica */
-    .metricbar{
-      max-width:960px; margin:26px auto 0; padding:18px;
-      border-radius:14px;
-      background: var(--brand-dark); /* Fondo oscuro para contraste */
-      color: #fff;
-      text-align:center;
-      box-shadow:0 15px 35px rgba(157, 2, 8, 0.3);
-    }
-
-    .features .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .features h3 { color: var(--ink); }
-
-    .audience .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .audience .warn{
-      border-color:var(--danger);
-      background:#fff0f3;
-    }
-    .audience .warn h3{ color: var(--danger); }
-
-    /* GARANTÍA - Cartel Naranja Fuerte */
-    .guarantee{
-      padding:70px 0 210px;
-    }
-    .guarantee .panel{
-      position:relative; border-radius:var(--radius);
-      padding:40px 26px; text-align:center;
-      /* Fondo degradado naranja */
-      background: linear-gradient(135deg, #e85d04, #dc2f02);
+    /* --- BARRA SUPERIOR (ANUNCIO) --- */
+    .top-bar {
+      background-color: var(--primary-blue);
       color: white;
-      box-shadow: 0 25px 60px rgba(220, 47, 2, 0.3);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
-    .guarantee .panel .muted { color: #ffdcd1; }
-    .guarantee .panel .title { color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .top-bar a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* --- NAVEGACIÓN --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(3, 6, 16, 0.7); /* Transparente */
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo span { color: var(--primary-blue); }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-gray);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: white; }
+
+    .nav-actions {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    /* --- BOTONES --- */
+    .btn {
+      padding: 10px 24px;
+      border-radius: 999px; /* Pill shape */
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    /* Botón Primario (Azul relleno) */
+    .btn-primary {
+      background-color: var(--primary-blue);
+      color: white;
+      border: 1px solid var(--primary-blue);
+      box-shadow: 0 0 20px rgba(0, 102, 255, 0.4); /* Glow azul */
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 102, 255, 0.6);
+    }
+
+    /* Botón Secundario (Outline / Transparente) */
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-outline:hover {
+      border-color: white;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Botón Login (Texto simple) */
+    .btn-text {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      position: relative;
+      min-height: 90vh; /* Pantalla casi completa */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      overflow: hidden;
+    }
+
+    /* Fondo cósmico simulado con CSS */
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      /* Degradado oscuro base */
+      background: radial-gradient(circle at 50% 120%, #1e1b4b 0%, #030610 50%);
+    }
+    /* Efecto "Nebulosa" o brillos */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
+      top: 0; left: 0;
+      background-image: 
+        radial-gradient(at 80% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+        radial-gradient(at 20% 20%, rgba(0, 102, 255, 0.15) 0px, transparent 50%);
+      filter: blur(60px);
+    }
     
-    .ribbon{
-      position:absolute;
-      left:50%;
-      bottom:-110px;
-      transform:translateX(-50%);
-      width:clamp(260px,70%,740px); text-align:center;
-      padding:12px 16px;
-      border-radius:16px;
-      background: #370617; /* Contraste oscuro muy elegante */
-      color:#fff;
-      box-shadow:0 16px 40px rgba(0,0,0,.2);
-      font-weight:700;
-      font-size:0.96rem;
+    /* Imagen de montañas/terreno (Opcional, usando URL externa de Unsplash para demo) */
+    .terrain-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: url('https://images.unsplash.com/photo-1534234828563-02511c970366?q=80&w=2000&auto=format&fit=crop') no-repeat center bottom;
+      background-size: cover;
+      opacity: 0.3; /* Sutil */
+      mask-image: linear-gradient(to top, black 20%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to top, black 20%, transparent 100%);
+      z-index: -1;
     }
 
-    /* FORMULARIO */
-    #form .card.gold{
-        /* El formulario en sí lo pondremos con borde naranja fuerte */
-        border: 2px solid var(--brand-main);
-        background: #fff;
-    }
-    form{display:grid; gap:14px}
-    .form-grid{
-      display:grid; gap:14px;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-    .form-grid .full{ grid-column:1 / -1; }
-    
-    label{font-weight:700; font-size:.9rem; color: var(--brand-dark);}
-    input, select, textarea{
-      width:100%;
-      padding:14px 12px;
-      border-radius:12px;
-      border:1px solid #e0e0e0;
-      background:#fcfcfc;
-      color:var(--ink);
-      font-family:inherit; font-size:0.95rem; line-height:1.4;
-      transition: all 0.2s;
-    }
-    input:focus, textarea:focus {
-        outline: none;
-        background: #fff;
-        border-color: var(--brand-main);
-        box-shadow: 0 0 0 4px rgba(232, 93, 4, 0.1);
-    }
-    input::placeholder, textarea::placeholder{color:#aaa}
-    textarea{min-height:120px; resize:vertical}
-    .hint{font-size:.86rem; color:var(--muted)}
-
-    /* FOOTER */
-    footer{
-      padding:46px 0;
-      border-top:1px solid var(--line);
-      color: var(--muted);
-      background: #fafafa;
-    }
-    .links{display:flex; gap:18px; flex-wrap:wrap}
-    .links a { color: var(--brand-main); text-decoration: none; }
-
-    @media (max-width: 1100px){
-      .benefits .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .features .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .audience .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    }
-    @media (max-width: 640px){
-      .benefits .grid{grid-template-columns:1fr}
-      .features .grid{grid-template-columns:1fr}
-      .audience .grid{grid-template-columns:1fr}
-      .hero-card{padding:32px 22px}
-      .guarantee{padding:60px 0 230px;}
+    .hero-content {
+      max-width: 1000px;
+      z-index: 1;
+      margin-top: -50px; /* Ajuste visual */
     }
 
-    /* Reveal */
-    .reveal{opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease}
-    .reveal.visible{opacity:1; transform:none}
+    .hero-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      background: linear-gradient(90deg, #ff4d4d, #f9cb28);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5.5rem); /* Gigante y responsivo */
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-gray);
+      max-width: 700px;
+      margin: 0 auto 40px auto;
+      font-weight: 400;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons .btn {
+      padding: 16px 32px;
+      font-size: 1.1rem;
+    }
+
+    /* Trust indicators (Puntos verdes) */
+    .trust-badges {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981; /* Verde */
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    /* --- FEATURES SECTION --- */
+    .features {
+      padding: 100px 20px;
+      background: #02040a;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .section-title p { color: var(--text-gray); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      padding: 30px;
+      border-radius: 20px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+    .card p { color: var(--text-gray); font-size: 0.95rem; }
+    .card-icon {
+      width: 50px; height: 50px;
+      background: rgba(0, 102, 255, 0.1);
+      color: var(--primary-blue);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--text-gray);
+      background: #000;
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .nav-links { display: none; } /* Menú hamburguesa simplificado para el ejemplo */
+      .hero-buttons { flex-direction: column; width: 100%; }
+      .btn { width: 100%; justify-content: center; }
+      .trust-badges { flex-direction: column; align-items: center; }
+    }
   </style>
 </head>
-<body class="scene">
-  <header class="site">
-    <div class="wrapper nav">
-      <div class="brand" aria-label="Marca">
-        <div class="logo">AI</div>
-        <b>AI Full System</b>
+<body>
+
+  <div class="top-bar">
+    ANUNCIAMOS NUESTRA SERIE A DE $14M USD &nbsp; <span>→</span>
+  </div>
+
+  <nav>
+    <div class="logo">
+      <span>✦</span> VambeClone
+    </div>
+    
+    <div class="nav-links">
+      <a href="#">Plataforma</a>
+      <a href="#">Clientes</a>
+      <a href="#">Recursos</a>
+      <a href="#">Precios</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="#" class="btn-text">Iniciar Sesión</a>
+      <a href="#" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.85rem;">Agenda Demo</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="terrain-overlay"></div> <div class="hero-content">
+      <span class="hero-eyebrow">UNA EXTENSIÓN DE TU EQUIPO QUE IMPULSA TU NEGOCIO</span>
+      
+      <h1>EL CAOS<br>COMERCIAL<br>TERMINA AQUÍ</h1>
+      
+      <p>Automatiza y deja que la IA responda, califique y haga seguimiento. 
+        <strong>Más leads, más conversión</strong>, y lo mejor, sin aumentar tus costos.</p>
+
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Comenzar ahora
+        </a>
+        <a href="#" class="btn btn-outline">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Agenda una demo
+        </a>
       </div>
-      <a class="btn gold" href="#form">Solicitar diagnóstico</a>
+
+      <div class="trust-badges">
+        <div class="trust-item"><div class="dot"></div> +1,500 Clientes en Latam</div>
+        <div class="trust-item"><div class="dot" style="background-color:#3b82f6; box-shadow:0 0 10px #3b82f6;"></div> Garantía de 60 días</div>
+        <div class="trust-item"><div class="dot" style="background-color:#8b5cf6; box-shadow:0 0 10px #8b5cf6;"></div> Implementación personalizada</div>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="wrapper">
-        <div class="hero-card reveal">
-          <h1>Escala y blinda tu empresa con <span>IA</span> y Ciberseguridad en <em>15 días</em> o menos</h1>
-          <p class="lead">Accede a un diagnóstico técnico y estratégico para identificar riesgos críticos, oportunidades de automatización y arquitectura IA escalable.</p>
-          <div class="hero-actions">
-            <a class="btn gold" href="#form">Solicitar Análisis Personalizado</a>
-          </div>
-        </div>
+  <section class="features">
+    <div class="section-title">
+      <h2>Potencia tu ecosistema</h2>
+      <p>Todo lo que necesitas para escalar operaciones sin fricción.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Velocidad Instantánea</h3>
+        <p>Respuestas en tiempo real para capturar leads en el momento exacto de interés.</p>
       </div>
-    </section>
-
-    <section id="beneficios" class="benefits">
-      <div class="wrapper">
-        <h2 class="title reveal">Beneficios clave</h2>
-        <div class="grid">
-          <article class="card soft reveal benefit">
-            <i>🚀</i>
-            <h3>Escala sin fricción</h3>
-            <p class="muted">Identifica procesos con alto impacto donde la IA libera horas y reduce costes.</p>
-          </article>
-          <article class="card soft reveal benefit">
-            <i>🔒</i>
-            <h3>Mitiga riesgos operativos</h3>
-            <p class="muted">Detecta brechas y malas prácticas antes de que comprometan el negocio.</p>
-          </article>
-          <article class="card soft reveal benefit">
-            <i>🧠</i>
-            <h3>Decisiones con datos</h3>
-            <p class="muted">Roadmap accionable diseñado por ingenieros y estrategas de IA.</p>
-          </article>
-          <article class="card soft reveal benefit">
-            <i>⚡</i>
-            <h3>Velocidad</h3>
-            <p class="muted">Resultados en 2 semanas sin interrumpir la operación actual.</p>
-          </article>
-        </div>
-        <div class="metricbar reveal">
-          ✔ <strong>100% del coste</strong> se descuenta si contratas la implantación en los 30 días siguientes.
-        </div>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>IA Autónoma</h3>
+        <p>Agentes que entienden contexto, manejan objeciones y cierran citas automáticamente.</p>
       </div>
-    </section>
-
-    <section class="features">
-      <div class="wrapper">
-        <h2 class="title reveal">¿Qué obtienes con AI Full System?</h2>
-        <div class="grid">
-          <article class="card reveal">
-            <h3>Auditoría de procesos & stack</h3>
-            <p class="muted">Mapeo de flujos clave, cuellos de botella y herramientas actuales.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Evaluación de ciberseguridad</h3>
-            <p class="muted">Revisión de accesos, datos sensibles, backups y políticas.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Análisis de oportunidades IA</h3>
-            <p class="muted">Casos de uso priorizados por ROI/viabilidad y quick wins.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Roadmap técnico</h3>
-            <p class="muted">Arquitectura propuesta, integraciones y plan por fases.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Reunión 1:1 con CTO</h3>
-            <p class="muted">Sesión ejecutiva para dudas y alineamiento estratégico.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Informe accionable</h3>
-            <p class="muted">Documento final con prioridades, riesgos y KPIs sugeridos.</p>
-          </article>
-        </div>
-        <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:16px">
-          <div class="card soft reveal">
-            <strong style="color:var(--brand-main)">Duración</strong>
-            <div class="muted">10–15 días</div>
-          </div>
-          <div class="card soft reveal">
-            <strong style="color:var(--brand-main)">Inversión</strong>
-            <div class="muted">$1.000 – $5.000 <small>(según alcance)</small></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="audience">
-      <div class="wrapper">
-        <h2 class="title reveal">¿Es para ti?</h2>
-        <div class="grid">
-          <article class="card soft reveal">
-            <h3>Procesos no escalables</h3>
-            <p class="muted">Dependencia operativa alta, tareas manuales.</p>
-          </article>
-          <article class="card soft reveal">
-            <h3>Datos/PI sensibles</h3>
-            <p class="muted">O expansión internacional con regulación.</p>
-          </article>
-          <article class="card soft reveal">
-            <h3>Necesidad de claridad</h3>
-            <p class="muted">Hoja de ruta y acción antes de invertir.</p>
-          </article>
-          <article class="card soft warn reveal">
-            <h3>No recomendado</h3>
-            <p class="muted">Negocios sin urgencia ni recursos asignados.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="guarantee">
-      <div class="wrapper">
-        <div class="panel reveal">
-          <h2 class="title" style="margin-bottom:8px">Garantía total</h2>
-          <p class="muted">Descontamos el 100% del diagnóstico si avanzas con la implantación completa en los próximos 30 días.</p>
-          <div class="ribbon">¡Limitado a 2 empresas por mes para garantizar calidad técnica!</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="form">
-      <div class="wrapper">
-        <h2 class="title reveal">Solicita tu AI Full System</h2>
-        <div class="card gold reveal">
-          <form id="lead-form" action="#" method="post">
-            <div class="form-grid">
-              <div>
-                <label>Tu nombre *</label>
-                <input name="nombre" required placeholder="Nombre y apellido" />
-              </div>
-              <div>
-                <label>Empresa *</label>
-                <input name="empresa" required placeholder="Razón social" />
-              </div>
-
-              <div>
-                <label>Cargo *</label>
-                <input name="cargo" required placeholder="CEO, CTO, etc." />
-              </div>
-              <div>
-                <label>Email corporativo *</label>
-                <input name="email" type="email" required placeholder="nombre@empresa.com" />
-              </div>
-
-              <div class="full">
-                <label>Teléfono *</label>
-                <input name="telefono" required placeholder="+56 9 …" />
-              </div>
-            </div>
-
-            <div>
-              <label>¿Qué te gustaría mejorar con IA? *</label>
-              <textarea name="objetivo" required placeholder="Cuéntanos brevemente tus procesos o dolores principales"></textarea>
-            </div>
-
-            <div class="hint">
-              Al enviar aceptas que te contactemos para coordinar la sesión inicial. Protegemos tus datos.
-            </div>
-
-            <div style="margin-top:10px; text-align:left">
-              <button class="btn gold" type="submit">Enviar solicitud</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrapper">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
-        <div>© <span id="y"></span> Conejeros Solutions — Todos los derechos reservados</div>
-        <div class="links">
-          <a class="muted" href="#">Política de Privacidad</a>
-          <a class="muted" href="#">Política de Cookies</a>
-          <a class="muted" href="#">Aviso Legal</a>
-        </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Data Actionable</h3>
+        <p>Dashboards completos para entender tu ROI y mejorar estrategias semana a semana.</p>
       </div>
     </div>
+  </section>
+
+  <footer>
+    <p>© 2024 VambeClone AI. Todos los derechos reservados.</p>
   </footer>
 
-  <script>
-    // Año footer
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
-      });
-    },{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
-
-    // Envío al webhook n8n
-    const form = document.getElementById('lead-form');
-    if (form) {
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        
-        // Efecto visual de carga
-        const btn = form.querySelector('button');
-        const originalText = btn.textContent;
-        btn.textContent = "Enviando...";
-        btn.disabled = true;
-
-        const data = {
-          nombre: form.elements['nombre'].value.trim(),
-          empresa: form.elements['empresa'].value.trim(),
-          cargo: form.elements['cargo'].value.trim(),
-          email: form.elements['email'].value.trim(),
-          telefono: form.elements['telefono'].value.trim(),
-          objetivoIA: form.elements['objetivo'].value.trim(),
-          origen: 'landing-ai-full-system-white-orange'
-        };
-
-        try {
-          const response = await fetch('https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/afb70f27-dd2d-4853-9270-3faf35ddcd5e', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-
-          if (!response.ok) throw new Error('Error en el envío');
-
-          alert('¡Gracias! Hemos recibido tu solicitud. Te contactaremos pronto.');
-          form.reset();
-        } catch (err) {
-          console.error(err);
-          alert('Hubo un problema al enviar. Por favor intenta de nuevo.');
-        } finally {
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }
-      });
-    }
-  </script>
 </body>
 </html>
