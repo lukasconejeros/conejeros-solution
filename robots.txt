@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://www.conejeros-solutions.cl/sitemap.xml
