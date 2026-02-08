@@ -423,6 +423,10 @@
       transition: transform 0.3s;
     }
 
+    .toggle-switch.active::after {
+      transform: translateX(28px);
+    }
+
     .toggle-label {
       font-weight: 600;
       color: var(--text-muted);
@@ -905,7 +909,7 @@
       </div>
 
       <div class="nav-actions">
-        <a href="https://wa.me/1234567890" class="btn outline">
+        <a href="https://wa.me/56999066071" class="btn outline">
           <i class="fab fa-whatsapp"></i>
           Contacto Directo
         </a>
@@ -1007,7 +1011,7 @@
             </div>
           </div>
 
-          <button class="pricing-cta">Solicitar Implementación</button>
+          <a href="#form" class="pricing-cta" style="display: block; text-align: center; text-decoration: none;">Solicitar Implementación</a>
 
           <div class="feature-block">
             <h4 class="block-title">NÚCLEO DEL SISTEMA</h4>
@@ -1078,7 +1082,7 @@
             </div>
           </div>
 
-          <button class="pricing-cta">Solicitar Implementación</button>
+          <a href="#form" class="pricing-cta" style="display: block; text-align: center; text-decoration: none;">Solicitar Implementación</a>
 
           <div class="feature-block">
             <h4 class="block-title">NÚCLEO DEL SISTEMA</h4>
@@ -1147,7 +1151,7 @@
             </div>
           </div>
 
-          <button class="pricing-cta">Agendar Sesión Estratégica</button>
+          <a href="#form" class="pricing-cta" style="display: block; text-align: center; text-decoration: none;">Agendar Sesión Estratégica</a>
 
           <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 20px 0;">
             Análisis profundo de las 4 áreas críticas: Operaciones, Ventas, RRHH y Finanzas para una reingeniería total con IA.
@@ -1376,6 +1380,60 @@
     }, observerOptions);
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Pricing toggle functionality
+    const toggleSwitch = document.querySelector('.toggle-switch');
+    const toggleLabels = document.querySelectorAll('.toggle-label');
+    const priceValues = {
+      essential: { monthly: 150, annual: 113 },
+      growth: { monthly: 275, annual: 206 }
+    };
+    
+    let isAnnual = false;
+
+    function updateToggle() {
+      // Update toggle appearance
+      if (isAnnual) {
+        toggleSwitch.classList.add('active');
+      } else {
+        toggleSwitch.classList.remove('active');
+      }
+      
+      // Update active label
+      toggleLabels.forEach((label, index) => {
+        if ((index === 0 && !isAnnual) || (index === 1 && isAnnual)) {
+          label.classList.add('active');
+        } else {
+          label.classList.remove('active');
+        }
+      });
+      
+      // Update prices in cards
+      const essentialPrice = document.querySelector('.pricing-card:nth-child(1) .price-value.large');
+      const growthPrice = document.querySelector('.pricing-card:nth-child(2) .price-value.large');
+      
+      if (essentialPrice) {
+        essentialPrice.innerHTML = `$${isAnnual ? priceValues.essential.annual : priceValues.essential.monthly}<span style="font-size: 1rem; font-weight: 400;">/mes</span>`;
+      }
+      if (growthPrice) {
+        growthPrice.innerHTML = `$${isAnnual ? priceValues.growth.annual : priceValues.growth.monthly}<span style="font-size: 1rem; font-weight: 400;">/mes</span>`;
+      }
+    }
+
+    toggleSwitch.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      updateToggle();
+    });
+
+    toggleLabels.forEach((label, index) => {
+      label.addEventListener('click', () => {
+        const shouldBeAnnual = index === 1;
+        if (isAnnual !== shouldBeAnnual) {
+          isAnnual = shouldBeAnnual;
+          updateToggle();
+        }
+      });
+    });
 
     // Form submission (n8n webhook)
     const form = document.getElementById('lead-form');
