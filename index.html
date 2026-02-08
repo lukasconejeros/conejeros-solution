@@ -487,42 +487,180 @@
       letter-spacing: 1px;
     }
 
-    .pricing-tag {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 16px;
+    .card-header {
+      margin-bottom: 25px;
+    }
+
+    .plan-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-    }
-
-    .pricing-amount {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .pricing-setup {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 30px;
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin-bottom: 30px;
-    }
-
-    .pricing-features li {
-      display: flex;
-      align-items: start;
-      gap: 12px;
       margin-bottom: 12px;
+    }
+
+    .plan-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .pricing-breakdown {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .price-row:last-child {
+      border-bottom: none;
+    }
+
+    .price-row.highlight {
+      background: linear-gradient(90deg, rgba(232, 93, 4, 0.1), transparent);
+      margin: 0 -20px;
+      padding: 15px 20px;
+      border-radius: 12px;
+    }
+
+    .price-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .price-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .price-value.large {
+      font-size: 2.2rem;
+      color: var(--primary-orange);
+    }
+
+    .feature-block {
+      margin: 25px 0;
+      padding-bottom: 25px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .feature-block:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .block-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    .block-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .block-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .block-list li i {
+      color: #22c55e;
+      font-size: 0.85rem;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .support-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .support-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary-orange);
+      margin-bottom: 5px;
+    }
+
+    .support-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .ai-row {
+      margin-bottom: 15px;
+    }
+
+    .ai-label {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .ai-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ai-badge {
+      background: rgba(232, 93, 4, 0.15);
+      border: 1px solid rgba(232, 93, 4, 0.3);
+      color: var(--primary-orange);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .channel-icons {
+      display: flex;
+      gap: 12px;
+      font-size: 1.3rem;
       color: var(--text-muted);
     }
 
-    .pricing-features li i {
-      color: #22c55e;
-      margin-top: 4px;
+    .channel-icons i {
+      transition: color 0.3s;
+    }
+
+    .channel-icons i:hover {
+      color: var(--primary-orange);
     }
 
     .pricing-cta {
@@ -836,56 +974,209 @@
       <div class="pricing-grid">
         <!-- STANDARD -->
         <div class="pricing-card reveal">
-          <p class="pricing-tag">Validación</p>
-          <div class="pricing-amount">$150<span style="font-size: 1.5rem; color: var(--text-muted);">/mes</span></div>
-          <p class="pricing-setup">+ $315 Setup único</p>
-          
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> <span>WhatsApp automatizado</span></li>
-            <li><i class="fas fa-check"></i> <span>CRM básico integrado</span></li>
-            <li><i class="fas fa-check"></i> <span>Formularios inteligentes</span></li>
-            <li><i class="fas fa-check"></i> <span>Reportes semanales</span></li>
-            <li><i class="fas fa-check"></i> <span>Soporte por email</span></li>
-          </ul>
+          <div class="card-header">
+            <span class="plan-badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa;">Start</span>
+            <h3 class="plan-title">Standard</h3>
+          </div>
 
-          <button class="pricing-cta">Empezar ahora</button>
+          <!-- Pricing Box -->
+          <div class="pricing-breakdown">
+            <div class="price-row">
+              <span class="price-label">MES 1<br><span style="font-size: 0.75rem; color: var(--text-muted);">IMPLEMENTACIÓN</span></span>
+              <span class="price-value">$315<span style="font-size: 0.9rem; font-weight: 400;"> USD</span></span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">MES 2</span>
+              <span class="price-value">$0<span style="font-size: 0.9rem; font-weight: 400;"> Bonificado</span></span>
+            </div>
+            <div class="price-row highlight">
+              <span class="price-label">MES 3<br><span style="font-size: 0.75rem;">EN ADELANTE</span></span>
+              <span class="price-value large">$150<span style="font-size: 1rem; font-weight: 400;">/mes</span></span>
+            </div>
+          </div>
+
+          <button class="pricing-cta">Agenda una demo</button>
+
+          <!-- Feature Blocks -->
+          <div class="feature-block">
+            <h4 class="block-title">FUNCIONES BASE</h4>
+            <ul class="block-list">
+              <li><i class="fas fa-check-circle"></i> Sloop AI Core System</li>
+              <li><i class="fas fa-check-circle"></i> Dashboard de Métricas</li>
+              <li><i class="fas fa-check-circle"></i> 1 Flujo de Ventas Automatizado</li>
+            </ul>
+          </div>
+
+          <div class="feature-block">
+            <h4 class="block-title">EQUIPO Y SOPORTE</h4>
+            <div class="support-grid">
+              <div class="support-item">
+                <div class="support-number">3</div>
+                <div class="support-label">Usuarios</div>
+              </div>
+              <div class="support-item">
+                <div class="support-label">Soporte por Email</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <h4 class="block-title">IA Y AUTOMATIZACIÓN</h4>
+            <div class="ai-row">
+              <span class="ai-label">MODELO ÚNICO</span>
+              <div class="ai-badges">
+                <span class="ai-badge">Gemini 2.5 Flash</span>
+              </div>
+            </div>
+            <div class="channel-icons">
+              <i class="fab fa-whatsapp"></i>
+              <i class="fab fa-instagram"></i>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <h4 class="block-title">PRECIOS</h4>
+            <ul class="block-list">
+              <li><i class="fas fa-dollar-sign"></i> $0.05 por conversación adicional</li>
+            </ul>
+          </div>
         </div>
 
         <!-- ADVANCED (FEATURED) -->
         <div class="pricing-card featured reveal">
           <div class="pricing-badge">RECOMENDADO</div>
-          <p class="pricing-tag">Crecimiento</p>
-          <div class="pricing-amount">$275<span style="font-size: 1.5rem; color: var(--text-muted);">/mes</span></div>
-          <p class="pricing-setup">+ $650 Setup único</p>
-          
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> <span>Todo en Standard</span></li>
-            <li><i class="fas fa-check"></i> <span>Ads Optimization IA</span></li>
-            <li><i class="fas fa-check"></i> <span>Atribución multicanal</span></li>
-            <li><i class="fas fa-check"></i> <span>Webhooks ilimitados</span></li>
-            <li><i class="fas fa-check"></i> <span>Soporte prioritario 24/7</span></li>
-            <li><i class="fas fa-check"></i> <span>Consultor asignado</span></li>
-          </ul>
+          <div class="card-header">
+            <span class="plan-badge" style="background: rgba(232, 93, 4, 0.15); color: var(--primary-orange);">Growth</span>
+            <h3 class="plan-title">Advanced</h3>
+          </div>
 
-          <button class="pricing-cta">Elegir Advanced</button>
+          <!-- Pricing Box -->
+          <div class="pricing-breakdown">
+            <div class="price-row">
+              <span class="price-label">MES 1<br><span style="font-size: 0.75rem; color: var(--text-muted);">IMPLEMENTACIÓN</span></span>
+              <span class="price-value">$650<span style="font-size: 0.9rem; font-weight: 400;"> USD</span></span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">MES 2</span>
+              <span class="price-value">$0<span style="font-size: 0.9rem; font-weight: 400;"> Bonificado</span></span>
+            </div>
+            <div class="price-row highlight">
+              <span class="price-label">MES 3<br><span style="font-size: 0.75rem;">EN ADELANTE</span></span>
+              <span class="price-value large">$275<span style="font-size: 1rem; font-weight: 400;">/mes</span></span>
+            </div>
+          </div>
+
+          <button class="pricing-cta">Agenda una demo</button>
+
+          <!-- Feature Blocks -->
+          <div class="feature-block">
+            <h4 class="block-title">FUNCIONES BASE</h4>
+            <ul class="block-list">
+              <li><i class="fas fa-check-circle"></i> Todo lo de Standard</li>
+              <li><i class="fas fa-check-circle"></i> Sloop Ads Optimization (ROAS)</li>
+              <li><i class="fas fa-check-circle"></i> Atribución de Leads</li>
+              <li><i class="fas fa-check-circle"></i> CRM Connector (HubSpot/Pipedrive)</li>
+            </ul>
+          </div>
+
+          <div class="feature-block">
+            <h4 class="block-title">EQUIPO Y SOPORTE</h4>
+            <div class="support-grid">
+              <div class="support-item">
+                <div class="support-number">10</div>
+                <div class="support-label">Usuarios</div>
+              </div>
+              <div class="support-item">
+                <div class="support-label">Implementación<br>con Ingeniero dedicado</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <h4 class="block-title">IA Y AUTOMATIZACIÓN</h4>
+            <div class="ai-row">
+              <span class="ai-label">TODOS LOS MODELOS</span>
+              <div class="ai-badges">
+                <span class="ai-badge">GPT-4o</span>
+                <span class="ai-badge">Claude 3.5</span>
+              </div>
+            </div>
+            <div class="channel-icons">
+              <i class="fab fa-whatsapp"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-tiktok"></i>
+              <i class="fab fa-facebook"></i>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <h4 class="block-title">PRECIOS</h4>
+            <ul class="block-list">
+              <li><i class="fas fa-dollar-sign"></i> $0.04 por conversación adicional</li>
+            </ul>
+          </div>
         </div>
 
         <!-- CORPORATE -->
         <div class="pricing-card reveal">
-          <p class="pricing-tag">Enterprise</p>
-          <div class="pricing-amount" style="font-size: 2.2rem;">A Medida</div>
-          <p class="pricing-setup">Arquitectura personalizada</p>
-          
-          <ul class="pricing-features">
-            <li><i class="fas fa-check"></i> <span>Todo en Advanced</span></li>
-            <li><i class="fas fa-check"></i> <span>Infraestructura dedicada</span></li>
-            <li><i class="fas fa-check"></i> <span>SLA garantizado 99.9%</span></li>
-            <li><i class="fas fa-check"></i> <span>Auditorías trimestrales</span></li>
-            <li><i class="fas fa-check"></i> <span>Account Manager</span></li>
-            <li><i class="fas fa-check"></i> <span>Onboarding VIP</span></li>
-          </ul>
+          <div class="card-header">
+            <span class="plan-badge" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">Enterprise</span>
+            <h3 class="plan-title">Corporate</h3>
+          </div>
 
-          <button class="pricing-cta">Contactar ventas</button>
+          <!-- Pricing Box -->
+          <div class="pricing-breakdown" style="text-align: center; padding: 30px 0;">
+            <div class="corporate-icon" style="font-size: 3rem; margin-bottom: 15px;">🏢</div>
+            <div class="price-row">
+              <span class="price-label">UN PLAN<br><span style="font-size: 0.75rem;">DISEÑADO A LA MEDIDA</span></span>
+            </div>
+            <div class="price-row highlight">
+              <span class="price-value large" style="font-size: 2rem;">Consultar</span>
+            </div>
+          </div>
+
+          <button class="pricing-cta">Agenda una demo</button>
+
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 20px 0;">
+            Análisis profundo de las 4 áreas críticas de tu empresa para una transformación digital total.
+          </p>
+
+          <!-- Feature Blocks -->
+          <div class="feature-block">
+            <h4 class="block-title">CONSULTORÍA</h4>
+            <ul class="block-list">
+              <li><i class="fas fa-check-circle"></i> Auditoría de Operaciones</li>
+              <li><i class="fas fa-check-circle"></i> Análisis de Ventas y Marketing</li>
+              <li><i class="fas fa-check-circle"></i> Optimización RRHH</li>
+              <li><i class="fas fa-check-circle"></i> Revisión Finanzas y Control</li>
+              <li><i class="fas fa-check-circle"></i> Detección de cuellos de botella</li>
+            </ul>
+          </div>
+
+          <div class="feature-block">
+            <h4 class="block-title">EQUIPO Y SOPORTE</h4>
+            <div class="support-grid">
+              <div class="support-item">
+                <div class="support-number">∞</div>
+                <div class="support-label">Usuarios</div>
+              </div>
+              <div class="support-item">
+                <div class="support-label">Consultoría<br>ilimitada</div>
+              </div>
+            </div>
+            <ul class="block-list" style="margin-top: 15px;">
+              <li><i class="fas fa-check-circle"></i> Slack Privado con el equipo</li>
+            </ul>
+          </div>
+
+          <div class="feature-block">
+            <h4 class="block-title">IA PERSONALIZADA</h4>
+            <ul class="block-list">
+              <li><i class="fas fa-check-circle"></i> Fine-tuning de modelos propios</li>
+              <li><i class="fas fa-check-circle"></i> Servidores dedicados</li>
+              <li><i class="fas fa-check-circle"></i> On-premise opcional</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -944,6 +1235,20 @@
           <div class="addon-icon"><i class="fas fa-chart-line"></i></div>
           <h4 class="addon-title">NPS & Analytics</h4>
           <p class="addon-price">$42<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Agregar</button>
+        </div>
+
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fas fa-calculator"></i></div>
+          <h4 class="addon-title">Fórmulas Matemáticas</h4>
+          <p class="addon-price">$42<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Agregar</button>
+        </div>
+
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fas fa-shopping-cart"></i></div>
+          <h4 class="addon-title">Recuperación Carritos</h4>
+          <p class="addon-price">$50<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
           <button class="addon-btn">+ Agregar</button>
         </div>
       </div>
