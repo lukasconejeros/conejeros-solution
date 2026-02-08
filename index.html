@@ -12,331 +12,956 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* === GLOBAL VARIABLES (GLASSMORPHISM SYSTEM) === */
     :root {
-      /* --- PALETA DE COLORES (Logo Infinito) --- */
-      
-      /* Fondo: Negro azulado muy profundo (Casi negro) */
-      --bg-dark: #020408;       
-      
-      /* Naranja Principal (Vibrante) - Reemplaza al azul de Vambe */
-      --primary: #e85d04;  
-      
-      /* Gradiente de brillo (Naranja a Rojo Óxido) */
-      --glow-start: rgba(232, 93, 4, 0.25);
-      --glow-end: rgba(157, 2, 8, 0.1);
-      
-      /* Textos */
-      --text-white: #ffffff;
-      --text-gray: #94a3b8;
-      
-      /* Bordes y UI */
-      --border-color: rgba(255, 255, 255, 0.1);
-      --card-bg: rgba(255, 255, 255, 0.03);
+      --bg-deep: #020408;
+      --bg-glass: rgba(255, 255, 255, 0.02);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --primary-orange: #e85d04;
+      --primary-glow: rgba(232, 93, 4, 0.5);
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --font-main: 'Plus Jakarta Sans', sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-white);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: var(--font-main);
       overflow-x: hidden;
       line-height: 1.6;
     }
 
-    /* --- FONDO CÓSMICO (Efecto Nebula Naranja) --- */
+    /* === BACKGROUND EFFECTS === */
     .scene-bg {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      z-index: -1;
       background: 
-        radial-gradient(circle at 50% -20%, var(--glow-start), transparent 60%),
-        radial-gradient(circle at 100% 50%, var(--glow-end), transparent 50%);
+        radial-gradient(circle at 50% -20%, rgba(232, 93, 4, 0.15), transparent 60%),
+        radial-gradient(circle at 100% 50%, rgba(157, 2, 8, 0.08), transparent 50%);
     }
 
-    .wrapper { width: min(100%, 1200px); margin-inline: auto; padding: 0 24px; }
+    .wrapper { 
+      width: min(100%, 1400px); 
+      margin-inline: auto; 
+      padding: 0 24px; 
+    }
 
-    /* --- NAVEGACIÓN (Estilo Vambe) --- */
+    /* === STICKY HEADER (BLURRED) === */
     nav {
-      position: sticky; top: 0; z-index: 100;
+      position: sticky; 
+      top: 0; 
+      z-index: 1000;
       padding: 16px 0;
-      background: rgba(2, 4, 8, 0.75);
+      background: rgba(2, 4, 8, 0.7);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.3s ease;
     }
+
+    nav.scrolled {
+      background: rgba(2, 4, 8, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
     .nav-container {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
     }
 
     .logo {
-      font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px;
-      display: flex; align-items: center; gap: 8px; color: white; text-decoration: none;
+      font-size: 1.5rem; 
+      font-weight: 800; 
+      letter-spacing: -0.5px;
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+      color: white; 
+      text-decoration: none;
     }
-    .logo span { color: var(--primary); font-size: 1.8rem; line-height: 0; } /* El icono */
+
+    .logo span { 
+      color: var(--primary-orange); 
+      font-size: 1.8rem; 
+      line-height: 0; 
+    }
 
     .nav-links {
-      display: flex; gap: 32px;
+      display: flex; 
+      gap: 32px;
     }
+
     .nav-links a {
-      text-decoration: none; color: var(--text-gray); font-weight: 500; font-size: 0.95rem;
+      text-decoration: none; 
+      color: var(--text-muted); 
+      font-weight: 500; 
+      font-size: 0.95rem;
       transition: color 0.3s;
     }
-    .nav-links a:hover { color: white; }
 
-    @media (max-width: 768px) { .nav-links { display: none; } }
+    .nav-links a:hover { 
+      color: white; 
+    }
 
-    /* --- BOTONES (Estilo Pill + Glow) --- */
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) { 
+      .nav-links { display: none; }
+    }
+
+    /* === BUTTONS === */
     .btn {
-      padding: 10px 24px; border-radius: 999px; font-weight: 600; text-decoration: none;
-      transition: all 0.3s ease; font-size: 0.95rem; cursor: pointer; border: none;
-      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 24px; 
+      border-radius: 999px; 
+      font-weight: 600; 
+      text-decoration: none;
+      transition: all 0.3s ease; 
+      font-size: 0.95rem; 
+      cursor: pointer; 
+      border: none;
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center;
+      gap: 8px;
     }
-    .btn.primary {
-      background-color: var(--primary); color: white;
-      box-shadow: 0 0 20px rgba(232, 93, 4, 0.4); /* Glow Naranja */
-    }
-    .btn.primary:hover {
-      background-color: #ff6b1a; transform: translateY(-2px);
-      box-shadow: 0 0 35px rgba(232, 93, 4, 0.6);
-    }
-    .btn.outline {
-      background: transparent; border: 1px solid var(--border-color); color: white;
-    }
-    .btn.outline:hover { border-color: white; background: rgba(255,255,255,0.05); }
 
-    /* --- HERO SECTION (Gigante y Centrado) --- */
-    .hero {
-      padding: 120px 0 80px; text-align: center; position: relative;
+    .btn.primary {
+      background-color: var(--primary-orange); 
+      color: white;
+      box-shadow: 0 0 20px var(--primary-glow);
     }
-    
-    .eyebrow {
-      text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 700;
-      background: linear-gradient(90deg, #ff9e00, var(--primary));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 24px; display: inline-block;
+
+    .btn.primary:hover {
+      background-color: #ff6b1a; 
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px var(--primary-glow);
+    }
+
+    .btn.outline {
+      background: transparent; 
+      border: 1px solid var(--border-subtle); 
+      color: white;
+    }
+
+    .btn.outline:hover { 
+      border-color: white; 
+      background: rgba(255,255,255,0.05); 
+    }
+
+    /* === HERO SECTION (ASYMMETRIC 60/40) === */
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      padding: 60px 0;
+    }
+
+    @media (max-width: 968px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 40px;
+      }
+    }
+
+    .hero-left {
+      max-width: 650px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(232, 93, 4, 0.1), rgba(255, 158, 0, 0.1));
+      border: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: #ffb366;
     }
 
     h1 {
-      font-size: clamp(3rem, 7vw, 5.5rem); /* Tipografía Gigante estilo Vambe */
-      line-height: 1.05; font-weight: 800; letter-spacing: -2px; margin-bottom: 32px;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary-orange), #ff9e00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta .btn {
+      padding: 14px 32px;
+      font-size: 1rem;
+    }
+
+    /* === ORBIT SYSTEM (CSS PURE) === */
+    .orbit-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .orbit-center {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, rgba(232, 93, 4, 0.2), rgba(0, 0, 0, 0.4));
+      border: 2px solid var(--primary-orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 800;
+      color: white;
+      z-index: 10;
+      animation: float 3s ease-in-out infinite;
+      box-shadow: 0 0 40px var(--primary-glow);
+    }
+
+    .orbit-ring {
+      position: absolute;
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: rotate 20s linear infinite;
+    }
+
+    .orbit-ring-1 {
+      width: 280px;
+      height: 280px;
+    }
+
+    .orbit-ring-2 {
+      width: 400px;
+      height: 400px;
+      animation-duration: 30s;
+      animation-direction: reverse;
+    }
+
+    .orbit-icon {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--primary-orange);
+      animation: orbit 15s linear infinite;
+    }
+
+    .orbit-icon:nth-child(1) { animation-delay: 0s; }
+    .orbit-icon:nth-child(2) { animation-delay: -3s; }
+    .orbit-icon:nth-child(3) { animation-delay: -6s; }
+    .orbit-icon:nth-child(4) { animation-delay: -9s; }
+    .orbit-icon:nth-child(5) { animation-delay: -12s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+    }
+
+    /* === LOGO TICKER (INFINITE SCROLL) === */
+    .ticker-section {
+      background: #000000;
+      padding: 40px 0;
+      overflow: hidden;
+      position: relative;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 80px;
+      animation: scroll 30s linear infinite;
+    }
+
+    .ticker-item {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.3);
+      white-space: nowrap;
       text-transform: uppercase;
-    }
-    h1 span {
-      background: linear-gradient(to right, #fff, #ffd8a8); /* Degradado sutil en texto */
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    
-    p.lead {
-      font-size: 1.25rem; color: var(--text-gray); max-width: 700px; margin: 0 auto 48px;
+      letter-spacing: 2px;
     }
 
-    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .hero-actions .btn { padding: 14px 36px; font-size: 1.1rem; }
-
-    /* --- CARDS & GRID (Estilo Dark Glass) --- */
-    section { padding: 80px 0; }
-    .section-title { font-size: 2.5rem; margin-bottom: 40px; text-align: center; }
-    
-    .grid { display: grid; gap: 24px; }
-    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-
-    .card {
-      background: var(--card-bg); border: 1px solid var(--border-color);
-      padding: 32px; border-radius: 24px; position: relative; overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px); border-color: rgba(232, 93, 4, 0.5);
-      background: rgba(255,255,255,0.06);
-    }
-    .card h3 { font-size: 1.3rem; margin: 16px 0 10px; color: white; }
-    .card p { color: var(--text-gray); font-size: 0.95rem; }
-    .card i {
-      font-style: normal; font-size: 24px; display: inline-block;
-      width: 50px; height: 50px; line-height: 50px; text-align: center;
-      background: rgba(232, 93, 4, 0.15); border-radius: 14px; color: var(--primary);
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    /* --- METRIC BAR --- */
-    .metricbar {
-      margin-top: 40px; padding: 20px; text-align: center; border-radius: 16px;
-      background: rgba(232, 93, 4, 0.1); border: 1px solid rgba(232, 93, 4, 0.3);
-      color: #ffcea0;
+    .ticker-section::before,
+    .ticker-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
     }
 
-    /* --- GARANTÍA --- */
-    .guarantee-panel {
-      background: linear-gradient(135deg, rgba(232, 93, 4, 0.15), rgba(0,0,0,0));
-      border: 1px solid rgba(232, 93, 4, 0.3); padding: 60px 20px;
-      border-radius: 30px; text-align: center; position: relative;
-    }
-    .ribbon {
-      display: inline-block; padding: 8px 16px; background: var(--primary);
-      color: white; font-weight: 700; border-radius: 99px; font-size: 0.85rem;
-      margin-top: 20px; box-shadow: 0 4px 15px rgba(232, 93, 4, 0.4);
+    .ticker-section::before {
+      left: 0;
+      background: linear-gradient(to right, #000, transparent);
     }
 
-    /* --- FORMULARIO (Dark Mode) --- */
+    .ticker-section::after {
+      right: 0;
+      background: linear-gradient(to left, #000, transparent);
+    }
+
+    /* === PRICING SECTION === */
+    .pricing-section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 50px;
+    }
+
+    .pricing-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 60px;
+      height: 32px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 22px;
+      height: 22px;
+      background: var(--primary-orange);
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .toggle-label {
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .toggle-label.active {
+      color: white;
+    }
+
+    .discount-badge {
+      background: var(--primary-orange);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(232, 93, 4, 0.3);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary-orange);
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(232, 93, 4, 0.2);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary-orange);
+      color: white;
+      padding: 6px 20px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .pricing-tag {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .pricing-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .pricing-setup {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--text-muted);
+    }
+
+    .pricing-features li i {
+      color: #22c55e;
+      margin-top: 4px;
+    }
+
+    .pricing-cta {
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .pricing-cta:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: white;
+    }
+
+    .featured .pricing-cta {
+      background: var(--primary-orange);
+      border-color: var(--primary-orange);
+    }
+
+    .featured .pricing-cta:hover {
+      background: #ff6b1a;
+    }
+
+    /* === ADD-ONS SECTION === */
+    .addons-section {
+      padding: 100px 0;
+      background: linear-gradient(180deg, transparent, rgba(232, 93, 4, 0.02));
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .addon-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 30px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .addon-card:hover {
+      border-color: var(--primary-orange);
+      transform: translateY(-3px);
+    }
+
+    .addon-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(232, 93, 4, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--primary-orange);
+      margin-bottom: 16px;
+    }
+
+    .addon-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .addon-price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-orange);
+      margin-bottom: 16px;
+    }
+
+    .addon-btn {
+      width: 100%;
+      padding: 10px;
+      background: rgba(232, 93, 4, 0.1);
+      border: 1px solid var(--primary-orange);
+      color: var(--primary-orange);
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .addon-btn:hover {
+      background: var(--primary-orange);
+      color: white;
+    }
+
+    /* === FORM SECTION === */
+    .form-section {
+      padding: 100px 0;
+    }
+
     .form-container {
-      max-width: 800px; margin: 0 auto;
-      background: #0a0c10; border: 1px solid var(--border-color);
-      padding: 40px; border-radius: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      padding: 50px;
+      border-radius: 24px;
     }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .full-width { grid-column: 1 / -1; }
-    
-    label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: #fff; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
     input, textarea, select {
-      width: 100%; padding: 14px; background: #151921; border: 1px solid #333;
-      color: white; border-radius: 12px; font-family: inherit; font-size: 1rem;
-      transition: border-color 0.3s;
+      width: 100%;
+      padding: 14px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      color: white;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s;
     }
+
     input:focus, textarea:focus {
-      outline: none; border-color: var(--primary);
+      outline: none;
+      border-color: var(--primary-orange);
       box-shadow: 0 0 0 4px rgba(232, 93, 4, 0.1);
     }
-    textarea { min-height: 120px; resize: vertical; }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
 
     @media (max-width: 640px) {
-      .form-grid { grid-template-columns: 1fr; }
-      h1 { font-size: 2.8rem; }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-container {
+        padding: 30px;
+      }
     }
 
+    /* === FOOTER === */
     footer {
-      border-top: 1px solid var(--border-color); padding: 40px 0;
-      text-align: center; color: var(--text-gray); font-size: 0.9rem;
-      margin-top: 80px;
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
     }
 
-    /* Animación Reveal */
-    .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* === ANIMATIONS === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
 
   <div class="scene-bg"></div>
 
-  <nav>
+  <!-- === NAVIGATION === -->
+  <nav id="navbar">
     <div class="wrapper nav-container">
       <a href="#" class="logo">
         <span>∞</span> sloop.IA
       </a>
       
       <div class="nav-links">
-        <a href="#beneficios">Plataforma</a>
-        <a href="#audience">Clientes</a>
-        <a href="#guarantee">Precios</a>
-        <a href="#form">Nosotros</a>
+        <a href="#pricing">Precios</a>
+        <a href="#addons">Add-ons</a>
+        <a href="#form">Contacto</a>
       </div>
 
-      <a href="#form" class="btn primary">Agenda Demo</a>
+      <div class="nav-actions">
+        <a href="https://wa.me/1234567890" class="btn outline">
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp
+        </a>
+        <a href="#form" class="btn primary">Agenda Demo</a>
+      </div>
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="wrapper">
-      <div class="reveal">
-        <span class="eyebrow">Una extensión de tu equipo que blinda tu negocio</span>
-        
-        <h1>Escala y blinda<br>tu empresa con <span>IA</span></h1>
-        
-        <p class="lead">Diagnóstico técnico y estratégico para identificar riesgos, automatización y arquitectura escalable en 15 días.</p>
-
-        <div class="hero-actions">
-          <a href="#form" class="btn primary">Comenzar ahora</a>
-          <a href="#features" class="btn outline">Ver detalles</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <section id="beneficios">
-    <div class="wrapper">
-      <h2 class="section-title reveal">Beneficios Clave</h2>
-      <div class="grid grid-4">
-        <article class="card reveal">
-          <i>🚀</i>
-          <h3>Escala sin fricción</h3>
-          <p>Identifica procesos con alto impacto donde la IA libera horas y reduce costes.</p>
-        </article>
-        <article class="card reveal">
-          <i>🔒</i>
-          <h3>Mitiga riesgos</h3>
-          <p>Detecta brechas de seguridad y malas prácticas antes de que comprometan el negocio.</p>
-        </article>
-        <article class="card reveal">
-          <i>🧠</i>
-          <h3>Data Driven</h3>
-          <p>Roadmap accionable diseñado por ingenieros expertos y estrategas de IA.</p>
-        </article>
-        <article class="card reveal">
-          <i>⚡</i>
-          <h3>Velocidad</h3>
-          <p>Resultados en 2 semanas sin interrumpir la operación actual.</p>
-        </article>
+  <!-- === HERO SECTION === -->
+  <section class="hero wrapper">
+    <div class="hero-left reveal">
+      <div class="badge">
+        🚀 Tecnología 2026
       </div>
       
-      <div class="metricbar reveal">
-        ✔ <strong>100% del coste</strong> se descuenta si contratas la implantación en los 30 días siguientes.
+      <h1>
+        <span class="gradient-text">Blindaje</span> y<br>
+        <span class="gradient-text">Automatización</span><br>
+        Total para tu Empresa
+      </h1>
+      
+      <p class="hero-subtitle">
+        Protege tus datos, escala tus procesos y conquista el mercado con IA de nivel enterprise. Sin fricciones. Sin código.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#form" class="btn primary">
+          Comenzar Ahora
+        </a>
+        <a href="#" class="btn outline">
+          <i class="fas fa-play"></i>
+          Ver Video
+        </a>
+      </div>
+    </div>
+
+    <div class="orbit-container reveal">
+      <div class="orbit-center">∞</div>
+      <div class="orbit-ring orbit-ring-1">
+        <div class="orbit-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="orbit-icon"><i class="fab fa-google"></i></div>
+        <div class="orbit-icon"><i class="fab fa-instagram"></i></div>
+      </div>
+      <div class="orbit-ring orbit-ring-2">
+        <div class="orbit-icon"><i class="fab fa-shopify"></i></div>
+        <div class="orbit-icon"><i class="fab fa-hubspot"></i></div>
       </div>
     </div>
   </section>
 
-  <section id="features">
+  <!-- === LOGO TICKER === -->
+  <div class="ticker-section">
+    <div class="ticker-track">
+      <span class="ticker-item">CLÍNICA MÓNACO</span>
+      <span class="ticker-item">VACACIONES EN EL SUR</span>
+      <span class="ticker-item">ARTELUK</span>
+      <span class="ticker-item">DENTALINK</span>
+      <span class="ticker-item">SHOPIFY</span>
+      <span class="ticker-item">CLÍNICA MÓNACO</span>
+      <span class="ticker-item">VACACIONES EN EL SUR</span>
+      <span class="ticker-item">ARTELUK</span>
+      <span class="ticker-item">DENTALINK</span>
+      <span class="ticker-item">SHOPIFY</span>
+    </div>
+  </div>
+
+  <!-- === PRICING SECTION === -->
+  <section id="pricing" class="pricing-section">
     <div class="wrapper">
-      <h2 class="section-title reveal">¿Qué obtienes con AI Full System?</h2>
-      <div class="grid grid-3">
-        <article class="card reveal">
-          <h3>Auditoría de Stack</h3>
-          <p>Mapeo de flujos clave, cuellos de botella y herramientas actuales.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Ciberseguridad</h3>
-          <p>Revisión de accesos, datos sensibles, backups y políticas.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Roadmap Técnico</h3>
-          <p>Arquitectura propuesta, integraciones y plan por fases.</p>
-        </article>
-        <article class="card reveal">
-          <h3>Informe Accionable</h3>
-          <p>Documento final con prioridades, riesgos y KPIs sugeridos.</p>
-        </article>
-        <div class="card reveal" style="border-color: var(--primary);">
-          <h3 style="color: var(--primary)">Duración</h3>
-          <p style="font-size:1.2rem; color:white;">10–15 días</p>
+      <h2 class="section-title reveal">Planes transparentes y escalables</h2>
+      <p class="section-subtitle reveal">Elige el plan perfecto para tu etapa de crecimiento</p>
+
+      <div class="pricing-toggle reveal">
+        <span class="toggle-label active">Mensual</span>
+        <div class="toggle-switch"></div>
+        <span class="toggle-label">Anual</span>
+        <span class="discount-badge">-25%</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- STANDARD -->
+        <div class="pricing-card reveal">
+          <p class="pricing-tag">Validación</p>
+          <div class="pricing-amount">$150<span style="font-size: 1.5rem; color: var(--text-muted);">/mes</span></div>
+          <p class="pricing-setup">+ $315 Setup único</p>
+          
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> <span>WhatsApp automatizado</span></li>
+            <li><i class="fas fa-check"></i> <span>CRM básico integrado</span></li>
+            <li><i class="fas fa-check"></i> <span>Formularios inteligentes</span></li>
+            <li><i class="fas fa-check"></i> <span>Reportes semanales</span></li>
+            <li><i class="fas fa-check"></i> <span>Soporte por email</span></li>
+          </ul>
+
+          <button class="pricing-cta">Empezar ahora</button>
         </div>
-        <div class="card reveal" style="border-color: var(--primary);">
-          <h3 style="color: var(--primary)">Inversión</h3>
-          <p style="font-size:1.2rem; color:white;">$1.000 – $5.000</p>
+
+        <!-- ADVANCED (FEATURED) -->
+        <div class="pricing-card featured reveal">
+          <div class="pricing-badge">RECOMENDADO</div>
+          <p class="pricing-tag">Crecimiento</p>
+          <div class="pricing-amount">$275<span style="font-size: 1.5rem; color: var(--text-muted);">/mes</span></div>
+          <p class="pricing-setup">+ $650 Setup único</p>
+          
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> <span>Todo en Standard</span></li>
+            <li><i class="fas fa-check"></i> <span>Ads Optimization IA</span></li>
+            <li><i class="fas fa-check"></i> <span>Atribución multicanal</span></li>
+            <li><i class="fas fa-check"></i> <span>Webhooks ilimitados</span></li>
+            <li><i class="fas fa-check"></i> <span>Soporte prioritario 24/7</span></li>
+            <li><i class="fas fa-check"></i> <span>Consultor asignado</span></li>
+          </ul>
+
+          <button class="pricing-cta">Elegir Advanced</button>
+        </div>
+
+        <!-- CORPORATE -->
+        <div class="pricing-card reveal">
+          <p class="pricing-tag">Enterprise</p>
+          <div class="pricing-amount" style="font-size: 2.2rem;">A Medida</div>
+          <p class="pricing-setup">Arquitectura personalizada</p>
+          
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> <span>Todo en Advanced</span></li>
+            <li><i class="fas fa-check"></i> <span>Infraestructura dedicada</span></li>
+            <li><i class="fas fa-check"></i> <span>SLA garantizado 99.9%</span></li>
+            <li><i class="fas fa-check"></i> <span>Auditorías trimestrales</span></li>
+            <li><i class="fas fa-check"></i> <span>Account Manager</span></li>
+            <li><i class="fas fa-check"></i> <span>Onboarding VIP</span></li>
+          </ul>
+
+          <button class="pricing-cta">Contactar ventas</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="guarantee">
+  <!-- === ADD-ONS SECTION === -->
+  <section id="addons" class="addons-section">
     <div class="wrapper">
-      <div class="guarantee-panel reveal">
-        <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Garantía Total</h2>
-        <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">
-          Descontamos el 100% del diagnóstico si avanzas con la implantación completa en los próximos 30 días.
-        </p>
-        <div class="ribbon">¡Limitado a 2 empresas por mes!</div>
+      <h3 class="section-title reveal">Potencia tu ecosistema</h3>
+      <p class="section-subtitle reveal">Módulos complementarios para escalar sin límites</p>
+
+      <div class="addons-grid">
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fas fa-bullhorn"></i></div>
+          <h4 class="addon-title">Sloop Ads</h4>
+          <p class="addon-price">$150<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Agregar</button>
+        </div>
+
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fas fa-plug"></i></div>
+          <h4 class="addon-title">Sloop Connect</h4>
+          <p class="addon-price">$100<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Agregar</button>
+        </div>
+
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fas fa-phone-volume"></i></div>
+          <h4 class="addon-title">Llamadas IA</h4>
+          <p class="addon-price">$80<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Agregar</button>
+        </div>
+
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fab fa-instagram"></i></div>
+          <h4 class="addon-title">Comentarios Insta</h4>
+          <p class="addon-price">$80<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Agregar</button>
+        </div>
+
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fas fa-file-pdf"></i></div>
+          <h4 class="addon-title">Generador PDF</h4>
+          <p class="addon-price">$80<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Agregar</button>
+        </div>
+
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fas fa-envelope"></i></div>
+          <h4 class="addon-title">Gmail IA</h4>
+          <p class="addon-price">$58<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Agregar</button>
+        </div>
+
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fas fa-chart-line"></i></div>
+          <h4 class="addon-title">NPS & Analytics</h4>
+          <p class="addon-price">$42<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Agregar</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="form">
+  <!-- === FORM SECTION === -->
+  <section id="form" class="form-section">
     <div class="wrapper">
-      <h2 class="section-title reveal">Solicita tu Diagnóstico</h2>
+      <h2 class="section-title reveal">Agenda tu Demo Personalizada</h2>
+      <p class="section-subtitle reveal">Descubre cómo sloop.IA transformará tu empresa en 15 días</p>
+
       <div class="form-container reveal">
-        <form id="lead-form" action="#" method="post">
+        <form id="lead-form" method="post">
           <div class="form-grid">
             <div>
               <label>Tu nombre *</label>
-              <input name="nombre" required placeholder="Nombre y apellido" />
+              <input name="nombre" required placeholder="Nombre completo" />
             </div>
             <div>
               <label>Empresa *</label>
@@ -344,7 +969,7 @@
             </div>
             <div>
               <label>Cargo *</label>
-              <input name="cargo" required placeholder="CEO, CTO, etc." />
+              <input name="cargo" required placeholder="CEO, CTO, Director..." />
             </div>
             <div>
               <label>Email corporativo *</label>
@@ -352,55 +977,86 @@
             </div>
             <div class="full-width">
               <label>Teléfono *</label>
-              <input name="telefono" required placeholder="+56 9 …" />
+              <input name="telefono" required placeholder="+56 9 ..." />
             </div>
           </div>
           
           <div style="margin-top: 20px;">
-            <label>¿Qué te gustaría mejorar con IA? *</label>
-            <textarea name="objetivo" required placeholder="Cuéntanos tus dolores principales..."></textarea>
+            <label>¿Qué desafío quieres resolver con IA? *</label>
+            <textarea name="objetivo" required placeholder="Describe tu principal dolor o reto actual..."></textarea>
           </div>
 
-          <p style="font-size: 0.85rem; color: #666; margin-top: 15px;">
-            Protegemos tus datos. Al enviar aceptas ser contactado para la sesión.
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px;">
+            🔒 Tus datos están protegidos. Al enviar aceptas ser contactado para agendar la sesión.
           </p>
 
           <div style="margin-top: 30px;">
-            <button class="btn primary" style="width: 100%; font-size: 1.1rem; padding: 16px;" type="submit">Enviar solicitud</button>
+            <button class="btn primary" style="width: 100%; font-size: 1.1rem; padding: 16px;" type="submit">
+              Enviar solicitud
+            </button>
           </div>
         </form>
       </div>
     </div>
   </section>
 
+  <!-- === FOOTER === -->
   <footer>
     <div class="wrapper">
-      <p>© <span id="y"></span> sloop.IA — Todos los derechos reservados.</p>
+      <div class="footer-content">
+        <div class="logo">
+          <span>∞</span> sloop.IA
+        </div>
+        <div class="footer-links">
+          <a href="#">Términos</a>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+      <p style="margin-top: 20px; color: var(--text-muted);">
+        © <span id="year"></span> sloop.IA — Todos los derechos reservados.
+      </p>
     </div>
   </footer>
 
   <script>
-    // Año footer
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Animación Reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Reveal on scroll animation
+    const observerOptions = {
+      threshold: 0.12,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
-    },{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+    }, observerOptions);
 
-    // Webhook Logic (Tu lógica original)
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Form submission (n8n webhook)
     const form = document.getElementById('lead-form');
     if (form) {
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
         
-        const btn = form.querySelector('button');
+        const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.textContent;
         btn.textContent = "Enviando...";
         btn.disabled = true;
@@ -412,7 +1068,7 @@
           email: form.elements['email'].value.trim(),
           telefono: form.elements['telefono'].value.trim(),
           objetivoIA: form.elements['objetivo'].value.trim(),
-          origen: 'landing-sloop-ia-dark-orange'
+          origen: 'landing-sloop-enterprise-v2'
         };
 
         try {
@@ -424,14 +1080,14 @@
 
           if (!response.ok) throw new Error('Error en el envío');
 
-          alert('¡Gracias! Hemos recibido tu solicitud. Te contactaremos pronto.');
+          alert('¡Gracias! Hemos recibido tu solicitud. Te contactaremos pronto para agendar tu demo.');
           form.reset();
         } catch (err) {
           console.error(err);
-          alert('Hubo un problema al enviar. Por favor intenta de nuevo.');
+          alert('Hubo un problema al enviar. Por favor intenta de nuevo o contáctanos por WhatsApp.');
         } finally {
-            btn.textContent = originalText;
-            btn.disabled = false;
+          btn.textContent = originalText;
+          btn.disabled = false;
         }
       });
     }
