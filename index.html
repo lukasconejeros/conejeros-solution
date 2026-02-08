@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>sloop.IA — AI Full System</title>
-  <meta name="description" content="Diagnóstico técnico y estratégico para detectar oportunidades de IA, automatización y riesgos de ciberseguridad." />
+  <title>sloop.IA — Sistemas de Inteligencia Empresarial</title>
+  <meta name="description" content="Orquestación de procesos, automatización inteligente y arquitectura de datos para empresas que exigen resultados medibles." />
 
-  <link rel="canonical" href="https://www.conejeros-solutions.cl/" />
+  <link rel="canonical" href="https://www.sloop.ia/" />
   <link rel="icon" href="/favicon.ico" sizes="any"> 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* === GLOBAL VARIABLES (GLASSMORPHISM SYSTEM) === */
+    /* === SISTEMA DE DISEÑO GLOBAL === */
     :root {
       --bg-deep: #020408;
       --bg-glass: rgba(255, 255, 255, 0.02);
@@ -41,7 +41,7 @@
       line-height: 1.6;
     }
 
-    /* === BACKGROUND EFFECTS === */
+    /* === FONDO ATMOSFÉRICO === */
     .scene-bg {
       position: fixed; 
       top: 0; 
@@ -60,7 +60,7 @@
       padding: 0 24px; 
     }
 
-    /* === STICKY HEADER (BLURRED) === */
+    /* === NAVEGACIÓN (STICKY & GLASSMORPHISM) === */
     nav {
       position: sticky; 
       top: 0; 
@@ -129,7 +129,7 @@
       .nav-links { display: none; }
     }
 
-    /* === BUTTONS === */
+    /* === BOTONES === */
     .btn {
       padding: 10px 24px; 
       border-radius: 999px; 
@@ -168,7 +168,7 @@
       background: rgba(255,255,255,0.05); 
     }
 
-    /* === HERO SECTION (ASYMMETRIC 60/40) === */
+    /* === HERO SECTION (ASIMÉTRICO 60/40) === */
     .hero {
       min-height: 90vh;
       display: grid;
@@ -237,7 +237,7 @@
       font-size: 1rem;
     }
 
-    /* === ORBIT SYSTEM (CSS PURE) === */
+    /* === ORBIT SYSTEM (CSS PURO) === */
     .orbit-container {
       position: relative;
       width: 100%;
@@ -322,7 +322,7 @@
       to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
     }
 
-    /* === LOGO TICKER (INFINITE SCROLL) === */
+    /* === LOGO TICKER (SCROLL INFINITO) === */
     .ticker-section {
       background: #000000;
       padding: 40px 0;
@@ -373,7 +373,7 @@
       background: linear-gradient(to left, #000, transparent);
     }
 
-    /* === PRICING SECTION === */
+    /* === SECCIÓN DE PRECIOS === */
     .pricing-section {
       padding: 100px 0;
     }
@@ -508,6 +508,12 @@
       margin: 0;
     }
 
+    .plan-tagline {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
     .pricing-breakdown {
       background: rgba(0, 0, 0, 0.3);
       border: 1px solid var(--border-subtle);
@@ -552,6 +558,32 @@
     .price-value.large {
       font-size: 2.2rem;
       color: var(--primary-orange);
+    }
+
+    .pricing-cta {
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .pricing-cta:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: white;
+    }
+
+    .featured .pricing-cta {
+      background: var(--primary-orange);
+      border-color: var(--primary-orange);
+    }
+
+    .featured .pricing-cta:hover {
+      background: #ff6b1a;
     }
 
     .feature-block {
@@ -663,32 +695,6 @@
       color: var(--primary-orange);
     }
 
-    .pricing-cta {
-      width: 100%;
-      padding: 14px;
-      background: transparent;
-      border: 1px solid var(--border-subtle);
-      color: white;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .pricing-cta:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: white;
-    }
-
-    .featured .pricing-cta {
-      background: var(--primary-orange);
-      border-color: var(--primary-orange);
-    }
-
-    .featured .pricing-cta:hover {
-      background: #ff6b1a;
-    }
-
     /* === ADD-ONS SECTION === */
     .addons-section {
       padding: 100px 0;
@@ -738,6 +744,13 @@
       margin-bottom: 8px;
     }
 
+    .addon-description {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
     .addon-price {
       font-size: 1.5rem;
       font-weight: 800;
@@ -762,7 +775,7 @@
       color: white;
     }
 
-    /* === FORM SECTION === */
+    /* === FORMULARIO === */
     .form-section {
       padding: 100px 0;
     }
@@ -860,7 +873,7 @@
       color: white;
     }
 
-    /* === ANIMATIONS === */
+    /* === ANIMACIONES === */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -877,7 +890,7 @@
 
   <div class="scene-bg"></div>
 
-  <!-- === NAVIGATION === -->
+  <!-- === NAVEGACIÓN === -->
   <nav id="navbar">
     <div class="wrapper nav-container">
       <a href="#" class="logo">
@@ -885,17 +898,18 @@
       </a>
       
       <div class="nav-links">
-        <a href="#pricing">Precios</a>
-        <a href="#addons">Add-ons</a>
-        <a href="#form">Contacto</a>
+        <a href="#sistemas">Sistemas</a>
+        <a href="#pricing">Inversión</a>
+        <a href="#addons">Módulos</a>
+        <a href="#form">Consultoría</a>
       </div>
 
       <div class="nav-actions">
         <a href="https://wa.me/1234567890" class="btn outline">
           <i class="fab fa-whatsapp"></i>
-          WhatsApp
+          Contacto Directo
         </a>
-        <a href="#form" class="btn primary">Agenda Demo</a>
+        <a href="#form" class="btn primary">Agendar Sesión</a>
       </div>
     </div>
   </nav>
@@ -904,26 +918,24 @@
   <section class="hero wrapper">
     <div class="hero-left reveal">
       <div class="badge">
-        🚀 Tecnología 2026
+        ⚡ Arquitectura de Decisión Empresarial
       </div>
       
       <h1>
-        <span class="gradient-text">Blindaje</span> y<br>
-        <span class="gradient-text">Automatización</span><br>
-        Total para tu Empresa
+        Sistemas de <span class="gradient-text">Inteligencia</span><br>
+        que escalan tu <span class="gradient-text">Negocio</span>
       </h1>
       
       <p class="hero-subtitle">
-        Protege tus datos, escala tus procesos y conquista el mercado con IA de nivel enterprise. Sin fricciones. Sin código.
+        Orquestación de procesos críticos, motores de decisión basados en datos y automatización inteligente para empresas que exigen resultados medibles.
       </p>
 
       <div class="hero-cta">
         <a href="#form" class="btn primary">
-          Comenzar Ahora
+          Iniciar Diagnóstico
         </a>
-        <a href="#" class="btn outline">
-          <i class="fas fa-play"></i>
-          Ver Video
+        <a href="#pricing" class="btn outline">
+          Ver Arquitecturas
         </a>
       </div>
     </div>
@@ -937,7 +949,7 @@
       </div>
       <div class="orbit-ring orbit-ring-2">
         <div class="orbit-icon"><i class="fab fa-shopify"></i></div>
-        <div class="orbit-icon"><i class="fab fa-hubspot"></i></div>
+        <div class="orbit-icon"><i class="fas fa-chart-line"></i></div>
       </div>
     </div>
   </section>
@@ -949,83 +961,83 @@
       <span class="ticker-item">VACACIONES EN EL SUR</span>
       <span class="ticker-item">ARTELUK</span>
       <span class="ticker-item">DENTALINK</span>
-      <span class="ticker-item">SHOPIFY</span>
+      <span class="ticker-item">SHOPIFY PARTNERS</span>
       <span class="ticker-item">CLÍNICA MÓNACO</span>
       <span class="ticker-item">VACACIONES EN EL SUR</span>
       <span class="ticker-item">ARTELUK</span>
       <span class="ticker-item">DENTALINK</span>
-      <span class="ticker-item">SHOPIFY</span>
+      <span class="ticker-item">SHOPIFY PARTNERS</span>
     </div>
   </div>
 
   <!-- === PRICING SECTION === -->
   <section id="pricing" class="pricing-section">
     <div class="wrapper">
-      <h2 class="section-title reveal">Planes transparentes y escalables</h2>
-      <p class="section-subtitle reveal">Elige el plan perfecto para tu etapa de crecimiento</p>
+      <h2 class="section-title reveal">Arquitecturas de Automatización</h2>
+      <p class="section-subtitle reveal">Sistemas diseñados para cada etapa de tu crecimiento empresarial</p>
 
       <div class="pricing-toggle reveal">
         <span class="toggle-label active">Mensual</span>
         <div class="toggle-switch"></div>
         <span class="toggle-label">Anual</span>
-        <span class="discount-badge">-25%</span>
+        <span class="discount-badge">Ahorra 25%</span>
       </div>
 
       <div class="pricing-grid">
-        <!-- STANDARD -->
+        <!-- ESSENTIAL CORE -->
         <div class="pricing-card reveal">
           <div class="card-header">
-            <span class="plan-badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa;">Start</span>
-            <h3 class="plan-title">Standard</h3>
+            <span class="plan-badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa;">Inicio</span>
+            <h3 class="plan-title">Essential Core</h3>
+            <p class="plan-tagline">Para negocios que inician su automatización</p>
           </div>
 
-          <!-- Pricing Box -->
           <div class="pricing-breakdown">
             <div class="price-row">
-              <span class="price-label">MES 1<br><span style="font-size: 0.75rem; color: var(--text-muted);">IMPLEMENTACIÓN</span></span>
+              <span class="price-label">Implementación<br><span style="font-size: 0.7rem;">PAGO ÚNICO</span></span>
               <span class="price-value">$315<span style="font-size: 0.9rem; font-weight: 400;"> USD</span></span>
             </div>
             <div class="price-row">
-              <span class="price-label">MES 2</span>
+              <span class="price-label">Mes de Prueba</span>
               <span class="price-value">$0<span style="font-size: 0.9rem; font-weight: 400;"> Bonificado</span></span>
             </div>
             <div class="price-row highlight">
-              <span class="price-label">MES 3<br><span style="font-size: 0.75rem;">EN ADELANTE</span></span>
+              <span class="price-label">Mantenimiento<br><span style="font-size: 0.7rem;">RECURRENTE</span></span>
               <span class="price-value large">$150<span style="font-size: 1rem; font-weight: 400;">/mes</span></span>
             </div>
           </div>
 
-          <button class="pricing-cta">Agenda una demo</button>
+          <button class="pricing-cta">Solicitar Implementación</button>
 
-          <!-- Feature Blocks -->
           <div class="feature-block">
-            <h4 class="block-title">FUNCIONES BASE</h4>
+            <h4 class="block-title">NÚCLEO DEL SISTEMA</h4>
             <ul class="block-list">
-              <li><i class="fas fa-check-circle"></i> Sloop AI Core System</li>
-              <li><i class="fas fa-check-circle"></i> Dashboard de Métricas</li>
-              <li><i class="fas fa-check-circle"></i> 1 Flujo de Ventas Automatizado</li>
+              <li><i class="fas fa-check-circle"></i> Centralización de Mensajería</li>
+              <li><i class="fas fa-check-circle"></i> Agente de Respuesta Inmediata</li>
+              <li><i class="fas fa-check-circle"></i> Panel de Control de Leads</li>
+              <li><i class="fas fa-check-circle"></i> 1 Flujo de Conversión Automatizado</li>
             </ul>
           </div>
 
           <div class="feature-block">
-            <h4 class="block-title">EQUIPO Y SOPORTE</h4>
+            <h4 class="block-title">EQUIPO Y ACCESO</h4>
             <div class="support-grid">
               <div class="support-item">
                 <div class="support-number">3</div>
                 <div class="support-label">Usuarios</div>
               </div>
               <div class="support-item">
-                <div class="support-label">Soporte por Email</div>
+                <div class="support-label">Soporte<br>por Email</div>
               </div>
             </div>
           </div>
 
           <div class="feature-block">
-            <h4 class="block-title">IA Y AUTOMATIZACIÓN</h4>
+            <h4 class="block-title">MOTOR DE DECISIÓN</h4>
             <div class="ai-row">
-              <span class="ai-label">MODELO ÚNICO</span>
+              <span class="ai-label">MODELO DE IA</span>
               <div class="ai-badges">
-                <span class="ai-badge">Gemini 2.5 Flash</span>
+                <span class="ai-badge">Gemini Flash 2.5</span>
               </div>
             </div>
             <div class="channel-icons">
@@ -1035,67 +1047,67 @@
           </div>
 
           <div class="feature-block">
-            <h4 class="block-title">PRECIOS</h4>
+            <h4 class="block-title">TARIFAS DE USO</h4>
             <ul class="block-list">
               <li><i class="fas fa-dollar-sign"></i> $0.05 por conversación adicional</li>
             </ul>
           </div>
         </div>
 
-        <!-- ADVANCED (FEATURED) -->
+        <!-- GROWTH ENGINE (FEATURED) -->
         <div class="pricing-card featured reveal">
-          <div class="pricing-badge">RECOMENDADO</div>
+          <div class="pricing-badge">MÁS ELEGIDO</div>
           <div class="card-header">
-            <span class="plan-badge" style="background: rgba(232, 93, 4, 0.15); color: var(--primary-orange);">Growth</span>
-            <h3 class="plan-title">Advanced</h3>
+            <span class="plan-badge" style="background: rgba(232, 93, 4, 0.15); color: var(--primary-orange);">Escala</span>
+            <h3 class="plan-title">Growth Engine</h3>
+            <p class="plan-tagline">Para empresas que buscan escalar ventas agresivamente</p>
           </div>
 
-          <!-- Pricing Box -->
           <div class="pricing-breakdown">
             <div class="price-row">
-              <span class="price-label">MES 1<br><span style="font-size: 0.75rem; color: var(--text-muted);">IMPLEMENTACIÓN</span></span>
+              <span class="price-label">Implementación<br><span style="font-size: 0.7rem;">PAGO ÚNICO</span></span>
               <span class="price-value">$650<span style="font-size: 0.9rem; font-weight: 400;"> USD</span></span>
             </div>
             <div class="price-row">
-              <span class="price-label">MES 2</span>
+              <span class="price-label">Mes de Prueba</span>
               <span class="price-value">$0<span style="font-size: 0.9rem; font-weight: 400;"> Bonificado</span></span>
             </div>
             <div class="price-row highlight">
-              <span class="price-label">MES 3<br><span style="font-size: 0.75rem;">EN ADELANTE</span></span>
+              <span class="price-label">Mantenimiento<br><span style="font-size: 0.7rem;">RECURRENTE</span></span>
               <span class="price-value large">$275<span style="font-size: 1rem; font-weight: 400;">/mes</span></span>
             </div>
           </div>
 
-          <button class="pricing-cta">Agenda una demo</button>
+          <button class="pricing-cta">Solicitar Implementación</button>
 
-          <!-- Feature Blocks -->
           <div class="feature-block">
-            <h4 class="block-title">FUNCIONES BASE</h4>
+            <h4 class="block-title">NÚCLEO DEL SISTEMA</h4>
             <ul class="block-list">
-              <li><i class="fas fa-check-circle"></i> Todo lo de Standard</li>
-              <li><i class="fas fa-check-circle"></i> Sloop Ads Optimization (ROAS)</li>
-              <li><i class="fas fa-check-circle"></i> Atribución de Leads</li>
-              <li><i class="fas fa-check-circle"></i> CRM Connector (HubSpot/Pipedrive)</li>
+              <li><i class="fas fa-check-circle"></i> Todo lo de Essential Core</li>
+              <li><i class="fas fa-check-circle"></i> Algoritmo de Optimización de Anuncios</li>
+              <li><i class="fas fa-check-circle"></i> Conexión Nativa CRM</li>
+              <li><i class="fas fa-check-circle"></i> Atribución de Fuente de Leads</li>
+              <li><i class="fas fa-check-circle"></i> Dashboard de ROAS en Tiempo Real</li>
             </ul>
           </div>
 
           <div class="feature-block">
-            <h4 class="block-title">EQUIPO Y SOPORTE</h4>
+            <h4 class="block-title">EQUIPO Y ACCESO</h4>
             <div class="support-grid">
               <div class="support-item">
                 <div class="support-number">10</div>
                 <div class="support-label">Usuarios</div>
               </div>
               <div class="support-item">
-                <div class="support-label">Implementación<br>con Ingeniero dedicado</div>
+                <div class="support-label">Ingeniero<br>Dedicado</div>
               </div>
             </div>
           </div>
 
           <div class="feature-block">
-            <h4 class="block-title">IA Y AUTOMATIZACIÓN</h4>
+            <h4 class="block-title">MOTOR DE DECISIÓN</h4>
             <div class="ai-row">
-              <span class="ai-label">TODOS LOS MODELOS</span>
+              <span class="ai-label">MODELOS AVANZADOS</span>
               <div class="ai-badges">
                 <span class="ai-badge">GPT-4o</span>
                 <span class="ai-badge">Claude 3.5</span>
@@ -1110,71 +1122,72 @@
           </div>
 
           <div class="feature-block">
-            <h4 class="block-title">PRECIOS</h4>
+            <h4 class="block-title">TARIFAS DE USO</h4>
             <ul class="block-list">
               <li><i class="fas fa-dollar-sign"></i> $0.04 por conversación adicional</li>
             </ul>
           </div>
         </div>
 
-        <!-- CORPORATE -->
+        <!-- ENTERPRISE PARTNER -->
         <div class="pricing-card reveal">
           <div class="card-header">
             <span class="plan-badge" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">Enterprise</span>
-            <h3 class="plan-title">Corporate</h3>
+            <h3 class="plan-title">Enterprise Partner</h3>
+            <p class="plan-tagline">Consultoría estratégica integral</p>
           </div>
 
-          <!-- Pricing Box -->
           <div class="pricing-breakdown" style="text-align: center; padding: 30px 0;">
             <div class="corporate-icon" style="font-size: 3rem; margin-bottom: 15px;">🏢</div>
             <div class="price-row">
-              <span class="price-label">UN PLAN<br><span style="font-size: 0.75rem;">DISEÑADO A LA MEDIDA</span></span>
+              <span class="price-label">ARQUITECTURA<br><span style="font-size: 0.7rem;">PERSONALIZADA</span></span>
             </div>
             <div class="price-row highlight">
               <span class="price-value large" style="font-size: 2rem;">Consultar</span>
             </div>
           </div>
 
-          <button class="pricing-cta">Agenda una demo</button>
+          <button class="pricing-cta">Agendar Sesión Estratégica</button>
 
           <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 20px 0;">
-            Análisis profundo de las 4 áreas críticas de tu empresa para una transformación digital total.
+            Análisis profundo de las 4 áreas críticas: Operaciones, Ventas, RRHH y Finanzas para una reingeniería total con IA.
           </p>
 
-          <!-- Feature Blocks -->
           <div class="feature-block">
-            <h4 class="block-title">CONSULTORÍA</h4>
+            <h4 class="block-title">CONSULTORÍA 360°</h4>
             <ul class="block-list">
-              <li><i class="fas fa-check-circle"></i> Auditoría de Operaciones</li>
-              <li><i class="fas fa-check-circle"></i> Análisis de Ventas y Marketing</li>
-              <li><i class="fas fa-check-circle"></i> Optimización RRHH</li>
-              <li><i class="fas fa-check-circle"></i> Revisión Finanzas y Control</li>
-              <li><i class="fas fa-check-circle"></i> Detección de cuellos de botella</li>
+              <li><i class="fas fa-check-circle"></i> Auditoría de Procesos Operacionales</li>
+              <li><i class="fas fa-check-circle"></i> Mapeo de Ecosistema de Ventas</li>
+              <li><i class="fas fa-check-circle"></i> Optimización de Recursos Humanos</li>
+              <li><i class="fas fa-check-circle"></i> Análisis Financiero y Control</li>
+              <li><i class="fas fa-check-circle"></i> Detección de Cuellos de Botella</li>
             </ul>
           </div>
 
           <div class="feature-block">
-            <h4 class="block-title">EQUIPO Y SOPORTE</h4>
+            <h4 class="block-title">EQUIPO DEDICADO</h4>
             <div class="support-grid">
               <div class="support-item">
                 <div class="support-number">∞</div>
                 <div class="support-label">Usuarios</div>
               </div>
               <div class="support-item">
-                <div class="support-label">Consultoría<br>ilimitada</div>
+                <div class="support-label">Consultoría<br>Ilimitada</div>
               </div>
             </div>
             <ul class="block-list" style="margin-top: 15px;">
-              <li><i class="fas fa-check-circle"></i> Slack Privado con el equipo</li>
+              <li><i class="fas fa-check-circle"></i> Canal Privado Slack 24/7</li>
+              <li><i class="fas fa-check-circle"></i> Account Manager Asignado</li>
             </ul>
           </div>
 
           <div class="feature-block">
             <h4 class="block-title">IA PERSONALIZADA</h4>
             <ul class="block-list">
-              <li><i class="fas fa-check-circle"></i> Fine-tuning de modelos propios</li>
-              <li><i class="fas fa-check-circle"></i> Servidores dedicados</li>
-              <li><i class="fas fa-check-circle"></i> On-premise opcional</li>
+              <li><i class="fas fa-check-circle"></i> Desarrollo de Modelos Propios</li>
+              <li><i class="fas fa-check-circle"></i> Fine-tuning con tus datos</li>
+              <li><i class="fas fa-check-circle"></i> Infraestructura Dedicada</li>
+              <li><i class="fas fa-check-circle"></i> Despliegue On-premise opcional</li>
             </ul>
           </div>
         </div>
@@ -1185,71 +1198,80 @@
   <!-- === ADD-ONS SECTION === -->
   <section id="addons" class="addons-section">
     <div class="wrapper">
-      <h3 class="section-title reveal">Potencia tu ecosistema</h3>
-      <p class="section-subtitle reveal">Módulos complementarios para escalar sin límites</p>
+      <h3 class="section-title reveal">Módulos de Expansión</h3>
+      <p class="section-subtitle reveal">Potencia tu ecosistema digital con componentes especializados</p>
 
       <div class="addons-grid">
         <div class="addon-card reveal">
           <div class="addon-icon"><i class="fas fa-bullhorn"></i></div>
-          <h4 class="addon-title">Sloop Ads</h4>
+          <h4 class="addon-title">Sloop Ads Manager</h4>
+          <p class="addon-description">Optimización automática de campañas Meta/Google con IA</p>
           <p class="addon-price">$150<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Agregar</button>
+          <button class="addon-btn">+ Activar Módulo</button>
         </div>
 
         <div class="addon-card reveal">
           <div class="addon-icon"><i class="fas fa-plug"></i></div>
-          <h4 class="addon-title">Sloop Connect</h4>
+          <h4 class="addon-title">Integration Hub</h4>
+          <p class="addon-description">Conexión sin código con +500 aplicaciones empresariales</p>
           <p class="addon-price">$100<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Agregar</button>
+          <button class="addon-btn">+ Activar Módulo</button>
         </div>
 
         <div class="addon-card reveal">
           <div class="addon-icon"><i class="fas fa-phone-volume"></i></div>
-          <h4 class="addon-title">Llamadas IA</h4>
+          <h4 class="addon-title">Voice Agent AI</h4>
+          <p class="addon-description">Llamadas entrantes/salientes con transcripción inteligente</p>
           <p class="addon-price">$80<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Agregar</button>
+          <button class="addon-btn">+ Activar Módulo</button>
         </div>
 
         <div class="addon-card reveal">
           <div class="addon-icon"><i class="fab fa-instagram"></i></div>
-          <h4 class="addon-title">Comentarios Insta</h4>
+          <h4 class="addon-title">Social Engagement</h4>
+          <p class="addon-description">Respuestas inteligentes en comentarios de Instagram/Facebook</p>
           <p class="addon-price">$80<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Agregar</button>
+          <button class="addon-btn">+ Activar Módulo</button>
         </div>
 
         <div class="addon-card reveal">
           <div class="addon-icon"><i class="fas fa-file-pdf"></i></div>
-          <h4 class="addon-title">Generador PDF</h4>
+          <h4 class="addon-title">Smart Docs Generator</h4>
+          <p class="addon-description">Creación y envío automático de PDFs y presupuestos</p>
           <p class="addon-price">$80<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Agregar</button>
+          <button class="addon-btn">+ Activar Módulo</button>
         </div>
 
         <div class="addon-card reveal">
           <div class="addon-icon"><i class="fas fa-envelope"></i></div>
-          <h4 class="addon-title">Gmail IA</h4>
+          <h4 class="addon-title">Smart Mailer</h4>
+          <p class="addon-description">Secuencias de correos contextuales post-interacción</p>
           <p class="addon-price">$58<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Agregar</button>
+          <button class="addon-btn">+ Activar Módulo</button>
         </div>
 
         <div class="addon-card reveal">
           <div class="addon-icon"><i class="fas fa-chart-line"></i></div>
-          <h4 class="addon-title">NPS & Analytics</h4>
+          <h4 class="addon-title">Churn Analytics</h4>
+          <p class="addon-description">Detección predictiva de motivos de pérdida de clientes</p>
           <p class="addon-price">$42<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Agregar</button>
+          <button class="addon-btn">+ Activar Módulo</button>
+        </div>
+
+        <div class="addon-card reveal">
+          <div class="addon-icon"><i class="fas fa-star"></i></div>
+          <h4 class="addon-title">NPS Automation</h4>
+          <p class="addon-description">Encuestas de satisfacción automatizadas y análisis</p>
+          <p class="addon-price">$42<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
+          <button class="addon-btn">+ Activar Módulo</button>
         </div>
 
         <div class="addon-card reveal">
           <div class="addon-icon"><i class="fas fa-calculator"></i></div>
-          <h4 class="addon-title">Fórmulas Matemáticas</h4>
+          <h4 class="addon-title">Math Solver Bot</h4>
+          <p class="addon-description">Cálculos técnicos complejos dentro del chat</p>
           <p class="addon-price">$42<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Agregar</button>
-        </div>
-
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fas fa-shopping-cart"></i></div>
-          <h4 class="addon-title">Recuperación Carritos</h4>
-          <p class="addon-price">$50<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Agregar</button>
+          <button class="addon-btn">+ Activar Módulo</button>
         </div>
       </div>
     </div>
@@ -1258,46 +1280,46 @@
   <!-- === FORM SECTION === -->
   <section id="form" class="form-section">
     <div class="wrapper">
-      <h2 class="section-title reveal">Agenda tu Demo Personalizada</h2>
-      <p class="section-subtitle reveal">Descubre cómo sloop.IA transformará tu empresa en 15 días</p>
+      <h2 class="section-title reveal">Diagnóstico Estratégico</h2>
+      <p class="section-subtitle reveal">Analizamos tu ecosistema digital y diseñamos tu arquitectura de automatización</p>
 
       <div class="form-container reveal">
         <form id="lead-form" method="post">
           <div class="form-grid">
             <div>
-              <label>Tu nombre *</label>
-              <input name="nombre" required placeholder="Nombre completo" />
+              <label>Nombre completo *</label>
+              <input name="nombre" required placeholder="Tu nombre" />
             </div>
             <div>
               <label>Empresa *</label>
               <input name="empresa" required placeholder="Razón social" />
             </div>
             <div>
-              <label>Cargo *</label>
-              <input name="cargo" required placeholder="CEO, CTO, Director..." />
+              <label>Cargo / Rol *</label>
+              <input name="cargo" required placeholder="CEO, Director, Fundador..." />
             </div>
             <div>
               <label>Email corporativo *</label>
               <input name="email" type="email" required placeholder="nombre@empresa.com" />
             </div>
             <div class="full-width">
-              <label>Teléfono *</label>
+              <label>Teléfono de contacto *</label>
               <input name="telefono" required placeholder="+56 9 ..." />
             </div>
           </div>
           
           <div style="margin-top: 20px;">
-            <label>¿Qué desafío quieres resolver con IA? *</label>
-            <textarea name="objetivo" required placeholder="Describe tu principal dolor o reto actual..."></textarea>
+            <label>¿Qué proceso crítico necesitas automatizar? *</label>
+            <textarea name="objetivo" required placeholder="Describe tu principal desafío operacional o de crecimiento..."></textarea>
           </div>
 
           <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px;">
-            🔒 Tus datos están protegidos. Al enviar aceptas ser contactado para agendar la sesión.
+            🔒 Información confidencial protegida. Al enviar, aceptas ser contactado para agendar tu sesión de diagnóstico.
           </p>
 
           <div style="margin-top: 30px;">
             <button class="btn primary" style="width: 100%; font-size: 1.1rem; padding: 16px;" type="submit">
-              Enviar solicitud
+              Solicitar Diagnóstico
             </button>
           </div>
         </form>
@@ -1313,13 +1335,13 @@
           <span>∞</span> sloop.IA
         </div>
         <div class="footer-links">
-          <a href="#">Términos</a>
-          <a href="#">Privacidad</a>
-          <a href="#">Cookies</a>
+          <a href="#">Términos de Servicio</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Seguridad</a>
         </div>
       </div>
       <p style="margin-top: 20px; color: var(--text-muted);">
-        © <span id="year"></span> sloop.IA — Todos los derechos reservados.
+        © <span id="year"></span> sloop.IA — Sistemas de Inteligencia Empresarial
       </p>
     </div>
   </footer>
@@ -1363,7 +1385,7 @@
         
         const btn = form.querySelector('button[type="submit"]');
         const originalText = btn.textContent;
-        btn.textContent = "Enviando...";
+        btn.textContent = "Procesando...";
         btn.disabled = true;
 
         const data = {
@@ -1373,7 +1395,7 @@
           email: form.elements['email'].value.trim(),
           telefono: form.elements['telefono'].value.trim(),
           objetivoIA: form.elements['objetivo'].value.trim(),
-          origen: 'landing-sloop-enterprise-v2'
+          origen: 'landing-sloop-premium-v3'
         };
 
         try {
@@ -1385,11 +1407,11 @@
 
           if (!response.ok) throw new Error('Error en el envío');
 
-          alert('¡Gracias! Hemos recibido tu solicitud. Te contactaremos pronto para agendar tu demo.');
+          alert('¡Perfecto! Hemos recibido tu solicitud. Un consultor te contactará en las próximas 24 horas para agendar tu diagnóstico estratégico.');
           form.reset();
         } catch (err) {
           console.error(err);
-          alert('Hubo un problema al enviar. Por favor intenta de nuevo o contáctanos por WhatsApp.');
+          alert('Hubo un problema al procesar tu solicitud. Por favor intenta nuevamente o escríbenos directamente por WhatsApp.');
         } finally {
           btn.textContent = originalText;
           btn.disabled = false;
