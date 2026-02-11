@@ -3,1757 +3,1279 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>sloop.IA — Sistemas de Inteligencia Empresarial</title>
+  <title>Orion.ia — Sistemas de Inteligencia Empresarial</title>
   <meta name="description" content="Orquestación de procesos, automatización inteligente y arquitectura de datos para empresas que exigen resultados medibles." />
-
-  <link rel="canonical" href="https://www.sloop.ia/" />
-  <link rel="icon" href="/favicon.ico" sizes="any"> 
+  <link rel="canonical" href="https://www.orion.ia/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* === SISTEMA DE DISEÑO GLOBAL === */
+    /* =========================================
+       DESIGN SYSTEM — ORION.IA
+    ========================================= */
     :root {
-      --bg-deep: #020408;
-      --bg-glass: rgba(255, 255, 255, 0.02);
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --primary-orange: #e85d04;
-      --primary-glow: rgba(232, 93, 4, 0.5);
-      --text-main: #ffffff;
-      --text-muted: #94a3b8;
-      --font-main: 'Plus Jakarta Sans', sans-serif;
+      --bg-void:        #030507;
+      --bg-surface:     #080d12;
+      --bg-card:        rgba(255,255,255,0.025);
+      --bg-card-hover:  rgba(255,255,255,0.045);
+      --border:         rgba(255,255,255,0.07);
+      --border-lit:     rgba(255,165,40,0.35);
+      --fire:           #f97316;
+      --fire-dim:       rgba(249,115,22,0.18);
+      --fire-glow:      rgba(249,115,22,0.45);
+      --gold:           #fbbf24;
+      --text:           #f1f5f9;
+      --text-sub:       #94a3b8;
+      --text-dim:       #475569;
+      --success:        #22d3a5;
+      --font-display:   'Syne', sans-serif;
+      --font-body:      'DM Sans', sans-serif;
+      --radius-sm:      10px;
+      --radius-md:      16px;
+      --radius-lg:      24px;
+      --radius-xl:      32px;
+      --transition:     all 0.3s cubic-bezier(0.4,0,0.2,1);
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--bg-deep);
-      color: var(--text-main);
-      font-family: var(--font-main);
+      background: var(--bg-void);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
       overflow-x: hidden;
-      line-height: 1.6;
     }
 
-    /* === FONDO ATMOSFÉRICO === */
-    .scene-bg {
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-      z-index: -1;
-      background: 
-        radial-gradient(circle at 50% -20%, rgba(232, 93, 4, 0.15), transparent 60%),
-        radial-gradient(circle at 100% 50%, rgba(157, 2, 8, 0.08), transparent 50%);
+    /* ---- ATMOSPHERIC BG ---- */
+    .atmo {
+      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -15%, rgba(249,115,22,0.13), transparent),
+        radial-gradient(ellipse 60% 40% at 90% 60%,  rgba(251,191,36,0.06), transparent),
+        radial-gradient(ellipse 50% 60% at -10% 80%, rgba(249,115,22,0.05), transparent);
     }
 
-    .wrapper { 
-      width: min(100%, 1400px); 
-      margin-inline: auto; 
-      padding: 0 24px; 
+    .noise {
+      position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
     }
 
-    /* === NAVEGACIÓN (STICKY & GLASSMORPHISM) === */
+    .wrapper { width: min(100%, 1300px); margin-inline: auto; padding: 0 28px; }
+
+    /* =========================================
+       NAV
+    ========================================= */
     nav {
-      position: sticky; 
-      top: 0; 
-      z-index: 1000;
-      padding: 16px 0;
-      background: rgba(2, 4, 8, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-subtle);
-      transition: background 0.3s ease;
+      position: sticky; top: 0; z-index: 1000;
+      padding: 0;
+      transition: var(--transition);
     }
 
-    nav.scrolled {
-      background: rgba(2, 4, 8, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      margin: 14px auto;
+      width: min(calc(100% - 56px), 1300px);
+      padding: 14px 24px;
+      background: rgba(8,13,18,0.65);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: var(--transition);
     }
 
-    .nav-container {
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center;
+    nav.scrolled .nav-inner {
+      background: rgba(8,13,18,0.88);
+      border-color: rgba(249,115,22,0.12);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
     }
 
     .logo {
-      font-size: 1.5rem; 
-      font-weight: 800; 
-      letter-spacing: -0.5px;
-      display: flex; 
-      align-items: center; 
-      gap: 8px; 
-      color: white; 
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
       text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
     }
 
-    .logo span { 
-      color: var(--primary-orange); 
-      font-size: 1.8rem; 
-      line-height: 0; 
+    .logo-mark {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--fire), var(--gold));
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; color: white;
+      box-shadow: 0 0 20px var(--fire-glow);
+      font-weight: 800;
     }
+
+    .logo span { color: var(--fire); }
 
     .nav-links {
-      display: flex; 
-      gap: 32px;
+      display: flex; gap: 4px;
     }
 
     .nav-links a {
-      text-decoration: none; 
-      color: var(--text-muted); 
-      font-weight: 500; 
-      font-size: 0.95rem;
-      transition: color 0.3s;
+      text-decoration: none; color: var(--text-sub);
+      font-size: 0.9rem; font-weight: 500;
+      padding: 8px 16px; border-radius: var(--radius-sm);
+      transition: var(--transition);
     }
 
-    .nav-links a:hover { 
-      color: white; 
-    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
 
-    .nav-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
 
-    @media (max-width: 768px) { 
-      .nav-links { display: none; }
-    }
+    @media (max-width: 768px) { .nav-links { display: none; } }
 
-    /* === BOTONES === */
+    /* =========================================
+       BUTTONS
+    ========================================= */
     .btn {
-      padding: 10px 24px; 
-      border-radius: 999px; 
-      font-weight: 600; 
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; border: none;
       text-decoration: none;
-      transition: all 0.3s ease; 
-      font-size: 0.95rem; 
-      cursor: pointer; 
-      border: none;
-      display: inline-flex; 
-      align-items: center; 
-      justify-content: center;
-      gap: 8px;
+      transition: var(--transition);
+      white-space: nowrap;
     }
 
-    .btn.primary {
-      background-color: var(--primary-orange); 
+    .btn-primary {
+      background: var(--fire);
       color: white;
-      box-shadow: 0 0 20px var(--primary-glow);
+      box-shadow: 0 0 0 0 var(--fire-glow);
     }
-
-    .btn.primary:hover {
-      background-color: #ff6b1a; 
-      transform: translateY(-2px);
-      box-shadow: 0 0 35px var(--primary-glow);
-    }
-
-    .btn.outline {
-      background: transparent; 
-      border: 1px solid var(--border-subtle); 
-      color: white;
-    }
-
-    .btn.outline:hover { 
-      border-color: white; 
-      background: rgba(255,255,255,0.05); 
-    }
-
-    /* === MODALES === */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-container {
-      background: var(--bg-deep);
-      border: 1px solid var(--border-subtle);
-      border-radius: 24px;
-      max-width: 550px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      transform: scale(0.9) translateY(20px);
-      transition: transform 0.3s ease;
-    }
-
-    .modal-overlay.active .modal-container {
-      transform: scale(1) translateY(0);
-    }
-
-    .modal-header {
-      padding: 30px 30px 20px 30px;
-      border-bottom: 1px solid var(--border-subtle);
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      color: var(--text-muted);
-      font-size: 18px;
-    }
-
-    .modal-close:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-    }
-
-    .modal-title {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .modal-subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .modal-body {
-      padding: 30px;
-    }
-
-    .modal-footer {
-      padding: 20px 30px 30px 30px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    /* === FORMULARIOS EN MODALES === */
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #fff;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 14px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-subtle);
-      color: white;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 1rem;
-      transition: all 0.3s;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: var(--primary-orange);
-      box-shadow: 0 0 0 4px rgba(232, 93, 4, 0.1);
-    }
-
-    .form-group input::placeholder {
-      color: var(--text-muted);
-    }
-
-    /* === BOTONES DE SELECCIÓN === */
-    .selection-buttons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .selection-btn {
-      padding: 12px 16px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-align: center;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .selection-btn:hover {
-      border-color: var(--primary-orange);
-      color: white;
-    }
-
-    .selection-btn.active {
-      background: rgba(232, 93, 4, 0.15);
-      border-color: var(--primary-orange);
-      color: var(--primary-orange);
-    }
-
-    /* === INPUT CON PREFIJO === */
-    .phone-input-group {
-      display: flex;
-      gap: 10px;
-    }
-
-    .phone-input-group select {
-      width: 110px;
-      flex-shrink: 0;
-    }
-
-    .phone-input-group input {
-      flex: 1;
-    }
-
-    /* === SLIDER PERSONALIZADO === */
-    .slider-group {
-      margin-bottom: 30px;
-    }
-
-    .slider-label {
-      display: block;
-      margin-bottom: 12px;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .slider-value {
-      display: block;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--primary-orange);
-      margin-bottom: 16px;
-    }
-
-    .slider-container {
-      position: relative;
-      padding: 0 10px;
-    }
-
-    input[type="range"] {
-      width: 100%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 24px;
-      height: 24px;
-      background: var(--primary-orange);
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 0 4px rgba(232, 93, 4, 0.2);
-      transition: all 0.3s;
-    }
-
-    input[type="range"]::-webkit-slider-thumb:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 0 8px rgba(232, 93, 4, 0.2);
-    }
-
-    input[type="range"]::-moz-range-thumb {
-      width: 24px;
-      height: 24px;
-      background: var(--primary-orange);
-      border-radius: 50%;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 0 0 4px rgba(232, 93, 4, 0.2);
+    .btn-primary:hover {
+      background: #fb923c;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 24px var(--fire-glow);
     }
 
-    .slider-markers {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 8px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-sub);
+      border: 1px solid var(--border);
     }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
 
-    /* === TARJETAS DE OPCIONES === */
-    .option-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .option-card {
-      background: rgba(0, 0, 0, 0.3);
-      border: 2px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 24px;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-align: center;
-    }
-
-    .option-card:hover {
-      border-color: var(--primary-orange);
-      transform: translateY(-3px);
-    }
-
-    .option-card.active {
-      background: rgba(232, 93, 4, 0.1);
-      border-color: var(--primary-orange);
-    }
-
-    .option-card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-    }
-
-    .option-card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: white;
-    }
-
-    .option-card-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    /* === GRID DE CATEGORÍAS === */
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .category-btn {
-      padding: 20px 12px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .category-btn:hover {
-      border-color: var(--primary-orange);
-      transform: translateY(-2px);
-    }
-
-    .category-btn.active {
-      background: rgba(232, 93, 4, 0.15);
-      border-color: var(--primary-orange);
-    }
-
-    .category-btn i {
-      font-size: 1.8rem;
-      color: var(--primary-orange);
-    }
-
-    .category-btn span {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-
-    .category-btn.active span {
-      color: white;
-    }
-
-    /* === SUB-CATEGORÍAS === */
-    .subcategory-section {
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .subcategory-section.active {
-      display: block;
-    }
-
-    .subcategory-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: white;
-    }
-
-    .subcategory-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .chip {
-      padding: 10px 18px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-
-    .chip:hover {
-      border-color: var(--primary-orange);
-      color: white;
-    }
-
-    .chip.active {
-      background: rgba(232, 93, 4, 0.15);
-      border-color: var(--primary-orange);
-      color: var(--primary-orange);
-    }
-
-    /* === WIZARD PROGRESS === */
-    .wizard-progress {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 30px;
-      padding: 0 30px;
-    }
-
-    .progress-step {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .progress-step.active {
-      color: var(--primary-orange);
-      font-weight: 600;
-    }
-
-    .progress-step.completed {
-      color: #22c55e;
-    }
-
-    .progress-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--text-muted);
-    }
-
-    .progress-step.active .progress-dot {
-      background: var(--primary-orange);
-      box-shadow: 0 0 0 4px rgba(232, 93, 4, 0.2);
-    }
-
-    .progress-step.completed .progress-dot {
-      background: #22c55e;
-    }
-
-    .progress-line {
-      flex: 1;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.1);
-      margin: 0 8px;
-    }
-
-    /* === ANIMACIONES === */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-step {
-      animation: fadeIn 0.4s ease;
-    }
-
-    /* === RESPONSIVE === */
-    @media (max-width: 640px) {
-      .option-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .selection-buttons {
-        grid-template-columns: 1fr;
-      }
-
-      .modal-title {
-        font-size: 1.4rem;
-      }
-
-      .modal-header,
-      .modal-body,
-      .modal-footer {
-        padding: 20px;
-      }
-
-      .wizard-progress {
-        padding: 0 20px;
-      }
-    }
+    .btn-lg { padding: 14px 32px; font-size: 1rem; border-radius: var(--radius-md); }
+    .btn-full { width: 100%; }
 
-    /* === HERO SECTION (ASIMÉTRICO 60/40) === */
+    /* =========================================
+       HERO
+    ========================================= */
     .hero {
-      min-height: 90vh;
+      min-height: 88vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 55% 1fr;
       align-items: center;
       gap: 60px;
-      padding: 60px 0;
+      padding: 80px 0 60px;
     }
 
     @media (max-width: 968px) {
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        gap: 40px;
-      }
+      .hero { grid-template-columns: 1fr; min-height: auto; gap: 50px; }
     }
 
-    .hero-left {
-      max-width: 650px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px;
+      background: linear-gradient(90deg, rgba(249,115,22,0.1), rgba(251,191,36,0.08));
+      border: 1px solid rgba(249,115,22,0.2);
       border-radius: 999px;
-      background: linear-gradient(90deg, rgba(232, 93, 4, 0.1), rgba(255, 158, 0, 0.1));
-      border: 1px solid var(--border-subtle);
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      color: #ffb366;
+      font-size: 0.8rem; font-weight: 600; color: #fbbf24;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--fire);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
     }
 
     h1 {
-      font-size: clamp(3rem, 5vw, 4.5rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
       font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, var(--primary-orange), #ff9e00);
+      background: linear-gradient(135deg, var(--fire) 20%, var(--gold) 80%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .hero-subtitle {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      line-height: 1.6;
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-sub);
+      max-width: 520px;
+      margin-bottom: 44px;
+      line-height: 1.7;
+      font-weight: 300;
     }
 
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
 
-    .hero-cta .btn {
-      padding: 14px 32px;
-      font-size: 1rem;
-    }
-
-    /* === ORBIT SYSTEM (CSS PURO) === */
-    .orbit-container {
+    /* Orion visual */
+    .orion-visual {
       position: relative;
       width: 100%;
-      height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: 480px;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    .orbit-center {
+    .orion-core {
       position: absolute;
-      width: 120px;
-      height: 120px;
-      background: linear-gradient(135deg, rgba(232, 93, 4, 0.2), rgba(0, 0, 0, 0.4));
-      border: 2px solid var(--primary-orange);
+      width: 110px; height: 110px;
+      background: radial-gradient(circle, rgba(249,115,22,0.3), rgba(249,115,22,0.05));
+      border: 2px solid rgba(249,115,22,0.5);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      font-weight: 800;
-      color: white;
+      display: flex; align-items: center; justify-content: center;
       z-index: 10;
-      animation: float 3s ease-in-out infinite;
-      box-shadow: 0 0 40px var(--primary-glow);
+      animation: float 4s ease-in-out infinite;
     }
 
-    .orbit-ring {
-      position: absolute;
-      border: 1px dashed rgba(255, 255, 255, 0.1);
+    .orion-core-inner {
+      width: 70px; height: 70px;
+      background: linear-gradient(135deg, rgba(249,115,22,0.4), rgba(251,191,36,0.2));
+      border: 1px solid rgba(249,115,22,0.6);
       border-radius: 50%;
-      animation: rotate 20s linear infinite;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    .orbit-ring-1 {
-      width: 280px;
-      height: 280px;
+    .orion-star {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--fire), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
-    .orbit-ring-2 {
-      width: 400px;
-      height: 400px;
-      animation-duration: 30s;
-      animation-direction: reverse;
-    }
-
-    .orbit-icon {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background: var(--bg-glass);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: var(--primary-orange);
-      animation: orbit 15s linear infinite;
-    }
-
-    .orbit-icon:nth-child(1) { animation-delay: 0s; }
-    .orbit-icon:nth-child(2) { animation-delay: -3s; }
-    .orbit-icon:nth-child(3) { animation-delay: -6s; }
-    .orbit-icon:nth-child(4) { animation-delay: -9s; }
-    .orbit-icon:nth-child(5) { animation-delay: -12s; }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+      0%,100% { transform: translateY(0) scale(1); box-shadow: 0 0 40px var(--fire-glow); }
+      50% { transform: translateY(-16px) scale(1.02); box-shadow: 0 20px 60px var(--fire-glow); }
     }
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .orbit-track {
+      position: absolute;
+      border: 1px dashed rgba(249,115,22,0.1);
+      border-radius: 50%;
     }
 
-    @keyframes orbit {
-      from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
-      to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+    .orbit-track-1 { width: 240px; height: 240px; animation: spin 18s linear infinite; }
+    .orbit-track-2 { width: 380px; height: 380px; animation: spin 28s linear infinite reverse; }
+    .orbit-track-3 { width: 460px; height: 460px; animation: spin 40s linear infinite; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .orbit-node {
+      position: absolute;
+      width: 44px; height: 44px;
+      background: rgba(8,13,18,0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--fire);
+      backdrop-filter: blur(12px);
     }
 
-    /* === LOGO TICKER (SCROLL INFINITO) === */
-    .ticker-section {
-      background: #000000;
-      padding: 40px 0;
+    .orbit-node:nth-child(1) { animation: orbit1 18s linear infinite; }
+    .orbit-node:nth-child(2) { animation: orbit1 18s linear infinite; animation-delay: -6s; }
+    .orbit-node:nth-child(3) { animation: orbit1 18s linear infinite; animation-delay: -12s; }
+
+    @keyframes orbit1 {
+      from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+    }
+
+    .orbit-node-b:nth-child(1) { animation: orbit2 28s linear infinite; }
+    .orbit-node-b:nth-child(2) { animation: orbit2 28s linear infinite; animation-delay: -10s; }
+
+    @keyframes orbit2 {
+      from { transform: rotate(0deg) translateX(190px) rotate(0deg); }
+      to   { transform: rotate(-360deg) translateX(190px) rotate(360deg); }
+    }
+
+    /* =========================================
+       TICKER
+    ========================================= */
+    .ticker-wrap {
+      background: #000;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
       overflow: hidden;
       position: relative;
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
     }
+    .ticker-wrap::before, .ticker-wrap::after {
+      content: ''; position: absolute; top: 0; width: 120px; height: 100%;
+      z-index: 2; pointer-events: none;
+    }
+    .ticker-wrap::before { left: 0; background: linear-gradient(to right, #000, transparent); }
+    .ticker-wrap::after  { right: 0; background: linear-gradient(to left, #000, transparent); }
 
     .ticker-track {
-      display: flex;
-      gap: 80px;
-      animation: scroll 30s linear infinite;
+      display: flex; gap: 72px;
+      animation: ticker 28s linear infinite;
+      white-space: nowrap;
     }
 
     .ticker-item {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.3);
-      white-space: nowrap;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: 0.14em; text-transform: uppercase;
     }
 
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    .ticker-item span { color: rgba(249,115,22,0.4); margin-right: 8px; }
+
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    /* =========================================
+       SECTION HEADERS
+    ========================================= */
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
     }
 
-    .ticker-section::before,
-    .ticker-section::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 100px;
-      height: 100%;
-      z-index: 2;
-      pointer-events: none;
+    .section-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--fire);
+      margin-bottom: 16px;
     }
 
-    .ticker-section::before {
-      left: 0;
-      background: linear-gradient(to right, #000, transparent);
+    .section-label::before, .section-label::after {
+      content: ''; flex: 1; height: 1px; width: 24px;
+      background: linear-gradient(to right, transparent, var(--fire));
     }
-
-    .ticker-section::after {
-      right: 0;
-      background: linear-gradient(to left, #000, transparent);
-    }
-
-    /* === SECCIÓN DE PRECIOS === */
-    .pricing-section {
-      padding: 100px 0;
-    }
+    .section-label::after { background: linear-gradient(to left, transparent, var(--fire)); }
 
     .section-title {
-      font-size: 2.8rem;
-      text-align: center;
-      margin-bottom: 20px;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
     }
 
-    .section-subtitle {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      margin-bottom: 50px;
+    .section-sub {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto;
     }
 
-    .pricing-toggle {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 50px;
-    }
+    /* =========================================
+       PRICING
+    ========================================= */
+    .pricing-section { padding: 110px 0; }
 
-    .toggle-switch {
-      position: relative;
-      width: 60px;
-      height: 32px;
-      background: var(--bg-glass);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .toggle-switch::after {
-      content: '';
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      width: 22px;
-      height: 22px;
-      background: var(--primary-orange);
-      border-radius: 50%;
-      transition: transform 0.3s;
-    }
-
-    .toggle-switch.active::after {
-      transform: translateX(28px);
+    /* Toggle */
+    .billing-toggle {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin-bottom: 56px;
     }
 
     .toggle-label {
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
+      font-size: 0.9rem; font-weight: 500; color: var(--text-dim);
+      cursor: pointer; transition: var(--transition);
     }
+    .toggle-label.on { color: var(--text); }
 
-    .toggle-label.active {
-      color: white;
-    }
-
-    .discount-badge {
-      background: var(--primary-orange);
-      color: white;
-      padding: 4px 12px;
+    .toggle-pill {
+      width: 52px; height: 28px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
       border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      cursor: pointer; position: relative;
+      transition: var(--transition);
     }
 
+    .toggle-thumb {
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 20px; height: 20px;
+      background: var(--fire);
+      border-radius: 50%;
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 0 10px var(--fire-glow);
+    }
+
+    .toggle-pill.annual .toggle-thumb { transform: translateX(24px); }
+
+    .save-pill {
+      background: linear-gradient(90deg, rgba(249,115,22,0.15), rgba(251,191,36,0.1));
+      border: 1px solid rgba(249,115,22,0.25);
+      color: var(--gold);
+      font-size: 0.75rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Grid */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
       margin: 0 auto;
+      align-items: start;
     }
 
-    .pricing-card {
-      background: var(--bg-glass);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 24px;
-      padding: 40px;
+    @media (max-width: 960px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+    }
+
+    /* Card */
+    .plan-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
       position: relative;
-      transition: all 0.3s;
+      transition: var(--transition);
+      overflow: hidden;
     }
 
-    .pricing-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(232, 93, 4, 0.3);
+    .plan-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--fire), transparent);
+      opacity: 0;
+      transition: var(--transition);
     }
 
-    .pricing-card.featured {
-      border-color: var(--primary-orange);
-      transform: scale(1.05);
-      box-shadow: 0 0 50px rgba(232, 93, 4, 0.2);
+    .plan-card:hover {
+      border-color: rgba(249,115,22,0.2);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
     }
 
-    .pricing-badge {
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary-orange);
-      color: white;
-      padding: 6px 20px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 700;
+    .plan-card:hover::before { opacity: 0.6; }
+
+    .plan-card.featured {
+      border-color: rgba(249,115,22,0.35);
+      background: linear-gradient(160deg, rgba(249,115,22,0.06), rgba(8,13,18,0.9));
+      transform: scale(1.02) translateY(-4px);
+    }
+
+    .plan-card.featured::before { opacity: 1; }
+
+    .plan-card.featured:hover {
+      transform: scale(1.02) translateY(-8px);
+    }
+
+    .featured-badge {
+      position: absolute; top: -1px; right: 28px;
+      background: linear-gradient(135deg, var(--fire), var(--gold));
+      color: white; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .plan-tier {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      padding: 4px 10px; border-radius: 6px;
+      display: inline-block; margin-bottom: 14px;
     }
 
-    .card-header {
-      margin-bottom: 25px;
-    }
+    .tier-basic    { background: rgba(96,165,250,0.1);  color: #60a5fa; }
+    .tier-business { background: rgba(249,115,22,0.12); color: var(--fire); }
+    .tier-ejecutivo{ background: rgba(168,85,247,0.12); color: #c084fc; }
 
-    .plan-badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-
-    .plan-title {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin: 0;
+    .plan-name {
+      font-family: var(--font-display);
+      font-size: 1.7rem; font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 6px;
     }
 
     .plan-tagline {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-
-    .pricing-breakdown {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 25px;
-    }
-
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .price-row:last-child {
-      border-bottom: none;
-    }
-
-    .price-row.highlight {
-      background: linear-gradient(90deg, rgba(232, 93, 4, 0.1), transparent);
-      margin: 0 -20px;
-      padding: 15px 20px;
-      border-radius: 12px;
-    }
-
-    .price-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .price-value {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: white;
-    }
-
-    .price-value.large {
-      font-size: 2.2rem;
-      color: var(--primary-orange);
-    }
-
-    .pricing-cta {
-      width: 100%;
-      padding: 14px;
-      background: transparent;
-      border: 1px solid var(--border-subtle);
-      color: white;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .pricing-cta:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: white;
-    }
-
-    .featured .pricing-cta {
-      background: var(--primary-orange);
-      border-color: var(--primary-orange);
-    }
-
-    .featured .pricing-cta:hover {
-      background: #ff6b1a;
-    }
-
-    .feature-block {
-      margin: 25px 0;
-      padding-bottom: 25px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .feature-block:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .block-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 15px;
-    }
-
-    .block-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .block-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .block-list li i {
-      color: #22c55e;
-      font-size: 0.85rem;
-    }
-
-    .support-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .support-item {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-    }
-
-    .support-number {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--primary-orange);
-      margin-bottom: 5px;
-    }
-
-    .support-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .ai-row {
-      margin-bottom: 15px;
-    }
-
-    .ai-label {
-      display: block;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .ai-badges {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .ai-badge {
-      background: rgba(232, 93, 4, 0.15);
-      border: 1px solid rgba(232, 93, 4, 0.3);
-      color: var(--primary-orange);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .channel-icons {
-      display: flex;
-      gap: 12px;
-      font-size: 1.3rem;
-      color: var(--text-muted);
-    }
-
-    .channel-icons i {
-      transition: color 0.3s;
-    }
-
-    .channel-icons i:hover {
-      color: var(--primary-orange);
-    }
-
-    /* === ADD-ONS SECTION === */
-    .addons-section {
-      padding: 100px 0;
-      background: linear-gradient(180deg, transparent, rgba(232, 93, 4, 0.02));
-    }
-
-    .addons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .addon-card {
-      background: var(--bg-glass);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: 30px;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .addon-card:hover {
-      border-color: var(--primary-orange);
-      transform: translateY(-3px);
-    }
-
-    .addon-icon {
-      width: 50px;
-      height: 50px;
-      background: rgba(232, 93, 4, 0.1);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      color: var(--primary-orange);
-      margin-bottom: 16px;
-    }
-
-    .addon-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .addon-description {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
+      font-size: 0.88rem; color: var(--text-sub);
+      font-weight: 300; margin-bottom: 28px;
       line-height: 1.4;
     }
 
-    .addon-price {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--primary-orange);
-      margin-bottom: 16px;
+    /* Pricing block */
+    .price-block {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 24px;
     }
 
-    .addon-btn {
-      width: 100%;
-      padding: 10px;
-      background: rgba(232, 93, 4, 0.1);
-      border: 1px solid var(--primary-orange);
-      color: var(--primary-orange);
-      border-radius: 10px;
-      font-weight: 600;
+    .price-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .price-row:first-child { padding-top: 0; }
+
+    .price-row-label {
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em;
+      line-height: 1.3;
+    }
+
+    .price-row-label span {
+      display: block; font-size: 0.68rem; color: var(--text-dim); margin-top: 2px;
+    }
+
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-weight: 700; color: var(--text);
+      text-align: right; line-height: 1.2;
+    }
+    .price-unit { font-size: 0.78rem; font-weight: 400; color: var(--text-sub); }
+
+    .price-amount.hero-price {
+      font-size: 2rem; color: var(--fire);
+    }
+
+    .price-amount.consult {
+      font-size: 1.4rem; color: var(--text-sub);
+    }
+
+    /* Features */
+    .feature-group {
+      margin: 22px 0;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    .feature-group:last-of-type { border-bottom: none; padding-bottom: 0; margin-bottom: 20px; }
+
+    .fg-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .feature-list { list-style: none; }
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.88rem; color: var(--text-sub);
+      padding: 5px 0;
+      line-height: 1.4;
+    }
+
+    .feature-list li i {
+      color: var(--success); font-size: 0.75rem;
+      margin-top: 4px; flex-shrink: 0;
+    }
+
+    .feature-list li.dim { color: var(--text-dim); }
+
+    .plan-desc-block {
+      background: rgba(249,115,22,0.05);
+      border: 1px solid rgba(249,115,22,0.12);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin: 22px 0;
+    }
+
+    /* =========================================
+       MODULES SECTION
+    ========================================= */
+    .modules-section {
+      padding: 110px 0;
+      background: linear-gradient(180deg, transparent, rgba(249,115,22,0.015), transparent);
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) { .modules-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .modules-grid { grid-template-columns: 1fr; } }
+
+    .module-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: var(--transition);
       cursor: pointer;
-      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
     }
 
-    .addon-btn:hover {
-      background: var(--primary-orange);
-      color: white;
+    .module-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--fire), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
     }
 
-    /* === FOOTER === */
+    .module-card:hover {
+      border-color: rgba(249,115,22,0.2);
+      background: var(--bg-card-hover);
+      transform: translateY(-3px);
+    }
+
+    .module-card:hover::after { transform: scaleX(1); }
+
+    .module-icon {
+      width: 44px; height: 44px;
+      background: var(--fire-dim);
+      border: 1px solid rgba(249,115,22,0.2);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--fire);
+      margin-bottom: 16px;
+      transition: var(--transition);
+    }
+
+    .module-card:hover .module-icon {
+      background: rgba(249,115,22,0.25);
+      box-shadow: 0 0 20px var(--fire-glow);
+    }
+
+    .module-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem; font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .module-desc {
+      font-size: 0.83rem; color: var(--text-sub);
+      line-height: 1.55; font-weight: 300;
+    }
+
+    .module-cta {
+      margin-top: 18px;
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--fire); opacity: 0;
+      transition: var(--transition);
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    .module-card:hover .module-cta { opacity: 1; }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
     footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 40px 0;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      padding: 44px 0;
     }
 
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 800;
+      display: flex; align-items: center; gap: 8px;
+      color: var(--text); text-decoration: none;
+    }
+
+    .footer-logo-mark {
+      width: 26px; height: 26px;
+      background: linear-gradient(135deg, var(--fire), var(--gold));
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: white; font-weight: 800;
     }
 
     .footer-links {
-      display: flex;
-      gap: 24px;
+      display: flex; gap: 28px; flex-wrap: wrap;
     }
 
     .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.3s;
+      color: var(--text-dim); font-size: 0.85rem;
+      text-decoration: none; transition: var(--transition);
+    }
+    .footer-links a:hover { color: var(--text-sub); }
+
+    .footer-copy {
+      text-align: center; color: var(--text-dim);
+      font-size: 0.82rem; margin-top: 32px;
     }
 
-    .footer-links a:hover {
-      color: white;
+    /* =========================================
+       MODALS
+    ========================================= */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+
+    .modal-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      max-width: 540px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      position: relative;
+      transform: scale(0.92) translateY(24px);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
+
+    .modal-head {
+      padding: 32px 32px 22px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
     }
 
-    /* === ANIMACIONES === */
+    .modal-close-btn {
+      position: absolute; top: 18px; right: 18px;
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-sub);
+      transition: var(--transition);
+    }
+    .modal-close-btn:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+
+    .modal-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
+    .modal-subtitle { font-size: 0.9rem; color: var(--text-sub); }
+
+    .modal-body  { padding: 28px 32px; }
+    .modal-foot  { padding: 18px 32px 32px; border-top: 1px solid var(--border); }
+
+    /* Form elements */
+    .form-field { margin-bottom: 18px; }
+    .form-field label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+
+    .form-field input, .form-field select {
+      width: 100%; padding: 13px 16px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text); font-family: var(--font-body); font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    .form-field input::placeholder { color: var(--text-dim); }
+    .form-field input:focus, .form-field select:focus {
+      outline: none;
+      border-color: var(--fire);
+      box-shadow: 0 0 0 3px var(--fire-dim);
+    }
+    .form-field select option { background: var(--bg-surface); }
+
+    .phone-row { display: flex; gap: 10px; }
+    .phone-row select { width: 110px; flex-shrink: 0; }
+    .phone-row input { flex: 1; }
+
+    /* Source buttons */
+    .source-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .source-btn {
+      padding: 10px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer; text-align: center;
+      font-size: 0.85rem; font-weight: 600; color: var(--text-sub);
+      transition: var(--transition);
+    }
+    .source-btn:hover { border-color: var(--fire); color: var(--text); }
+    .source-btn.on { background: var(--fire-dim); border-color: var(--fire); color: var(--fire); }
+
+    /* Slider */
+    .slider-wrap { margin-bottom: 4px; }
+    .slider-display {
+      text-align: center; font-family: var(--font-display);
+      font-size: 2.4rem; font-weight: 800; color: var(--fire); margin-bottom: 12px;
+    }
+    input[type="range"] {
+      width: 100%; height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px; outline: none;
+      -webkit-appearance: none; appearance: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px; height: 22px;
+      background: var(--fire); border-radius: 50%; cursor: pointer;
+      box-shadow: 0 0 0 4px var(--fire-dim);
+      transition: all 0.2s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    .slider-marks { display: flex; justify-content: space-between; font-size: 0.73rem; color: var(--text-dim); margin-top: 6px; }
+
+    /* Wizard progress */
+    .wizard-prog {
+      display: flex; align-items: center;
+      padding: 28px 32px 0;
+    }
+    .wp-step {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.82rem; color: var(--text-dim); font-weight: 500;
+    }
+    .wp-step.active { color: var(--fire); }
+    .wp-step.done   { color: var(--success); }
+
+    .wp-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--text-dim); transition: var(--transition);
+    }
+    .wp-step.active .wp-dot { background: var(--fire); box-shadow: 0 0 0 4px var(--fire-dim); }
+    .wp-step.done   .wp-dot { background: var(--success); }
+
+    .wp-line { flex: 1; height: 1px; background: var(--border); margin: 0 10px; }
+
+    /* Step 2 size cards */
+    .size-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+    .size-card {
+      background: rgba(0,0,0,0.3); border: 2px solid var(--border);
+      border-radius: var(--radius-md); padding: 20px;
+      cursor: pointer; text-align: center; transition: var(--transition);
+    }
+    .size-card:hover { border-color: var(--fire); transform: translateY(-2px); }
+    .size-card.on { background: var(--fire-dim); border-color: var(--fire); }
+    .size-emoji { font-size: 2rem; margin-bottom: 8px; }
+    .size-label { font-weight: 700; font-size: 0.95rem; }
+    .size-desc { font-size: 0.8rem; color: var(--text-sub); margin-top: 4px; }
+
+    /* Step 3 category chips */
+    .cat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .cat-chip {
+      background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 16px 10px;
+      cursor: pointer; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      transition: var(--transition);
+    }
+    .cat-chip:hover { border-color: var(--fire); transform: translateY(-2px); }
+    .cat-chip.on { background: var(--fire-dim); border-color: var(--fire); }
+    .cat-chip i { font-size: 1.5rem; color: var(--fire); }
+    .cat-chip span { font-size: 0.78rem; font-weight: 600; color: var(--text-sub); }
+    .cat-chip.on span { color: var(--text); }
+
+    .sub-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .sub-chip {
+      padding: 8px 16px;
+      background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+      border-radius: 999px; cursor: pointer;
+      font-size: 0.85rem; font-weight: 500; color: var(--text-sub);
+      transition: var(--transition);
+    }
+    .sub-chip:hover { border-color: var(--fire); color: var(--text); }
+    .sub-chip.on { background: var(--fire-dim); border-color: var(--fire); color: var(--fire); }
+
+    .sub-section { display: none; animation: fadeSlide 0.3s ease; }
+    .sub-section.show { display: block; }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .sub-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 12px; margin-top: 20px; }
+
+    /* Dual footer buttons */
+    .btn-row { display: flex; gap: 12px; }
+    .btn-row .btn { flex: 1; }
+
+    /* Reveal animation */
     .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
     }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 640px) {
+      .size-grid { grid-template-columns: 1fr; }
+      .cat-grid  { grid-template-columns: repeat(2,1fr); }
+      .modal-head, .modal-body, .modal-foot { padding-left: 20px; padding-right: 20px; }
+      .wizard-prog { padding-left: 20px; padding-right: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="scene-bg"></div>
+  <div class="atmo"></div>
+  <div class="noise"></div>
 
-  <!-- === NAVEGACIÓN === -->
-  <nav id="navbar">
-    <div class="wrapper nav-container">
+  <!-- ========= NAV ========= -->
+  <nav id="nav">
+    <div class="nav-inner">
       <a href="#" class="logo">
-        <span>∞</span> sloop.IA
+        <div class="logo-mark">O</div>
+        Orion<span>.ia</span>
       </a>
-      
+
       <div class="nav-links">
         <a href="#sistemas">Sistemas</a>
         <a href="#pricing">Inversión</a>
-        <a href="#addons">Módulos</a>
+        <a href="#modulos">Módulos</a>
       </div>
 
       <div class="nav-actions">
-        <button class="btn outline" onclick="openWhatsAppModal()">
-          <i class="fab fa-whatsapp"></i>
-          Contacto Directo
+        <button class="btn btn-ghost" onclick="openWhatsAppModal()">
+          <i class="fab fa-whatsapp"></i> Contacto
         </button>
-        <button class="btn primary" onclick="openWizardModal()">Agendar Sesión</button>
+        <button class="btn btn-primary" onclick="openWizardModal()">
+          Agendar Sesión
+        </button>
       </div>
     </div>
   </nav>
 
-  <!-- === HERO SECTION === -->
-  <section class="hero wrapper">
-    <div class="hero-left reveal">
-      <div class="badge">
-        ⚡ Arquitectura de Decisión Empresarial
-      </div>
-      
+  <!-- ========= HERO ========= -->
+  <section class="hero wrapper" id="sistemas">
+    <div class="reveal">
+      <div class="hero-eyebrow">Arquitectura de Decisión Empresarial</div>
+
       <h1>
-        Sistemas de <span class="gradient-text">Inteligencia</span><br>
-        que escalan tu <span class="gradient-text">Negocio</span>
+        Sistemas de<br>
+        <span class="gradient-text">Inteligencia</span> que<br>
+        escalan tu Negocio
       </h1>
-      
-      <p class="hero-subtitle">
+
+      <p class="hero-sub">
         Orquestación de procesos críticos, motores de decisión basados en datos y automatización inteligente para empresas que exigen resultados medibles.
       </p>
 
       <div class="hero-cta">
-        <button class="btn primary" onclick="openWizardModal()">
-          Iniciar Diagnóstico
+        <button class="btn btn-primary btn-lg" onclick="openWizardModal()">
+          Iniciar Diagnóstico <i class="fas fa-arrow-right"></i>
         </button>
-        <a href="#pricing" class="btn outline">
-          Ver Arquitecturas
-        </a>
+        <a href="#pricing" class="btn btn-ghost btn-lg">Ver Planes</a>
       </div>
     </div>
 
-    <div class="orbit-container reveal">
-      <div class="orbit-center">∞</div>
-      <div class="orbit-ring orbit-ring-1">
-        <div class="orbit-icon"><i class="fab fa-whatsapp"></i></div>
-        <div class="orbit-icon"><i class="fab fa-google"></i></div>
-        <div class="orbit-icon"><i class="fab fa-instagram"></i></div>
+    <div class="orion-visual reveal">
+      <div class="orion-core">
+        <div class="orion-core-inner">
+          <span class="orion-star">O</span>
+        </div>
       </div>
-      <div class="orbit-ring orbit-ring-2">
-        <div class="orbit-icon"><i class="fab fa-shopify"></i></div>
-        <div class="orbit-icon"><i class="fas fa-chart-line"></i></div>
+
+      <div class="orbit-track orbit-track-1">
+        <div class="orbit-node"><i class="fab fa-whatsapp"></i></div>
+        <div class="orbit-node"><i class="fab fa-instagram"></i></div>
+        <div class="orbit-node"><i class="fab fa-google"></i></div>
       </div>
+
+      <div class="orbit-track orbit-track-2">
+        <div class="orbit-node orbit-node-b"><i class="fab fa-shopify"></i></div>
+        <div class="orbit-node orbit-node-b"><i class="fas fa-chart-line"></i></div>
+      </div>
+
+      <div class="orbit-track orbit-track-3"></div>
     </div>
   </section>
 
-  <!-- === LOGO TICKER === -->
-  <div class="ticker-section">
+  <!-- ========= TICKER ========= -->
+  <div class="ticker-wrap">
     <div class="ticker-track">
-      <span class="ticker-item">CLÍNICA MÓNACO</span>
-      <span class="ticker-item">VACACIONES EN EL SUR</span>
-      <span class="ticker-item">ARTELUK</span>
-      <span class="ticker-item">DENTALINK</span>
-      <span class="ticker-item">SHOPIFY PARTNERS</span>
-      <span class="ticker-item">CLÍNICA MÓNACO</span>
-      <span class="ticker-item">VACACIONES EN EL SUR</span>
-      <span class="ticker-item">ARTELUK</span>
-      <span class="ticker-item">DENTALINK</span>
-      <span class="ticker-item">SHOPIFY PARTNERS</span>
+      <span class="ticker-item"><span>✦</span> CLÍNICA MÓNACO</span>
+      <span class="ticker-item"><span>✦</span> VACACIONES EN EL SUR</span>
+      <span class="ticker-item"><span>✦</span> ARTELUK</span>
+      <span class="ticker-item"><span>✦</span> DENTALINK</span>
+      <span class="ticker-item"><span>✦</span> SHOPIFY PARTNERS</span>
+      <span class="ticker-item"><span>✦</span> CLÍNICA MÓNACO</span>
+      <span class="ticker-item"><span>✦</span> VACACIONES EN EL SUR</span>
+      <span class="ticker-item"><span>✦</span> ARTELUK</span>
+      <span class="ticker-item"><span>✦</span> DENTALINK</span>
+      <span class="ticker-item"><span>✦</span> SHOPIFY PARTNERS</span>
     </div>
   </div>
 
-  <!-- === PRICING SECTION === -->
+  <!-- ========= PRICING ========= -->
   <section id="pricing" class="pricing-section">
     <div class="wrapper">
-      <h2 class="section-title reveal">Arquitecturas de Automatización</h2>
-      <p class="section-subtitle reveal">Sistemas diseñados para cada etapa de tu crecimiento empresarial</p>
+      <div class="section-header reveal">
+        <div class="section-label">Planes</div>
+        <h2 class="section-title">Inversión en tu<br><span class="gradient-text">Automatización</span></h2>
+        <p class="section-sub">Arquitecturas diseñadas para cada etapa del crecimiento empresarial</p>
+      </div>
 
-      <div class="pricing-toggle reveal">
-        <span class="toggle-label active">Mensual</span>
-        <div class="toggle-switch"></div>
-        <span class="toggle-label">Anual</span>
-        <span class="discount-badge">Ahorra 25%</span>
+      <div class="billing-toggle reveal">
+        <span class="toggle-label on" id="lbl-monthly">Mensual</span>
+        <div class="toggle-pill" id="billing-toggle" onclick="toggleBilling()">
+          <div class="toggle-thumb"></div>
+        </div>
+        <span class="toggle-label" id="lbl-annual">Anual</span>
+        <span class="save-pill">Ahorra 20%</span>
       </div>
 
       <div class="pricing-grid">
-        <!-- ESSENTIAL CORE -->
-        <div class="pricing-card reveal">
-          <div class="card-header">
-            <span class="plan-badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa;">Inicio</span>
-            <h3 class="plan-title">Essential Core</h3>
-            <p class="plan-tagline">Para negocios que inician su automatización</p>
-          </div>
 
-          <div class="pricing-breakdown">
+        <!-- BÁSICO -->
+        <div class="plan-card reveal">
+          <span class="plan-tier tier-basic">Básico</span>
+          <h3 class="plan-name">Básico</h3>
+          <p class="plan-tagline">Para negocios que inician su automatización</p>
+
+          <div class="price-block">
             <div class="price-row">
-              <span class="price-label">Implementación<br><span style="font-size: 0.7rem;">PAGO ÚNICO</span></span>
-              <span class="price-value">$315<span style="font-size: 0.9rem; font-weight: 400;"> USD</span></span>
+              <div class="price-row-label">Implementación<span>PAGO ÚNICO</span></div>
+              <div class="price-amount">$325 <span class="price-unit">USD</span></div>
             </div>
             <div class="price-row">
-              <span class="price-label">Mes de Prueba</span>
-              <span class="price-value">$0<span style="font-size: 0.9rem; font-weight: 400;"> Bonificado</span></span>
+              <div class="price-row-label">Primer mes<span>BONIFICADO</span></div>
+              <div class="price-amount" style="color: var(--success);">$0 <span class="price-unit">USD</span></div>
             </div>
-            <div class="price-row highlight">
-              <span class="price-label">Mantenimiento<br><span style="font-size: 0.7rem;">RECURRENTE</span></span>
-              <span class="price-value large">$150<span style="font-size: 1rem; font-weight: 400;">/mes</span></span>
-            </div>
-          </div>
-
-          <button class="pricing-cta" style="display: block; text-align: center; text-decoration: none;" onclick="openWizardModal()">Solicitar Implementación</button>
-
-          <div class="feature-block">
-            <h4 class="block-title">NÚCLEO DEL SISTEMA</h4>
-            <ul class="block-list">
-              <li><i class="fas fa-check-circle"></i> Centralización de Mensajería</li>
-              <li><i class="fas fa-check-circle"></i> Agente de Respuesta Inmediata</li>
-              <li><i class="fas fa-check-circle"></i> Panel de Control de Leads</li>
-              <li><i class="fas fa-check-circle"></i> 1 Flujo de Conversión Automatizado</li>
-            </ul>
-          </div>
-
-          <div class="feature-block">
-            <h4 class="block-title">EQUIPO Y ACCESO</h4>
-            <div class="support-grid">
-              <div class="support-item">
-                <div class="support-number">3</div>
-                <div class="support-label">Usuarios</div>
-              </div>
-              <div class="support-item">
-                <div class="support-label">Soporte<br>por Email</div>
-              </div>
+            <div class="price-row">
+              <div class="price-row-label">Mantenimiento<span>RECURRENTE</span></div>
+              <div class="price-amount hero-price" id="basic-monthly">$125 <span class="price-unit">/mes</span></div>
             </div>
           </div>
 
-          <div class="feature-block">
-            <h4 class="block-title">MOTOR DE DECISIÓN</h4>
-            <div class="ai-row">
-              <span class="ai-label">MODELO DE IA</span>
-              <div class="ai-badges">
-                <span class="ai-badge">Gemini Flash 2.5</span>
-              </div>
-            </div>
-            <div class="channel-icons">
-              <i class="fab fa-whatsapp"></i>
-              <i class="fab fa-instagram"></i>
-            </div>
-          </div>
+          <button class="btn btn-ghost btn-full" onclick="openWizardModal()">Solicitar Plan</button>
 
-          <div class="feature-block">
-            <h4 class="block-title">TARIFAS DE USO</h4>
-            <ul class="block-list">
-              <li><i class="fas fa-dollar-sign"></i> $0.05 por conversación adicional</li>
+          <div class="feature-group" style="margin-top:24px;">
+            <div class="fg-label">Incluye</div>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Chatbot IA de Ventas y Soporte (24/7)</li>
+              <li><i class="fas fa-check-circle"></i> Integración con Software de Reservas Médicas</li>
+              <li><i class="fas fa-check-circle"></i> Agendamiento y Cancelación Automática</li>
+              <li><i class="fas fa-check-circle"></i> Sincronización de Base de Datos de Pacientes</li>
             </ul>
           </div>
         </div>
 
-        <!-- GROWTH ENGINE (FEATURED) -->
-        <div class="pricing-card featured reveal">
-          <div class="pricing-badge">MÁS ELEGIDO</div>
-          <div class="card-header">
-            <span class="plan-badge" style="background: rgba(232, 93, 4, 0.15); color: var(--primary-orange);">Escala</span>
-            <h3 class="plan-title">Growth Engine</h3>
-            <p class="plan-tagline">Para empresas que buscan escalar ventas agresivamente</p>
-          </div>
+        <!-- BUSINESS (FEATURED) -->
+        <div class="plan-card featured reveal">
+          <div class="featured-badge">Más Elegido</div>
+          <span class="plan-tier tier-business">Business</span>
+          <h3 class="plan-name">Business</h3>
+          <p class="plan-tagline">Para escalar ventas agresivamente</p>
 
-          <div class="pricing-breakdown">
+          <div class="price-block">
             <div class="price-row">
-              <span class="price-label">Implementación<br><span style="font-size: 0.7rem;">PAGO ÚNICO</span></span>
-              <span class="price-value">$650<span style="font-size: 0.9rem; font-weight: 400;"> USD</span></span>
+              <div class="price-row-label">Implementación<span>PAGO ÚNICO</span></div>
+              <div class="price-amount">$620 <span class="price-unit">USD</span></div>
             </div>
             <div class="price-row">
-              <span class="price-label">Mes de Prueba</span>
-              <span class="price-value">$0<span style="font-size: 0.9rem; font-weight: 400;"> Bonificado</span></span>
+              <div class="price-row-label">Primer mes<span>BONIFICADO</span></div>
+              <div class="price-amount" style="color: var(--success);">$0 <span class="price-unit">USD</span></div>
             </div>
-            <div class="price-row highlight">
-              <span class="price-label">Mantenimiento<br><span style="font-size: 0.7rem;">RECURRENTE</span></span>
-              <span class="price-value large">$275<span style="font-size: 1rem; font-weight: 400;">/mes</span></span>
-            </div>
-          </div>
-
-          <button class="pricing-cta" style="display: block; text-align: center; text-decoration: none;" onclick="openWizardModal()">Solicitar Implementación</button>
-
-          <div class="feature-block">
-            <h4 class="block-title">NÚCLEO DEL SISTEMA</h4>
-            <ul class="block-list">
-              <li><i class="fas fa-check-circle"></i> Todo lo de Essential Core</li>
-              <li><i class="fas fa-check-circle"></i> Algoritmo de Optimización de Anuncios</li>
-              <li><i class="fas fa-check-circle"></i> Conexión Nativa CRM</li>
-              <li><i class="fas fa-check-circle"></i> Atribución de Fuente de Leads</li>
-              <li><i class="fas fa-check-circle"></i> Dashboard de ROAS en Tiempo Real</li>
-            </ul>
-          </div>
-
-          <div class="feature-block">
-            <h4 class="block-title">EQUIPO Y ACCESO</h4>
-            <div class="support-grid">
-              <div class="support-item">
-                <div class="support-number">10</div>
-                <div class="support-label">Usuarios</div>
-              </div>
-              <div class="support-item">
-                <div class="support-label">Ingeniero<br>Dedicado</div>
-              </div>
+            <div class="price-row">
+              <div class="price-row-label">Mantenimiento<span>RECURRENTE</span></div>
+              <div class="price-amount hero-price" id="business-monthly">$170 <span class="price-unit">/mes</span></div>
             </div>
           </div>
 
-          <div class="feature-block">
-            <h4 class="block-title">MOTOR DE DECISIÓN</h4>
-            <div class="ai-row">
-              <span class="ai-label">MODELOS AVANZADOS</span>
-              <div class="ai-badges">
-                <span class="ai-badge">GPT-4o</span>
-                <span class="ai-badge">Claude 3.5</span>
-              </div>
-            </div>
-            <div class="channel-icons">
-              <i class="fab fa-whatsapp"></i>
-              <i class="fab fa-instagram"></i>
-              <i class="fab fa-tiktok"></i>
-              <i class="fab fa-facebook"></i>
-            </div>
-          </div>
+          <button class="btn btn-primary btn-full" onclick="openWizardModal()">Solicitar Plan</button>
 
-          <div class="feature-block">
-            <h4 class="block-title">TARIFAS DE USO</h4>
-            <ul class="block-list">
-              <li><i class="fas fa-dollar-sign"></i> $0.04 por conversación adicional</li>
+          <div class="feature-group" style="margin-top:24px;">
+            <div class="fg-label">Incluye</div>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Todo lo del plan Básico</li>
+              <li><i class="fas fa-check-circle"></i> Infraestructura Meta Ads Pro (Business Manager)</li>
+              <li><i class="fas fa-check-circle"></i> 1 Campaña de Tráfico Activa</li>
+              <li><i class="fas fa-check-circle"></i> Base de Datos Centralizada (Airtable & Métricas)</li>
+              <li><i class="fas fa-check-circle"></i> Algoritmo de Retargeting</li>
             </ul>
           </div>
         </div>
 
-        <!-- ENTERPRISE PARTNER -->
-        <div class="pricing-card reveal">
-          <div class="card-header">
-            <span class="plan-badge" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">Enterprise</span>
-            <h3 class="plan-title">Enterprise Partner</h3>
-            <p class="plan-tagline">Consultoría estratégica integral</p>
-          </div>
+        <!-- EJECUTIVO -->
+        <div class="plan-card reveal">
+          <span class="plan-tier tier-ejecutivo">Ejecutivo</span>
+          <h3 class="plan-name">Ejecutivo</h3>
+          <p class="plan-tagline">Consultoría Estratégica Integral</p>
 
-          <div class="pricing-breakdown" style="text-align: center; padding: 30px 0;">
-            <div class="corporate-icon" style="font-size: 3rem; margin-bottom: 15px;">🏢</div>
+          <div class="price-block">
             <div class="price-row">
-              <span class="price-label">ARQUITECTURA<br><span style="font-size: 0.7rem;">PERSONALIZADA</span></span>
+              <div class="price-row-label">Implementación<span>PAGO ÚNICO</span></div>
+              <div class="price-amount">$1,250 <span class="price-unit">USD</span></div>
             </div>
-            <div class="price-row highlight">
-              <span class="price-value large" style="font-size: 2rem;">Consultar</span>
+            <div class="price-row">
+              <div class="price-row-label">Primer mes<span>BONIFICADO</span></div>
+              <div class="price-amount" style="color: var(--success);">$0 <span class="price-unit">USD</span></div>
+            </div>
+            <div class="price-row">
+              <div class="price-row-label">Mantenimiento<span>RECURRENTE</span></div>
+              <div class="price-amount hero-price" id="exec-monthly">$260 <span class="price-unit">/mes</span></div>
             </div>
           </div>
 
-          <button class="pricing-cta" style="display: block; text-align: center; text-decoration: none;" onclick="openWizardModal()">Agendar Sesión Estratégica</button>
+          <button class="btn btn-ghost btn-full" onclick="openWizardModal()">Agendar Sesión</button>
 
-          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 20px 0;">
-            Análisis profundo de las 4 áreas críticas: Operaciones, Ventas, RRHH y Finanzas para una reingeniería total con IA.
-          </p>
-
-          <div class="feature-block">
-            <h4 class="block-title">CONSULTORÍA 360°</h4>
-            <ul class="block-list">
-              <li><i class="fas fa-check-circle"></i> Auditoría de Procesos Operacionales</li>
-              <li><i class="fas fa-check-circle"></i> Mapeo de Ecosistema de Ventas</li>
-              <li><i class="fas fa-check-circle"></i> Optimización de Recursos Humanos</li>
-              <li><i class="fas fa-check-circle"></i> Análisis Financiero y Control</li>
-              <li><i class="fas fa-check-circle"></i> Detección de Cuellos de Botella</li>
-            </ul>
+          <div class="plan-desc-block">
+            Análisis de riesgos y oportunidades en las 4 áreas críticas: Operaciones, Ventas, RRHH y Finanzas. Detección de cuellos de botella e integración total de sistemas.
           </div>
 
-          <div class="feature-block">
-            <h4 class="block-title">EQUIPO DEDICADO</h4>
-            <div class="support-grid">
-              <div class="support-item">
-                <div class="support-number">∞</div>
-                <div class="support-label">Usuarios</div>
-              </div>
-              <div class="support-item">
-                <div class="support-label">Consultoría<br>Ilimitada</div>
-              </div>
-            </div>
-            <ul class="block-list" style="margin-top: 15px;">
-              <li><i class="fas fa-check-circle"></i> Canal Privado Slack 24/7</li>
-              <li><i class="fas fa-check-circle"></i> Account Manager Asignado</li>
-            </ul>
-          </div>
-
-          <div class="feature-block">
-            <h4 class="block-title">IA PERSONALIZADA</h4>
-            <ul class="block-list">
-              <li><i class="fas fa-check-circle"></i> Desarrollo de Modelos Propios</li>
-              <li><i class="fas fa-check-circle"></i> Fine-tuning con tus datos</li>
-              <li><i class="fas fa-check-circle"></i> Infraestructura Dedicada</li>
-              <li><i class="fas fa-check-circle"></i> Despliegue On-premise opcional</li>
+          <div class="feature-group">
+            <div class="fg-label">Incluye</div>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Todo lo del plan Business</li>
+              <li><i class="fas fa-check-circle"></i> Asistente de Voz IA (Llamadas Telefónicas)</li>
+              <li><i class="fas fa-check-circle"></i> Embudo Full-Stack (Web + Ads + WhatsApp)</li>
+              <li><i class="fas fa-check-circle"></i> Automatización Financiera y de Rentabilidad</li>
+              <li><i class="fas fa-check-circle"></i> Sistema de Fidelización y Reviews</li>
             </ul>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- === ADD-ONS SECTION === -->
-  <section id="addons" class="addons-section">
+  <!-- ========= MODULES ========= -->
+  <section id="modulos" class="modules-section">
     <div class="wrapper">
-      <h3 class="section-title reveal">Módulos de Expansión</h3>
-      <p class="section-subtitle reveal">Potencia tu ecosistema digital con componentes especializados</p>
+      <div class="section-header reveal">
+        <div class="section-label">Módulos</div>
+        <h2 class="section-title">Expande tu<br><span class="gradient-text">Ecosistema</span></h2>
+        <p class="section-sub">Componentes especializados que potencian cualquier plan</p>
+      </div>
 
-      <div class="addons-grid">
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fas fa-bullhorn"></i></div>
-          <h4 class="addon-title">Sloop Ads Manager</h4>
-          <p class="addon-description">Optimización automática de campañas Meta/Google con IA</p>
-          <p class="addon-price">$150<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Activar Módulo</button>
+      <div class="modules-grid">
+
+        <div class="module-card reveal">
+          <div class="module-icon"><i class="fas fa-bullhorn"></i></div>
+          <div class="module-name">Gestor de Anuncios IA</div>
+          <div class="module-desc">Mejora tus campañas en Google y Meta automáticamente para vender más.</div>
+          <div class="module-cta">Consultar <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></div>
         </div>
 
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fas fa-plug"></i></div>
-          <h4 class="addon-title">Integration Hub</h4>
-          <p class="addon-description">Conexión sin código con +500 aplicaciones empresariales</p>
-          <p class="addon-price">$100<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Activar Módulo</button>
+        <div class="module-card reveal">
+          <div class="module-icon"><i class="fas fa-plug"></i></div>
+          <div class="module-name">Centro de Integraciones</div>
+          <div class="module-desc">Conecta tus apps favoritas entre sí sin necesidad de saber programación.</div>
+          <div class="module-cta">Consultar <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></div>
         </div>
 
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fas fa-phone-volume"></i></div>
-          <h4 class="addon-title">Voice Agent AI</h4>
-          <p class="addon-description">Llamadas entrantes/salientes con transcripción inteligente</p>
-          <p class="addon-price">$80<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Activar Módulo</button>
+        <div class="module-card reveal">
+          <div class="module-icon"><i class="fas fa-phone-volume"></i></div>
+          <div class="module-name">Agente de Voz IA</div>
+          <div class="module-desc">Tu recepcionista virtual que contesta y hace llamadas las 24 horas.</div>
+          <div class="module-cta">Consultar <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></div>
         </div>
 
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fab fa-instagram"></i></div>
-          <h4 class="addon-title">Social Engagement</h4>
-          <p class="addon-description">Respuestas inteligentes en comentarios de Instagram/Facebook</p>
-          <p class="addon-price">$80<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Activar Módulo</button>
+        <div class="module-card reveal">
+          <div class="module-icon"><i class="fab fa-instagram"></i></div>
+          <div class="module-name">Respuesta en Redes</div>
+          <div class="module-desc">La IA responde comentarios y mensajes en Instagram y Facebook al instante.</div>
+          <div class="module-cta">Consultar <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></div>
         </div>
 
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fas fa-file-pdf"></i></div>
-          <h4 class="addon-title">Smart Docs Generator</h4>
-          <p class="addon-description">Creación y envío automático de PDFs y presupuestos</p>
-          <p class="addon-price">$80<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Activar Módulo</button>
+        <div class="module-card reveal">
+          <div class="module-icon"><i class="fas fa-file-pdf"></i></div>
+          <div class="module-name">Generador de Documentos</div>
+          <div class="module-desc">Crea y envía cotizaciones o contratos en PDF automáticamente.</div>
+          <div class="module-cta">Consultar <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></div>
         </div>
 
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fas fa-envelope"></i></div>
-          <h4 class="addon-title">Smart Mailer</h4>
-          <p class="addon-description">Secuencias de correos contextuales post-interacción</p>
-          <p class="addon-price">$58<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Activar Módulo</button>
+        <div class="module-card reveal">
+          <div class="module-icon"><i class="fas fa-envelope"></i></div>
+          <div class="module-name">Email Marketing</div>
+          <div class="module-desc">Envía correos de seguimiento a tus clientes justo en el momento perfecto.</div>
+          <div class="module-cta">Consultar <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></div>
         </div>
 
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fas fa-chart-line"></i></div>
-          <h4 class="addon-title">Churn Analytics</h4>
-          <p class="addon-description">Detección predictiva de motivos de pérdida de clientes</p>
-          <p class="addon-price">$42<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Activar Módulo</button>
+        <div class="module-card reveal">
+          <div class="module-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="module-name">Análisis de Fugas</div>
+          <div class="module-desc">Detecta por qué tus clientes dejan de comprarte antes de que suceda.</div>
+          <div class="module-cta">Consultar <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></div>
         </div>
 
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fas fa-star"></i></div>
-          <h4 class="addon-title">NPS Automation</h4>
-          <p class="addon-description">Encuestas de satisfacción automatizadas y análisis</p>
-          <p class="addon-price">$42<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Activar Módulo</button>
+        <div class="module-card reveal">
+          <div class="module-icon"><i class="fas fa-star"></i></div>
+          <div class="module-name">Encuestas de Satisfacción</div>
+          <div class="module-desc">Mide automáticamente qué tan felices están tus clientes con tu servicio.</div>
+          <div class="module-cta">Consultar <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></div>
         </div>
 
-        <div class="addon-card reveal">
-          <div class="addon-icon"><i class="fas fa-calculator"></i></div>
-          <h4 class="addon-title">Math Solver Bot</h4>
-          <p class="addon-description">Cálculos técnicos complejos dentro del chat</p>
-          <p class="addon-price">$42<span style="font-size: 0.9rem; color: var(--text-muted);">/mes</span></p>
-          <button class="addon-btn">+ Activar Módulo</button>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- === FOOTER === -->
+  <!-- ========= FOOTER ========= -->
   <footer>
     <div class="wrapper">
-      <div class="footer-content">
-        <div class="logo">
-          <span>∞</span> sloop.IA
-        </div>
+      <div class="footer-inner">
+        <a href="#" class="footer-logo">
+          <div class="footer-logo-mark">O</div>
+          Orion<span style="color:var(--fire)">.ia</span>
+        </a>
         <div class="footer-links">
           <a href="#">Términos de Servicio</a>
           <a href="#">Política de Privacidad</a>
           <a href="#">Seguridad</a>
         </div>
       </div>
-      <p style="margin-top: 20px; color: var(--text-muted);">
-        © <span id="year"></span> sloop.IA — Sistemas de Inteligencia Empresarial
-      </p>
+      <p class="footer-copy">© <span id="year"></span> Orion.ia — Sistemas de Inteligencia Empresarial</p>
     </div>
   </footer>
 
-  <!-- === MODAL WHATSAPP === -->
-  <div id="whatsappModal" class="modal-overlay">
-    <div class="modal-container">
-      <div class="modal-header">
-        <div class="modal-close" onclick="closeWhatsAppModal()">
-          <i class="fas fa-times"></i>
-        </div>
-        <h2 class="modal-title">Prueba nuestra IA en WhatsApp</h2>
-        <p class="modal-subtitle">Completa estos datos para iniciar tu demo ahora</p>
+  <!-- ========= MODAL WHATSAPP ========= -->
+  <div id="waModal" class="modal-overlay" onclick="waOverlayClick(event)">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="modal-close-btn" onclick="closeWhatsAppModal()"><i class="fas fa-times" style="font-size:14px;"></i></div>
+        <h2 class="modal-title">Prueba nuestra IA</h2>
+        <p class="modal-subtitle">Completa tus datos para iniciar la demo ahora</p>
       </div>
-
       <div class="modal-body">
-        <form id="whatsapp-form" onsubmit="submitWhatsAppForm(event)">
-          <div class="form-group">
+        <form id="wa-form" onsubmit="submitWAForm(event)">
+          <div class="form-field">
             <label>Nombre completo</label>
-            <input type="text" name="nombre" required placeholder="Tu nombre" />
+            <input type="text" name="nombre" placeholder="Tu nombre" required />
           </div>
-
-          <div class="form-group">
+          <div class="form-field">
             <label>¿Cómo nos conociste?</label>
-            <div class="selection-buttons">
-              <div class="selection-btn" data-value="instagram">
-                <i class="fab fa-instagram"></i> Instagram
-              </div>
-              <div class="selection-btn" data-value="facebook">
-                <i class="fab fa-facebook"></i> Facebook
-              </div>
-              <div class="selection-btn" data-value="google">
-                <i class="fab fa-google"></i> Google
-              </div>
-              <div class="selection-btn" data-value="otro">
-                <i class="fas fa-ellipsis-h"></i> Otro
-              </div>
+            <div class="source-grid">
+              <div class="source-btn" onclick="selectSource(this,'instagram')"><i class="fab fa-instagram"></i> Instagram</div>
+              <div class="source-btn" onclick="selectSource(this,'facebook')"><i class="fab fa-facebook"></i> Facebook</div>
+              <div class="source-btn" onclick="selectSource(this,'google')"><i class="fab fa-google"></i> Google</div>
+              <div class="source-btn" onclick="selectSource(this,'otro')"><i class="fas fa-ellipsis-h"></i> Otro</div>
             </div>
-            <input type="hidden" name="fuente" id="whatsapp-fuente" required />
+            <input type="hidden" name="fuente" id="wa-fuente" />
           </div>
-
-          <div class="form-group">
-            <label>Número de WhatsApp</label>
-            <div class="phone-input-group">
-              <select name="codigo_pais">
+          <div class="form-field">
+            <label>WhatsApp</label>
+            <div class="phone-row">
+              <select name="codigo">
                 <option value="+56" selected>🇨🇱 +56</option>
                 <option value="+54">🇦🇷 +54</option>
                 <option value="+57">🇨🇴 +57</option>
@@ -1761,11 +1283,10 @@
                 <option value="+51">🇵🇪 +51</option>
                 <option value="+1">🇺🇸 +1</option>
               </select>
-              <input type="tel" name="telefono" required placeholder="9 XXXX XXXX" />
+              <input type="tel" name="telefono" placeholder="9 XXXX XXXX" required />
             </div>
           </div>
-
-          <button type="submit" class="btn primary" style="width: 100%; margin-top: 20px;">
+          <button type="submit" class="btn btn-primary btn-full btn-lg" style="margin-top:8px;">
             Comenzar demo ahora
           </button>
         </form>
@@ -1773,54 +1294,41 @@
     </div>
   </div>
 
-  <!-- === MODAL WIZARD === -->
-  <div id="wizardModal" class="modal-overlay">
-    <div class="modal-container">
-      <!-- Progress Bar -->
-      <div class="wizard-progress" style="padding-top: 30px;">
-        <div class="progress-step active" data-step="1">
-          <div class="progress-dot"></div>
-          <span>Información</span>
-        </div>
-        <div class="progress-line"></div>
-        <div class="progress-step" data-step="2">
-          <div class="progress-dot"></div>
-          <span>Empresa</span>
-        </div>
-        <div class="progress-line"></div>
-        <div class="progress-step" data-step="3">
-          <div class="progress-dot"></div>
-          <span>Herramientas</span>
-        </div>
+  <!-- ========= MODAL WIZARD ========= -->
+  <div id="wizardModal" class="modal-overlay" onclick="wizardOverlayClick(event)">
+    <div class="modal-box">
+      <!-- Progress -->
+      <div class="wizard-prog" id="wiz-prog">
+        <div class="wp-step active" id="ws1"><div class="wp-dot"></div><span>Información</span></div>
+        <div class="wp-line"></div>
+        <div class="wp-step" id="ws2"><div class="wp-dot"></div><span>Empresa</span></div>
+        <div class="wp-line"></div>
+        <div class="wp-step" id="ws3"><div class="wp-dot"></div><span>Herramientas</span></div>
       </div>
 
-      <!-- Close Button -->
-      <div class="modal-close" onclick="closeWizardModal()">
-        <i class="fas fa-times"></i>
+      <div class="modal-close-btn" style="position:absolute;top:18px;right:18px;" onclick="closeWizardModal()">
+        <i class="fas fa-times" style="font-size:14px;"></i>
       </div>
 
-      <!-- STEP 1: Información de Contacto -->
-      <div id="wizard-step-1" class="wizard-step active fade-step">
-        <div class="modal-header">
+      <!-- STEP 1 -->
+      <div id="wiz-1" class="wiz-step">
+        <div class="modal-head">
           <h2 class="modal-title">¡Encantados de conocerte!</h2>
           <p class="modal-subtitle">Cuéntanos un poco sobre ti</p>
         </div>
-
         <div class="modal-body">
-          <div class="form-group">
+          <div class="form-field">
             <label>Nombre completo</label>
-            <input type="text" id="wizard-nombre" required placeholder="Tu nombre" />
+            <input type="text" id="w-nombre" placeholder="Tu nombre" />
           </div>
-
-          <div class="form-group">
+          <div class="form-field">
             <label>Correo corporativo</label>
-            <input type="email" id="wizard-email" required placeholder="nombre@empresa.com" />
+            <input type="email" id="w-email" placeholder="nombre@empresa.com" />
           </div>
-
-          <div class="form-group">
+          <div class="form-field">
             <label>WhatsApp</label>
-            <div class="phone-input-group">
-              <select id="wizard-codigo">
+            <div class="phone-row">
+              <select id="w-codigo">
                 <option value="+56" selected>🇨🇱 +56</option>
                 <option value="+54">🇦🇷 +54</option>
                 <option value="+57">🇨🇴 +57</option>
@@ -1828,501 +1336,311 @@
                 <option value="+51">🇵🇪 +51</option>
                 <option value="+1">🇺🇸 +1</option>
               </select>
-              <input type="tel" id="wizard-telefono" required placeholder="9 XXXX XXXX" />
+              <input type="tel" id="w-tel" placeholder="9 XXXX XXXX" />
             </div>
           </div>
-
-          <div class="slider-group">
-            <label class="slider-label">¿Cuántas conversaciones manejas al mes?</label>
-            <div class="slider-value" id="conversations-value">1.500</div>
-            <div class="slider-container">
-              <input type="range" id="conversations-slider" min="300" max="3000" value="1500" step="100" />
-              <div class="slider-markers">
-                <span>300</span>
-                <span>1.500</span>
-                <span>3.000+</span>
-              </div>
+          <div class="form-field">
+            <label>¿Cuántas conversaciones manejas al mes?</label>
+            <div class="slider-wrap">
+              <div class="slider-display" id="conv-display">1.500</div>
+              <input type="range" id="conv-slider" min="300" max="3000" value="1500" step="100" oninput="updateConv(this)" />
+              <div class="slider-marks"><span>300</span><span>1.500</span><span>3.000+</span></div>
             </div>
           </div>
         </div>
-
-        <div class="modal-footer">
-          <button class="btn primary" style="width: 100%;" onclick="goToStep(2)">
-            Continuar
-          </button>
+        <div class="modal-foot">
+          <button class="btn btn-primary btn-full btn-lg" onclick="goStep(2)">Continuar</button>
         </div>
       </div>
 
-      <!-- STEP 2: Tamaño de Empresa -->
-      <div id="wizard-step-2" class="wizard-step" style="display: none;">
-        <div class="modal-header">
-          <h2 class="modal-title">¿Cuántas personas trabajan en tu empresa?</h2>
-          <p class="modal-subtitle">Esto nos ayuda a personalizar la solución</p>
+      <!-- STEP 2 -->
+      <div id="wiz-2" class="wiz-step" style="display:none;">
+        <div class="modal-head">
+          <h2 class="modal-title">¿Cuántas personas hay en tu empresa?</h2>
+          <p class="modal-subtitle">Nos ayuda a personalizar la solución ideal</p>
         </div>
-
         <div class="modal-body">
-          <div class="option-cards">
-            <div class="option-card" data-size="1-4">
-              <div class="option-card-icon">👤</div>
-              <div class="option-card-title">Menos de 5</div>
-              <div class="option-card-desc">Ideal para equipos pequeños</div>
+          <div class="size-grid">
+            <div class="size-card" onclick="selectSize(this,'1-4')">
+              <div class="size-emoji">👤</div>
+              <div class="size-label">Menos de 5</div>
+              <div class="size-desc">Equipo pequeño</div>
             </div>
-            <div class="option-card" data-size="5-49">
-              <div class="option-card-icon">👥</div>
-              <div class="option-card-title">5-49</div>
-              <div class="option-card-desc">Equipos medianos</div>
+            <div class="size-card" onclick="selectSize(this,'5-49')">
+              <div class="size-emoji">👥</div>
+              <div class="size-label">5 – 49</div>
+              <div class="size-desc">Equipo mediano</div>
             </div>
-            <div class="option-card" data-size="50-99">
-              <div class="option-card-icon">👨‍👩‍👧‍👦</div>
-              <div class="option-card-title">50-99</div>
-              <div class="option-card-desc">Empresas establecidas</div>
+            <div class="size-card" onclick="selectSize(this,'50-99')">
+              <div class="size-emoji">👨‍👩‍👧‍👦</div>
+              <div class="size-label">50 – 99</div>
+              <div class="size-desc">Empresa establecida</div>
             </div>
-            <div class="option-card" data-size="100+">
-              <div class="option-card-icon">🏢</div>
-              <div class="option-card-title">Más de 100</div>
-              <div class="option-card-desc">Corporaciones</div>
+            <div class="size-card" onclick="selectSize(this,'100+')">
+              <div class="size-emoji">🏢</div>
+              <div class="size-label">Más de 100</div>
+              <div class="size-desc">Corporación</div>
             </div>
           </div>
         </div>
-
-        <div class="modal-footer">
-          <button class="btn outline" style="width: 48%;" onclick="goToStep(1)">
-            Volver
-          </button>
-          <button class="btn primary" style="width: 48%;" onclick="goToStep(3)">
-            Continuar
-          </button>
+        <div class="modal-foot">
+          <div class="btn-row">
+            <button class="btn btn-ghost btn-lg" onclick="goStep(1)">Volver</button>
+            <button class="btn btn-primary btn-lg" onclick="goStep(3)">Continuar</button>
+          </div>
         </div>
       </div>
 
-      <!-- STEP 3: Herramientas -->
-      <div id="wizard-step-3" class="wizard-step" style="display: none;">
-        <div class="modal-header">
-          <h2 class="modal-title">¿Qué herramientas usas actualmente?</h2>
+      <!-- STEP 3 -->
+      <div id="wiz-3" class="wiz-step" style="display:none;">
+        <div class="modal-head">
+          <h2 class="modal-title">¿Qué herramientas usas?</h2>
           <p class="modal-subtitle">Selecciona las categorías que apliquen</p>
         </div>
-
         <div class="modal-body">
-          <div class="category-grid">
-            <div class="category-btn" data-category="crm">
-              <i class="fas fa-users"></i>
-              <span>CRM</span>
+          <div class="cat-grid">
+            <div class="cat-chip" onclick="toggleCat(this,'crm')">
+              <i class="fas fa-users"></i><span>CRM</span>
             </div>
-            <div class="category-btn" data-category="dental">
-              <i class="fas fa-tooth"></i>
-              <span>Dental/Salud</span>
+            <div class="cat-chip" onclick="toggleCat(this,'dental')">
+              <i class="fas fa-tooth"></i><span>Salud</span>
             </div>
-            <div class="category-btn" data-category="productivity">
-              <i class="fas fa-tasks"></i>
-              <span>Productividad</span>
+            <div class="cat-chip" onclick="toggleCat(this,'productivity')">
+              <i class="fas fa-tasks"></i><span>Productividad</span>
             </div>
-            <div class="category-btn" data-category="ecommerce">
-              <i class="fas fa-shopping-cart"></i>
-              <span>E-commerce</span>
+            <div class="cat-chip" onclick="toggleCat(this,'ecommerce')">
+              <i class="fas fa-shopping-cart"></i><span>E-commerce</span>
             </div>
-            <div class="category-btn" data-category="integrations">
-              <i class="fas fa-plug"></i>
-              <span>Integraciones</span>
+            <div class="cat-chip" onclick="toggleCat(this,'integrations')">
+              <i class="fas fa-plug"></i><span>Integraciones</span>
             </div>
-            <div class="category-btn" data-category="otros">
-              <i class="fas fa-ellipsis-h"></i>
-              <span>Otros</span>
+            <div class="cat-chip" onclick="toggleCat(this,'otros')">
+              <i class="fas fa-ellipsis-h"></i><span>Otros</span>
             </div>
           </div>
 
-          <!-- Sub-categoría CRM -->
-          <div id="subcategory-crm" class="subcategory-section">
-            <h4 class="subcategory-title">Selecciona tu CRM:</h4>
-            <div class="subcategory-chips">
-              <div class="chip" data-tool="hubspot">HubSpot</div>
-              <div class="chip" data-tool="salesforce">Salesforce</div>
-              <div class="chip" data-tool="odoo">Odoo</div>
-              <div class="chip" data-tool="pipedrive">Pipedrive</div>
-              <div class="chip" data-tool="zoho">Zoho CRM</div>
-              <div class="chip" data-tool="freshsales">Freshsales</div>
+          <div id="sub-crm" class="sub-section">
+            <div class="sub-title">Tu CRM:</div>
+            <div class="sub-chips">
+              <div class="sub-chip" onclick="toggleChip(this,'hubspot')">HubSpot</div>
+              <div class="sub-chip" onclick="toggleChip(this,'salesforce')">Salesforce</div>
+              <div class="sub-chip" onclick="toggleChip(this,'odoo')">Odoo</div>
+              <div class="sub-chip" onclick="toggleChip(this,'pipedrive')">Pipedrive</div>
+              <div class="sub-chip" onclick="toggleChip(this,'zoho')">Zoho CRM</div>
             </div>
           </div>
 
-          <!-- Sub-categoría Dental/Salud -->
-          <div id="subcategory-dental" class="subcategory-section">
-            <h4 class="subcategory-title">Selecciona tu sistema de salud:</h4>
-            <div class="subcategory-chips">
-              <div class="chip" data-tool="dentalink">Dentalink</div>
-              <div class="chip" data-tool="medilink">Medilink</div>
-              <div class="chip" data-tool="agendapro">Agendapro</div>
-              <div class="chip" data-tool="reservo">Reservo</div>
+          <div id="sub-dental" class="sub-section">
+            <div class="sub-title">Tu sistema de salud:</div>
+            <div class="sub-chips">
+              <div class="sub-chip" onclick="toggleChip(this,'dentalink')">Dentalink</div>
+              <div class="sub-chip" onclick="toggleChip(this,'medilink')">Medilink</div>
+              <div class="sub-chip" onclick="toggleChip(this,'agendapro')">Agendapro</div>
+              <div class="sub-chip" onclick="toggleChip(this,'reservo')">Reservo</div>
             </div>
           </div>
 
-          <!-- Sub-categoría E-commerce -->
-          <div id="subcategory-ecommerce" class="subcategory-section">
-            <h4 class="subcategory-title">Selecciona tu plataforma:</h4>
-            <div class="subcategory-chips">
-              <div class="chip" data-tool="shopify">Shopify</div>
-              <div class="chip" data-tool="woocommerce">WooCommerce</div>
-              <div class="chip" data-tool="tiendanube">Tienda Nube</div>
-              <div class="chip" data-tool="jumpseller">Jumpseller</div>
-              <div class="chip" data-tool="vtex">VTEX</div>
+          <div id="sub-ecommerce" class="sub-section">
+            <div class="sub-title">Tu plataforma:</div>
+            <div class="sub-chips">
+              <div class="sub-chip" onclick="toggleChip(this,'shopify')">Shopify</div>
+              <div class="sub-chip" onclick="toggleChip(this,'woocommerce')">WooCommerce</div>
+              <div class="sub-chip" onclick="toggleChip(this,'tiendanube')">Tienda Nube</div>
+              <div class="sub-chip" onclick="toggleChip(this,'jumpseller')">Jumpseller</div>
             </div>
           </div>
         </div>
-
-        <div class="modal-footer">
-          <button class="btn outline" style="width: 48%;" onclick="goToStep(2)">
-            Volver
-          </button>
-          <button class="btn primary" style="width: 48%;" onclick="submitWizardForm()">
-            Finalizar y Agendar
-          </button>
+        <div class="modal-foot">
+          <div class="btn-row">
+            <button class="btn btn-ghost btn-lg" onclick="goStep(2)">Volver</button>
+            <button class="btn btn-primary btn-lg" id="submit-btn" onclick="submitWizard()">Finalizar y Agendar</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- ========= JS ========= -->
   <script>
-    // === GLOBAL VARIABLES ===
-    const wizardData = {
-      nombre: '',
-      email: '',
-      telefono: '',
-      conversaciones: 1500,
-      tamanoEmpresa: '',
-      herramientas: []
-    };
-
-    // === YEAR IN FOOTER ===
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // === NAVBAR SCROLL EFFECT ===
-    const navbar = document.getElementById('navbar');
+    // Scroll nav
+    const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // === REVEAL ON SCROLL ANIMATION ===
-    const observerOptions = {
-      threshold: 0.12,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+    // Reveal
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
       });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // === PRICING TOGGLE ===
-    const toggleSwitch = document.querySelector('.toggle-switch');
-    const toggleLabels = document.querySelectorAll('.toggle-label');
-    const priceValues = {
-      essential: { monthly: 150, annual: 113 },
-      growth: { monthly: 275, annual: 206 }
-    };
-    
+    // Billing toggle
     let isAnnual = false;
+    const prices = { basic: 125, business: 170, exec: 260 };
 
-    function updateToggle() {
-      if (isAnnual) {
-        toggleSwitch.classList.add('active');
-      } else {
-        toggleSwitch.classList.remove('active');
-      }
-      
-      toggleLabels.forEach((label, index) => {
-        if ((index === 0 && !isAnnual) || (index === 1 && isAnnual)) {
-          label.classList.add('active');
-        } else {
-          label.classList.remove('active');
-        }
-      });
-      
-      const essentialPrice = document.querySelector('.pricing-card:nth-child(1) .price-value.large');
-      const growthPrice = document.querySelector('.pricing-card:nth-child(2) .price-value.large');
-      
-      if (essentialPrice) {
-        essentialPrice.innerHTML = `$${isAnnual ? priceValues.essential.annual : priceValues.essential.monthly}<span style="font-size: 1rem; font-weight: 400;">/mes</span>`;
-      }
-      if (growthPrice) {
-        growthPrice.innerHTML = `$${isAnnual ? priceValues.growth.annual : priceValues.growth.monthly}<span style="font-size: 1rem; font-weight: 400;">/mes</span>`;
-      }
+    function toggleBilling() {
+      isAnnual = !isAnnual;
+      document.getElementById('billing-toggle').classList.toggle('annual', isAnnual);
+      document.getElementById('lbl-monthly').classList.toggle('on', !isAnnual);
+      document.getElementById('lbl-annual').classList.toggle('on', isAnnual);
+
+      const factor = isAnnual ? 0.8 : 1;
+      const fmt = (v) => '$' + Math.round(v * factor).toLocaleString('es-CL') + ' <span class="price-unit">/mes</span>';
+
+      document.getElementById('basic-monthly').innerHTML    = fmt(prices.basic);
+      document.getElementById('business-monthly').innerHTML = fmt(prices.business);
+      document.getElementById('exec-monthly').innerHTML     = fmt(prices.exec);
     }
 
-    toggleSwitch.addEventListener('click', () => {
-      isAnnual = !isAnnual;
-      updateToggle();
-    });
-
-    toggleLabels.forEach((label, index) => {
-      label.addEventListener('click', () => {
-        const shouldBeAnnual = index === 1;
-        if (isAnnual !== shouldBeAnnual) {
-          isAnnual = shouldBeAnnual;
-          updateToggle();
-        }
-      });
-    });
-
-    // === WHATSAPP MODAL ===
+    // ---- WHATSAPP MODAL ----
     function openWhatsAppModal() {
-      document.getElementById('whatsappModal').classList.add('active');
+      document.getElementById('waModal').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-
     function closeWhatsAppModal() {
-      document.getElementById('whatsappModal').classList.remove('active');
+      document.getElementById('waModal').classList.remove('open');
       document.body.style.overflow = '';
     }
+    function waOverlayClick(e) { if (e.target === e.currentTarget) closeWhatsAppModal(); }
 
-    // WhatsApp source selection
-    document.querySelectorAll('#whatsappModal .selection-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('#whatsappModal .selection-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        document.getElementById('whatsapp-fuente').value = this.dataset.value;
-      });
-    });
-
-    function submitWhatsAppForm(event) {
-      event.preventDefault();
-      const form = event.target;
-      const nombre = form.nombre.value.trim();
-      const fuente = form.fuente.value;
-      const codigo = form.codigo_pais.value;
-      const telefono = form.telefono.value.trim();
-      
-      if (!fuente) {
-        alert('Por favor selecciona cómo nos conociste');
-        return;
-      }
-
-      const phoneNumber = '56999066071';
-      const message = `Hola, soy ${nombre}. Los conocí por ${fuente}. Mi número es ${codigo} ${telefono}. Quiero probar la demo de IA.`;
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-      
-      window.open(whatsappUrl, '_blank');
-      closeWhatsAppModal();
-      form.reset();
+    let waSource = '';
+    function selectSource(el, val) {
+      document.querySelectorAll('#waModal .source-btn').forEach(b => b.classList.remove('on'));
+      el.classList.add('on');
+      document.getElementById('wa-fuente').value = val;
+      waSource = val;
     }
 
-    // === WIZARD MODAL ===
-    let currentStep = 1;
+    function submitWAForm(e) {
+      e.preventDefault();
+      if (!waSource) { alert('Por favor selecciona cómo nos conociste'); return; }
+      const f = e.target;
+      const nombre = f.nombre.value.trim();
+      const cod = f.codigo.value;
+      const tel = f.telefono.value.trim();
+      const msg = `Hola, soy ${nombre}. Los conocí por ${waSource}. Mi número es ${cod} ${tel}. Quiero probar la demo de IA.`;
+      window.open(`https://wa.me/56999066071?text=${encodeURIComponent(msg)}`, '_blank');
+      closeWhatsAppModal();
+      f.reset();
+      waSource = '';
+      document.querySelectorAll('#waModal .source-btn').forEach(b => b.classList.remove('on'));
+    }
+
+    // ---- WIZARD MODAL ----
+    let wStep = 1;
+    const wData = { nombre:'', email:'', telefono:'', conversaciones:1500, tamano:'', herramientas:[] };
 
     function openWizardModal() {
-      document.getElementById('wizardModal').classList.add('active');
+      document.getElementById('wizardModal').classList.add('open');
       document.body.style.overflow = 'hidden';
-      goToStep(1);
+      goStep(1, true);
     }
-
     function closeWizardModal() {
-      document.getElementById('wizardModal').classList.remove('active');
+      document.getElementById('wizardModal').classList.remove('open');
       document.body.style.overflow = '';
-      resetWizard();
     }
+    function wizardOverlayClick(e) { if (e.target === e.currentTarget) closeWizardModal(); }
 
-    function resetWizard() {
-      currentStep = 1;
-      document.querySelectorAll('.wizard-step').forEach(step => {
-        step.style.display = 'none';
-        step.classList.remove('active', 'fade-step');
-      });
-      document.getElementById('wizard-step-1').style.display = 'block';
-      document.getElementById('wizard-step-1').classList.add('active', 'fade-step');
-      
-      // Reset form
-      document.getElementById('wizard-nombre').value = '';
-      document.getElementById('wizard-email').value = '';
-      document.getElementById('wizard-telefono').value = '';
-      document.getElementById('conversations-slider').value = 1500;
-      document.getElementById('conversations-value').textContent = '1.500';
-      
-      // Reset selections
-      document.querySelectorAll('.option-card, .category-btn, .chip').forEach(el => {
-        el.classList.remove('active');
-      });
-      
-      // Reset progress
-      updateProgress();
-    }
-
-    function goToStep(step) {
-      // Validate current step before proceeding
-      if (step > currentStep) {
-        if (currentStep === 1) {
-          const nombre = document.getElementById('wizard-nombre').value.trim();
-          const email = document.getElementById('wizard-email').value.trim();
-          const telefono = document.getElementById('wizard-telefono').value.trim();
-          
-          if (!nombre || !email || !telefono) {
-            alert('Por favor completa todos los campos');
-            return;
-          }
-          
-          wizardData.nombre = nombre;
-          wizardData.email = email;
-          wizardData.telefono = document.getElementById('wizard-codigo').value + ' ' + telefono;
-          wizardData.conversaciones = document.getElementById('conversations-slider').value;
-        } else if (currentStep === 2) {
-          if (!wizardData.tamanoEmpresa) {
-            alert('Por favor selecciona el tamaño de tu empresa');
-            return;
-          }
+    function goStep(n, force) {
+      if (!force && n > wStep) {
+        if (wStep === 1) {
+          const nm  = document.getElementById('w-nombre').value.trim();
+          const em  = document.getElementById('w-email').value.trim();
+          const tel = document.getElementById('w-tel').value.trim();
+          if (!nm || !em || !tel) { alert('Por favor completa todos los campos'); return; }
+          wData.nombre = nm; wData.email = em;
+          wData.telefono = document.getElementById('w-codigo').value + ' ' + tel;
+          wData.conversaciones = document.getElementById('conv-slider').value;
         }
+        if (wStep === 2 && !wData.tamano) { alert('Por favor selecciona el tamaño de tu empresa'); return; }
       }
 
-      // Hide all steps
-      document.querySelectorAll('.wizard-step').forEach(s => {
-        s.style.display = 'none';
-        s.classList.remove('active', 'fade-step');
-      });
+      document.querySelectorAll('.wiz-step').forEach(s => s.style.display = 'none');
+      document.getElementById(`wiz-${n}`).style.display = 'block';
+      wStep = n;
 
-      // Show target step
-      const targetStep = document.getElementById(`wizard-step-${step}`);
-      targetStep.style.display = 'block';
-      setTimeout(() => {
-        targetStep.classList.add('active', 'fade-step');
-      }, 10);
-
-      currentStep = step;
-      updateProgress();
-    }
-
-    function updateProgress() {
-      document.querySelectorAll('.progress-step').forEach((step, index) => {
-        const stepNum = index + 1;
-        if (stepNum < currentStep) {
-          step.classList.add('completed');
-          step.classList.remove('active');
-        } else if (stepNum === currentStep) {
-          step.classList.add('active');
-          step.classList.remove('completed');
-        } else {
-          step.classList.remove('active', 'completed');
-        }
+      // Progress
+      [1,2,3].forEach(i => {
+        const el = document.getElementById(`ws${i}`);
+        el.classList.remove('active','done');
+        if (i < n) el.classList.add('done');
+        else if (i === n) el.classList.add('active');
       });
     }
 
-    // Slider update
-    document.getElementById('conversations-slider')?.addEventListener('input', function(e) {
-      const value = parseInt(e.target.value);
-      const formatted = value >= 3000 ? '3.000+' : value.toLocaleString('es-CL');
-      document.getElementById('conversations-value').textContent = formatted;
-    });
+    function updateConv(el) {
+      const v = parseInt(el.value);
+      document.getElementById('conv-display').textContent = v >= 3000 ? '3.000+' : v.toLocaleString('es-CL');
+    }
 
-    // Step 2: Company size selection
-    document.querySelectorAll('.option-card').forEach(card => {
-      card.addEventListener('click', function() {
-        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-        wizardData.tamanoEmpresa = this.dataset.size;
-      });
-    });
+    function selectSize(el, val) {
+      document.querySelectorAll('.size-card').forEach(c => c.classList.remove('on'));
+      el.classList.add('on');
+      wData.tamano = val;
+    }
 
-    // Step 3: Category selection
-    document.querySelectorAll('.category-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const category = this.dataset.category;
-        this.classList.toggle('active');
-        
-        // Hide all subcategories first
-        document.querySelectorAll('.subcategory-section').forEach(sub => {
-          sub.classList.remove('active');
-        });
-        
-        // Show relevant subcategory if button is active
-        if (this.classList.contains('active')) {
-          const subcategory = document.getElementById(`subcategory-${category}`);
-          if (subcategory) {
-            subcategory.classList.add('active');
-          }
+    function toggleCat(el, cat) {
+      el.classList.toggle('on');
+      // Hide all sub-sections
+      document.querySelectorAll('.sub-section').forEach(s => s.classList.remove('show'));
+      // Show active one if exists
+      const activeCat = document.querySelector('.cat-chip.on');
+      if (activeCat) {
+        const lastCat = activeCat.getAttribute('onclick').match(/'([^']+)'/)?.[1];
+        if (lastCat) {
+          const sub = document.getElementById(`sub-${cat}`);
+          if (el.classList.contains('on') && sub) sub.classList.add('show');
         }
-      });
-    });
+      }
+    }
 
-    // Tool chips selection
-    document.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', function() {
-        this.classList.toggle('active');
-        const tool = this.dataset.tool;
-        
-        if (this.classList.contains('active')) {
-          if (!wizardData.herramientas.includes(tool)) {
-            wizardData.herramientas.push(tool);
-          }
-        } else {
-          wizardData.herramientas = wizardData.herramientas.filter(t => t !== tool);
-        }
-      });
-    });
+    function toggleChip(el, tool) {
+      el.classList.toggle('on');
+      if (el.classList.contains('on')) {
+        if (!wData.herramientas.includes(tool)) wData.herramientas.push(tool);
+      } else {
+        wData.herramientas = wData.herramientas.filter(t => t !== tool);
+      }
+    }
 
-    // Submit wizard
-    async function submitWizardForm() {
-      const selectedCategories = Array.from(document.querySelectorAll('.category-btn.active'))
-        .map(btn => btn.querySelector('span').textContent);
+    async function submitWizard() {
+      const cats = Array.from(document.querySelectorAll('.cat-chip.on'))
+        .map(b => b.querySelector('span').textContent);
 
-      const data = {
-        nombre: wizardData.nombre,
-        email: wizardData.email,
-        telefono: wizardData.telefono,
-        conversaciones: wizardData.conversaciones,
-        tamanoEmpresa: wizardData.tamanoEmpresa,
-        categorias: selectedCategories.join(', '),
-        herramientas: wizardData.herramientas.join(', '),
-        origen: 'wizard-landing-sloop'
+      const payload = {
+        ...wData,
+        categorias: cats.join(', '),
+        herramientas: wData.herramientas.join(', '),
+        origen: 'wizard-landing-orion'
       };
 
-      const btn = event.target;
-      const originalText = btn.textContent;
-      btn.textContent = "Procesando...";
-      btn.disabled = true;
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'Enviando...'; btn.disabled = true;
 
       try {
-        const response = await fetch('https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/afb70f27-dd2d-4853-9270-3faf35ddcd5e', {
+        const res = await fetch('https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/afb70f27-dd2d-4853-9270-3faf35ddcd5e', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body: JSON.stringify(payload)
         });
-
-        if (!response.ok) throw new Error('Error en el envío');
-
-        alert('¡Perfecto! Hemos recibido tu información. Un consultor te contactará en las próximas 24 horas para agendar tu diagnóstico estratégico.');
+        if (!res.ok) throw new Error('Error');
+        alert('¡Perfecto! Recibimos tu información. Un consultor te contactará en las próximas 24 horas para agendar tu diagnóstico estratégico.');
         closeWizardModal();
-      } catch (err) {
-        console.error(err);
-        alert('Hubo un problema al procesar tu solicitud. Por favor intenta nuevamente o escríbenos directamente por WhatsApp.');
+      } catch {
+        alert('Hubo un problema. Intenta nuevamente o escríbenos directamente por WhatsApp.');
       } finally {
-        btn.textContent = originalText;
-        btn.disabled = false;
+        btn.textContent = 'Finalizar y Agendar'; btn.disabled = false;
       }
     }
 
-    // Close modals on overlay click
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-      overlay.addEventListener('click', function(e) {
-        if (e.target === this) {
-          if (this.id === 'whatsappModal') {
-            closeWhatsAppModal();
-          } else if (this.id === 'wizardModal') {
-            closeWizardModal();
-          }
-        }
-      });
-    });
-
-    // ESC key to close modals
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeWhatsAppModal();
-        closeWizardModal();
-      }
+    // ESC
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeWhatsAppModal(); closeWizardModal(); }
     });
   </script>
 </body>
