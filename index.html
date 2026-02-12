@@ -6,8 +6,12 @@
   <title>Orion AI — Consultoría Estratégica en Inteligencia Artificial</title>
   <meta name="description" content="Integramos IA en los 4 pilares de tu empresa: Operaciones, Ventas, RRHH y Finanzas. Soluciones especializadas para Clínicas Dentales y otras industrias." />
   
-  <!-- INSTRUCCIÓN: Reemplaza 'logo-orion.png' con tu logo real -->
-  <link rel="icon" type="image/png" href="logo-orion.png" />
+  <!-- ===== FAVICON COMPLETO ===== -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,25 +132,31 @@
       letter-spacing: -0.05em;
     }
 
+    /* ===== LOGO IMAGE — Navbar ===== */
     .logo-img {
       width: 40px; height: 40px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: white;
-      box-shadow: 0 0 28px var(--glow-primary);
+      overflow: visible;
       animation: logoPulse 3s ease-in-out infinite;
-      /* INSTRUCCIÓN: Descomenta esto cuando tengas el logo:
-      background-image: url('logo-orion.png');
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      */
+      flex-shrink: 0;
+    }
+
+    .logo-img img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 24px rgba(139, 92, 246, 0.4));
+      transition: filter 0.3s var(--ease);
+    }
+
+    .logo:hover .logo-img img {
+      filter: drop-shadow(0 0 18px rgba(59, 130, 246, 0.9)) drop-shadow(0 0 32px rgba(139, 92, 246, 0.6));
     }
 
     @keyframes logoPulse {
-      0%, 100% { box-shadow: 0 0 28px var(--glow-primary); }
-      50% { box-shadow: 0 0 42px var(--glow-primary), 0 0 18px var(--glow-accent); }
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4)); }
+      50% { filter: drop-shadow(0 0 18px rgba(59, 130, 246, 0.7)) drop-shadow(0 0 10px rgba(139, 92, 246, 0.5)); }
     }
 
     .logo-text {
@@ -229,12 +239,43 @@
       min-height: 90vh;
       display: flex; align-items: center;
       padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ===== HERO WATERMARK ===== */
+    .hero-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(320px, 55vw, 680px);
+      height: clamp(320px, 55vw, 680px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.04;
+      filter: blur(2px) saturate(1.5);
+      animation: watermarkFloat 10s ease-in-out infinite;
+      user-select: none;
+    }
+
+    .hero-watermark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes watermarkFloat {
+      0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.04; }
+      50% { transform: translate(-50%, -52%) scale(1.04) rotate(2deg); opacity: 0.055; }
     }
 
     .hero-content {
       max-width: 780px;
       margin: 0 auto;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-badge {
@@ -338,7 +379,7 @@
       line-height: 1.7;
     }
 
-    /* ========== INDUSTRIES SECTION (Clínicas + Otras) ========== */
+    /* ========== INDUSTRIES SECTION ========== */
     .industries-section {
       padding: 120px 0;
       background: linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.03), transparent);
@@ -817,16 +858,24 @@
       text-decoration: none;
     }
 
+    /* ===== LOGO IMAGE — Footer ===== */
     .footer-logo-img {
-      width: 36px; height: 36px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-radius: 9px;
+      width: 38px;
+      height: 38px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; color: white; font-weight: 800;
-      /* INSTRUCCIÓN: Usa tu logo aquí
-      background-image: url('logo-orion.png');
-      background-size: contain;
-      */
+      flex-shrink: 0;
+    }
+
+    .footer-logo-img img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 16px rgba(139, 92, 246, 0.3));
+      transition: filter 0.3s var(--ease);
+    }
+
+    .footer-logo:hover .footer-logo-img img {
+      filter: drop-shadow(0 0 14px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 24px rgba(139, 92, 246, 0.5));
     }
 
     .footer-logo-text {
@@ -1097,7 +1146,10 @@
   <nav id="nav">
     <div class="nav-inner">
       <a href="#" class="logo">
-        <div class="logo-img">O</div>
+        <!-- ===== LOGO IMAGEN — Navbar ===== -->
+        <div class="logo-img">
+          <img src="android-chrome-192x192.png" alt="Orion AI Logo" />
+        </div>
         <span class="logo-text">Orion<span class="ai">.ai</span></span>
       </a>
 
@@ -1120,6 +1172,11 @@
 
   <!-- ========== HERO ========== -->
   <section class="hero">
+    <!-- ===== WATERMARK LOGO ===== -->
+    <div class="hero-watermark" aria-hidden="true">
+      <img src="android-chrome-512x512.png" alt="" />
+    </div>
+
     <div class="wrapper">
       <div class="hero-content reveal">
         <div class="hero-badge">Consultoría Estratégica en IA</div>
@@ -1411,7 +1468,10 @@
     <div class="wrapper">
       <div class="footer-inner">
         <a href="#" class="footer-logo">
-          <div class="footer-logo-img">O</div>
+          <!-- ===== LOGO IMAGEN — Footer ===== -->
+          <div class="footer-logo-img">
+            <img src="android-chrome-192x192.png" alt="Orion AI Logo" />
+          </div>
           <span class="footer-logo-text">Orion<span style="background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">.ai</span></span>
         </a>
         <div class="footer-links">
@@ -1604,7 +1664,6 @@
     function closeQuoteModal() {
       document.getElementById('quoteModal').classList.remove('open');
       document.body.style.overflow = '';
-      // Reset form
       document.getElementById('quote-form').reset();
       document.querySelectorAll('.industry-btn').forEach(btn => btn.classList.remove('active'));
       document.getElementById('other-fields').classList.remove('show');
@@ -1619,18 +1678,11 @@
 
     // Industry selection
     function selectIndustry(type) {
-      // Remove active from all
       document.querySelectorAll('.industry-btn').forEach(btn => {
         btn.classList.remove('active');
       });
-      
-      // Add active to selected
       event.currentTarget.classList.add('active');
-      
-      // Set hidden input
       document.getElementById('selected-industry').value = type;
-      
-      // Show/hide conditional fields
       const otherFields = document.getElementById('other-fields');
       if (type === 'other') {
         otherFields.classList.add('show');
@@ -1648,10 +1700,8 @@
       const nombre = form.nombre.value.trim();
       const codigo = form.codigo.value;
       const telefono = form.telefono.value.trim();
-      
       const mensaje = `Hola, soy ${nombre}. Me gustaría recibir más información sobre Orion AI.`;
       const whatsappURL = `https://wa.me/56999066071?text=${encodeURIComponent(mensaje)}`;
-      
       window.open(whatsappURL, '_blank');
       closeContactModal();
       form.reset();
@@ -1661,13 +1711,10 @@
     async function submitQuote(e) {
       e.preventDefault();
       const form = e.target;
-      
-      // Validate industry selection
       if (!document.getElementById('selected-industry').value) {
         alert('Por favor selecciona tu industria');
         return;
       }
-      
       const formData = {
         industria: document.getElementById('selected-industry').value,
         nombre: form.nombre.value.trim(),
@@ -1676,23 +1723,17 @@
         rubro: form.rubro ? form.rubro.value.trim() : 'Clínica Dental',
         origen: 'landing-orion-ai'
       };
-      
       const submitBtn = e.target.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
       submitBtn.innerHTML = 'Enviando...';
       submitBtn.disabled = true;
-      
       try {
         const response = await fetch('https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/afb70f27-dd2d-4853-9270-3faf35ddcd5e', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
-        
         if (!response.ok) throw new Error('Error en el envío');
-        
         alert('¡Perfecto! Recibimos tu solicitud. Un consultor te contactará en las próximas 24 horas con tu cotización personalizada.');
         closeQuoteModal();
       } catch (error) {
