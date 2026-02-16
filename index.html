@@ -3,53 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orion AI — Consultoría Estratégica en Inteligencia Artificial</title>
-  <meta name="description" content="Integramos IA en los 4 pilares de tu empresa: Operaciones, Ventas, RRHH y Finanzas." />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <title>Orion.ia — Automatización con IA para Clínicas Dentales</title>
+  <meta name="description" content="Automatización integral con IA especializada en clínicas dentales. Chatbots, integración nativa y gestión inteligente." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* ═══════════════════════════════════════════
-       ORION AI — ULTRA-PREMIUM REFACTORED DESIGN
-       Complete Visual Overhaul - SaaS Class
+       ORION.IA — ENTERPRISE SAAS PRICING DESIGN
+       Inspired by Vambe.ai Modular Architecture
     ═══════════════════════════════════════════ */
     :root {
-      /* Core Palette - Ultra Dark Premium */
-      --void:           #000000;
-      --void-dark:      #020617;
-      --surface:        #0a0f1e;
-      --surface-2:      #0f1729;
-      --glass-bg:       rgba(255, 255, 255, 0.02);
-      --glass-border:   rgba(255, 255, 255, 0.08);
+      --void: #000000;
+      --void-dark: #020617;
+      --surface: #0a0f1e;
+      --surface-2: #0f1729;
+      --glass-bg: rgba(255, 255, 255, 0.02);
+      --glass-border: rgba(255, 255, 255, 0.08);
       --glass-border-h: rgba(255, 255, 255, 0.16);
 
-      /* Brand Colors */
-      --cyan:           #06b6d4;
-      --cyan-bright:    #22d3ee;
-      --primary:        #3b82f6;
-      --accent:         #8b5cf6;
-      --hot:            #ec4899;
-      --electric:       #0ea5e9;
+      --cyan: #06b6d4;
+      --cyan-bright: #22d3ee;
+      --primary: #3b82f6;
+      --accent: #8b5cf6;
+      --hot: #ec4899;
+      --electric: #0ea5e9;
 
-      /* Glow versions */
-      --glow-cyan:      rgba(6, 182, 212, 0.6);
-      --glow-primary:   rgba(59, 130, 246, 0.5);
-      --glow-accent:    rgba(139, 92, 246, 0.5);
-      --glow-hot:       rgba(236, 72, 153, 0.4);
+      --glow-cyan: rgba(6, 182, 212, 0.6);
+      --glow-primary: rgba(59, 130, 246, 0.5);
+      --glow-accent: rgba(139, 92, 246, 0.5);
+      --glow-hot: rgba(236, 72, 153, 0.4);
 
-      /* Text */
-      --text-primary:   #f8fafc;
+      --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
-      --text-muted:     #475569;
-      --success:        #10b981;
+      --text-muted: #475569;
+      --success: #10b981;
 
       --font-primary: 'Inter', -apple-system, sans-serif;
-      --radius-sm:  8px;
-      --radius-md:  14px;
-      --radius-lg:  22px;
-      --radius-xl:  32px;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
       --ease: cubic-bezier(0.4, 0, 0.2, 1);
       --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
@@ -67,9 +62,6 @@
       position: relative;
     }
 
-    /* ──────────────────────────────────────────
-       ULTRA-PREMIUM BACKGROUND (NO GRID)
-    ────────────────────────────────────────── */
     body::before {
       content: '';
       position: fixed;
@@ -81,7 +73,6 @@
       pointer-events: none;
     }
 
-    /* Starfield Canvas */
     #star-canvas { 
       position: fixed; 
       inset: 0; 
@@ -90,7 +81,6 @@
       opacity: 0.7;
     }
 
-    /* Animated nebula/glow blobs - MORE SUBTLE */
     .glow-blob {
       position: fixed;
       border-radius: 50%;
@@ -135,9 +125,6 @@
       to   { transform: translate(50px, -90px) scale(1.08); }
     }
 
-    /* ──────────────────────────────────────────
-       LAYOUT
-    ────────────────────────────────────────── */
     .wrapper {
       width: min(100%, 1280px);
       margin-inline: auto;
@@ -148,9 +135,9 @@
       .wrapper { padding: 0 24px; }
     }
 
-    /* ──────────────────────────────────────────
-       NAVBAR — Floating Pill (IMPROVED)
-    ────────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════ */
     nav {
       position: sticky; top: 0; z-index: 1000;
       display: flex; justify-content: center;
@@ -186,7 +173,6 @@
         0 0 70px rgba(6, 182, 212, 0.08);
     }
 
-    /* Logo */
     .logo {
       display: flex; align-items: center; gap: 10px;
       text-decoration: none;
@@ -195,35 +181,12 @@
       flex-shrink: 0;
     }
 
-    .logo-img {
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: visible; flex-shrink: 0;
-      animation: logoPulse 4s ease-in-out infinite;
-    }
-
-    .logo-img img {
-      width: 42px; height: 42px; object-fit: contain;
-      filter: drop-shadow(0 0 12px rgba(6,182,212,.8)) drop-shadow(0 0 24px rgba(139,92,246,.5));
-      transition: filter .3s var(--ease);
-    }
-
-    .logo:hover .logo-img img {
-      filter: drop-shadow(0 0 18px rgba(6,182,212,1)) drop-shadow(0 0 36px rgba(139,92,246,.7));
-    }
-
-    @keyframes logoPulse {
-      0%, 100% { filter: drop-shadow(0 0 8px rgba(6,182,212,.6)); }
-      50% { filter: drop-shadow(0 0 16px rgba(6,182,212,1)) drop-shadow(0 0 10px rgba(139,92,246,.6)); }
-    }
-
     .logo-text {
       background: linear-gradient(135deg, #fff 40%, #94a3b8 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    .logo-text .ai {
+    .logo-text .ia {
       background: linear-gradient(135deg, var(--cyan), var(--accent));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
@@ -253,9 +216,9 @@
       .nav-actions { gap: 6px; }
     }
 
-    /* ──────────────────────────────────────────
-       BUTTONS (ENHANCED)
-    ────────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       BUTTONS
+    ══════════════════════════════════════════ */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       gap: 8px; padding: 12px 24px;
@@ -319,60 +282,24 @@
       .btn-lg { padding: 14px 24px; font-size: .95rem; }
     }
 
-    /* ──────────────────────────────────────────
-       🚀 NEW HERO SECTION - ULTRA HIGH IMPACT
-    ────────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       HERO SECTION
+    ══════════════════════════════════════════ */
     .hero-section {
-      min-height: 100vh;
+      min-height: 92vh;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      padding: 120px 0 80px;
+      padding: 140px 0 80px;
       overflow: hidden;
-    }
-
-    /* Digital Landscape Background */
-    .hero-bg {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 400px;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .digital-wave {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 150%;
-      height: 100%;
-      background: 
-        linear-gradient(0deg, transparent 0%, rgba(6,182,212,0.03) 50%, transparent 100%),
-        repeating-linear-gradient(90deg, 
-          transparent 0px, 
-          rgba(6,182,212,0.08) 1px, 
-          transparent 2px, 
-          transparent 80px);
-      mask-image: linear-gradient(to top, black 0%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
-      animation: waveFlow 20s linear infinite;
-    }
-
-    @keyframes waveFlow {
-      from { transform: translateX(-50%) translateY(0); }
-      to { transform: translateX(-50%) translateY(-80px); }
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
       text-align: center;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 32px;
     }
@@ -394,28 +321,13 @@
       animation: fadeInUp .8s ease .2s backwards;
     }
 
-    .hero-badge i {
-      font-size: 1rem;
-      animation: sparkle 2s ease-in-out infinite;
-    }
-
-    @keyframes sparkle {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .6; transform: scale(.9); }
-    }
-
     .hero-title {
-      font-size: clamp(3rem, 10vw, 7rem);
+      font-size: clamp(2.8rem, 9vw, 6.5rem);
       font-weight: 900;
-      line-height: 1;
+      line-height: 1.05;
       letter-spacing: -.06em;
       margin-bottom: 28px;
       animation: fadeInUp .8s ease .4s backwards;
-    }
-
-    .hero-title .line {
-      display: block;
-      margin-bottom: 12px;
     }
 
     .hero-title .gradient {
@@ -431,30 +343,12 @@
       display: inline-block;
     }
 
-    /* Glow effect for gradient text */
-    .hero-title .gradient::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: -1;
-      background: linear-gradient(135deg, 
-        var(--cyan-bright) 0%, 
-        var(--electric) 30%,
-        var(--primary) 60%,
-        var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: blur(20px);
-      opacity: 0.6;
-    }
-
     .hero-subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-size: clamp(1.05rem, 2.3vw, 1.4rem);
       color: var(--text-secondary);
-      max-width: 800px;
+      max-width: 760px;
       margin: 0 auto 48px;
-      line-height: 1.6;
+      line-height: 1.65;
       animation: fadeInUp .8s ease .6s backwards;
     }
 
@@ -477,299 +371,15 @@
       }
     }
 
-    /* Responsive Hero */
     @media (max-width: 768px) {
-      .hero-section { padding: 100px 0 60px; min-height: 90vh; }
+      .hero-section { padding: 100px 0 60px; min-height: 85vh; }
       .hero-content { padding: 0 24px; }
-      .hero-title { margin-bottom: 24px; }
-      .hero-title .line { margin-bottom: 8px; }
-      .hero-subtitle { margin-bottom: 36px; }
       .hero-cta { gap: 14px; }
-      .hero-bg { height: 300px; }
     }
 
-    /* ──────────────────────────────────────────
-       🔗 NEW ECOSYSTEM INTEGRATIONS SECTION
-    ────────────────────────────────────────── */
-    .ecosystem-section {
-      padding: 100px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ecosystem-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Central Hub - Orion Core */
-    .ecosystem-core {
-      position: relative;
-      z-index: 10;
-      width: 220px;
-      height: 220px;
-      background: 
-        linear-gradient(145deg, 
-          rgba(6,182,212,.12) 0%,
-          rgba(59,130,246,.1) 50%,
-          rgba(139,92,246,.08) 100%);
-      border: 2px solid rgba(6,182,212,.4);
-      border-radius: 24px;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      box-shadow:
-        inset 0 2px 0 rgba(255,255,255,.15),
-        0 0 0 1px rgba(6,182,212,.2),
-        0 20px 60px rgba(0,0,0,.6),
-        0 0 100px rgba(6,182,212,.2);
-      animation: coreGlow 4s ease-in-out infinite;
-    }
-
-    @keyframes coreGlow {
-      0%, 100% {
-        box-shadow:
-          inset 0 2px 0 rgba(255,255,255,.15),
-          0 0 0 1px rgba(6,182,212,.2),
-          0 20px 60px rgba(0,0,0,.6),
-          0 0 100px rgba(6,182,212,.2);
-      }
-      50% {
-        box-shadow:
-          inset 0 2px 0 rgba(255,255,255,.2),
-          0 0 0 1px rgba(6,182,212,.4),
-          0 20px 60px rgba(0,0,0,.6),
-          0 0 140px rgba(6,182,212,.35);
-      }
-    }
-
-    .ecosystem-core-logo {
-      width: 80px;
-      height: 80px;
-      filter: drop-shadow(0 0 20px rgba(6,182,212,.7));
-    }
-
-    .ecosystem-core-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: -.04em;
-      background: linear-gradient(135deg, #fff, var(--cyan-bright));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .ecosystem-core-subtitle {
-      font-size: .8rem;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-
-    /* Satellite Apps */
-    .ecosystem-satellites {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .satellite {
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 16px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 8px 32px rgba(0,0,0,.5);
-      transition: all .4s var(--ease);
-    }
-
-    .satellite:hover {
-      background: rgba(255,255,255,.06);
-      border-color: rgba(6,182,212,.35);
-      transform: translateY(-6px) scale(1.05);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12),
-        0 0 0 1px rgba(6,182,212,.2),
-        0 16px 48px rgba(0,0,0,.6),
-        0 0 60px rgba(6,182,212,.15);
-    }
-
-    .satellite-icon {
-      font-size: 2.5rem;
-      filter: drop-shadow(0 0 8px rgba(6,182,212,.4));
-    }
-
-    .satellite-name {
-      font-size: .85rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    /* Positioning with animations */
-    .satellite-1 {
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      animation: floatSatellite 6s ease-in-out infinite;
-    }
-
-    .satellite-2 {
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: floatSatellite 7s ease-in-out .5s infinite;
-    }
-
-    .satellite-3 {
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      animation: floatSatellite 6.5s ease-in-out 1s infinite;
-    }
-
-    .satellite-4 {
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: floatSatellite 7.5s ease-in-out 1.5s infinite;
-    }
-
-    @keyframes floatSatellite {
-      0%, 100% { transform: translate(0, 0) translateX(var(--tx, 0)) translateY(var(--ty, 0)); }
-      50% { transform: translate(0, -15px) translateX(var(--tx, 0)) translateY(var(--ty, 0)); }
-    }
-
-    .satellite-1 { --tx: 0; --ty: -50%; }
-    .satellite-2 { --tx: -50%; --ty: 0; }
-    .satellite-3 { --tx: 0; --ty: -50%; }
-    .satellite-4 { --tx: -50%; --ty: 0; }
-
-    /* Connection Lines */
-    .connection-line {
-      position: absolute;
-      background: linear-gradient(90deg, 
-        transparent, 
-        rgba(6,182,212,.3) 50%, 
-        transparent);
-      height: 2px;
-      transform-origin: center;
-      pointer-events: none;
-      animation: lineFlow 3s ease-in-out infinite;
-    }
-
-    @keyframes lineFlow {
-      0%, 100% { opacity: .3; }
-      50% { opacity: .7; }
-    }
-
-    .line-1 { 
-      top: 50%; left: 140px; 
-      width: calc(50% - 140px - 110px);
-      transform: translateY(-50%);
-    }
-
-    .line-2 { 
-      top: calc(10% + 70px); left: 50%;
-      height: calc(50% - 10% - 70px - 110px);
-      width: 2px;
-      transform: translateX(-50%);
-      background: linear-gradient(0deg, 
-        transparent, 
-        rgba(6,182,212,.3) 50%, 
-        transparent);
-    }
-
-    .line-3 { 
-      top: 50%; right: 140px; 
-      width: calc(50% - 140px - 110px);
-      transform: translateY(-50%);
-    }
-
-    .line-4 { 
-      bottom: calc(10% + 70px); left: 50%;
-      height: calc(50% - 10% - 70px - 110px);
-      width: 2px;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, 
-        transparent, 
-        rgba(6,182,212,.3) 50%, 
-        transparent);
-    }
-
-    /* Responsive Ecosystem */
-    @media (max-width: 968px) {
-      .ecosystem-section { padding: 80px 0; }
-      
-      .ecosystem-container {
-        min-height: auto;
-        padding: 60px 24px;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 32px;
-        align-items: center;
-      }
-
-      .ecosystem-core {
-        position: relative;
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
-      }
-
-      .ecosystem-satellites {
-        position: relative;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      .satellite {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        transform: none !important;
-        width: 100%;
-        height: 140px;
-      }
-
-      .satellite:hover {
-        transform: translateY(-4px) scale(1.03) !important;
-      }
-
-      .connection-line { display: none; }
-    }
-
-    @media (max-width: 480px) {
-      .ecosystem-satellites {
-        grid-template-columns: 1fr;
-        max-width: 280px;
-      }
-    }
-
-    /* ──────────────────────────────────────────
-       SECTION HEADERS (ENHANCED)
-    ────────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       SECTION HEADERS
+    ══════════════════════════════════════════ */
     .section-header { 
       text-align: center; 
       margin-bottom: 72px;
@@ -787,19 +397,6 @@
       background: rgba(6,182,212,.08);
       border: 1px solid rgba(6,182,212,.25);
       border-radius: 999px;
-    }
-
-    .section-label::before {
-      content: '';
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 10px var(--cyan);
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes dotPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .5; transform: scale(.7); }
     }
 
     .section-title {
@@ -830,259 +427,72 @@
       line-height: 1.7;
     }
 
-    /* ──────────────────────────────────────────
-       INDUSTRIES / SOLUTIONS (ENHANCED)
-    ────────────────────────────────────────── */
-    .industries-section {
-      padding: 100px 0;
+    /* ══════════════════════════════════════════
+       ✨ PRICING SECTION - VAMBE.AI INSPIRED
+    ══════════════════════════════════════════ */
+    .pricing-section { 
+      padding: 120px 0; 
+      position: relative;
     }
-
-    .industries-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 968px) { 
-      .industries-grid { grid-template-columns: 1fr; }
-      .industries-section { padding: 80px 0; }
-    }
-
-    .industry-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg);
-      padding: 48px;
-      backdrop-filter: blur(24px);
-      transition: all .4s var(--ease);
-      position: relative; 
-      overflow: hidden;
-    }
-
-    .industry-card::before {
-      content: '';
-      position: absolute; inset: -1px;
-      border-radius: inherit;
-      background: linear-gradient(145deg, 
-        rgba(6,182,212,.14), 
-        rgba(139,92,246,.1), 
-        transparent 60%);
-      opacity: 0;
-      transition: opacity .4s ease;
-    }
-
-    .industry-card:hover::before { opacity: 1; }
-
-    .industry-card.featured {
-      border-color: rgba(6, 182, 212, 0.4);
-      background: linear-gradient(145deg,
-        rgba(6,182,212,.08) 0%,
-        rgba(59,130,246,.06) 40%,
-        rgba(10,15,30,.95) 100%);
-      box-shadow:
-        inset 0 1px 0 rgba(6,182,212,.18),
-        0 0 0 1px rgba(6,182,212,.2),
-        0 24px 70px rgba(0,0,0,.6),
-        0 0 100px rgba(6,182,212,.1);
-    }
-
-    .industry-badge {
-      position: absolute; top: -1px; right: 32px;
-      background: linear-gradient(135deg, var(--cyan), var(--primary));
-      color: white;
-      font-size: .72rem; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 0 0 14px 14px;
-      box-shadow: 0 6px 24px rgba(6,182,212,.5);
-    }
-
-    .industry-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(6,182,212,.5);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.1),
-        0 0 0 1px rgba(6,182,212,.3),
-        0 28px 80px rgba(0,0,0,.7),
-        0 0 80px rgba(6,182,212,.15);
-    }
-
-    .industry-card.featured:hover { 
-      transform: translateY(-10px) scale(1.01); 
-    }
-
-    .industry-icon {
-      font-size: 3.5rem;
-      margin-bottom: 24px;
-      filter: drop-shadow(0 0 20px var(--glow-cyan));
-      display: inline-block;
-    }
-
-    .industry-title {
-      font-size: 1.9rem; 
-      font-weight: 900;
-      letter-spacing: -.05em;
-      margin-bottom: 14px;
-      color: var(--text-primary);
-    }
-
-    .industry-tagline {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      margin-bottom: 28px;
-      line-height: 1.7;
-    }
-
-    .industry-features { 
-      list-style: none; 
-      margin-bottom: 32px; 
-    }
-
-    .industry-features li {
-      display: flex; 
-      align-items: flex-start; 
-      gap: 14px;
-      font-size: .96rem;
-      color: var(--text-secondary);
-      padding: 10px 0;
-      line-height: 1.6;
-      border-bottom: 1px solid rgba(255,255,255,.05);
-    }
-
-    .industry-features li:last-child { border-bottom: none; }
-
-    .industry-features li i {
-      color: var(--cyan); 
-      font-size: .85rem;
-      margin-top: 5px; 
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 768px) {
-      .industry-card { padding: 36px 28px; }
-    }
-
-    /* ──────────────────────────────────────────
-       PRICING (ENHANCED)
-    ────────────────────────────────────────── */
-    .pricing-section { padding: 100px 0; }
 
     @media (max-width: 768px) {
       .pricing-section { padding: 80px 0; }
-    }
-
-    .billing-toggle {
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      gap: 16px; 
-      margin-bottom: 64px;
-    }
-
-    .toggle-label {
-      font-size: .92rem; 
-      font-weight: 500;
-      color: var(--text-muted); 
-      cursor: pointer;
-      transition: color .25s;
-    }
-
-    .toggle-label.on { color: var(--text-primary); }
-
-    .toggle-pill {
-      width: 56px; 
-      height: 30px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid var(--glass-border);
-      border-radius: 999px;
-      cursor: pointer; 
-      position: relative;
-      transition: all .3s var(--ease);
-    }
-
-    .toggle-pill:hover {
-      border-color: rgba(6,182,212,.35);
-      box-shadow: 0 0 20px rgba(6,182,212,.15);
-    }
-
-    .toggle-thumb {
-      position: absolute;
-      top: 3px; left: 3px;
-      width: 22px; height: 22px;
-      background: linear-gradient(135deg, var(--cyan), var(--primary));
-      border-radius: 50%;
-      transition: transform .3s var(--spring);
-      box-shadow: 0 0 12px var(--glow-cyan);
-    }
-
-    .toggle-pill.annual .toggle-thumb { transform: translateX(26px); }
-
-    .save-pill {
-      background: rgba(6,182,212,.12);
-      border: 1px solid rgba(6,182,212,.3);
-      color: var(--cyan-bright);
-      font-size: .78rem; 
-      font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 999px;
-      letter-spacing: .04em;
     }
 
     /* 4-column grid */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      max-width: 1300px;
+      gap: 22px;
+      max-width: 1400px;
       margin: 0 auto;
       align-items: start;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1320px) {
       .pricing-grid { 
         grid-template-columns: repeat(2, 1fr); 
         max-width: 900px; 
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 700px) {
       .pricing-grid { 
         grid-template-columns: 1fr; 
-        max-width: 480px; 
+        max-width: 500px; 
       }
     }
 
-    /* Plan cards */
+    /* ══════ PLAN CARD BASE ══════ */
     .plan-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(10, 15, 30, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-lg);
-      padding: 32px 24px;
+      padding: 0;
       position: relative;
-      transition: all .35s var(--ease);
+      transition: all .4s var(--ease);
       overflow: hidden;
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
     }
 
     .plan-card::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, 
         transparent, 
         rgba(255,255,255,.18), 
         transparent);
-      transition: background .3s ease;
+      transition: background .4s ease;
     }
 
     .plan-card:hover {
-      border-color: rgba(6,182,212,.35);
+      border-color: rgba(6,182,212,.4);
       transform: translateY(-8px);
       box-shadow:
-        0 0 0 1px rgba(6,182,212,.2),
-        0 24px 70px rgba(0,0,0,.6),
-        0 0 60px rgba(6,182,212,.1);
+        0 0 0 1px rgba(6,182,212,.25),
+        0 28px 80px rgba(0,0,0,.7),
+        0 0 80px rgba(6,182,212,.12);
     }
 
     .plan-card:hover::before {
@@ -1092,18 +502,19 @@
         transparent);
     }
 
+    /* Featured plan */
     .plan-card.featured {
       border-color: rgba(139,92,246,.5);
       background: linear-gradient(145deg,
-        rgba(139,92,246,.1) 0%,
+        rgba(139,92,246,.12) 0%,
         rgba(59,130,246,.06) 50%,
-        rgba(10,15,30,.95) 100%);
-      transform: scale(1.02) translateY(-6px);
+        rgba(10,15,30,.85) 100%);
+      transform: scale(1.03) translateY(-8px);
       box-shadow:
-        inset 0 1px 0 rgba(139,92,246,.25),
-        0 0 0 1px rgba(139,92,246,.3),
-        0 0 100px rgba(139,92,246,.18),
-        0 24px 70px rgba(0,0,0,.6);
+        inset 0 2px 0 rgba(139,92,246,.25),
+        0 0 0 1px rgba(139,92,246,.35),
+        0 0 120px rgba(139,92,246,.2),
+        0 32px 90px rgba(0,0,0,.7);
     }
 
     .plan-card.featured::before {
@@ -1112,628 +523,381 @@
         var(--accent), 
         var(--hot), 
         transparent);
-      opacity: .9;
+      opacity: 1;
+      height: 3px;
     }
 
     .plan-card.featured:hover {
-      transform: scale(1.02) translateY(-12px);
+      transform: scale(1.03) translateY(-14px);
       box-shadow:
-        inset 0 1px 0 rgba(139,92,246,.3),
-        0 0 0 1px rgba(139,92,246,.45),
-        0 0 120px rgba(139,92,246,.25),
-        0 32px 90px rgba(0,0,0,.7);
+        inset 0 2px 0 rgba(139,92,246,.3),
+        0 0 0 1px rgba(139,92,246,.5),
+        0 0 140px rgba(139,92,246,.28),
+        0 40px 110px rgba(0,0,0,.8);
+    }
+
+    /* ══════ PLAN HEADER ══════ */
+    .plan-header {
+      padding: 32px 28px 24px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative;
+    }
+
+    .plan-badge {
+      display: inline-block;
+      font-size: .64rem; 
+      font-weight: 700;
+      letter-spacing: .14em; 
+      text-transform: uppercase;
+      padding: 6px 14px; 
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+
+    .badge-economic {
+      background: rgba(16,185,129,.12); 
+      color: var(--success);
+      border: 1px solid rgba(16,185,129,.35);
+    }
+
+    .badge-basico {
+      background: rgba(6,182,212,.12); 
+      color: var(--cyan-bright);
+      border: 1px solid rgba(6,182,212,.3);
+    }
+
+    .badge-business {
+      background: rgba(59,130,246,.12); 
+      color: #93c5fd;
+      border: 1px solid rgba(59,130,246,.35);
+    }
+
+    .badge-ejecutivo {
+      background: rgba(139,92,246,.14); 
+      color: #c4b5fd;
+      border: 1px solid rgba(139,92,246,.4);
     }
 
     .featured-badge {
-      position: absolute; top: -1px; right: 24px;
+      position: absolute; 
+      top: -1px; 
+      right: 24px;
       background: linear-gradient(135deg, var(--accent), var(--hot));
       color: white;
-      font-size: .64rem; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 0 0 12px 12px;
-      box-shadow: 0 6px 24px rgba(139,92,246,.6);
-    }
-
-    .plan-tier {
-      font-size: .64rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 7px;
-      display: inline-block; margin-bottom: 14px;
-    }
-
-    .tier-economic {
-      background: rgba(16,185,129,.12); 
-      color: var(--success);
-      border: 1px solid rgba(16,185,129,.3);
-    }
-
-    .tier-basic {
-      background: rgba(6,182,212,.12); 
-      color: var(--cyan-bright);
-      border: 1px solid rgba(6,182,212,.25);
-    }
-
-    .tier-business {
-      background: rgba(59,130,246,.12); 
-      color: #93c5fd;
-      border: 1px solid rgba(59,130,246,.3);
-    }
-
-    .tier-ejecutivo {
-      background: rgba(139,92,246,.12); 
-      color: #c4b5fd;
-      border: 1px solid rgba(139,92,246,.3);
+      font-size: .64rem; 
+      font-weight: 800;
+      letter-spacing: .12em; 
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 8px 28px rgba(139,92,246,.7);
     }
 
     .plan-name {
-      font-size: 1.6rem; 
-      font-weight: 800;
+      font-size: 1.85rem; 
+      font-weight: 900;
       letter-spacing: -.06em;
-      margin-bottom: 6px;
+      margin-bottom: 0;
       color: var(--text-primary);
+      line-height: 1.1;
     }
 
-    .plan-tagline {
-      font-size: .88rem;
-      color: var(--text-secondary);
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .price-block {
-      background: rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: var(--radius-md);
-      padding: 18px;
-      margin-bottom: 18px;
-    }
-
-    .price-row {
-      display: flex; 
-      justify-content: space-between; 
-      align-items: flex-start;
-      padding: 10px 0;
+    /* ══════ INVESTMENT BLOCK ══════ */
+    .investment-block {
+      padding: 24px 28px;
+      background: rgba(0,0,0,.3);
       border-bottom: 1px solid rgba(255,255,255,.05);
     }
 
-    .price-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .price-row:first-child { padding-top: 0; }
+    .investment-row {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: baseline;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
 
-    .price-row-label {
-      font-size: .7rem; 
+    .investment-row:last-child { 
+      border-bottom: none; 
+      padding-bottom: 0; 
+    }
+
+    .investment-row:first-child { 
+      padding-top: 0; 
+    }
+
+    .inv-label {
+      font-size: .74rem; 
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase; 
-      letter-spacing: .08em; 
-      line-height: 1.3;
+      letter-spacing: .1em;
     }
 
-    .price-row-label span {
+    .inv-label span {
       display: block; 
       font-size: .64rem;
       color: var(--text-muted); 
       margin-top: 3px;
+      font-weight: 500;
     }
 
-    .price-amount {
-      font-size: 1.15rem; 
-      font-weight: 700;
+    .inv-price {
+      font-size: 1.4rem; 
+      font-weight: 800;
       color: var(--text-primary);
-      text-align: right; 
-      line-height: 1.2;
+      text-align: right;
+      letter-spacing: -.03em;
     }
 
-    .price-unit { 
-      font-size: .76rem; 
-      font-weight: 400; 
-      color: var(--text-secondary); 
-    }
-
-    .price-amount.hero-price {
-      font-size: 1.8rem;
-      background: linear-gradient(135deg, 
-        var(--cyan-bright), 
-        var(--primary));
+    .inv-price.highlight {
+      font-size: 2rem;
+      background: linear-gradient(135deg, var(--cyan-bright), var(--primary));
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent;
     }
 
-    .price-amount.hero-price-green {
-      font-size: 1.8rem;
-      background: linear-gradient(135deg, 
-        var(--success), 
-        var(--cyan));
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent;
+    .inv-price.green {
+      color: var(--success);
     }
 
-    .custom-quote-block {
-      background: linear-gradient(135deg, 
-        rgba(139,92,246,.12), 
-        rgba(236,72,153,.08));
-      border: 1px solid rgba(139,92,246,.3);
-      border-radius: var(--radius-md);
-      padding: 18px;
-      margin-bottom: 18px;
-      text-align: center;
-    }
-
-    .custom-quote-icon { 
-      font-size: 1.7rem; 
-      margin-bottom: 8px; 
-    }
-
-    .custom-quote-title {
-      font-size: .92rem; 
-      font-weight: 700;
-      color: var(--text-primary); 
-      margin-bottom: 4px;
-    }
-
-    .custom-quote-sub { 
+    .inv-unit { 
       font-size: .8rem; 
+      font-weight: 500; 
       color: var(--text-secondary); 
     }
 
-    .video-placeholder {
+    /* ══════ CTA BLOCK ══════ */
+    .cta-block {
+      padding: 24px 28px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    /* ══════ FEATURE BLOCKS ══════ */
+    .feature-block {
+      padding: 24px 28px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    .feature-block:last-child {
+      border-bottom: none;
+    }
+
+    .fb-title {
+      font-size: .68rem; 
+      font-weight: 700;
+      letter-spacing: .15em; 
+      text-transform: uppercase;
+      color: var(--text-muted); 
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fb-title i {
+      font-size: .72rem;
+      color: var(--cyan);
+    }
+
+    .feature-list { 
+      list-style: none; 
+    }
+
+    .feature-list li {
+      display: flex; 
+      align-items: flex-start; 
+      gap: 11px;
+      font-size: .88rem;
+      color: var(--text-secondary);
+      padding: 8px 0; 
+      line-height: 1.55;
+    }
+
+    .feature-list li i {
+      color: var(--success); 
+      font-size: .76rem;
+      margin-top: 4px; 
+      flex-shrink: 0;
+    }
+
+    /* Support boxes */
+    .support-boxes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .support-box {
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all .3s ease;
+    }
+
+    .support-box:hover {
+      background: rgba(6,182,212,.08);
+      border-color: rgba(6,182,212,.3);
+      color: var(--text-primary);
+    }
+
+    /* IA & Automation block with icons */
+    .ia-channels {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .ia-channels .channel-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      transition: all .3s ease;
+    }
+
+    .ia-channels .channel-icon:hover {
+      background: rgba(6,182,212,.1);
+      border-color: rgba(6,182,212,.4);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(6,182,212,.2);
+    }
+
+    /* Metrics highlight */
+    .feature-list li.metric {
+      color: var(--cyan-bright);
+      font-weight: 600;
+    }
+
+    .feature-list li.metric i {
+      color: var(--cyan);
+    }
+
+    /* ══════ CUSTOM BLOCKS FOR EJECUTIVO ══════ */
+    .video-block {
       width: 100%; 
       aspect-ratio: 16/9;
       background: linear-gradient(145deg, 
-        rgba(139,92,246,.1), 
-        rgba(59,130,246,.06));
-      border: 1px solid rgba(139,92,246,.3);
-      border-radius: var(--radius-md);
+        rgba(139,92,246,.12), 
+        rgba(59,130,246,.08));
+      border: 1px solid rgba(139,92,246,.35);
+      border-radius: 14px;
       display: flex; 
       flex-direction: column;
       align-items: center; 
       justify-content: center; 
-      gap: 10px;
-      margin-bottom: 18px; 
+      gap: 12px;
+      margin-bottom: 20px; 
       cursor: pointer;
-      transition: all .3s var(--ease);
+      transition: all .35s var(--ease);
       position: relative; 
       overflow: hidden;
     }
 
-    .video-placeholder::before {
+    .video-block::before {
       content: '';
       position: absolute; inset: 0;
       background: radial-gradient(ellipse at center,
-        rgba(139,92,246,.16),
+        rgba(139,92,246,.18),
         transparent 70%);
     }
 
-    .video-placeholder:hover {
-      border-color: rgba(139,92,246,.55);
+    .video-block:hover {
+      border-color: rgba(139,92,246,.6);
       box-shadow: 
-        0 0 50px rgba(139,92,246,.2), 
-        inset 0 0 50px rgba(139,92,246,.05);
+        0 0 60px rgba(139,92,246,.25), 
+        inset 0 0 60px rgba(139,92,246,.06);
+      transform: translateY(-4px);
     }
 
     .play-btn {
-      width: 54px; 
-      height: 54px;
+      width: 62px; 
+      height: 62px;
       background: linear-gradient(135deg, var(--accent), var(--hot));
       border-radius: 50%;
       display: flex; 
       align-items: center; 
       justify-content: center;
-      font-size: 1.15rem; 
+      font-size: 1.3rem; 
       color: white;
-      box-shadow: 0 0 32px rgba(139,92,246,.6);
+      box-shadow: 0 0 40px rgba(139,92,246,.7);
       position: relative; 
       z-index: 1;
-      transition: all .3s var(--spring);
+      transition: all .35s var(--spring);
     }
 
-    .video-placeholder:hover .play-btn {
-      transform: scale(1.15);
+    .video-block:hover .play-btn {
+      transform: scale(1.18);
       box-shadow: 
-        0 0 50px rgba(139,92,246,.8), 
-        0 0 100px rgba(236,72,153,.25);
+        0 0 60px rgba(139,92,246,.9), 
+        0 0 120px rgba(236,72,153,.3);
     }
 
     .video-label {
-      font-size: .8rem; 
+      font-size: .86rem; 
       color: var(--text-secondary);
       position: relative; 
       z-index: 1;
+      font-weight: 500;
     }
 
-    .feature-group {
-      margin: 18px 0; 
-      padding-bottom: 18px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
+    .custom-quote {
+      background: linear-gradient(135deg, 
+        rgba(139,92,246,.14), 
+        rgba(236,72,153,.1));
+      border: 1px solid rgba(139,92,246,.35);
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    .feature-group:last-of-type {
-      border-bottom: none; 
-      padding-bottom: 0; 
-      margin-bottom: 16px;
-    }
-
-    .fg-label {
-      font-size: .67rem; 
-      font-weight: 700;
-      letter-spacing: .13em; 
-      text-transform: uppercase;
-      color: var(--text-muted); 
-      margin-bottom: 12px;
-    }
-
-    .feature-list { list-style: none; }
-
-    .feature-list li {
-      display: flex; 
-      align-items: flex-start; 
-      gap: 10px;
-      font-size: .86rem;
-      color: var(--text-secondary);
-      padding: 6px 0; 
-      line-height: 1.5;
-    }
-
-    .feature-list li i {
-      color: var(--success); 
-      font-size: .74rem;
-      margin-top: 5px; 
-      flex-shrink: 0;
-    }
-
-    .feature-list li.metric { color: var(--cyan-bright); }
-    .feature-list li.metric i { color: var(--cyan); }
-
-    .plan-desc-block {
-      background: rgba(139,92,246,.08);
-      border: 1px solid rgba(139,92,246,.22);
-      border-left: 3px solid var(--accent);
-      border-radius: var(--radius-sm);
-      padding: 15px;
-      font-size: .87rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin: 18px 0;
-    }
-
-    /* ──────────────────────────────────────────
-       MODULES (ENHANCED)
-    ────────────────────────────────────────── */
-    .modules-section { padding: 100px 0; }
-
-    @media (max-width: 768px) {
-      .modules-section { padding: 80px 0; }
-    }
-
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 18px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 640px) {
-      .modules-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .module-card {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius-md);
-      padding: 30px 26px;
-      transition: all .35s var(--ease);
-      cursor: pointer;
-      backdrop-filter: blur(16px);
-      position: relative; 
-      overflow: hidden;
-    }
-
-    .module-card::after {
-      content: '';
-      position: absolute; 
-      bottom: 0; 
-      left: 0; 
-      right: 0; 
-      height: 3px;
-      background: linear-gradient(90deg, 
-        var(--cyan), 
-        var(--accent), 
-        var(--hot));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .35s var(--ease);
-    }
-
-    .module-card::before {
-      content: '';
-      position: absolute; 
-      top: 0; 
-      right: 0;
-      width: 90px; 
-      height: 90px;
-      background: radial-gradient(circle at top right, 
-        rgba(6,182,212,.12), 
-        transparent 70%);
-      opacity: 0;
-      transition: opacity .35s ease;
-      border-radius: 0 var(--radius-md) 0 0;
-    }
-
-    .module-card:hover {
-      border-color: rgba(6,182,212,.35);
-      transform: translateY(-6px);
-      background: rgba(6,182,212,.05);
-      box-shadow:
-        0 0 0 1px rgba(6,182,212,.15),
-        0 20px 60px rgba(0,0,0,.6),
-        0 0 50px rgba(6,182,212,.08);
-    }
-
-    .module-card:hover::after { transform: scaleX(1); }
-    .module-card:hover::before { opacity: 1; }
-
-    .module-icon {
-      width: 50px; 
-      height: 50px;
-      background: rgba(6,182,212,.1);
-      border: 1px solid rgba(6,182,212,.25);
-      border-radius: var(--radius-sm);
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      font-size: 1.15rem; 
-      color: var(--cyan);
-      margin-bottom: 18px;
-      transition: all .3s var(--ease);
-    }
-
-    .module-card:hover .module-icon {
-      background: rgba(6,182,212,.18);
-      border-color: var(--cyan);
-      box-shadow: 0 0 24px rgba(6,182,212,.35);
-      color: var(--cyan-bright);
-    }
-
-    .module-name {
-      font-size: .98rem; 
-      font-weight: 700;
+    .custom-quote-icon { 
+      font-size: 2rem; 
       margin-bottom: 10px; 
-      color: var(--text-primary);
+    }
+
+    .custom-quote-title {
+      font-size: 1.05rem; 
+      font-weight: 800;
+      color: var(--text-primary); 
+      margin-bottom: 6px;
       letter-spacing: -.02em;
     }
 
-    .module-desc {
-      font-size: .86rem;
+    .custom-quote-sub { 
+      font-size: .84rem; 
       color: var(--text-secondary);
-      line-height: 1.6;
+      font-weight: 500;
     }
 
-    /* ──────────────────────────────────────────
-       3D SPACE SCENE (ENHANCED)
-    ────────────────────────────────────────── */
-    .space-scene {
-      position: relative;
-      height: 320px;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      overflow: hidden;
-      margin-top: 80px;
+    .description-block {
+      background: rgba(139,92,246,.08);
+      border: 1px solid rgba(139,92,246,.25);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px;
+      font-size: .9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
 
-    .space-scene::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(0deg, var(--surface) 0%, transparent 35%),
-        linear-gradient(180deg, var(--void) 0%, transparent 30%);
-      z-index: 2; 
-      pointer-events: none;
-    }
-
-    .planet-system {
-      position: relative;
-      perspective: 1200px;
-      transform-style: preserve-3d;
-      z-index: 1;
-    }
-
-    .planet {
-      width: 120px; 
-      height: 120px;
-      border-radius: 50%;
-      position: relative; 
-      z-index: 3;
-      background:
-        radial-gradient(circle at 34% 30%,
-          rgba(170, 150, 255, 0.92) 0%,
-          rgba(90, 70, 190, 0.88) 25%,
-          rgba(35, 25, 100, 0.96) 55%,
-          rgba(12, 8, 35, 1) 100%);
-      box-shadow:
-        inset 16px 16px 35px rgba(190,170,255,.28),
-        inset -18px -18px 40px rgba(0,0,0,.75),
-        0 0 50px rgba(130,100,255,.35),
-        0 0 100px rgba(130,100,255,.18),
-        0 0 180px rgba(130,100,255,.1);
-      animation: planetAura 8s ease-in-out infinite;
-    }
-
-    .planet::before {
-      content: '';
-      position: absolute; 
-      inset: -7px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 34% 30%,
-        rgba(110,90,255,.1), 
-        transparent 70%);
-      box-shadow: 0 0 35px rgba(110,90,255,.25);
-    }
-
-    .planet::after {
-      content: '';
-      position: absolute;
-      top: 20%; 
-      left: 16%;
-      width: 68%; 
-      height: 1px;
-      background: linear-gradient(90deg,
-        transparent,
-        rgba(210,200,255,.4) 30%,
-        rgba(210,200,255,.18) 70%,
-        transparent);
-      border-radius: 50%;
-      transform: rotate(-10deg);
-      filter: blur(0.6px);
-    }
-
-    @keyframes planetAura {
-      0%, 100% {
-        box-shadow:
-          inset 16px 16px 35px rgba(190,170,255,.28),
-          inset -18px -18px 40px rgba(0,0,0,.75),
-          0 0 50px rgba(130,100,255,.35),
-          0 0 100px rgba(130,100,255,.18),
-          0 0 180px rgba(130,100,255,.1);
-      }
-      50% {
-        box-shadow:
-          inset 16px 16px 35px rgba(110,190,255,.32),
-          inset -18px -18px 40px rgba(0,0,0,.8),
-          0 0 65px rgba(59,130,246,.45),
-          0 0 120px rgba(59,130,246,.22),
-          0 0 200px rgba(59,130,246,.1);
-      }
-    }
-
-    .ring {
-      position: absolute;
-      border-radius: 50%;
-      top: 50%; 
-      left: 50%;
-    }
-
-    .ring-1 {
-      width: 220px; 
-      height: 220px;
-      margin: -110px 0 0 -110px;
-      border: 1px solid rgba(139,92,246,.4);
-      box-shadow:
-        0 0 14px rgba(139,92,246,.25),
-        inset 0 0 14px rgba(139,92,246,.06);
-      transform: rotateX(75deg);
-      animation: ringOrbit1 12s linear infinite;
-    }
-
-    .ring-2 {
-      width: 310px; 
-      height: 310px;
-      margin: -155px 0 0 -155px;
-      border: 1px solid rgba(6,182,212,.25);
-      box-shadow: 0 0 12px rgba(6,182,212,.15);
-      transform: rotateX(75deg) rotateZ(30deg);
-      animation: ringOrbit2 20s linear infinite;
-    }
-
-    .ring-3 {
-      width: 400px; 
-      height: 400px;
-      margin: -200px 0 0 -200px;
-      border: 1px solid rgba(236,72,153,.12);
-      transform: rotateX(75deg) rotateZ(-25deg);
-      animation: ringOrbit3 32s linear infinite reverse;
-    }
-
-    @keyframes ringOrbit1 {
-      from { transform: rotateX(75deg) rotateZ(0deg); }
-      to   { transform: rotateX(75deg) rotateZ(360deg); }
-    }
-
-    @keyframes ringOrbit2 {
-      from { transform: rotateX(75deg) rotateZ(30deg); }
-      to   { transform: rotateX(75deg) rotateZ(390deg); }
-    }
-
-    @keyframes ringOrbit3 {
-      from { transform: rotateX(75deg) rotateZ(-25deg); }
-      to   { transform: rotateX(75deg) rotateZ(-385deg); }
-    }
-
-    .orbit-dot {
-      position: absolute;
-      border-radius: 50%;
-      animation: orbitDot linear infinite;
-    }
-
-    .orbit-dot-1 {
-      width: 7px; 
-      height: 7px;
-      background: var(--accent);
-      box-shadow: 
-        0 0 10px var(--accent), 
-        0 0 20px rgba(139,92,246,.5);
-      animation-duration: 8s;
-      top: calc(50% - 110px); 
-      left: 50%; 
-      margin-left: -3.5px;
-      transform-origin: 3.5px 110px;
-    }
-
-    .orbit-dot-2 {
-      width: 6px; 
-      height: 6px;
-      background: var(--cyan);
-      box-shadow: 
-        0 0 10px var(--cyan), 
-        0 0 20px rgba(6,182,212,.5);
-      animation-duration: 15s;
-      top: calc(50% - 155px); 
-      left: 50%; 
-      margin-left: -3px;
-      transform-origin: 3px 155px;
-    }
-
-    .orbit-dot-3 {
-      width: 5px; 
-      height: 5px;
-      background: var(--hot);
-      box-shadow: 0 0 8px var(--hot);
-      animation-duration: 24s;
-      top: calc(50% - 200px); 
-      left: 50%; 
-      margin-left: -2.5px;
-      transform-origin: 2.5px 200px;
-    }
-
-    @keyframes orbitDot {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-
-    .space-debris {
-      position: absolute;
-      background: rgba(255,255,255,.8);
-      border-radius: 50%;
-      animation: floatDebris ease-in-out infinite;
-    }
-
-    @keyframes floatDebris {
-      0%, 100% { 
-        transform: translateY(0) rotate(0deg); 
-        opacity: .45; 
-      }
-      50% { 
-        transform: translateY(-16px) rotate(180deg); 
-        opacity: .9; 
-      }
-    }
-
-    /* ──────────────────────────────────────────
-       FOOTER (ENHANCED)
-    ────────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
     footer {
       border-top: 1px solid rgba(255,255,255,.07);
       padding: 56px 0 36px;
@@ -1741,28 +905,13 @@
       position: relative;
     }
 
-    footer::before {
-      content: '';
-      position: absolute; 
-      top: 0; 
-      left: 50%; 
-      transform: translateX(-50%);
-      width: 70%; 
-      height: 1px;
-      background: linear-gradient(90deg, 
-        transparent, 
-        rgba(6,182,212,.35), 
-        rgba(139,92,246,.35), 
-        transparent);
-    }
-
     .footer-inner {
       display: flex; 
-      justify-content: space-between;
+      justify-content: center;
       align-items: center; 
       flex-wrap: wrap;
-      gap: 28px; 
-      margin-bottom: 36px;
+      gap: 16px; 
+      margin-bottom: 28px;
     }
 
     .footer-logo {
@@ -1770,29 +919,6 @@
       align-items: center; 
       gap: 11px;
       text-decoration: none;
-    }
-
-    .footer-logo-img {
-      width: 36px; 
-      height: 36px;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .footer-logo-img img {
-      width: 36px; 
-      height: 36px; 
-      object-fit: contain;
-      filter: drop-shadow(0 0 8px rgba(6,182,212,.6)) 
-              drop-shadow(0 0 16px rgba(139,92,246,.4));
-      transition: filter .3s var(--ease);
-    }
-
-    .footer-logo:hover .footer-logo-img img {
-      filter: drop-shadow(0 0 14px rgba(6,182,212,.9)) 
-              drop-shadow(0 0 26px rgba(139,92,246,.6));
     }
 
     .footer-logo-text {
@@ -1804,21 +930,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .footer-links { 
-      display: flex; 
-      gap: 28px; 
-      flex-wrap: wrap; 
-    }
-
-    .footer-links a {
-      color: var(--text-muted); 
-      font-size: .92rem;
-      text-decoration: none;
-      transition: color .25s;
-    }
-
-    .footer-links a:hover { color: var(--text-primary); }
-
     .footer-bottom {
       text-align: center;
       padding-top: 28px;
@@ -1827,228 +938,9 @@
       font-size: .86rem;
     }
 
-    @media (max-width: 640px) {
-      .footer-inner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .footer-links {
-        flex-direction: column;
-        gap: 16px;
-        align-items: center;
-      }
-    }
-
-    /* ──────────────────────────────────────────
-       MODALS (ENHANCED)
-    ────────────────────────────────────────── */
-    .modal-overlay {
-      position: fixed; 
-      inset: 0;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(28px);
-      z-index: 9999;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      padding: 24px;
-      opacity: 0; 
-      visibility: hidden;
-      transition: opacity .35s ease, visibility .35s ease;
-    }
-
-    .modal-overlay.open { 
-      opacity: 1; 
-      visibility: visible; 
-    }
-
-    .modal-box {
-      background: var(--surface-2);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius-lg);
-      max-width: 560px; 
-      width: 100%;
-      max-height: 90vh; 
-      overflow-y: auto;
-      position: relative;
-      transform: scale(.94) translateY(30px);
-      transition: transform .4s var(--spring);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 0 0 1px rgba(6,182,212,.12),
-        0 35px 90px rgba(0,0,0,.9),
-        0 0 100px rgba(6,182,212,.08);
-    }
-
-    .modal-overlay.open .modal-box { 
-      transform: scale(1) translateY(0); 
-    }
-
-    .modal-header {
-      padding: 36px 36px 24px;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute; 
-      top: 16px; 
-      right: 16px;
-      width: 32px; 
-      height: 32px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 50%;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      cursor: pointer; 
-      color: var(--text-secondary);
-      transition: all .25s var(--ease);
-      font-size: .82rem;
-    }
-
-    .modal-close:hover {
-      background: rgba(255,255,255,.12);
-      color: var(--text-primary);
-      border-color: rgba(6,182,212,.45);
-      box-shadow: 0 0 20px rgba(6,182,212,.18);
-    }
-
-    .modal-title {
-      font-size: 1.65rem; 
-      font-weight: 800;
-      letter-spacing: -.05em; 
-      margin-bottom: 6px;
-      color: var(--text-primary);
-    }
-
-    .modal-subtitle { 
-      font-size: .95rem; 
-      color: var(--text-secondary); 
-    }
-
-    .modal-body { padding: 28px 36px; }
-
-    .form-group { margin-bottom: 20px; }
-
-    .form-label {
-      display: block; 
-      font-size: .9rem; 
-      font-weight: 600;
-      margin-bottom: 9px; 
-      color: var(--text-primary);
-    }
-
-    .form-control {
-      width: 100%; 
-      padding: 13px 16px;
-      background: rgba(0,0,0,.4);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: var(--radius-sm);
-      color: var(--text-primary);
-      font-family: var(--font-primary); 
-      font-size: .96rem;
-      transition: all .25s var(--ease);
-    }
-
-    .form-control::placeholder { color: var(--text-muted); }
-
-    .form-control:focus {
-      outline: none;
-      border-color: rgba(6,182,212,.55);
-      box-shadow: 
-        0 0 0 3px rgba(6,182,212,.14), 
-        0 0 24px rgba(6,182,212,.08);
-      background: rgba(0,0,0,.5);
-    }
-
-    select.form-control { cursor: pointer; }
-    select.form-control option { background: var(--surface); }
-
-    .phone-group { 
-      display: grid; 
-      grid-template-columns: 130px 1fr; 
-      gap: 12px; 
-    }
-
-    .industry-toggle {
-      display: grid; 
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px; 
-      margin-bottom: 24px;
-    }
-
-    .industry-btn {
-      padding: 20px;
-      background: rgba(255,255,255,.03);
-      border: 2px solid rgba(255,255,255,.08);
-      border-radius: var(--radius-md);
-      cursor: pointer; 
-      text-align: center;
-      transition: all .25s var(--ease);
-    }
-
-    .industry-btn:hover {
-      border-color: rgba(6,182,212,.35);
-      transform: translateY(-4px);
-      background: rgba(6,182,212,.05);
-    }
-
-    .industry-btn.active {
-      background: rgba(6,182,212,.1);
-      border-color: rgba(6,182,212,.55);
-      box-shadow: 
-        0 0 0 1px rgba(6,182,212,.25), 
-        0 10px 32px rgba(6,182,212,.12);
-    }
-
-    .industry-btn .icon { 
-      font-size: 2.6rem; 
-      margin-bottom: 10px; 
-    }
-    
-    .industry-btn .title { 
-      font-size: .98rem; 
-      font-weight: 700; 
-      margin-bottom: 4px; 
-    }
-    
-    .industry-btn .subtitle { 
-      font-size: .84rem; 
-      color: var(--text-secondary); 
-    }
-    
-    .industry-btn.active .subtitle { 
-      color: var(--cyan); 
-    }
-
-    .conditional-fields { 
-      display: none; 
-      animation: fadeIn .4s ease; 
-    }
-    
-    .conditional-fields.show { display: block; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 640px) {
-      .modal-header, .modal-body { 
-        padding-left: 24px; 
-        padding-right: 24px; 
-      }
-      .industry-toggle, .phone-group { 
-        grid-template-columns: 1fr; 
-      }
-    }
-
-    /* ──────────────────────────────────────────
-       REVEAL ANIMATION (ENHANCED)
-    ────────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       REVEAL ANIMATION
+    ══════════════════════════════════════════ */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -2074,293 +966,281 @@
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="logo">
-      <div class="logo-img"><img src="android-chrome-192x192.png" alt="Orion AI Logo"/></div>
-      <span class="logo-text">Orion<span class="ai">.ai</span></span>
+      <span class="logo-text">Orion<span class="ia">.ia</span></span>
     </a>
     <div class="nav-links">
-      <a href="#soluciones">Soluciones</a>
-      <a href="#pricing">Inversión</a>
-      <a href="#modulos">Módulos</a>
+      <a href="#pricing">Planes</a>
+      <a href="#contacto">Contacto</a>
     </div>
     <div class="nav-actions">
-      <button class="btn btn-ghost" onclick="openContactModal()"><i class="fab fa-whatsapp"></i> Contacto</button>
-      <button class="btn btn-primary" onclick="openQuoteModal()">Solicitar Cotización</button>
+      <button class="btn btn-primary" onclick="window.open('https://wa.me/56999066071?text=Hola,%20quiero%20información%20sobre%20Orion.ia', '_blank')">Solicitar Plan</button>
     </div>
   </div>
 </nav>
 
-<!-- 🚀 NEW HERO SECTION -->
+<!-- HERO -->
 <section class="hero-section">
-  <div class="hero-bg">
-    <div class="digital-wave"></div>
-  </div>
   <div class="hero-content">
     <div class="hero-badge">
       <i class="fas fa-sparkles"></i>
-      <span>Inteligencia Artificial de Última Generación</span>
+      <span>Automatización con IA para Clínicas Dentales</span>
     </div>
     <h1 class="hero-title">
-      <span class="line">Transformamos tu</span>
-      <span class="line"><span class="gradient" data-text="Negocio con IA">Negocio con IA</span></span>
+      Automatiza tu Clínica<br>con <span class="gradient">Inteligencia Artificial</span>
     </h1>
     <p class="hero-subtitle">
-      Integramos inteligencia artificial en los 4 pilares de tu empresa: Operaciones, Ventas, RRHH y Finanzas. 
-      Automatización real que genera resultados medibles.
+      Integración nativa con tu software dental. Chatbot IA, agendamiento automático, 
+      gestión de pacientes y optimización 24/7. Todo en una sola plataforma.
     </p>
     <div class="hero-cta">
-      <button class="btn btn-primary btn-lg" onclick="openQuoteModal()">
-        Solicitar Cotización <i class="fas fa-arrow-right"></i>
+      <button class="btn btn-primary btn-lg" onclick="window.location.href='#pricing'">
+        Ver Planes <i class="fas fa-arrow-right"></i>
       </button>
-      <a href="#soluciones" class="btn btn-ghost btn-lg">
-        Ver Soluciones <i class="fas fa-chevron-down"></i>
-      </a>
     </div>
   </div>
 </section>
 
-<!-- 🔗 NEW ECOSYSTEM INTEGRATIONS SECTION -->
-<section class="ecosystem-section">
-  <div class="wrapper">
-    <div class="section-header reveal">
-      <div class="section-label">Ecosistema Conectado</div>
-      <h2 class="section-title">El Núcleo de tu<br><span class="gradient-text">Infraestructura Digital</span></h2>
-      <p class="section-subtitle">Orion AI se integra nativamente con tus plataformas existentes, creando un sistema unificado e inteligente</p>
-    </div>
-    
-    <div class="ecosystem-container reveal">
-      <!-- Central Hub -->
-      <div class="ecosystem-core">
-        <img src="android-chrome-192x192.png" alt="Orion AI" class="ecosystem-core-logo" />
-        <h3 class="ecosystem-core-title">Orion AI</h3>
-        <p class="ecosystem-core-subtitle">Centro de Control</p>
-      </div>
-
-      <!-- Satellite Apps -->
-      <div class="ecosystem-satellites">
-        <!-- Connection Lines -->
-        <div class="connection-line line-1"></div>
-        <div class="connection-line line-2"></div>
-        <div class="connection-line line-3"></div>
-        <div class="connection-line line-4"></div>
-
-        <!-- Satellites -->
-        <div class="satellite satellite-1">
-          <div class="satellite-icon">📱</div>
-          <div class="satellite-name">WhatsApp</div>
-        </div>
-
-        <div class="satellite satellite-2">
-          <div class="satellite-icon">📊</div>
-          <div class="satellite-name">Meta Ads</div>
-        </div>
-
-        <div class="satellite satellite-3">
-          <div class="satellite-icon">🎯</div>
-          <div class="satellite-name">Google Ads</div>
-        </div>
-
-        <div class="satellite satellite-4">
-          <div class="satellite-icon">🦷</div>
-          <div class="satellite-name">Dentalink</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INDUSTRIES -->
-<section id="soluciones" class="industries-section">
-  <div class="wrapper">
-    <div class="section-header reveal">
-      <div class="section-label">Soluciones Especializadas</div>
-      <h2 class="section-title">Transformamos<br><span class="gradient-text">tu Industria</span></h2>
-      <p class="section-subtitle">Experiencia comprobada en sectores de alta complejidad operativa</p>
-    </div>
-    <div class="industries-grid">
-      <div class="industry-card featured reveal">
-        <div class="industry-badge">Especialidad</div>
-        <div class="industry-icon">🦷</div>
-        <h3 class="industry-title">Clínicas Dentales</h3>
-        <p class="industry-tagline">Solución integral para la gestión inteligente de tu clínica dental</p>
-        <ul class="industry-features">
-          <li><i class="fas fa-check-circle"></i> Chatbot IA 24/7 para consultas y agendamiento</li>
-          <li><i class="fas fa-check-circle"></i> Integración con software médico (Dentalink, Agendapro, Medilink)</li>
-          <li><i class="fas fa-check-circle"></i> Automatización de recordatorios y confirmaciones</li>
-          <li><i class="fas fa-check-circle"></i> Gestión predictiva de cancelaciones</li>
-          <li><i class="fas fa-check-circle"></i> Sistema de fidelización de pacientes</li>
-          <li><i class="fas fa-check-circle"></i> Optimización de agenda y ocupación</li>
-          <li><i class="fas fa-check-circle"></i> Análisis de rentabilidad por tratamiento</li>
-        </ul>
-        <button class="btn btn-primary btn-full btn-lg" onclick="openQuoteModal('dental')">Solicitar Cotización <i class="fas fa-arrow-right"></i></button>
-      </div>
-      <div class="industry-card reveal">
-        <div class="industry-icon">🏢</div>
-        <h3 class="industry-title">Otras Industrias</h3>
-        <p class="industry-tagline">Consultoría personalizada para tu sector específico</p>
-        <ul class="industry-features">
-          <li><i class="fas fa-check-circle"></i> Diagnóstico estratégico personalizado</li>
-          <li><i class="fas fa-check-circle"></i> Integración con tus sistemas actuales</li>
-          <li><i class="fas fa-check-circle"></i> Automatización de procesos críticos</li>
-          <li><i class="fas fa-check-circle"></i> Análisis predictivo de datos</li>
-          <li><i class="fas fa-check-circle"></i> Optimización de costos operativos</li>
-        </ul>
-        <button class="btn btn-ghost btn-full btn-lg" onclick="openQuoteModal('other')">Agendar Consulta <i class="fas fa-arrow-right"></i></button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
+<!-- PRICING SECTION -->
 <section id="pricing" class="pricing-section">
   <div class="wrapper">
     <div class="section-header reveal">
-      <div class="section-label">Planes</div>
-      <h2 class="section-title">Inversión en tu<br><span class="gradient-text">Automatización</span></h2>
-      <p class="section-subtitle">Arquitecturas diseñadas para cada etapa del crecimiento empresarial</p>
+      <div class="section-label">Planes de Inversión</div>
+      <h2 class="section-title">Arquitecturas diseñadas<br>para <span class="gradient-text">cada etapa</span></h2>
+      <p class="section-subtitle">Soluciones modulares que escalan con tu clínica</p>
     </div>
-    <div class="billing-toggle reveal">
-      <span class="toggle-label on" id="lbl-monthly">Mensual</span>
-      <div class="toggle-pill" id="billing-toggle" onclick="toggleBilling()"><div class="toggle-thumb"></div></div>
-      <span class="toggle-label" id="lbl-annual">Anual</span>
-      <span class="save-pill">Ahorra 20%</span>
-    </div>
+
     <div class="pricing-grid">
 
-      <!-- ECONOMIC -->
+      <!-- ═══════════════════════════════════
+           PLAN 1: ECONOMIC
+      ═══════════════════════════════════ -->
       <div class="plan-card reveal">
-        <span class="plan-tier tier-economic">Economic</span>
-        <h3 class="plan-name">Economic</h3>
-        <p class="plan-tagline">Automatización esencial para clínicas que inician</p>
-        <div class="price-block">
-          <div class="price-row">
-            <div class="price-row-label">Implementación<span>PAGO ÚNICO</span></div>
-            <div class="price-amount">$199 <span class="price-unit">USD</span></div>
+        <div class="plan-header">
+          <span class="plan-badge badge-economic">ECONOMIC</span>
+          <h3 class="plan-name">Starter</h3>
+        </div>
+
+        <div class="investment-block">
+          <div class="investment-row">
+            <div class="inv-label">MES 1<span>Implementación</span></div>
+            <div class="inv-price">$199 <span class="inv-unit">USD</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-row-label">Mantenimiento<span>RECURRENTE</span></div>
-            <div class="price-amount hero-price-green" id="economic-monthly">$75 <span class="price-unit">/mes</span></div>
+          <div class="investment-row">
+            <div class="inv-label">MES 2+<span>Recurrente</span></div>
+            <div class="inv-price highlight">$75 <span class="inv-unit">/mes</span></div>
           </div>
         </div>
-        <button class="btn btn-ghost btn-full" onclick="openQuoteModal()">Solicitar Plan</button>
-        <div class="feature-group" style="margin-top:18px">
-          <div class="fg-label">Incluye</div>
+
+        <div class="cta-block">
+          <button class="btn btn-ghost btn-full" onclick="window.open('https://wa.me/56999066071?text=Quiero%20contratar%20el%20plan%20ECONOMIC', '_blank')">Solicitar Plan</button>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-star"></i> FUNCIONES BASE</div>
           <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Chatbot IA conectado con Dentalink</li>
-            <li><i class="fas fa-check-circle"></i> Hacer y cancelar reservas automáticamente</li>
-            <li><i class="fas fa-check-circle"></i> Conexión en tiempo real con horarios de doctores</li>
-            <li><i class="fas fa-check-circle"></i> Instalación en Instagram o WhatsApp</li>
+            <li><i class="fas fa-check-circle"></i> Chatbot IA conversacional</li>
+            <li><i class="fas fa-check-circle"></i> Integración nativa (Dentalink, Reserba, Dentasol)</li>
+            <li><i class="fas fa-check-circle"></i> Agendamiento y cancelación automática</li>
+            <li><i class="fas fa-check-circle"></i> Conexión a horarios médicos en tiempo real</li>
+          </ul>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-users"></i> EQUIPO Y SOPORTE</div>
+          <div class="support-boxes">
+            <div class="support-box">1 Sucursal</div>
+            <div class="support-box">Soporte Estándar</div>
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-brain"></i> IA Y AUTOMATIZACIÓN</div>
+          <p style="font-size:.86rem;color:var(--text-secondary);margin-bottom:8px;">Modelo: Adaptable a la voz de la marca</p>
+          <div class="ia-channels">
+            <div class="channel-icon" title="Instagram"><i class="fab fa-instagram"></i></div>
+            <div class="channel-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></div>
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-gift"></i> EXTRAS</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Instalación rápida y configuración base</li>
           </ul>
         </div>
       </div>
 
-      <!-- BÁSICO -->
+      <!-- ═══════════════════════════════════
+           PLAN 2: BÁSICO
+      ═══════════════════════════════════ -->
       <div class="plan-card reveal">
-        <span class="plan-tier tier-basic">Básico</span>
-        <h3 class="plan-name">Básico</h3>
-        <p class="plan-tagline">Para negocios que inician su automatización</p>
-        <div class="price-block">
-          <div class="price-row">
-            <div class="price-row-label">Implementación<span>PAGO ÚNICO</span></div>
-            <div class="price-amount">$325 <span class="price-unit">USD</span></div>
+        <div class="plan-header">
+          <span class="plan-badge badge-basico">BÁSICO</span>
+          <h3 class="plan-name">Growth</h3>
+        </div>
+
+        <div class="investment-block">
+          <div class="investment-row">
+            <div class="inv-label">MES 1<span>Implementación</span></div>
+            <div class="inv-price">$325 <span class="inv-unit">USD</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-row-label">Primer mes<span>BONIFICADO</span></div>
-            <div class="price-amount" style="color:var(--success)">$0 <span class="price-unit">USD</span></div>
+          <div class="investment-row">
+            <div class="inv-label">MES 2<span>Bonificado</span></div>
+            <div class="inv-price green">$0</div>
           </div>
-          <div class="price-row">
-            <div class="price-row-label">Mantenimiento<span>RECURRENTE</span></div>
-            <div class="price-amount hero-price" id="basic-monthly">$125 <span class="price-unit">/mes</span></div>
+          <div class="investment-row">
+            <div class="inv-label">MES 3+<span>Recurrente</span></div>
+            <div class="inv-price highlight">$125 <span class="inv-unit">/mes</span></div>
           </div>
         </div>
-        <button class="btn btn-ghost btn-full" onclick="openQuoteModal()">Solicitar Plan</button>
-        <div class="feature-group" style="margin-top:18px">
-          <div class="fg-label">Incluye</div>
+
+        <div class="cta-block">
+          <button class="btn btn-ghost btn-full" onclick="window.open('https://wa.me/56999066071?text=Quiero%20contratar%20el%20plan%20BÁSICO', '_blank')">Solicitar Plan</button>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-star"></i> FUNCIONES BASE</div>
           <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Chatbot IA de Ventas y Soporte (24/7)</li>
-            <li><i class="fas fa-check-circle"></i> Integración con Software de Reservas</li>
-            <li><i class="fas fa-check-circle"></i> Agendamiento y Cancelación Automática</li>
-            <li><i class="fas fa-check-circle"></i> Sincronización de Base de Datos</li>
+            <li><i class="fas fa-check-circle"></i> Todo lo del plan Starter</li>
+            <li><i class="fas fa-check-circle"></i> Ventas y Soporte 24/7</li>
             <li><i class="fas fa-check-circle"></i> Formulario integrado para consultas presenciales</li>
-            <li><i class="fas fa-check-circle"></i> Recordatorios automáticos a pacientes</li>
-            <li><i class="fas fa-check-circle"></i> Estilo de conversación 100% humano</li>
+            <li><i class="fas fa-check-circle"></i> Recordatorios omnicanal a pacientes</li>
           </ul>
         </div>
-        <div class="feature-group">
-          <div class="fg-label">Métrica Clave</div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-users"></i> EQUIPO Y SOPORTE</div>
+          <div class="support-boxes">
+            <div class="support-box">Múltiples Doctores</div>
+            <div class="support-box">Soporte Prioritario</div>
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-brain"></i> IA Y AUTOMATIZACIÓN</div>
+          <p style="font-size:.86rem;color:var(--text-secondary);margin-bottom:8px;">Modelo: 100% Conversación Humana</p>
+          <div class="ia-channels">
+            <div class="channel-icon" title="Instagram"><i class="fab fa-instagram"></i></div>
+            <div class="channel-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></div>
+            <div class="channel-icon" title="Web"><i class="fas fa-globe"></i></div>
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-chart-line"></i> MÉTRICAS</div>
           <ul class="feature-list">
-            <li class="metric"><i class="fas fa-chart-line"></i> Proyección de ROI mensual</li>
+            <li class="metric"><i class="fas fa-chart-bar"></i> Proyección de ROI mensual</li>
           </ul>
         </div>
       </div>
 
-      <!-- BUSINESS -->
+      <!-- ═══════════════════════════════════
+           PLAN 3: BUSINESS
+      ═══════════════════════════════════ -->
       <div class="plan-card reveal">
-        <span class="plan-tier tier-business">Business</span>
-        <h3 class="plan-name">Business</h3>
-        <p class="plan-tagline">Para escalar ventas con datos e inteligencia</p>
-        <div class="price-block">
-          <div class="price-row">
-            <div class="price-row-label">Implementación<span>PAGO ÚNICO</span></div>
-            <div class="price-amount">$620 <span class="price-unit">USD</span></div>
+        <div class="plan-header">
+          <span class="plan-badge badge-business">BUSINESS</span>
+          <h3 class="plan-name">Pro</h3>
+        </div>
+
+        <div class="investment-block">
+          <div class="investment-row">
+            <div class="inv-label">MES 1<span>Implementación</span></div>
+            <div class="inv-price">$620 <span class="inv-unit">USD</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-row-label">Primer mes<span>BONIFICADO</span></div>
-            <div class="price-amount" style="color:var(--success)">$0 <span class="price-unit">USD</span></div>
+          <div class="investment-row">
+            <div class="inv-label">MES 2<span>Bonificado</span></div>
+            <div class="inv-price green">$0</div>
           </div>
-          <div class="price-row">
-            <div class="price-row-label">Mantenimiento<span>RECURRENTE</span></div>
-            <div class="price-amount hero-price" id="business-monthly">$170 <span class="price-unit">/mes</span></div>
+          <div class="investment-row">
+            <div class="inv-label">MES 3+<span>Recurrente</span></div>
+            <div class="inv-price highlight">$170 <span class="inv-unit">/mes</span></div>
           </div>
         </div>
-        <button class="btn btn-ghost btn-full" onclick="openQuoteModal()">Solicitar Plan</button>
-        <div class="feature-group" style="margin-top:18px">
-          <div class="fg-label">Incluye</div>
+
+        <div class="cta-block">
+          <button class="btn btn-ghost btn-full" onclick="window.open('https://wa.me/56999066071?text=Quiero%20contratar%20el%20plan%20BUSINESS', '_blank')">Solicitar Plan</button>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-star"></i> FUNCIONES BASE</div>
           <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Todo lo del plan Básico</li>
-            <li><i class="fas fa-check-circle"></i> Infraestructura Meta Ads Pro</li>
-            <li><i class="fas fa-check-circle"></i> Base de Datos Centralizada</li>
-            <li><i class="fas fa-check-circle"></i> Algoritmo de Retargeting</li>
-            <li><i class="fas fa-check-circle"></i> Registro de pagos de clientes</li>
-            <li><i class="fas fa-check-circle"></i> Gestión de caja diaria con reportes automáticos</li>
-            <li><i class="fas fa-check-circle"></i> Trackeo de origen de leads</li>
+            <li><i class="fas fa-check-circle"></i> Todo lo del plan Growth</li>
+            <li><i class="fas fa-check-circle"></i> Base de Datos Centralizada en la nube</li>
+            <li><i class="fas fa-check-circle"></i> Algoritmo de Retargeting de Leads</li>
+            <li><i class="fas fa-check-circle"></i> Registro automático de pagos de clientes</li>
+            <li><i class="fas fa-check-circle"></i> Gestión de caja diaria con reportes</li>
             <li><i class="fas fa-check-circle"></i> Sistema de reactivación de conversaciones</li>
           </ul>
         </div>
-        <div class="feature-group">
-          <div class="fg-label">Métricas Avanzadas</div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-users"></i> EQUIPO Y SOPORTE</div>
+          <div class="support-boxes">
+            <div class="support-box">Usuarios ilimitados</div>
+            <div class="support-box">Implementación con Ingeniero</div>
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-brain"></i> IA Y AUTOMATIZACIÓN</div>
+          <p style="font-size:.86rem;color:var(--text-secondary);margin-bottom:8px;">Modelo: Infraestructura Meta Ads Pro</p>
+          <div class="ia-channels">
+            <div class="channel-icon" title="Instagram"><i class="fab fa-instagram"></i></div>
+            <div class="channel-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></div>
+            <div class="channel-icon" title="Facebook"><i class="fab fa-facebook"></i></div>
+            <div class="channel-icon" title="TikTok"><i class="fab fa-tiktok"></i></div>
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-chart-line"></i> MÉTRICAS</div>
           <ul class="feature-list">
-            <li class="metric"><i class="fas fa-chart-line"></i> Cálculo automático de CAC, ROI y LTV</li>
+            <li class="metric"><i class="fas fa-chart-bar"></i> Cálculo automático de CAC, ROI y LTV</li>
           </ul>
         </div>
       </div>
 
-      <!-- EJECUTIVO -->
+      <!-- ═══════════════════════════════════
+           PLAN 4: EJECUTIVO (FEATURED)
+      ═══════════════════════════════════ -->
       <div class="plan-card featured reveal">
-        <div class="featured-badge">Más Elegido</div>
-        <span class="plan-tier tier-ejecutivo">Ejecutivo</span>
-        <h3 class="plan-name">Ejecutivo</h3>
-        <p class="plan-tagline">Consultoría Estratégica Integral a Medida</p>
-        <div class="video-placeholder" onclick="alert('Video explicativo disponible próximamente')">
-          <div class="play-btn"><i class="fas fa-play"></i></div>
-          <span class="video-label">Ver video explicativo del plan</span>
+        <div class="plan-header">
+          <div class="featured-badge">MÁS ELEGIDO</div>
+          <span class="plan-badge badge-ejecutivo">EJECUTIVO</span>
+          <h3 class="plan-name">Ejecutivo</h3>
         </div>
-        <div class="custom-quote-block">
-          <div class="custom-quote-icon">🔭</div>
-          <div class="custom-quote-title">Auditoría Estratégica</div>
-          <div class="custom-quote-sub">Cotización a Medida · Sin costo</div>
+
+        <div class="investment-block">
+          <div class="video-block" onclick="alert('Video explicativo disponible próximamente')">
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <span class="video-label">Ver video explicativo del plan</span>
+          </div>
+          <div class="custom-quote">
+            <div class="custom-quote-icon">🔭</div>
+            <div class="custom-quote-title">UN PLAN DISEÑADO A LA MEDIDA</div>
+            <div class="custom-quote-sub">Cotización a medida · Sin Costo</div>
+          </div>
         </div>
-        <button class="btn btn-primary btn-full" onclick="openQuoteModal()">Agendar Sesión Estratégica <i class="fas fa-arrow-right"></i></button>
-        <div class="plan-desc-block" style="margin-top:16px">
-          Análisis de riesgos y oportunidades en los 4 pilares: Operaciones, Ventas, RRHH y Finanzas. Detección de cuellos de botella e integración total de sistemas.
+
+        <div class="cta-block">
+          <button class="btn btn-primary btn-full" onclick="window.open('https://wa.me/56999066071?text=Quiero%20agendar%20una%20sesión%20estratégica%20para%20el%20plan%20EJECUTIVO', '_blank')">Agendar Sesión Estratégica <i class="fas fa-arrow-right"></i></button>
         </div>
-        <div class="feature-group">
-          <div class="fg-label">Incluye</div>
+
+        <div class="feature-block">
+          <div class="description-block">
+            Análisis de riesgos y oportunidades en los 4 pilares: <strong>Operaciones, Ventas, RRHH y Finanzas</strong>. Detección de cuellos de botella e integración total.
+          </div>
+        </div>
+
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-star"></i> FUNCIONES BASE</div>
           <ul class="feature-list">
             <li><i class="fas fa-check-circle"></i> Todo lo del plan Business</li>
             <li><i class="fas fa-check-circle"></i> Asistente de Voz IA (Llamadas 24/7)</li>
             <li><i class="fas fa-check-circle"></i> Embudo Full-Stack (Web + Ads)</li>
             <li><i class="fas fa-check-circle"></i> Automatización Financiera</li>
-            <li><i class="fas fa-check-circle"></i> Sistema de Fidelización</li>
+            <li><i class="fas fa-check-circle"></i> Sistema avanzado de Fidelización</li>
           </ul>
         </div>
       </div>
@@ -2369,150 +1249,17 @@
   </div>
 </section>
 
-<!-- MODULES -->
-<section id="modulos" class="modules-section">
-  <div class="wrapper">
-    <div class="section-header reveal">
-      <div class="section-label">Módulos</div>
-      <h2 class="section-title">Expande tu<br><span class="gradient-text">Ecosistema</span></h2>
-      <p class="section-subtitle">Componentes especializados que potencian tu infraestructura</p>
-    </div>
-    <div class="modules-grid">
-      <div class="module-card reveal"><div class="module-icon"><i class="fas fa-bullhorn"></i></div><div class="module-name">Gestor de Anuncios IA</div><div class="module-desc">Optimización automática de campañas en Google y Meta para maximizar conversiones</div></div>
-      <div class="module-card reveal"><div class="module-icon"><i class="fas fa-plug"></i></div><div class="module-name">Centro de Integraciones</div><div class="module-desc">Conecta todas tus herramientas sin código mediante flujos inteligentes</div></div>
-      <div class="module-card reveal"><div class="module-icon"><i class="fas fa-phone-volume"></i></div><div class="module-name">Agente de Voz IA</div><div class="module-desc">Recepcionista virtual que realiza y recibe llamadas 24/7</div></div>
-      <div class="module-card reveal"><div class="module-icon"><i class="fab fa-instagram"></i></div><div class="module-name">Respuesta en Redes</div><div class="module-desc">IA que responde comentarios y mensajes instantáneamente</div></div>
-      <div class="module-card reveal"><div class="module-icon"><i class="fas fa-file-contract"></i></div><div class="module-name">Generador de Documentos</div><div class="module-desc">Crea cotizaciones y contratos en PDF automáticamente</div></div>
-      <div class="module-card reveal"><div class="module-icon"><i class="fas fa-envelope-open-text"></i></div><div class="module-name">Email Marketing Inteligente</div><div class="module-desc">Campañas personalizadas en el momento óptimo</div></div>
-      <div class="module-card reveal"><div class="module-icon"><i class="fas fa-chart-pie"></i></div><div class="module-name">Análisis de Fugas</div><div class="module-desc">Detecta patrones de abandono antes de que ocurran</div></div>
-      <div class="module-card reveal"><div class="module-icon"><i class="fas fa-star-half-alt"></i></div><div class="module-name">Encuestas de Satisfacción</div><div class="module-desc">Mide automáticamente la experiencia del cliente</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 3D SPACE SCENE -->
-<div class="space-scene" aria-hidden="true">
-  <div class="orbit-dot orbit-dot-1"></div>
-  <div class="orbit-dot orbit-dot-2"></div>
-  <div class="orbit-dot orbit-dot-3"></div>
-  <div class="ring ring-1"></div>
-  <div class="ring ring-2"></div>
-  <div class="ring ring-3"></div>
-  <div class="planet-system"><div class="planet"></div></div>
-  <div class="space-debris" style="width:3px;height:3px;top:28%;left:18%;animation-duration:4s"></div>
-  <div class="space-debris" style="width:2px;height:2px;top:58%;left:74%;animation-duration:5.5s;animation-delay:1s"></div>
-  <div class="space-debris" style="width:4px;height:4px;top:22%;left:63%;animation-duration:7s;animation-delay:2s"></div>
-  <div class="space-debris" style="width:2px;height:2px;top:68%;left:28%;animation-duration:6s;animation-delay:.5s"></div>
-  <div class="space-debris" style="width:3px;height:3px;top:42%;left:84%;animation-duration:4.5s;animation-delay:3s"></div>
-</div>
-
 <!-- FOOTER -->
-<footer>
+<footer id="contacto">
   <div class="wrapper">
     <div class="footer-inner">
       <a href="#" class="footer-logo">
-        <div class="footer-logo-img"><img src="android-chrome-192x192.png" alt="Orion AI Logo"/></div>
-        <span class="footer-logo-text">Orion<span style="background:linear-gradient(135deg,var(--cyan),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent">.ai</span></span>
+        <span class="footer-logo-text">Orion<span style="background:linear-gradient(135deg,var(--cyan),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent">.ia</span></span>
       </a>
-      <div class="footer-links">
-        <a href="#">Términos de Servicio</a>
-        <a href="#">Política de Privacidad</a>
-        <a href="#">Seguridad</a>
-      </div>
     </div>
-    <div class="footer-bottom">© <span id="year"></span> Orion AI — Consultoría Estratégica en Inteligencia Artificial</div>
+    <div class="footer-bottom">© <span id="year"></span> Orion.ia — Automatización con IA para Clínicas Dentales</div>
   </div>
 </footer>
-
-<!-- MODAL CONTACT -->
-<div id="contactModal" class="modal-overlay" onclick="closeModalOnOverlay(event,'contactModal')">
-  <div class="modal-box">
-    <div class="modal-header">
-      <div class="modal-close" onclick="closeContactModal()"><i class="fas fa-times"></i></div>
-      <h2 class="modal-title">Contáctanos</h2>
-      <p class="modal-subtitle">Estamos disponibles por WhatsApp</p>
-    </div>
-    <div class="modal-body">
-      <form id="contact-form" onsubmit="submitContact(event)">
-        <div class="form-group">
-          <label class="form-label">Nombre completo</label>
-          <input type="text" class="form-control" name="nombre" placeholder="Tu nombre" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">WhatsApp</label>
-          <div class="phone-group">
-            <select class="form-control" name="codigo">
-              <option value="+56" selected>🇨🇱 +56</option>
-              <option value="+54">🇦🇷 +54</option>
-              <option value="+57">🇨🇴 +57</option>
-              <option value="+52">🇲🇽 +52</option>
-              <option value="+51">🇵🇪 +51</option>
-              <option value="+1">🇺🇸 +1</option>
-            </select>
-            <input type="tel" class="form-control" name="telefono" placeholder="9 XXXX XXXX" required>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary btn-full btn-lg"><i class="fab fa-whatsapp"></i> Iniciar conversación</button>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL QUOTE -->
-<div id="quoteModal" class="modal-overlay" onclick="closeModalOnOverlay(event,'quoteModal')">
-  <div class="modal-box">
-    <div class="modal-header">
-      <div class="modal-close" onclick="closeQuoteModal()"><i class="fas fa-times"></i></div>
-      <h2 class="modal-title">Solicitar Cotización</h2>
-      <p class="modal-subtitle">Cotización personalizada sin costo</p>
-    </div>
-    <div class="modal-body">
-      <form id="quote-form" onsubmit="submitQuote(event)">
-        <div class="form-group">
-          <label class="form-label">Selecciona tu industria</label>
-          <div class="industry-toggle">
-            <div class="industry-btn" onclick="selectIndustry('dental',this)">
-              <div class="icon">🦷</div><div class="title">Clínica Dental</div><div class="subtitle">Solución especializada</div>
-            </div>
-            <div class="industry-btn" onclick="selectIndustry('other',this)">
-              <div class="icon">🏢</div><div class="title">Otra Industria</div><div class="subtitle">Consultoría personalizada</div>
-            </div>
-          </div>
-          <input type="hidden" name="industria" id="selected-industry" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Nombre completo</label>
-          <input type="text" class="form-control" name="nombre" placeholder="Tu nombre" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Correo corporativo</label>
-          <input type="email" class="form-control" name="email" placeholder="nombre@empresa.com" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">WhatsApp</label>
-          <div class="phone-group">
-            <select class="form-control" name="codigo">
-              <option value="+56" selected>🇨🇱 +56</option>
-              <option value="+54">🇦🇷 +54</option>
-              <option value="+57">🇨🇴 +57</option>
-              <option value="+52">🇲🇽 +52</option>
-              <option value="+51">🇵🇪 +51</option>
-              <option value="+1">🇺🇸 +1</option>
-            </select>
-            <input type="tel" class="form-control" name="telefono" placeholder="9 XXXX XXXX" required>
-          </div>
-        </div>
-        <div id="other-fields" class="conditional-fields">
-          <div class="form-group">
-            <label class="form-label">Rubro / Industria</label>
-            <input type="text" class="form-control" name="rubro" placeholder="Ej: Retail, Manufactura, Servicios...">
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary btn-full btn-lg">Solicitar Cotización <i class="fas fa-arrow-right"></i></button>
-      </form>
-    </div>
-  </div>
-</div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -2527,11 +1274,11 @@
   }, { threshold: .08, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-  /* ═══ ENHANCED STARFIELD ═══ */
+  /* Enhanced Starfield */
   (function() {
     const c = document.getElementById('star-canvas');
     const ctx = c.getContext('2d');
-    let W, H, stars = [], t = 0, ss = [];
+    let W, H, stars = [], t = 0;
 
     function r(a, b) { return a + Math.random() * (b - a); }
 
@@ -2539,91 +1286,31 @@
       W = c.width = innerWidth;
       H = c.height = innerHeight;
       stars = [];
-      for (let i = 0; i < 300; i++) {
-        const tw = i < 70;
+      for (let i = 0; i < 250; i++) {
         stars.push({
           x: r(0, W), y: r(0, H),
-          radius: r(0.3, tw ? 1.5 : 0.9),
-          alpha: r(0.3, 0.95),
+          radius: r(0.3, 1.2),
+          alpha: r(0.3, 0.9),
           speed: r(0.0002, 0.001),
           phase: r(0, Math.PI * 2),
-          dX: r(-0.018, 0.018) * (1 - i / 300),
-          dY: r(-0.01, 0.01) * (1 - i / 300),
-          twinkle: tw,
-          hue: Math.random() < 0.3 ? (Math.random() < 0.5 ? 195 : 265) : 0,
-          sat: Math.random() < 0.3 ? 70 : 0
+          dX: r(-0.015, 0.015),
+          dY: r(-0.008, 0.008)
         });
       }
     }
 
-    function spawnSS() {
-      ss.push({ 
-        x: r(0, W * .6), 
-        y: r(0, H * .3), 
-        len: r(100, 240), 
-        angle: r(.3, .6), 
-        a: 0.95, 
-        spd: r(10, 22) 
-      });
-    }
-
     function loop() {
       ctx.clearRect(0, 0, W, H);
-
-      /* Stars */
       for (const s of stars) {
-        const fl = s.twinkle
-          ? 0.45 + 0.55 * Math.abs(Math.sin(t * s.speed * 60 + s.phase))
-          : 0.65 + 0.35 * Math.abs(Math.sin(t * s.speed * 20 + s.phase));
-
+        const fl = 0.6 + 0.4 * Math.abs(Math.sin(t * s.speed * 20 + s.phase));
         s.x = (s.x + s.dX + W) % W;
         s.y = (s.y + s.dY + H) % H;
-
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-
-        if (s.sat > 0) {
-          ctx.fillStyle = `hsla(${s.hue},${s.sat}%,90%,${s.alpha * fl})`;
-        } else {
-          const v = Math.round(200 + 55 * fl);
-          ctx.fillStyle = `rgba(${v},${v},${v+12},${s.alpha * fl})`;
-        }
+        const v = Math.round(200 + 55 * fl);
+        ctx.fillStyle = `rgba(${v},${v},${v+12},${s.alpha * fl})`;
         ctx.fill();
-
-        /* Twinkle glow */
-        if (s.twinkle && fl > 0.85) {
-          const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.radius * 6);
-          g.addColorStop(0, `rgba(190, 235, 255, ${0.15 * fl})`);
-          g.addColorStop(1, 'rgba(190,235,255,0)');
-          ctx.beginPath(); 
-          ctx.arc(s.x, s.y, s.radius * 6, 0, Math.PI * 2);
-          ctx.fillStyle = g; 
-          ctx.fill();
-        }
       }
-
-      /* Shooting stars */
-      for (let i = ss.length - 1; i >= 0; i--) {
-        const sh = ss[i];
-        const ex = sh.x + Math.cos(sh.angle) * sh.len;
-        const ey = sh.y + Math.sin(sh.angle) * sh.len;
-        const g = ctx.createLinearGradient(sh.x, sh.y, ex, ey);
-        g.addColorStop(0, 'rgba(255,255,255,0)');
-        g.addColorStop(0.7, `rgba(190,245,255,${sh.a * .55})`);
-        g.addColorStop(1, `rgba(255,255,255,${sh.a})`);
-        ctx.beginPath(); 
-        ctx.moveTo(sh.x, sh.y); 
-        ctx.lineTo(ex, ey);
-        ctx.strokeStyle = g; 
-        ctx.lineWidth = 1.2; 
-        ctx.stroke();
-        sh.x += Math.cos(sh.angle) * sh.spd;
-        sh.y += Math.sin(sh.angle) * sh.spd;
-        sh.a -= 0.028;
-        if (sh.a <= 0) ss.splice(i, 1);
-      }
-
-      if (Math.random() < 0.002) spawnSS();
       t++;
       requestAnimationFrame(loop);
     }
@@ -2632,130 +1319,6 @@
     resize();
     loop();
   })();
-
-  /* ═══ BILLING TOGGLE ═══ */
-  let isAnnual = false;
-  const PRICES = { economic: 75, basic: 125, business: 170 };
-
-  function toggleBilling() {
-    isAnnual = !isAnnual;
-    document.getElementById('billing-toggle').classList.toggle('annual', isAnnual);
-    document.getElementById('lbl-monthly').classList.toggle('on', !isAnnual);
-    document.getElementById('lbl-annual').classList.toggle('on', isAnnual);
-    const f = isAnnual ? 0.8 : 1;
-    const set = (id, val, cls) => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.className = `price-amount ${cls}`;
-        el.innerHTML = `$${Math.round(val * f).toLocaleString('es-CL')} <span class="price-unit">/mes</span>`;
-      }
-    };
-    set('economic-monthly', PRICES.economic, 'hero-price-green');
-    set('basic-monthly',    PRICES.basic,    'hero-price');
-    set('business-monthly', PRICES.business, 'hero-price');
-  }
-
-  /* ═══ MODALS ═══ */
-  function openContactModal() { 
-    document.getElementById('contactModal').classList.add('open'); 
-    document.body.style.overflow = 'hidden'; 
-  }
-  
-  function closeContactModal() { 
-    document.getElementById('contactModal').classList.remove('open'); 
-    document.body.style.overflow = ''; 
-  }
-
-  function openQuoteModal(ind) {
-    document.getElementById('quoteModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-    if (ind) {
-      setTimeout(() => {
-        const btns = document.querySelectorAll('.industry-btn');
-        selectIndustry(ind, ind === 'dental' ? btns[0] : btns[1]);
-      }, 300);
-    }
-  }
-
-  function closeQuoteModal() {
-    document.getElementById('quoteModal').classList.remove('open');
-    document.body.style.overflow = '';
-    document.getElementById('quote-form').reset();
-    document.querySelectorAll('.industry-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('other-fields').classList.remove('show');
-    document.getElementById('selected-industry').value = '';
-  }
-
-  function closeModalOnOverlay(e, id) {
-    if (e.target === e.currentTarget) { 
-      id === 'contactModal' ? closeContactModal() : closeQuoteModal(); 
-    }
-  }
-
-  function selectIndustry(type, el) {
-    document.querySelectorAll('.industry-btn').forEach(b => b.classList.remove('active'));
-    if (el) el.classList.add('active');
-    document.getElementById('selected-industry').value = type;
-    const of = document.getElementById('other-fields');
-    if (type === 'other') { 
-      of.classList.add('show'); 
-      of.querySelector('input').setAttribute('required', 'required'); 
-    } else { 
-      of.classList.remove('show'); 
-      of.querySelector('input').removeAttribute('required'); 
-    }
-  }
-
-  function submitContact(e) {
-    e.preventDefault();
-    const f = e.target;
-    const msg = `Hola, soy ${f.nombre.value.trim()}. Me gustaría recibir más información sobre Orion AI.`;
-    window.open(`https://wa.me/56999066071?text=${encodeURIComponent(msg)}`, '_blank');
-    closeContactModal(); 
-    f.reset();
-  }
-
-  async function submitQuote(e) {
-    e.preventDefault();
-    if (!document.getElementById('selected-industry').value) { 
-      alert('Por favor selecciona tu industria'); 
-      return; 
-    }
-    const f = e.target;
-    const data = {
-      industria: document.getElementById('selected-industry').value,
-      nombre: f.nombre.value.trim(),
-      email: f.email.value.trim(),
-      telefono: f.codigo.value + ' ' + f.telefono.value.trim(),
-      rubro: f.rubro ? f.rubro.value.trim() : 'Clínica Dental',
-      origen: 'landing-orion-ai'
-    };
-    const btn = f.querySelector('button[type="submit"]'), orig = btn.innerHTML;
-    btn.innerHTML = 'Enviando...'; 
-    btn.disabled = true;
-    try {
-      const res = await fetch('https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/afb70f27-dd2d-4853-9270-3faf35ddcd5e', {
-        method: 'POST', 
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify(data)
-      });
-      if (!res.ok) throw new Error();
-      alert('¡Perfecto! Recibimos tu solicitud. Un consultor te contactará en las próximas 24 horas.');
-      closeQuoteModal();
-    } catch {
-      alert('Hubo un problema al enviar. Intenta nuevamente o contáctanos por WhatsApp.');
-    } finally { 
-      btn.innerHTML = orig; 
-      btn.disabled = false; 
-    }
-  }
-
-  document.addEventListener('keydown', e => { 
-    if (e.key === 'Escape') { 
-      closeContactModal(); 
-      closeQuoteModal(); 
-    } 
-  });
 </script>
 </body>
 </html>
