@@ -1600,7 +1600,7 @@ const VoiceDemo = (() => {
   // Preload Vapi SDK when page is ready
   (async function preload() {
     try {
-      const mod = await import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm');
+      const mod = await import('https://esm.sh/@vapi-ai/web');
       const Vapi = mod.default || mod.Vapi;
       vapi = new Vapi('fdee8a2b-cfbe-4aaf-a2d2-9b1e39fb1222');
       vapi.on('call-start', onCallStart);
