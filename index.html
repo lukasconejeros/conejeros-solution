@@ -1653,8 +1653,8 @@ const VoiceDemo = (() => {
   }
 
   async function call() {
-    if (state \!== 'idle' && state \!== 'ended') return;
-    if (\!vapi) {
+    if (state !== 'idle' && state !== 'ended') return;
+    if (!vapi) {
       status.textContent = 'Cargando...';
       return;
     }
