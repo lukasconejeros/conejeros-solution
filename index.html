@@ -1593,40 +1593,89 @@ const VoiceDemo = (() => {
   const avatar = document.getElementById('phoneAvatar');
   const status = document.getElementById('phoneStatus');
   const timer = document.getElementById('phoneTimer');
-  const ringtone = document.getElementById('audioRingtone');
-  const voiceIA = document.getElementById('audioVoiceIA');
   let state = 'idle', timerInterval = null, seconds = 0;
+  let vapiInstance = null;
 
-  function updateTimer() { seconds++; const m = String(Math.floor(seconds/60)).padStart(2,'0'), s = String(seconds%60).padStart(2,'0'); timer.textContent = `${m}:${s}`; }
+  function updateTimer() {
+    seconds++;
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    timer.textContent = m + ':' + s;
+  }
 
   function reset() {
-    state = 'idle'; frame.classList.remove('in-call'); avatar.className = 'phone-avatar';
-    status.className = 'phone-status'; status.textContent = 'Asistente de Llamadas';
-    timer.textContent = ''; clearInterval(timerInterval); seconds = 0;
-    try { ringtone.pause(); ringtone.currentTime = 0; } catch(e) {}
-    try { voiceIA.pause(); voiceIA.currentTime = 0; } catch(e) {}
+    state = 'idle';
+    frame.classList.remove('in-call');
+    avatar.className = 'phone-avatar';
+    status.className = 'phone-status';
+    status.textContent = 'Asistente de Llamadas';
+    timer.textContent = '';
+    clearInterval(timerInterval);
+    seconds = 0;
+  }
+
+  function initVapi() {
+    if (vapiInstance) return vapiInstance;
+    vapiInstance = new window.Vapi('fdee8a2b-cfbe-4aaf-a2d2-9b1e39fb1222');
+    vapiInstance.on('call-start', function() {
+      state = 'connected';
+      avatar.className = 'phone-avatar connected';
+      status.className = 'phone-status active';
+      status.textContent = 'Conectado';
+      seconds = 0;
+      timer.textContent = '00:00';
+      timerInterval = setInterval(updateTimer, 1000);
+    });
+    vapiInstance.on('call-end', function() {
+      state = 'ended';
+      clearInterval(timerInterval);
+      avatar.className = 'phone-avatar';
+      status.className = 'phone-status';
+      status.textContent = 'Llamada finalizada';
+      setTimeout(reset, 2500);
+    });
+    vapiInstance.on('speech-start', function() {
+      if (state === 'connected') avatar.className = 'phone-avatar connected speaking';
+    });
+    vapiInstance.on('speech-end', function() {
+      if (state === 'connected') avatar.className = 'phone-avatar connected';
+    });
+    vapiInstance.on('error', function(e) {
+      console.error('Vapi error:', e);
+      state = 'ended';
+      clearInterval(timerInterval);
+      avatar.className = 'phone-avatar';
+      status.className = 'phone-status';
+      status.textContent = 'Error de conexion';
+      setTimeout(reset, 2500);
+    });
+    return vapiInstance;
   }
 
   function call() {
     if (state !== 'idle' && state !== 'ended') return;
-    state = 'ringing'; frame.classList.add('in-call'); avatar.className = 'phone-avatar ringing';
-    status.className = 'phone-status ringing'; status.textContent = 'Llamando...'; timer.textContent = '';
-    try { ringtone.play().catch(()=>{}); } catch(e) {}
-    setTimeout(() => {
-      if (state !== 'ringing') return; state = 'connected';
-      try { ringtone.pause(); ringtone.currentTime = 0; } catch(e) {}
-      avatar.className = 'phone-avatar connected'; status.className = 'phone-status active'; status.textContent = 'Conectado';
-      seconds = 0; timer.textContent = '00:00'; timerInterval = setInterval(updateTimer, 1000);
-      try { voiceIA.play().catch(()=>{}); voiceIA.onended = () => { hangup(); }; } catch(e) {}
-      setTimeout(() => { if (state === 'connected') hangup(); }, 15000);
-    }, 3000);
+    state = 'ringing';
+    frame.classList.add('in-call');
+    avatar.className = 'phone-avatar ringing';
+    status.className = 'phone-status ringing';
+    status.textContent = 'Conectando...';
+    timer.textContent = '';
+    var vapi = initVapi();
+    vapi.start('58e92766-daa7-4fd7-b21a-978ac6d82001').catch(function(e) {
+      console.error('Error starting call:', e);
+      reset();
+    });
   }
 
   function hangup() {
-    state = 'ended'; clearInterval(timerInterval);
-    try { ringtone.pause(); } catch(e) {}
-    try { voiceIA.pause(); } catch(e) {}
-    avatar.className = 'phone-avatar'; status.className = 'phone-status'; status.textContent = 'Llamada finalizada';
+    if (vapiInstance) {
+      try { vapiInstance.stop(); } catch(e) {}
+    }
+    state = 'ended';
+    clearInterval(timerInterval);
+    avatar.className = 'phone-avatar';
+    status.className = 'phone-status';
+    status.textContent = 'Llamada finalizada';
     setTimeout(reset, 2500);
   }
 
@@ -1685,5 +1734,6 @@ const ChatDemo = (() => {
   return { send };
 })();
 </script>
+<script src="https://unpkg.com/@vapi-ai/web/dist/vapi.iife.js"></script>
 </body>
 </html>
