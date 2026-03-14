@@ -1600,7 +1600,6 @@ const VoiceDemo = (() => {
   let audioCtx = null;
   let ringInterval = null;
 
-  // Preload Vapi SDK when page is ready
   (async function preload() {
     try {
       const mod = await import('https://esm.sh/@vapi-ai/web');
@@ -1614,39 +1613,43 @@ const VoiceDemo = (() => {
       vapi.on('speech-end', function() {
         if (state === 'connected') avatar.className = 'phone-avatar connected';
       });
-      vapi.on('error', function(e) {
-        console.error('Vapi error:', e);
-        onCallEnd();
-      });
+      vapi.on('error', function(e) { console.error('Vapi error:', e); onCallEnd(); });
       console.log('Vapi SDK listo');
-    } catch(e) {
-      console.error('Error cargando Vapi SDK:', e);
-    }
+    } catch(e) { console.error('Error cargando Vapi SDK:', e); }
   })();
 
-  function playRing() {
-    if (!audioCtx) return;
-    var now = audioCtx.currentTime;
-    function burst(freq, t) {
+  // --- Tono de teléfono real (campana analógica con armónicos) ---
+  function ding(t, freq) {
+    // Fundamental + 2 armónicos = timbre de campana real
+    [[freq, 0.40], [freq * 2, 0.18], [freq * 3.5, 0.07]].forEach(function(pair) {
+      var f = pair[0], vol = pair[1];
       var osc = audioCtx.createOscillator();
       var gain = audioCtx.createGain();
-      osc.connect(gain); gain.connect(audioCtx.destination);
-      osc.frequency.value = freq;
-      gain.gain.setValueAtTime(0, now + t);
-      gain.gain.linearRampToValueAtTime(0.2, now + t + 0.05);
-      gain.gain.setValueAtTime(0.2, now + t + 0.35);
-      gain.gain.linearRampToValueAtTime(0, now + t + 0.4);
-      osc.start(now + t); osc.stop(now + t + 0.4);
-    }
-    burst(440, 0);
-    burst(480, 0.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.type = 'sine';
+      osc.frequency.value = f;
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(vol, t + 0.008);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.55);
+      osc.start(t);
+      osc.stop(t + 0.6);
+    });
+  }
+
+  function doRing() {
+    if (!audioCtx) return;
+    var t = audioCtx.currentTime;
+    // "Dring-dring" — dos golpes de campana como teléfono analógico
+    ding(t,        1480);
+    ding(t + 0.22, 1480);
   }
 
   function startRingtone() {
     try {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      playRing();
-      ringInterval = setInterval(playRing, 2000);
+      doRing();
+      ringInterval = setInterval(doRing, 2000);
     } catch(e) {}
   }
 
@@ -1703,10 +1706,7 @@ const VoiceDemo = (() => {
 
   async function call() {
     if (callUsed || (state !== 'idle' && state !== 'ended')) return;
-    if (!vapi) {
-      status.textContent = 'Cargando...';
-      return;
-    }
+    if (!vapi) { status.textContent = 'Cargando...'; return; }
     state = 'ringing';
     frame.classList.add('in-call');
     avatar.className = 'phone-avatar ringing';
