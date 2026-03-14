@@ -236,9 +236,9 @@
     .wrapper { width: min(100%, 1280px); margin-inline: auto; padding: 0 32px; }
     @media (max-width: 768px) { .wrapper { padding: 0 20px; } }
 
-    /* ═══════════════════════════════════════════
+    /* ══════════════════════════════════════════
        NAVBAR
-    ═══════════════════════════════════════════ */
+    ══════════════════════════════════════════ */
     nav { position: sticky; top: 0; z-index: 1000; display: flex; justify-content: center; padding: 20px 24px; pointer-events: none; }
     .nav-inner {
       pointer-events: all; display: flex; align-items: center; justify-content: space-between; gap: 12px;
@@ -262,9 +262,9 @@
     @media (max-width: 968px) { .nav-links { display: none; } }
     @media (max-width: 640px) { nav { padding: 16px; } .nav-actions { gap: 6px; } }
 
-    /* ═══════════════════════════════════════════
+    /* ══════════════════════════════════════════
        BUTTONS
-    ═══════════════════════════════════════════ */
+    ══════════════════════════════════════════ */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px;
       border-radius: var(--radius-md); font-family: var(--font-primary); font-size: .92rem; font-weight: 600;
@@ -301,9 +301,9 @@
 
     @media (max-width: 640px) { .btn { padding: 10px 18px; font-size: .85rem; } .btn-lg { padding: 14px 24px; font-size: .95rem; } }
 
-    /* ═══════════════════════════════════════════
+    /* ══════════════════════════════════════════
        HERO SECTION
-    ═══════════════════════════════════════════ */
+    ══════════════════════════════════════════ */
     .hero-section { min-height: 92vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 140px 0 80px; overflow: hidden; }
     .hero-content { position: relative; z-index: 1; text-align: center; max-width: 1100px; margin: 0 auto; padding: 0 32px; }
     .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; background: rgba(6,182,212,.08); border: 1px solid rgba(6,182,212,.25); border-radius: 999px; font-size: .8rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: 32px; animation: fadeInUp .8s ease .2s backwards; }
@@ -314,18 +314,18 @@
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 768px) { .hero-section { padding: 100px 0 60px; min-height: 85vh; } .hero-content { padding: 0 24px; } .hero-cta { gap: 14px; } }
 
-    /* ═══════════════════════════════════════════
+    /* ══════════════════════════════════════════
        SECTION HEADERS
-    ═══════════════════════════════════════════ */
+    ══════════════════════════════════════════ */
     .section-header { text-align: center; margin-bottom: 72px; max-width: 800px; margin-left: auto; margin-right: auto; }
     .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--cyan-bright); margin-bottom: 20px; padding: 7px 18px; background: rgba(6,182,212,.08); border: 1px solid rgba(6,182,212,.25); border-radius: 999px; }
     .section-title { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.1; margin-bottom: 20px; color: var(--text-primary); }
     .gradient-text { background: linear-gradient(135deg, var(--cyan-bright) 0%, var(--primary) 40%, var(--accent) 80%, var(--hot) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .section-subtitle { color: var(--text-secondary); font-size: 1.1rem; max-width: 640px; margin: 0 auto; line-height: 1.7; }
 
-    /* ════════════════════════════════════════════════════
+    /* ═══════════════════════════════════════════════════
        DEMOS SECTION
-    ════════════════════════════════════════════════════ */
+    ═══════════════════════════════════════════════════ */
     .demos-section {
       padding: 100px 0 120px;
       position: relative;
@@ -401,9 +401,9 @@
     @media (max-width: 1024px) { .demo-live-panel { padding: 40px 32px; } }
     @media (max-width: 640px) { .demo-live-panel { padding: 32px 24px; } }
 
-    /* ═══════════════════════════════════════════
+    /* ═══════════════════════════════════════
        DEMO 2: VOICE — iPHONE CALL UI
-    ═══════════════════════════════════════════ */
+    ═══════════════════════════════════════ */
     .phone-frame {
       width: 320px;
       background: linear-gradient(180deg, #0c1120 0%, #060a14 100%);
@@ -449,9 +449,9 @@
     .phone-frame.in-call .phone-btn-wrap.accept-wrap { display: none; }
     audio { display: none; }
 
-    /* ═══════════════════════════════════════════
+    /* ═══════════════════════════════════════
        DEMO 3: CHATBOT
-    ═══════════════════════════════════════════ */
+    ═══════════════════════════════════════ */
     .chat-frame { width: 100%; max-width: 480px; height: 500px; background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; }
     .chat-top { display: flex; align-items: center; gap: 13px; padding: 18px 24px; background: rgba(255,160,122,.05); border-bottom: 1px solid rgba(255,255,255,.06); }
     .chat-top-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--orange-deep)); display: flex; align-items: center; justify-content: center; font-size: .95rem; color: #1a0800; font-weight: 800; }
@@ -480,9 +480,9 @@
     .chat-send { width: 46px; height: 46px; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--orange), var(--orange-deep)); color: #1a0800; font-size: 1.05rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .3s var(--spring); flex-shrink: 0; }
     .chat-send:hover { transform: scale(1.1); box-shadow: 0 0 28px rgba(255,160,122,.5); }
 
-    /* ═══════════════════════════════════════════
+    /* ═══════════════════════════════════════
        CLOSING BANNER
-    ═══════════════════════════════════════════ */
+    ═══════════════════════════════════════ */
     .closing-banner { max-width: 960px; margin: 80px auto 0; text-align: center; background: linear-gradient(145deg, rgba(255,160,122,.08) 0%, rgba(10,15,30,.75) 100%); border: 1px solid var(--orange-border); border-radius: var(--radius-xl); padding: 60px 52px; position: relative; overflow: hidden; }
     .closing-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--orange), transparent); }
     .closing-icon { font-size: 3rem; margin-bottom: 24px; }
@@ -492,9 +492,9 @@
     .closing-btns { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
     @media (max-width: 640px) { .closing-banner { padding: 40px 28px; } }
 
-    /* ════════════════════════════════════════════════════════════════
+    /* ══════════════════════════════════════════════════════════════
        PRICING SECTION — NEW STRUCTURE
-    ════════════════════════════════════════════════════════════════ */
+    ══════════════════════════════════════════════════════════════ */
     .pricing-section { padding: 120px 0; position: relative; overflow: hidden; }
 
     .pricing-section::before {
@@ -802,9 +802,9 @@
       font-size: .78rem; color: var(--text-muted); margin-top: 10px; font-style: italic;
     }
 
-    /* ═══════════════════════════════════════════
+    /* ══════════════════════════════════════════
        WHATSAPP FLOATING BUTTON
-    ═══════════════════════════════════════════ */
+    ══════════════════════════════════════════ */
     .whatsapp-float {
       position: fixed;
       bottom: 32px; right: 32px;
@@ -834,18 +834,18 @@
 
     @media (max-width: 640px) { .whatsapp-float { bottom: 20px; right: 20px; width: 52px; height: 52px; } }
 
-    /* ═══════════════════════════════════════════
+    /* ══════════════════════════════════════════
        FOOTER
-    ═══════════════════════════════════════════ */
+    ══════════════════════════════════════════ */
     footer { border-top: 1px solid rgba(255,255,255,.07); padding: 56px 0 36px; background: var(--surface); position: relative; }
     .footer-inner { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
     .footer-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
     .footer-logo-text { font-size: 1.2rem; font-weight: 800; letter-spacing: -.05em; background: linear-gradient(to bottom, #fff 30%, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .footer-bottom { text-align: center; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.05); color: var(--text-muted); font-size: .86rem; }
 
-    /* ═══════════════════════════════════════════
+    /* ══════════════════════════════════════════
        REVEAL
-    ═══════════════════════════════════════════ */
+    ══════════════════════════════════════════ */
     .reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform .8s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -870,7 +870,7 @@
 <canvas id="star-canvas"></canvas>
 
 <!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Orion.ia" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+<a href="https://wa.me/56999066071?text=Hola,%20quiero%20información%20sobre%20Orion.ia" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -884,7 +884,7 @@
       <a href="#contacto">Contacto</a>
     </div>
     <div class="nav-actions">
-      <button class="btn btn-primary" onclick="window.open('https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Orion.ia', '_blank')">Solicitar Plan</button>
+      <button class="btn btn-primary" onclick="window.open('https://wa.me/56999066071?text=Hola,%20quiero%20información%20sobre%20Orion.ia', '_blank')">Solicitar Plan</button>
     </div>
   </div>
 </nav>
@@ -902,9 +902,9 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════
      DEMOS SECTION (Demo 1 removed; 2 & 3 kept)
-═══════════════════════════════════════════════════════ -->
+═══════════════════════════════════════ -->
 <section id="demos" class="demos-section">
   <div class="demos-wrap">
 
@@ -933,7 +933,7 @@
             <div class="phone-avatar" id="phoneAvatar">
               <div class="ring1"></div>
               <div class="ring2"></div>
-              🦷
+              🤖
             </div>
             <div class="phone-caller">Orion</div>
             <div class="phone-status" id="phoneStatus">Asistente de Llamadas</div>
@@ -1009,9 +1009,9 @@
 </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════════
      PRICING SECTION — NUEVA ESTRUCTURA
-═══════════════════════════════════════════════════════════════ -->
+═══════════════════════════════════════════ -->
 <section id="pricing" class="pricing-section">
   <div class="wrapper">
 
@@ -1248,9 +1248,9 @@
 </footer>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════════════════
      PLAN FLOW MODAL — questions on "Solicitar Plan"
-═══════════════════════════════════════════════════════════════ -->
+═══════════════════════════════════════════════════════════ -->
 <style>
   .modal-overlay {
     position: fixed; inset: 0; z-index: 99999;
@@ -1458,18 +1458,18 @@
 </div>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════════════════
      JAVASCRIPT
-═══════════════════════════════════════════════════════════════ -->
+═══════════════════════════════════════════════════════════ -->
 <script>
-/* ═══════════════════════════════════════════
+/* ════════════════════════════════════
    WEBHOOK CONFIG
-═══════════════════════════════════════════ */
+════════════════════════════════════ */
 const WEBHOOK_CHAT = 'URL_AQUI';
 
-/* ═══════════════════════════════════════════
+/* ════════════════════════════════════
    CORE
-═══════════════════════════════════════════ */
+════════════════════════════════════ */
 document.getElementById('year').textContent = new Date().getFullYear();
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
@@ -1497,9 +1497,9 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 })();
 
 
-/* ═══════════════════════════════════════════
+/* ════════════════════════════════════
    PLAN FLOW MODAL
-═══════════════════════════════════════════ */
+════════════════════════════════════ */
 const PlanFlow = (() => {
   const overlay = document.getElementById('planModal');
   const planNameEl = document.getElementById('modalPlanName');
@@ -1563,7 +1563,7 @@ const PlanFlow = (() => {
     const tel = document.getElementById('modalTelefono').value.trim();
     if (!nombre) { document.getElementById('modalNombre').focus(); return; }
 
-    let msg = `Hola Orion.ia 🏥\n\nQuiero solicitar el *Plan ${currentPlan}*.\n\n`;
+    let msg = `Hola Orion.ia 👋\n\nQuiero solicitar el *Plan ${currentPlan}*.\n\n`;
     msg += `*Nombre:* ${nombre}\n`;
     if (tel) msg += `*Teléfono:* ${tel}\n`;
     msg += `\n*Respuestas:*\n`;
@@ -1585,9 +1585,9 @@ const PlanFlow = (() => {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') PlanFlow.close(); });
 
 
-/* ═══════════════════════════════════════════
+/* ════════════════════════════════════
    DEMO 2: VOICE
-═══════════════════════════════════════════ */
+════════════════════════════════════ */
 const VoiceDemo = (() => {
   const frame = document.getElementById('phoneFrame');
   const avatar = document.getElementById('phoneAvatar');
@@ -1595,7 +1595,10 @@ const VoiceDemo = (() => {
   const timer = document.getElementById('phoneTimer');
   let state = 'idle', timerInterval = null, seconds = 0;
   let vapi = null;
-  let vapiLoading = false;
+  let callUsed = false;
+  let maxCallTimer = null;
+  let audioCtx = null;
+  let ringInterval = null;
 
   // Preload Vapi SDK when page is ready
   (async function preload() {
@@ -1621,6 +1624,37 @@ const VoiceDemo = (() => {
     }
   })();
 
+  function playRing() {
+    if (!audioCtx) return;
+    var now = audioCtx.currentTime;
+    function burst(freq, t) {
+      var osc = audioCtx.createOscillator();
+      var gain = audioCtx.createGain();
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0, now + t);
+      gain.gain.linearRampToValueAtTime(0.2, now + t + 0.05);
+      gain.gain.setValueAtTime(0.2, now + t + 0.35);
+      gain.gain.linearRampToValueAtTime(0, now + t + 0.4);
+      osc.start(now + t); osc.stop(now + t + 0.4);
+    }
+    burst(440, 0);
+    burst(480, 0.5);
+  }
+
+  function startRingtone() {
+    try {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      playRing();
+      ringInterval = setInterval(playRing, 2000);
+    } catch(e) {}
+  }
+
+  function stopRingtone() {
+    if (ringInterval) { clearInterval(ringInterval); ringInterval = null; }
+    if (audioCtx) { try { audioCtx.close(); } catch(e) {} audioCtx = null; }
+  }
+
   function updateTimer() {
     seconds++;
     var m = String(Math.floor(seconds / 60)).padStart(2, '0');
@@ -1629,6 +1663,7 @@ const VoiceDemo = (() => {
   }
 
   function onCallStart() {
+    stopRingtone();
     state = 'connected';
     avatar.className = 'phone-avatar connected';
     status.className = 'phone-status active';
@@ -1636,11 +1671,15 @@ const VoiceDemo = (() => {
     seconds = 0;
     timer.textContent = '00:00';
     timerInterval = setInterval(updateTimer, 1000);
+    maxCallTimer = setTimeout(hangup, 30000);
   }
 
   function onCallEnd() {
-    state = 'ended';
+    stopRingtone();
+    clearTimeout(maxCallTimer);
     clearInterval(timerInterval);
+    callUsed = true;
+    state = 'ended';
     frame.classList.remove('in-call');
     avatar.className = 'phone-avatar';
     status.className = 'phone-status';
@@ -1648,12 +1687,22 @@ const VoiceDemo = (() => {
     timer.textContent = '';
     setTimeout(function() {
       state = 'idle';
-      status.textContent = 'Asistente de Llamadas';
+      status.textContent = 'Demo agotado';
+      var acceptBtn = frame.querySelector('.phone-btn.accept');
+      if (acceptBtn) {
+        acceptBtn.disabled = true;
+        acceptBtn.style.opacity = '0.35';
+        acceptBtn.style.cursor = 'not-allowed';
+        acceptBtn.style.transform = 'none';
+        acceptBtn.style.boxShadow = 'none';
+      }
+      var label = frame.querySelector('.phone-btn-wrap.accept-wrap .phone-btn-label');
+      if (label) label.textContent = '1 llamada por visita';
     }, 2500);
   }
 
   async function call() {
-    if (state !== 'idle' && state !== 'ended') return;
+    if (callUsed || (state !== 'idle' && state !== 'ended')) return;
     if (!vapi) {
       status.textContent = 'Cargando...';
       return;
@@ -1664,6 +1713,7 @@ const VoiceDemo = (() => {
     status.className = 'phone-status ringing';
     status.textContent = 'Conectando...';
     timer.textContent = '';
+    startRingtone();
     try {
       await vapi.start('58e92766-daa7-4fd7-b21a-978ac6d82001');
     } catch(e) {
@@ -1682,10 +1732,6 @@ const VoiceDemo = (() => {
   return { call, hangup };
 })();
 
-
-/* ═══════════════════════════════════════════
-   DEMO 3: CHATBOT
-═══════════════════════════════════════════ */
 const ChatDemo = (() => {
   const body = document.getElementById('chatBody');
   const input = document.getElementById('chatInput');
