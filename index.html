@@ -1000,8 +1000,8 @@
             </div>
             <div class="chat-body" id="chatBody">
               <div class="bubble bot">¡Hola! 👋 Soy el asistente virtual de tu clínica. ¿En qué puedo ayudarte hoy? Puedes preguntarme sobre horarios, servicios o agendar una cita.</div>
+              <div class="typing-indicator" id="typingIndicator"><span></span><span></span><span></span></div>
             </div>
-            <div class="typing-indicator" id="typingIndicator"><span></span><span></span><span></span></div>
             <div class="chat-bar">
               <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')ChatDemo.send()">
               <button class="chat-send" onclick="ChatDemo.send()"><i class="fas fa-arrow-up"></i></button>
@@ -1457,6 +1457,7 @@
         <div class="modal-step-question">¿A qué nombre y número te contactamos?</div>
         <input type="text" class="modal-input-field" id="modalNombre" placeholder="Tu nombre completo">
         <input type="tel" class="modal-input-field" id="modalTelefono" placeholder="Tu número de WhatsApp (ej: +56912345678)">
+        <div id="modalError" style="display:none;font-size:.82rem;color:var(--danger);margin-bottom:12px;">Por favor completa nombre y teléfono.</div>
         <div class="modal-nav">
           <button class="modal-back" onclick="PlanFlow.back()"><i class="fas fa-arrow-left"></i></button>
           <button class="btn btn-solar" style="flex:1" onclick="PlanFlow.submit()"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
@@ -1478,9 +1479,10 @@
 </div>
 
 <!-- Lead Gate Modal -->
-<div class="lead-gate-overlay" id="leadGateModal">
+<div class="lead-gate-overlay" id="leadGateModal" onclick="if(event.target===this||event.target.classList.contains('lead-gate-backdrop'))LeadGate.close()">
   <div class="lead-gate-backdrop"></div>
   <div class="lead-gate-box">
+    <button onclick="LeadGate.close()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--text-muted);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
     <div class="lead-gate-icon">🤖</div>
     <div class="lead-gate-title">Accede a la Demo</div>
     <div class="lead-gate-sub">Ingresa tus datos para probar el asistente de IA en vivo</div>
@@ -1515,18 +1517,25 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
 (function() {
   const c = document.getElementById('star-canvas'), ctx = c.getContext('2d');
-  let W, H, stars = [], t = 0;
+  let W, H, stars = [], t = 0, rafId = null, paused = false;
   function r(a, b) { return a + Math.random() * (b - a); }
   function resize() {
     W = c.width = innerWidth; H = c.height = innerHeight; stars = [];
-    for (let i = 0; i < 280; i++) stars.push({ x: r(0,W), y: r(0,H), radius: r(0.3,1.3), alpha: r(0.3,0.9), speed: r(0.0002,0.001), phase: r(0,Math.PI*2), dX: r(-0.015,0.015), dY: r(-0.008,0.008) });
+    const n = Math.min(200, Math.floor(innerWidth * innerHeight / 8000));
+    for (let i = 0; i < n; i++) stars.push({ x: r(0,W), y: r(0,H), radius: r(0.3,1.3), alpha: r(0.3,0.9), speed: r(0.0002,0.001), phase: r(0,Math.PI*2), dX: r(-0.015,0.015), dY: r(-0.008,0.008) });
   }
   function loop() {
-    ctx.clearRect(0,0,W,H);
-    for (const s of stars) { const fl = 0.6+0.4*Math.abs(Math.sin(t*s.speed*20+s.phase)); s.x=(s.x+s.dX+W)%W; s.y=(s.y+s.dY+H)%H; ctx.beginPath(); ctx.arc(s.x,s.y,s.radius,0,Math.PI*2); const v=Math.round(200+55*fl); ctx.fillStyle=`rgba(${v},${v},${v+12},${s.alpha*fl})`; ctx.fill(); }
-    t++; requestAnimationFrame(loop);
+    if (!paused) {
+      ctx.clearRect(0,0,W,H);
+      for (const s of stars) { const fl = 0.6+0.4*Math.abs(Math.sin(t*s.speed*20+s.phase)); s.x=(s.x+s.dX+W)%W; s.y=(s.y+s.dY+H)%H; ctx.beginPath(); ctx.arc(s.x,s.y,s.radius,0,Math.PI*2); const v=Math.round(200+55*fl); ctx.fillStyle=`rgba(${v},${v},${v+12},${s.alpha*fl})`; ctx.fill(); }
+      t++;
+    }
+    rafId = requestAnimationFrame(loop);
   }
-  window.addEventListener('resize', resize); resize(); loop();
+  document.addEventListener('visibilitychange', () => { paused = document.hidden; });
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 150); });
+  resize(); loop();
 })();
 
 function getSessionId() {
@@ -1563,12 +1572,17 @@ const LeadGate = (() => {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ type: 'lead_capture', sessionId: getSessionId(), nombre, telefono: tel, email })
     }).catch(function() {});
-    document.getElementById('leadGateModal').classList.remove('open');
-    document.body.style.overflow = '';
+    close();
     if (pending) { var a = pending; pending = null; a(); }
   }
 
-  return { require, submit, isUnlocked };
+  function close() {
+    document.getElementById('leadGateModal').classList.remove('open');
+    document.body.style.overflow = '';
+    pending = null;
+  }
+
+  return { require, submit, close, isUnlocked };
 })();
 
 /* ════════════════════════════════════
@@ -1622,9 +1636,18 @@ const PlanFlow = (() => {
 
   function submit() {
     const nombre = document.getElementById('modalNombre').value.trim();
-    if (!nombre) { document.getElementById('modalError').classList.add('show'); document.getElementById('modalNombre').classList.add('shake'); setTimeout(() => document.getElementById('modalNombre').classList.remove('shake'), 600); return; }
-    document.getElementById('modalError').classList.remove('show');
-    fetch(WEBHOOK_CHAT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'plan_lead', nombre, plan, ...answers }) }).catch(() => {});
+    const tel    = document.getElementById('modalTelefono').value.trim();
+    const errEl  = document.getElementById('modalError');
+    if (!nombre || !tel) {
+      if (errEl) errEl.style.display = 'block';
+      if (!nombre) { document.getElementById('modalNombre').style.borderColor = 'var(--danger)'; setTimeout(() => document.getElementById('modalNombre').style.borderColor = '', 1500); }
+      if (!tel)    { document.getElementById('modalTelefono').style.borderColor = 'var(--danger)'; setTimeout(() => document.getElementById('modalTelefono').style.borderColor = '', 1500); }
+      return;
+    }
+    if (errEl) errEl.style.display = 'none';
+    const msg = `Hola! Vi los planes de Orion.ia y quiero solicitar el Plan ${plan}.\n\nNombre: ${nombre}\nTeléfono: ${tel}\nDentistas en clínica: ${answers.dentistas||'—'}\nDesafío principal: ${answers.desafio||'—'}\nConsultas/semana: ${answers.consultas||'—'}`;
+    window.open('https://wa.me/56999066071?text=' + encodeURIComponent(msg), '_blank');
+    fetch(WEBHOOK_CHAT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: 'plan_lead', nombre, telefono: tel, plan, ...answers }) }).catch(() => {});
     showStep('final');
   }
 
@@ -1733,7 +1756,7 @@ const VoiceDemo = (() => {
    DEMO 2: CHATBOT
 ════════════════════════════════════ */
 const ChatDemo = (() => {
-  const messages = document.getElementById('chatMessages');
+  const messages = document.getElementById('chatBody');
   const input    = document.getElementById('chatInput');
   const typing   = document.getElementById('typingIndicator');
   let busy = false;
@@ -1747,6 +1770,9 @@ const ChatDemo = (() => {
         d.className = 'bubble ' + who;
         d.textContent = text;
         messages.insertBefore(d, typing);
+        // Keep max 40 bubbles to avoid memory bloat
+        const bubbles = messages.querySelectorAll('.bubble');
+        if (bubbles.length > 40) bubbles[0].remove();
         messages.scrollTop = messages.scrollHeight;
         resolve();
       }, delayMs || 0);
