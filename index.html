@@ -1477,6 +1477,20 @@
   </div>
 </div>
 
+<!-- Lead Gate Modal -->
+<div class="lead-gate-overlay" id="leadGateModal">
+  <div class="lead-gate-backdrop"></div>
+  <div class="lead-gate-box">
+    <div class="lead-gate-icon">🤖</div>
+    <div class="lead-gate-title">Accede a la Demo</div>
+    <div class="lead-gate-sub">Ingresa tus datos para probar el asistente de IA en vivo</div>
+    <div class="lead-gate-error" id="leadGateError">Por favor completa todos los campos.</div>
+    <input class="modal-input-field" id="lgNombre" type="text" placeholder="Tu nombre" autocomplete="name" />
+    <input class="modal-input-field" id="lgTelefono" type="tel" placeholder="Teléfono (ej: +56912345678)" autocomplete="tel" />
+    <input class="modal-input-field" id="lgEmail" type="email" placeholder="Correo empresarial" autocomplete="email" />
+    <button class="btn btn-primary btn-full" style="margin-top:8px" onclick="LeadGate.submit()">Probar Demo Gratis <i class="fas fa-arrow-right"></i></button>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════
      JAVASCRIPT
@@ -1604,6 +1618,8 @@ const PlanFlow = (() => {
 
   function next() { if (step < TOTAL) { step++; showStep(step); } }
 
+  function back() { if (step > 1) { step--; showStep(step); } }
+
   function submit() {
     const nombre = document.getElementById('modalNombre').value.trim();
     if (!nombre) { document.getElementById('modalError').classList.add('show'); document.getElementById('modalNombre').classList.add('shake'); setTimeout(() => document.getElementById('modalNombre').classList.remove('shake'), 600); return; }
@@ -1612,7 +1628,7 @@ const PlanFlow = (() => {
     showStep('final');
   }
 
-  return { open, close, select, next, submit };
+  return { open, close, select, next, back, submit };
 })();
 
 /* ════════════════════════════════════
