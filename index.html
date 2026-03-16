@@ -568,7 +568,13 @@
     .whatsapp-float:hover { transform:scale(1.1); box-shadow:0 10px 44px rgba(37,211,102,0.7), 0 0 60px rgba(37,211,102,0.2); }
     .whatsapp-float i { font-size:1.75rem; color:white; }
     @keyframes waPulse { 0% { box-shadow:0 6px 28px rgba(37,211,102,0.5),0 0 0 0 rgba(37,211,102,0.45); } 70% { box-shadow:0 6px 28px rgba(37,211,102,0.5),0 0 0 16px rgba(37,211,102,0); } 100% { box-shadow:0 6px 28px rgba(37,211,102,0.5),0 0 0 0 rgba(37,211,102,0); } }
-    @media (max-width:640px) { .whatsapp-float { bottom:20px; right:20px; width:52px; height:52px; } }
+
+    .instagram-float { position:fixed; bottom:32px; right:104px; z-index:9999; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; background: radial-gradient(circle at 30% 110%, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow:0 6px 28px rgba(220,39,67,0.5); transition:transform .25s var(--spring), box-shadow .25s; animation:igPulse 3.5s ease-in-out 4.5s infinite; }
+    .instagram-float:hover { transform:scale(1.1); box-shadow:0 10px 44px rgba(220,39,67,0.7), 0 0 60px rgba(188,24,136,0.2); }
+    .instagram-float i { font-size:1.6rem; color:white; }
+    @keyframes igPulse { 0% { box-shadow:0 6px 28px rgba(220,39,67,0.5),0 0 0 0 rgba(220,39,67,0.4); } 70% { box-shadow:0 6px 28px rgba(220,39,67,0.5),0 0 0 16px rgba(220,39,67,0); } 100% { box-shadow:0 6px 28px rgba(220,39,67,0.5),0 0 0 0 rgba(220,39,67,0); } }
+
+    @media (max-width:640px) { .whatsapp-float { bottom:20px; right:20px; width:52px; height:52px; } .instagram-float { bottom:20px; right:84px; width:52px; height:52px; } }
 
     /* ══════════════════════════════════════
        FOOTER
@@ -648,6 +654,12 @@
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/56999066071?text=Hola,%20quiero%20información%20sobre%20Orion.ia" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contactar por WhatsApp">
   <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- INSTAGRAM FLOAT -->
+<a href="https://instagram.com/lukasconejeros" target="_blank" rel="noopener" class="instagram-float" aria-label="Seguir en Instagram"
+  onclick="event.preventDefault();var app='instagram://user?username=lukasconejeros';var web='https://www.instagram.com/lukasconejeros';var t=setTimeout(function(){window.open(web,'_blank')},400);try{window.location.href=app;var h=Date.now();setTimeout(function(){if(Date.now()-h<800){clearTimeout(t);window.open(web,'_blank')}},500)}catch(e){clearTimeout(t);window.open(web,'_blank')}">
+  <i class="fab fa-instagram"></i>
 </a>
 
 <!-- NAV -->
@@ -768,7 +780,8 @@
       <h3 class="closing-title">Estas son solo 2 automatizaciones de muestra. Actualmente tenemos más de <span class="hl">100 flujos de trabajo</span> activos transformando empresas.</h3>
       <p class="closing-desc">¿Listo para implementar el tuyo?</p>
       <div class="closing-btns">
-        <a href="https://instagram.com/orion.ia" target="_blank" rel="noopener" class="btn btn-orange-outline btn-lg"><i class="fab fa-instagram"></i> Ir a nuestro Instagram</a>
+        <a href="https://www.instagram.com/lukasconejeros" target="_blank" rel="noopener" class="btn btn-orange-outline btn-lg"
+          onclick="event.preventDefault();var app='instagram://user?username=lukasconejeros';var web='https://www.instagram.com/lukasconejeros';var t=setTimeout(function(){window.open(web,'_blank')},400);try{window.location.href=app;var h=Date.now();setTimeout(function(){if(Date.now()-h<800){clearTimeout(t);window.open(web,'_blank')}},500)}catch(e){clearTimeout(t);window.open(web,'_blank')}"><i class="fab fa-instagram"></i> Ir a nuestro Instagram</a>
         <a href="https://wa.me/56999066071?text=Vi%20las%20demos%20y%20quiero%20implementar%20automatizaciones" target="_blank" rel="noopener" class="btn btn-orange btn-lg"><i class="fab fa-whatsapp"></i> Hablarnos por WhatsApp</a>
       </div>
     </div>
