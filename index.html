@@ -3267,26 +3267,7 @@
 
 
 
-    /* ══════════════════════════════════════════
-       CONTACT SECTION
-    ══════════════════════════════════════════ */
-    .contact-section{padding:120px 0;position:relative;contain:layout style}
-    @media(max-width:768px){.contact-section{padding:80px 0}}
-    .contact-section::before{content:'';position:absolute;bottom:-100px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,0.07) 0%,transparent 70%);pointer-events:none;border-radius:50%}
-    .contact-card{max-width:620px;margin:0 auto;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:var(--r-xl);padding:48px 40px;box-shadow:0 30px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.07)}
-    @media(max-width:640px){.contact-card{padding:32px 24px}}
-    .contact-field{margin-bottom:20px}
-    .contact-label{display:block;font-size:.8rem;font-weight:600;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
-    .contact-input{width:100%;padding:14px 18px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-sm);color:var(--text-primary);font-family:var(--font);font-size:.95rem;outline:none;transition:border-color .25s,box-shadow .25s}
-    .contact-input::placeholder{color:var(--text-muted)}
-    .contact-input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(6,182,212,0.12)}
-    .contact-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--cyan),var(--primary));color:#fff;border:none;border-radius:var(--r-md);font-family:var(--font);font-size:1rem;font-weight:700;cursor:pointer;transition:opacity .25s,transform .25s;letter-spacing:-.01em;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px}
-    .contact-btn:hover{opacity:.9;transform:translateY(-2px)}
-    .contact-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-    .contact-success{display:none;text-align:center;padding:32px 0}
-    .contact-success i{font-size:2.8rem;color:var(--success);margin-bottom:16px;display:block}
-    .contact-success h3{font-size:1.4rem;font-weight:800;margin-bottom:8px;letter-spacing:-.03em}
-    .contact-success p{color:var(--text-secondary);font-size:.95rem}
+    
   </style>
 
 
@@ -4019,7 +4000,7 @@
 
 
 
-                  onclick="VapiCall.toggle()"
+                  onclick="LeadGate.require(function(){VapiCall.toggle()})"
 
 
 
@@ -4847,52 +4828,6 @@
 
 
 
-</section>
-
-
-
-
-
-
-
-
-
-<!-- CONTACT SECTION -->
-<section class="contact-section">
-  <div class="wrapper">
-
-    <div class="section-header reveal">
-      <span class="section-label"><i class="fas fa-paper-plane"></i> Contacto</span>
-      <h2 class="section-title">¿Listo para <span style="background:linear-gradient(135deg,var(--cyan),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent">automatizar</span> tu clínica?</h2>
-      <p class="section-subtitle">Déjanos tus datos y te contactamos en menos de 24 horas para mostrarte cómo funciona.</p>
-    </div>
-
-    <div class="contact-card reveal">
-      <div id="contactForm">
-        <div class="contact-field">
-          <label class="contact-label" for="cf-nombre">Nombre</label>
-          <input class="contact-input" id="cf-nombre" type="text" placeholder="Tu nombre completo" autocomplete="name">
-        </div>
-        <div class="contact-field">
-          <label class="contact-label" for="cf-tel">Teléfono</label>
-          <input class="contact-input" id="cf-tel" type="tel" placeholder="+56 9 1234 5678" autocomplete="tel">
-        </div>
-        <div class="contact-field">
-          <label class="contact-label" for="cf-email">Correo</label>
-          <input class="contact-input" id="cf-email" type="email" placeholder="tucorreo@clinica.cl" autocomplete="email">
-        </div>
-        <button class="contact-btn" id="cf-btn" onclick="submitContactForm()">
-          <i class="fas fa-paper-plane"></i> Quiero una demo gratuita
-        </button>
-      </div>
-      <div class="contact-success" id="contactSuccess">
-        <i class="fas fa-circle-check"></i>
-        <h3>¡Recibimos tu mensaje!</h3>
-        <p>Te contactaremos pronto por WhatsApp o correo.</p>
-      </div>
-    </div>
-
-  </div>
 </section>
 
 <!-- FOOTER -->
@@ -6344,39 +6279,10 @@ const LeadGate = (() => {
 
 
 
-/* ════════════════════════════════════
-   CONTACT FORM
-════════════════════════════════════ */
-function submitContactForm() {
-  var nombre = document.getElementById('cf-nombre').value.trim();
-  var tel    = document.getElementById('cf-tel').value.trim();
-  var email  = document.getElementById('cf-email').value.trim();
-  var btn    = document.getElementById('cf-btn');
 
-  if (!nombre) { document.getElementById('cf-nombre').focus(); return; }
-  if (!tel && !email) { document.getElementById('cf-tel').focus(); return; }
-
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-
-  fetch(WEBHOOK_CHAT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: 'lead_capture', sessionId: getSessionId(), nombre: nombre, telefono: tel, email: email }),
-    keepalive: true
-  })
-  .catch(function() {})
-  .finally(function() {
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('contactSuccess').style.display = 'block';
-  });
 }
 
-/* Enter key en campos del form de contacto */
-['cf-nombre','cf-tel','cf-email'].forEach(function(id) {
-  var el = document.getElementById(id);
-  if (el) el.addEventListener('keydown', function(e) { if (e.key === 'Enter') submitContactForm(); });
-});
+
 
 /* ─── CHATBOT ─── */
 
