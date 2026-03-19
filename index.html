@@ -764,7 +764,21 @@
       0%, 100% { opacity: 1; box-shadow: 0 0 6px #22c55e; }
       50% { opacity: 0.6; box-shadow: 0 0 12px #22c55e; }
     }
-  </style>
+  
+    /* Contencion seccion demos */
+    .demo-article, [class*="demo-card"] {
+      contain: layout paint style;
+      will-change: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+</style>
 </head>
 <body>
 
@@ -774,7 +788,7 @@
 <div class="glow-blob glow-blob-2" aria-hidden="true"></div>
 <div class="glow-blob glow-blob-3" aria-hidden="true"></div>
 <div class="glow-blob glow-blob-4" aria-hidden="true"></div>
-<canvas id="star-canvas"></canvas>
+<canvas id="star-canvas" style="image-rendering: pixelated;"></canvas>
 
 <!-- FLOATS -->
 <a href="https://wa.me/56999066071?text=Hola,%20quiero%20información%20sobre%20Orion.ia" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contactar por WhatsApp">
@@ -807,63 +821,66 @@
     <h1 class="hero-title">Automatiza tu Clínica<br>con <span class="gradient">Inteligencia Artificial</span></h1>
     <p class="hero-subtitle">Integración nativa con tu software dental, médico o estético. Chatbot IA, agendamiento automático, gestión de pacientes y optimización 24/7. Todo en una sola plataforma.</p>
     <!-- Estado de demos (indicadores discretos) -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 24px; animation:fadeInUp .7s ease .57s both;">
-      <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 400; letter-spacing: 0.3px;">
-        <span style="width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 6px #22c55e; animation: pulse-dot 2s infinite; display: inline-block;"></span>
+    <!-- 1. Indicadores de estado -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:20px;animation:fadeInUp .7s ease .57s both;">
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.55);font-weight:400;">
+        <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;box-shadow:0 0 6px #22c55e;animation:pulse-dot 2s infinite;display:inline-block;"></span>
         Demo WhatsApp activa
       </span>
-      <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 400; letter-spacing: 0.3px;">
-        <span style="width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 6px #22c55e; animation: pulse-dot 2s infinite; animation-delay: 0.5s; display: inline-block;"></span>
+      <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.55);font-weight:400;">
+        <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;box-shadow:0 0 6px #22c55e;animation:pulse-dot 2s infinite;animation-delay:0.5s;display:inline-block;"></span>
         Demo Llamada activa
       </span>
     </div>
-    <!-- Platform Logos -->
-<div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:28px;">
-  <span style="color:rgba(255,255,255,0.3);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-right:4px;">Integra con</span>
 
-  <!-- WhatsApp -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="WhatsApp" style="display:block;flex-shrink:0;">
-    <circle cx="17" cy="17" r="17" fill="#25D366"/>
-    <path fill="#fff" d="M23.5 10.5A9.4 9.4 0 0 0 8.1 22.3L7 27l4.8-1.3a9.4 9.4 0 0 0 4.5 1.1 9.4 9.4 0 0 0 9.4-9.4 9.4 9.4 0 0 0-2.2-6.9zm-6.2 14.4a7.8 7.8 0 0 1-4-1.1l-.3-.2-3 .8.8-2.9-.2-.3a7.8 7.8 0 0 1-1.2-4.2 7.8 7.8 0 0 1 7.8-7.8 7.8 7.8 0 0 1 5.5 2.3 7.8 7.8 0 0 1 2.3 5.5 7.8 7.8 0 0 1-7.7 7.9zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1s-.6.8-.7.9c-.1.1-.3.2-.5.1a6.4 6.4 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.6c-.1-.2 0-.4.1-.5l.4-.4.2-.3v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a2.4 2.4 0 0 0-.8 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 4 3.5c.6.2 1 .4 1.3.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1l-.5-.2z"/>
-  </svg>
-
-  <!-- Llamadas IA -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Llamadas IA" style="display:block;flex-shrink:0;">
-    <circle cx="17" cy="17" r="17" fill="#22c55e"/>
-    <path fill="#fff" d="M22.5 19.6c-.9-.1-1.7-.3-2.5-.6-.3-.1-.6 0-.8.2l-1.1 1.4a12 12 0 0 1-4.7-4.7l1.4-1.1c.2-.2.3-.5.2-.8a8.5 8.5 0 0 1-.6-2.5c-.1-.4-.4-.5-.7-.5h-2.4c-.4 0-.8.3-.8.7 0 7 5.7 12.7 12.7 12.7.4 0 .7-.4.7-.8v-2.3c0-.4-.2-.7-.4-.7z"/>
-  </svg>
-
-  <!-- Instagram -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Instagram" style="display:block;flex-shrink:0;">
-    <defs>
-      <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
-        <stop offset="0%" stop-color="#fdf497"/>
-        <stop offset="5%" stop-color="#fdf497"/>
-        <stop offset="45%" stop-color="#fd5949"/>
-        <stop offset="60%" stop-color="#d6249f"/>
-        <stop offset="90%" stop-color="#285AEB"/>
-      </radialGradient>
-    </defs>
-    <circle cx="17" cy="17" r="17" fill="url(#ig-grad)"/>
-    <rect x="11" y="11" width="12" height="12" rx="3.5" ry="3.5" fill="none" stroke="#fff" stroke-width="1.5"/>
-    <circle cx="17" cy="17" r="3" fill="none" stroke="#fff" stroke-width="1.5"/>
-    <circle cx="21.2" cy="12.8" r="1" fill="#fff"/>
-  </svg>
-
-  <!-- Facebook -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Facebook" style="display:block;flex-shrink:0;">
-    <circle cx="17" cy="17" r="17" fill="#1877F2"/>
-    <path fill="#fff" d="M21 11h-2c-.8 0-1 .3-1 1v1.5h3l-.4 3H18V26h-3v-9.5h-2V13h2v-1.5C15 9 16.2 8 18.5 8H21v3z"/>
-  </svg>
-</div>
-        <!-- CTAs principales - misma anchura y borde -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
-      <a href="#demos" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 220px; padding: 14px 24px; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; font-size: 15px; font-weight: 600; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,99,235,0.4); transition: all 0.2s;">
+    <!-- 2. CTAs principales -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:28px;">
+      <a href="#demos" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;width:220px;padding:14px 24px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;font-size:15px;font-weight:600;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(37,99,235,0.4);transition:all 0.2s;">
         Ver Demos en Vivo &rarr;
       </a>
-      <a href="#pricing" style="display: inline-flex; align-items: center; justify-content: center; width: 220px; padding: 14px 24px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85); font-size: 15px; font-weight: 500; border-radius: 12px; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); transition: all 0.2s;">
+      <a href="#pricing" style="display:inline-flex;align-items:center;justify-content:center;width:220px;padding:14px 24px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;border-radius:12px;text-decoration:none;border:1px solid rgba(255,255,255,0.12);transition:all 0.2s;">
         Ver Planes
       </a>
+    </div>
+
+    <!-- 3. Logos de integracion - SEPARADOS de los botones -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;">
+      <span style="color:rgba(255,255,255,0.3);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;">Integra con</span>
+
+      <!-- WhatsApp oficial -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="WhatsApp">
+        <circle cx="17" cy="17" r="17" fill="#25D366"/>
+        <path fill="#fff" d="M23.5 10.5A9.4 9.4 0 0 0 8.1 22.3L7 27l4.8-1.3a9.4 9.4 0 0 0 4.5 1.1 9.4 9.4 0 0 0 9.4-9.4 9.4 9.4 0 0 0-2.2-6.9zm-6.2 14.4a7.8 7.8 0 0 1-4-1.1l-.3-.2-3 .8.8-2.9-.2-.3a7.8 7.8 0 0 1-1.2-4.2 7.8 7.8 0 0 1 7.8-7.8 7.8 7.8 0 0 1 5.5 2.3 7.8 7.8 0 0 1 2.3 5.5 7.8 7.8 0 0 1-7.7 7.9zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1s-.6.8-.7.9c-.1.1-.3.2-.5.1a6.4 6.4 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.6c-.1-.2 0-.4.1-.5l.4-.4.2-.3v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a2.4 2.4 0 0 0-.8 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 4 3.5c.6.2 1 .4 1.3.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1l-.5-.2z"/>
+      </svg>
+
+      <!-- Llamadas IA -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Llamadas IA">
+        <circle cx="17" cy="17" r="17" fill="#22c55e"/>
+        <path fill="#fff" d="M22.5 19.6c-.9-.1-1.7-.3-2.5-.6-.3-.1-.6 0-.8.2l-1.1 1.4a12 12 0 0 1-4.7-4.7l1.4-1.1c.2-.2.3-.5.2-.8a8.5 8.5 0 0 1-.6-2.5c-.1-.4-.4-.5-.7-.5h-2.4c-.4 0-.8.3-.8.7 0 7 5.7 12.7 12.7 12.7.4 0 .7-.4.7-.8v-2.3c0-.4-.2-.7-.4-.7z"/>
+      </svg>
+
+      <!-- Instagram oficial -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Instagram">
+        <defs>
+          <radialGradient id="ig2" cx="30%" cy="107%" r="150%">
+            <stop offset="0%" stop-color="#fdf497"/>
+            <stop offset="5%" stop-color="#fdf497"/>
+            <stop offset="45%" stop-color="#fd5949"/>
+            <stop offset="60%" stop-color="#d6249f"/>
+            <stop offset="90%" stop-color="#285AEB"/>
+          </radialGradient>
+        </defs>
+        <circle cx="17" cy="17" r="17" fill="url(#ig2)"/>
+        <rect x="11" y="11" width="12" height="12" rx="3.5" fill="none" stroke="#fff" stroke-width="1.6"/>
+        <circle cx="17" cy="17" r="3.2" fill="none" stroke="#fff" stroke-width="1.6"/>
+        <circle cx="21.3" cy="12.7" r="1.1" fill="#fff"/>
+      </svg>
+
+      <!-- Facebook oficial -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Facebook">
+        <circle cx="17" cy="17" r="17" fill="#1877F2"/>
+        <path fill="#fff" d="M21.2 10.8h-2.1c-.9 0-1.1.4-1.1 1.1V14h3.2l-.4 3.2h-2.8V26h-3.3v-8.8h-2.2V14h2.2v-2.3c0-2.2 1.3-3.4 3.6-3.4h2.9v2.5z"/>
+      </svg>
     </div>
   </div>
 </section>
@@ -917,7 +934,7 @@
             <div class="phone-timer" id="phoneTimer" style="display:none;"></div>
 
             <!-- iOS Call Screen -->
-            <div style="background: linear-gradient(180deg, #3d3520 0%, #2a2510 30%, #1a1a0a 100%); border-radius: 40px; width: 100%; max-width: 320px; height: 580px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 0 0 1px rgba(34,197,94,0.15), 0 0 30px rgba(34,197,94,0.12), 0 0 80px rgba(34,197,94,0.07), 0 30px 60px rgba(0,0,0,0.7); font-family: -apple-system, 'SF Pro Display', sans-serif; display:flex; flex-direction:column;">
+            <div style="background: linear-gradient(180deg, #3d3520 0%, #2a2510 30%, #1a1a0a 100%); border-radius: 40px; width: 100%; max-width: 320px; height: 580px; margin: 0 auto; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(34,197,94,0.15); font-family: -apple-system, 'SF Pro Display', sans-serif; display:flex; flex-direction:column; contain: layout paint style; will-change: transform; transform: translateZ(0);">
 
               <!-- Status Bar -->
               <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px 0;color:white;font-size:13px;font-weight:600;">
@@ -953,11 +970,9 @@
 
               <!-- Voice Wave -->
               <div style="display:flex;justify-content:center;align-items:center;gap:4px;padding:16px 0;">
-                <div style="width:3px;height:8px;background:rgba(34,197,94,0.35);border-radius:2px;animation:wave 1.1s ease-in-out infinite alternate;animation-delay:0s;"></div>
-                <div style="width:3px;height:14px;background:rgba(34,197,94,0.45);border-radius:2px;animation:wave 1.1s ease-in-out infinite alternate;animation-delay:0.15s;"></div>
-                <div style="width:3px;height:22px;background:rgba(34,197,94,0.6);border-radius:2px;animation:wave 1.1s ease-in-out infinite alternate;animation-delay:0.3s;"></div>
-                <div style="width:3px;height:14px;background:rgba(34,197,94,0.45);border-radius:2px;animation:wave 1.1s ease-in-out infinite alternate;animation-delay:0.45s;"></div>
-                <div style="width:3px;height:8px;background:rgba(34,197,94,0.35);border-radius:2px;animation:wave 1.1s ease-in-out infinite alternate;animation-delay:0.6s;"></div>
+                <div style="width:3px;height:14px;background:rgba(34,197,94,0.45);border-radius:2px;animation:wave 1.1s ease-in-out infinite alternate;animation-delay:0s;"></div>
+                <div style="width:3px;height:22px;background:rgba(34,197,94,0.6);border-radius:2px;animation:wave 1.1s ease-in-out infinite alternate;animation-delay:0.15s;"></div>
+                <div style="width:3px;height:14px;background:rgba(34,197,94,0.45);border-radius:2px;animation:wave 1.1s ease-in-out infinite alternate;animation-delay:0.3s;"></div>
               </div>
 
               <!-- Spacer -->
@@ -1368,9 +1383,12 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     const n=Math.min(MAX_STARS,Math.floor(W*H/(isMobile?10000:7500)));
     for(let i=0;i<n;i++) stars.push({x:rnd(0,W),y:rnd(0,H),r:rnd(0.3,1.2),a:rnd(0.3,0.85),sp:rnd(0.0002,0.0008),ph:rnd(0,Math.PI*2),dx:rnd(-0.012,0.012),dy:rnd(-0.007,0.007)});
   }
-  function draw(){
+  var lastFrame=0;
+  function draw(ts){
     requestAnimationFrame(draw);
     if(paused)return;
+    if(ts-lastFrame<50)return;
+    lastFrame=ts;
     frame++;
     if(frame%SKIP!==0)return;
     ctx.clearRect(0,0,W,H);
