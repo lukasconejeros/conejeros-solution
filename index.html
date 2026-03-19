@@ -1634,6 +1634,16 @@
 
   </style>
 
+
+<script type="module">
+  window._vapiReady = import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm')
+    .then(function(mod) {
+      var V = mod.default || mod.Vapi;
+      if (typeof V !== 'function') throw new Error('Vapi no es un constructor: ' + typeof V);
+      return V;
+    })
+    .catch(function(e) { console.warn('Vapi preload error:', e); return null; });
+</script>
 </head>
 
 <body>
@@ -3056,53 +3066,65 @@ const LeadGate = (() => {
 
       setUI('loading');
 
-      import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm').then(function(mod) {
+      (window._vapiReady || Promise.resolve(null)).then(function(Vapi) {
 
-        var Vapi = mod.default || mod.Vapi || mod;
-
-        vapiInstance = new Vapi(VAPI_PK);
-
-        vapiInstance.on('call-start', function() {
-
-          callActive = true;
-
-          setUI('active');
-
-          startTimer();
-
-        });
-
-        vapiInstance.on('call-end', function() {
-
-          callActive = false;
-
-          stopTimer();
+        if (!Vapi) {
 
           setUI('idle');
 
-        });
+          alert('SDK Vapi no disponible. Intenta recargar la pagina.');
 
-        vapiInstance.on('error', function(e) {
+          return;
 
-          console.error('Vapi error:', e);
+        }
 
-          callActive = false;
+        try {
 
-          stopTimer();
+          vapiInstance = new Vapi(VAPI_PK);
+
+          vapiInstance.on('call-start', function() {
+
+            callActive = true;
+
+            setUI('active');
+
+            startTimer();
+
+          });
+
+          vapiInstance.on('call-end', function() {
+
+            callActive = false;
+
+            stopTimer();
+
+            setUI('idle');
+
+          });
+
+          vapiInstance.on('error', function(e) {
+
+            console.error('Vapi error:', e);
+
+            callActive = false;
+
+            stopTimer();
+
+            setUI('idle');
+
+          });
+
+          vapiInstance.start(VAPI_AID);
+
+        } catch(e) {
+
+          console.error('Vapi init error:', e);
 
           setUI('idle');
 
-        });
+          alert('Error al iniciar llamada: ' + (e.message || e));
 
-        vapiInstance.start(VAPI_AID);
-
-      }).catch(function(e) {
-
-        console.error('Vapi SDK error:', e);
-
-        setUI('idle');
-
-        alert('No se pudo cargar el SDK de Vapi. Verifica tu conexion.');
+        }
 
       });
 
