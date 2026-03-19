@@ -1638,8 +1638,8 @@
 <script type="module">
   window._vapiReady = import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm')
     .then(function(mod) {
-      var V = mod.default || mod.Vapi;
-      if (typeof V !== 'function') throw new Error('Vapi no es un constructor: ' + typeof V);
+      var V = (mod.default && mod.default.default) || mod.default || mod.Vapi;
+      if (typeof V !== 'function') throw new Error('Vapi no es constructor. Exports: ' + Object.keys(mod.default || mod).join(','));
       return V;
     })
     .catch(function(e) { console.warn('Vapi preload error:', e); return null; });
