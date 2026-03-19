@@ -6118,7 +6118,7 @@ const LeadGate = (() => {
 
 
 
-        var Vapi = mod.default || mod.Vapi || mod;
+        var Vapi = (mod.default && mod.default.default) || mod.default || mod.Vapi || mod;
 
 
 
