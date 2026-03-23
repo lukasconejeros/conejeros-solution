@@ -4927,6 +4927,16 @@
 
 
     @media (max-width:640px){.audit-right{padding:32px 24px}}
+    @media (max-width:480px){
+      .audit-block{border-radius:var(--r-lg);margin-bottom:32px}
+      .audit-left{padding:24px 16px}
+      .audit-right{padding:24px 16px}
+      .audit-title{font-size:2rem}
+      .audit-price-main{font-size:2.2rem;word-break:break-word}
+      .audit-price-row{flex-wrap:wrap;gap:8px}
+      .audit-scope{font-size:.82rem;word-break:break-word;overflow-wrap:break-word}
+      .audit-desc{font-size:.85rem}
+    }
 
 
 
@@ -5599,14 +5609,6 @@
     }
     .instagram-float:hover { transform: scale(1.1); box-shadow: 0 10px 44px rgba(220,39,67,0.7), 0 0 60px rgba(188,24,136,0.2); }
 
-    /* Facebook - #1877F2 official */
-    .facebook-float {
-      right: 176px;
-      background: #1877F2;
-      box-shadow: 0 6px 28px rgba(24,119,242,0.5);
-    }
-    .facebook-float:hover { transform: scale(1.1); box-shadow: 0 10px 44px rgba(24,119,242,0.7), 0 0 60px rgba(24,119,242,0.2); }
-
     /* Ring pulse - compositor only (transform + opacity, no paint) */
     .social-float-btn::after {
       content: '';
@@ -5618,7 +5620,6 @@
     }
     .whatsapp-float::after  { border: 2px solid rgba(37,211,102,0.55); animation-delay: 3s; }
     .instagram-float::after { border: 2px solid rgba(220,39,67,0.55);  animation-delay: 4.5s; }
-    .facebook-float::after  { border: 2px solid rgba(24,119,242,0.55); animation-delay: 6s; }
 
     @keyframes floatRing {
       0%   { transform: scale(1);    opacity: 0.55; }
@@ -5631,8 +5632,6 @@
       .whatsapp-float svg { width: 24px; height: 24px; }
       .instagram-float { bottom: 20px; right: 84px;  width: 52px; height: 52px; }
       .instagram-float svg { width: 24px; height: 24px; }
-      .facebook-float  { bottom: 20px; right: 148px; width: 52px; height: 52px; }
-      .facebook-float svg { width: 24px; height: 24px; }
     }
 
     /* ── FOOTER ── */
@@ -6277,9 +6276,6 @@
 
 <!-- FLOATS -->
 
-<a href="https://www.facebook.com/conejeros.solution" target="_blank" rel="noopener" class="social-float-btn facebook-float" aria-label="Visitar Facebook">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-</a>
 
 <a href="https://instagram.com/lukasconejeros" target="_blank" rel="noopener" class="social-float-btn instagram-float" aria-label="Seguir en Instagram"
   onclick="event.preventDefault();var app='instagram://user?username=lukasconejeros';var web='https://www.instagram.com/lukasconejeros';var t=setTimeout(function(){window.open(web,'_blank')},400);try{window.location.href=app;var h=Date.now();setTimeout(function(){if(Date.now()-h<800){clearTimeout(t);window.open(web,'_blank')}},500)}catch(e){clearTimeout(t);window.open(web,'_blank')}">
@@ -6554,7 +6550,7 @@
 
 
 
-      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="WhatsApp" style="display:block;flex-shrink:0;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 34 34" role="img" aria-label="WhatsApp" style="display:block;flex-shrink:0;border-radius:50%;overflow:visible;">
 
 
 
@@ -6586,7 +6582,7 @@
 
 
 
-      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Llamadas IA" style="display:block;flex-shrink:0;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 34 34" role="img" aria-label="Llamadas IA" style="display:block;flex-shrink:0;border-radius:50%;overflow:visible;">
 
 
 
@@ -6594,7 +6590,7 @@
 
 
 
-        <circle cx="17" cy="17" r="17" fill="#22c55e"/>
+        <circle cx="17" cy="17" r="17" fill="#128C7E"/>
 
 
 
@@ -6618,7 +6614,7 @@
 
 
 
-      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Instagram" style="display:block;flex-shrink:0;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 34 34" role="img" aria-label="Instagram" style="display:block;flex-shrink:0;border-radius:50%;overflow:visible;">
 
 
 
@@ -6738,7 +6734,7 @@
 
 
 
-      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" role="img" aria-label="Facebook" style="display:block;flex-shrink:0;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 34 34" role="img" aria-label="Facebook" style="display:block;flex-shrink:0;border-radius:50%;overflow:visible;">
 
 
 
