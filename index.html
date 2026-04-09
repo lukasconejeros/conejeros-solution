@@ -485,6 +485,50 @@
     @keyframes wave{0%{transform:scaleY(0.5);}100%{transform:scaleY(1.5);}}
     @keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 6px #22c55e;}50%{opacity:0.6;box-shadow:0 0 12px #22c55e;}}
 
+    /* ══ TIMELINE 3 PASOS ══ */
+    .tl-section{background:#ffffff;padding:80px 0 40px;overflow:hidden;}
+    .tl-container{position:relative;width:min(100%,1120px);margin:0 auto;min-height:760px;padding:0 40px;box-sizing:border-box;}
+    .tl-head{position:absolute;top:40px;left:40px;max-width:430px;}
+    .tl-badge{display:inline-flex;align-items:center;padding:6px 18px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.28);border-radius:999px;font-size:.75rem;font-weight:700;letter-spacing:.06em;color:#8b5cf6;margin-bottom:22px;}
+    .tl-title{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;letter-spacing:-.04em;line-height:1.1;color:#0f172a;margin-bottom:14px;}
+    .tl-title-hl{background:linear-gradient(135deg,#06b6d4,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .tl-subtitle{font-size:1rem;color:#64748b;line-height:1.65;}
+    .tl-subtitle strong{color:#0f172a;font-weight:600;}
+    .tl-ghost-num{position:absolute;font-size:210px;font-weight:900;color:rgba(0,0,0,0.045);line-height:1;pointer-events:none;user-select:none;letter-spacing:-.05em;}
+    .tl-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;}
+    .tl-step{position:absolute;max-width:240px;}
+    .tl-dot{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#06b6d4,#8b5cf6);display:flex;align-items:center;justify-content:center;margin-bottom:18px;box-shadow:0 8px 28px rgba(6,182,212,0.35);flex-shrink:0;}
+    .tl-dot svg{width:26px;height:26px;}
+    .tl-step-title{font-size:1.85rem;font-weight:800;color:#0f172a;letter-spacing:-.04em;margin-bottom:10px;line-height:1.15;}
+    .tl-step-desc{font-size:.9rem;color:#64748b;line-height:1.65;margin-bottom:8px;}
+    .tl-step-time{font-size:.83rem;color:#0f172a;font-weight:700;}
+    @media(max-width:860px){
+      .tl-container{min-height:auto;padding:0 24px;}
+      .tl-head{position:static;max-width:100%;margin-bottom:48px;}
+      .tl-svg,.tl-ghost-num{display:none;}
+      .tl-step{position:static;max-width:100%;margin-bottom:40px;display:flex;flex-direction:column;}
+      .tl-steps-mobile{display:flex;flex-direction:column;gap:0;padding-left:8px;}
+      .tl-step-mobile-wrap{display:flex;gap:20px;padding-bottom:40px;position:relative;}
+      .tl-step-mobile-wrap::before{content:'';position:absolute;left:27px;top:54px;bottom:0;width:2px;background:linear-gradient(180deg,#06b6d4,#8b5cf6);opacity:0.4;}
+      .tl-step-mobile-wrap:last-child::before{display:none;}
+    }
+
+    /* ══ POST DEMO MODAL ══ */
+    .pdm-overlay{position:fixed;inset:0;z-index:99998;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;}
+    .pdm-overlay.open{opacity:1;visibility:visible;}
+    .pdm-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.65);}
+    .pdm-box{position:relative;z-index:1;width:min(100%,440px);background:#ffffff;border-radius:20px;padding:40px 36px 32px;box-shadow:0 40px 100px rgba(0,0,0,0.25);text-align:center;transform:scale(.92) translateY(20px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
+    .pdm-overlay.open .pdm-box{transform:scale(1) translateY(0);}
+    .pdm-icon{font-size:2.8rem;margin-bottom:16px;line-height:1;}
+    .pdm-title{font-size:1.5rem;font-weight:900;color:#0f172a;letter-spacing:-.04em;margin-bottom:10px;line-height:1.25;}
+    .pdm-sub{font-size:.92rem;color:#64748b;margin-bottom:28px;line-height:1.65;}
+    .pdm-btn-green{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 24px;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font-size:.95rem;font-weight:700;border:none;border-radius:12px;cursor:pointer;margin-bottom:10px;box-shadow:0 4px 16px rgba(22,163,74,0.35);transition:transform .2s,box-shadow .2s;}
+    .pdm-btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(22,163,74,0.5);}
+    .pdm-btn-red{display:flex;align-items:center;justify-content:center;width:100%;padding:12px 24px;background:none;color:#dc2626;font-size:.88rem;font-weight:600;border:2px solid #fca5a5;border-radius:12px;cursor:pointer;transition:background .2s,border-color .2s;}
+    .pdm-btn-red:hover{background:#fef2f2;border-color:#f87171;}
+    .pdm-close{position:absolute;top:14px;right:14px;background:none;border:none;color:#94a3b8;cursor:pointer;font-size:1.1rem;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .2s;}
+    .pdm-close:hover{background:#f1f5f9;color:#475569;}
+
     /* ═══════════════════════════════════════
        LIGHT MODE — FONDO BLANCO
     ═══════════════════════════════════════ */
@@ -806,6 +850,67 @@
   </div>
 </section>
 
+<!-- ══ TIMELINE 3 PASOS ══ -->
+<section class="tl-section">
+  <div class="tl-container">
+
+    <!-- Header superior izquierdo -->
+    <div class="tl-head">
+      <span class="tl-badge">Nos Encargamos de Todo</span>
+      <h2 class="tl-title">Solamente<br><span class="tl-title-hl">3 Pasos</span> Para Iniciar</h2>
+      <p class="tl-subtitle"><strong>En un abrir y cerrar de ojos</strong> ya estará todo listo para ti</p>
+    </div>
+
+    <!-- Números fantasma de fondo -->
+    <span class="tl-ghost-num" style="left:23%;bottom:12%">1</span>
+    <span class="tl-ghost-num" style="left:47%;bottom:22%">2</span>
+    <span class="tl-ghost-num" style="right:8%;top:8%">3</span>
+
+    <!-- Línea curva SVG -->
+    <svg class="tl-svg" viewBox="0 0 1040 760" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="tlGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#06b6d4"/>
+          <stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient>
+      </defs>
+      <path d="M 155 572 C 355 572, 355 432, 535 432 C 715 432, 715 182, 938 182"
+            stroke="url(#tlGrad)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    </svg>
+
+    <!-- Paso 1 — inferior izquierdo -->
+    <div class="tl-step" style="left:102px;bottom:108px;">
+      <div class="tl-dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 class="tl-step-title">Registro</h3>
+      <p class="tl-step-desc">Completas tu registro seleccionando el plan de tu preferencia y completando el formulario inicial</p>
+      <span class="tl-step-time">*(Tiempo: 2 minutos)</span>
+    </div>
+
+    <!-- Paso 2 — centro -->
+    <div class="tl-step" style="left:482px;bottom:214px;">
+      <div class="tl-dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 class="tl-step-title">Videollamada</h3>
+      <p class="tl-step-desc">Accedes a una videollamada por Zoom (Webinar) de bienvenida donde te indicamos los primeros pasos</p>
+      <span class="tl-step-time">*(Tiempo: 15 minutos)</span>
+    </div>
+
+    <!-- Paso 3 — superior derecho -->
+    <div class="tl-step" style="right:52px;top:110px;">
+      <div class="tl-dot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 class="tl-step-title">Todo Listo</h3>
+      <p class="tl-step-desc">¡Eso es todo! en menos de 1 hora y sin ningún esfuerzo ya tienes todo listo y 100% funcionando.</p>
+      <span class="tl-step-time">*A Generar Más Ventas</span>
+    </div>
+
+  </div>
+</section>
+
 <!-- ══ PRICING ══ -->
 <section id="pricing" class="pricing-section">
   <div class="wrapper">
@@ -814,8 +919,6 @@
       <h2 class="section-title">Arquitecturas diseñadas<br>para <span class="gradient-text">cada etapa</span></h2>
       <p class="section-subtitle">Elige el plan que mejor se adapta a tu clínica y empieza a automatizar desde el primer día.</p>
     </div>
-
-    <!-- ══ ONBOARDING TIMELINE (3 PASOS) — PRÓXIMA SECCIÓN ══ -->
 
     <div class="plans-subtitle reveal">Planes Mensuales</div>
 
@@ -1057,6 +1160,22 @@
   </div>
 </div>
 
+<!-- ══ POST DEMO MODAL ══ -->
+<div class="pdm-overlay" id="postDemoModal">
+  <div class="pdm-backdrop" onclick="PostDemoModal.dismiss()"></div>
+  <div class="pdm-box">
+    <button class="pdm-close" onclick="PostDemoModal.dismiss()" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
+    <div class="pdm-icon">🚀</div>
+    <h3 class="pdm-title">¿Te gustaría agendar<br>una reunión?</h3>
+    <p class="pdm-sub">Nuestro equipo está listo para mostrarte cómo Orion.ia puede transformar tu clínica en menos de 1 hora.</p>
+    <button class="pdm-btn-green" onclick="PostDemoModal.accept()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Agendar una Reunión
+    </button>
+    <button class="pdm-btn-red" onclick="PostDemoModal.dismiss()">Seguir leyendo</button>
+  </div>
+</div>
+
 <!-- ══ JAVASCRIPT ══ -->
 <script>
 'use strict';
@@ -1254,6 +1373,7 @@ const LeadGate = (() => {
     fetch(WEBHOOK_CHAT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'lead_capture',sessionId:getSessionId(),nombre,telefono:tel,email}),keepalive:true}).catch(()=>{});
     close();
     if(pendingFn){const fn=pendingFn;pendingFn=null;fn();}
+    PostDemoModal.schedule();
   }
   function close(){
     document.getElementById('leadGateModal').classList.remove('open');
@@ -1261,6 +1381,36 @@ const LeadGate = (() => {
     pendingFn=null;
   }
   return {require,submit,close,isUnlocked};
+})();
+
+/* ─── POST DEMO MODAL ─── */
+const PostDemoModal = (() => {
+  const KEY = 'orion_pdm_v1';
+  let timer = null;
+  function schedule(){
+    if(localStorage.getItem(KEY)) return;
+    if(timer) clearTimeout(timer);
+    timer = setTimeout(show, 60000);
+  }
+  function show(){
+    if(localStorage.getItem(KEY)) return;
+    const el = document.getElementById('postDemoModal');
+    if(!el) return;
+    el.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function accept(){
+    dismiss();
+    if(typeof AgendaFlow !== 'undefined') AgendaFlow.open('General');
+  }
+  function dismiss(){
+    localStorage.setItem(KEY,'1');
+    const el = document.getElementById('postDemoModal');
+    if(el) el.classList.remove('open');
+    document.body.style.overflow = '';
+    if(timer){ clearTimeout(timer); timer=null; }
+  }
+  return {schedule, show, accept, dismiss};
 })();
 
 /* ─── AGENDA FLOW (NEW) ─── */
