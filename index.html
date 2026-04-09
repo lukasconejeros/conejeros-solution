@@ -519,6 +519,17 @@
       .tl-step-mobile-wrap:last-child::before{display:none;}
     }
 
+    /* ══ HERO DEMOS DROPDOWN ══ */
+    .hero-demos-dropdown{position:relative;display:inline-block;}
+    .hero-demos-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);background:#ffffff;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,0.18),0 0 0 1px rgba(0,0,0,0.06);min-width:260px;overflow:hidden;z-index:500;opacity:0;visibility:hidden;transition:opacity .22s,visibility .22s,transform .22s;}
+    .hero-demos-menu.open{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+    .hero-demos-item{display:flex;align-items:center;gap:12px;padding:13px 18px;color:#0f172a;font-size:.88rem;font-weight:600;cursor:pointer;background:none;border:none;width:100%;text-align:left;transition:background .15s;}
+    .hero-demos-item:hover{background:#f8fafc;}
+    .hero-demos-item+.hero-demos-item{border-top:1px solid #f1f5f9;}
+    .hero-demos-item-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.05rem;}
+    .hero-demos-item-label{display:block;font-size:.88rem;font-weight:700;color:#0f172a;}
+    .hero-demos-item-sub{display:block;font-size:.74rem;color:#64748b;font-weight:400;margin-top:1px;}
+
     /* ══ POST DEMO MODAL ══ */
     .pdm-overlay{position:fixed;inset:0;z-index:99998;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;}
     .pdm-overlay.open{opacity:1;visibility:visible;}
@@ -715,7 +726,26 @@
       <div style="width:40px;height:40px;border-radius:50%;background:#1877F2;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px;">
-      <a href="#demos" onclick="event.preventDefault();LeadGate.require(function(){window.location.hash='demos';})" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:14px 28px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;font-size:15px;font-weight:600;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(37,99,235,0.4);transition:all 0.2s;">Ver Demos en Vivo</a>
+      <div class="hero-demos-dropdown" id="heroDemosDropdown">
+        <button onclick="DemosMenu.toggle()" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:14px 28px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;font-size:15px;font-weight:600;border-radius:12px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,0.4);transition:all 0.2s;">
+          Ver Demos en Vivo
+          <svg id="demosChevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .22s;flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="hero-demos-menu" id="heroDemosMenu">
+          <button class="hero-demos-item" onclick="DemosMenu.go('voice')">
+            <div class="hero-demos-item-icon" style="background:rgba(34,197,94,0.12);">📞</div>
+            <div><span class="hero-demos-item-label">Ver Demo de Llamada</span><span class="hero-demos-item-sub">Agente de voz IA en tiempo real</span></div>
+          </button>
+          <button class="hero-demos-item" onclick="DemosMenu.go('chat')">
+            <div class="hero-demos-item-icon" style="background:rgba(37,211,102,0.12);">💬</div>
+            <div><span class="hero-demos-item-label">Ver Demo de Chat</span><span class="hero-demos-item-sub">Chatbot para WhatsApp e Instagram</span></div>
+          </button>
+          <button class="hero-demos-item" onclick="DemosMenu.go('pricing')">
+            <div class="hero-demos-item-icon" style="background:rgba(139,92,246,0.12);">💼</div>
+            <div><span class="hero-demos-item-label">Ver Planes y Precios</span><span class="hero-demos-item-sub">Desde $75 USD/mes</span></div>
+          </button>
+        </div>
+      </div>
       <a href="#pricing" onclick="event.preventDefault();AgendaFlow.open('General');" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;padding:14px 28px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:15px;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(245,158,11,0.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(245,158,11,0.55)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(245,158,11,0.4)'"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Reserva una Reunión</a>
     </div>
   </div>
@@ -794,6 +824,7 @@
                   <svg id="callSpinner" width="30" height="30" viewBox="0 0 30 30" fill="none" style="display:none;animation:spin 0.8s linear infinite;"><circle cx="15" cy="15" r="12" stroke="white" stroke-width="3" stroke-opacity="0.25"/><path d="M15 3a12 12 0 0 1 12 12" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>
                 </button>
                 <span id="callBtnLabel" style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:400;">Llamar</span>
+                <a href="#pricing" onclick="event.preventDefault();document.getElementById('pricing').scrollIntoView({behavior:'smooth'});trackEvent('phone_plans_click',{});" style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;padding:7px 18px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:999px;color:rgba(255,255,255,0.8);font-size:11.5px;font-weight:600;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,0.16)'" onmouseout="this.style.background='rgba(255,255,255,0.08)'">Ver Planes y Precios <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
               </div>
               <div style="display:flex;justify-content:center;padding-bottom:10px;">
                 <div style="width:100px;height:4px;background:rgba(255,255,255,0.35);border-radius:2px;"></div>
@@ -1188,6 +1219,7 @@
 
 /* ─── CONFIG ─── */
 const WEBHOOK_CHAT      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/f40ed409-a0b0-4373-b7d7-6abedc56f8dd';
+const WEBHOOK_EVENTS    = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/orion-hub';
 const WEBHOOK_BOOK      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/c4d5e6f7-a8b9-0123-cdef-234567890123';
 const WEBHOOK_AVAIL     = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/e6f7a8b9-c0d1-2345-efab-456789012345';
 const CALL_ASSISTANT_ID = '58e92766-daa7-4fd7-b21a-978ac6d82001';
@@ -1390,6 +1422,48 @@ const LeadGate = (() => {
     pendingFn=null;
   }
   return {require,submit,close,isUnlocked};
+})();
+
+/* ─── EVENT TRACKER ─── */
+function trackEvent(type, data){
+  try{
+    var payload=Object.assign({type:type,sessionId:getSessionId(),timestamp:new Date().toISOString(),url:location.pathname},data||{});
+    fetch(WEBHOOK_EVENTS,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+  }catch(e){}
+}
+
+/* ─── DEMOS MENU ─── */
+const DemosMenu=(()=>{
+  let isOpen=false;
+  function menu(){return document.getElementById('heroDemosMenu');}
+  function chevron(){return document.getElementById('demosChevron');}
+  function toggle(){
+    isOpen=!isOpen;
+    const m=menu();if(m)m.classList.toggle('open',isOpen);
+    const c=chevron();if(c)c.style.transform=isOpen?'rotate(180deg)':'';
+  }
+  function go(target){
+    toggle();
+    LeadGate.require(function(){
+      trackEvent('demo_nav',{target:target});
+      if(target==='voice'){
+        document.getElementById('demos').scrollIntoView({behavior:'smooth'});
+      }else if(target==='chat'){
+        var arts=document.querySelectorAll('.demo-article');
+        (arts[1]||arts[0]||document.getElementById('demos')).scrollIntoView({behavior:'smooth'});
+      }else if(target==='pricing'){
+        document.getElementById('pricing').scrollIntoView({behavior:'smooth'});
+      }
+    });
+  }
+  document.addEventListener('click',function(e){
+    if(isOpen&&!e.target.closest('#heroDemosDropdown')){
+      isOpen=false;
+      var m=menu();if(m)m.classList.remove('open');
+      var c=chevron();if(c)c.style.transform='';
+    }
+  });
+  return{toggle:toggle,go:go};
 })();
 
 /* ─── POST DEMO MODAL ─── */
@@ -1687,9 +1761,9 @@ const AgendaFlow = (() => {
       }).then(function(mod){
         var Vapi=(mod.default&&mod.default.default)||mod.default||mod.Vapi||mod;
         vapiInstance=new Vapi(VAPI_PK);
-        vapiInstance.on('call-start',function(){callActive=true;setUI('active');startTimer();});
-        vapiInstance.on('call-end',function(){callActive=false;stopTimer();setUI('idle');});
-        vapiInstance.on('error',function(e){console.error('Vapi:',e);callActive=false;stopTimer();setUI('idle');});
+        vapiInstance.on('call-start',function(){callActive=true;setUI('active');startTimer();trackEvent('call_start',{assistant:CALL_ASSISTANT_ID});});
+        vapiInstance.on('call-end',function(){callActive=false;stopTimer();trackEvent('call_end',{duration_seconds:seconds});setUI('idle');});
+        vapiInstance.on('error',function(e){console.error('Vapi:',e);callActive=false;stopTimer();trackEvent('call_error',{error:e&&e.message||'unknown'});setUI('idle');});
         vapiInstance.start(VAPI_AID);
       }).catch(function(e){
         console.error('VapiCall error:',e);
@@ -1735,7 +1809,7 @@ const AgendaFlow = (() => {
     }catch{typing.classList.remove('show');addBubble('No pude conectar. Intenta de nuevo.','bot');}
     busy=false;
   }
-  function send(){const text=input.value.trim();if(!text||busy)return;LeadGate.require(()=>doSend(text));}
+  function send(){const text=input.value.trim();if(!text||busy)return;LeadGate.require(()=>{trackEvent('chat_message',{message:text});doSend(text);});}
   input.addEventListener('keydown',e=>{if(e.key==='Enter')send();});
   sendBtn.addEventListener('click',send);
 })();

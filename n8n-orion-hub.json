@@ -1,0 +1,315 @@
+{
+  "name": "Orion.ia — Hub de Eventos Web",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "orion-hub",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "name": "📡 Recibir Evento",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "orion-hub"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [{ "leftValue": "={{ $json.body.type }}", "rightValue": "lead_capture", "operator": { "type": "string", "operation": "equals" } }]
+              },
+              "output": 0
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [{ "leftValue": "={{ $json.body.type }}", "rightValue": "chat_message", "operator": { "type": "string", "operation": "equals" } }]
+              },
+              "output": 1
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [{ "leftValue": "={{ $json.body.type }}", "rightValue": "call_start", "operator": { "type": "string", "operation": "equals" } }]
+              },
+              "output": 2
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [{ "leftValue": "={{ $json.body.type }}", "rightValue": "call_end", "operator": { "type": "string", "operation": "equals" } }]
+              },
+              "output": 3
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [{ "leftValue": "={{ $json.body.type }}", "rightValue": "agenda_booking", "operator": { "type": "string", "operation": "equals" } }]
+              },
+              "output": 4
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "strict" },
+                "combinator": "and",
+                "conditions": [{ "leftValue": "={{ $json.body.type }}", "rightValue": "demo_nav", "operator": { "type": "string", "operation": "equals" } }]
+              },
+              "output": 5
+            }
+          ]
+        },
+        "fallbackOutput": 6
+      },
+      "id": "a1b2c3d4-0002-0002-0002-000000000002",
+      "name": "🔀 Router por Tipo",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [480, 300]
+    },
+
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "f1", "name": "evento", "value": "lead_capture", "type": "string" },
+            { "id": "f2", "name": "nombre", "value": "={{ $('📡 Recibir Evento').item.json.body.nombre }}", "type": "string" },
+            { "id": "f3", "name": "email", "value": "={{ $('📡 Recibir Evento').item.json.body.email }}", "type": "string" },
+            { "id": "f4", "name": "telefono", "value": "={{ $('📡 Recibir Evento').item.json.body.telefono }}", "type": "string" },
+            { "id": "f5", "name": "sessionId", "value": "={{ $('📡 Recibir Evento').item.json.body.sessionId }}", "type": "string" },
+            { "id": "f6", "name": "timestamp", "value": "={{ $('📡 Recibir Evento').item.json.body.timestamp }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0010-0010-0010-000000000010",
+      "name": "📋 Datos Lead",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [720, 60]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true, \"event\": \"lead_capture\", \"message\": \"Lead registrado correctamente\" }",
+        "options": { "responseCode": 200 }
+      },
+      "id": "a1b2c3d4-0011-0011-0011-000000000011",
+      "name": "✅ OK Lead",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [960, 60]
+    },
+
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "c1", "name": "evento", "value": "chat_message", "type": "string" },
+            { "id": "c2", "name": "message", "value": "={{ $('📡 Recibir Evento').item.json.body.message }}", "type": "string" },
+            { "id": "c3", "name": "sessionId", "value": "={{ $('📡 Recibir Evento').item.json.body.sessionId }}", "type": "string" },
+            { "id": "c4", "name": "timestamp", "value": "={{ $('📡 Recibir Evento').item.json.body.timestamp }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0020-0020-0020-000000000020",
+      "name": "💬 Datos Chat",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [720, 180]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true, \"event\": \"chat_message\", \"output\": \"Gracias por tu mensaje. Un agente te responderá en breve.\" }",
+        "options": { "responseCode": 200 }
+      },
+      "id": "a1b2c3d4-0021-0021-0021-000000000021",
+      "name": "✅ OK Chat",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [960, 180]
+    },
+
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "cs1", "name": "evento", "value": "call_start", "type": "string" },
+            { "id": "cs2", "name": "sessionId", "value": "={{ $('📡 Recibir Evento').item.json.body.sessionId }}", "type": "string" },
+            { "id": "cs3", "name": "assistant", "value": "={{ $('📡 Recibir Evento').item.json.body.assistant }}", "type": "string" },
+            { "id": "cs4", "name": "timestamp", "value": "={{ $('📡 Recibir Evento').item.json.body.timestamp }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0030-0030-0030-000000000030",
+      "name": "📞 Datos Llamada Inicio",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [720, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true, \"event\": \"call_start\" }",
+        "options": { "responseCode": 200 }
+      },
+      "id": "a1b2c3d4-0031-0031-0031-000000000031",
+      "name": "✅ OK Llamada Inicio",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [960, 300]
+    },
+
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "ce1", "name": "evento", "value": "call_end", "type": "string" },
+            { "id": "ce2", "name": "sessionId", "value": "={{ $('📡 Recibir Evento').item.json.body.sessionId }}", "type": "string" },
+            { "id": "ce3", "name": "duration_seconds", "value": "={{ $('📡 Recibir Evento').item.json.body.duration_seconds }}", "type": "number" },
+            { "id": "ce4", "name": "timestamp", "value": "={{ $('📡 Recibir Evento').item.json.body.timestamp }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0040-0040-0040-000000000040",
+      "name": "📞 Datos Llamada Fin",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [720, 420]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true, \"event\": \"call_end\" }",
+        "options": { "responseCode": 200 }
+      },
+      "id": "a1b2c3d4-0041-0041-0041-000000000041",
+      "name": "✅ OK Llamada Fin",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [960, 420]
+    },
+
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "ab1", "name": "evento", "value": "agenda_booking", "type": "string" },
+            { "id": "ab2", "name": "nombre", "value": "={{ $('📡 Recibir Evento').item.json.body.nombre }}", "type": "string" },
+            { "id": "ab3", "name": "email", "value": "={{ $('📡 Recibir Evento').item.json.body.email }}", "type": "string" },
+            { "id": "ab4", "name": "plan", "value": "={{ $('📡 Recibir Evento').item.json.body.plan }}", "type": "string" },
+            { "id": "ab5", "name": "fecha", "value": "={{ $('📡 Recibir Evento').item.json.body.fecha }}", "type": "string" },
+            { "id": "ab6", "name": "hora", "value": "={{ $('📡 Recibir Evento').item.json.body.hora }}", "type": "string" },
+            { "id": "ab7", "name": "sessionId", "value": "={{ $('📡 Recibir Evento').item.json.body.sessionId }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0050-0050-0050-000000000050",
+      "name": "📅 Datos Reserva",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [720, 540]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true, \"event\": \"agenda_booking\", \"message\": \"Reserva confirmada\" }",
+        "options": { "responseCode": 200 }
+      },
+      "id": "a1b2c3d4-0051-0051-0051-000000000051",
+      "name": "✅ OK Reserva",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [960, 540]
+    },
+
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "dn1", "name": "evento", "value": "demo_nav", "type": "string" },
+            { "id": "dn2", "name": "target", "value": "={{ $('📡 Recibir Evento').item.json.body.target }}", "type": "string" },
+            { "id": "dn3", "name": "sessionId", "value": "={{ $('📡 Recibir Evento').item.json.body.sessionId }}", "type": "string" },
+            { "id": "dn4", "name": "timestamp", "value": "={{ $('📡 Recibir Evento').item.json.body.timestamp }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0060-0060-0060-000000000060",
+      "name": "🖱️ Datos Navegación",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [720, 660]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true, \"event\": \"demo_nav\" }",
+        "options": { "responseCode": 200 }
+      },
+      "id": "a1b2c3d4-0061-0061-0061-000000000061",
+      "name": "✅ OK Nav",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [960, 660]
+    },
+
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true, \"event\": \"unknown\" }",
+        "options": { "responseCode": 200 }
+      },
+      "id": "a1b2c3d4-0070-0070-0070-000000000070",
+      "name": "✅ OK Default",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [720, 780]
+    }
+  ],
+  "connections": {
+    "📡 Recibir Evento": {
+      "main": [[{ "node": "🔀 Router por Tipo", "type": "main", "index": 0 }]]
+    },
+    "🔀 Router por Tipo": {
+      "main": [
+        [{ "node": "📋 Datos Lead", "type": "main", "index": 0 }],
+        [{ "node": "💬 Datos Chat", "type": "main", "index": 0 }],
+        [{ "node": "📞 Datos Llamada Inicio", "type": "main", "index": 0 }],
+        [{ "node": "📞 Datos Llamada Fin", "type": "main", "index": 0 }],
+        [{ "node": "📅 Datos Reserva", "type": "main", "index": 0 }],
+        [{ "node": "🖱️ Datos Navegación", "type": "main", "index": 0 }],
+        [{ "node": "✅ OK Default", "type": "main", "index": 0 }]
+      ]
+    },
+    "📋 Datos Lead":              { "main": [[{ "node": "✅ OK Lead",          "type": "main", "index": 0 }]] },
+    "💬 Datos Chat":              { "main": [[{ "node": "✅ OK Chat",          "type": "main", "index": 0 }]] },
+    "📞 Datos Llamada Inicio":    { "main": [[{ "node": "✅ OK Llamada Inicio","type": "main", "index": 0 }]] },
+    "📞 Datos Llamada Fin":       { "main": [[{ "node": "✅ OK Llamada Fin",   "type": "main", "index": 0 }]] },
+    "📅 Datos Reserva":           { "main": [[{ "node": "✅ OK Reserva",       "type": "main", "index": 0 }]] },
+    "🖱️ Datos Navegación":        { "main": [[{ "node": "✅ OK Nav",           "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "orion-hub-v1",
+  "meta": {
+    "instanceId": "orion-ia"
+  }
+}
