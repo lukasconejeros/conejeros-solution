@@ -1661,24 +1661,48 @@ const AgendaFlow = (() => {
   function setUI(state){
     var btn=document.getElementById('callBtn'),icon=document.getElementById('callIcon'),spinner=document.getElementById('callSpinner'),label=document.getElementById('callBtnLabel'),status=document.getElementById('phoneStatus'),timer=document.getElementById('phoneTimer');
     if(!btn)return;
-    if(state==='idle'){btn.style.background='#22c55e';btn.style.boxShadow='0 4px 24px rgba(34,197,94,0.5)';btn.removeAttribute('data-active');icon.style.display='block';spinner.style.display='none';icon.innerHTML=PHONE_ICON;label.textContent='Llamar';if(status)status.textContent='Listo para llamar';if(timer)timer.textContent='';}
-    else if(state==='loading'){btn.style.background='rgba(34,197,94,0.6)';btn.setAttribute('data-active','');icon.style.display='none';spinner.style.display='block';label.textContent='Conectando...';if(status)status.textContent='Iniciando llamada...';}
-    else if(state==='active'){btn.style.background='#ef4444';btn.style.boxShadow='0 4px 24px rgba(239,68,68,0.5)';btn.setAttribute('data-active','');icon.style.display='block';spinner.style.display='none';icon.innerHTML=HANGUP_ICON;label.textContent='Colgar';if(status)status.textContent='En llamada';}
+    if(state==='idle'){btn.style.background='#22c55e';btn.style.boxShadow='0 4px 24px rgba(34,197,94,0.5)';btn.removeAttribute('data-active');btn.disabled=false;icon.style.display='block';spinner.style.display='none';icon.innerHTML=PHONE_ICON;label.textContent='Llamar';if(status)status.textContent='Listo para llamar';if(timer)timer.textContent='';}
+    else if(state==='mic'){btn.style.background='rgba(99,102,241,0.75)';btn.style.boxShadow='0 4px 24px rgba(99,102,241,0.5)';btn.setAttribute('data-active','');btn.disabled=true;icon.style.display='none';spinner.style.display='block';label.textContent='Activando micrófono...';if(status)status.innerHTML='🎤 <strong>Acepta el permiso</strong> del micrófono';}
+    else if(state==='loading'){btn.style.background='rgba(34,197,94,0.6)';btn.setAttribute('data-active','');btn.disabled=true;icon.style.display='none';spinner.style.display='block';label.textContent='Conectando...';if(status)status.textContent='Iniciando llamada...';}
+    else if(state==='active'){btn.style.background='#ef4444';btn.style.boxShadow='0 4px 24px rgba(239,68,68,0.5)';btn.setAttribute('data-active','');btn.disabled=false;icon.style.display='block';spinner.style.display='none';icon.innerHTML=HANGUP_ICON;label.textContent='Colgar';if(status)status.textContent='En llamada';}
   }
   function startTimer(){seconds=0;var t=document.getElementById('phoneTimer');timerInterval=setInterval(function(){seconds++;if(t)t.textContent=fmt(seconds);},1000);}
   function stopTimer(){clearInterval(timerInterval);var t=document.getElementById('phoneTimer');if(t)t.textContent='';}
   window.VapiCall={
     toggle:function(){
       if(callActive){if(vapiInstance)vapiInstance.stop();callActive=false;stopTimer();setUI('idle');return;}
-      setUI('loading');
-      import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm').then(function(mod){
+
+      // Paso 1: pedir permiso del micrófono explícitamente
+      setUI('mic');
+      var micPromise=(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)
+        ?navigator.mediaDevices.getUserMedia({audio:true})
+        :Promise.resolve(null);
+
+      micPromise.then(function(stream){
+        // Permiso concedido — liberar el stream (Vapi lo pedirá de nuevo internamente)
+        if(stream)stream.getTracks().forEach(function(t){t.stop();});
+        // Paso 2: cargar SDK y conectar
+        setUI('loading');
+        return import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm');
+      }).then(function(mod){
         var Vapi=(mod.default&&mod.default.default)||mod.default||mod.Vapi||mod;
         vapiInstance=new Vapi(VAPI_PK);
         vapiInstance.on('call-start',function(){callActive=true;setUI('active');startTimer();});
         vapiInstance.on('call-end',function(){callActive=false;stopTimer();setUI('idle');});
         vapiInstance.on('error',function(e){console.error('Vapi:',e);callActive=false;stopTimer();setUI('idle');});
         vapiInstance.start(VAPI_AID);
-      }).catch(function(e){console.error('Vapi SDK:',e);setUI('idle');alert('No se pudo cargar el SDK de Vapi. Verifica tu conexión.');});
+      }).catch(function(e){
+        console.error('VapiCall error:',e);
+        callActive=false;stopTimer();setUI('idle');
+        var status=document.getElementById('phoneStatus');
+        if(status){
+          var msg=(e&&(e.name==='NotAllowedError'||e.name==='PermissionDeniedError'))
+            ?'❌ Micrófono bloqueado. Permítelo en tu navegador e intenta de nuevo.'
+            :'❌ No se pudo conectar. Verifica tu conexión.';
+          status.textContent=msg;
+          setTimeout(function(){status.textContent='Listo para llamar';},5000);
+        }
+      });
     }
   };
 })();
