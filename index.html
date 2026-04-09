@@ -126,7 +126,7 @@
     @media (max-width:640px){.btn{padding:10px 18px;font-size:.85rem}.btn-lg{padding:14px 24px;font-size:.95rem}}
 
     /* ── HERO ── */
-    .hero-section{min-height:90vh;display:flex;align-items:center;justify-content:center;position:relative;padding:130px 0 80px;overflow:visible}
+    .hero-section{min-height:90vh;display:flex;align-items:center;justify-content:center;position:relative;padding:130px 0 80px;overflow:visible;z-index:10;}
     .hero-content{position:relative;z-index:1;text-align:center;max-width:1100px;margin:0 auto;padding:0 32px}
     .hero-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 20px;background:rgba(6,182,212,0.08);border:1px solid rgba(6,182,212,0.22);border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--cyan-bright);margin-bottom:32px;animation:fadeInUp .7s ease .2s both;max-width:100%;white-space:normal;text-align:center}
     .hero-title{font-size:clamp(1.8rem,7vw,6.5rem);font-weight:900;line-height:1.05;letter-spacing:-.04em;margin-bottom:28px;animation:fadeInUp .7s ease .35s both}
@@ -521,7 +521,7 @@
 
     /* ══ HERO DEMOS DROPDOWN ══ */
     .hero-demos-dropdown{position:relative;display:inline-block;}
-    .hero-demos-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);background:#ffffff;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,0.18),0 0 0 1px rgba(0,0,0,0.06);min-width:260px;overflow:hidden;z-index:500;opacity:0;visibility:hidden;transition:opacity .22s,visibility .22s,transform .22s;}
+    .hero-demos-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-6px);background:#ffffff;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,0.18),0 0 0 1px rgba(0,0,0,0.06);min-width:260px;overflow:hidden;z-index:2000;opacity:0;visibility:hidden;transition:opacity .22s,visibility .22s,transform .22s;}
     .hero-demos-menu.open{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
     .hero-demos-item{display:flex;align-items:center;gap:12px;padding:13px 18px;color:#0f172a;font-size:.88rem;font-weight:600;cursor:pointer;background:none;border:none;width:100%;text-align:left;transition:background .15s;}
     .hero-demos-item:hover{background:#f8fafc;}
@@ -1220,8 +1220,8 @@
 /* ─── CONFIG ─── */
 const WEBHOOK_CHAT      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/f40ed409-a0b0-4373-b7d7-6abedc56f8dd';
 const WEBHOOK_EVENTS    = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/orion-hub';
-const WEBHOOK_BOOK      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/c4d5e6f7-a8b9-0123-cdef-234567890123';
-const WEBHOOK_AVAIL     = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/e6f7a8b9-c0d1-2345-efab-456789012345';
+const WEBHOOK_BOOK      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/c4d5e6f7-a8b9-0123-cdef-234567890123';
+const WEBHOOK_AVAIL     = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook/e6f7a8b9-c0d1-2345-efab-456789012345';
 const CALL_ASSISTANT_ID = '58e92766-daa7-4fd7-b21a-978ac6d82001';
 const VAPI_PUBLIC_KEY   = 'fdee8a2b-cfbe-4aaf-a2d2-9b1e39fb1222';
 
