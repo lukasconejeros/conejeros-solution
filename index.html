@@ -81,15 +81,21 @@
     .sticky-bar-close:hover{color:#fff;}
     .sticky-bar-lightning{font-size:.75rem;opacity:.4;flex-shrink:0;}
     @media (max-width:640px){
-      .sticky-bar{padding:0 12px;gap:8px;height:48px;}
-      .sticky-bar-text{font-size:.72rem;}
+      .sticky-bar{padding:8px 12px;gap:6px;height:auto;flex-wrap:wrap;justify-content:center;}
+      .sticky-bar-text{font-size:.72rem;text-align:center;flex:1 1 100%;order:1;}
       .sticky-bar-lightning{display:none;}
+      .sticky-bar-pulse{order:0;}
+      .sticky-bar-timer{order:2;}
+      .sticky-bar-btn{order:3;font-size:.72rem;padding:6px 14px;}
+      .sticky-bar-close{order:4;}
     }
     @media (max-width:480px){
       .sticky-bar-text .sb-long{display:none;}
+      .sticky-bar-timer{display:none;}
     }
     body.has-sticky{padding-top:52px;}
-    @media (max-width:640px){body.has-sticky{padding-top:48px;}}
+    @media (max-width:640px){body.has-sticky{padding-top:72px;}}
+    @media (max-width:480px){body.has-sticky{padding-top:58px;}}
 
     /* ── NAV ── */
     nav{position:sticky;top:0;z-index:1000;display:flex;justify-content:center;padding:20px 24px;pointer-events:none;contain:layout style;}
@@ -1302,7 +1308,10 @@ const StickyBar = (() => {
   function tick(){
     const rem = getPromoRemaining();
     if(valEl) valEl.textContent = fmtPromo(rem);
-    if(rem<=0 && iv){clearInterval(iv);iv=null;}
+    if(rem<=0){
+      if(iv){clearInterval(iv);iv=null;}
+      hide();
+    }
   }
   function show(){
     if(hidden) return;
