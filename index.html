@@ -1693,7 +1693,7 @@ const AgendaFlow = (() => {
     const slotObj=SLOTS.find(s=>s.start===selSlot);
     const [y,m,d]=selDate.split('-').map(Number);
     const dateLabel=new Date(y,m-1,d).toLocaleDateString('es-CL',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-    const payload={nombre,email,empresa,whatsapp:tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?.end||'',hora_label:slotObj?.label||selSlot,plan:currentPlan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
+    const payload={type:'agenda_booking',nombre,email,empresa,whatsapp:tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?.end||'',hora_label:slotObj?.label||selSlot,plan:currentPlan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
     try{
       const res=await fetch(WEBHOOK_BOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       const data=await res.json().catch(()=>({}));

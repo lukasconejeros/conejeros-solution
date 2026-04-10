@@ -1,0 +1,172 @@
+{
+  "name": "Orion.ia — Calendario Unificado",
+  "nodes": [
+
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "orion-disponibilidad",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "u0001-get-webhook",
+      "name": "GET Disponibilidad",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 120],
+      "webhookId": "orion-disponibilidad"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Chile tiene DST: UTC-3 en verano, UTC-4 en invierno\n// Rango amplio cubre ambos casos\nconst date = $input.first().json.query?.date || new Date().toISOString().split('T')[0];\nconst [y, m, d] = date.split('-').map(Number);\nconst timeMin = new Date(Date.UTC(y, m-1, d, 3, 0, 0)).toISOString();    // 00:00 UTC-3\nconst timeMax = new Date(Date.UTC(y, m-1, d+1, 4, 0, 0)).toISOString();  // 00:00 UTC-4 siguiente día\nreturn [{ json: { date, timeMin, timeMax } }];"
+      },
+      "id": "u0002-prep-range",
+      "name": "Preparar Rango",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 120]
+    },
+    {
+      "parameters": {
+        "calendarId": { "__rl": true, "value": "primary", "mode": "list", "cachedResultName": "primary" },
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "timeMin": "={{ $json.timeMin }}",
+          "timeMax": "={{ $json.timeMax }}",
+          "singleEvents": true,
+          "orderBy": "startTime"
+        }
+      },
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "REEMPLAZA_CON_ID_CREDENCIAL_GCAL",
+          "name": "Google Calendar account"
+        }
+      },
+      "id": "u0003-gcal-get",
+      "name": "Consultar Google Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.1,
+      "position": [720, 120]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Slots deben coincidir con el frontend\nconst SLOTS = ['09:00', '10:30', '12:00', '15:00', '16:30', '18:00'];\nconst busy = [];\n\n// Fecha consultada — evita bloquear otros días\nconst queriedDate = $('Preparar Rango').first().json.date;\n\nfor (const item of $input.all()) {\n  const ev = item.json;\n  if (!ev || !ev.start) continue;\n  const startDT = ev.start.dateTime || ev.start.date;\n  if (!startDT) continue;\n\n  // Google Calendar devuelve la hora local en el dateTime\n  // Ej: \"2026-04-13T09:00:00-04:00\" — leemos directo sin conversión UTC\n  // Funciona con UTC-3 y UTC-4 (no rompe con cambio de horario)\n  let localDate, hhmm;\n  if (startDT.length >= 19 && (startDT[19] === '+' || startDT[19] === '-' || startDT[19] === 'Z')) {\n    localDate = startDT.substring(0, 10);\n    hhmm      = startDT.substring(11, 16);\n  } else {\n    localDate = startDT.substring(0, 10);\n    hhmm      = startDT.length >= 16 ? startDT.substring(11, 16) : '00:00';\n  }\n\n  if (localDate !== queriedDate) continue;\n  if (SLOTS.includes(hhmm) && !busy.includes(hhmm)) busy.push(hhmm);\n}\nreturn [{ json: { busy } }];"
+      },
+      "id": "u0004-extract-busy",
+      "name": "Extraer Ocupados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [960, 120]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json.busy) }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "u0005-respond-avail",
+      "name": "Responder Disponibilidad",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1200, 120]
+    },
+
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "orion-reserva",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "u0010-post-webhook",
+      "name": "POST Reserva",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 480],
+      "webhookId": "orion-reserva"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $input.first().json.body || $input.first().json;\nconst fecha   = b.fecha;\nconst horaIni = b.hora;\nconst horaFin = b.hora_fin;\nreturn [{\n  json: {\n    nombre:      b.nombre      || '',\n    email:       b.email       || '',\n    empresa:     b.empresa     || 'N/A',\n    whatsapp:    b.whatsapp    || '',\n    plan:        b.plan        || 'General',\n    fecha_label: b.fecha_label || fecha,\n    hora_label:  b.hora_label  || horaIni,\n    timezone:    b.timezone    || 'America/Santiago',\n    startISO: `${fecha}T${horaIni}:00`,\n    endISO:   `${fecha}T${horaFin}:00`,\n    summary:     `Reunión Orion.ia — ${b.nombre}`,\n    description: `Nombre: ${b.nombre}\\nEmail: ${b.email}\\nWhatsApp: ${b.whatsapp}\\nEmpresa: ${b.empresa||'N/A'}\\nPlan: ${b.plan||'General'}\\nFecha: ${b.fecha_label}\\nHorario: ${b.hora_label}`\n  }\n}];"
+      },
+      "id": "u0011-prep-event",
+      "name": "Preparar Evento",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 480]
+    },
+    {
+      "parameters": {
+        "calendarId": { "__rl": true, "value": "primary", "mode": "list", "cachedResultName": "primary" },
+        "start": "={{ $json.startISO }}",
+        "end": "={{ $json.endISO }}",
+        "useDefaultReminders": true,
+        "additionalFields": {
+          "summary": "={{ $json.summary }}",
+          "description": "={{ $json.description }}"
+        }
+      },
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "REEMPLAZA_CON_ID_CREDENCIAL_GCAL",
+          "name": "Google Calendar account"
+        }
+      },
+      "id": "u0012-gcal-create",
+      "name": "Crear Evento Google Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.1,
+      "position": [720, 480]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendText",
+        "instanceName": "Orión",
+        "remoteJid": "={{ $('Preparar Evento').first().json.whatsapp.toString().replace(/[^0-9]/g, '') }}",
+        "messageText": "=Hola {{ $('Preparar Evento').first().json.nombre }}! 👋 Tu videollamada con Lukas de Orion.ia está confirmada para el {{ $('Preparar Evento').first().json.fecha_label }} a las {{ $('Preparar Evento').first().json.hora_label }} hrs. ¡Nos vemos pronto! 🚀"
+      },
+      "credentials": {
+        "evolutionApi": {
+          "id": "REEMPLAZA_CON_ID_CREDENCIAL_EVOLUTION",
+          "name": "Orion"
+        }
+      },
+      "id": "u0014-whatsapp-confirm",
+      "name": "Enviar WhatsApp Confirmacion",
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [960, 480]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, event: 'agenda_booking', message: 'Reserva confirmada', meetLink: $json.hangoutLink || $json.htmlLink || '' }) }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "u0013-respond-book",
+      "name": "Responder Reserva",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1200, 480]
+    }
+
+  ],
+  "connections": {
+    "GET Disponibilidad":       { "main": [[{ "node": "Preparar Rango",                  "type": "main", "index": 0 }]] },
+    "Preparar Rango":           { "main": [[{ "node": "Consultar Google Calendar",        "type": "main", "index": 0 }]] },
+    "Consultar Google Calendar":{ "main": [[{ "node": "Extraer Ocupados",                 "type": "main", "index": 0 }]] },
+    "Extraer Ocupados":         { "main": [[{ "node": "Responder Disponibilidad",          "type": "main", "index": 0 }]] },
+
+    "POST Reserva":                  { "main": [[{ "node": "Preparar Evento",                  "type": "main", "index": 0 }]] },
+    "Preparar Evento":               { "main": [[{ "node": "Crear Evento Google Calendar",      "type": "main", "index": 0 }]] },
+    "Crear Evento Google Calendar":  { "main": [[{ "node": "Enviar WhatsApp Confirmacion",      "type": "main", "index": 0 }]] },
+    "Enviar WhatsApp Confirmacion":  { "main": [[{ "node": "Responder Reserva",                 "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "versionId": "orion-calendario-v1",
+  "meta": { "instanceId": "orion-ia" }
+}

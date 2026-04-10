@@ -1,0 +1,90 @@
+{
+  "name": "Orion.ia — Disponibilidad Calendario",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "e6f7a8b9-c0d1-2345-efab-456789012345",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d1e2f3a4-0001-0001-0001-200000000001",
+      "name": "📥 Recibir Consulta",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "e6f7a8b9-c0d1-2345-efab-456789012345"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Chile tiene DST: UTC-3 en verano, UTC-4 en invierno (abril-septiembre)\n// Para cubrir AMBOS casos sin hardcodear, usamos un rango amplio en UTC\n// Medianoche Santiago más temprana = UTC+4h, más tardía = UTC+3h\n// Cubrimos T03:00Z a T04:00Z siguiente día = siempre captura el día completo\nconst date = $input.first().json.query?.date || new Date().toISOString().split('T')[0];\nconst [y, m, d] = date.split('-').map(Number);\nconst timeMin = new Date(Date.UTC(y, m-1, d, 3, 0, 0)).toISOString();     // 00:00 Santiago UTC-3\nconst timeMax = new Date(Date.UTC(y, m-1, d+1, 4, 0, 0)).toISOString();   // 00:00 Santiago UTC-4 siguiente día\nreturn [{ json: { date, timeMin, timeMax } }];"
+      },
+      "id": "d1e2f3a4-0002-0002-0002-200000000002",
+      "name": "🔧 Armar Rango del Día",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "calendarId": {
+          "__rl": true,
+          "value": "primary",
+          "mode": "list",
+          "cachedResultName": "primary"
+        },
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "timeMin": "={{ $json.timeMin }}",
+          "timeMax": "={{ $json.timeMax }}",
+          "singleEvents": true,
+          "orderBy": "startTime"
+        }
+      },
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "YOUR_GOOGLE_CREDENTIAL_ID",
+          "name": "Google Calendar account"
+        }
+      },
+      "id": "d1e2f3a4-0003-0003-0003-200000000003",
+      "name": "📅 Obtener Eventos",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.1,
+      "position": [720, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Slots definidos en la página (deben coincidir con el frontend)\nconst SLOT_STARTS = ['09:00', '10:30', '12:00', '15:00', '16:30', '18:00'];\nconst busy = [];\n\n// Fecha que se consultó — para no bloquear otros días accidentalmente\nconst queriedDate = $('🔧 Armar Rango del Día').first().json.date;\n\nconst items = $input.all();\nfor (const item of items) {\n  const ev = item.json;\n  if (!ev || !ev.start) continue;\n\n  const startDT = ev.start.dateTime || ev.start.date;\n  if (!startDT) continue;\n\n  // Google Calendar devuelve el dateTime con la hora local incluida\n  // Ej: \"2026-04-13T09:00:00-04:00\" — tomamos la hora directamente sin conversión UTC\n  // Esto funciona independiente de si Chile está en UTC-3 o UTC-4\n  let localDate, hhmm;\n  if (startDT.length >= 19 && (startDT[19] === '+' || startDT[19] === '-' || startDT[19] === 'Z')) {\n    // Tiene offset — extraer fecha y hora de la parte local directamente\n    localDate = startDT.substring(0, 10);  // \"2026-04-13\"\n    hhmm      = startDT.substring(11, 16); // \"09:00\"\n  } else {\n    // Sin offset (all-day o date-only)\n    localDate = startDT.substring(0, 10);\n    hhmm      = startDT.length >= 16 ? startDT.substring(11, 16) : '00:00';\n  }\n\n  if (localDate !== queriedDate) continue;\n  if (SLOT_STARTS.includes(hhmm) && !busy.includes(hhmm)) {\n    busy.push(hhmm);\n  }\n}\n\nreturn [{ json: { busy } }];"
+      },
+      "id": "d1e2f3a4-0004-0004-0004-200000000004",
+      "name": "🔍 Extraer Horas Ocupadas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [960, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json.busy) }}",
+        "options": { "responseCode": 200 }
+      },
+      "id": "d1e2f3a4-0005-0005-0005-200000000005",
+      "name": "✅ Responder Disponibilidad",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1200, 300]
+    }
+  ],
+  "connections": {
+    "📥 Recibir Consulta":       { "main": [[{ "node": "🔧 Armar Rango del Día",      "type": "main", "index": 0 }]] },
+    "🔧 Armar Rango del Día":    { "main": [[{ "node": "📅 Obtener Eventos",           "type": "main", "index": 0 }]] },
+    "📅 Obtener Eventos":        { "main": [[{ "node": "🔍 Extraer Horas Ocupadas",    "type": "main", "index": 0 }]] },
+    "🔍 Extraer Horas Ocupadas": { "main": [[{ "node": "✅ Responder Disponibilidad",  "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "versionId": "orion-disponibilidad-v1",
+  "meta": { "instanceId": "orion-ia" }
+}
