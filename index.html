@@ -283,6 +283,9 @@
     .qr-chip:hover{background:#075E54;color:#fff;transform:translateY(-2px);box-shadow:0 5px 14px rgba(7,94,84,0.4)}
     .qr-chip:active{transform:scale(.94)}
     .bubble-tick{font-size:.6rem;color:#34b7f1;font-weight:900;letter-spacing:-2px;margin-left:8px;display:inline-block;vertical-align:bottom}
+    .chat-quick.disabled{opacity:.45;pointer-events:none}
+    .chat-bar input:disabled{background:#e6e6e6}
+    .chat-send:disabled{opacity:.5;cursor:default;animation:none;box-shadow:none}
 
     /* ── PRICING ── */
     .pricing-section{padding:120px 0;position:relative;contain:layout style}
@@ -1125,11 +1128,12 @@
 'use strict';
 
 /* ─── CONFIG ─── */
+const N8N_BASE          = 'https://n8n-n8n.bvil2a.easypanel.host';
 const WEBHOOK_CHAT      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/f40ed409-a0b0-4373-b7d7-6abedc56f8dd';
-const WEBHOOK_EVENTS    = 'https://n8n-n8n.bvil2a.easypanel.host/webhook/e6f7a8b9-c0d1-2345-efab-456789012345';
-const WEBHOOK_BOOK      = 'https://n8n-n8n.bvil2a.easypanel.host/webhook/e6f7a8b9-c0d1-2345-efab-456789012345';
-const WEBHOOK_AVAIL     = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/e6f7a8b9-c0d1-2345-efab-456789012345';
-const WEBHOOK_DEMO      = 'https://n8n-n8n.bvil2a.easypanel.host/webhook/orion-demo-chat';
+const WEBHOOK_EVENTS    = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/c4d5e6f7-a8b9-0123-cdef-234567890123';
+const WEBHOOK_BOOK      = N8N_BASE + '/webhook/c4d5e6f7-a8b9-0123-cdef-234567890123';
+const WEBHOOK_AVAIL     = N8N_BASE + '/webhook/e6f7a8b9-c0d1-2345-efab-456789012345';
+const WEBHOOK_DEMO      = N8N_BASE + '/webhook/orion-demo-chat';
 
 /* ─── FAKE EMAIL DOMAINS ─── */
 const FAKE_DOMAINS = new Set([
@@ -1801,7 +1805,6 @@ const AgendaInline = (() => {
 
 /* ─── CHATBOT DEMO ─── */
 (function initChat(){
-  const DEBOUNCE_MS = 20000;   // espera para juntar mensajes seguidos del visitante antes de responder
   const GREETING = '¡Hola! 👋 Soy su asistente de la clínica. Pregúnteme por horarios, servicios o agende una hora — o pruebe un ejemplo aquí abajo 👇';
   const SCENARIOS = {
     enojo:     'Llevo rato esperando respuesta y nadie me contesta, pésimo servicio 😡',
@@ -1816,7 +1819,7 @@ const AgendaInline = (() => {
   const quick=document.getElementById('chatQuick');
 
   const conversation=[{role:'assistant',content:GREETING}];
-  let pending=[], timer=null, busy=false;
+  let busy=false;
 
   function addBubble(text,who){
     const d=document.createElement('div');
@@ -1832,17 +1835,21 @@ const AgendaInline = (() => {
     if(all.length>40)all[0].remove();
     body.scrollTop=body.scrollHeight;
   }
-  function showTyping(on){
+  function setBusy(on){
+    busy=on;
+    input.disabled=on;
+    sendBtn.disabled=on;
+    quick.classList.toggle('disabled',on);
     typing.classList.toggle('show',on);
     if(on)body.scrollTop=body.scrollHeight;
   }
-  async function flush(){
-    timer=null;
-    if(!pending.length||busy)return;
-    busy=true;
-    conversation.push({role:'user',content:pending.join('\n')});
-    pending=[];
-    showTyping(true);
+  async function send(text){
+    text=(text||'').trim();
+    if(!text||busy)return;
+    addBubble(text,'user');
+    conversation.push({role:'user',content:text});
+    try{trackEvent('chat_message',{message:text});}catch(e){}
+    setBusy(true);
     let reply='';
     try{
       const res=await fetch(WEBHOOK_DEMO,{
@@ -1854,37 +1861,25 @@ const AgendaInline = (() => {
       const data=await res.json();
       reply=data&&data.reply?String(data.reply).trim():'';
     }catch(e){reply='';}
-    showTyping(false);
+    setBusy(false);
     if(!reply)reply='Disculpe, no pude conectar en este momento 😅 ¿Lo intenta de nuevo?';
     conversation.push({role:'assistant',content:reply});
     addBubble(reply,'bot');
-    busy=false;
-    if(pending.length)arm();
-  }
-  function arm(){
-    if(timer)clearTimeout(timer);
-    showTyping(true);
-    timer=setTimeout(flush,DEBOUNCE_MS);
-  }
-  function queue(text){
-    text=(text||'').trim();
-    if(!text)return;
-    addBubble(text,'user');
-    pending.push(text);
-    try{trackEvent('chat_message',{message:text});}catch(e){}
-    arm();
+    input.focus();
   }
   function sendTyped(){
+    if(busy)return;
     const text=input.value.trim();
     if(!text)return;
     input.value='';
-    LeadGate.require(()=>queue(text));
+    LeadGate.require(()=>send(text));
   }
   quick.addEventListener('click',e=>{
+    if(busy)return;
     const btn=e.target.closest('.qr-chip');
     if(!btn)return;
     const text=SCENARIOS[btn.dataset.scenario];
-    if(text)LeadGate.require(()=>queue(text));
+    if(text)LeadGate.require(()=>send(text));
   });
   input.addEventListener('keydown',e=>{if(e.key==='Enter')sendTyped();});
   sendBtn.addEventListener('click',sendTyped);
