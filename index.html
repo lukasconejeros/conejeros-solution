@@ -61,8 +61,8 @@
     .sticky-bar-timer{display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:5px 12px;}
     .sticky-bar-timer-val{font-size:.95rem;font-weight:900;color:#fff;letter-spacing:.08em;font-variant-numeric:tabular-nums;}
     .sticky-bar-timer-label{font-size:.6rem;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:.1em;}
-    .sticky-bar-btn{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:.78rem;font-weight:700;padding:7px 18px;border-radius:999px;border:none;cursor:pointer;white-space:nowrap;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(245,158,11,0.4);}
-    .sticky-bar-btn:hover{transform:scale(1.05);box-shadow:0 4px 16px rgba(245,158,11,0.6);}
+    .sticky-bar-btn{background:linear-gradient(135deg,#FFE9A0,#FFD580 45%,#FFAA2A);color:#1a0800;font-size:.78rem;font-weight:800;padding:7px 18px;border-radius:999px;border:none;cursor:pointer;white-space:nowrap;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 10px rgba(255,185,50,0.5);}
+    .sticky-bar-btn:hover{transform:scale(1.05);box-shadow:0 4px 16px rgba(255,185,50,0.7);}
     .sticky-bar-close{background:none;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:1rem;padding:4px 8px;margin-left:4px;transition:color .2s;flex-shrink:0;}
     .sticky-bar-close:hover{color:#fff;}
     .sticky-bar-lightning{font-size:.75rem;opacity:.4;flex-shrink:0;}
@@ -277,11 +277,16 @@
     .chat-send:hover{transform:scale(1.1);box-shadow:0 0 20px rgba(37,211,102,0.65)}
     .chat-send{background:linear-gradient(135deg,#25D366,#128C7E);animation:sendGlow 2.8s ease-in-out infinite}
     @keyframes sendGlow{0%,100%{box-shadow:0 3px 10px rgba(37,211,102,0.45)}50%{box-shadow:0 3px 20px rgba(37,211,102,0.9)}}
-    .chat-quick{display:flex;gap:7px;padding:10px 12px 4px;background:#f0f0f0;overflow-x:auto;scrollbar-width:none;flex-shrink:0}
-    .chat-quick::-webkit-scrollbar{display:none}
-    .qr-chip{flex-shrink:0;border:1.5px solid rgba(7,94,84,0.28);background:#fff;color:#075E54;font-family:var(--font);font-size:.8rem;font-weight:700;padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:transform .18s var(--spring),background .2s,color .2s,box-shadow .2s;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-    .qr-chip:hover{background:#075E54;color:#fff;transform:translateY(-2px);box-shadow:0 5px 14px rgba(7,94,84,0.4)}
-    .qr-chip:active{transform:scale(.94)}
+    .chat-quick{display:flex;flex-direction:column;gap:6px;padding:10px 12px;background:#f0f0f0;flex-shrink:0;max-height:212px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(0,0,0,0.15) transparent}
+    .chat-quick::-webkit-scrollbar{width:5px}
+    .chat-quick::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:3px}
+    .chat-quick-label{font-size:.71rem;font-weight:800;color:#075E54;opacity:.72;letter-spacing:.01em;padding:0 2px 1px}
+    .qr-chip{display:flex;align-items:center;gap:9px;width:100%;text-align:left;border:1.5px solid rgba(7,94,84,0.28);background:#fff;color:#075E54;font-family:var(--font);font-size:.79rem;font-weight:600;padding:9px 12px;border-radius:11px;cursor:pointer;white-space:normal;line-height:1.4;transition:transform .18s var(--spring),background .2s,color .2s,box-shadow .2s;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+    .qr-chip span{flex:1}
+    .qr-chip i{flex-shrink:0;font-size:.8rem;opacity:.6}
+    .qr-chip:hover{background:#075E54;color:#fff;transform:translateY(-1px);box-shadow:0 5px 14px rgba(7,94,84,0.4)}
+    .qr-chip:hover i{opacity:1}
+    .qr-chip:active{transform:scale(.97)}
     .bubble-tick{font-size:.6rem;color:#34b7f1;font-weight:900;letter-spacing:-2px;margin-left:8px;display:inline-block;vertical-align:bottom}
     .chat-quick.disabled{opacity:.45;pointer-events:none}
     .chat-bar input:disabled{background:#e6e6e6}
@@ -693,7 +698,7 @@
       <a href="#contacto">Contacto</a>
     </div>
     <div class="nav-actions">
-      <button class="btn btn-primary" onclick="AgendaFlow.open('General')">📅 Agendar Reunión</button>
+      <button class="btn btn-solar" onclick="AgendaFlow.open('General')">📅 Agendar Reunión</button>
     </div>
   </div>
 </nav>
@@ -717,7 +722,7 @@
       <button onclick="LeadGate.require(function(){document.getElementById('demos').scrollIntoView({behavior:'smooth'});})" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:14px 28px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;font-size:15px;font-weight:600;border-radius:12px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,0.4);transition:all 0.2s;">
         💬 Ver Demo en Vivo
       </button>
-      <a href="#pricing" onclick="event.preventDefault();AgendaFlow.open('General');" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;padding:14px 28px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:15px;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(245,158,11,0.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(245,158,11,0.55)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(245,158,11,0.4)'"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Reserva una Reunión</a>
+      <a href="#pricing" onclick="event.preventDefault();AgendaFlow.open('General');" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;padding:14px 28px;background:linear-gradient(135deg,#FFE9A0,#FFD580 45%,#FFAA2A);color:#1a0800;font-size:15px;font-weight:800;border-radius:12px;text-decoration:none;box-shadow:0 4px 20px rgba(255,185,50,0.45);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(255,185,50,0.65)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(255,185,50,0.45)'"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Reserva una Reunión</a>
     </div>
   </div>
 </section>
@@ -810,9 +815,10 @@
               <div class="typing-indicator" id="typingIndicator"><span></span><span></span><span></span></div>
             </div>
             <div class="chat-quick" id="chatQuick">
-              <button class="qr-chip" type="button" data-scenario="enojo">😡 Cliente enojado</button>
-              <button class="qr-chip" type="button" data-scenario="reagendar">📅 Reagendar hora</button>
-              <button class="qr-chip" type="button" data-scenario="clinico">🦷 Problema clínico</button>
+              <div class="chat-quick-label">👇 Toca un mensaje para enviarlo de prueba</div>
+              <button class="qr-chip" type="button" data-scenario="enojo"><span>😡 "Llevo rato esperando y nadie me contesta, pésimo servicio"</span><i class="fas fa-paper-plane"></i></button>
+              <button class="qr-chip" type="button" data-scenario="reagendar"><span>📅 "Necesito cambiar la hora de mi cita para otro día"</span><i class="fas fa-paper-plane"></i></button>
+              <button class="qr-chip" type="button" data-scenario="clinico"><span>🦷 "Se me partió una muela y me duele, ¿qué hago?"</span><i class="fas fa-paper-plane"></i></button>
             </div>
             <div class="chat-bar">
               <input type="text" id="chatInput" placeholder="Escriba su mensaje..." autocomplete="off">
@@ -911,7 +917,7 @@
           <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$387 <span class="inv-unit">USD</span></div></div>
           <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$179 <span class="inv-unit">/mes</span></div></div>
         </div>
-        <div class="cta-block"><button class="btn btn-primary btn-full" onclick="AgendaFlow.open('Business')">📅 Agendar Reunión <i class="fas fa-arrow-right"></i></button></div>
+        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Business')">📅 Agendar Reunión <i class="fas fa-arrow-right"></i></button></div>
         <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
         <div class="feature-block">
           <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
@@ -945,7 +951,7 @@
           <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$594 <span class="inv-unit">USD</span></div></div>
           <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$417 <span class="inv-unit">/mes</span></div></div>
         </div>
-        <div class="cta-block"><button class="btn btn-ghost btn-full" onclick="AgendaFlow.open('Pro AI')">📅 Agendar Reunión</button></div>
+        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Pro AI')">📅 Agendar Reunión</button></div>
         <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
         <div class="feature-block">
           <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
