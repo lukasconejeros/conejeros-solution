@@ -303,6 +303,7 @@
     @media (max-width:768px){.pricing-section{padding:80px 0}}
     .plans-subtitle{text-align:center;font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-bottom:28px;position:relative;z-index:1}
     .plans-subtitle::before,.plans-subtitle::after{content:'';display:inline-block;width:60px;height:1px;background:rgba(255,255,255,0.11);vertical-align:middle;margin:0 16px}
+    @media (max-width:640px){.plans-subtitle{display:flex;align-items:center;justify-content:center;}.plans-subtitle::before,.plans-subtitle::after{width:22px;margin:0 9px;flex-shrink:0}}
     .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1200px;margin:0 auto;align-items:start;position:relative;z-index:1}
     @media (max-width:1024px){.pricing-grid{grid-template-columns:repeat(2,1fr);max-width:800px}}
     @media (max-width:640px){.pricing-grid{grid-template-columns:1fr;max-width:500px}}
@@ -316,6 +317,16 @@
     .plan-card.audit{border-color:rgba(255,213,128,0.4);background:linear-gradient(145deg,rgba(255,213,128,0.06) 0%,rgba(255,170,42,0.03) 50%,rgba(10,15,30,0.85) 100%);}
     .plan-card.audit::before{background:linear-gradient(90deg,transparent,var(--solar),var(--solar-deep),transparent);opacity:1;height:3px}
     .plan-card.audit:hover{border-color:rgba(255,213,128,0.65);box-shadow:0 10px 15px -3px rgba(0,0,0,0.05),0 4px 6px -2px rgba(0,0,0,0.025)}
+    /* ── Boton "Mas info" — solo mobile, colapsa la info del plan ── */
+    .plan-more-btn{display:none}
+    @keyframes moreBtnPulse{0%,100%{box-shadow:0 4px 16px rgba(6,182,212,0.45)}50%{box-shadow:0 6px 26px rgba(6,182,212,0.85),0 0 18px rgba(34,211,238,0.55)}}
+    @media (max-width:640px){
+      .plan-more-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:calc(100% - 40px);margin:2px 20px 22px;padding:13px 20px;background:linear-gradient(135deg,#06b6d4,#22d3ee);color:#06202a;font-family:var(--font);font-size:.9rem;font-weight:800;letter-spacing:.01em;border:none;border-radius:12px;cursor:pointer;box-shadow:0 4px 16px rgba(6,182,212,0.45);animation:moreBtnPulse 2.4s ease-in-out infinite;transition:transform .18s var(--ease)}
+      .plan-more-btn:active{transform:scale(.96)}
+      .plan-more-btn i{transition:transform .3s var(--ease)}
+      .plan-card.expanded .plan-more-btn i{transform:rotate(180deg)}
+      .plan-card:not(.expanded) .cta-block ~ *:not(.plan-more-btn){display:none}
+    }
     .plan-header{padding:32px 28px 24px;border-bottom:1px solid rgba(255,255,255,0.06);position:relative}
     .plan-badge{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:8px;margin-bottom:14px}
     .badge-audit{background:rgba(255,213,128,0.13);color:var(--solar-bright);border:1px solid rgba(255,213,128,0.35)}
@@ -841,6 +852,7 @@
           <div class="audit-discount-note"><i class="fas fa-tag"></i> <strong>100% descontable</strong> del valor del sistema final</div>
         </div>
         <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Auditoría 360')">📅 Agendar Reunión</button></div>
+        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
         <div class="audit-metrics-row" id="auditMetricsRow">
           <div class="audit-metric">
             <div class="audit-metric-num" data-target="4">0</div>
@@ -900,6 +912,7 @@
           <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$179 <span class="inv-unit">/mes</span></div></div>
         </div>
         <div class="cta-block"><button class="btn btn-primary btn-full" onclick="AgendaFlow.open('Business')">📅 Agendar Reunión <i class="fas fa-arrow-right"></i></button></div>
+        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
         <div class="feature-block">
           <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
           <div class="channels-row">
@@ -933,6 +946,7 @@
           <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$417 <span class="inv-unit">/mes</span></div></div>
         </div>
         <div class="cta-block"><button class="btn btn-ghost btn-full" onclick="AgendaFlow.open('Pro AI')">📅 Agendar Reunión</button></div>
+        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
         <div class="feature-block">
           <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
           <div class="channels-row">
@@ -1294,6 +1308,15 @@ const LeadGate = (() => {
   }
   return {require,submit,close,isUnlocked};
 })();
+
+/* ─── TOGGLE INFO PLAN (mobile) ─── */
+function togglePlanInfo(btn){
+  const card = btn.closest('.plan-card');
+  if(!card) return;
+  const expanded = card.classList.toggle('expanded');
+  const span = btn.querySelector('span');
+  if(span) span.textContent = expanded ? 'Ver menos' : 'Ver toda la info';
+}
 
 /* ─── EVENT TRACKER ─── */
 function trackEvent(type, data){
