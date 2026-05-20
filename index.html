@@ -286,6 +286,16 @@
     .chat-quick.disabled{opacity:.45;pointer-events:none}
     .chat-bar input:disabled{background:#e6e6e6}
     .chat-send:disabled{opacity:.5;cursor:default;animation:none;box-shadow:none}
+    /* ── CHAT FRAME — mobile ── */
+    @media (max-width:640px){
+      .chat-frame{height:min(560px,72vh);max-width:100%}
+      .chat-bar input{font-size:16px}  /* 16px evita el auto-zoom de iOS Safari al hacer focus */
+      .chat-bar{padding:9px 10px;gap:8px}
+      .chat-body{padding:13px}
+      .bubble{max-width:86%;font-size:.9rem}
+      .demo-live-panel{padding:28px 14px}
+      .qr-chip{font-size:.76rem;padding:6px 11px}
+    }
 
     /* ── PRICING ── */
     .pricing-section{padding:120px 0;position:relative;contain:layout style}
