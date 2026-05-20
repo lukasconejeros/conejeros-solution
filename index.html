@@ -285,7 +285,8 @@
     .chat-send:hover{transform:scale(1.1);box-shadow:0 0 20px rgba(37,211,102,0.65)}
     .chat-send{background:linear-gradient(135deg,#25D366,#128C7E);animation:sendGlow 2.8s ease-in-out infinite}
     @keyframes sendGlow{0%,100%{box-shadow:0 3px 10px rgba(37,211,102,0.45)}50%{box-shadow:0 3px 20px rgba(37,211,102,0.9)}}
-    .chat-quick{display:flex;flex-direction:column;gap:6px;padding:10px 12px;background:#f0f0f0;flex-shrink:0;max-height:212px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(0,0,0,0.15) transparent}
+    .chat-quick{display:flex;flex-direction:column;gap:6px;padding:10px 12px;background:#f0f0f0;flex-shrink:0;max-height:212px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(0,0,0,0.15) transparent;transition:opacity .26s ease,max-height .34s ease,padding .34s ease}
+    .chat-quick.hidden{opacity:0;max-height:0;padding-top:0;padding-bottom:0;overflow:hidden;pointer-events:none}
     .chat-quick::-webkit-scrollbar{width:5px}
     .chat-quick::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:3px}
     .chat-quick-label{font-size:.71rem;font-weight:800;color:#075E54;opacity:.72;letter-spacing:.01em;padding:0 2px 1px}
@@ -1903,6 +1904,7 @@ const AgendaInline = (() => {
   async function send(text){
     text=(text||'').trim();
     if(!text||busy)return;
+    quick.classList.add('hidden');  // al primer mensaje, ocultar sugerencias — chat full dinamico
     addBubble(text,'user');
     conversation.push({role:'user',content:text});
     try{trackEvent('chat_message',{message:text});}catch(e){}
