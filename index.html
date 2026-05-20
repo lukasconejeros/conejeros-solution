@@ -250,7 +250,7 @@
     @keyframes screenGlow{from{opacity:.65;transform:scale(.95);}to{opacity:1;transform:scale(1.05);}}
 
     /* ── CHAT FRAME ── */
-    .chat-frame{width:100%;max-width:490px;height:510px;background:#ECE5DD;border:1px solid rgba(7,94,84,0.3);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;position:relative;z-index:1;box-shadow:0px 10px 30px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.05);transition:box-shadow .45s var(--ease),border-color .45s var(--ease);}
+    .chat-frame{width:100%;max-width:490px;height:560px;background:#ECE5DD;border:1px solid rgba(7,94,84,0.3);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;position:relative;z-index:1;box-shadow:0px 10px 30px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.05);transition:box-shadow .45s var(--ease),border-color .45s var(--ease);}
     .demo-article:hover .chat-frame{border-color:rgba(37,211,102,0.4);box-shadow:0 8px 70px rgba(0,0,0,0.7),0 0 40px rgba(37,211,102,0.2),inset 0 1px 0 rgba(255,255,255,0.07);}
     .chat-top{display:flex;align-items:center;gap:13px;padding:14px 20px;background:#075E54;border-bottom:1px solid rgba(0,0,0,0.15);flex-shrink:0}
     .chat-top-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.3);flex-shrink:0}
@@ -275,6 +275,14 @@
     .chat-bar input:focus{box-shadow:0 0 0 2px rgba(37,211,102,0.3)}
     .chat-send{width:44px;height:44px;border-radius:50%;border:none;background:#25D366;color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s var(--spring),box-shadow .25s;box-shadow:0 3px 10px rgba(37,211,102,0.45)}
     .chat-send:hover{transform:scale(1.1);box-shadow:0 0 20px rgba(37,211,102,0.65)}
+    .chat-send{background:linear-gradient(135deg,#25D366,#128C7E);animation:sendGlow 2.8s ease-in-out infinite}
+    @keyframes sendGlow{0%,100%{box-shadow:0 3px 10px rgba(37,211,102,0.45)}50%{box-shadow:0 3px 20px rgba(37,211,102,0.9)}}
+    .chat-quick{display:flex;gap:7px;padding:10px 12px 4px;background:#f0f0f0;overflow-x:auto;scrollbar-width:none;flex-shrink:0}
+    .chat-quick::-webkit-scrollbar{display:none}
+    .qr-chip{flex-shrink:0;border:1.5px solid rgba(7,94,84,0.28);background:#fff;color:#075E54;font-family:var(--font);font-size:.8rem;font-weight:700;padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:transform .18s var(--spring),background .2s,color .2s,box-shadow .2s;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+    .qr-chip:hover{background:#075E54;color:#fff;transform:translateY(-2px);box-shadow:0 5px 14px rgba(7,94,84,0.4)}
+    .qr-chip:active{transform:scale(.94)}
+    .bubble-tick{font-size:.6rem;color:#34b7f1;font-weight:900;letter-spacing:-2px;margin-left:8px;display:inline-block;vertical-align:bottom}
 
     /* ── PRICING ── */
     .pricing-section{padding:120px 0;position:relative;contain:layout style}
@@ -774,11 +782,16 @@
               </div>
             </div>
             <div class="chat-body" id="chatBody">
-              <div class="bubble bot">¡Hola! 👋 Soy el asistente virtual de tu clínica. ¿En qué puedo ayudarte hoy? Puedes preguntarme sobre horarios, servicios o agendar una cita.</div>
+              <div class="bubble bot">¡Hola! 👋 Soy su asistente de la clínica. Pregúnteme por horarios, servicios o agende una hora — o pruebe un ejemplo aquí abajo 👇</div>
               <div class="typing-indicator" id="typingIndicator"><span></span><span></span><span></span></div>
             </div>
+            <div class="chat-quick" id="chatQuick">
+              <button class="qr-chip" type="button" data-scenario="enojo">😡 Cliente enojado</button>
+              <button class="qr-chip" type="button" data-scenario="reagendar">📅 Reagendar hora</button>
+              <button class="qr-chip" type="button" data-scenario="clinico">🦷 Problema clínico</button>
+            </div>
             <div class="chat-bar">
-              <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." autocomplete="off">
+              <input type="text" id="chatInput" placeholder="Escriba su mensaje..." autocomplete="off">
               <button class="chat-send" id="chatSendBtn" aria-label="Enviar"><i class="fas fa-arrow-up"></i></button>
             </div>
           </div>
@@ -1116,6 +1129,7 @@ const WEBHOOK_CHAT      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webh
 const WEBHOOK_EVENTS    = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/c4d5e6f7-a8b9-0123-cdef-234567890123';
 const WEBHOOK_BOOK      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/c4d5e6f7-a8b9-0123-cdef-234567890123';
 const WEBHOOK_AVAIL     = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/e6f7a8b9-c0d1-2345-efab-456789012345';
+const WEBHOOK_DEMO      = 'https://n8n-n8n.bvil2a.easypanel.host/webhook/orion-demo-chat';
 
 /* ─── FAKE EMAIL DOMAINS ─── */
 const FAKE_DOMAINS = new Set([
@@ -1785,37 +1799,95 @@ const AgendaInline = (() => {
   io.observe(row);
 })();
 
-/* ─── CHATBOT ─── */
+/* ─── CHATBOT DEMO ─── */
 (function initChat(){
+  const DEBOUNCE_MS = 20000;   // espera para juntar mensajes seguidos del visitante antes de responder
+  const GREETING = '¡Hola! 👋 Soy su asistente de la clínica. Pregúnteme por horarios, servicios o agende una hora — o pruebe un ejemplo aquí abajo 👇';
+  const SCENARIOS = {
+    enojo:     'Llevo rato esperando respuesta y nadie me contesta, pésimo servicio 😡',
+    reagendar: 'Necesito cambiar la hora de mi cita para otro día',
+    clinico:   'Se me partió una muela y me duele bastante, ¿qué hago?'
+  };
+
   const body=document.getElementById('chatBody');
   const input=document.getElementById('chatInput');
   const sendBtn=document.getElementById('chatSendBtn');
   const typing=document.getElementById('typingIndicator');
-  let busy=false;
+  const quick=document.getElementById('chatQuick');
+
+  const conversation=[{role:'assistant',content:GREETING}];
+  let pending=[], timer=null, busy=false;
+
   function addBubble(text,who){
-    const d=document.createElement('div');d.className='bubble '+who;d.textContent=text;
+    const d=document.createElement('div');
+    d.className='bubble '+who;
+    d.textContent=text;
+    if(who==='user'){
+      const t=document.createElement('span');
+      t.className='bubble-tick';t.textContent='✓✓';
+      d.appendChild(t);
+    }
     body.insertBefore(d,typing);
-    const bubbles=body.querySelectorAll('.bubble');
-    if(bubbles.length>35)bubbles[0].remove();
+    const all=body.querySelectorAll('.bubble');
+    if(all.length>40)all[0].remove();
     body.scrollTop=body.scrollHeight;
   }
-  async function doSend(text){
-    busy=true;input.value='';
-    addBubble(text,'user');typing.classList.add('show');body.scrollTop=body.scrollHeight;
-    try{
-      const res=await fetch(WEBHOOK_CHAT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,sessionId:getSessionId(),source:'web-demo'}),signal:AbortSignal.timeout(12000)});
-      typing.classList.remove('show');
-      if(res.ok){
-        const data=await res.json();
-        const msgs=Array.isArray(data.messages)?data.messages:[data.output||data.text||data.message||'Hola, soy Orion. ¿En qué te puedo ayudar?'];
-        msgs.forEach((m,i)=>{if(i===0)addBubble(m,'bot');else setTimeout(()=>addBubble(m,'bot'),i*650);});
-      }else{addBubble('Hubo un error. Intenta de nuevo.','bot');}
-    }catch{typing.classList.remove('show');addBubble('No pude conectar. Intenta de nuevo.','bot');}
-    busy=false;
+  function showTyping(on){
+    typing.classList.toggle('show',on);
+    if(on)body.scrollTop=body.scrollHeight;
   }
-  function send(){const text=input.value.trim();if(!text||busy)return;LeadGate.require(()=>{trackEvent('chat_message',{message:text});doSend(text);});}
-  input.addEventListener('keydown',e=>{if(e.key==='Enter')send();});
-  sendBtn.addEventListener('click',send);
+  async function flush(){
+    timer=null;
+    if(!pending.length||busy)return;
+    busy=true;
+    conversation.push({role:'user',content:pending.join('\n')});
+    pending=[];
+    showTyping(true);
+    let reply='';
+    try{
+      const res=await fetch(WEBHOOK_DEMO,{
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=UTF-8'},
+        body:JSON.stringify({messages:conversation,sessionId:getSessionId()}),
+        signal:AbortSignal.timeout(35000)
+      });
+      const data=await res.json();
+      reply=data&&data.reply?String(data.reply).trim():'';
+    }catch(e){reply='';}
+    showTyping(false);
+    if(!reply)reply='Disculpe, no pude conectar en este momento 😅 ¿Lo intenta de nuevo?';
+    conversation.push({role:'assistant',content:reply});
+    addBubble(reply,'bot');
+    busy=false;
+    if(pending.length)arm();
+  }
+  function arm(){
+    if(timer)clearTimeout(timer);
+    showTyping(true);
+    timer=setTimeout(flush,DEBOUNCE_MS);
+  }
+  function queue(text){
+    text=(text||'').trim();
+    if(!text)return;
+    addBubble(text,'user');
+    pending.push(text);
+    try{trackEvent('chat_message',{message:text});}catch(e){}
+    arm();
+  }
+  function sendTyped(){
+    const text=input.value.trim();
+    if(!text)return;
+    input.value='';
+    LeadGate.require(()=>queue(text));
+  }
+  quick.addEventListener('click',e=>{
+    const btn=e.target.closest('.qr-chip');
+    if(!btn)return;
+    const text=SCENARIOS[btn.dataset.scenario];
+    if(text)LeadGate.require(()=>queue(text));
+  });
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')sendTyped();});
+  sendBtn.addEventListener('click',sendTyped);
 })();
 
 /* ─── META PIXEL (deferred) ─── */
