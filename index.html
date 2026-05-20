@@ -108,12 +108,13 @@
     .btn-solar{background:linear-gradient(135deg,var(--solar-bright) 0%,var(--solar) 45%,var(--solar-deep) 100%);color:#1a0800;font-weight:800;box-shadow:0 0 0 1px rgba(255,213,128,0.55),0 8px 28px rgba(255,185,50,0.4),inset 0 1px 0 rgba(255,255,255,0.35)}
     .btn-solar:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 0 0 1px rgba(255,213,128,0.75),0 12px 44px rgba(255,185,50,0.6),inset 0 1px 0 rgba(255,255,255,0.4)}
     /* ── TRUST BAR (prueba social) ── */
-    .trust-bar{padding:30px 24px 8px;text-align:center}
-    .trust-bar-label{font-size:.71rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,0.4);margin-bottom:15px}
-    .trust-logos{display:inline-flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
-    .trust-logo-card{display:flex;align-items:center;justify-content:center;height:64px;padding:9px 20px;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
-    .trust-logo-card img{height:100%;width:auto;max-width:190px;object-fit:contain;display:block}
-    @media (max-width:640px){.trust-logo-card{height:52px;padding:7px 14px}.trust-logo-card img{max-width:140px}}
+    .trust-bar{padding:46px 24px;text-align:center;background:linear-gradient(180deg,rgba(6,182,212,0.055),rgba(6,182,212,0.02));border-top:1px solid rgba(6,182,212,0.13);border-bottom:1px solid rgba(6,182,212,0.13);margin-top:8px}
+    .trust-bar-label{display:inline-flex;align-items:center;gap:11px;font-size:.86rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--cyan);margin-bottom:22px}
+    .trust-bar-label::before,.trust-bar-label::after{content:'';width:30px;height:2px;background:rgba(6,182,212,0.35);border-radius:2px}
+    .trust-logos{display:inline-flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+    .trust-logo-card{display:flex;align-items:center;justify-content:center;height:78px;padding:11px 26px;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:16px;box-shadow:0 4px 18px rgba(0,0,0,0.07)}
+    .trust-logo-card img{height:100%;width:auto;max-width:210px;object-fit:contain;display:block}
+    @media (max-width:640px){.trust-bar{padding:36px 20px}.trust-bar-label{font-size:.76rem}.trust-bar-label::before,.trust-bar-label::after{width:18px}.trust-logo-card{height:60px;padding:9px 18px}.trust-logo-card img{max-width:155px}}
     @media (max-width:640px){.btn{padding:10px 18px;font-size:.85rem}.btn-lg{padding:14px 24px;font-size:.95rem}}
 
     /* ── HERO ── */
@@ -126,7 +127,7 @@
     .hero-cta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;animation:fadeInUp .7s ease .65s both}
     @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     @media (max-width:768px){.hero-section{padding:90px 0 60px;min-height:auto}.hero-content{padding:0 20px}.hero-cta{gap:14px}.hero-badge{font-size:.7rem;padding:7px 14px}}
-    @media (max-width:480px){.hero-section{padding:80px 0 48px}.hero-title{font-size:clamp(1.6rem,8vw,2.6rem);letter-spacing:-.02em}.hero-subtitle{font-size:1rem;margin-bottom:32px}.hero-content{padding:0 16px}}
+    @media (max-width:480px){.hero-section{padding:80px 0 48px}.hero-title{font-size:clamp(2.25rem,9.6vw,3.5rem);letter-spacing:-.025em;line-height:1.12}.hero-subtitle{font-size:1.04rem;margin-bottom:32px}.hero-content{padding:0 16px}}
 
     /* ── AGENDA INLINE — CALENDARIO GRANDE AZUL ── */
     .aginline-section{position:relative;padding:90px 24px 100px;background:linear-gradient(180deg,#ffffff 0%,#eff6ff 100%);overflow:hidden;}
