@@ -87,9 +87,9 @@
     nav{position:sticky;top:0;z-index:1000;display:flex;justify-content:center;padding:20px 24px;pointer-events:none;contain:layout style;}
     .nav-inner{pointer-events:all;display:flex;align-items:center;justify-content:space-between;gap:12px;width:min(100%,1100px);padding:12px 16px 12px 20px;background:rgba(10,15,30,0.72);border:1px solid var(--glass-border);border-radius:var(--r-xl);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);transition:background .4s var(--ease),border-color .4s var(--ease);box-shadow:inset 0 1px 0 rgba(255,255,255,0.05),0 6px 28px rgba(0,0,0,0.65)}
     nav.scrolled .nav-inner{background:rgba(2,6,23,0.92);border-color:rgba(6,182,212,0.22);box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 10px 44px rgba(0,0,0,0.75),0 0 50px rgba(6,182,212,0.07)}
-    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:1.35rem;font-weight:900;letter-spacing:-.06em;flex-shrink:0}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:1.4rem;font-weight:900;letter-spacing:-.035em;flex-shrink:0}
     .logo-text{background:linear-gradient(135deg,#fff 40%,#94a3b8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .logo-text .AI{background:linear-gradient(135deg,var(--cyan),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .logo-text .AI{color:#06b6d4;-webkit-text-fill-color:#06b6d4;background:none;letter-spacing:.01em;margin-left:.04em}
     .nav-links{display:flex;gap:4px}
     .nav-links a{text-decoration:none;color:var(--text-secondary);font-size:.9rem;font-weight:600;padding:9px 18px;border-radius:var(--r-sm);transition:color .2s,background .2s;letter-spacing:-.01em}
     .nav-links a:hover{color:var(--text-primary);background:rgba(255,255,255,0.07)}
@@ -213,7 +213,10 @@
     .demos-section::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:1100px;height:700px;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(34,197,94,0.09) 0%,rgba(34,197,94,0.04) 40%,transparent 70%);pointer-events:none;z-index:0;}
     .demos-wrap{position:relative;z-index:1;width:min(100%,1320px);margin-inline:auto;padding:0 32px;}
     @media (max-width:768px){.demos-section{padding:70px 0 80px}.demos-wrap{padding:0 20px}}
-    .demo-header{text-align:center;margin-bottom:80px;max-width:860px;margin-left:auto;margin-right:auto;}
+    .demo-header{text-align:center;margin-bottom:42px;max-width:860px;margin-left:auto;margin-right:auto;}
+    .demo-live-dot{width:9px;height:9px;border-radius:50%;background:var(--fire);flex-shrink:0;animation:stickyPulse 1.6s ease-in-out infinite;}
+    .demo-stage{display:flex;justify-content:center;align-items:center;position:relative;padding:8px 0 4px;}
+    .demo-stage::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:580px;height:580px;max-width:92vw;border-radius:50%;background:radial-gradient(circle,rgba(34,197,94,0.13) 0%,rgba(34,197,94,0.06) 38%,transparent 68%);pointer-events:none;z-index:0;animation:screenGlow 5s ease-in-out infinite alternate;}
     .demo-label{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fire-bright);margin-bottom:28px;padding:8px 20px;background:var(--fire-surface);border:1px solid var(--fire-border);border-radius:999px;box-shadow:0 0 20px rgba(34,197,94,0.12);}
     .demo-label i{font-size:.75rem;color:var(--fire);filter:drop-shadow(0 0 4px rgba(34,197,94,0.6));}
     .demo-title{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;letter-spacing:-.055em;line-height:1.1;margin-bottom:22px;color:var(--text-primary);}
@@ -268,8 +271,8 @@
     @keyframes screenGlow{from{opacity:.65;transform:scale(.95);}to{opacity:1;transform:scale(1.05);}}
 
     /* ── CHAT FRAME ── */
-    .chat-frame{width:100%;max-width:490px;min-width:0;height:560px;background:#ECE5DD;border:1px solid rgba(7,94,84,0.3);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;position:relative;z-index:1;box-shadow:0px 10px 30px rgba(0,0,0,0.08),inset 0 1px 0 rgba(255,255,255,0.05);transition:box-shadow .45s var(--ease),border-color .45s var(--ease);}
-    .demo-article:hover .chat-frame{border-color:rgba(37,211,102,0.4);box-shadow:0 8px 70px rgba(0,0,0,0.7),0 0 40px rgba(37,211,102,0.2),inset 0 1px 0 rgba(255,255,255,0.07);}
+    .chat-frame{width:100%;max-width:430px;min-width:0;height:560px;background:#ECE5DD;border:1px solid rgba(7,94,84,0.3);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;position:relative;z-index:1;box-shadow:0px 14px 40px rgba(0,0,0,0.13),inset 0 1px 0 rgba(255,255,255,0.05);transition:box-shadow .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease);}
+    .chat-frame:hover{border-color:rgba(37,211,102,0.42);box-shadow:0 20px 56px rgba(0,0,0,0.18),0 0 46px rgba(37,211,102,0.18);transform:translateY(-5px);}
     .chat-top{display:flex;align-items:center;gap:13px;padding:14px 20px;background:#075E54;border-bottom:1px solid rgba(0,0,0,0.15);flex-shrink:0}
     .chat-top-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.3);flex-shrink:0}
     .chat-top-name{font-size:.95rem;font-weight:700;color:#fff}
@@ -719,6 +722,44 @@
     @media (max-width:768px){.footer-social{justify-content:center}}
     .footer-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.05);color:var(--text-secondary);font-size:1rem;transition:background .2s,color .2s,transform .2s}
     .footer-social a:hover{background:var(--cyan);color:#fff;transform:translateY(-2px)}
+
+    /* ── AD POPUPS (secuencia 3) ── */
+    .adpop-overlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(8,12,26,0.64);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s var(--ease);}
+    .adpop-overlay.open{opacity:1;visibility:visible;}
+    .adpop-card{position:relative;width:100%;max-width:432px;background:#fff;border-radius:24px;padding:34px 30px 28px;box-shadow:0 30px 80px rgba(0,0,0,0.42);text-align:center;transform:translateY(26px) scale(.95);opacity:0;transition:transform .42s var(--spring),opacity .3s var(--ease);max-height:92vh;overflow-y:auto;}
+    .adpop-overlay.open .adpop-card{transform:translateY(0) scale(1);opacity:1;}
+    .adpop-x{position:absolute;top:13px;right:13px;width:34px;height:34px;border-radius:50%;border:none;background:#f1f5f9;color:#64748b;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;z-index:2;}
+    .adpop-x:hover{background:#e2e8f0;color:#0f172a;}
+    .adpop-tag{display:inline-flex;align-items:center;gap:7px;font-size:.71rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:15px;}
+    .adpop-tag-red{color:#dc2626;background:rgba(220,38,38,0.09);border:1px solid rgba(220,38,38,0.22);}
+    .adpop-tag-green{color:#16a34a;background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.24);}
+    .adpop-tag-gold{color:#b45309;background:rgba(245,158,11,0.13);border:1px solid rgba(245,158,11,0.3);}
+    .adpop-dot{width:7px;height:7px;border-radius:50%;background:#dc2626;animation:stickyPulse 1.6s ease-in-out infinite;}
+    .adpop-emoji{font-size:2.5rem;line-height:1;margin-bottom:10px;}
+    .adpop-title{font-size:1.46rem;font-weight:900;letter-spacing:-.03em;color:#0f172a;line-height:1.22;margin-bottom:10px;}
+    .adpop-text{font-size:.94rem;line-height:1.62;color:#475569;margin-bottom:22px;}
+    .adpop-text strong{color:#0f172a;font-weight:800;}
+    .kw-gold{color:#d97706;font-weight:800;}
+    .kw-green{color:#16a34a;font-weight:800;}
+    .kw-red{color:#dc2626;font-weight:800;}
+    .adpop-actions{display:flex;flex-direction:column;gap:10px;}
+    .adpop-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 18px;font-size:.94rem;font-weight:800;border-radius:13px;cursor:pointer;border:none;font-family:inherit;line-height:1.25;transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease);}
+    .adpop-btn-primary{background:linear-gradient(135deg,#FFE9A0,#FFD580 45%,#FFAA2A);color:#1a0800;box-shadow:0 6px 20px rgba(255,185,50,0.45);}
+    .adpop-btn-primary:hover{transform:translateY(-2px);box-shadow:0 11px 28px rgba(255,185,50,0.6);}
+    .adpop-btn-green{background:linear-gradient(135deg,#4ade80,#22c55e 55%,#16a34a);color:#04210f;box-shadow:0 6px 20px rgba(34,197,94,0.42);}
+    .adpop-btn-green:hover{transform:translateY(-2px);box-shadow:0 11px 28px rgba(34,197,94,0.58);}
+    .adpop-btn-ghost{background:#fff;color:#334155;border:1.5px solid #e2e8f0;}
+    .adpop-btn-ghost:hover{border-color:#cbd5e1;background:#f8fafc;}
+    .adpop-client{display:flex;align-items:center;gap:14px;background:#f8fafc;border:1px solid #eef2f6;border-radius:16px;padding:13px 15px;margin-bottom:16px;}
+    .adpop-client-logo{width:60px;height:60px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.06);flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .adpop-client-logo img{width:100%;height:100%;object-fit:contain;padding:6px;}
+    .adpop-client-name{font-size:1.07rem;font-weight:800;color:#0f172a;text-align:left;line-height:1.2;}
+    .adpop-client-meta{font-size:.81rem;font-weight:600;color:#64748b;text-align:left;display:flex;align-items:center;gap:5px;margin-top:2px;}
+    .adpop-client-meta i{color:var(--cyan);}
+    .adpop-wins{list-style:none;text-align:left;margin:0 0 22px;display:flex;flex-direction:column;gap:8px;}
+    .adpop-wins li{display:flex;align-items:flex-start;gap:9px;font-size:.88rem;font-weight:600;color:#334155;line-height:1.45;}
+    .adpop-wins li i{color:#16a34a;margin-top:3px;flex-shrink:0;font-size:.85rem;}
+    @media (max-width:640px){.adpop-card{padding:30px 21px 24px;border-radius:20px;}.adpop-title{font-size:1.28rem;}.adpop-text{font-size:.89rem;}.adpop-emoji{font-size:2.2rem;}}
   </style>
 </head>
 <body>
@@ -847,39 +888,14 @@
 <section id="demos" class="demos-section">
   <div class="demos-wrap">
     <div class="demo-header reveal">
-      <div class="demo-label"><i class="fas fa-bolt"></i> Demo Interactiva</div>
-      <h2 class="demo-title">Prueba nuestra demo de chatbot IA que ya está <span class="hl">activa</span> en empresas consiguiendo clientes.</h2>
-      <p class="demo-subtitle">Reduce costos operativos y aumenta tu tasa de conversión con asistentes virtuales que trabajan por ti 24/7 sin cometer errores.</p>
+      <div class="demo-label"><span class="demo-live-dot"></span> Demo en vivo · interactiva</div>
+      <h2 class="demo-title">Prueba ahora mismo el <span class="hl">chatbot con IA</span> que ya atiende pacientes en clínicas reales.</h2>
+      <p class="demo-subtitle">Escríbele como lo haría un paciente y mira cómo responde: al instante, sin errores y las 24 horas. 👇</p>
     </div>
 
-    <!-- DEMO — CHATBOT -->
-    <article class="demo-article reveal">
-      <div class="demo-cta-banner">
-        <div class="dcb-left">
-          <div class="dcb-dot"></div>
-          <div>
-            <div class="dcb-title">💬 Prueba nuestra Demo de Conversación IA</div>
-            <div class="dcb-sub">Funciona en WhatsApp, Instagram y Web · Responde al instante</div>
-          </div>
-        </div>
-        <button class="dcb-btn" onclick="document.getElementById('chatInput').focus()">
-          <i class="fas fa-comment"></i> Chatear ahora
-        </button>
-      </div>
-      <div class="demo-layout">
-        <div class="demo-info-panel">
-          <div class="demo-num">01</div>
-          <h3 class="demo-card-title">💬 Chatbot WhatsApp IA</h3>
-          <p class="demo-card-sub">Chatea con nuestro asistente IA y experimenta cómo <strong>responde en tiempo real</strong> a consultas de pacientes: horarios, servicios, precios y más. Funciona en WhatsApp, Instagram y Web.</p>
-          <div class="demo-tech-badges">
-            <span class="tech-badge">GPT / Claude</span>
-            <span class="tech-badge">Webhook</span>
-            <span class="tech-badge">Omnicanal</span>
-            <span class="tech-badge">RAG</span>
-          </div>
-        </div>
-        <div class="demo-live-panel">
-          <div class="chat-frame" id="chatFrame">
+    <!-- DEMO — CHAT WHATSAPP -->
+    <div class="demo-stage reveal">
+      <div class="chat-frame" id="chatFrame">
             <div class="chat-top">
               <div class="chat-top-avatar">💬</div>
               <div>
@@ -901,10 +917,8 @@
               <input type="text" id="chatInput" placeholder="Escriba su mensaje..." autocomplete="off">
               <button class="chat-send" id="chatSendBtn" aria-label="Enviar"><i class="fas fa-arrow-up"></i></button>
             </div>
-          </div>
-        </div>
       </div>
-    </article>
+    </div>
   </div>
 </section>
 
@@ -1357,6 +1371,61 @@
       Agendar una Reunión
     </button>
     <button class="pdm-btn-red" onclick="PostDemoModal.dismiss()">Seguir leyendo</button>
+  </div>
+</div>
+
+<!-- ══ AD POPUP 1 — PROMO ══ -->
+<div class="adpop-overlay" id="adPop1">
+  <div class="adpop-card">
+    <button class="adpop-x" onclick="AdSequence.close(1)" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
+    <div class="adpop-tag adpop-tag-red"><span class="adpop-dot"></span> Oferta de lanzamiento</div>
+    <div class="adpop-emoji">🎁</div>
+    <h3 class="adpop-title">Tu <span class="kw-gold">primer mes gratis</span></h3>
+    <p class="adpop-text">Si agendas tu reunión y contratas Orion en esa <strong>misma primera reunión</strong>, el primer mes corre <span class="kw-green">por nuestra cuenta</span>. Sin letra chica.</p>
+    <div class="adpop-actions">
+      <button class="adpop-btn adpop-btn-primary" onclick="AdSequence.cta1()">Obtener beneficio y ver demo en vivo</button>
+      <button class="adpop-btn adpop-btn-ghost" onclick="AdSequence.close(1)">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AD POPUP 2 — CASO DE ÉXITO ══ -->
+<div class="adpop-overlay" id="adPop2">
+  <div class="adpop-card">
+    <button class="adpop-x" onclick="AdSequence.close(2)" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
+    <div class="adpop-tag adpop-tag-green"><i class="fas fa-circle-check"></i> Caso de éxito</div>
+    <div class="adpop-client">
+      <div class="adpop-client-logo"><img src="logo-anpalex.png" alt="Dental Anpalex" loading="lazy"></div>
+      <div>
+        <div class="adpop-client-name">Dental Anpalex</div>
+        <div class="adpop-client-meta"><i class="fas fa-location-dot"></i> Av. Los Pajaritos 1395 · Maipú, Santiago</div>
+      </div>
+    </div>
+    <p class="adpop-text">Anpalex automatizó su atención con Orion. Hoy cada paciente recibe respuesta <span class="kw-green">al instante</span>, sin saturar al equipo:</p>
+    <ul class="adpop-wins">
+      <li><i class="fas fa-check"></i> WhatsApp e Instagram respondidos <strong>24/7</strong>, sin mensajes sin contestar.</li>
+      <li><i class="fas fa-check"></i> Agenda de horas <strong>automática</strong> y con recordatorios.</li>
+      <li><i class="fas fa-check"></i> Su recepción se enfoca en los pacientes en consulta.</li>
+    </ul>
+    <div class="adpop-actions">
+      <button class="adpop-btn adpop-btn-green" onclick="AdSequence.goto(2,'pricing')">Ver planes</button>
+      <button class="adpop-btn adpop-btn-ghost" onclick="AdSequence.goto(2,'faq')">Ver preguntas frecuentes</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AD POPUP 3 — PLANES ══ -->
+<div class="adpop-overlay" id="adPop3">
+  <div class="adpop-card">
+    <button class="adpop-x" onclick="AdSequence.close(3)" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
+    <div class="adpop-tag adpop-tag-gold"><i class="fas fa-bolt"></i> Da el primer paso</div>
+    <div class="adpop-emoji">📅</div>
+    <h3 class="adpop-title">Conoce los <span class="kw-green">planes</span> de Orion</h3>
+    <p class="adpop-text">Agenda una reunión de diagnóstico — <span class="kw-gold">costo $0</span>, 1 hora por Google Meet y <strong>sin compromiso</strong>. Te mostramos el plan ideal para tu clínica.</p>
+    <div class="adpop-actions">
+      <button class="adpop-btn adpop-btn-primary" onclick="AdSequence.cta3()">Agendar reunión — costo $0</button>
+      <button class="adpop-btn adpop-btn-ghost" onclick="AdSequence.goto(3,'pricing')">Ver planes</button>
+    </div>
   </div>
 </div>
 
@@ -2156,6 +2225,61 @@ window.addEventListener('load',()=>{
     fbq('init','933244542517098');fbq('track','PageView');
   },2500);
 });
+
+/* ─── AD SEQUENCE (3 anuncios: 10s, +25s, +25s) ─── */
+const AdSequence = (() => {
+  const SEEN = n => 'orion_adpop' + n + '_v1';
+  const seen = n => localStorage.getItem(SEEN(n)) === '1';
+  const markSeen = n => localStorage.setItem(SEEN(n), '1');
+  let current = 0;
+
+  function anyOtherModalOpen(){
+    return ['agendaModal','leadGateModal','promoModal','postDemoModal'].some(id => {
+      const e = document.getElementById(id);
+      return e && e.classList.contains('open');
+    });
+  }
+  function show(n){
+    const ov = document.getElementById('adPop' + n);
+    if(!ov) return;
+    current = n;
+    ov.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(n){
+    const ov = document.getElementById('adPop' + n);
+    if(ov) ov.classList.remove('open');
+    document.body.style.overflow = '';
+    if(current === n) current = 0;
+    markSeen(n);
+    if(n < 3) setTimeout(() => step(n + 1), 25000);
+  }
+  function step(n){
+    if(n > 3) return;
+    if(seen(n)){ step(n + 1); return; }
+    if(current !== 0 || anyOtherModalOpen()){ setTimeout(() => step(n), 8000); return; }
+    show(n);
+  }
+  function goto(n, id){
+    close(n);
+    const el = document.getElementById(id);
+    if(el) setTimeout(() => el.scrollIntoView({ behavior:'smooth' }), 140);
+  }
+  function cta1(){ goto(1, 'demos'); }
+  function cta3(){
+    close(3);
+    setTimeout(() => { if(typeof AgendaFlow !== 'undefined') AgendaFlow.open('General'); }, 160);
+  }
+
+  [1,2,3].forEach(n => {
+    const ov = document.getElementById('adPop' + n);
+    if(ov) ov.addEventListener('click', e => { if(e.target === ov) close(n); });
+  });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && current) close(current); });
+
+  setTimeout(() => step(1), 10000);
+  return { close, goto, cta1, cta3 };
+})();
 </script>
 </body>
 </html>
