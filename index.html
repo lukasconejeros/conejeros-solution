@@ -111,10 +111,20 @@
     .trust-bar{padding:46px 24px;text-align:center;background:linear-gradient(180deg,rgba(6,182,212,0.055),rgba(6,182,212,0.02));border-top:1px solid rgba(6,182,212,0.13);border-bottom:1px solid rgba(6,182,212,0.13);margin-top:8px}
     .trust-bar-label{display:inline-flex;align-items:center;gap:11px;font-size:.86rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--cyan);margin-bottom:22px}
     .trust-bar-label::before,.trust-bar-label::after{content:'';width:30px;height:2px;background:rgba(6,182,212,0.35);border-radius:2px}
-    .trust-logos{display:inline-flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
-    .trust-logo-card{display:flex;align-items:center;justify-content:center;height:78px;padding:11px 26px;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:16px;box-shadow:0 4px 18px rgba(0,0,0,0.07)}
-    .trust-logo-card img{height:100%;width:auto;max-width:210px;object-fit:contain;display:block}
-    @media (max-width:640px){.trust-bar{padding:36px 20px}.trust-bar-label{font-size:.76rem}.trust-bar-label::before,.trust-bar-label::after{width:18px}.trust-logo-card{height:60px;padding:9px 18px}.trust-logo-card img{max-width:155px}}
+    .trust-clients{display:flex;align-items:stretch;justify-content:center;gap:18px;flex-wrap:wrap;max-width:780px;margin:0 auto}
+    .client-card{display:flex;align-items:center;gap:16px;text-align:left;background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:18px;padding:16px 20px;box-shadow:0 6px 22px rgba(0,0,0,0.07);flex:1 1 330px;max-width:368px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+    .client-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(6,182,212,0.17);border-color:rgba(6,182,212,0.28)}
+    .client-logo{flex-shrink:0;width:80px;height:80px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .client-logo img{width:100%;height:100%;object-fit:contain;padding:7px;display:block}
+    .client-info{min-width:0;display:flex;flex-direction:column;gap:5px}
+    .client-name{display:flex;align-items:center;gap:7px;font-size:1.07rem;font-weight:800;color:#0f172a;line-height:1.2}
+    .client-name .verified{color:#10b981;font-size:.82rem}
+    .client-meta{display:flex;align-items:flex-start;gap:7px;font-size:.82rem;font-weight:600;color:#64748b;line-height:1.42}
+    .client-meta i{color:var(--cyan);margin-top:3px;flex-shrink:0;font-size:.84rem}
+    .client-tag{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;font-size:.71rem;font-weight:800;letter-spacing:.02em;color:#0891b2;background:rgba(6,182,212,0.09);border:1px solid rgba(6,182,212,0.2);border-radius:999px;padding:4px 11px;margin-top:3px}
+    .trust-foot{margin-top:24px;font-size:.85rem;font-weight:600;color:#94a3b8}
+    .trust-foot i{color:#10b981;margin-right:6px}
+    @media (max-width:640px){.trust-bar{padding:36px 18px}.trust-bar-label{font-size:.74rem}.trust-bar-label::before,.trust-bar-label::after{width:16px}.trust-clients{gap:12px}.client-card{padding:13px 15px;gap:13px;flex:1 1 100%;max-width:430px}.client-logo{width:62px;height:62px;border-radius:12px}.client-name{font-size:.98rem}.client-meta{font-size:.78rem}.client-tag{font-size:.67rem}.trust-foot{font-size:.78rem;margin-top:18px}}
     @media (max-width:640px){.btn{padding:10px 18px;font-size:.85rem}.btn-lg{padding:14px 24px;font-size:.95rem}}
 
     /* ── HERO ── */
@@ -782,11 +792,26 @@
 
 <!-- ══ TRUST BAR — prueba social ══ -->
 <section class="trust-bar">
-  <div class="trust-bar-label">Clínicas que ya trabajan con Orion</div>
-  <div class="trust-logos">
-    <div class="trust-logo-card"><img src="logo-monaco.png" alt="Clínica Mónaco" loading="lazy"></div>
-    <div class="trust-logo-card"><img src="logo-anpalex.png" alt="Dental Anpalex" loading="lazy"></div>
+  <div class="trust-bar-label">Clínicas que ya confían en Orion</div>
+  <div class="trust-clients">
+    <div class="client-card">
+      <div class="client-logo"><img src="logo-monaco.png" alt="Clínica Mónaco" loading="lazy"></div>
+      <div class="client-info">
+        <div class="client-name">Clínica Mónaco <i class="fas fa-circle-check verified" title="Cliente activo"></i></div>
+        <div class="client-meta"><i class="fas fa-location-dot"></i><span>Carampangue 500, local 2 — frente al Obelisco · Región del Biobío</span></div>
+        <span class="client-tag"><i class="fas fa-tooth"></i> Odontología y estética facial</span>
+      </div>
+    </div>
+    <div class="client-card">
+      <div class="client-logo"><img src="logo-anpalex.png" alt="Dental Anpalex" loading="lazy"></div>
+      <div class="client-info">
+        <div class="client-name">Dental Anpalex <i class="fas fa-circle-check verified" title="Cliente activo"></i></div>
+        <div class="client-meta"><i class="fas fa-location-dot"></i><span>Av. Los Pajaritos 1395 · Maipú, Santiago</span></div>
+        <span class="client-tag"><i class="fas fa-tooth"></i> Odontología · +35 años de trayectoria</span>
+      </div>
+    </div>
   </div>
+  <div class="trust-foot"><i class="fas fa-circle-check"></i> Atendiendo pacientes con IA en WhatsApp, Instagram y Facebook</div>
 </section>
 
 <!-- ══ DOLOR ══ -->
