@@ -761,6 +761,24 @@
     .adpop-wins li i{color:#16a34a;margin-top:3px;flex-shrink:0;font-size:.85rem;}
     @media (max-width:640px){.adpop-card{padding:30px 21px 24px;border-radius:20px;}.adpop-title{font-size:1.28rem;}.adpop-text{font-size:.89rem;}.adpop-emoji{font-size:2.2rem;}}
   </style>
+
+  <!-- ══ Meta Pixel — carga inmediata. Antes se diferia 2.5s tras 'load' y el trafico de ads rebotaba antes de registrarse ══ -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','933244542517098');
+  fbq('track','PageView');
+  /* helper global para eventos de conversion */
+  window.oTrack=function(ev,params){try{if(window.fbq){fbq('track',ev,params||{});}}catch(e){}};
+  /* mide clics a WhatsApp en cualquier <a> wa.me como evento Contact */
+  document.addEventListener('click',function(e){
+    try{
+      var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"],a[href*="wa.link"]'):null;
+      if(a){window.oTrack('Contact',{method:'whatsapp'});}
+    }catch(_){}
+  },true);
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=933244542517098&ev=PageView&noscript=1"/></noscript>
+  <!-- ══ Fin Meta Pixel ══ -->
 </head>
 <body>
 
@@ -1554,6 +1572,7 @@ const PromoModal = (() => {
   }
   function accept(){
     close();
+    if(window.oTrack)oTrack('Contact',{method:'whatsapp',source:'promo_primer_mes'});
     window.open('https://wa.me/56999066071?text=Hola!+Vi+la+oferta+de+primer+mes+gratis+en+Orion.AI.+Quiero+aprovecharlo+en+mi+primera+reunión.','_blank');
   }
   return { open, close, accept };
@@ -1579,6 +1598,7 @@ const LeadGate = (() => {
     errEl.classList.remove('show');
     localStorage.setItem(KEY,JSON.stringify({nombre,tel,email}));
     fetch(WEBHOOK_CHAT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'lead_capture',sessionId:getSessionId(),nombre,telefono:tel,email}),keepalive:true}).catch(()=>{});
+    if(window.oTrack)oTrack('Lead',{content_name:'demo_lead_gate'});
     close();
     if(pendingFn){const fn=pendingFn;pendingFn=null;fn();}
     PostDemoModal.schedule();
@@ -1921,6 +1941,7 @@ const AgendaFlow = (() => {
       }
       detail+='Recibirás el link de Google Meet por WhatsApp minutos antes de tu reunión. 🎁';
       document.getElementById('agSuccessDetail').innerHTML=detail;
+      if(window.oTrack)oTrack('Schedule',{content_name:currentPlan});
       showStep('final');
     }catch{
       if(btn){btn.disabled=false;btn.innerHTML=originalHtml||'Confirmar Reunión';}
@@ -2218,13 +2239,7 @@ const AgendaInline = (() => {
   sendBtn.addEventListener('click',sendTyped);
 })();
 
-/* ─── META PIXEL (deferred) ─── */
-window.addEventListener('load',()=>{
-  setTimeout(()=>{
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','933244542517098');fbq('track','PageView');
-  },2500);
-});
+/* ─── META PIXEL ─── movido al <head> para que dispare de inmediato (ver bloque "Meta Pixel" arriba) ─── */
 
 /* ─── AD SEQUENCE (3 anuncios: 10s, +25s, +25s) ─── */
 const AdSequence = (() => {
