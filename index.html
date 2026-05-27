@@ -756,23 +756,6 @@
     .promo-skip:hover{color:#475569;}
     .promo-offer-detail{color:#475569;}
 
-    /* Métricas light */
-    .metrics-section{background:#f1f5f9;border-color:rgba(0,0,0,0.07);}
-    .metric-item+.metric-item::before{background:rgba(0,0,0,0.1);}
-    .metric-label{color:#64748b;}
-
-    /* Tipos clínica light */
-    .tipo-card{background:#fff;border-color:rgba(0,0,0,0.08);}
-    .tipo-card p{color:#475569;}
-    .tipo-bullets li{color:#64748b;}
-
-    /* Testimonios light */
-    .testimonios-section{background:#f8fafc;}
-    .testi-card{background:#fff;border-color:rgba(0,0,0,0.08);}
-    .testi-quote{color:#334155;}
-    .testi-name{color:#0f172a;}
-    .testi-role{color:#94a3b8;}
-
     /* Footer */
     footer{background:#f8fafc;border-color:rgba(0,0,0,0.08);padding-bottom:120px;}
     .footer-logo-text{background:linear-gradient(to bottom,#0f172a 30%,#475569);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
@@ -861,56 +844,6 @@
     .adpop-wins li{display:flex;align-items:flex-start;gap:9px;font-size:.88rem;font-weight:600;color:#334155;line-height:1.45;}
     .adpop-wins li i{color:#16a34a;margin-top:3px;flex-shrink:0;font-size:.85rem;}
     @media (max-width:640px){.adpop-card{padding:30px 21px 24px;border-radius:20px;}.adpop-title{font-size:1.28rem;}.adpop-text{font-size:.89rem;}.adpop-emoji{font-size:2.2rem;}}
-
-    /* ── MÉTRICAS ── */
-    .metrics-section{padding:48px 0;background:var(--surface);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);}
-    .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:900px;margin:0 auto;}
-    @media (max-width:768px){.metrics-grid{grid-template-columns:repeat(2,1fr);}}
-    .metric-item{text-align:center;padding:28px 20px;position:relative;}
-    .metric-item+.metric-item::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:var(--glass-border);}
-    @media (max-width:768px){.metric-item:nth-child(2)::before,.metric-item:nth-child(4)::before{display:none}}
-    @media (max-width:768px){.metric-item:nth-child(3)::before{top:0;height:1px;width:60%;left:20%;background:var(--glass-border)}}
-    .metric-num{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-.04em;line-height:1;background:linear-gradient(135deg,var(--cyan-bright),var(--electric));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .metric-label{font-size:.82rem;color:var(--text-muted);margin-top:6px;font-weight:500;line-height:1.35;}
-
-    /* ── TIPOS DE CLÍNICA ── */
-    .tipos-section{padding:80px 0;}
-    .tipos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
-    @media (max-width:768px){.tipos-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}}
-    .tipo-card{background:rgba(10,15,30,0.55);border:1px solid var(--glass-border);border-radius:20px;padding:32px 28px;transition:border-color .3s,transform .3s;position:relative;overflow:hidden;}
-    .tipo-card:hover{border-color:rgba(6,182,212,0.4);transform:translateY(-4px);}
-    .tipo-card::before{content:'';position:absolute;top:-60px;right:-60px;width:160px;height:160px;border-radius:50%;opacity:.06;pointer-events:none;}
-    .tipo-dental::before{background:var(--cyan);}
-    .tipo-medica::before{background:#22c55e;}
-    .tipo-estetica::before{background:var(--accent);}
-    .tipo-icon{font-size:2.4rem;margin-bottom:16px;display:block;}
-    .tipo-tag{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:999px;margin-bottom:14px;}
-    .tag-dental{background:rgba(6,182,212,0.1);color:var(--cyan-bright);border:1px solid rgba(6,182,212,0.25);}
-    .tag-medica{background:rgba(34,197,94,0.1);color:#4ade80;border:1px solid rgba(34,197,94,0.25);}
-    .tag-estetica{background:rgba(168,85,247,0.1);color:#c084fc;border:1px solid rgba(168,85,247,0.25);}
-    .tipo-card h3{font-size:1.2rem;font-weight:800;color:var(--text-primary);margin-bottom:10px;letter-spacing:-.02em;}
-    .tipo-card p{font-size:.9rem;color:var(--text-secondary);line-height:1.65;margin-bottom:16px;}
-    .tipo-bullets{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px;}
-    .tipo-bullets li{font-size:.82rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;}
-    .tipo-bullets li::before{content:'→';color:var(--cyan);font-weight:700;flex-shrink:0;}
-    .tipo-dental .tipo-bullets li::before{color:var(--cyan);}
-    .tipo-medica .tipo-bullets li::before{color:#4ade80;}
-    .tipo-estetica .tipo-bullets li::before{color:#c084fc;}
-
-    /* ── TESTIMONIOS ── */
-    .testimonios-section{padding:80px 0;background:var(--surface);}
-    .testimonios-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px;}
-    @media (max-width:768px){.testimonios-grid{grid-template-columns:1fr;}}
-    .testi-card{background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:20px;padding:32px;position:relative;transition:border-color .3s;}
-    .testi-card:hover{border-color:rgba(6,182,212,0.3);}
-    .testi-stars{color:#FBBF24;font-size:1rem;letter-spacing:2px;margin-bottom:18px;}
-    .testi-quote{font-size:1rem;color:var(--text-secondary);line-height:1.75;margin-bottom:24px;font-style:italic;}
-    .testi-quote::before{content:'"';font-size:3rem;color:rgba(6,182,212,0.2);line-height:0;vertical-align:-.5em;margin-right:4px;}
-    .testi-author{display:flex;align-items:center;gap:14px;}
-    .testi-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--primary));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;color:#fff;flex-shrink:0;}
-    .testi-name{font-weight:700;font-size:.92rem;color:var(--text-primary);}
-    .testi-role{font-size:.79rem;color:var(--text-muted);margin-top:2px;}
-    .testi-badge{position:absolute;top:22px;right:22px;display:flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;color:#4ade80;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:999px;padding:4px 10px;}
   </style>
 
   <!-- ══ Meta Pixel — carga inmediata. Antes se diferia 2.5s tras 'load' y el trafico de ads rebotaba antes de registrarse ══ -->
@@ -1049,30 +982,6 @@
   <div class="trust-foot"><i class="fas fa-circle-check"></i> Atendiendo pacientes con IA en WhatsApp, Instagram y Facebook</div>
 </section>
 
-<!-- ══ MÉTRICAS ══ -->
-<section class="metrics-section">
-  <div class="wrapper">
-    <div class="metrics-grid">
-      <div class="metric-item reveal">
-        <div class="metric-num">24/7</div>
-        <div class="metric-label">Disponible sin interrupciones,<br>incluido fines de semana</div>
-      </div>
-      <div class="metric-item reveal">
-        <div class="metric-num">&lt;3 seg</div>
-        <div class="metric-label">Tiempo de respuesta promedio<br>al primer mensaje del paciente</div>
-      </div>
-      <div class="metric-item reveal">
-        <div class="metric-num">+300</div>
-        <div class="metric-label">Consultas atendidas por IA<br>al mes en cada clínica activa</div>
-      </div>
-      <div class="metric-item reveal">
-        <div class="metric-num">−40%</div>
-        <div class="metric-label">Reducción de inasistencias<br>con recordatorios automáticos</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══ DOLOR ══ -->
 <section class="pain-section">
   <div class="wrapper">
@@ -1167,59 +1076,6 @@
         <h3>Tu clínica trabaja sola</h3>
         <p>El asistente responde, agenda, confirma y hace seguimiento 24/7. Tú y tu equipo se dedican a atender pacientes.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ TIPOS DE CLÍNICA ══ -->
-<section class="tipos-section">
-  <div class="wrapper">
-    <div class="section-header reveal">
-      <div class="section-label"><i class="fas fa-hospital"></i> Especialidades</div>
-      <h2 class="section-title">Orion funciona en <span class="gradient-text">tu tipo de clínica</span></h2>
-      <p class="section-subtitle">Adaptado a los flujos y sistemas de gestión de cada especialidad.</p>
-    </div>
-    <div class="tipos-grid">
-
-      <div class="tipo-card tipo-dental reveal">
-        <span class="tipo-icon">🦷</span>
-        <span class="tipo-tag tag-dental"><i class="fas fa-circle-check"></i> Más implementado</span>
-        <h3>Clínica Dental</h3>
-        <p>Integración nativa con Dentalink y Dentalsoft. El bot agenda, cancela y reagenda directamente en tu software — sin doble gestión.</p>
-        <ul class="tipo-bullets">
-          <li>Integración directa con Dentalink y Dentalsoft</li>
-          <li>Agenda por especialidad y profesional</li>
-          <li>Recordatorios automáticos pre-cita</li>
-          <li>Responde preguntas sobre precios y convenios</li>
-        </ul>
-      </div>
-
-      <div class="tipo-card tipo-medica reveal">
-        <span class="tipo-icon">🩺</span>
-        <span class="tipo-tag tag-medica">Médica general</span>
-        <h3>Clínica Médica</h3>
-        <p>Triaje básico conversacional, derivación por especialidad y agenda en Google Calendar o Reservo. Sin necesidad de cambiar tu sistema actual.</p>
-        <ul class="tipo-bullets">
-          <li>Triaje de síntomas y derivación automática</li>
-          <li>Agenda en Google Calendar o Reservo</li>
-          <li>Gestión de urgencias vs. consultas programadas</li>
-          <li>Responde horarios, precios y ubicación 24/7</li>
-        </ul>
-      </div>
-
-      <div class="tipo-card tipo-estetica reveal">
-        <span class="tipo-icon">✨</span>
-        <span class="tipo-tag tag-estetica">Estética / Spa médico</span>
-        <h3>Clínica Estética</h3>
-        <p>Gestión de consultas por tipo de tratamiento, descripción de procedimientos y disponibilidad personalizada por profesional y servicio.</p>
-        <ul class="tipo-bullets">
-          <li>Catálogo de tratamientos conversacional</li>
-          <li>Agenda por tipo de procedimiento</li>
-          <li>Seguimiento post-tratamiento automático</li>
-          <li>Reactivación de pacientes que no han vuelto</li>
-        </ul>
-      </div>
-
     </div>
   </div>
 </section>
@@ -1519,46 +1375,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
-  </div>
-</section>
-
-<!-- ══ TESTIMONIOS ══ -->
-<!-- PLACEHOLDER: verificar citas exactas con Clínica Mónaco y Dental Anpalex antes de publicar en producción -->
-<section class="testimonios-section">
-  <div class="wrapper">
-    <div class="section-header reveal">
-      <div class="section-label"><i class="fas fa-star"></i> Clínicas activas</div>
-      <h2 class="section-title">Lo que dicen <span class="gradient-text">nuestros clientes</span></h2>
-    </div>
-    <div class="testimonios-grid">
-
-      <div class="testi-card reveal">
-        <div class="testi-badge"><i class="fas fa-circle-check"></i> Cliente activo</div>
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">El bot de Orion atiende más de 300 consultas al mes sin que nadie del equipo intervenga. La recepción dejó de estar saturada con WhatsApp y nosotros llegamos a trabajar — no a responder mensajes.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">M</div>
-          <div>
-            <div class="testi-name">Clínica Mónaco</div>
-            <div class="testi-role">Carampangue 500, local 2 · Valdivia · Odontología y estética facial</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testi-card reveal">
-        <div class="testi-badge"><i class="fas fa-circle-check"></i> Cliente activo</div>
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">Antes perdíamos pacientes porque no alcanzábamos a responder fuera del horario. Orion agenda directamente en Dentalink y los pacientes llegan puntuales porque reciben el recordatorio automático. Diferencia total.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">A</div>
-          <div>
-            <div class="testi-name">Dental Anpalex</div>
-            <div class="testi-role">Av. Los Pajaritos 1395 · Maipú, Santiago · +35 años de trayectoria</div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
