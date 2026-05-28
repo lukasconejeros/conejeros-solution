@@ -756,19 +756,6 @@
     .promo-skip:hover{color:#475569;}
     .promo-offer-detail{color:#475569;}
 
-    /* Nuevo Pricing light */
-    .new-plans-grid .nplan-card{background:#fff;border-color:rgba(0,0,0,0.09);}
-    .nplan-desc{color:#475569;}
-    .nplan-list li{color:#334155;}
-    .nplan-overage{background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.08);color:#64748b;}
-    .pricing-funnel{background:rgba(0,0,0,0.03);}
-    .funnel-step{background:#fff;border-color:rgba(0,0,0,0.09);}
-    .funnel-step.funnel-highlight{background:rgba(6,182,212,0.06);}
-    .funnel-desc{color:#64748b;}
-    .nplan-deliver{background:rgba(0,0,0,0.04);color:#64748b;}
-    .nplan-areas{border-color:rgba(0,0,0,0.07);}
-    .nplan-area span{color:#475569;}
-
     /* Footer */
     footer{background:#f8fafc;border-color:rgba(0,0,0,0.08);padding-bottom:120px;}
     .footer-logo-text{background:linear-gradient(to bottom,#0f172a 30%,#475569);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
@@ -857,47 +844,6 @@
     .adpop-wins li{display:flex;align-items:flex-start;gap:9px;font-size:.88rem;font-weight:600;color:#334155;line-height:1.45;}
     .adpop-wins li i{color:#16a34a;margin-top:3px;flex-shrink:0;font-size:.85rem;}
     @media (max-width:640px){.adpop-card{padding:30px 21px 24px;border-radius:20px;}.adpop-title{font-size:1.28rem;}.adpop-text{font-size:.89rem;}.adpop-emoji{font-size:2.2rem;}}
-
-    /* ── NUEVO PRICING ── */
-    .pricing-funnel{display:flex;align-items:stretch;justify-content:center;gap:0;margin:40px 0 52px;padding:24px;background:rgba(255,255,255,0.02);border:1px solid var(--glass-border);border-radius:20px;flex-wrap:wrap;}
-    @media(max-width:768px){.pricing-funnel{flex-direction:column;gap:0;padding:16px;}}
-    .funnel-step{flex:1;min-width:180px;text-align:center;padding:24px 20px;border-radius:14px;border:1px solid var(--glass-border);background:rgba(255,255,255,0.03);position:relative;}
-    .funnel-step.funnel-highlight{background:rgba(6,182,212,0.07);border-color:rgba(6,182,212,0.25);}
-    .funnel-arrow{display:flex;align-items:center;justify-content:center;padding:0 12px;font-size:1.5rem;color:var(--text-muted);flex-shrink:0;}
-    @media(max-width:768px){.funnel-arrow{transform:rotate(90deg);padding:8px 0;}}
-    .funnel-num{width:28px;height:28px;border-radius:50%;background:var(--glass-border);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:var(--text-muted);margin:0 auto 10px;}
-    .funnel-step.funnel-highlight .funnel-num{background:rgba(6,182,212,0.3);color:var(--cyan-bright);}
-    .funnel-icon{font-size:1.8rem;margin-bottom:8px;}
-    .funnel-label{font-size:.9rem;font-weight:800;color:var(--text-primary);margin-bottom:6px;}
-    .funnel-desc{font-size:.78rem;color:var(--text-muted);line-height:1.5;}
-    /* New plans grid */
-    .new-plans-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:start;}
-    @media(max-width:1024px){.new-plans-grid{grid-template-columns:1fr 1fr;}}
-    @media(max-width:640px){.new-plans-grid{grid-template-columns:1fr;}}
-    .nplan-card{background:rgba(10,15,30,0.55);border:1px solid var(--glass-border);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s,transform .3s;position:relative;}
-    .nplan-card:hover{border-color:rgba(6,182,212,0.35);transform:translateY(-3px);}
-    .nplan-business{border-color:rgba(168,85,247,0.25);}
-    .nplan-business:hover{border-color:rgba(168,85,247,0.5);}
-    .nplan-step-tag{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--solar-bright);display:flex;align-items:center;gap:6px;}
-    .nplan-result-tag{color:var(--cyan);}
-    .nplan-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
-    .nplan-title{font-size:1.22rem;font-weight:800;color:var(--text-primary);letter-spacing:-.02em;line-height:1.2;}
-    .nplan-desc{font-size:.88rem;color:var(--text-secondary);line-height:1.65;}
-    .nplan-price-row{padding:14px 0;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);}
-    .nplan-price{font-size:1.5rem;font-weight:900;color:var(--text-primary);letter-spacing:-.03em;}
-    .nplan-price span{font-size:.8rem;font-weight:500;color:var(--text-muted);}
-    .nplan-uf{font-size:.72rem;color:var(--text-muted);margin-top:2px;}
-    .nplan-custom-price{font-size:1.1rem;line-height:1.3;}
-    .nplan-custom-price span{font-size:.85rem;display:block;}
-    .nplan-discount{font-size:.8rem;color:var(--solar-bright);font-weight:600;display:flex;align-items:center;gap:7px;background:rgba(255,185,50,0.07);border:1px solid rgba(255,185,50,0.2);border-radius:10px;padding:8px 12px;}
-    .nplan-areas{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 0;border-top:1px solid var(--glass-border);}
-    .nplan-area{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);font-weight:600;}
-    .nplan-area i{color:var(--cyan);width:14px;}
-    .nplan-deliver{font-size:.78rem;color:var(--text-muted);display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:10px;padding:9px 12px;}
-    .nplan-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:9px;}
-    .nplan-list li{font-size:.85rem;color:var(--text-secondary);display:flex;align-items:flex-start;gap:9px;line-height:1.45;}
-    .nplan-list li i{flex-shrink:0;margin-top:2px;font-size:.85rem;color:var(--text-muted);}
-    .nplan-overage{font-size:.75rem;color:var(--text-muted);padding:8px 12px;background:rgba(168,85,247,0.06);border:1px solid rgba(168,85,247,0.15);border-radius:10px;display:flex;align-items:center;gap:7px;}
   </style>
 
   <!-- ══ Meta Pixel — carga inmediata. Antes se diferia 2.5s tras 'load' y el trafico de ads rebotaba antes de registrarse ══ -->
@@ -967,7 +913,7 @@
   <div class="hero-content">
     <div class="hero-badge"><i class="fas fa-sparkles"></i><span>Automatización con IA para Clínicas Dentales, Médicas y Estéticas</span></div>
     <h1 class="hero-title">Deja de perder pacientes<br>por <span class="gradient">no contestar a tiempo</span></h1>
-    <p class="hero-subtitle">Antes de automatizar, entendemos cómo trabaja tu clínica. Luego construimos un sistema hecho para tus procesos — con integración nativa en <strong style="color:var(--cyan-bright);">Dentalink y Dentalsoft</strong>, respuesta 24/7 y cero doble gestión.</p>
+    <p class="hero-subtitle">El único chatbot en Chile que agenda directamente en <strong style="color:var(--cyan-bright);">Dentalink y Dentalsoft</strong> — sin doble gestión, sin copiar datos a mano. Responde a tus pacientes en segundos, 24/7, mientras tu equipo hace lo que importa.</p>
     <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:28px;">
       <span style="color:rgba(0,0,0,0.4);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;">Responde en</span>
       <div style="display:flex;align-items:center;justify-content:center;gap:14px;">
@@ -1138,200 +1084,294 @@
 <section id="pricing" class="pricing-section">
   <div class="wrapper">
     <div class="section-header reveal">
-      <div class="section-label"><i class="fas fa-hospital"></i> Modelo de servicio</div>
-      <h2 class="section-title">Un sistema hecho para<br><span class="gradient-text">tu clínica específica</span></h2>
-      <p class="section-subtitle">No vendemos software genérico. Primero entendemos cómo trabaja tu clínica, luego automatizamos exactamente lo que necesitas.</p>
+      <div class="section-label"><i class="fas fa-layer-group"></i> Planes de Inversión</div>
+      <h2 class="section-title">Arquitecturas diseñadas<br>para <span class="gradient-text">cada etapa</span></h2>
+      <p class="section-subtitle">Elige el plan que mejor se adapta a tu clínica y empieza a automatizar desde el primer día.</p>
     </div>
 
-    <!-- EMBUDO VISUAL -->
-    <div class="pricing-funnel reveal">
-      <div class="funnel-step">
-        <div class="funnel-num">1</div>
-        <div class="funnel-icon">📅</div>
-        <div class="funnel-label">Diagnóstico gratis</div>
-        <div class="funnel-desc">30-60 min por Google Meet. Sin compromiso, sin costo.</div>
-      </div>
-      <div class="funnel-arrow">→</div>
-      <div class="funnel-step funnel-highlight">
-        <div class="funnel-num">2</div>
-        <div class="funnel-icon">🔍</div>
-        <div class="funnel-label">Auditoría 360</div>
-        <div class="funnel-desc">Entramos a tu clínica, hablamos con tu equipo e identificamos exactamente qué automatizar.</div>
-      </div>
-      <div class="funnel-arrow">→</div>
-      <div class="funnel-step">
-        <div class="funnel-num">3</div>
-        <div class="funnel-icon">🚀</div>
-        <div class="funnel-label">Tu plan personalizado</div>
-        <div class="funnel-desc">Classic o Business. Diseñado para tus procesos reales, no para todas las clínicas.</div>
+    <div class="plans-subtitle reveal">Nuestros Planes</div>
+    <div style="display:flex;justify-content:center;margin-bottom:20px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:20px;font-size:13px;font-weight:700;color:#f87171;">
+        <span style="width:8px;height:8px;background:#ef4444;border-radius:50%;display:inline-block;animation:pulse 1.5s infinite;"></span>
+        Solo 3 cupos disponibles este mes — primer mes gratis al contratar en reunión
       </div>
     </div>
 
-    <div class="new-plans-grid">
+    <div class="pricing-grid">
 
       <!-- AUDITORÍA 360 -->
-      <div class="nplan-card nplan-audit reveal">
-        <div class="nplan-step-tag"><i class="fas fa-bolt"></i> Primer paso obligatorio</div>
-        <span class="nplan-badge" style="background:rgba(255,185,50,0.12);color:var(--solar-bright);border:1px solid rgba(255,185,50,0.3);">AUDITORÍA 360</span>
-        <h3 class="nplan-title">Conocemos tu clínica primero</h3>
-        <p class="nplan-desc">Antes de automatizar nada, nuestro equipo habla con tus empleados, mapea tus procesos en las 4 áreas y detecta exactamente dónde la IA genera más valor para ti.</p>
-        <div class="nplan-price-row">
-          <div class="nplan-price">$469.000 <span>CLP · pago único</span></div>
-          <div class="nplan-uf">≈ 11,5 UF</div>
+      <div class="plan-card audit reveal">
+        <div class="plan-header">
+          <div class="audit-special-badge">EN 7 DÍAS · MARCHA BLANCA</div>
+          <span class="plan-badge badge-audit">AUDITORÍA 360</span>
+          <h3 class="plan-name">Auditoría 360</h3>
+          <p class="plan-tagline">Plan estratégico de IA para las 4 áreas de tu negocio</p>
+          <span class="audit-time-pill"><i class="fas fa-bolt"></i> Entrega en menos de 7 días</span>
         </div>
-        <div class="nplan-discount"><i class="fas fa-tag"></i> 100% acreditable al plan que elijas</div>
-        <div class="nplan-areas">
-          <div class="nplan-area"><i class="fas fa-chart-line"></i><span>Ventas</span></div>
-          <div class="nplan-area"><i class="fas fa-bullhorn"></i><span>Marketing</span></div>
-          <div class="nplan-area"><i class="fas fa-gears"></i><span>Operaciones</span></div>
-          <div class="nplan-area"><i class="fas fa-heart"></i><span>Post-Venta</span></div>
+        <div class="investment-block">
+          <div class="investment-row"><div class="inv-label">Inversión<span>Pago único</span></div><div class="inv-price highlight-solar">$469.000 <span class="inv-unit">CLP</span><span class="inv-uf">≈ 11,5 UF</span></div></div>
+          <div class="audit-discount-note"><i class="fas fa-tag"></i> <strong>100% descontable</strong> del valor del sistema final</div>
         </div>
-        <div class="nplan-deliver"><i class="fas fa-file-lines"></i> Informe + propuesta en menos de 7 días hábiles</div>
-        <button class="btn btn-solar btn-full" style="margin-top:8px;" onclick="AgendaFlow.open('Auditoría 360')">📅 Agendar diagnóstico gratis</button>
-      </div>
-
-      <!-- CLASSIC -->
-      <div class="nplan-card nplan-classic reveal">
-        <div class="nplan-step-tag nplan-result-tag"><i class="fas fa-check"></i> Resultado post-auditoría</div>
-        <span class="nplan-badge" style="background:rgba(6,182,212,0.1);color:var(--cyan-bright);border:1px solid rgba(6,182,212,0.3);">PLAN CLASSIC</span>
-        <h3 class="nplan-title">Automatización esencial</h3>
-        <p class="nplan-desc">Automatizamos las 4 áreas de tu clínica a nivel básico — los puntos de mayor dolor resueltos de forma limpia, nativa y sin complicaciones técnicas.</p>
-        <div class="nplan-price-row">
-          <div class="nplan-price nplan-custom-price">Precio definido<br><span>en tu Auditoría 360</span></div>
+        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Auditoría 360')">📅 Agendar Reunión</button></div>
+        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
+        <div class="audit-metrics-row" id="auditMetricsRow">
+          <div class="audit-metric">
+            <div class="audit-metric-num" data-target="4">0</div>
+            <div class="audit-metric-label">Áreas con IA</div>
+          </div>
+          <div class="audit-metric">
+            <div class="audit-metric-num" data-target="30">0</div>
+            <div class="audit-metric-label">Días Marcha Blanca</div>
+          </div>
+          <div class="audit-metric">
+            <div class="audit-metric-num" data-target="0">0</div>
+            <div class="audit-metric-label">Trabajos Repetitivos</div>
+          </div>
+          <div class="audit-metric">
+            <div class="audit-metric-num" data-symbol="∞">∞</div>
+            <div class="audit-metric-label">Conexiones entre apps</div>
+          </div>
         </div>
-        <ul class="nplan-list">
-          <li><i class="fab fa-whatsapp" style="color:#25D366;"></i> Chatbot 24/7 en WhatsApp + Instagram</li>
-          <li><i class="fas fa-calendar-check" style="color:var(--cyan);"></i> Agendamiento nativo en Dentalink / Dentalsoft</li>
-          <li><i class="fas fa-bell" style="color:var(--solar);"></i> Recordatorios y confirmaciones automáticas</li>
-          <li><i class="fas fa-rotate-right" style="color:#4ade80;"></i> Follow-up a leads que no agendaron</li>
-          <li><i class="fas fa-star" style="color:#FBBF24;"></i> Reseñas Google solicitadas post-cita</li>
-          <li><i class="fas fa-plug" style="color:var(--text-muted);"></i> Todo nativo — sin apps externas de terceros</li>
-        </ul>
-        <button class="btn btn-ghost btn-full" style="margin-top:auto;" onclick="AgendaFlow.open('Classic')">Agendar diagnóstico gratis →</button>
+        <div class="feature-block">
+          <div class="fb-title solar"><i class="fas fa-bullseye"></i> Plan Estratégico de IA — 4 áreas</div>
+          <ul class="feature-list">
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> <strong>Ventas</strong> — pipeline, conversión y oportunidades automatizadas con IA</li>
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> <strong>Marketing</strong> — auditoría de canales, CAC y creatividades optimizadas</li>
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> <strong>Operaciones</strong> — procesos automatizados y conexiones entre apps</li>
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> <strong>Post-Venta</strong> — fidelización y retención automatizada</li>
+          </ul>
+        </div>
+        <div class="feature-block">
+          <div class="fb-title solar"><i class="fas fa-rocket"></i> Marcha blanca de 30 días — incluida</div>
+          <ul class="feature-list">
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> <strong>Conexiones entre tus apps</strong> — integramos todas tus herramientas en un solo flujo</li>
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> <strong>0 trabajos repetitivos</strong> — automatizamos las tareas que hoy haces a mano</li>
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> <strong>Sistema en marcha real</strong> — pruébalo trabajando en tu negocio durante 30 días</li>
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> <strong>KPIs medibles desde el día 1</strong> — métricas claras de impacto</li>
+          </ul>
+        </div>
+        <div class="feature-block">
+          <div class="fb-title solar"><i class="fas fa-graduation-cap"></i> Capacitación práctica</div>
+          <ul class="feature-list">
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> Crear creativos efectivos para Meta Ads (Facebook e Instagram)</li>
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> Estructura de campañas y segmentación avanzada</li>
+            <li class="audit-feat"><i class="fas fa-check-circle"></i> Optimización de anuncios para reducir CPA y aumentar ROAS</li>
+          </ul>
+        </div>
       </div>
 
       <!-- BUSINESS -->
-      <div class="nplan-card nplan-business reveal">
-        <div class="featured-badge" style="top:0;right:20px;position:absolute;font-size:.65rem;">RECOMENDADO</div>
-        <div class="nplan-step-tag nplan-result-tag"><i class="fas fa-check"></i> Resultado post-auditoría</div>
-        <span class="nplan-badge" style="background:rgba(168,85,247,0.1);color:#c084fc;border:1px solid rgba(168,85,247,0.3);">PLAN BUSINESS</span>
-        <h3 class="nplan-title">Automatización avanzada con IA</h3>
-        <p class="nplan-desc">Las 4 áreas de tu clínica a nivel completo con IA generativa, llamadas automáticas y Meta Ads gestionado. Orion opera como un empleado digital.</p>
-        <div class="nplan-price-row">
-          <div style="display:flex;flex-direction:column;gap:6px;">
-            <div class="nplan-price">$600.000 <span>+ IVA / mes</span></div>
-            <div style="font-size:.72rem;color:var(--text-muted);font-weight:500;">Opción: 3 cuotas de $238.000 los primeros 3 meses</div>
+      <div class="plan-card featured reveal">
+        <div class="plan-header">
+          <div class="featured-badge">MÁS ELEGIDO</div>
+          <span class="plan-badge badge-business">BUSINESS</span>
+          <h3 class="plan-name">Business</h3>
+          <p class="plan-tagline">Todo lo que necesitas para automatizar tu clínica</p>
+        </div>
+        <div class="investment-block">
+          <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$346.000 <span class="inv-unit">CLP</span><span class="inv-uf">≈ 8,5 UF</span></div></div>
+          <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$160.000 <span class="inv-unit">/mes</span><span class="inv-uf">≈ 4 UF/mes</span></div></div>
+        </div>
+        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Business')">📅 Agendar Reunión <i class="fas fa-arrow-right"></i></button></div>
+        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
+          <div class="channels-row">
+            <span class="channel-tag"><i class="fab fa-whatsapp"></i> WhatsApp</span>
+            <span class="channel-tag"><i class="fab fa-instagram"></i> Instagram</span>
+            <span class="channel-tag"><i class="fab fa-facebook-messenger"></i> Messenger</span>
+          </div>
+          <p class="channel-choice-note">WhatsApp incluido + elige 1 canal social adicional.</p>
+        </div>
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-star"></i> Funciones</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Chatbot IA conversacional con contexto total (precios, FAQ, convenios, ubicación)</li>
+            <li><i class="fas fa-check-circle"></i> Agendamiento y cancelación automática</li>
+            <li><i class="fas fa-check-circle"></i> Derivación automática según tipo de consulta</li>
+            <li><i class="fas fa-check-circle"></i> Interfaz Kill-Switch: enciende o apaga el bot desde la app</li>
+            <li><i class="fas fa-check-circle"></i> Derivación automática de preguntas sin respuesta o molestias</li>
+            <li><i class="fas fa-check-circle"></i> Seguimiento activo (follow-up) a leads que no agendaron</li>
+          </ul>
+        </div>
+        <div class="feature-block"><div class="fb-title"><i class="fas fa-headset"></i> Soporte</div><p style="font-size:.86rem;color:var(--text-secondary);">Soporte prioritario con tiempo de respuesta garantizado.</p></div>
+      </div>
+
+      <!-- PRO AI -->
+      <div class="plan-card reveal">
+        <div class="plan-header"><span class="plan-badge badge-proai">PRO AI</span><h3 class="plan-name">Pro AI</h3>
+          <p class="plan-tagline">Automatización avanzada con métricas en tiempo real</p>
+        </div>
+        <div class="investment-block">
+          <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$530.000 <span class="inv-unit">CLP</span><span class="inv-uf">≈ 13 UF</span></div></div>
+          <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$372.000 <span class="inv-unit">/mes</span><span class="inv-uf">≈ 9,2 UF/mes</span></div></div>
+        </div>
+        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Pro AI')">📅 Agendar Reunión</button></div>
+        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
+          <div class="channels-row">
+            <span class="channel-tag"><i class="fab fa-whatsapp"></i> WhatsApp</span>
+            <span class="channel-tag"><i class="fab fa-instagram"></i> Instagram</span>
+            <span class="channel-tag"><i class="fab fa-facebook-messenger"></i> Messenger</span>
+            <span class="channel-tag"><i class="fab fa-tiktok"></i> TikTok</span>
           </div>
         </div>
-        <ul class="nplan-list">
-          <li><i class="fas fa-check-circle" style="color:var(--cyan);"></i> Todo lo del Plan Classic</li>
-          <li><i class="fas fa-phone-volume" style="color:#c084fc;"></i> <strong>Llamadas IA bidireccionales</strong> — bot llama y atiende (200 min/mes)</li>
-          <li><i class="fab fa-facebook" style="color:#1877F2;"></i> <strong>Meta Ads gestionado</strong> — campaña incluida (+ pauta independiente)</li>
-          <li><i class="fas fa-chart-line" style="color:#4ade80;"></i> Dashboard de métricas en tiempo real</li>
-          <li><i class="fas fa-users-rays" style="color:var(--solar);"></i> Reactivación avanzada de pacientes inactivos</li>
-          <li><i class="fab fa-tiktok" style="color:var(--text-muted);"></i> Todos los canales: WhatsApp, IG, Messenger, TikTok</li>
-        </ul>
-        <div class="nplan-overage"><i class="fas fa-clock"></i> Llamadas extra: $400 CLP/min sobre 200 min incluidos</div>
-        <button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Business')">📅 Agendar diagnóstico gratis</button>
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-star"></i> Funciones</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Todo lo del plan Business</li>
+            <li><i class="fas fa-check-circle"></i> Recordatorios de 24 y 48 horas de cada agendamiento</li>
+            <li><i class="fas fa-check-circle"></i> Activación de pacientes inactivos (3 a 6 meses)</li>
+            <li><i class="fas fa-check-circle"></i> IA multimodal: interpreta fotos y audios de los pacientes</li>
+            <li><i class="fas fa-check-circle"></i> Fidelización después de la venta (Google Maps, Instagram)</li>
+            <li><i class="fas fa-check-circle"></i> Algoritmo de Retargeting de Leads</li>
+          </ul>
+        </div>
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-chart-line"></i> Métricas</div>
+          <ul class="feature-list">
+            <li class="metric"><i class="fas fa-chart-bar"></i> Pacientes agendados por el bot</li>
+            <li class="metric"><i class="fas fa-chart-bar"></i> Recordatorios y confirmaciones enviados</li>
+            <li class="metric"><i class="fas fa-chart-bar"></i> Tasa de asistencia real (agendados que asistieron)</li>
+            <li class="metric"><i class="fas fa-chart-bar"></i> Cancelaciones y reagendamientos gestionados por el bot</li>
+          </ul>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ══ TABLA COMPARATIVA: Orion vs Vambe vs Agencia ══ -->
-<section style="padding:60px 0 80px;background:var(--surface);" id="comparativa">
+<!-- ══ TABLA COMPARATIVA ══ -->
+<section style="padding:60px 0 80px;background:var(--surface);">
   <div class="wrapper">
     <div class="section-header reveal" style="margin-bottom:32px;">
-      <div class="section-label"><i class="fas fa-scale-balanced"></i> ¿Por qué Orion?</div>
-      <h2 class="section-title">Orion vs <span class="gradient-text">alternativas</span></h2>
-      <p class="section-subtitle">No es solo el precio — es quién entiende tu clínica.</p>
+      <div class="section-label"><i class="fas fa-table-columns"></i> Comparativa</div>
+      <h2 class="section-title">¿Cuál plan es <span class="gradient-text">para tu clínica</span>?</h2>
     </div>
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <thead>
           <tr>
-            <th style="text-align:left;padding:14px 18px;color:var(--text-muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--glass-border);width:28%;">Criterio</th>
-            <th style="text-align:center;padding:14px 18px;border-bottom:1px solid var(--glass-border);background:rgba(6,182,212,0.05);border-radius:12px 12px 0 0;width:24%;">
-              <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan-bright);font-weight:800;">Orion.AI ⭐</div>
-              <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Solo clínicas · CLP · Personalizado</div>
+            <th style="text-align:left;padding:14px 18px;color:var(--text-muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--glass-border);width:35%;">Función</th>
+            <th style="text-align:center;padding:14px 18px;border-bottom:1px solid var(--glass-border);width:21%;">
+              <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--solar-bright);font-weight:700;">Auditoría 360</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">$469.000 CLP</div>
             </th>
-            <th style="text-align:center;padding:14px 18px;border-bottom:1px solid var(--glass-border);width:24%;">
-              <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);font-weight:700;">Vambe</div>
-              <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Genérico · USD · Self-service</div>
+            <th style="text-align:center;padding:14px 18px;border-bottom:1px solid var(--glass-border);background:rgba(6,182,212,0.05);border-radius:12px 12px 0 0;width:22%;">
+              <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan-bright);font-weight:700;">Business ⭐</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">$160.000/mes</div>
             </th>
-            <th style="text-align:center;padding:14px 18px;border-bottom:1px solid var(--glass-border);width:24%;">
-              <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);font-weight:700;">Agencia tradicional</div>
-              <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">Genérico · USD/CLP variable</div>
+            <th style="text-align:center;padding:14px 18px;border-bottom:1px solid var(--glass-border);width:22%;">
+              <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700;">Pro AI</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">$372.000/mes</div>
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="compTable">
+          <!-- CANALES -->
           <tr style="background:rgba(255,255,255,0.02);">
-            <td colspan="4" style="padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--glass-border);">PRECIO Y ACCESO</td>
+            <td colspan="4" style="padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--glass-border);">CANALES</td>
           </tr>
           <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Precio de entrada mensual</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:13px;font-weight:700;">Classic: post-auditoría</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-secondary);font-size:12px;">~$369.000 CLP/mes</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-secondary);font-size:12px;">$1.500.000–$3.000.000/mes</span></td>
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:7px;"></i>WhatsApp</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--text-muted);">30d marcha blanca</div></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
           </tr>
           <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Moneda de cobro</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-weight:700;">CLP · sin fricción</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;">USD · varía con el dólar</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);">Variable</span></td>
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><i class="fab fa-instagram" style="color:#E1306C;margin-right:7px;"></i>Instagram</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
           </tr>
+          <tr class="comp-row">
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><i class="fab fa-facebook-messenger" style="color:#0084FF;margin-right:7px;"></i>Messenger</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+          </tr>
+          <tr class="comp-row">
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><i class="fab fa-tiktok" style="margin-right:7px;"></i>TikTok</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+          </tr>
+          <!-- FUNCIONES CORE -->
           <tr style="background:rgba(255,255,255,0.02);">
-            <td colspan="4" style="padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--glass-border);">ESPECIALIZACIÓN EN CLÍNICAS</td>
+            <td colspan="4" style="padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--glass-border);">AUTOMATIZACIÓN</td>
+          </tr>
+          <tr class="comp-row">
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Chatbot IA conversacional 24/7</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--text-muted);">30d</div></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+          </tr>
+          <tr class="comp-row">
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Agendamiento y cancelación automática</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--text-muted);">30d</div></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
           </tr>
           <tr class="comp-row">
             <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><strong style="color:var(--cyan-bright);">Integración Dentalink / Dentalsoft</strong></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--cyan);">Nativo</div></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;font-size:16px;">✗</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;font-size:16px;">✗</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Auditoría de procesos antes de implementar</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;font-size:16px;">✗</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#FBBF24;font-size:16px;">~</span><div style="font-size:10px;color:var(--text-muted);">a veces</div></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Sistema 100% personalizado a la clínica</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;font-size:16px;">✗</span><div style="font-size:10px;color:var(--text-muted);">plantilla genérica</div></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#FBBF24;font-size:16px;">~</span></td>
-          </tr>
-          <tr style="background:rgba(255,255,255,0.02);">
-            <td colspan="4" style="padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--glass-border);">SERVICIOS INCLUIDOS</td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Chatbot IA 24/7 + agendamiento</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
             <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
             <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#FBBF24;font-size:16px;">~</span></td>
           </tr>
           <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Llamadas IA bidireccionales</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--cyan);">Plan Business</div></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;font-size:16px;">✗</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;font-size:16px;">✗</span></td>
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Follow-up a leads que no agendaron</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
           </tr>
           <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Meta Ads gestionado con IA</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--cyan);">Plan Business</div></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#f87171;font-size:16px;">✗</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--text-muted);">cobro aparte</div></td>
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Recordatorios 24 y 48 horas</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
           </tr>
-          <!-- CTA row -->
+          <tr class="comp-row">
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Reactivación de pacientes inactivos</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+          </tr>
+          <tr class="comp-row">
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">IA multimodal (fotos y audios de pacientes)</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+          </tr>
+          <!-- MÉTRICAS -->
+          <tr style="background:rgba(255,255,255,0.02);">
+            <td colspan="4" style="padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--glass-border);">MÉTRICAS Y SOPORTE</td>
+          </tr>
+          <tr class="comp-row">
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Dashboard de métricas en tiempo real</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+          </tr>
+          <tr class="comp-row">
+            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Soporte prioritario</td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
+          </tr>
+          <!-- CTAs -->
           <tr>
             <td style="padding:18px 18px 0;"></td>
-            <td style="text-align:center;padding:18px 12px 0;background:rgba(6,182,212,0.04);border-radius:0 0 12px 12px;">
-              <button class="btn btn-solar" style="width:100%;font-size:12px;padding:10px 8px;" onclick="AgendaFlow.open('General')">Agendar diagnóstico</button>
+            <td style="text-align:center;padding:18px 12px 0;">
+              <button class="btn btn-solar" style="width:100%;font-size:12px;padding:10px 8px;" onclick="AgendaFlow.open('Auditoría 360')">Agendar</button>
             </td>
-            <td style="text-align:center;padding:18px 12px 0;"></td>
-            <td style="text-align:center;padding:18px 12px 0;"></td>
+            <td style="text-align:center;padding:18px 12px 0;background:rgba(6,182,212,0.04);border-radius:0 0 12px 12px;">
+              <button class="btn btn-solar" style="width:100%;font-size:12px;padding:10px 8px;" onclick="AgendaFlow.open('Business')">Agendar</button>
+            </td>
+            <td style="text-align:center;padding:18px 12px 0;">
+              <button class="btn btn-solar" style="width:100%;font-size:12px;padding:10px 8px;" onclick="AgendaFlow.open('Pro AI')">Agendar</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -1348,20 +1388,8 @@
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Por qué necesito la Auditoría 360 antes de contratar un plan?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">Porque cada clínica funciona diferente. Sin entender cómo trabaja tu equipo, qué software usas y dónde están tus cuellos de botella, cualquier automatización que te vendamos sería genérica — y lo genérico no funciona en clínicas. La auditoría es el paso que nos permite diseñar algo que realmente resuelve tus problemas específicos, no los de todas las clínicas.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Cómo se decide si me conviene el Plan Classic o el Business?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">En base a lo que encontramos en la auditoría. Si tu clínica necesita automatizar lo esencial — respuesta a pacientes, agendamiento y recordatorios — el Plan Classic es suficiente y más accesible. Si además quieres llamadas automáticas para confirmar citas, gestión de Meta Ads y métricas avanzadas, el Business es la opción. La propuesta te la entregamos con los números claros para que tomes la decisión con toda la información.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Y si ya sé lo que necesito y no quiero hacer la auditoría?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">Puedes empezar con la reunión de diagnóstico gratuita (30-60 min por Google Meet) y contarnos qué necesitas. Si el caso es claro y straightforward, podemos avanzar directo a una propuesta sin la auditoría completa. Pero en la mayoría de los casos, la auditoría ahorra tiempo y plata a largo plazo — porque evita implementar algo que no encaja con cómo trabaja realmente tu equipo.</div></div>
-      </div>
-      <div class="faq-item">
         <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Se integra con el software que ya uso en mi clínica?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">Sí. Orion se integra de forma nativa con Dentalink y Dentalsoft — los softwares de gestión más usados en clínicas dentales en Chile. También funciona con Google Calendar y Reservo. Todo se implementa sin que tú ni tu equipo tengan que aprender un sistema nuevo.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Sí. Orion se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Cuánto demora la implementación?</span><i class="fas fa-chevron-down"></i></button>
