@@ -929,7 +929,7 @@
       <a href="#pricing" onclick="event.preventDefault();AgendaFlow.open('General');" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;padding:16px 34px;background:linear-gradient(135deg,#FFE9A0,#FFD580 45%,#FFAA2A);color:#1a0800;font-size:16px;font-weight:800;border-radius:12px;text-decoration:none;box-shadow:0 6px 26px rgba(255,185,50,0.5);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 34px rgba(255,185,50,0.7)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 26px rgba(255,185,50,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar mi reunión gratis</a>
       <a href="https://wa.me/56999066071?text=Hola%20Lukas,%20vengo%20de%20la%20web%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20el%20asistente%20IA%20para%20mi%20cl%C3%ADnica" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:15px 26px;background:#25D366;color:#fff;font-size:15px;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,0.45);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 26px rgba(37,211,102,0.65)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(37,211,102,0.45)'"><i class="fab fa-whatsapp" style="font-size:18px;"></i>Hablar por WhatsApp</a>
     </div>
-    <div style="margin-top:15px;font-size:13px;color:rgba(0,0,0,0.5);font-weight:600;letter-spacing:.01em;">✅ Diagnóstico gratis · 1 hora por Google Meet · Sin compromiso</div>
+    <div style="margin-top:15px;font-size:13px;color:rgba(0,0,0,0.5);font-weight:600;letter-spacing:.01em;">✅ Diagnóstico gratis · 1 hora por videollamada · Sin compromiso</div>
   </div>
 </section>
 
@@ -1290,7 +1290,7 @@
   <div class="aginline-bg-blob"></div>
   <div class="aginline-wrap">
     <div class="aginline-head">
-      <div class="aginline-badge"><i class="fas fa-calendar-check"></i> Reunión Gratuita · 1 Hora · Google Meet</div>
+      <div class="aginline-badge"><i class="fas fa-calendar-check"></i> Reunión Gratuita · 1 Hora · Videollamada</div>
       <h2 class="aginline-title">Reserva tu <span class="aginline-hl">Diagnóstico Gratuito</span></h2>
       <p class="aginline-sub">Selecciona el día y horario que te acomode. Te confirmamos por WhatsApp en menos de 5 minutos.</p>
     </div>
@@ -1362,7 +1362,7 @@
     <div class="modal-header">
       <div>
         <div class="modal-plan-name" id="agendaPlanName">Agendar Reunión</div>
-        <div class="modal-plan-sub">Sesión de diagnóstico gratuita · 1 hora · Google Meet · 🇨🇱 Horarios Chile</div>
+        <div class="modal-plan-sub">Sesión de diagnóstico gratuita · 1 hora · Videollamada · 🇨🇱 Horarios Chile</div>
       </div>
       <button class="modal-close" onclick="AgendaFlow.close()"><i class="fas fa-xmark"></i></button>
     </div>
@@ -1438,7 +1438,7 @@
           <div class="agcal-success-icon">✅</div>
           <div class="agcal-success-title">¡Reunión Agendada!</div>
           <div class="agcal-success-detail" id="agSuccessDetail">
-            Te hemos enviado la confirmación por WhatsApp con la hora y el enlace de la videollamada.
+            Te hemos enviado la confirmación por WhatsApp. Te llamamos por ahí a la hora acordada.
           </div>
           <button class="btn btn-ghost btn-full" onclick="AgendaFlow.close()">
             <i class="fas fa-check"></i> Listo
@@ -1500,7 +1500,7 @@
     <div class="adpop-tag adpop-tag-gold"><i class="fas fa-bolt"></i> Da el primer paso</div>
     <div class="adpop-emoji">📅</div>
     <h3 class="adpop-title">Conoce los <span class="kw-green">planes</span> de Waly</h3>
-    <p class="adpop-text">Agenda una reunión de diagnóstico — <span class="kw-gold">costo $0</span>, 1 hora por Google Meet y <strong>sin compromiso</strong>. Te mostramos el plan ideal para tu clínica.</p>
+    <p class="adpop-text">Agenda una reunión de diagnóstico — <span class="kw-gold">costo $0</span>, 1 hora por videollamada y <strong>sin compromiso</strong>. Te mostramos el plan ideal para tu clínica.</p>
     <div class="adpop-actions">
       <button class="adpop-btn adpop-btn-primary" onclick="AdSequence.cta3()">Agendar reunión — costo $0</button>
       <button class="adpop-btn adpop-btn-ghost" onclick="AdSequence.goto(3,'pricing')">Ver planes</button>
@@ -1912,7 +1912,7 @@ const AgendaFlow = (() => {
         detail+=`<strong>Videollamada:</strong> <a href="${link}" target="_blank" rel="noopener" class="agcal-meet-link">${link}</a><br><br>`;
         detail+='Te acabamos de enviar la confirmación con este enlace por WhatsApp. 🎁';
       } else {
-        detail+='Te acabamos de enviar la confirmación por WhatsApp. Ahí nos ponemos de acuerdo para la videollamada. 🎁';
+        detail+='Te acabamos de enviar la confirmación por WhatsApp. Te llamamos por ahí a la hora acordada. 🎁';
       }
       document.getElementById('agSuccessDetail').innerHTML=detail;
       if(window.oTrack)oTrack('Schedule',{content_name:currentPlan});
