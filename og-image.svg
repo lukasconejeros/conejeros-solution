@@ -28,7 +28,7 @@
   <text x="160" y="81" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#22d3ee" text-anchor="middle" letter-spacing="2">IA PARA CLÍNICAS</text>
 
   <!-- Main logo / name -->
-  <text x="60" y="200" font-family="'Segoe UI',Arial,sans-serif" font-size="96" font-weight="900" fill="url(#accent)" letter-spacing="-2">Orion.AI</text>
+  <text x="60" y="200" font-family="'Segoe UI',Arial,sans-serif" font-size="96" font-weight="900" fill="url(#accent)" letter-spacing="-2">Waly.AI</text>
 
   <!-- Tagline -->
   <text x="60" y="262" font-family="'Segoe UI',Arial,sans-serif" font-size="30" font-weight="400" fill="rgba(255,255,255,0.75)">Deja de perder pacientes por no contestar a tiempo</text>
@@ -64,6 +64,6 @@
 
   <!-- Bottom clients bar -->
   <rect x="60" y="510" width="680" height="1" fill="rgba(255,255,255,0.06)"/>
-  <text x="60" y="545" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="rgba(255,255,255,0.3)">Clínicas que confían en Orion:</text>
+  <text x="60" y="545" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="rgba(255,255,255,0.3)">Clínicas que confían en Waly:</text>
   <text x="60" y="568" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="600" fill="rgba(255,255,255,0.55)">Clínica Mónaco (Valdivia) · Dental Anpalex (Santiago)</text>
 </svg>
