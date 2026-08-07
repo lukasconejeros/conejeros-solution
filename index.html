@@ -175,6 +175,8 @@
     .nav-inner{pointer-events:all;display:flex;align-items:center;justify-content:space-between;gap:12px;width:min(100%,1100px);padding:12px 16px 12px 20px;background:rgba(10,15,30,0.72);border:1px solid var(--glass-border);border-radius:var(--r-xl);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);transition:background .4s var(--ease),border-color .4s var(--ease);box-shadow:inset 0 1px 0 rgba(255,255,255,0.05),0 6px 28px rgba(0,0,0,0.65)}
     nav.scrolled .nav-inner{background:rgba(2,6,23,0.92);border-color:rgba(6,182,212,0.22);box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 10px 44px rgba(0,0,0,0.75),0 0 50px rgba(6,182,212,0.07)}
     .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:1.4rem;font-weight:900;letter-spacing:-.035em;flex-shrink:0}
+    .logo-mark{width:30px;height:30px;display:block;flex-shrink:0}
+    .footer-logo-mark{width:26px;height:26px;display:block;flex-shrink:0}
     .logo-text{background:linear-gradient(135deg,#fff 40%,#94a3b8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .logo-text .AI{color:#06b6d4;-webkit-text-fill-color:#06b6d4;background:none;letter-spacing:.01em;margin-left:.04em}
     .nav-links{display:flex;gap:4px}
@@ -876,7 +878,7 @@
 <!-- ══ NAV ══ -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="#" class="logo"><span class="logo-text">Waly<span class="AI">.AI</span></span></a>
+    <a href="#" class="logo"><img src="logo-waly.svg" alt="" class="logo-mark" width="30" height="30"><span class="logo-text">Waly<span class="AI">.AI</span></span></a>
     <div class="nav-links">
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#pricing">Planes</a>
@@ -956,7 +958,7 @@
       </div>
     </div>
     <div class="client-card">
-      <div class="client-logo"><img src="logo-medifis.jpeg" alt="Clínica Medifis" loading="lazy" width="80" height="80"></div>
+      <div class="client-logo"><img src="logo-medifis.jpeg" alt="Clínica Medifis" loading="lazy" width="80" height="80" style="object-fit:cover;object-position:left center;"></div>
       <div class="client-info">
         <div class="client-name">Clínica Medifis <i class="fas fa-circle-check verified" title="Cliente activo"></i></div>
         <div class="client-meta"><i class="fas fa-location-dot"></i><span>18 de Septiembre 611 · Temuco, Región de La Araucanía</span></div>
@@ -1332,6 +1334,7 @@
     <div class="footer-cols">
       <div class="footer-col">
         <a href="#" class="footer-logo">
+          <img src="logo-waly.svg" alt="" class="footer-logo-mark" width="26" height="26">
           <span class="footer-logo-text">Waly<span style="background:linear-gradient(135deg,var(--cyan),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent">.AI</span></span>
         </a>
         <p class="footer-tagline">Automatización con IA para clínicas dentales, médicas y estéticas. Tu clínica responde, agenda y hace seguimiento — 24/7.</p>
