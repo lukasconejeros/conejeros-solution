@@ -1438,7 +1438,7 @@
           <div class="agcal-success-icon">✅</div>
           <div class="agcal-success-title">¡Reunión Agendada!</div>
           <div class="agcal-success-detail" id="agSuccessDetail">
-            Te hemos enviado la confirmación. Recibirás el link de Google Meet por WhatsApp minutos antes de tu reunión.
+            Te hemos enviado la confirmación por WhatsApp con la hora y el enlace de la videollamada.
           </div>
           <button class="btn btn-ghost btn-full" onclick="AgendaFlow.close()">
             <i class="fas fa-check"></i> Listo
@@ -1516,8 +1516,12 @@
 const N8N_BASE          = 'https://n8n-n8n.bvil2a.easypanel.host';
 const WEBHOOK_CHAT      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/f40ed409-a0b0-4373-b7d7-6abedc56f8dd';
 const WEBHOOK_EVENTS    = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/c4d5e6f7-a8b9-0123-cdef-234567890123';
-const WEBHOOK_BOOK      = N8N_BASE + '/webhook/c4d5e6f7-a8b9-0123-cdef-234567890123';
-const WEBHOOK_AVAIL     = N8N_BASE + '/webhook/e6f7a8b9-c0d1-2345-efab-456789012345';
+/* La agenda del diagnóstico ya NO pasa por n8n ni por Google Calendar (07-08-2026):
+   la lleva la app de Lukas, que es donde él anota sus reuniones de verdad.
+   Mismo contrato de antes: GET ?date=YYYY-MM-DD -> {busy:[...]}, POST -> {ok, meet_link}. */
+const APP_BASE          = 'https://waly-conejeros.bvil2a.easypanel.host';
+const WEBHOOK_BOOK      = APP_BASE + '/api/agenda-web';
+const WEBHOOK_AVAIL     = APP_BASE + '/api/agenda-web';
 const WEBHOOK_DEMO      = N8N_BASE + '/webhook/orion-demo-chat';
 
 /* ─── FAKE EMAIL DOMAINS ─── */
@@ -1886,6 +1890,18 @@ const AgendaFlow = (() => {
     try{
       const res=await fetch(WEBHOOK_BOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       const data=await res.json().catch(()=>({}));
+      // La agenda puede rechazar la reserva (hora recién ocupada, datos malos).
+      // Sin esto se mostraba "confirmado" aunque no se hubiera agendado nada.
+      if(!res.ok||data.ok===false){
+        if(res.status===409&&selDate){
+          if(!busyCache[selDate])busyCache[selDate]=[];
+          if(!busyCache[selDate].includes(selSlot))busyCache[selDate].push(selSlot);
+          selSlot=null;renderSlots(selDate);updateConfirmBtn();
+        }
+        if(btn){btn.disabled=false;btn.innerHTML=originalHtml||'Confirmar Reunión';}
+        alert(data.error||'No se pudo agendar esa hora. Elige otra o escríbenos por WhatsApp.');
+        return;
+      }
       if(!busyCache[selDate])busyCache[selDate]=[];
       busyCache[selDate].push(selSlot);
       // Notificar al calendario inline para que actualice slots ocupados
@@ -1893,9 +1909,11 @@ const AgendaFlow = (() => {
       let detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot}<br><strong>Plan:</strong> ${currentPlan}<br><br>`;
       if(data.meet_link||data.meetLink||data.link){
         const link=data.meet_link||data.meetLink||data.link;
-        detail+=`<strong>Google Meet:</strong> <a href="${link}" target="_blank" rel="noopener" class="agcal-meet-link">${link}</a><br><br>`;
+        detail+=`<strong>Videollamada:</strong> <a href="${link}" target="_blank" rel="noopener" class="agcal-meet-link">${link}</a><br><br>`;
+        detail+='Te acabamos de enviar la confirmación con este enlace por WhatsApp. 🎁';
+      } else {
+        detail+='Te acabamos de enviar la confirmación por WhatsApp. Ahí nos ponemos de acuerdo para la videollamada. 🎁';
       }
-      detail+='Recibirás el link de Google Meet por WhatsApp minutos antes de tu reunión. 🎁';
       document.getElementById('agSuccessDetail').innerHTML=detail;
       if(window.oTrack)oTrack('Schedule',{content_name:currentPlan});
       showStep('final');
