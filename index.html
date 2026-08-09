@@ -184,7 +184,8 @@
     .nav-links a:hover{color:var(--text-primary);background:rgba(255,255,255,0.07)}
     .nav-actions{display:flex;gap:10px;align-items:center}
     @media (max-width:968px){.nav-links{display:none}}
-    @media (max-width:640px){nav{padding:16px}.nav-actions{gap:6px}}
+    @media (max-width:640px){nav{padding:12px}.nav-inner{padding:10px 12px 10px 15px;gap:8px}.logo{font-size:1.12rem;gap:7px}.logo-mark{width:21px;height:21px}.nav-actions{gap:6px}.nav-btn-largo{display:none}.nav-actions .btn{padding:9px 15px;font-size:.82rem}}
+    @media (max-width:360px){.logo{font-size:1.02rem}.logo-mark{width:19px;height:19px}.nav-actions .btn{padding:8px 12px;font-size:.78rem}}
 
     /* ── BUTTONS ── */
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;border-radius:var(--r-md);font-family:var(--font);font-size:.92rem;font-weight:700;cursor:pointer;border:none;text-decoration:none;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;white-space:nowrap;letter-spacing:-.01em;position:relative}
@@ -226,8 +227,8 @@
     .hero-cta{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;animation:fadeInUp .7s ease .65s both}
     @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
-    @media (max-width:768px){.hero-section{padding:90px 0 60px;min-height:auto}.hero-content{padding:0 20px}.hero-cta{gap:14px}.hero-badge{font-size:.7rem;padding:7px 14px}}
-    @media (max-width:480px){.hero-section{padding:80px 0 48px}.hero-title{font-size:clamp(2.25rem,9.6vw,3.5rem);letter-spacing:-.025em;line-height:1.12}.hero-subtitle{font-size:1.04rem;margin-bottom:32px}.hero-content{padding:0 16px}}
+    @media (max-width:768px){.hero-section{padding:44px 0 60px;min-height:auto}.hero-content{padding:0 20px}.hero-cta{gap:14px}.hero-badge{font-size:.7rem;padding:7px 14px;margin-bottom:24px}}
+    @media (max-width:480px){.hero-section{padding:26px 0 44px}.hero-title{font-size:clamp(2.25rem,9.6vw,3.5rem);letter-spacing:-.025em;line-height:1.12}.hero-subtitle{font-size:1.04rem;margin-bottom:32px}.hero-content{padding:0 16px;width:100%;min-width:0}}
 
     /* ── AGENDA INLINE — CALENDARIO GRANDE AZUL ── */
     .aginline-section{position:relative;padding:90px 24px 100px;background:linear-gradient(180deg,#ffffff 0%,#eff6ff 100%);overflow:hidden;}
@@ -508,7 +509,7 @@
     .social-float-btn::after{content:'';position:absolute;inset:-3px;border-radius:50%;pointer-events:none;animation:floatRing 3.5s ease-out infinite;}
     .whatsapp-float::after{border:2px solid rgba(37,211,102,0.55);animation-delay:3s;}
     @keyframes floatRing{0%{transform:scale(1);opacity:0.55;}70%{transform:scale(1.48);opacity:0;}100%{transform:scale(1.48);opacity:0;}}
-    @media (max-width:640px){.whatsapp-float{bottom:20px;right:20px;width:52px;height:52px;}.whatsapp-float svg{width:24px;height:24px;}}
+    @media (max-width:640px){.whatsapp-float{bottom:16px;right:16px;width:46px;height:46px;}.whatsapp-float svg{width:22px;height:22px;}}
 
     /* ── FOOTER ── */
     footer{border-top:1px solid rgba(255,255,255,0.07);padding:56px 0 120px;background:var(--surface)}
@@ -537,6 +538,8 @@
     .modal-input-field::placeholder{color:var(--text-muted)}
     .modal-input-field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(6,182,212,0.13)}
     .modal-input-field.field-error{border-color:var(--danger)!important;background:rgba(239,68,68,0.05)!important;}
+    /* En móvil el texto de ayuda de los campos no cabía y salía cortado (nunca bajar de 16px reales: iOS hace zoom solo) */
+    @media (max-width:480px){.modal-input-field{font-size:.9rem;padding:12px 14px}}
     .modal-nav{display:flex;gap:12px;margin-top:8px}
     .modal-back{background:none;border:1px solid rgba(255,255,255,0.09);color:var(--text-muted);padding:12px 20px;border-radius:var(--r-sm);cursor:pointer;font-family:var(--font);font-size:.9rem;transition:color .2s,border-color .2s;flex-shrink:0}
     .modal-back:hover{color:var(--text-primary);border-color:rgba(255,255,255,0.22)}
@@ -885,7 +888,7 @@
       <a href="#faq">FAQ</a>
     </div>
     <div class="nav-actions">
-      <button class="btn btn-solar" onclick="AgendaFlow.open('General')">📅 Agendar Reunión</button>
+      <button class="btn btn-solar" onclick="AgendaFlow.open('General')">📅 Agendar<span class="nav-btn-largo"> Reunión</span></button>
     </div>
   </div>
 </nav>
@@ -1390,11 +1393,11 @@
           <div class="field-error-msg" id="errEmail">Por favor ingresa un correo válido.</div>
         </div>
         <div style="position:relative;">
-          <input class="modal-input-field" id="agEmpresa" type="text" placeholder="🏢 Nombre de tu empresa o clínica" autocomplete="organization">
+          <input class="modal-input-field" id="agEmpresa" type="text" placeholder="🏢 Tu clínica o empresa" autocomplete="organization">
           <div class="field-error-msg" id="errEmpresa">Por favor ingresa el nombre de tu empresa.</div>
         </div>
         <div style="position:relative;">
-          <input class="modal-input-field" id="agTelefono" type="tel" placeholder="💬 WhatsApp (+56 9 1234 5678)" autocomplete="tel">
+          <input class="modal-input-field" id="agTelefono" type="tel" placeholder="💬 WhatsApp +56 9 1234 5678" autocomplete="tel">
           <div class="field-error-msg" id="errTelefono">Por favor ingresa tu número de WhatsApp.</div>
         </div>
         <div style="margin-top:4px;">
