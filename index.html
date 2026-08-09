@@ -509,7 +509,9 @@
     .social-float-btn::after{content:'';position:absolute;inset:-3px;border-radius:50%;pointer-events:none;animation:floatRing 3.5s ease-out infinite;}
     .whatsapp-float::after{border:2px solid rgba(37,211,102,0.55);animation-delay:3s;}
     @keyframes floatRing{0%{transform:scale(1);opacity:0.55;}70%{transform:scale(1.48);opacity:0;}100%{transform:scale(1.48);opacity:0;}}
-    @media (max-width:640px){.whatsapp-float{bottom:16px;right:16px;width:46px;height:46px;}.whatsapp-float svg{width:22px;height:22px;}}
+    /* En el teléfono el botón de WhatsApp va MÁS GRANDE que en el computador: es
+       el atajo que más se usa desde el móvil (pedido de Lukas, 08-08-2026). */
+    @media (max-width:640px){.whatsapp-float{bottom:18px;right:18px;width:64px;height:64px;}.whatsapp-float svg{width:32px;height:32px;}}
 
     /* ── FOOTER ── */
     footer{border-top:1px solid rgba(255,255,255,0.07);padding:56px 0 120px;background:var(--surface)}
@@ -591,6 +593,8 @@
     .agcal-success-icon{font-size:2.8rem;margin-bottom:14px;}
     .agcal-success-title{font-size:1.2rem;font-weight:900;letter-spacing:-.04em;color:var(--text-primary);margin-bottom:8px;}
     .agcal-success-detail{font-size:.88rem;color:var(--text-secondary);line-height:1.65;margin-bottom:24px;}
+    /* Cuando la hora quedó agendada pero el WhatsApp no salió: se avisa, no se esconde. */
+    .agcal-aviso-malo{display:block;text-align:left;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.4);border-radius:12px;padding:14px 16px;color:#b45309;font-size:.86rem;line-height:1.6;}
     .agcal-meet-link{color:var(--cyan-bright);text-decoration:underline;font-weight:600;word-break:break-all;}
 
     /* ── LEAD GATE ── */
@@ -1372,9 +1376,9 @@
     <div class="modal-progress" id="agendaProgress"></div>
     <div class="modal-body">
 
-      <!-- STEP 1: Datos -->
-      <div class="modal-step active" id="agStep1">
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;" id="agStep1Label">Paso 1 de 2 — Tus datos</div>
+      <!-- DATOS (desde el 08-08-2026 va DESPUÉS de elegir la fecha; el id se mantiene) -->
+      <div class="modal-step" id="agStep1">
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;" id="agStep1Label">Paso 2 de 2 — Tus datos</div>
         <div style="font-size:1.1rem;font-weight:800;letter-spacing:-.04em;color:var(--text-primary);margin-bottom:20px;line-height:1.3;" id="agStep1Title">¿A quién le agendamos la reunión?</div>
         <div class="preset-banner" id="presetBanner" style="display:none;">
           <i class="fas fa-calendar-check preset-banner-icon"></i>
@@ -1389,10 +1393,6 @@
           <div class="field-error-msg" id="errNombre">Por favor ingresa tu nombre.</div>
         </div>
         <div style="position:relative;">
-          <input class="modal-input-field" id="agEmail" type="email" placeholder="✉️ Correo empresarial" autocomplete="email">
-          <div class="field-error-msg" id="errEmail">Por favor ingresa un correo válido.</div>
-        </div>
-        <div style="position:relative;">
           <input class="modal-input-field" id="agEmpresa" type="text" placeholder="🏢 Tu clínica o empresa" autocomplete="organization">
           <div class="field-error-msg" id="errEmpresa">Por favor ingresa el nombre de tu empresa.</div>
         </div>
@@ -1401,14 +1401,17 @@
           <div class="field-error-msg" id="errTelefono">Por favor ingresa tu número de WhatsApp.</div>
         </div>
         <div style="margin-top:4px;">
-          <button class="btn btn-primary btn-full btn-lg" id="agStep1Btn" onclick="AgendaFlow.nextStep()">Continuar a elegir fecha <i class="fas fa-arrow-right"></i></button>
+          <button class="btn btn-primary btn-full btn-lg" id="agStep1Btn" onclick="AgendaFlow.nextStep()">Confirmar Reunión <i class="fas fa-calendar-check"></i></button>
+        </div>
+        <div style="margin-top:10px;" id="agVolverFecha">
+          <button class="modal-back btn-full" onclick="AgendaFlow.prevStep()"><i class="fas fa-arrow-left"></i> Volver a la fecha</button>
         </div>
         <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:12px;">🔒 Tus datos son privados y no se compartirán con terceros.</p>
       </div>
 
-      <!-- STEP 2: Calendar -->
-      <div class="modal-step" id="agStep2">
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Paso 2 de 2 — Fecha y horario</div>
+      <!-- CALENDARIO (es el PRIMER paso desde el 08-08-2026; el id se mantiene) -->
+      <div class="modal-step active" id="agStep2">
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Paso 1 de 2 — Fecha y horario</div>
         <div style="font-size:1.1rem;font-weight:800;letter-spacing:-.04em;color:var(--text-primary);margin-bottom:16px;line-height:1.3;">Selecciona cuándo nos reunimos</div>
         <div class="agcal-tz-label" id="agcalTZ">🌐 Cargando zona horaria…</div>
         <div class="agcal-wrap">
@@ -1427,12 +1430,9 @@
             </div>
           </div>
         </div>
-        <button class="agcal-confirm-btn" id="agcalConfirmBtn" disabled onclick="AgendaFlow.confirm()">
-          <i class="fas fa-calendar-check"></i> Confirmar Reunión
+        <button class="agcal-confirm-btn" id="agcalConfirmBtn" disabled onclick="AgendaFlow.irADatos()">
+          Continuar con mis datos <i class="fas fa-arrow-right"></i>
         </button>
-        <div style="margin-top:10px;">
-          <button class="modal-back btn-full" onclick="AgendaFlow.prevStep()"><i class="fas fa-arrow-left"></i> Volver a mis datos</button>
-        </div>
       </div>
 
       <!-- STEP 3: Success -->
@@ -1662,11 +1662,29 @@ const AgendaFlow = (() => {
 
   function toDateStr(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return`${y}-${m}-${dd}`;}
 
+  // Desde el 08-08-2026 el orden es: PRIMERO la fecha, DESPUÉS los datos.
+  // Los ids del HTML se mantienen (agStep1 = datos, agStep2 = calendario) para no
+  // tocar el resto de la página; `pasoVisual` es el que cuenta para los puntitos.
+  let pasoVisual = 1;
+
   function updateProgress(){
     if(!progEl)return;
     progEl.innerHTML='';
     const total = presetMode ? 1 : 2;
-    for(let i=1;i<=total;i++){const d=document.createElement('div');d.className='progress-dot'+(i<=agStep?' done':'');progEl.appendChild(d);}
+    for(let i=1;i<=total;i++){const d=document.createElement('div');d.className='progress-dot'+(i<=pasoVisual?' done':'');progEl.appendChild(d);}
+  }
+
+  function irAFecha(){
+    pasoVisual=1;
+    showStep(2);
+    initCal();
+  }
+
+  function irADatos(){
+    if(!selDate||!selSlot) return;   // no se llega a los datos sin hora elegida
+    pasoVisual=2;
+    showStep(1);
+    updateStep1Labels();
   }
 
   function showStep(n){
@@ -1771,12 +1789,22 @@ const AgendaFlow = (() => {
   }
 
   function clearErrors(){
-    ['agNombre','agEmail','agEmpresa','agTelefono'].forEach(id=>{
-      document.getElementById(id).classList.remove('field-error');
+    ['agNombre','agEmpresa','agTelefono'].forEach(id=>{
+      const el=document.getElementById(id);if(el)el.classList.remove('field-error');
     });
-    ['errNombre','errEmail','errEmpresa','errTelefono'].forEach(id=>{
+    ['errNombre','errEmpresa','errTelefono'].forEach(id=>{
       const el=document.getElementById(id);if(el)el.classList.remove('show');
     });
+  }
+
+  /**
+   * ¿Es un WhatsApp chileno de verdad? Se pide estricto porque es el ÚNICO
+   * contacto: si falta un dígito, la confirmación se manda al vacío y nadie se
+   * entera (el mensaje se encola y sale después). Misma regla que el servidor.
+   */
+  function telefonoChilenoOk(bruto){
+    const n=(bruto||'').replace(/[^\d]/g,'');
+    return /^9\d{8}$/.test(n)||/^569\d{8}$/.test(n);
   }
   function showFieldError(fieldId,msgId,msg){
     const f=document.getElementById(fieldId);
@@ -1789,34 +1817,42 @@ const AgendaFlow = (() => {
     clearErrors();
     let ok=true;
     const nombre=document.getElementById('agNombre').value.trim();
-    const email=document.getElementById('agEmail').value.trim();
     const empresa=document.getElementById('agEmpresa').value.trim();
     const tel=document.getElementById('agTelefono').value.trim();
     if(!nombre){showFieldError('agNombre','errNombre','Por favor ingresa tu nombre.');ok=false;}
-    if(!email){showFieldError('agEmail','errEmail','Por favor ingresa tu correo.');ok=false;}
-    else{const v=isValidEmail(email);if(!v.ok){showFieldError('agEmail','errEmail',v.msg);ok=false;}}
-    if(!empresa){showFieldError('agEmpresa','errEmpresa','Por favor ingresa el nombre de tu empresa.');ok=false;}
+    if(!empresa){showFieldError('agEmpresa','errEmpresa','Por favor escribe el nombre de tu clínica.');ok=false;}
     if(!tel){showFieldError('agTelefono','errTelefono','Por favor ingresa tu WhatsApp.');ok=false;}
+    else if(!telefonoChilenoOk(tel)){
+      showFieldError('agTelefono','errTelefono','Ese número no parece un WhatsApp chileno. Escríbelo así: +56 9 1234 5678');
+      ok=false;
+    }
     return ok;
   }
 
   function open(plan, presetDate, presetSlot){
     currentPlan=plan||'General'; agStep=1;
     busyCache={};loadingCal=false;
+    planEl.textContent='Agendar Reunión · '+currentPlan;
+    clearErrors();
+    const volver=document.getElementById('agVolverFecha');
     if(presetDate && presetSlot){
+      // Vienen del calendario grande de la página: ya eligieron día y hora.
       selDate = presetDate;
       selSlot = presetSlot;
       presetMode = true;
       showPresetBanner();
+      if(volver) volver.style.display='none';
+      pasoVisual=1;
+      updateStep1Labels();
+      showStep(1);
     } else {
       selDate=null;selSlot=null;
       presetMode = false;
       hidePresetBanner();
+      if(volver) volver.style.display='';
+      updateStep1Labels();
+      irAFecha();
     }
-    planEl.textContent='Agendar Reunión · '+currentPlan;
-    clearErrors();
-    updateStep1Labels();
-    showStep(1);
     overlay.classList.add('open');
     document.body.style.overflow='hidden';
   }
@@ -1845,45 +1881,39 @@ const AgendaFlow = (() => {
     if(presetMode){
       if(lbl) lbl.textContent = 'Paso 1 de 1 — Confirmar tus datos';
       if(ttl) ttl.textContent = 'Confirma tus datos para reservar';
-      if(btn) btn.innerHTML = 'Confirmar Reunión <i class="fas fa-calendar-check"></i>';
     } else {
-      if(lbl) lbl.textContent = 'Paso 1 de 2 — Tus datos';
+      if(lbl) lbl.textContent = 'Paso 2 de 2 — Tus datos';
       if(ttl) ttl.textContent = '¿A quién le agendamos la reunión?';
-      if(btn) btn.innerHTML = 'Continuar a elegir fecha <i class="fas fa-arrow-right"></i>';
     }
+    // El botón es siempre el último paso: los datos van al final.
+    if(btn) btn.innerHTML = 'Confirmar Reunión <i class="fas fa-calendar-check"></i>';
   }
 
   function editSelection(){
     presetMode = false;
     hidePresetBanner();
+    const volver=document.getElementById('agVolverFecha');
+    if(volver) volver.style.display='';
     updateStep1Labels();
-    agStep = 2;
-    showStep(2);
-    initCal();
+    irAFecha();
   }
 
+  // Los datos son el ÚLTIMO paso, así que este botón ya confirma la reserva.
   function nextStep(){
     if(!validateStep1())return;
-    if(presetMode){
-      // Saltar al confirm directamente
-      confirm();
-    } else {
-      agStep=2;
-      showStep(2);
-      initCal();
-    }
+    confirm();
   }
 
-  function prevStep(){agStep=1;showStep(1);updateStep1Labels();}
+  function prevStep(){ irAFecha(); }
 
   async function confirm(){
     if(!selDate||!selSlot)return;
-    // Botón a deshabilitar depende del modo
-    const btn = presetMode ? document.getElementById('agStep1Btn') : document.getElementById('agcalConfirmBtn');
+    // Los datos son siempre el último paso, así que el botón es este.
+    const btn = document.getElementById('agStep1Btn');
     const originalHtml = btn ? btn.innerHTML : '';
     if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Agendando…';}
     const nombre=document.getElementById('agNombre').value.trim();
-    const email=document.getElementById('agEmail').value.trim();
+    const email='';   // ya no se pide correo (08-08-2026)
     const empresa=document.getElementById('agEmpresa').value.trim();
     const tel=document.getElementById('agTelefono').value.trim();
     const slotObj=SLOTS.find(s=>s.start===selSlot);
@@ -1917,6 +1947,13 @@ const AgendaFlow = (() => {
       } else {
         detail+='Te acabamos de enviar la confirmación por WhatsApp. Te llamamos por ahí a la hora acordada. 🎁';
       }
+      // El servidor avisa cuando la hora quedó guardada pero el WhatsApp no salió.
+      // Sin esto la persona se queda esperando un mensaje que nunca llega.
+      if(data.aviso_fallido){
+        detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot}<br><strong>Plan:</strong> ${currentPlan}<br><br>`
+          +`<span class="agcal-aviso-malo">⚠️ Tu hora quedó agendada, pero <strong>no pudimos enviarte el mensaje de WhatsApp</strong>. `
+          +`Revisa que tu número esté bien escrito: <strong>${tel}</strong>. Si está malo, escríbenos por WhatsApp y lo corregimos.</span>`;
+      }
       document.getElementById('agSuccessDetail').innerHTML=detail;
       if(window.oTrack)oTrack('Schedule',{content_name:currentPlan});
       showStep('final');
@@ -1935,7 +1972,7 @@ const AgendaFlow = (() => {
     close();
   }
 
-  return {open,close,nextStep,prevStep,confirm,closeAndPromo,_selectDate,_selectSlot,editSelection};
+  return {open,close,nextStep,prevStep,confirm,closeAndPromo,_selectDate,_selectSlot,editSelection,irADatos,irAFecha};
 })();
 
 /* ─── AGENDA INLINE — CALENDARIO GRANDE AZUL ─── */
