@@ -56,7 +56,34 @@ tenía `cb66211` y `GET /api/agenda-web?date=…` respondía 200 con los 6 horar
 **Lección:** el estado real se comprueba con **una llamada al servidor y un `git log origin/main`**, nunca
 con lo que dice la nota de la sesión anterior. Cuesta 20 segundos y evita rehacer trabajo hecho.
 
-**Prueba de punta a punta que sí se corrió** (08-08, 22:00): con la web publicada y en un móvil simulado de
+**Prueba de punta a punta que sí se corrió** (08-08, 22:00, ver también #3): con la web publicada y en un móvil simulado de
 390 px se reservó de verdad el martes 11 a las 18:00 → pantalla «¡Reunión Agendada!» y el servidor pasó a
 devolver `busy:["18:00"]` para ese día. La cadena web → app → agenda funciona en producción.
 ⚠️ Esa reunión es de PRUEBA y hay que borrarla, o el martes a las 17:30 saldrá un recordatorio real.
+
+---
+
+## #3 — 08-08-2026 · «Que avise si el WhatsApp no se pudo enviar»: no se puede saber en el momento
+
+**Qué pidió Lukas:** que si la persona se equivoca de número, la pantalla diga «no se pudo enviar el
+mensaje, verifica tu número».
+
+**Lo que se encontró al ir a hacerlo:** el servidor **no manda** el WhatsApp, lo **encola**
+(`enqueueOutbox` en `src/app/api/agenda-web/route.ts` de `whatsapp-conejeros`). El envío real lo hace
+después el bot. Por eso `aviso_fallido` solo se enciende si falla el encolado — que casi nunca falla —
+y **un número que no existe en WhatsApp NO se detecta mientras la persona está en la página**.
+
+**Lo que sí se hizo, que cubre el 95 % de los casos reales:**
+1. **Validar el número antes de agendar**, en la web y en el servidor, como móvil chileno de verdad
+   (`9XXXXXXXX` o `569XXXXXXXX`). Antes bastaban 8 dígitos cualesquiera. Los errores de tipeo —que son
+   casi todos los casos— se paran ahí, con un mensaje que enseña el formato.
+2. **Mostrar el aviso ámbar cuando `aviso_fallido` sí llega**, con el número que escribió.
+
+**Lo que queda sin cubrir y hay que decirlo en voz alta:** un número bien escrito que no tenga WhatsApp.
+Para eso habría que preguntarle a WhatsApp si el número existe (`onWhatsApp` de Baileys) o avisarle a
+Lukas cuando el envío falle en la cola. **Decidir con Lukas antes de construirlo.**
+
+**La otra lección, de orden:** al quitar el correo, la web nueva manda `email: ""` y el servidor viejo lo
+exigía ⇒ publicar la web antes que la app habría roto **todas** las reservas con «Necesito un correo
+real». Cuando el cambio toca los dos lados, **primero se despliega la app y después se publica la web** —
+es la misma regla que ya estaba escrita para el 07-08, y sigue valiendo.
