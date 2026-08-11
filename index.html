@@ -32,17 +32,24 @@
     "offers": [
       {
         "@type": "Offer",
-        "name": "Business",
+        "name": "Plan Pro",
         "price": "240000",
         "priceCurrency": "CLP",
         "description": "Chatbot IA + agendamiento + 1 canal social"
       },
       {
         "@type": "Offer",
-        "name": "Pro AI",
+        "name": "Business Pro",
         "price": "372000",
         "priceCurrency": "CLP",
-        "description": "Business + CRM + métricas ROI + todos los canales"
+        "description": "Plan Pro + recordatorios + métricas + todos los canales"
+      },
+      {
+        "@type": "Offer",
+        "name": "Secretaria Business Pro",
+        "price": "510000",
+        "priceCurrency": "CLP",
+        "description": "Business Pro + secretaria con IA que contesta y hace llamadas telefónicas"
       }
     ],
     "provider": {
@@ -435,6 +442,22 @@
     .plan-card.audit{border-color:rgba(255,213,128,0.4);background:linear-gradient(145deg,rgba(255,213,128,0.06) 0%,rgba(255,170,42,0.03) 50%,rgba(10,15,30,0.85) 100%);}
     .plan-card.audit::before{background:linear-gradient(90deg,transparent,var(--solar),var(--solar-deep),transparent);opacity:1;height:3px}
     .plan-card.audit:hover{border-color:rgba(255,213,128,0.65);box-shadow:0 10px 15px -3px rgba(0,0,0,0.05),0 4px 6px -2px rgba(0,0,0,0.025)}
+    /* ── Plan 3: Secretaria Business Pro (llamadas con IA) ── */
+    .plan-card.voice{border-color:rgba(255,213,128,0.4);background:linear-gradient(145deg,rgba(255,213,128,0.07) 0%,rgba(255,170,42,0.03) 50%,rgba(10,15,30,0.85) 100%)}
+    .plan-card.voice::before{background:linear-gradient(90deg,transparent,var(--solar),var(--solar-deep),transparent);opacity:1;height:3px}
+    .plan-card.voice:hover{border-color:rgba(255,213,128,0.65)}
+    .badge-voice{background:rgba(255,213,128,0.13);color:var(--solar-bright);border:1px solid rgba(255,213,128,0.35)}
+    .new-badge{position:absolute;top:-1px;right:24px;background:linear-gradient(135deg,var(--solar-bright),var(--solar-deep));color:#2a1a00;font-size:.64rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:7px 16px;border-radius:0 0 14px 14px;box-shadow:0 8px 24px rgba(255,170,42,0.45)}
+    .plan-eta{display:flex;align-items:center;gap:8px;padding:12px 28px;font-size:.78rem;font-weight:600;color:var(--text-secondary);background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.05)}
+    .plan-eta i{color:var(--cyan-bright)}
+    .plan-card.voice .plan-eta i{color:var(--solar-bright)}
+    .plan-card.voice .plan-name{font-size:1.58rem;letter-spacing:-.05em}
+    @media (min-width:1025px){.plan-header{min-height:190px;display:flex;flex-direction:column;justify-content:flex-start}}
+    .voice-bag{padding:14px 28px 0}
+    .voice-bag-row{display:flex;align-items:flex-start;gap:9px;font-size:.84rem;line-height:1.45;color:var(--text-secondary);margin-bottom:7px}
+    .voice-bag-row i{margin-top:3px;flex-shrink:0}
+    .voice-bag-row strong{color:var(--text-primary);font-weight:800}
+    .voice-bag-row i{color:var(--solar-bright);width:16px;text-align:center}
     /* ── Boton "Mas info" — solo mobile, colapsa la info del plan ── */
     .plan-more-btn{display:none}
     @keyframes moreBtnPulse{0%,100%{box-shadow:0 4px 16px rgba(6,182,212,0.45)}50%{box-shadow:0 6px 26px rgba(6,182,212,0.85),0 0 18px rgba(34,211,238,0.55)}}
@@ -702,6 +725,14 @@
     .plan-card.featured:hover{box-shadow:0 10px 15px -3px rgba(0,0,0,0.05),0 4px 6px -2px rgba(0,0,0,0.025);}
     .plan-card.audit{background:linear-gradient(145deg,rgba(255,213,128,0.08) 0%,rgba(255,170,42,0.04) 50%,#ffffff 100%);border-color:rgba(255,170,42,0.32);}
     .plan-card.audit:hover{border-color:rgba(255,170,42,0.55);}
+    .plan-card.voice{background:linear-gradient(145deg,rgba(255,213,128,0.09) 0%,rgba(255,170,42,0.04) 50%,#ffffff 100%);border-color:rgba(255,170,42,0.32);}
+    .plan-card.voice:hover{border-color:rgba(255,170,42,0.55);}
+    .badge-voice{background:rgba(255,170,42,0.12);color:#b45309;border-color:rgba(255,170,42,0.4);}
+    .plan-eta{color:#475569;background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.05);}
+    .plan-card.voice .plan-eta i{color:#d97706;}
+    .voice-bag-row{color:#475569;}
+    .voice-bag-row strong{color:#0f172a;}
+    .voice-bag-row i{color:#d97706;}
     .plan-name{color:#0f172a;}
     .plan-tagline{color:#475569;}
     .investment-block{background:rgba(0,0,0,0.025);border-color:rgba(0,0,0,0.05);}
@@ -1048,19 +1079,20 @@
     <div class="pricing-grid">
 
 
-      <!-- BUSINESS -->
+      <!-- PLAN PRO -->
       <div class="plan-card featured reveal">
         <div class="plan-header">
           <div class="featured-badge">MÁS ELEGIDO</div>
-          <span class="plan-badge badge-business">BUSINESS</span>
-          <h3 class="plan-name">Business</h3>
+          <span class="plan-badge badge-business">PLAN PRO</span>
+          <h3 class="plan-name">Plan Pro</h3>
           <p class="plan-tagline">Todo lo que necesitas para automatizar tu clínica</p>
         </div>
         <div class="investment-block">
           <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$346.000 <span class="inv-unit">CLP</span><span class="inv-uf">≈ 8,5 UF</span></div></div>
           <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$240.000 <span class="inv-unit">/mes</span><span class="inv-uf">≈ 6 UF/mes</span></div></div>
         </div>
-        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Business')">📅 Agendar Reunión <i class="fas fa-arrow-right"></i></button></div>
+        <div class="plan-eta"><i class="fas fa-rocket"></i> Instalado y funcionando en 5 a 7 días hábiles</div>
+        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Plan Pro')">📅 Agendar Reunión <i class="fas fa-arrow-right"></i></button></div>
         <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
         <div class="feature-block">
           <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
@@ -1085,16 +1117,17 @@
         <div class="feature-block"><div class="fb-title"><i class="fas fa-headset"></i> Soporte</div><p style="font-size:.86rem;color:var(--text-secondary);">Soporte prioritario con tiempo de respuesta garantizado.</p></div>
       </div>
 
-      <!-- PRO AI -->
+      <!-- BUSINESS PRO -->
       <div class="plan-card reveal">
-        <div class="plan-header"><span class="plan-badge badge-proai">PRO AI</span><h3 class="plan-name">Pro AI</h3>
+        <div class="plan-header"><span class="plan-badge badge-proai">BUSINESS PRO</span><h3 class="plan-name">Business Pro</h3>
           <p class="plan-tagline">Automatización avanzada con métricas en tiempo real</p>
         </div>
         <div class="investment-block">
           <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$530.000 <span class="inv-unit">CLP</span><span class="inv-uf">≈ 13 UF</span></div></div>
           <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$372.000 <span class="inv-unit">/mes</span><span class="inv-uf">≈ 9,2 UF/mes</span></div></div>
         </div>
-        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Pro AI')">📅 Agendar Reunión</button></div>
+        <div class="plan-eta"><i class="fas fa-rocket"></i> Instalado y funcionando en 7 a 10 días hábiles</div>
+        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Business Pro')">📅 Agendar Reunión</button></div>
         <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
         <div class="feature-block">
           <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
@@ -1107,9 +1140,9 @@
         <div class="feature-block">
           <div class="fb-title"><i class="fas fa-star"></i> Funciones</div>
           <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Todo lo del plan Business</li>
+            <li><i class="fas fa-check-circle"></i> Todo lo del Plan Pro</li>
             <li><i class="fas fa-check-circle"></i> Recordatorios de 24 y 48 horas de cada agendamiento</li>
-            <li><i class="fas fa-check-circle"></i> Activación de pacientes inactivos (3 a 6 meses)</li>
+            <li><i class="fas fa-check-circle"></i> Recordatorio 3 horas antes por WhatsApp, para que nadie falte</li>
             <li><i class="fas fa-check-circle"></i> IA multimodal: interpreta fotos y audios de los pacientes</li>
             <li><i class="fas fa-check-circle"></i> Fidelización después de la venta (Google Maps, Instagram)</li>
             <li><i class="fas fa-check-circle"></i> Algoritmo de Retargeting de Leads</li>
@@ -1124,6 +1157,58 @@
             <li class="metric"><i class="fas fa-chart-bar"></i> Cancelaciones y reagendamientos gestionados por el bot</li>
           </ul>
         </div>
+      </div>
+
+      <!-- SECRETARIA BUSINESS PRO -->
+      <div class="plan-card voice reveal">
+        <div class="plan-header">
+          <div class="new-badge">NUEVO</div>
+          <span class="plan-badge badge-voice">SECRETARIA</span>
+          <h3 class="plan-name">Secretaria Business Pro</h3>
+          <p class="plan-tagline">Contesta el teléfono, llama y agenda. Nunca duerme.</p>
+        </div>
+        <div class="investment-block">
+          <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$690.000 <span class="inv-unit">CLP</span><span class="inv-uf">≈ 17 UF</span></div></div>
+          <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight-solar">$510.000 <span class="inv-unit">/mes</span><span class="inv-uf">≈ 12,5 UF/mes</span></div></div>
+        </div>
+        <div class="voice-bag">
+          <div class="voice-bag-row"><i class="fas fa-phone-volume"></i> <span><strong>800 minutos</strong> de llamada al mes incluidos</span></div>
+          <div class="voice-bag-row"><i class="fab fa-whatsapp"></i> <span><strong>800 conversaciones</strong> de mensajería al mes incluidas</span></div>
+        </div>
+        <div class="plan-eta"><i class="fas fa-rocket"></i> Instalado y funcionando en 13 a 15 días hábiles</div>
+        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Secretaria Business Pro')">📅 Agendar Reunión</button></div>
+        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
+          <div class="channels-row">
+            <span class="channel-tag"><i class="fas fa-phone"></i> Llamadas</span>
+            <span class="channel-tag"><i class="fab fa-whatsapp"></i> WhatsApp</span>
+            <span class="channel-tag"><i class="fab fa-instagram"></i> Instagram</span>
+            <span class="channel-tag"><i class="fab fa-facebook-messenger"></i> Messenger</span>
+          </div>
+        </div>
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-star"></i> Funciones</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Todo lo del plan Business Pro</li>
+            <li><i class="fas fa-check-circle"></i> Contesta las llamadas que hoy se pierden (fuera de horario, ocupado o cuando nadie alcanza) y agenda en el momento</li>
+            <li><i class="fas fa-check-circle"></i> Llama a los pacientes que cancelaron ese día para rellenar el hueco</li>
+            <li><i class="fas fa-check-circle"></i> Llama a los interesados que escribieron y nunca agendaron</li>
+            <li><i class="fas fa-check-circle"></i> Recordatorio 3 horas antes por llamada a quien no confirmó</li>
+            <li><i class="fas fa-check-circle"></i> Reactivación por voz de pacientes inactivos (3 a 6 meses)</li>
+            <li><i class="fas fa-check-circle"></i> Panel para llamar tú mismo a cancelados e interesados con un clic</li>
+          </ul>
+        </div>
+        <div class="feature-block">
+          <div class="fb-title"><i class="fas fa-chart-line"></i> Métricas</div>
+          <ul class="feature-list">
+            <li class="metric"><i class="fas fa-chart-bar"></i> Llamadas rescatadas y citas que salieron de ellas</li>
+            <li class="metric"><i class="fas fa-chart-bar"></i> Tasa de ausentismo antes y después</li>
+            <li class="metric"><i class="fas fa-chart-bar"></i> Leads de Meta que terminaron agendados</li>
+            <li class="metric"><i class="fas fa-chart-bar"></i> Minutos y conversaciones consumidos del mes</li>
+          </ul>
+        </div>
+        <div class="feature-block"><div class="fb-title"><i class="fas fa-shield-halved"></i> Transparencia</div><p style="font-size:.86rem;color:var(--text-secondary);">En cada llamada la asistente se presenta como asistente virtual de la clínica y avisa que la conversación queda grabada, tal como exige la ley de protección de datos.</p></div>
       </div>
 
     </div>
@@ -1270,7 +1355,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Cuánto demora la implementación?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">Los planes Business y Pro AI incluyen 30 días de marcha blanca, donde dejamos el sistema afinado y funcionando en tu clínica real.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">El Plan Pro queda instalado y funcionando en 5 a 7 días hábiles, el Business Pro en 7 a 10 y la Secretaria Business Pro en 13 a 15. Todos incluyen 30 días de marcha blanca, donde dejamos el sistema afinado y funcionando en tu clínica real.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Necesito conocimientos técnicos?</span><i class="fas fa-chevron-down"></i></button>
