@@ -1,0 +1,111 @@
+# Waly.AI
+
+> Automatización con inteligencia artificial para clínicas dentales, médicas y estéticas en Chile.
+> Un asistente de IA que responde a los pacientes en WhatsApp, Instagram y Facebook las 24 horas,
+> agenda y cancela citas directamente en el software de gestión de la clínica, envía recordatorios
+> y hace seguimiento a los pacientes que no llegaron a agendar.
+
+Sitio: https://www.conejeros-solutions.cl/
+Idioma: español (Chile) · Zona de servicio: Chile
+Contacto: WhatsApp +56 9 9906 6071 · Instagram @lukasconejeros
+Primer paso: reunión de diagnóstico gratuita de 1 hora por videollamada, sin compromiso.
+
+## Qué problema resuelve
+
+- **Mensajes sin responder.** Un paciente escribe a las 9 de la noche o el fin de semana y nadie
+  contesta; para cuando la clínica responde, el paciente ya agendó en otra parte.
+- **Recepción saturada.** El equipo no da abasto entre el mostrador, WhatsApp, Instagram y las
+  llamadas: algo siempre queda colgado.
+- **Pacientes que no llegan.** Agendan y no aparecen. Sin recordatorios automáticos, cada paciente
+  que falta es una hora de trabajo perdida.
+
+## Qué hace el asistente
+
+- Responde conversaciones en WhatsApp, Instagram y Facebook Messenger, 24/7, con el contexto de la
+  clínica: precios, preguntas frecuentes, convenios y ubicación.
+- Entiende las fotos y los audios que manda el paciente y le responde (IA multimodal).
+- Agenda, cancela y reagenda citas de forma automática, sincronizado con el calendario de la clínica,
+  y confirma al paciente por WhatsApp.
+- Envía recordatorios 48, 24 y 3 horas antes de la cita.
+- Deriva a una persona del equipo cuando no sabe responder o cuando el paciente se molesta, y avisa.
+- Hace seguimiento a los interesados que escribieron y nunca agendaron.
+- Se enciende y se apaga desde una app simple (interfaz kill-switch).
+- Entrega métricas: pacientes agendados por el bot, conversaciones atendidas, conversaciones
+  resueltas solo por la IA, embudo por estado, tasa de ausentismo, y cuántos pacientes llegan por
+  Meta y cuántos por la página web.
+
+## Integraciones
+
+Se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas de
+Chile, entre ellos **Dentalink**, **Dentalsoft** y **Reservo**. En el diagnóstico gratuito se revisa
+el caso puntual de cada clínica y se confirma la integración.
+
+## Planes y precios
+
+Valores en pesos chilenos, no incluyen IVA.
+
+### Plan Pro — $346.000 de implementación + $244.000 al mes
+Chatbot de IA conversacional 24/7, IA multimodal (fotos y audios), agendamiento y cancelación
+automática, derivación automática, kill-switch, seguimiento a leads y métricas base.
+Canales: WhatsApp incluido + 1 canal social a elección.
+Instalado y funcionando en 5 a 7 días hábiles.
+
+### Business Pro — $530.000 de implementación + $313.000 al mes
+Todo lo del Plan Pro, más recordatorios de 48, 24 y 3 horas, pestaña de Llamadas en el panel (a
+quién llamar hoy), separación de pacientes que llegan por Meta y por la página web, fidelización
+posventa (Google Maps, Instagram) y algoritmo de retargeting de leads.
+Canales: WhatsApp, Instagram y Messenger.
+Instalado y funcionando en 7 a 10 días hábiles.
+
+### Secretaria Business Pro — $690.000 de implementación + $650.000 al mes
+Todo lo del Business Pro, más una secretaria con IA que contesta el teléfono y llama: atiende las
+llamadas que hoy se pierden y agenda en el momento, llama a los pacientes que cancelaron para
+rellenar el hueco, llama a los interesados que nunca agendaron, recuerda por llamada 3 horas antes
+a quien no confirmó y reactiva por voz a pacientes inactivos de 3 a 6 meses.
+Incluye 400 minutos de llamada y 800 conversaciones de mensajería al mes.
+Instalado y funcionando en 13 a 15 días hábiles.
+En cada llamada la asistente se presenta como asistente virtual de la clínica y avisa que la
+conversación queda grabada, tal como exige la ley de protección de datos.
+
+Todos los planes incluyen 30 días de marcha blanca para dejar el sistema afinado en la clínica real.
+
+## Clínicas que ya usan Waly
+
+- **Clínica Mónaco** — Carampangue 500, local 2, Valdivia, Región de Los Ríos. Odontología y
+  estética facial.
+- **Dental Anpalex** — Av. Los Pajaritos 1395, Maipú, Santiago. Odontología, más de 35 años de
+  trayectoria.
+- **Clínica Medifis** — 18 de Septiembre 611, Temuco, Región de La Araucanía. Centro médico
+  especializado en dolor.
+
+## Preguntas frecuentes
+
+**¿Se integra con el software que ya uso en mi clínica?**
+Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y
+estéticas. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración.
+
+**¿Cuánto demora la implementación?**
+El Plan Pro queda instalado y funcionando en 5 a 7 días hábiles, el Business Pro en 7 a 10 y la
+Secretaria Business Pro en 13 a 15. Todos incluyen 30 días de marcha blanca.
+
+**¿Necesito conocimientos técnicos?**
+No. Nosotros implementamos, conectamos y configuramos todo. Tú solo usas una app simple para
+encender o apagar el bot cuando quieras.
+
+**¿Qué pasa si el bot no sabe responder algo?**
+Deriva automáticamente la conversación a una persona de tu equipo y te avisa. Ningún paciente queda
+sin respuesta.
+
+**¿El bot agenda directo en mi calendario?**
+Sí. Agenda, cancela y reagenda citas de forma automática, sincronizado con tu calendario, y envía la
+confirmación al paciente por WhatsApp.
+
+**¿Funciona para clínicas dentales, médicas y estéticas?**
+Sí. Waly se adapta al rubro, los servicios, los precios y el tono de comunicación de cada clínica.
+
+## Enlaces
+
+- Home: https://www.conejeros-solutions.cl/
+- Home en markdown: https://www.conejeros-solutions.cl/index.md
+- Política de privacidad: https://www.conejeros-solutions.cl/privacidad.html
+- Agendar diagnóstico gratuito: https://www.conejeros-solutions.cl/#agendar
