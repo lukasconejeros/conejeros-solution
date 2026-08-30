@@ -82,6 +82,46 @@
     {
       "source": "/seguimiento-sesiones-tratamiento-estetico-whatsapp",
       "destination": "/seguimiento-sesiones-tratamiento-estetico-whatsapp.html"
+    },
+    {
+      "source": "/bot-whatsapp-clinica-varias-sucursales-profesionales",
+      "destination": "/bot-whatsapp-clinica-varias-sucursales-profesionales.html"
+    },
+    {
+      "source": "/bot-whatsapp-dermatologia-consulta-chile",
+      "destination": "/bot-whatsapp-dermatologia-consulta-chile.html"
+    },
+    {
+      "source": "/bot-whatsapp-kinesiologia-centro-rehabilitacion",
+      "destination": "/bot-whatsapp-kinesiologia-centro-rehabilitacion.html"
+    },
+    {
+      "source": "/bot-whatsapp-oftalmologia-consulta-ocular",
+      "destination": "/bot-whatsapp-oftalmologia-consulta-ocular.html"
+    },
+    {
+      "source": "/bot-whatsapp-psicologia-consulta-salud-mental",
+      "destination": "/bot-whatsapp-psicologia-consulta-salud-mental.html"
+    },
+    {
+      "source": "/chatbot-botones-vs-asistente-ia-clinica",
+      "destination": "/chatbot-botones-vs-asistente-ia-clinica.html"
+    },
+    {
+      "source": "/como-elegir-bot-whatsapp-clinica-chile",
+      "destination": "/como-elegir-bot-whatsapp-clinica-chile.html"
+    },
+    {
+      "source": "/ley-21719-datos-pacientes-whatsapp-clinica",
+      "destination": "/ley-21719-datos-pacientes-whatsapp-clinica.html"
+    },
+    {
+      "source": "/resultados-reales-bot-whatsapp-clinica-chile",
+      "destination": "/resultados-reales-bot-whatsapp-clinica-chile.html"
+    },
+    {
+      "source": "/whatsapp-clinica-numero-normal-api-oficial-baneos",
+      "destination": "/whatsapp-clinica-numero-normal-api-oficial-baneos.html"
     }
   ],
   "headers": [
