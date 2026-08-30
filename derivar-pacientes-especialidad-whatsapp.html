@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Waly vs Hacerlo a Mano · Comparación Honesta | Waly.AI</title>
-<meta name="description" content="Comparación directa entre atender WhatsApp a mano con la recepción y hacerlo con un asistente de IA conectado a la agenda: qué gana cada uno y en qué casos no conviene automatizar.">
-<link rel="canonical" href="https://www.conejeros-solutions.cl/waly-vs-secretaria-manual">
+<title>Orientar al Paciente a la Especialidad Correcta por WhatsApp | Waly.AI</title>
+<meta name="description" content="Cómo un asistente de IA orienta al paciente hacia la especialidad correcta por WhatsApp sin diagnosticar, y por qué esa conversación es la que más consultas pierde en un centro médico chileno.">
+<link rel="canonical" href="https://www.conejeros-solutions.cl/derivar-pacientes-especialidad-whatsapp">
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Resumen para agentes de IA">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://www.conejeros-solutions.cl/waly-vs-secretaria-manual">
-<meta property="og:title" content="Waly contra hacerlo a mano: qué cambia de verdad en la clínica">
-<meta property="og:description" content="Comparación directa entre atender WhatsApp a mano con la recepción y hacerlo con un asistente de IA conectado a la agenda: qué gana cada uno y en qué casos no conviene automatizar.">
+<meta property="og:url" content="https://www.conejeros-solutions.cl/derivar-pacientes-especialidad-whatsapp">
+<meta property="og:title" content="El paciente no sabe a qué especialista pedir hora: cómo se resuelve por WhatsApp">
+<meta property="og:description" content="Cómo un asistente de IA orienta al paciente hacia la especialidad correcta por WhatsApp sin diagnosticar, y por qué esa conversación es la que más consultas pierde en un centro médico chileno.">
 <meta property="og:image" content="https://www.conejeros-solutions.cl/og-image.svg">
 <meta property="og:locale" content="es_CL">
 <meta name="twitter:card" content="summary_large_image">
@@ -94,50 +94,58 @@ margin-bottom:10px;font-weight:700}
  "mainEntity": [
   {
    "@type": "Question",
-   "name": "¿Voy a poder despedir a alguien con esto?",
+   "name": "¿No es riesgoso que una IA oriente a un paciente?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "No lo vendemos así. Lo que hemos visto en las clínicas con las que trabajamos es que la recepción deja de estar apagando incendios y pasa a atender bien al paciente que está en frente. Si tu objetivo es reducir personal, mejor conversémoslo antes de que contrates."
+    "text": "Lo sería si diagnosticara, y no lo hace. Orienta hacia una especialidad con las reglas que define tu centro, igual que una recepcionista con experiencia. Todo lo clínico se deriva a una persona, y lo que suena a urgencia se saca del chat de inmediato."
    }
   },
   {
    "@type": "Question",
-   "name": "¿El paciente prefiere hablar con una persona?",
+   "name": "¿Quién define a qué especialidad va cada caso?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Prefiere que le respondan. Un paciente que escribe un domingo y recibe respuesta en segundos no está comparando con una persona: está comparando con el silencio."
+    "text": "Tu centro. En la implementación cargamos qué atiende cada especialidad, qué casos pasan primero por medicina general y qué situaciones se derivan directo a una persona. El asistente sigue esas reglas, no criterios propios."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Qué pasa si el asistente se equivoca?",
+   "name": "¿Qué pasa si el paciente describe una urgencia?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Está construido para derivar cuando no está seguro, en vez de improvisar. Y hay un interruptor para apagarlo cuando quieras: las conversaciones vuelven a tu equipo al instante."
+    "text": "El asistente le indica acudir a un servicio de urgencia y avisa al equipo en el momento. No lo deja esperando ni le ofrece una hora para la próxima semana."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Cuánto tiempo me va a quitar a mí?",
+   "name": "¿Puede recomendar un tratamiento o un remedio?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Una hora de reunión inicial y las correcciones que quieras hacer durante la marcha blanca. La implementación la hacemos nosotros."
+    "text": "No, y está bloqueado. Puede decir a qué especialidad pedir hora; nunca qué tiene el paciente ni qué debe tomar."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Puedo verlo funcionando antes de decidir?",
+   "name": "¿Entiende audios? Mis pacientes mandan puros audios.",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Sí, en el diagnóstico gratuito te mostramos el sistema y el panel funcionando en clínicas reales."
+    "text": "Sí, y también fotos. Es de las cosas que más se usan: el paciente explica por audio y el asistente responde por escrito."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Y si después de un mes no me sirve?",
+   "name": "¿Qué pasa si el asistente no está seguro?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Los planes son mensuales. La implementación se paga una vez porque es trabajo hecho una vez, pero no hay permanencia amarrada."
+    "text": "Deriva a una persona del equipo y avisa. Está diseñado para preferir derivar antes que arriesgar una respuesta equivocada."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Sirve para un centro con pocas especialidades?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí, aunque rinde más mientras más especialidades tengas, porque ahí es donde el paciente más se pierde."
    }
   },
   {
@@ -179,12 +187,12 @@ margin-bottom:10px;font-weight:700}
 {
  "@context": "https://schema.org",
  "@type": "Article",
- "headline": "Waly contra hacerlo a mano: qué cambia de verdad en la clínica",
- "description": "Comparación directa entre atender WhatsApp a mano con la recepción y hacerlo con un asistente de IA conectado a la agenda: qué gana cada uno y en qué casos no conviene automatizar.",
+ "headline": "El paciente no sabe a qué especialista pedir hora: cómo se resuelve por WhatsApp",
+ "description": "Cómo un asistente de IA orienta al paciente hacia la especialidad correcta por WhatsApp sin diagnosticar, y por qué esa conversación es la que más consultas pierde en un centro médico chileno.",
  "inLanguage": "es-CL",
  "mainEntityOfPage": {
   "@type": "WebPage",
-  "@id": "https://www.conejeros-solutions.cl/waly-vs-secretaria-manual"
+  "@id": "https://www.conejeros-solutions.cl/derivar-pacientes-especialidad-whatsapp"
  },
  "author": {
   "@type": "Organization",
@@ -213,8 +221,8 @@ margin-bottom:10px;font-weight:700}
   {
    "@type": "ListItem",
    "position": 2,
-   "name": "Waly contra hacerlo a mano: qué cambia de verdad en la clínica",
-   "item": "https://www.conejeros-solutions.cl/waly-vs-secretaria-manual"
+   "name": "El paciente no sabe a qué especialista pedir hora: cómo se resuelve por WhatsApp",
+   "item": "https://www.conejeros-solutions.cl/derivar-pacientes-especialidad-whatsapp"
   }
  ]
 }
@@ -229,47 +237,47 @@ margin-bottom:10px;font-weight:700}
 </header>
 
 <main class="wrap">
-  <nav class="miga" aria-label="Ruta"><a href="/">Waly.AI</a> › Waly contra hacerlo a mano: qué cambia de verdad en la clínica</nav>
-  <h1>Waly contra hacerlo a mano: qué cambia de verdad en la clínica</h1>
-<p class="lede">Esta página existe para que puedas decidir sin reunión. Abajo está lo que hace cada opción, lo que cuesta, y —al final— los casos en los que te decimos derechamente que todavía no te conviene contratarnos.</p>
-<h2>Lo que hoy hace tu recepción y no debería</h2>
-<p>En una clínica normal, la persona del mostrador hace al mismo tiempo: recibir al paciente que está parado frente a ella, contestar el teléfono, responder WhatsApp, responder Instagram, confirmar las horas de mañana y llamar a los que no contestaron.</p>
-<p>Cuando llegan dos cosas a la vez, siempre gana la que está físicamente presente. Por eso los mensajes se responden tarde y las confirmaciones se hacen a las 7 de la tarde, si alcanza.</p>
-<p><strong>Lo que se automatiza no es la atención: es la espera.</strong></p>
-<h2>La comparación, sin adornos</h2>
-<h2>Cuándo NO te conviene contratarnos</h2>
-<p>Lo decimos acá para no hacerte perder una hora de reunión:</p>
-<ul><li><strong>Si recibes muy pocos mensajes al mes.</strong> Con un volumen bajo, tu recepción da abasto y la mensualidad no se paga sola.</li><li><strong>Si tu agenda vive en un cuaderno o en un Excel.</strong> Sin un sistema de gestión con el que conectarse, el asistente puede conversar pero no agendar, que es donde está el valor.</li><li><strong>Si tu problema real es que no llegan pacientes nuevos.</strong> Eso es publicidad, no automatización. Un asistente atiende mejor a los que llegan, no hace que lleguen más.</li><li><strong>Si nadie en la clínica va a mirar las derivaciones.</strong> El asistente deriva los casos que necesitan a una persona; si no hay nadie al otro lado, esos pacientes quedan colgados igual.</li></ul>
-<h2>Qué pasa la primera semana</h2>
-<ol><li>Una reunión de una hora por videollamada, gratis, para ver tu caso y confirmar la integración con tu software.</li><li>Cargamos prestaciones, precios, convenios, horarios y el tono con el que habla tu clínica.</li><li>Conectamos WhatsApp y tu sistema de gestión.</li><li>Sale a funcionar con nosotros mirando: 30 días de marcha blanca corrigiendo lo que aparezca en tu clínica real.</li></ol>
-<p>Plan Pro funcionando en 5 a 7 días hábiles; Business Pro en 7 a 10; Secretaria Business Pro en 13 a 15.</p>
-<h2>Hacerlo a mano · Waly</h2>
+  <nav class="miga" aria-label="Ruta"><a href="/">Waly.AI</a> › El paciente no sabe a qué especialista pedir hora: cómo se resuelve por WhatsApp</nav>
+  <h1>El paciente no sabe a qué especialista pedir hora: cómo se resuelve por WhatsApp</h1>
+<p class="lede">«Me duele la espalda hace dos semanas, ¿con quién me atiendo?» Esa pregunta llega todos los días a un centro médico y es la que más se pierde: si nadie contesta en el momento, el paciente busca en Google y termina en otro lado. Un asistente de IA puede orientarlo hasta la especialidad correcta y dejarle la hora tomada, sin diagnosticar nada.</p>
+<h2>Por qué esta conversación se pierde más que ninguna otra</h2>
+<p>Un paciente que escribe «quiero hora con el doctor Pérez para el martes» es fácil: sabe qué quiere. El que escribe «tengo un dolor raro» no sabe, y necesita que alguien lo guíe. Ese segundo paciente es el que más vale y el que más se pierde, por tres motivos:</p>
+<ul><li><strong>Necesita respuesta ahora.</strong> Está preocupado. Si le contestan mañana, ya buscó en internet y agendó en otra parte.</li><li><strong>Escribe cuando no hay nadie.</strong> Los dolores se sienten en la noche y los fines de semana, no de 9 a 6.</li><li><strong>Requiere conversación, no un menú.</strong> Un bot de opciones numeradas —«marque 1 para traumatología»— no le sirve a alguien que no sabe qué elegir. Es exactamente el momento en que la gente abandona el chat.</li></ul>
+<p>El resultado es una consulta perdida que ni siquiera aparece en las estadísticas del centro, porque nunca llegó a ser una hora agendada.</p>
+<h2>Orientar no es diagnosticar: dónde está la línea</h2>
+<p>Esta distinción es la que hace que el sistema sea seguro, y hay que exigírsela a cualquier proveedor:</p>
+<ul><li><strong>Diagnosticar</strong> es decirle al paciente qué tiene, qué gravedad, o qué tomar. Eso es acto médico y el asistente no lo hace nunca, aunque el paciente insista.</li><li><strong>Orientar</strong> es lo que hace la recepcionista con experiencia todos los días: preguntar unas pocas cosas —hace cuánto es, si fue por un golpe, si ya te vio alguien, si tienes derivación— y con eso decir «esto lo ve traumatología» o «para eso primero necesitas medicina general».</li></ul>
+<p>El asistente hace lo segundo, con las reglas que define <em>tu</em> centro: qué atiende cada especialidad, cuándo se pide interconsulta, qué casos pasan primero por medicina general y qué casos hay que derivar a una persona de inmediato.</p>
+<p>Y hay un escalón más importante todavía: <strong>lo urgente sale del chat.</strong> Si el paciente describe algo que suena a urgencia —dolor en el pecho, dificultad para respirar, sangrado— el asistente no lo hace esperar ni intenta agendarle una hora: le indica que acuda a un servicio de urgencia y avisa al equipo en el momento.</p>
+<h2>Cómo se ve la conversación completa</h2>
+<p>El valor no está solo en acertar la especialidad: está en que la conversación termine con una hora tomada, no con un «llame mañana». La secuencia típica es esta:</p>
+<ol><li><strong>El paciente cuenta su problema</strong> en sus palabras, por texto o por audio. Muchos mandan un audio largo explicando; el asistente lo entiende.</li><li><strong>El asistente pregunta lo justo.</strong> Dos o tres preguntas, no un interrogatorio.</li><li><strong>Propone la especialidad</strong> y explica en una línea por qué, para que el paciente entienda.</li><li><strong>Revisa si necesita algo antes.</strong> Derivación, orden médica, examen previo. Si le falta, se lo dice antes de agendar y no después.</li><li><strong>Ofrece las horas reales</strong> de ese profesional y cierra la cita en el sistema.</li><li><strong>Le manda todo por escrito</strong> y queda pendiente del recordatorio.</li></ol>
+<h2>Lo que gana el centro</h2>
+<ul><li><strong>Deja de perder al paciente indeciso.</strong> Es el que más consultas genera y el único que se va sin dejar rastro.</li><li><strong>Menos horas mal tomadas.</strong> El paciente que llega a la especialidad equivocada ocupa un cupo, se va sin resolver nada y muchas veces no vuelve.</li><li><strong>La recepción deja de repetir la misma conversación</strong> veinte veces al día.</li><li><strong>Queda registro.</strong> Se puede abrir cualquier conversación y ver qué preguntó el paciente y qué se le respondió.</li></ul>
+<h2>Menú de opciones · recepción · Waly</h2>
 <div class="tabla"><table><thead><tr>
 <th></th>
-<th>Recepción a mano</th>
+<th>Bot con menú de opciones</th>
+<th>Recepción por teléfono</th>
 <th>Waly</th>
 </tr></thead><tbody>
-<tr><td><strong>Responde a las 22:00, sábado o domingo</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Tiempo de respuesta cuando hay gente en el mostrador</strong></td><td><span class='no'>Minutos u horas</span></td><td><span class='si'>Segundos</span></td></tr>
-<tr><td><strong>Atiende varias conversaciones a la vez</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Agenda contra la disponibilidad real</strong></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Confirma las 40 horas de mañana</strong></td><td>1 a 2 horas de trabajo</td><td><span class='si'>Automático</span></td></tr>
-<tr><td><strong>Recuerda a 48, 24 y 3 horas</strong></td><td><span class='no'>Casi nunca se alcanza</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Persigue al interesado que no agendó</strong></td><td><span class='no'>Casi nunca</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Entiende una foto o un audio</strong></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Criterio para un caso delicado</strong></td><td><span class='si'>Sí</span></td><td>Deriva a tu equipo</td></tr>
-<tr><td><strong>Trato humano con el paciente que llega</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No aplica</span></td></tr>
-<tr><td><strong>Se enferma, renuncia o sale de vacaciones</strong></td><td><span class='no'>Sí</span></td><td><span class='si'>No</span></td></tr>
-<tr><td><strong>Costo mensual</strong></td><td>Sueldo completo</td><td>$244.000 a $650.000 + IVA</td></tr>
+<tr><td><strong>Le sirve a quien no sabe qué especialidad necesita</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Atiende a las 23:00 y los domingos</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Entiende un audio largo del paciente</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Avisa si falta derivación u orden médica</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Termina con la hora tomada</strong></td><td>A veces</td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Detecta una urgencia y la saca del chat</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí, y avisa</span></td></tr>
+<tr><td><strong>Diagnostica al paciente</strong></td><td><span class='no'>No</span></td><td><span class='no'>No</span></td><td><span class='no'>No, nunca</span></td></tr>
 </tbody></table></div>
 <h2>Preguntas frecuentes</h2>
 <div class="faq">
-<details><summary>¿Voy a poder despedir a alguien con esto?</summary><p>No lo vendemos así. Lo que hemos visto en las clínicas con las que trabajamos es que la recepción deja de estar apagando incendios y pasa a atender bien al paciente que está en frente. Si tu objetivo es reducir personal, mejor conversémoslo antes de que contrates.</p></details>
-<details><summary>¿El paciente prefiere hablar con una persona?</summary><p>Prefiere que le respondan. Un paciente que escribe un domingo y recibe respuesta en segundos no está comparando con una persona: está comparando con el silencio.</p></details>
-<details><summary>¿Qué pasa si el asistente se equivoca?</summary><p>Está construido para derivar cuando no está seguro, en vez de improvisar. Y hay un interruptor para apagarlo cuando quieras: las conversaciones vuelven a tu equipo al instante.</p></details>
-<details><summary>¿Cuánto tiempo me va a quitar a mí?</summary><p>Una hora de reunión inicial y las correcciones que quieras hacer durante la marcha blanca. La implementación la hacemos nosotros.</p></details>
-<details><summary>¿Puedo verlo funcionando antes de decidir?</summary><p>Sí, en el diagnóstico gratuito te mostramos el sistema y el panel funcionando en clínicas reales.</p></details>
-<details><summary>¿Y si después de un mes no me sirve?</summary><p>Los planes son mensuales. La implementación se paga una vez porque es trabajo hecho una vez, pero no hay permanencia amarrada.</p></details>
+<details><summary>¿No es riesgoso que una IA oriente a un paciente?</summary><p>Lo sería si diagnosticara, y no lo hace. Orienta hacia una especialidad con las reglas que define tu centro, igual que una recepcionista con experiencia. Todo lo clínico se deriva a una persona, y lo que suena a urgencia se saca del chat de inmediato.</p></details>
+<details><summary>¿Quién define a qué especialidad va cada caso?</summary><p>Tu centro. En la implementación cargamos qué atiende cada especialidad, qué casos pasan primero por medicina general y qué situaciones se derivan directo a una persona. El asistente sigue esas reglas, no criterios propios.</p></details>
+<details><summary>¿Qué pasa si el paciente describe una urgencia?</summary><p>El asistente le indica acudir a un servicio de urgencia y avisa al equipo en el momento. No lo deja esperando ni le ofrece una hora para la próxima semana.</p></details>
+<details><summary>¿Puede recomendar un tratamiento o un remedio?</summary><p>No, y está bloqueado. Puede decir a qué especialidad pedir hora; nunca qué tiene el paciente ni qué debe tomar.</p></details>
+<details><summary>¿Entiende audios? Mis pacientes mandan puros audios.</summary><p>Sí, y también fotos. Es de las cosas que más se usan: el paciente explica por audio y el asistente responde por escrito.</p></details>
+<details><summary>¿Qué pasa si el asistente no está seguro?</summary><p>Deriva a una persona del equipo y avisa. Está diseñado para preferir derivar antes que arriesgar una respuesta equivocada.</p></details>
+<details><summary>¿Sirve para un centro con pocas especialidades?</summary><p>Sí, aunque rinde más mientras más especialidades tengas, porque ahí es donde el paciente más se pierde.</p></details>
 <details><summary>¿Se integra con el software que ya uso en mi clínica?</summary><p>Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas de Chile, entre ellos Dentalink, Dentalsoft y Reservo. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración antes de que contrates nada.</p></details>
 <details><summary>¿Necesito saber de tecnología?</summary><p>No. Nosotros implementamos, conectamos y configuramos todo. Tú usas una app simple para encender o apagar el asistente cuando quieras.</p></details>
 <details><summary>¿Qué pasa si el asistente no sabe responder algo?</summary><p>Deriva la conversación a una persona de tu equipo y avisa. Ningún paciente queda sin respuesta, y el equipo entra solo en lo que de verdad necesita a una persona.</p></details>
@@ -294,9 +302,9 @@ Sin presentación de ventas.</p>
 <a href="/secretaria-virtual-ia-clinicas-chile">Secretaria virtual con IA para clínicas en Chile: qué es y qué puede hacer</a>
 <a href="/reactivar-pacientes-inactivos-whatsapp">Reactivar pacientes que no vuelven, por WhatsApp</a>
 <a href="/recordatorios-citas-whatsapp-clinica">Recordatorios de citas por WhatsApp para clínicas</a>
+<a href="/waly-vs-secretaria-manual">Waly contra hacerlo a mano: qué cambia de verdad en la clínica</a>
 <a href="/bot-whatsapp-clinica-medica-chile">Bot de WhatsApp con IA para clínicas y centros médicos en Chile</a>
 <a href="/agendar-consultas-medicas-whatsapp-reservo">Agendar consultas médicas por WhatsApp con Reservo, automáticamente</a>
-<a href="/derivar-pacientes-especialidad-whatsapp">El paciente no sabe a qué especialista pedir hora: cómo se resuelve por WhatsApp</a>
 <a href="/consultas-examenes-preparacion-whatsapp">Responder por WhatsApp las dudas de exámenes: ayuno, orden médica y qué traer</a>
 <a href="/bot-whatsapp-clinica-estetica-chile">Bot de WhatsApp con IA para clínicas y centros de estética en Chile</a>
 <a href="/responder-precios-tratamientos-esteticos-whatsapp">«Hola, precio?»: cómo responder los precios por WhatsApp sin perder al cliente</a>

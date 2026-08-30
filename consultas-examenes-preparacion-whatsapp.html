@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Waly vs Hacerlo a Mano · Comparación Honesta | Waly.AI</title>
-<meta name="description" content="Comparación directa entre atender WhatsApp a mano con la recepción y hacerlo con un asistente de IA conectado a la agenda: qué gana cada uno y en qué casos no conviene automatizar.">
-<link rel="canonical" href="https://www.conejeros-solutions.cl/waly-vs-secretaria-manual">
+<title>Responder Dudas de Exámenes por WhatsApp · Centros Médicos | Waly.AI</title>
+<meta name="description" content="Cómo automatizar por WhatsApp las preguntas de preparación de exámenes —ayuno, orden médica, qué traer, dónde llegar— y por qué los resultados nunca deben salir por ese canal.">
+<link rel="canonical" href="https://www.conejeros-solutions.cl/consultas-examenes-preparacion-whatsapp">
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Resumen para agentes de IA">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://www.conejeros-solutions.cl/waly-vs-secretaria-manual">
-<meta property="og:title" content="Waly contra hacerlo a mano: qué cambia de verdad en la clínica">
-<meta property="og:description" content="Comparación directa entre atender WhatsApp a mano con la recepción y hacerlo con un asistente de IA conectado a la agenda: qué gana cada uno y en qué casos no conviene automatizar.">
+<meta property="og:url" content="https://www.conejeros-solutions.cl/consultas-examenes-preparacion-whatsapp">
+<meta property="og:title" content="Responder por WhatsApp las dudas de exámenes: ayuno, orden médica y qué traer">
+<meta property="og:description" content="Cómo automatizar por WhatsApp las preguntas de preparación de exámenes —ayuno, orden médica, qué traer, dónde llegar— y por qué los resultados nunca deben salir por ese canal.">
 <meta property="og:image" content="https://www.conejeros-solutions.cl/og-image.svg">
 <meta property="og:locale" content="es_CL">
 <meta name="twitter:card" content="summary_large_image">
@@ -94,50 +94,58 @@ margin-bottom:10px;font-weight:700}
  "mainEntity": [
   {
    "@type": "Question",
-   "name": "¿Voy a poder despedir a alguien con esto?",
+   "name": "¿Puede entregar el resultado de un examen por WhatsApp?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "No lo vendemos así. Lo que hemos visto en las clínicas con las que trabajamos es que la recepción deja de estar apagando incendios y pasa a atender bien al paciente que está en frente. Si tu objetivo es reducir personal, mejor conversémoslo antes de que contrates."
+    "text": "No. Los resultados son datos sensibles de salud protegidos por la Ley 21.719 y no salen por ese canal. El asistente indica cuándo estarán listos y cómo retirarlos por el canal oficial de tu centro."
    }
   },
   {
    "@type": "Question",
-   "name": "¿El paciente prefiere hablar con una persona?",
+   "name": "¿De dónde saca la información de preparación?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Prefiere que le respondan. Un paciente que escribe un domingo y recibe respuesta en segundos no está comparando con una persona: está comparando con el silencio."
+    "text": "De la que nos entrega tu centro en la implementación: tus protocolos, tus tiempos de ayuno, tus valores. No responde con información genérica de internet."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Qué pasa si el asistente se equivoca?",
+   "name": "¿Sabe qué examen tiene tomado cada paciente?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Está construido para derivar cuando no está seguro, en vez de improvisar. Y hay un interruptor para apagarlo cuando quieras: las conversaciones vuelven a tu equipo al instante."
+    "text": "Sí, porque está conectado a tu sistema de agenda. Por eso la respuesta es específica de ese examen y no un protocolo general."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Cuánto tiempo me va a quitar a mí?",
+   "name": "¿Puede decir si un resultado salió bien o mal?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Una hora de reunión inicial y las correcciones que quieras hacer durante la marcha blanca. La implementación la hacemos nosotros."
+    "text": "No. Interpretar un resultado es acto médico y está bloqueado. Esas consultas se derivan a una persona del equipo."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Puedo verlo funcionando antes de decidir?",
+   "name": "¿El recordatorio incluye la preparación?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Sí, en el diagnóstico gratuito te mostramos el sistema y el panel funcionando en clínicas reales."
+    "text": "Sí. El recordatorio del día antes repite la hora y la preparación, que es justo cuando al paciente se le olvidó si tenía que estar en ayunas."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Y si después de un mes no me sirve?",
+   "name": "¿Qué pasa si el paciente manda una foto de la orden médica?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Los planes son mensuales. La implementación se paga una vez porque es trabajo hecho una vez, pero no hay permanencia amarrada."
+    "text": "El asistente la lee, identifica el examen y responde la preparación de ese examen en concreto."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Y si pregunta algo que no está cargado?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Deriva a una persona del equipo y avisa. Nunca inventa una indicación de preparación."
    }
   },
   {
@@ -179,12 +187,12 @@ margin-bottom:10px;font-weight:700}
 {
  "@context": "https://schema.org",
  "@type": "Article",
- "headline": "Waly contra hacerlo a mano: qué cambia de verdad en la clínica",
- "description": "Comparación directa entre atender WhatsApp a mano con la recepción y hacerlo con un asistente de IA conectado a la agenda: qué gana cada uno y en qué casos no conviene automatizar.",
+ "headline": "Responder por WhatsApp las dudas de exámenes: ayuno, orden médica y qué traer",
+ "description": "Cómo automatizar por WhatsApp las preguntas de preparación de exámenes —ayuno, orden médica, qué traer, dónde llegar— y por qué los resultados nunca deben salir por ese canal.",
  "inLanguage": "es-CL",
  "mainEntityOfPage": {
   "@type": "WebPage",
-  "@id": "https://www.conejeros-solutions.cl/waly-vs-secretaria-manual"
+  "@id": "https://www.conejeros-solutions.cl/consultas-examenes-preparacion-whatsapp"
  },
  "author": {
   "@type": "Organization",
@@ -213,8 +221,8 @@ margin-bottom:10px;font-weight:700}
   {
    "@type": "ListItem",
    "position": 2,
-   "name": "Waly contra hacerlo a mano: qué cambia de verdad en la clínica",
-   "item": "https://www.conejeros-solutions.cl/waly-vs-secretaria-manual"
+   "name": "Responder por WhatsApp las dudas de exámenes: ayuno, orden médica y qué traer",
+   "item": "https://www.conejeros-solutions.cl/consultas-examenes-preparacion-whatsapp"
   }
  ]
 }
@@ -229,47 +237,50 @@ margin-bottom:10px;font-weight:700}
 </header>
 
 <main class="wrap">
-  <nav class="miga" aria-label="Ruta"><a href="/">Waly.AI</a> › Waly contra hacerlo a mano: qué cambia de verdad en la clínica</nav>
-  <h1>Waly contra hacerlo a mano: qué cambia de verdad en la clínica</h1>
-<p class="lede">Esta página existe para que puedas decidir sin reunión. Abajo está lo que hace cada opción, lo que cuesta, y —al final— los casos en los que te decimos derechamente que todavía no te conviene contratarnos.</p>
-<h2>Lo que hoy hace tu recepción y no debería</h2>
-<p>En una clínica normal, la persona del mostrador hace al mismo tiempo: recibir al paciente que está parado frente a ella, contestar el teléfono, responder WhatsApp, responder Instagram, confirmar las horas de mañana y llamar a los que no contestaron.</p>
-<p>Cuando llegan dos cosas a la vez, siempre gana la que está físicamente presente. Por eso los mensajes se responden tarde y las confirmaciones se hacen a las 7 de la tarde, si alcanza.</p>
-<p><strong>Lo que se automatiza no es la atención: es la espera.</strong></p>
-<h2>La comparación, sin adornos</h2>
-<h2>Cuándo NO te conviene contratarnos</h2>
-<p>Lo decimos acá para no hacerte perder una hora de reunión:</p>
-<ul><li><strong>Si recibes muy pocos mensajes al mes.</strong> Con un volumen bajo, tu recepción da abasto y la mensualidad no se paga sola.</li><li><strong>Si tu agenda vive en un cuaderno o en un Excel.</strong> Sin un sistema de gestión con el que conectarse, el asistente puede conversar pero no agendar, que es donde está el valor.</li><li><strong>Si tu problema real es que no llegan pacientes nuevos.</strong> Eso es publicidad, no automatización. Un asistente atiende mejor a los que llegan, no hace que lleguen más.</li><li><strong>Si nadie en la clínica va a mirar las derivaciones.</strong> El asistente deriva los casos que necesitan a una persona; si no hay nadie al otro lado, esos pacientes quedan colgados igual.</li></ul>
-<h2>Qué pasa la primera semana</h2>
-<ol><li>Una reunión de una hora por videollamada, gratis, para ver tu caso y confirmar la integración con tu software.</li><li>Cargamos prestaciones, precios, convenios, horarios y el tono con el que habla tu clínica.</li><li>Conectamos WhatsApp y tu sistema de gestión.</li><li>Sale a funcionar con nosotros mirando: 30 días de marcha blanca corrigiendo lo que aparezca en tu clínica real.</li></ol>
-<p>Plan Pro funcionando en 5 a 7 días hábiles; Business Pro en 7 a 10; Secretaria Business Pro en 13 a 15.</p>
-<h2>Hacerlo a mano · Waly</h2>
+  <nav class="miga" aria-label="Ruta"><a href="/">Waly.AI</a> › Responder por WhatsApp las dudas de exámenes: ayuno, orden médica y qué traer</nav>
+  <h1>Responder por WhatsApp las dudas de exámenes: ayuno, orden médica y qué traer</h1>
+<p class="lede">Las preguntas de preparación de exámenes son el mayor volumen de mensajes repetidos de un centro médico: cuántas horas de ayuno, si puedo tomar agua, si necesito la orden, dónde queda. Un asistente las responde todas al instante y a cualquier hora. Los resultados son otra cosa: esos no salen por WhatsApp, y hay una razón legal.</p>
+<h2>El examen que se pierde por una duda no resuelta</h2>
+<p>Un paciente con hora para un examen de sangre a las 8 de la mañana se acuerda a las 11 de la noche de que no sabe si el ayuno era de 8 o de 12 horas. Escribe al WhatsApp del centro. Nadie contesta.</p>
+<p>Pasa una de dos cosas, y las dos son malas: llega sin preparación y el examen no se puede tomar —cupo perdido, paciente molesto, hay que reagendar— o directamente no va. En los dos casos el centro pierde el ingreso y el box quedó ocupado para nada.</p>
+<p>Es un problema puramente de horario: la duda aparece la noche antes, que es exactamente cuando no hay nadie contestando. Y es el tipo de pregunta que tiene una respuesta única y correcta, escrita en algún protocolo del centro. No necesita criterio médico: necesita estar disponible a las 11 de la noche.</p>
+<h2>Las preguntas que el asistente resuelve solo</h2>
+<p>Se le carga la información real de tus exámenes y responde con eso, no con generalidades sacadas de internet:</p>
+<ul><li><strong>Ayuno.</strong> Cuántas horas, desde qué hora contarlo, si puede tomar agua, si puede tomar sus medicamentos.</li><li><strong>Orden médica.</strong> Si la necesita, si sirve una foto, cuánto tiempo de vigencia tiene.</li><li><strong>Qué traer.</strong> Carné, previsión, exámenes anteriores, bono.</li><li><strong>Dónde y a qué hora.</strong> Dirección, piso, estacionamiento, cuántos minutos antes llegar.</li><li><strong>Cuánto sale.</strong> Valor particular, con Fonasa, con su Isapre, si hay convenio.</li><li><strong>Cuándo estarán los resultados.</strong> El plazo, y por qué canal se retiran.</li><li><strong>Preparaciones especiales.</strong> Suspender un medicamento, venir con vejiga llena, no usar cremas. Lo que aplique a cada examen de tu centro.</li></ul>
+<p>Y como el asistente sabe qué hora tiene tomada ese paciente, la respuesta es específica: no le da el protocolo genérico, le da el de <em>su</em> examen.</p>
+<h2>Por qué los resultados no salen por WhatsApp</h2>
+<p>Esta es una línea que no cruzamos y conviene que la exijas a cualquier proveedor que evalúes.</p>
+<p>Los resultados de exámenes son <strong>datos sensibles de salud</strong>. En Chile, la Ley 21.719 de protección de datos personales les da una categoría especial y obliga a tratarlos con resguardos reforzados. WhatsApp es un canal donde el mensaje queda en el teléfono, se reenvía con un toque y puede quedar visible en la pantalla de bloqueo de alguien más.</p>
+<p>El asistente responde <strong>cuándo</strong> estarán los resultados y <strong>cómo</strong> se retiran por el canal oficial de tu centro —portal del paciente, correo con clave, retiro presencial—, pero no los entrega ni los comenta. Si el paciente insiste, deriva a una persona.</p>
+<p>Lo mismo aplica a cualquier interpretación: el asistente no dice si un resultado está bien o mal. Eso es acto médico.</p>
+<h2>Además de responder, recuerda</h2>
+<p>La parte que más exámenes salva es la que sale sola, antes de que el paciente pregunte:</p>
+<ol><li><strong>Al agendar</strong>, el paciente recibe por escrito la preparación completa de su examen.</li><li><strong>El día antes</strong>, le llega el recordatorio con la hora y con la preparación repetida —el ayuno, lo que tiene que traer— porque es justo cuando se le olvidó.</li><li><strong>Puede preguntar</strong> a cualquier hora y le responden en el momento.</li><li><strong>Si no puede ir</strong>, cancela por el mismo chat y el cupo queda liberado para otro paciente el mismo día.</li></ol>
+<p>Todo esto sale a goteo, con separación entre mensaje y mensaje y un techo diario, porque WhatsApp bloquea los números que hacen envíos masivos.</p>
+<h2>Sin sistema · mensaje genérico · Waly</h2>
 <div class="tabla"><table><thead><tr>
 <th></th>
-<th>Recepción a mano</th>
+<th>Sin nada</th>
+<th>Mensaje igual para todos</th>
 <th>Waly</th>
 </tr></thead><tbody>
-<tr><td><strong>Responde a las 22:00, sábado o domingo</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Tiempo de respuesta cuando hay gente en el mostrador</strong></td><td><span class='no'>Minutos u horas</span></td><td><span class='si'>Segundos</span></td></tr>
-<tr><td><strong>Atiende varias conversaciones a la vez</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Agenda contra la disponibilidad real</strong></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Confirma las 40 horas de mañana</strong></td><td>1 a 2 horas de trabajo</td><td><span class='si'>Automático</span></td></tr>
-<tr><td><strong>Recuerda a 48, 24 y 3 horas</strong></td><td><span class='no'>Casi nunca se alcanza</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Persigue al interesado que no agendó</strong></td><td><span class='no'>Casi nunca</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Entiende una foto o un audio</strong></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Criterio para un caso delicado</strong></td><td><span class='si'>Sí</span></td><td>Deriva a tu equipo</td></tr>
-<tr><td><strong>Trato humano con el paciente que llega</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No aplica</span></td></tr>
-<tr><td><strong>Se enferma, renuncia o sale de vacaciones</strong></td><td><span class='no'>Sí</span></td><td><span class='si'>No</span></td></tr>
-<tr><td><strong>Costo mensual</strong></td><td>Sueldo completo</td><td>$244.000 a $650.000 + IVA</td></tr>
+<tr><td><strong>Responde el ayuno a las 23:00</strong></td><td><span class='no'>No</span></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>La respuesta es la del examen de ese paciente</strong></td><td>—</td><td><span class='no'>No, genérica</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Recuerda la preparación el día antes</strong></td><td><span class='no'>No</span></td><td>A veces</td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Responde valores y convenios</strong></td><td>Solo en horario</td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Entiende una foto de la orden médica</strong></td><td>—</td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Permite cancelar y libera el cupo</strong></td><td>Por teléfono</td><td><span class='no'>No</span></td><td><span class='si'>Sí, al momento</span></td></tr>
+<tr><td><strong>Entrega resultados de exámenes</strong></td><td>—</td><td>—</td><td><span class='no'>No, nunca</span></td></tr>
 </tbody></table></div>
 <h2>Preguntas frecuentes</h2>
 <div class="faq">
-<details><summary>¿Voy a poder despedir a alguien con esto?</summary><p>No lo vendemos así. Lo que hemos visto en las clínicas con las que trabajamos es que la recepción deja de estar apagando incendios y pasa a atender bien al paciente que está en frente. Si tu objetivo es reducir personal, mejor conversémoslo antes de que contrates.</p></details>
-<details><summary>¿El paciente prefiere hablar con una persona?</summary><p>Prefiere que le respondan. Un paciente que escribe un domingo y recibe respuesta en segundos no está comparando con una persona: está comparando con el silencio.</p></details>
-<details><summary>¿Qué pasa si el asistente se equivoca?</summary><p>Está construido para derivar cuando no está seguro, en vez de improvisar. Y hay un interruptor para apagarlo cuando quieras: las conversaciones vuelven a tu equipo al instante.</p></details>
-<details><summary>¿Cuánto tiempo me va a quitar a mí?</summary><p>Una hora de reunión inicial y las correcciones que quieras hacer durante la marcha blanca. La implementación la hacemos nosotros.</p></details>
-<details><summary>¿Puedo verlo funcionando antes de decidir?</summary><p>Sí, en el diagnóstico gratuito te mostramos el sistema y el panel funcionando en clínicas reales.</p></details>
-<details><summary>¿Y si después de un mes no me sirve?</summary><p>Los planes son mensuales. La implementación se paga una vez porque es trabajo hecho una vez, pero no hay permanencia amarrada.</p></details>
+<details><summary>¿Puede entregar el resultado de un examen por WhatsApp?</summary><p>No. Los resultados son datos sensibles de salud protegidos por la Ley 21.719 y no salen por ese canal. El asistente indica cuándo estarán listos y cómo retirarlos por el canal oficial de tu centro.</p></details>
+<details><summary>¿De dónde saca la información de preparación?</summary><p>De la que nos entrega tu centro en la implementación: tus protocolos, tus tiempos de ayuno, tus valores. No responde con información genérica de internet.</p></details>
+<details><summary>¿Sabe qué examen tiene tomado cada paciente?</summary><p>Sí, porque está conectado a tu sistema de agenda. Por eso la respuesta es específica de ese examen y no un protocolo general.</p></details>
+<details><summary>¿Puede decir si un resultado salió bien o mal?</summary><p>No. Interpretar un resultado es acto médico y está bloqueado. Esas consultas se derivan a una persona del equipo.</p></details>
+<details><summary>¿El recordatorio incluye la preparación?</summary><p>Sí. El recordatorio del día antes repite la hora y la preparación, que es justo cuando al paciente se le olvidó si tenía que estar en ayunas.</p></details>
+<details><summary>¿Qué pasa si el paciente manda una foto de la orden médica?</summary><p>El asistente la lee, identifica el examen y responde la preparación de ese examen en concreto.</p></details>
+<details><summary>¿Y si pregunta algo que no está cargado?</summary><p>Deriva a una persona del equipo y avisa. Nunca inventa una indicación de preparación.</p></details>
 <details><summary>¿Se integra con el software que ya uso en mi clínica?</summary><p>Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas de Chile, entre ellos Dentalink, Dentalsoft y Reservo. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración antes de que contrates nada.</p></details>
 <details><summary>¿Necesito saber de tecnología?</summary><p>No. Nosotros implementamos, conectamos y configuramos todo. Tú usas una app simple para encender o apagar el asistente cuando quieras.</p></details>
 <details><summary>¿Qué pasa si el asistente no sabe responder algo?</summary><p>Deriva la conversación a una persona de tu equipo y avisa. Ningún paciente queda sin respuesta, y el equipo entra solo en lo que de verdad necesita a una persona.</p></details>
@@ -294,10 +305,10 @@ Sin presentación de ventas.</p>
 <a href="/secretaria-virtual-ia-clinicas-chile">Secretaria virtual con IA para clínicas en Chile: qué es y qué puede hacer</a>
 <a href="/reactivar-pacientes-inactivos-whatsapp">Reactivar pacientes que no vuelven, por WhatsApp</a>
 <a href="/recordatorios-citas-whatsapp-clinica">Recordatorios de citas por WhatsApp para clínicas</a>
+<a href="/waly-vs-secretaria-manual">Waly contra hacerlo a mano: qué cambia de verdad en la clínica</a>
 <a href="/bot-whatsapp-clinica-medica-chile">Bot de WhatsApp con IA para clínicas y centros médicos en Chile</a>
 <a href="/agendar-consultas-medicas-whatsapp-reservo">Agendar consultas médicas por WhatsApp con Reservo, automáticamente</a>
 <a href="/derivar-pacientes-especialidad-whatsapp">El paciente no sabe a qué especialista pedir hora: cómo se resuelve por WhatsApp</a>
-<a href="/consultas-examenes-preparacion-whatsapp">Responder por WhatsApp las dudas de exámenes: ayuno, orden médica y qué traer</a>
 <a href="/bot-whatsapp-clinica-estetica-chile">Bot de WhatsApp con IA para clínicas y centros de estética en Chile</a>
 <a href="/responder-precios-tratamientos-esteticos-whatsapp">«Hola, precio?»: cómo responder los precios por WhatsApp sin perder al cliente</a>
 <a href="/agendar-evaluacion-tratamiento-estetico-whatsapp">Agendar la evaluación de un tratamiento estético por WhatsApp, automáticamente</a>

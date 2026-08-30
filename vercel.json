@@ -4,34 +4,103 @@
     {
       "source": "/",
       "has": [
-        { "type": "header", "key": "accept", "value": ".*text/markdown.*" }
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
       ],
       "destination": "/index.md",
       "permanent": false
     }
   ],
   "rewrites": [
-    { "source": "/index.md", "destination": "/llms.txt" },
-    { "source": "/agendar-citas-whatsapp-dentalink", "destination": "/agendar-citas-whatsapp-dentalink.html" },
-    { "source": "/confirmar-horas-whatsapp-clinica", "destination": "/confirmar-horas-whatsapp-clinica.html" },
-    { "source": "/reducir-ausentismo-pacientes-clinica", "destination": "/reducir-ausentismo-pacientes-clinica.html" },
-    { "source": "/precio-chatbot-ia-clinica-chile", "destination": "/precio-chatbot-ia-clinica-chile.html" },
-    { "source": "/secretaria-virtual-ia-clinicas-chile", "destination": "/secretaria-virtual-ia-clinicas-chile.html" },
-    { "source": "/reactivar-pacientes-inactivos-whatsapp", "destination": "/reactivar-pacientes-inactivos-whatsapp.html" },
-    { "source": "/recordatorios-citas-whatsapp-clinica", "destination": "/recordatorios-citas-whatsapp-clinica.html" },
-    { "source": "/waly-vs-secretaria-manual", "destination": "/waly-vs-secretaria-manual.html" }
+    {
+      "source": "/index.md",
+      "destination": "/llms.txt"
+    },
+    {
+      "source": "/agendar-citas-whatsapp-dentalink",
+      "destination": "/agendar-citas-whatsapp-dentalink.html"
+    },
+    {
+      "source": "/confirmar-horas-whatsapp-clinica",
+      "destination": "/confirmar-horas-whatsapp-clinica.html"
+    },
+    {
+      "source": "/reducir-ausentismo-pacientes-clinica",
+      "destination": "/reducir-ausentismo-pacientes-clinica.html"
+    },
+    {
+      "source": "/precio-chatbot-ia-clinica-chile",
+      "destination": "/precio-chatbot-ia-clinica-chile.html"
+    },
+    {
+      "source": "/secretaria-virtual-ia-clinicas-chile",
+      "destination": "/secretaria-virtual-ia-clinicas-chile.html"
+    },
+    {
+      "source": "/reactivar-pacientes-inactivos-whatsapp",
+      "destination": "/reactivar-pacientes-inactivos-whatsapp.html"
+    },
+    {
+      "source": "/recordatorios-citas-whatsapp-clinica",
+      "destination": "/recordatorios-citas-whatsapp-clinica.html"
+    },
+    {
+      "source": "/waly-vs-secretaria-manual",
+      "destination": "/waly-vs-secretaria-manual.html"
+    },
+    {
+      "source": "/bot-whatsapp-clinica-medica-chile",
+      "destination": "/bot-whatsapp-clinica-medica-chile.html"
+    },
+    {
+      "source": "/agendar-consultas-medicas-whatsapp-reservo",
+      "destination": "/agendar-consultas-medicas-whatsapp-reservo.html"
+    },
+    {
+      "source": "/derivar-pacientes-especialidad-whatsapp",
+      "destination": "/derivar-pacientes-especialidad-whatsapp.html"
+    },
+    {
+      "source": "/consultas-examenes-preparacion-whatsapp",
+      "destination": "/consultas-examenes-preparacion-whatsapp.html"
+    },
+    {
+      "source": "/bot-whatsapp-clinica-estetica-chile",
+      "destination": "/bot-whatsapp-clinica-estetica-chile.html"
+    },
+    {
+      "source": "/responder-precios-tratamientos-esteticos-whatsapp",
+      "destination": "/responder-precios-tratamientos-esteticos-whatsapp.html"
+    },
+    {
+      "source": "/agendar-evaluacion-tratamiento-estetico-whatsapp",
+      "destination": "/agendar-evaluacion-tratamiento-estetico-whatsapp.html"
+    },
+    {
+      "source": "/seguimiento-sesiones-tratamiento-estetico-whatsapp",
+      "destination": "/seguimiento-sesiones-tratamiento-estetico-whatsapp.html"
+    }
   ],
   "headers": [
     {
       "source": "/index.md",
       "headers": [
-        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" }
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
       ]
     },
     {
       "source": "/llms.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" }
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        }
       ]
     },
     {

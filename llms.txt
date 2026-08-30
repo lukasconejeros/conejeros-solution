@@ -127,6 +127,28 @@ frecuentes.
 - **Waly contra hacerlo a mano**: la comparación directa, incluidos los casos en que NO conviene
   contratar: https://www.conejeros-solutions.cl/waly-vs-secretaria-manual
 
+### Clínicas médicas y centros médicos
+
+- **Bot de WhatsApp con IA para clínicas y centros médicos**: qué hace, qué no hace y con qué sistemas se conecta:
+  https://www.conejeros-solutions.cl/bot-whatsapp-clinica-medica-chile
+- **Agendar consultas médicas por WhatsApp con Reservo**, contra la disponibilidad real por profesional:
+  https://www.conejeros-solutions.cl/agendar-consultas-medicas-whatsapp-reservo
+- **El paciente no sabe a qué especialista ir**: cómo orientarlo por WhatsApp sin diagnosticar:
+  https://www.conejeros-solutions.cl/derivar-pacientes-especialidad-whatsapp
+- **Dudas de exámenes por WhatsApp**: ayuno, orden médica y qué traer (y por qué los resultados no salen por ahí):
+  https://www.conejeros-solutions.cl/consultas-examenes-preparacion-whatsapp
+
+### Clínicas y centros de estética
+
+- **Bot de WhatsApp con IA para clínicas y centros de estética**: volumen de Instagram, precios y sesiones:
+  https://www.conejeros-solutions.cl/bot-whatsapp-clinica-estetica-chile
+- **«Hola, precio?»**: cómo responder los precios de tratamientos estéticos sin perder al cliente:
+  https://www.conejeros-solutions.cl/responder-precios-tratamientos-esteticos-whatsapp
+- **Agendar la evaluación de un tratamiento estético** y lograr que el cliente llegue:
+  https://www.conejeros-solutions.cl/agendar-evaluacion-tratamiento-estetico-whatsapp
+- **Tratamientos de varias sesiones**: evitar que el cliente deje el paquete a medias:
+  https://www.conejeros-solutions.cl/seguimiento-sesiones-tratamiento-estetico-whatsapp
+
 ## Enlaces
 
 - Home: https://www.conejeros-solutions.cl/
