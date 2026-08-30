@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bot de WhatsApp con IA para Centros Médicos en Chile | Waly.AI</title>
-<meta name="description" content="Qué hace y qué no hace un asistente de IA en WhatsApp para un centro médico chileno: agenda contra el sistema real, orienta entre especialidades, responde convenios y deriva lo clínico a una persona.">
-<link rel="canonical" href="https://www.conejeros-solutions.cl/bot-whatsapp-clinica-medica-chile">
+<title>Bot de WhatsApp para Kinesiología y Rehabilitación · Chile | Waly.AI</title>
+<meta name="description" content="Cómo un asistente de IA agenda las sesiones de un plan de kinesiología completo por WhatsApp, persigue al paciente que dejó de venir a mitad del tratamiento y ordena las órdenes médicas y los bonos.">
+<link rel="canonical" href="https://www.conejeros-solutions.cl/bot-whatsapp-kinesiologia-centro-rehabilitacion">
 <link rel="alternate" type="text/markdown" href="/llms.txt" title="Resumen para agentes de IA">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://www.conejeros-solutions.cl/bot-whatsapp-clinica-medica-chile">
-<meta property="og:title" content="Bot de WhatsApp con IA para clínicas y centros médicos en Chile">
-<meta property="og:description" content="Qué hace y qué no hace un asistente de IA en WhatsApp para un centro médico chileno: agenda contra el sistema real, orienta entre especialidades, responde convenios y deriva lo clínico a una persona.">
+<meta property="og:url" content="https://www.conejeros-solutions.cl/bot-whatsapp-kinesiologia-centro-rehabilitacion">
+<meta property="og:title" content="Bot de WhatsApp para centros de kinesiología y rehabilitación">
+<meta property="og:description" content="Cómo un asistente de IA agenda las sesiones de un plan de kinesiología completo por WhatsApp, persigue al paciente que dejó de venir a mitad del tratamiento y ordena las órdenes médicas y los bonos.">
 <meta property="og:image" content="https://www.conejeros-solutions.cl/og-image.svg">
 <meta property="og:locale" content="es_CL">
 <meta name="twitter:card" content="summary_large_image">
@@ -94,58 +94,50 @@ margin-bottom:10px;font-weight:700}
  "mainEntity": [
   {
    "@type": "Question",
-   "name": "¿El asistente puede decirle a un paciente qué enfermedad tiene?",
+   "name": "¿Puede agendar las 10 sesiones de un plan de una sola vez?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "No, y está bloqueado a propósito. Puede orientar sobre a qué especialidad pedir hora según lo que el paciente cuenta, pero no diagnostica, no interpreta síntomas ni recomienda medicamentos. Cualquier consulta clínica se deriva a una persona del equipo."
+    "text": "Sí. Se conversa el patrón que le sirve al paciente (por ejemplo martes y jueves a las 18:30), se buscan esos cupos en la agenda real del centro y quedan agendados, con la lista escrita por WhatsApp. Si algún día no hay cupo en ese horario, ofrece la alternativa más cercana en vez de dejar el hueco."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Sirve para un centro con muchas especialidades?",
+   "name": "¿Cómo sabe que un paciente dejó de venir?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Sí, es justamente el caso donde más rinde. La disponibilidad se consulta por profesional y por prestación, igual que la ve tu recepción, y el asistente sabe qué atiende cada uno."
+    "text": "Mira las sesiones que estaban agendadas y no se cumplieron. Con eso le escribe el mismo día, le pregunta si pudo llegar y le ofrece retomar. No es una lista que alguien tenga que revisar a mano."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Puede responder por Fonasa, Isapre y convenios?",
+   "name": "¿Sirve si trabajamos con Fonasa e isapres?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Sí. Se le carga la información de previsiones, convenios y valores de tu centro, y responde con eso. Cuando el caso es particular y necesita revisión, deriva."
+    "text": "Sí. El asistente responde qué documento hace falta, qué cubre cada convenio y qué pasa si la orden venció, con la información que carga el centro. Lo que no está cargado no se inventa: se deriva."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Entrega resultados de exámenes?",
+   "name": "¿Puede decirle al paciente qué ejercicios hacer en casa?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "No. Los resultados son datos sensibles de salud protegidos por la Ley 21.719 y no salen por WhatsApp. El asistente le indica al paciente el canal oficial que tenga la clínica."
+    "text": "No, y es una decisión de diseño. Toda indicación clínica es del kinesiólogo. El asistente agenda, recuerda, responde lo administrativo y deriva el resto."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Se conecta con Reservo?",
+   "name": "¿Y si el paciente manda un audio explicando su dolor?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Sí. Reservo es una de nuestras integraciones activas y es el sistema más usado por centros médicos en Chile. También trabajamos con Dentalink y Dentalsoft."
+    "text": "Lo entiende y responde lo que le corresponde: agendar, mover la hora o derivar a una persona. No opina sobre el dolor."
    }
   },
   {
    "@type": "Question",
-   "name": "¿Qué pasa si el paciente manda una foto de su orden médica?",
+   "name": "¿Funciona para centros con varios kinesiólogos y varias salas?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "El asistente la entiende. Lee la foto, identifica qué examen o especialidad es y sigue la conversación desde ahí, en vez de pedirle al paciente que lo escriba."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "¿Puedo apagarlo en cualquier momento?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Sí. Hay un interruptor en la app: lo apagas y todas las conversaciones vuelven a tu equipo, al instante."
+    "text": "Sí. La disponibilidad se consulta por profesional y por prestación, igual que la ve la recepción."
    }
   },
   {
@@ -187,12 +179,12 @@ margin-bottom:10px;font-weight:700}
 {
  "@context": "https://schema.org",
  "@type": "Article",
- "headline": "Bot de WhatsApp con IA para clínicas y centros médicos en Chile",
- "description": "Qué hace y qué no hace un asistente de IA en WhatsApp para un centro médico chileno: agenda contra el sistema real, orienta entre especialidades, responde convenios y deriva lo clínico a una persona.",
+ "headline": "Bot de WhatsApp para centros de kinesiología y rehabilitación",
+ "description": "Cómo un asistente de IA agenda las sesiones de un plan de kinesiología completo por WhatsApp, persigue al paciente que dejó de venir a mitad del tratamiento y ordena las órdenes médicas y los bonos.",
  "inLanguage": "es-CL",
  "mainEntityOfPage": {
   "@type": "WebPage",
-  "@id": "https://www.conejeros-solutions.cl/bot-whatsapp-clinica-medica-chile"
+  "@id": "https://www.conejeros-solutions.cl/bot-whatsapp-kinesiologia-centro-rehabilitacion"
  },
  "author": {
   "@type": "Organization",
@@ -221,8 +213,8 @@ margin-bottom:10px;font-weight:700}
   {
    "@type": "ListItem",
    "position": 2,
-   "name": "Bot de WhatsApp con IA para clínicas y centros médicos en Chile",
-   "item": "https://www.conejeros-solutions.cl/bot-whatsapp-clinica-medica-chile"
+   "name": "Bot de WhatsApp para centros de kinesiología y rehabilitación",
+   "item": "https://www.conejeros-solutions.cl/bot-whatsapp-kinesiologia-centro-rehabilitacion"
   }
  ]
 }
@@ -237,47 +229,59 @@ margin-bottom:10px;font-weight:700}
 </header>
 
 <main class="wrap">
-  <nav class="miga" aria-label="Ruta"><a href="/">Waly.AI</a> › Bot de WhatsApp con IA para clínicas y centros médicos en Chile</nav>
-  <h1>Bot de WhatsApp con IA para clínicas y centros médicos en Chile</h1>
-<p class="lede">Un centro médico no tiene el problema de una clínica dental: tiene diez especialidades, dos previsiones, exámenes con preparación y pacientes que escriben sin saber a qué doctor tienen que ir. Un asistente de IA en WhatsApp sirve cuando resuelve eso —orientar, agendar contra la agenda real y confirmar— y cuando tiene claro dónde parar: nada clínico, nada de resultados, nada de diagnósticos.</p>
-<h2>Por qué un centro médico es más difícil que una clínica dental</h2>
-<p>En una dental el paciente escribe «necesito una limpieza» y hay una sola respuesta posible. En un centro médico el mensaje que llega es «tengo un dolor en la espalda hace dos semanas, ¿me pueden dar hora?», y ahí empieza el trabajo real de la recepción.</p>
-<ul><li><strong>El paciente no sabe a qué especialidad ir.</strong> Traumatólogo, kinesiólogo, medicina general, reumatólogo. Elegir mal significa una consulta perdida y un paciente enojado.</li><li><strong>La previsión cambia el precio y a veces al profesional.</strong> Fonasa, Isapre, particular, convenios. Es la primera pregunta que hace todo el mundo.</li><li><strong>Muchos profesionales, muchas agendas.</strong> Cada uno con sus días, sus box y sus prestaciones.</li><li><strong>Hay exámenes con preparación.</strong> Ayuno, suspender medicamentos, traer orden médica. Si el paciente llega sin eso, la hora se pierde igual que si no hubiera venido.</li><li><strong>Hay una línea clínica que no se cruza.</strong> Nadie puede decirle a un paciente por WhatsApp qué tiene ni qué tomar.</li></ul>
-<p>Un bot que solo contesta preguntas frecuentes se ahoga con el primer mensaje real. Lo que sirve es un asistente conectado al sistema de la clínica, con reglas claras de hasta dónde llega.</p>
-<h2>Lo que sí hace el asistente</h2>
-<ol><li><strong>Orienta sin diagnosticar.</strong> Pregunta lo necesario para llegar a la especialidad correcta —hace cuánto, qué tipo de molestia, si hay derivación previa— y propone a qué profesional pedir hora. No dice qué enfermedad es ni qué tomar.</li><li><strong>Consulta la agenda de verdad.</strong> Se conecta al sistema de gestión que ya usa el centro y ofrece las horas que existen para ese profesional, ese día y esa prestación.</li><li><strong>Deja la hora tomada.</strong> El paciente elige y la cita queda escrita en el sistema, con su ficha.</li><li><strong>Responde previsión y valores.</strong> Qué convenios hay, cuánto sale particular, qué necesita para atenderse con su Isapre.</li><li><strong>Explica la preparación del examen.</strong> Cuántas horas de ayuno, qué traer, dónde queda, a qué hora llegar.</li><li><strong>Confirma y recuerda.</strong> Manda el recordatorio antes de la hora, entiende la respuesta y actualiza el estado de la cita solo.</li><li><strong>Deriva a una persona cuando toca.</strong> Cualquier cosa clínica, un reclamo o algo que no está seguro, pasa al equipo y avisa.</li></ol>
-<h2>Lo que no hace, y es a propósito</h2>
-<p>Esto es lo que hay que exigirle a cualquier proveedor antes de firmar, porque es donde se meten en problemas los sistemas mal hechos:</p>
-<ul><li><strong>No diagnostica ni recomienda tratamientos.</strong> Orientar hacia una especialidad no es decir qué tiene el paciente.</li><li><strong>No entrega resultados de exámenes por WhatsApp.</strong> Son datos sensibles de salud y la Ley 21.719 los protege. El asistente indica el canal que la clínica tenga para eso.</li><li><strong>No inventa horas.</strong> Si no puede confirmar la disponibilidad contra el sistema, no ofrece un cupo: deriva a una persona.</li><li><strong>No finge ser humano.</strong> Habla con el tono del centro, pero no se hace pasar por la secretaria.</li><li><strong>No manda ráfagas de mensajes.</strong> Todo sale a goteo, con techo diario y descansos, porque WhatsApp bloquea los números que hacen envíos masivos y ese número es el canal principal del centro.</li></ul>
-<h2>Con qué sistemas se conecta y cuánto demora</h2>
-<p>Waly no reemplaza el software de gestión: se conecta al que ya tienes. Hoy tenemos integraciones funcionando con <strong>Reservo</strong>, que es el más usado en centros médicos chilenos, además de Dentalink y Dentalsoft en el mundo dental.</p>
-<p>Si tu sistema no está en esa lista, en el diagnóstico gratuito revisamos si tiene API y te decimos derecho si se puede o no, antes de que pagues nada. Cuando no hay integración posible, lo decimos: es preferible perder una venta que dejar un sistema que agenda a ciegas.</p>
-<p>La implementación toma entre 5 y 15 días hábiles según el plan, y todos incluyen 30 días de marcha blanca: el sistema funciona en tu clínica real, con tu equipo mirando, antes de quedar solo.</p>
-<h2>Recepción sola · bot de preguntas frecuentes · Waly</h2>
+  <nav class="miga" aria-label="Ruta"><a href="/">Waly.AI</a> › Bot de WhatsApp para centros de kinesiología y rehabilitación</nav>
+  <h1>Bot de WhatsApp para centros de kinesiología y rehabilitación</h1>
+<p class="lede">En kinesiología el problema no es agendar una hora: es que el paciente venga a las diez. El plan se indica completo, el paciente llega a la cuarta sesión y desaparece — y nadie en el centro tiene tiempo de perseguir uno por uno a los que se cayeron. Un asistente de IA en WhatsApp agenda la serie entera, avisa cada sesión y detecta al que dejó de venir el mismo día que falta.</p>
+<h2>El abandono a mitad de tratamiento es el agujero de plata del centro</h2>
+<p>Un paciente con una indicación de 10 sesiones que se va en la cuarta deja seis horas sin vender y, peor, se va sin resultado: no vuelve y no recomienda. La mayoría de los centros no sabe cuántos abandonan porque nadie lleva la cuenta, y el que la lleva la lleva a mano.</p>
+<p>Las tres razones por las que se cae un paciente de kinesiología casi nunca son clínicas:</p>
+<ul><li><strong>Se le olvidó la hora</strong> y le dio vergüenza avisar.</li><li><strong>Le cambió el turno de trabajo</strong> y no supo cómo mover las sesiones que venían.</li><li><strong>Faltó una vez</strong>, nadie lo llamó, y entendió que ya no importaba.</li></ul>
+<p>Las tres se resuelven con un mensaje a tiempo. Ninguna se resuelve con un formulario.</p>
+<h2>Agendar una serie, no una hora suelta</h2>
+<p>Esto es lo que separa a un asistente hecho para kinesiología de uno genérico. El paciente llega con una indicación de <em>x</em> sesiones, y lo que necesita no es una hora: es un horario.</p>
+<ol><li><strong>Se acuerda el patrón.</strong> «Martes y jueves a las 18:30» o «tres veces por semana en la mañana». El asistente lo conversa en lenguaje normal.</li><li><strong>Se buscan los cupos reales</strong> del kinesiólogo que corresponde, en la agenda del centro, no en un calendario aparte.</li><li><strong>Queda agendada toda la serie</strong> que alcanza, y el paciente recibe la lista escrita por WhatsApp.</li><li><strong>Cada sesión se recuerda</strong> el día antes, y el paciente confirma o mueve esa sesión sola sin tocar el resto.</li></ol>
+<p>Cuando el paciente mueve una sesión, el cupo que deja vuelve a estar libre en el momento para otro paciente. Es la diferencia entre una agenda que respira y una que se llena de huecos fantasma.</p>
+<h2>Al que dejó de venir se le escribe el mismo día</h2>
+<p>Un centro con 60 pacientes activos no puede revisar a mano quién no vino. El asistente sí: mira quién tenía sesión y no llegó, y le escribe ese mismo día, antes de que el abandono se vuelva costumbre.</p>
+<p>El mensaje no reta ni presiona. Pregunta si pudo llegar y le ofrece la hora más cercana para retomar. Si el paciente contesta que le cambió el horario de trabajo, el asistente le reordena las sesiones que quedan. Si contesta que está mejor y quiere parar, eso también es información: queda registrado para que el kinesiólogo lo sepa antes de la siguiente sesión.</p>
+<p>Y hay un caso que solo pasa en rehabilitación: el paciente que <strong>terminó el plan y necesita el siguiente</strong>. Terminadas las sesiones indicadas, el asistente puede avisar para el control o la nueva orden, que es justo cuando el paciente se pierde entre la mejoría y el trámite.</p>
+<h2>Órdenes médicas, bonos y convenios sin que la recepción explique lo mismo diez veces</h2>
+<p>La mitad de los mensajes de un centro de kinesiología no son para agendar: son para preguntar lo mismo. Qué necesito para atenderme, si me sirve la orden que tengo, si mi isapre cubre, cuánto vale la sesión particular, si tengo que llevar algo.</p>
+<ul><li><strong>Qué documento hace falta</strong> para atenderse con convenio y qué pasa si el paciente no lo trae.</li><li><strong>Vigencia de la orden médica</strong> y qué hacer cuando venció a mitad del tratamiento.</li><li><strong>Qué llevar a la sesión</strong>: ropa cómoda, la imagen o el informe si lo tiene.</li><li><strong>Cuánto dura</strong> cada sesión y cuánto antes conviene llegar.</li></ul>
+<p>Todo eso lo responde el asistente con la información que carga el centro, palabra por palabra. Lo que no está cargado no se inventa: se deriva a una persona, y se avisa.</p>
+<h2>Lo que está medido en clínicas que ya funcionan</h2>
+<p>Estos no son números de folleto: salen de los paneles de dos clínicas chilenas en marcha, con su ventana de tiempo delante. Se publican sin el nombre de la clínica por respeto a ellas.</p>
+<p><strong>Un centro médico de Temuco, en 44 días</strong> (14 de julio al 27 de agosto de 2026):</p>
+<ul><li><strong>1.302 conversaciones atendidas.</strong> Una persona del equipo tuvo que meterse en 26 de ellas: el 98 % lo llevó el asistente solo.</li><li><strong>105 citas agendadas</strong> por el propio asistente, contadas cuando la hora ya quedó escrita en el sistema de la clínica, no cuando el paciente dijo que sí.</li><li><strong>1.524 recordatorios enviados</strong>: 1.028 el día antes y 496 el mismo día.</li><li><strong>112 pacientes escribieron entre las 22:00 y las 8:00</strong>, 32 de ellos entre medianoche y las 7 de la mañana. Esas conversaciones las abrió el paciente: a esa hora el asistente no manda nada.</li><li><strong>302 de las 1.302 (23,2 %) llegaron con la clínica cerrada</strong>, de noche o el fin de semana.</li></ul>
+<p><strong>Una clínica dental de Santiago</strong>, en la campaña de pacientes que no volvían (julio y agosto de 2026):</p>
+<ul><li><strong>260 mensajes entregados de verdad</strong> —contados por el acuse de entrega, no por lo que salió de la cola—, <strong>41 personas respondieron</strong> y <strong>25 volvieron a agendar</strong>.</li><li><strong>$1.699.000 entraron a caja</strong> de 12 de esas 25 familias, cruzado con los pagos registrados en el software de la clínica.</li></ul>
+<p>Lo que estos números no prueban: son dos clínicas, con su realidad, su equipo y su demanda. En el diagnóstico gratuito miramos la tuya antes de prometerte nada.</p>
+<h2>Lo que el asistente no hace, y es a propósito</h2>
+<ul><li><strong>No da indicaciones clínicas.</strong> No dice cuántas sesiones necesita un hombro, no opina sobre un dolor, no sugiere ejercicios. Eso es del kinesiólogo, y el asistente lo dice así.</li><li><strong>No manda informes ni resultados</strong> por WhatsApp.</li><li><strong>No discute un alta ni una indicación.</strong> Deriva a la persona que corresponde.</li><li><strong>No insiste con quien pidió que no le escriban.</strong> Se saca de los envíos y queda registrado.</li></ul>
+<h2>Recepción sola · recordatorio automático simple · Waly</h2>
 <div class="tabla"><table><thead><tr>
 <th></th>
-<th>Solo recepción</th>
-<th>Bot de respuestas fijas</th>
-<th>Waly conectado al sistema</th>
+<th>Recepción sola</th>
+<th>Recordatorio automático simple</th>
+<th>Waly</th>
 </tr></thead><tbody>
-<tr><td><strong>Responde a las 22:00, sábados y festivos</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Orienta a la especialidad correcta</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Ofrece horas que existen de verdad</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Deja la cita escrita en el sistema</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No, avisa nomás</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Explica convenios y valores</strong></td><td><span class='si'>Sí</span></td><td>A medias</td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Explica la preparación de un examen</strong></td><td><span class='si'>Sí</span></td><td>A medias</td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Entiende una foto de la orden médica o un audio</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
-<tr><td><strong>Sabe cuándo callarse y pasar a una persona</strong></td><td>—</td><td><span class='no'>No</span></td><td><span class='si'>Sí, y avisa</span></td></tr>
+<tr><td><strong>Agenda la serie completa de sesiones</strong></td><td>Sí, a mano</td><td><span class='no'>No</span></td><td><span class='si'>Sí, conversando</span></td></tr>
+<tr><td><strong>Avisa cada sesión</strong></td><td>Si alcanza</td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Detecta al que faltó y le escribe</strong></td><td><span class='no'>Casi nunca</span></td><td><span class='no'>No</span></td><td><span class='si'>El mismo día</span></td></tr>
+<tr><td><strong>Mueve una sesión sin romper el resto</strong></td><td>Sí, a mano</td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Libera el cupo que deja el que cambió</strong></td><td>Si se acuerda</td><td><span class='no'>No</span></td><td><span class='si'>Al momento</span></td></tr>
+<tr><td><strong>Responde por órdenes, bonos y convenios</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No</span></td><td><span class='si'>Sí, con la info del centro</span></td></tr>
+<tr><td><strong>Atiende a las 22:00 y los domingos</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Muestra los números medidos de otras clínicas</strong></td><td><span class='no'>Casi nunca</span></td><td><span class='si'>Sí, con su ventana de tiempo</span></td></tr>
 </tbody></table></div>
 <h2>Preguntas frecuentes</h2>
 <div class="faq">
-<details><summary>¿El asistente puede decirle a un paciente qué enfermedad tiene?</summary><p>No, y está bloqueado a propósito. Puede orientar sobre a qué especialidad pedir hora según lo que el paciente cuenta, pero no diagnostica, no interpreta síntomas ni recomienda medicamentos. Cualquier consulta clínica se deriva a una persona del equipo.</p></details>
-<details><summary>¿Sirve para un centro con muchas especialidades?</summary><p>Sí, es justamente el caso donde más rinde. La disponibilidad se consulta por profesional y por prestación, igual que la ve tu recepción, y el asistente sabe qué atiende cada uno.</p></details>
-<details><summary>¿Puede responder por Fonasa, Isapre y convenios?</summary><p>Sí. Se le carga la información de previsiones, convenios y valores de tu centro, y responde con eso. Cuando el caso es particular y necesita revisión, deriva.</p></details>
-<details><summary>¿Entrega resultados de exámenes?</summary><p>No. Los resultados son datos sensibles de salud protegidos por la Ley 21.719 y no salen por WhatsApp. El asistente le indica al paciente el canal oficial que tenga la clínica.</p></details>
-<details><summary>¿Se conecta con Reservo?</summary><p>Sí. Reservo es una de nuestras integraciones activas y es el sistema más usado por centros médicos en Chile. También trabajamos con Dentalink y Dentalsoft.</p></details>
-<details><summary>¿Qué pasa si el paciente manda una foto de su orden médica?</summary><p>El asistente la entiende. Lee la foto, identifica qué examen o especialidad es y sigue la conversación desde ahí, en vez de pedirle al paciente que lo escriba.</p></details>
-<details><summary>¿Puedo apagarlo en cualquier momento?</summary><p>Sí. Hay un interruptor en la app: lo apagas y todas las conversaciones vuelven a tu equipo, al instante.</p></details>
+<details><summary>¿Puede agendar las 10 sesiones de un plan de una sola vez?</summary><p>Sí. Se conversa el patrón que le sirve al paciente (por ejemplo martes y jueves a las 18:30), se buscan esos cupos en la agenda real del centro y quedan agendados, con la lista escrita por WhatsApp. Si algún día no hay cupo en ese horario, ofrece la alternativa más cercana en vez de dejar el hueco.</p></details>
+<details><summary>¿Cómo sabe que un paciente dejó de venir?</summary><p>Mira las sesiones que estaban agendadas y no se cumplieron. Con eso le escribe el mismo día, le pregunta si pudo llegar y le ofrece retomar. No es una lista que alguien tenga que revisar a mano.</p></details>
+<details><summary>¿Sirve si trabajamos con Fonasa e isapres?</summary><p>Sí. El asistente responde qué documento hace falta, qué cubre cada convenio y qué pasa si la orden venció, con la información que carga el centro. Lo que no está cargado no se inventa: se deriva.</p></details>
+<details><summary>¿Puede decirle al paciente qué ejercicios hacer en casa?</summary><p>No, y es una decisión de diseño. Toda indicación clínica es del kinesiólogo. El asistente agenda, recuerda, responde lo administrativo y deriva el resto.</p></details>
+<details><summary>¿Y si el paciente manda un audio explicando su dolor?</summary><p>Lo entiende y responde lo que le corresponde: agendar, mover la hora o derivar a una persona. No opina sobre el dolor.</p></details>
+<details><summary>¿Funciona para centros con varios kinesiólogos y varias salas?</summary><p>Sí. La disponibilidad se consulta por profesional y por prestación, igual que la ve la recepción.</p></details>
 <details><summary>¿Se integra con el software que ya uso en mi clínica?</summary><p>Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas de Chile, entre ellos Dentalink, Dentalsoft y Reservo. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración antes de que contrates nada.</p></details>
 <details><summary>¿Necesito saber de tecnología?</summary><p>No. Nosotros implementamos, conectamos y configuramos todo. Tú usas una app simple para encender o apagar el asistente cuando quieras.</p></details>
 <details><summary>¿Qué pasa si el asistente no sabe responder algo?</summary><p>Deriva la conversación a una persona de tu equipo y avisa. Ningún paciente queda sin respuesta, y el equipo entra solo en lo que de verdad necesita a una persona.</p></details>
@@ -303,6 +307,7 @@ Sin presentación de ventas.</p>
 <a href="/reactivar-pacientes-inactivos-whatsapp">Reactivar pacientes que no vuelven, por WhatsApp</a>
 <a href="/recordatorios-citas-whatsapp-clinica">Recordatorios de citas por WhatsApp para clínicas</a>
 <a href="/waly-vs-secretaria-manual">Waly contra hacerlo a mano: qué cambia de verdad en la clínica</a>
+<a href="/bot-whatsapp-clinica-medica-chile">Bot de WhatsApp con IA para clínicas y centros médicos en Chile</a>
 <a href="/agendar-consultas-medicas-whatsapp-reservo">Agendar consultas médicas por WhatsApp con Reservo, automáticamente</a>
 <a href="/derivar-pacientes-especialidad-whatsapp">El paciente no sabe a qué especialista pedir hora: cómo se resuelve por WhatsApp</a>
 <a href="/consultas-examenes-preparacion-whatsapp">Responder por WhatsApp las dudas de exámenes: ayuno, orden médica y qué traer</a>
@@ -310,7 +315,6 @@ Sin presentación de ventas.</p>
 <a href="/responder-precios-tratamientos-esteticos-whatsapp">«Hola, precio?»: cómo responder los precios por WhatsApp sin perder al cliente</a>
 <a href="/agendar-evaluacion-tratamiento-estetico-whatsapp">Agendar la evaluación de un tratamiento estético por WhatsApp, automáticamente</a>
 <a href="/seguimiento-sesiones-tratamiento-estetico-whatsapp">Tratamientos de varias sesiones: cómo evitar que el cliente los deje a medias</a>
-<a href="/bot-whatsapp-kinesiologia-centro-rehabilitacion">Bot de WhatsApp para centros de kinesiología y rehabilitación</a>
 <a href="/bot-whatsapp-dermatologia-consulta-chile">Bot de WhatsApp para dermatología: fotos de lesiones sin diagnosticar por chat</a>
 <a href="/bot-whatsapp-oftalmologia-consulta-ocular">Bot de WhatsApp para oftalmología: dilatación, exámenes y horas que se ocupan bien</a>
 <a href="/bot-whatsapp-psicologia-consulta-salud-mental">Bot de WhatsApp para consultas de psicología: agenda sí, contenido de sesión no</a>

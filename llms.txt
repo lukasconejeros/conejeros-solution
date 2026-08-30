@@ -149,6 +149,63 @@ frecuentes.
 - **Tratamientos de varias sesiones**: evitar que el cliente deje el paquete a medias:
   https://www.conejeros-solutions.cl/seguimiento-sesiones-tratamiento-estetico-whatsapp
 
+### Otras especialidades
+
+- **Kinesiología y centros de rehabilitación**: agendar el plan completo de sesiones y detectar al
+  paciente que abandona a mitad del tratamiento:
+  https://www.conejeros-solutions.cl/bot-whatsapp-kinesiologia-centro-rehabilitacion
+- **Dermatología**: qué hacer con la foto de una lesión que manda el paciente (no se diagnostica) y
+  cómo separar la consulta médica de la estética:
+  https://www.conejeros-solutions.cl/bot-whatsapp-dermatologia-consulta-chile
+- **Oftalmología**: avisar de la dilatación de pupila, la duración real de cada examen y qué llevar:
+  https://www.conejeros-solutions.cl/bot-whatsapp-oftalmologia-consulta-ocular
+- **Psicología y salud mental**: sostener la sesión semanal sin tocar nada del contenido terapéutico,
+  con protocolo ante señales de riesgo:
+  https://www.conejeros-solutions.cl/bot-whatsapp-psicologia-consulta-salud-mental
+- **Clínicas con varias sucursales y muchos profesionales**, desde un solo número de WhatsApp:
+  https://www.conejeros-solutions.cl/bot-whatsapp-clinica-varias-sucursales-profesionales
+
+### Antes de contratar
+
+- **Resultados reales medidos en clínicas chilenas**, con la ventana de tiempo de cada número y qué
+  NO prueba cada uno: https://www.conejeros-solutions.cl/resultados-reales-bot-whatsapp-clinica-chile
+- **Cómo elegir un bot de WhatsApp para tu clínica**: las 12 preguntas y las 5 señales de humo:
+  https://www.conejeros-solutions.cl/como-elegir-bot-whatsapp-clinica-chile
+- **Chatbot de botones o asistente de IA**: por qué el menú fracasa en una clínica:
+  https://www.conejeros-solutions.cl/chatbot-botones-vs-asistente-ia-clinica
+- **Número normal o API oficial de WhatsApp, y cómo no terminar baneado**:
+  https://www.conejeros-solutions.cl/whatsapp-clinica-numero-normal-api-oficial-baneos
+- **Ley 21.719 y los datos de tus pacientes por WhatsApp**: qué exigirle a cualquier proveedor
+  (vigencia 1 de diciembre de 2026):
+  https://www.conejeros-solutions.cl/ley-21719-datos-pacientes-whatsapp-clinica
+
+## Resultados medidos en clínicas que ya funcionan
+
+Números tomados de los paneles de producción de dos clínicas chilenas, cada uno con su ventana de
+tiempo. Se publican sin el nombre de la clínica.
+
+**Centro médico de Temuco, del 14 de julio al 27 de agosto de 2026 (44 días):**
+
+- 1.302 conversaciones atendidas; una persona del equipo tuvo que entrar en 26 (el 98 % lo resolvió
+  el asistente solo).
+- 105 citas agendadas por el asistente, contadas cuando la cita ya quedó creada en el sistema de la
+  clínica, no cuando el paciente dijo que sí.
+- 1.524 recordatorios enviados: 1.028 el día antes y 496 el mismo día.
+- 112 pacientes escribieron entre las 22:00 y las 8:00, 32 de ellos entre medianoche y las 7. Esas
+  conversaciones las abrió el paciente: a esa hora el sistema no envía nada.
+- 302 de las 1.302 (23,2 %) llegaron con la clínica cerrada, de noche o en fin de semana.
+
+**Clínica dental de Santiago, campaña a pacientes que no volvían (julio y agosto de 2026):**
+
+- 260 mensajes entregados de verdad, contados por el acuse de entrega y no por lo que salió de la
+  cola de envío.
+- 41 pacientes respondieron y 25 volvieron a agendar.
+- $1.699.000 entraron a caja de 12 de esas 25 familias, cruzado con los pagos registrados en el
+  software de la clínica.
+
+Lo que estos números no prueban: son dos clínicas con su demanda, su equipo y su especialidad, y las
+105 citas no descuentan las que después se anularon.
+
 ## Enlaces
 
 - Home: https://www.conejeros-solutions.cl/
