@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agendar Citas por WhatsApp con Dentalink · IA 24/7 | Waly.AI</title>
+<meta name="description" content="Cómo conectar WhatsApp con Dentalink para que un asistente de IA consulte la disponibilidad real, ofrezca horas y deje la cita agendada sin que recepción toque el teclado.">
+<link rel="canonical" href="https://www.conejeros-solutions.cl/agendar-citas-whatsapp-dentalink">
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Resumen para agentes de IA">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.conejeros-solutions.cl/agendar-citas-whatsapp-dentalink">
+<meta property="og:title" content="Agendar citas por WhatsApp con Dentalink, automáticamente">
+<meta property="og:description" content="Cómo conectar WhatsApp con Dentalink para que un asistente de IA consulte la disponibilidad real, ofrezca horas y deje la cita agendada sin que recepción toque el teclado.">
+<meta property="og:image" content="https://www.conejeros-solutions.cl/og-image.svg">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--void:#000;--surface:#0a0f1e;--card:rgba(255,255,255,.025);--line:rgba(255,255,255,.09);
+--line-h:rgba(255,255,255,.18);--cyan:#06b6d4;--cyan-b:#22d3ee;--accent:#8b5cf6;--green:#22c55e;
+--green-b:#4ade80;--txt:#f8fafc;--txt2:#A0A0B0;--muted:#64748b;--danger:#ef4444;
+--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+body{background:var(--void);color:var(--txt);font-family:var(--font);font-size:17px;line-height:1.65;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+a{color:var(--cyan-b);text-decoration:none}
+a:hover{text-decoration:underline}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(0,0,0,.82);
+backdrop-filter:blur(14px);z-index:50}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1100px}
+.logo{font-weight:800;letter-spacing:-.04em;font-size:1.18rem;color:var(--txt)}
+.logo span{background:linear-gradient(135deg,var(--cyan),var(--accent));-webkit-background-clip:text;
+-webkit-text-fill-color:transparent}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--green),var(--green-b));color:#04140a;
+font-weight:750;padding:11px 20px;border-radius:11px;font-size:.94rem;letter-spacing:-.01em}
+.btn:hover{text-decoration:none;filter:brightness(1.08)}
+.btn-l{padding:15px 30px;font-size:1.03rem}
+.miga{font-size:.8rem;color:var(--muted);padding:22px 0 0}
+.miga a{color:var(--muted)}
+h1{font-size:2.35rem;line-height:1.12;letter-spacing:-.045em;font-weight:830;margin:14px 0 18px}
+h2{font-size:1.5rem;line-height:1.22;letter-spacing:-.035em;font-weight:790;margin:46px 0 12px;
+padding-top:26px;border-top:1px solid var(--line)}
+h3{font-size:1.1rem;font-weight:740;letter-spacing:-.02em;margin:26px 0 6px;color:var(--txt)}
+p{margin:13px 0;color:var(--txt2)}
+strong{color:var(--txt);font-weight:680}
+.lede{font-size:1.16rem;color:var(--txt);border-left:3px solid var(--green);padding:2px 0 2px 20px;margin:22px 0 30px}
+ul,ol{margin:14px 0 14px 22px;color:var(--txt2)}
+li{margin:9px 0}
+.tabla{overflow-x:auto;margin:22px 0}
+table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:520px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;
+background:rgba(255,255,255,.03)}
+td{color:var(--txt2)}
+tr:last-child td{border-bottom:none}
+.si{color:var(--green-b);font-weight:700}
+.no{color:var(--danger);font-weight:700}
+.caja{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:24px 0}
+.caja h3{margin-top:0}
+.precio{background:linear-gradient(160deg,rgba(34,197,94,.09),rgba(6,182,212,.05));
+border:1px solid rgba(34,197,94,.28);border-radius:18px;padding:24px;margin:26px 0}
+.precio .n{font-size:1.5rem;font-weight:820;letter-spacing:-.04em;color:var(--txt);display:block;margin-bottom:2px}
+.precio .p{margin:6px 0 0;font-size:.95rem}
+.faq details{border-bottom:1px solid var(--line);padding:2px 0}
+.faq summary{cursor:pointer;padding:15px 0;font-weight:700;color:var(--txt);font-size:1.02rem;
+letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--green-b);font-weight:800;flex:none}
+.faq details[open] summary::after{content:'–'}
+.faq details p{margin:0 0 16px}
+.cierre{background:linear-gradient(160deg,rgba(6,182,212,.09),rgba(139,92,246,.06));
+border:1px solid var(--line-h);border-radius:20px;padding:32px 28px;margin:48px 0 10px;text-align:center}
+.cierre h2{border:none;padding:0;margin:0 0 10px;font-size:1.65rem}
+.cierre p{margin:0 auto 22px;max-width:52ch}
+footer.pie{border-top:1px solid var(--line);margin-top:56px;padding:34px 0 46px;font-size:.9rem}
+footer.pie h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);
+margin-bottom:10px;font-weight:700}
+.otras{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 26px;margin-bottom:26px}
+.otras a{color:var(--txt2);font-size:.92rem;display:block;padding:3px 0}
+.otras a:hover{color:var(--cyan-b)}
+.legal{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:18px}
+@media(max-width:640px){body{font-size:16px}h1{font-size:1.82rem}h2{font-size:1.28rem}.lede{font-size:1.06rem}}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Waly reemplaza a Dentalink?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Waly no es un software de gestión clínica: se conecta al que ya tienes. Tu ficha, tu agenda y tus datos siguen viviendo en Dentalink; Waly es la capa que conversa con el paciente y escribe ahí."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿El paciente se da cuenta de que habla con una IA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El asistente no finge ser una persona. Responde con el tono de la clínica y, cuando la conversación necesita a alguien del equipo, deriva y lo dice."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué pasa si Dentalink se cae o no responde?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El asistente no inventa horas: si no puede confirmar la disponibilidad real, no ofrece un cupo. Deriva la conversación a una persona del equipo y avisa, en vez de agendar algo que después no existe."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Sirve si tengo varios dentistas y varios boxes?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. La disponibilidad se consulta por profesional y por prestación, igual que la ve tu recepción."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Y si el paciente quiere cambiar la hora?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Puede reagendar por el mismo WhatsApp. El asistente busca otra hora libre, la cambia en el sistema y libera la que dejó."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Puedo apagarlo cuando quiera?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. Hay un interruptor en la app: lo apagas y las conversaciones vuelven a tu equipo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Funciona también con Dentalsoft o Reservo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí, son las otras dos integraciones que tenemos hoy en clínicas funcionando. En el diagnóstico gratuito confirmamos tu caso."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Se integra con el software que ya uso en mi clínica?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas de Chile, entre ellos Dentalink, Dentalsoft y Reservo. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración antes de que contrates nada."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Necesito saber de tecnología?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Nosotros implementamos, conectamos y configuramos todo. Tú usas una app simple para encender o apagar el asistente cuando quieras."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué pasa si el asistente no sabe responder algo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Deriva la conversación a una persona de tu equipo y avisa. Ningún paciente queda sin respuesta, y el equipo entra solo en lo que de verdad necesita a una persona."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuánto demora la implementación?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El Plan Pro queda funcionando en 5 a 7 días hábiles, el Business Pro en 7 a 10 y la Secretaria Business Pro en 13 a 15. Todos los planes incluyen 30 días de marcha blanca para afinar el sistema en la clínica real."
+   }
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Agendar citas por WhatsApp con Dentalink, automáticamente",
+ "description": "Cómo conectar WhatsApp con Dentalink para que un asistente de IA consulte la disponibilidad real, ofrezca horas y deje la cita agendada sin que recepción toque el teclado.",
+ "inLanguage": "es-CL",
+ "mainEntityOfPage": {
+  "@type": "WebPage",
+  "@id": "https://www.conejeros-solutions.cl/agendar-citas-whatsapp-dentalink"
+ },
+ "author": {
+  "@type": "Organization",
+  "name": "Waly.AI",
+  "url": "https://www.conejeros-solutions.cl/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Waly.AI",
+  "url": "https://www.conejeros-solutions.cl/"
+ },
+ "about": "Automatización con inteligencia artificial para clínicas dentales, médicas y estéticas en Chile"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Waly.AI",
+   "item": "https://www.conejeros-solutions.cl/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Agendar citas por WhatsApp con Dentalink, automáticamente",
+   "item": "https://www.conejeros-solutions.cl/agendar-citas-whatsapp-dentalink"
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/">Waly<span>.AI</span></a>
+    <a class="btn" href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.AI" rel="nofollow">Diagnóstico gratis</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="miga" aria-label="Ruta"><a href="/">Waly.AI</a> › Agendar citas por WhatsApp con Dentalink, automáticamente</nav>
+  <h1>Agendar citas por WhatsApp con Dentalink, automáticamente</h1>
+<p class="lede">Sí, se puede: un asistente de IA conectado a la API de Dentalink lee la disponibilidad real de tu agenda, le ofrece al paciente las horas que existen de verdad y deja la cita creada en Dentalink, sin que nadie de recepción intervenga. Waly.AI lo hace hoy en clínicas chilenas, y también en Dentalsoft y Reservo.</p>
+<h2>Qué significa «agendar automático» y qué no</h2>
+<p>Hay dos cosas muy distintas que las dos se venden como «agendar por WhatsApp»:</p>
+<ul><li><strong>Un formulario disfrazado.</strong> El paciente escribe, el bot le pide nombre y teléfono, y eso llega como aviso a la recepción para que <em>ella</em> agende. La cita sigue dependiendo de una persona.</li><li><strong>Agendamiento real.</strong> El asistente consulta la agenda en vivo, ve qué horas están libres de verdad para ese profesional y ese box, se las ofrece al paciente, y cuando el paciente elige, la cita queda escrita en el sistema con su ficha.</li></ul>
+<p>Waly hace lo segundo. Es la diferencia entre ahorrarle tipeo a la recepción y sacarle el trabajo de encima.</p>
+<h2>Cómo funciona la conexión con Dentalink</h2>
+<p>Dentalink entrega una API con la que se pueden leer y escribir agenda, pacientes y citas. El asistente la usa en cuatro momentos:</p>
+<ol><li><strong>Identifica al paciente.</strong> Busca el teléfono que está escribiendo en la base de la clínica. Si ya es paciente, lo reconoce; si no, crea la ficha con los datos que entrega.</li><li><strong>Consulta disponibilidad real.</strong> No trabaja con un calendario aparte que después haya que cuadrar: pregunta a Dentalink qué hay libre en ese momento.</li><li><strong>Cierra la cita.</strong> El paciente elige una hora y la cita se crea en Dentalink, con profesional, prestación y box.</li><li><strong>Confirma por WhatsApp.</strong> Al paciente le llega el detalle escrito, y desde ahí puede confirmar, cancelar o pedir otra hora.</li></ol>
+<p>Si el paciente cancela o pide cambio, el asistente libera el cupo en Dentalink en el momento, para que esa hora vuelva a estar disponible para otro.</p>
+<h2>Lo que se resuelve el primer mes</h2>
+<ul><li><strong>Las 9 de la noche y los domingos.</strong> Es cuando la gente escribe y no hay nadie. El paciente que no recibe respuesta agenda en la clínica de al lado.</li><li><strong>La recepción deja de ser un cuello de botella.</strong> El mostrador, el teléfono, WhatsApp e Instagram dejan de competir por la misma persona.</li><li><strong>Se acaba el doble agendamiento.</strong> Como la hora se toma contra la agenda real, no se ofrece un cupo que la recepción acaba de dar por teléfono.</li><li><strong>Fotos y audios.</strong> El paciente manda una foto de un diente o un audio explicando su dolor; el asistente los entiende y responde, en vez de pedirle que lo escriba.</li></ul>
+<h2>Qué necesitas para partir</h2>
+<ul><li><strong>Tu cuenta de Dentalink</strong> con acceso a la API (lo confirmamos contigo antes de cobrar nada).</li><li><strong>Un número de WhatsApp</strong> de la clínica. Puede ser el que ya usan.</li><li><strong>Una hora tuya</strong> para contarnos prestaciones, precios, convenios y cómo hablan ustedes. Con eso se arma el cerebro del asistente.</li></ul>
+<p>El resto lo hacemos nosotros: conexión, configuración, pruebas y 30 días de marcha blanca funcionando en tu clínica real antes de dejarlo solo.</p>
+<h2>Recepción a mano · formulario web · Waly</h2>
+<div class="tabla"><table><thead><tr>
+<th></th>
+<th>Recepción a mano</th>
+<th>Formulario en la web</th>
+<th>Waly conectado a Dentalink</th>
+</tr></thead><tbody>
+<tr><td><strong>Responde a las 22:00 y los domingos</strong></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Ofrece las horas que existen de verdad</strong></td><td><span class='si'>Sí</span></td><td>A veces</td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Deja la cita escrita en Dentalink</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No, hay que pasarla</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Entiende una foto o un audio del paciente</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Libera el cupo cuando alguien cancela</strong></td><td>Si se acuerda</td><td><span class='no'>No</span></td><td><span class='si'>Sí, al momento</span></td></tr>
+<tr><td><strong>Le quita trabajo a la recepción</strong></td><td><span class='no'>No</span></td><td>Poco</td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Deriva a una persona cuando hace falta</strong></td><td>—</td><td><span class='no'>No</span></td><td><span class='si'>Sí, y avisa</span></td></tr>
+</tbody></table></div>
+<h2>Preguntas frecuentes</h2>
+<div class="faq">
+<details><summary>¿Waly reemplaza a Dentalink?</summary><p>No. Waly no es un software de gestión clínica: se conecta al que ya tienes. Tu ficha, tu agenda y tus datos siguen viviendo en Dentalink; Waly es la capa que conversa con el paciente y escribe ahí.</p></details>
+<details><summary>¿El paciente se da cuenta de que habla con una IA?</summary><p>El asistente no finge ser una persona. Responde con el tono de la clínica y, cuando la conversación necesita a alguien del equipo, deriva y lo dice.</p></details>
+<details><summary>¿Qué pasa si Dentalink se cae o no responde?</summary><p>El asistente no inventa horas: si no puede confirmar la disponibilidad real, no ofrece un cupo. Deriva la conversación a una persona del equipo y avisa, en vez de agendar algo que después no existe.</p></details>
+<details><summary>¿Sirve si tengo varios dentistas y varios boxes?</summary><p>Sí. La disponibilidad se consulta por profesional y por prestación, igual que la ve tu recepción.</p></details>
+<details><summary>¿Y si el paciente quiere cambiar la hora?</summary><p>Puede reagendar por el mismo WhatsApp. El asistente busca otra hora libre, la cambia en el sistema y libera la que dejó.</p></details>
+<details><summary>¿Puedo apagarlo cuando quiera?</summary><p>Sí. Hay un interruptor en la app: lo apagas y las conversaciones vuelven a tu equipo.</p></details>
+<details><summary>¿Funciona también con Dentalsoft o Reservo?</summary><p>Sí, son las otras dos integraciones que tenemos hoy en clínicas funcionando. En el diagnóstico gratuito confirmamos tu caso.</p></details>
+<details><summary>¿Se integra con el software que ya uso en mi clínica?</summary><p>Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas de Chile, entre ellos Dentalink, Dentalsoft y Reservo. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración antes de que contrates nada.</p></details>
+<details><summary>¿Necesito saber de tecnología?</summary><p>No. Nosotros implementamos, conectamos y configuramos todo. Tú usas una app simple para encender o apagar el asistente cuando quieras.</p></details>
+<details><summary>¿Qué pasa si el asistente no sabe responder algo?</summary><p>Deriva la conversación a una persona de tu equipo y avisa. Ningún paciente queda sin respuesta, y el equipo entra solo en lo que de verdad necesita a una persona.</p></details>
+<details><summary>¿Cuánto demora la implementación?</summary><p>El Plan Pro queda funcionando en 5 a 7 días hábiles, el Business Pro en 7 a 10 y la Secretaria Business Pro en 13 a 15. Todos los planes incluyen 30 días de marcha blanca para afinar el sistema en la clínica real.</p></details>
+</div>
+<div class="cierre">
+<h2>Una hora, por videollamada, sin costo</h2>
+<p>Vemos tu caso, confirmamos si tu software se integra y te decimos derecho si te conviene o no.
+Sin presentación de ventas.</p>
+<a class="btn btn-l" href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.AI" rel="nofollow">Escribir por WhatsApp</a>
+</div>
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <h4>Otras guías</h4>
+    <div class="otras">
+<a href="/confirmar-horas-whatsapp-clinica">Confirmar las horas por WhatsApp automáticamente, sin llamar a nadie</a>
+<a href="/reducir-ausentismo-pacientes-clinica">Cómo reducir el ausentismo de pacientes en una clínica</a>
+<a href="/precio-chatbot-ia-clinica-chile">Cuánto cuesta un chatbot con IA para una clínica en Chile</a>
+<a href="/secretaria-virtual-ia-clinicas-chile">Secretaria virtual con IA para clínicas en Chile: qué es y qué puede hacer</a>
+<a href="/reactivar-pacientes-inactivos-whatsapp">Reactivar pacientes que no vuelven, por WhatsApp</a>
+<a href="/recordatorios-citas-whatsapp-clinica">Recordatorios de citas por WhatsApp para clínicas</a>
+<a href="/waly-vs-secretaria-manual">Waly contra hacerlo a mano: qué cambia de verdad en la clínica</a>
+    </div>
+    <div class="legal">
+      <strong style="color:var(--txt2)">Waly.AI</strong> — Automatización con IA para clínicas dentales,
+      médicas y estéticas en Chile. Hoy funcionando en Clínica Mónaco (Valdivia), Dental Anpalex (Maipú, Santiago) y Clínica Medifis (Temuco).<br>
+      WhatsApp <a href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.AI" rel="nofollow">+56 9 9906 6071</a> ·
+      <a href="https://instagram.com/lukasconejeros" rel="nofollow">@lukasconejeros</a> ·
+      <a href="/">Inicio</a> · <a href="/privacidad.html">Política de privacidad</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

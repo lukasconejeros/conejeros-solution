@@ -103,9 +103,34 @@ confirmación al paciente por WhatsApp.
 **¿Funciona para clínicas dentales, médicas y estéticas?**
 Sí. Waly se adapta al rubro, los servicios, los precios y el tono de comunicación de cada clínica.
 
+## Guías por tema
+
+Cada una responde una pregunta concreta de una clínica, con tabla comparativa, precios y preguntas
+frecuentes.
+
+- **Agendar citas por WhatsApp con Dentalink**, automáticamente y contra la disponibilidad real:
+  https://www.conejeros-solutions.cl/agendar-citas-whatsapp-dentalink
+- **Confirmar las horas por WhatsApp** sin que la secretaria llame una por una, y que el estado de la
+  cita cambie solo en el sistema:
+  https://www.conejeros-solutions.cl/confirmar-horas-whatsapp-clinica
+- **Reducir el ausentismo de pacientes**: qué automatizaciones lo bajan y cuáles no sirven:
+  https://www.conejeros-solutions.cl/reducir-ausentismo-pacientes-clinica
+- **Cuánto cuesta un chatbot con IA para una clínica en Chile**: los tres rangos de precio del mercado
+  y los valores de Waly, publicados:
+  https://www.conejeros-solutions.cl/precio-chatbot-ia-clinica-chile
+- **Secretaria virtual con IA para clínicas**: qué hace, qué no hace y cuánto cuesta:
+  https://www.conejeros-solutions.cl/secretaria-virtual-ia-clinicas-chile
+- **Reactivar pacientes que no vuelven** por WhatsApp, sin que bloqueen el número de la clínica:
+  https://www.conejeros-solutions.cl/reactivar-pacientes-inactivos-whatsapp
+- **Recordatorios de citas por WhatsApp** a 48, 24 y 3 horas: qué decir y cuándo mandarlos:
+  https://www.conejeros-solutions.cl/recordatorios-citas-whatsapp-clinica
+- **Waly contra hacerlo a mano**: la comparación directa, incluidos los casos en que NO conviene
+  contratar: https://www.conejeros-solutions.cl/waly-vs-secretaria-manual
+
 ## Enlaces
 
 - Home: https://www.conejeros-solutions.cl/
 - Home en markdown: https://www.conejeros-solutions.cl/index.md
+- Mapa del sitio: https://www.conejeros-solutions.cl/sitemap.xml
 - Política de privacidad: https://www.conejeros-solutions.cl/privacidad.html
 - Agendar diagnóstico gratuito: https://www.conejeros-solutions.cl/#agendar

@@ -911,7 +911,8 @@
     .faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
     .faq-a-inner{padding:0 22px 20px;font-size:.95rem;color:var(--text-secondary);line-height:1.72}
     /* ── FOOTER mejorado ── */
-    .footer-cols{display:grid;grid-template-columns:1.5fr 1fr 1.2fr;gap:40px;padding:54px 0 34px}
+    .footer-cols{display:grid;grid-template-columns:1.4fr .8fr 1.1fr 1.3fr;gap:38px;padding:54px 0 34px}
+    @media (max-width:1000px){.footer-cols{grid-template-columns:1fr 1fr;gap:34px}}
     @media (max-width:768px){.footer-cols{grid-template-columns:1fr;gap:30px;padding:44px 0 26px;text-align:center}}
     .footer-col h4{font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:15px}
     .footer-col a.footer-link{display:block;color:var(--text-secondary);font-size:.93rem;margin-bottom:10px;text-decoration:none;transition:color .2s}
@@ -1528,6 +1529,17 @@
         <a class="footer-link" href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.AI" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> +56 9 9906 6071</a>
         <a class="footer-link" href="https://instagram.com/lukasconejeros" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> @lukasconejeros</a>
         <a class="footer-link" href="#" onclick="event.preventDefault();AgendaFlow.open('General');"><i class="fas fa-calendar-check"></i> Agenda tu diagnóstico gratis</a>
+      </div>
+      <div class="footer-col">
+        <h4>Guías</h4>
+        <a class="footer-link" href="/agendar-citas-whatsapp-dentalink">Agendar citas por WhatsApp con Dentalink</a>
+        <a class="footer-link" href="/confirmar-horas-whatsapp-clinica">Confirmar horas por WhatsApp</a>
+        <a class="footer-link" href="/recordatorios-citas-whatsapp-clinica">Recordatorios de citas por WhatsApp</a>
+        <a class="footer-link" href="/reducir-ausentismo-pacientes-clinica">Reducir el ausentismo de pacientes</a>
+        <a class="footer-link" href="/reactivar-pacientes-inactivos-whatsapp">Reactivar pacientes que no vuelven</a>
+        <a class="footer-link" href="/secretaria-virtual-ia-clinicas-chile">Secretaria virtual con IA</a>
+        <a class="footer-link" href="/precio-chatbot-ia-clinica-chile">Cuánto cuesta un chatbot con IA</a>
+        <a class="footer-link" href="/waly-vs-secretaria-manual">Waly contra hacerlo a mano</a>
       </div>
     </div>
     <div class="footer-bottom">© <span id="year"></span> Waly.AI — Automatización con IA para Clínicas Dentales, Médicas y Estéticas &nbsp;·&nbsp; <a href="/privacidad.html" style="color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--text-muted)'">Política de privacidad</a></div>

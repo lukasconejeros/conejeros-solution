@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reactivar Pacientes Inactivos por WhatsApp · Clínicas | Waly.AI</title>
+<meta name="description" content="Cómo volver a llenar la agenda con los pacientes que ya están en tu base y llevan meses sin volver, sin que te bloqueen el WhatsApp y sin molestar a nadie.">
+<link rel="canonical" href="https://www.conejeros-solutions.cl/reactivar-pacientes-inactivos-whatsapp">
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Resumen para agentes de IA">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.conejeros-solutions.cl/reactivar-pacientes-inactivos-whatsapp">
+<meta property="og:title" content="Reactivar pacientes que no vuelven, por WhatsApp">
+<meta property="og:description" content="Cómo volver a llenar la agenda con los pacientes que ya están en tu base y llevan meses sin volver, sin que te bloqueen el WhatsApp y sin molestar a nadie.">
+<meta property="og:image" content="https://www.conejeros-solutions.cl/og-image.svg">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--void:#000;--surface:#0a0f1e;--card:rgba(255,255,255,.025);--line:rgba(255,255,255,.09);
+--line-h:rgba(255,255,255,.18);--cyan:#06b6d4;--cyan-b:#22d3ee;--accent:#8b5cf6;--green:#22c55e;
+--green-b:#4ade80;--txt:#f8fafc;--txt2:#A0A0B0;--muted:#64748b;--danger:#ef4444;
+--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+body{background:var(--void);color:var(--txt);font-family:var(--font);font-size:17px;line-height:1.65;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+a{color:var(--cyan-b);text-decoration:none}
+a:hover{text-decoration:underline}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(0,0,0,.82);
+backdrop-filter:blur(14px);z-index:50}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;max-width:1100px}
+.logo{font-weight:800;letter-spacing:-.04em;font-size:1.18rem;color:var(--txt)}
+.logo span{background:linear-gradient(135deg,var(--cyan),var(--accent));-webkit-background-clip:text;
+-webkit-text-fill-color:transparent}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--green),var(--green-b));color:#04140a;
+font-weight:750;padding:11px 20px;border-radius:11px;font-size:.94rem;letter-spacing:-.01em}
+.btn:hover{text-decoration:none;filter:brightness(1.08)}
+.btn-l{padding:15px 30px;font-size:1.03rem}
+.miga{font-size:.8rem;color:var(--muted);padding:22px 0 0}
+.miga a{color:var(--muted)}
+h1{font-size:2.35rem;line-height:1.12;letter-spacing:-.045em;font-weight:830;margin:14px 0 18px}
+h2{font-size:1.5rem;line-height:1.22;letter-spacing:-.035em;font-weight:790;margin:46px 0 12px;
+padding-top:26px;border-top:1px solid var(--line)}
+h3{font-size:1.1rem;font-weight:740;letter-spacing:-.02em;margin:26px 0 6px;color:var(--txt)}
+p{margin:13px 0;color:var(--txt2)}
+strong{color:var(--txt);font-weight:680}
+.lede{font-size:1.16rem;color:var(--txt);border-left:3px solid var(--green);padding:2px 0 2px 20px;margin:22px 0 30px}
+ul,ol{margin:14px 0 14px 22px;color:var(--txt2)}
+li{margin:9px 0}
+.tabla{overflow-x:auto;margin:22px 0}
+table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:520px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;
+background:rgba(255,255,255,.03)}
+td{color:var(--txt2)}
+tr:last-child td{border-bottom:none}
+.si{color:var(--green-b);font-weight:700}
+.no{color:var(--danger);font-weight:700}
+.caja{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:24px 0}
+.caja h3{margin-top:0}
+.precio{background:linear-gradient(160deg,rgba(34,197,94,.09),rgba(6,182,212,.05));
+border:1px solid rgba(34,197,94,.28);border-radius:18px;padding:24px;margin:26px 0}
+.precio .n{font-size:1.5rem;font-weight:820;letter-spacing:-.04em;color:var(--txt);display:block;margin-bottom:2px}
+.precio .p{margin:6px 0 0;font-size:.95rem}
+.faq details{border-bottom:1px solid var(--line);padding:2px 0}
+.faq summary{cursor:pointer;padding:15px 0;font-weight:700;color:var(--txt);font-size:1.02rem;
+letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--green-b);font-weight:800;flex:none}
+.faq details[open] summary::after{content:'–'}
+.faq details p{margin:0 0 16px}
+.cierre{background:linear-gradient(160deg,rgba(6,182,212,.09),rgba(139,92,246,.06));
+border:1px solid var(--line-h);border-radius:20px;padding:32px 28px;margin:48px 0 10px;text-align:center}
+.cierre h2{border:none;padding:0;margin:0 0 10px;font-size:1.65rem}
+.cierre p{margin:0 auto 22px;max-width:52ch}
+footer.pie{border-top:1px solid var(--line);margin-top:56px;padding:34px 0 46px;font-size:.9rem}
+footer.pie h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);
+margin-bottom:10px;font-weight:700}
+.otras{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 26px;margin-bottom:26px}
+.otras a{color:var(--txt2);font-size:.92rem;display:block;padding:3px 0}
+.otras a:hover{color:var(--cyan-b)}
+.legal{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:18px}
+@media(max-width:640px){body{font-size:16px}h1{font-size:1.82rem}h2{font-size:1.28rem}.lede{font-size:1.06rem}}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Cada cuánto se puede hacer una campaña así?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No conviene repetirla seguido sobre la misma gente. Lo que sí funciona es que sea continua y silenciosa: cada semana entra el grupo que acaba de cumplir el tiempo sin venir, en vez de un bombardeo cada seis meses."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Van a bloquear el WhatsApp de mi clínica?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El riesgo nunca es cero, y quien te diga lo contrario te está vendiendo humo. Lo que hacemos es respetar techo diario, goteo, descansos y opt-out en todos los envíos, que es lo que lo mantiene bajo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Le va a llegar al paciente que ya tiene hora?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Tener una cita futura es uno de los filtros que excluye a un paciente de la campaña."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué mensaje se manda?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Se escribe con la clínica, con el nombre del paciente y de su profesional de siempre. Nunca es un texto genérico de publicidad."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo sé cuántos volvieron de verdad?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "En el panel queda cuántos mensajes se entregaron, cuántos respondieron y cuántos terminaron con hora agendada. La cifra que importa es la última."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Esto va incluido en algún plan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El seguimiento a interesados que nunca agendaron está desde el Plan Pro. La reactivación de pacientes antiguos y el retargeting entran en Business Pro, y la reactivación por llamada telefónica en Secretaria Business Pro."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Se integra con el software que ya uso en mi clínica?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas de Chile, entre ellos Dentalink, Dentalsoft y Reservo. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración antes de que contrates nada."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Necesito saber de tecnología?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Nosotros implementamos, conectamos y configuramos todo. Tú usas una app simple para encender o apagar el asistente cuando quieras."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué pasa si el asistente no sabe responder algo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Deriva la conversación a una persona de tu equipo y avisa. Ningún paciente queda sin respuesta, y el equipo entra solo en lo que de verdad necesita a una persona."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuánto demora la implementación?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El Plan Pro queda funcionando en 5 a 7 días hábiles, el Business Pro en 7 a 10 y la Secretaria Business Pro en 13 a 15. Todos los planes incluyen 30 días de marcha blanca para afinar el sistema en la clínica real."
+   }
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Reactivar pacientes que no vuelven, por WhatsApp",
+ "description": "Cómo volver a llenar la agenda con los pacientes que ya están en tu base y llevan meses sin volver, sin que te bloqueen el WhatsApp y sin molestar a nadie.",
+ "inLanguage": "es-CL",
+ "mainEntityOfPage": {
+  "@type": "WebPage",
+  "@id": "https://www.conejeros-solutions.cl/reactivar-pacientes-inactivos-whatsapp"
+ },
+ "author": {
+  "@type": "Organization",
+  "name": "Waly.AI",
+  "url": "https://www.conejeros-solutions.cl/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Waly.AI",
+  "url": "https://www.conejeros-solutions.cl/"
+ },
+ "about": "Automatización con inteligencia artificial para clínicas dentales, médicas y estéticas en Chile"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Waly.AI",
+   "item": "https://www.conejeros-solutions.cl/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Reactivar pacientes que no vuelven, por WhatsApp",
+   "item": "https://www.conejeros-solutions.cl/reactivar-pacientes-inactivos-whatsapp"
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/">Waly<span>.AI</span></a>
+    <a class="btn" href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.AI" rel="nofollow">Diagnóstico gratis</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="miga" aria-label="Ruta"><a href="/">Waly.AI</a> › Reactivar pacientes que no vuelven, por WhatsApp</nav>
+  <h1>Reactivar pacientes que no vuelven, por WhatsApp</h1>
+<p class="lede">La lista de pacientes que ya te conocen y llevan meses sin volver es el activo más barato que tiene una clínica: no hay que pagar publicidad para conseguirlos, ya confiaron una vez. El problema no es la idea, es cómo se ejecuta sin que WhatsApp bloquee el número.</p>
+<h2>Por qué esta campaña se hace mal casi siempre</h2>
+<p>La versión ingenua es exportar la base, mandarle a todos el mismo mensaje y esperar. Tres cosas salen mal:</p>
+<ul><li><strong>WhatsApp bloquea el número.</strong> Cientos de mensajes iguales en poco rato es exactamente el patrón que detectan.</li><li><strong>Le llega a quien no debía.</strong> Al que tiene hora la semana que viene, al que se cambió de clínica molesto, al que ya vino ayer. Cada uno de esos es una mala impresión.</li><li><strong>Nadie responde las respuestas.</strong> Llegan cincuenta contestaciones a un WhatsApp que nadie está mirando, y la mitad se pierde.</li></ul>
+<h2>Cómo se hace bien</h2>
+<ol><li><strong>Elegir a quién sí.</strong> Se filtra por tiempo sin venir, por si tiene hora futura, por tratamiento pendiente y por si pidió no recibir mensajes.</li><li><strong>Escribir como la clínica, no como un aviso.</strong> Con el nombre del paciente y de su profesional de siempre. Un mensaje que parece publicidad se ignora.</li><li><strong>Mandar a goteo.</strong> Con separación entre mensajes, un techo diario y descansos. Es más lento a propósito.</li><li><strong>Responder lo que llegue.</strong> Acá está el valor real: el que contesta «¿qué precio tiene?» o «¿tienen hora el sábado?» necesita respuesta en minutos, no al otro día. El asistente conversa y agenda ahí mismo.</li><li><strong>Medir lo que se entregó, no lo que se envió.</strong> Un mensaje encolado no es un mensaje que llegó. Los números que muestra el panel son de entrega real.</li></ol>
+<h2>La parte que casi nadie hace: contestar</h2>
+<p>Mandar los mensajes es lo fácil. Lo que convierte una campaña en pacientes agendados es que alguien conteste bien las respuestas, a la hora que lleguen, y cierre la hora sin fricción.</p>
+<p>Por eso la reactivación funciona cuando va encima de un asistente que ya sabe conversar y agendar. Sola, es una lista de mensajes enviados.</p>
+<h2>Respetar al que no quiere</h2>
+<p>Todo mensaje deja salida: el paciente que pide que no le escriban más queda marcado y no vuelve a entrar en ninguna campaña. No es solo cortesía — es lo que mantiene sano el número de la clínica y lo que exige la ley de protección de datos.</p>
+<h2>Exportar y mandar · agencia de campañas · Waly</h2>
+<div class="tabla"><table><thead><tr>
+<th></th>
+<th>Exportar y mandar a mano</th>
+<th>Campaña de publicidad</th>
+<th>Waly</th>
+</tr></thead><tbody>
+<tr><td><strong>Costo por paciente contactado</strong></td><td><span class='si'>Casi cero</span></td><td><span class='no'>Alto</span></td><td><span class='si'>Casi cero</span></td></tr>
+<tr><td><strong>Ya te conocen</strong></td><td><span class='si'>Sí</span></td><td><span class='no'>No</span></td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Riesgo de bloqueo del número</strong></td><td><span class='no'>Alto</span></td><td>—</td><td><span class='si'>Envío a goteo con techo</span></td></tr>
+<tr><td><strong>Filtra a quien no debe recibirlo</strong></td><td><span class='no'>No</span></td><td>—</td><td><span class='si'>Sí</span></td></tr>
+<tr><td><strong>Contesta a los que responden</strong></td><td>Si alguien está mirando</td><td><span class='no'>No</span></td><td><span class='si'>Sí, y agenda</span></td></tr>
+<tr><td><strong>Respeta al que pidió no recibir</strong></td><td>A mano</td><td>—</td><td><span class='si'>Automático</span></td></tr>
+<tr><td><strong>Mide entrega real, no solo envío</strong></td><td><span class='no'>No</span></td><td>—</td><td><span class='si'>Sí</span></td></tr>
+</tbody></table></div>
+<h2>Preguntas frecuentes</h2>
+<div class="faq">
+<details><summary>¿Cada cuánto se puede hacer una campaña así?</summary><p>No conviene repetirla seguido sobre la misma gente. Lo que sí funciona es que sea continua y silenciosa: cada semana entra el grupo que acaba de cumplir el tiempo sin venir, en vez de un bombardeo cada seis meses.</p></details>
+<details><summary>¿Van a bloquear el WhatsApp de mi clínica?</summary><p>El riesgo nunca es cero, y quien te diga lo contrario te está vendiendo humo. Lo que hacemos es respetar techo diario, goteo, descansos y opt-out en todos los envíos, que es lo que lo mantiene bajo.</p></details>
+<details><summary>¿Le va a llegar al paciente que ya tiene hora?</summary><p>No. Tener una cita futura es uno de los filtros que excluye a un paciente de la campaña.</p></details>
+<details><summary>¿Qué mensaje se manda?</summary><p>Se escribe con la clínica, con el nombre del paciente y de su profesional de siempre. Nunca es un texto genérico de publicidad.</p></details>
+<details><summary>¿Cómo sé cuántos volvieron de verdad?</summary><p>En el panel queda cuántos mensajes se entregaron, cuántos respondieron y cuántos terminaron con hora agendada. La cifra que importa es la última.</p></details>
+<details><summary>¿Esto va incluido en algún plan?</summary><p>El seguimiento a interesados que nunca agendaron está desde el Plan Pro. La reactivación de pacientes antiguos y el retargeting entran en Business Pro, y la reactivación por llamada telefónica en Secretaria Business Pro.</p></details>
+<details><summary>¿Se integra con el software que ya uso en mi clínica?</summary><p>Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas de Chile, entre ellos Dentalink, Dentalsoft y Reservo. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración antes de que contrates nada.</p></details>
+<details><summary>¿Necesito saber de tecnología?</summary><p>No. Nosotros implementamos, conectamos y configuramos todo. Tú usas una app simple para encender o apagar el asistente cuando quieras.</p></details>
+<details><summary>¿Qué pasa si el asistente no sabe responder algo?</summary><p>Deriva la conversación a una persona de tu equipo y avisa. Ningún paciente queda sin respuesta, y el equipo entra solo en lo que de verdad necesita a una persona.</p></details>
+<details><summary>¿Cuánto demora la implementación?</summary><p>El Plan Pro queda funcionando en 5 a 7 días hábiles, el Business Pro en 7 a 10 y la Secretaria Business Pro en 13 a 15. Todos los planes incluyen 30 días de marcha blanca para afinar el sistema en la clínica real.</p></details>
+</div>
+<div class="cierre">
+<h2>Una hora, por videollamada, sin costo</h2>
+<p>Vemos tu caso, confirmamos si tu software se integra y te decimos derecho si te conviene o no.
+Sin presentación de ventas.</p>
+<a class="btn btn-l" href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.AI" rel="nofollow">Escribir por WhatsApp</a>
+</div>
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <h4>Otras guías</h4>
+    <div class="otras">
+<a href="/agendar-citas-whatsapp-dentalink">Agendar citas por WhatsApp con Dentalink, automáticamente</a>
+<a href="/confirmar-horas-whatsapp-clinica">Confirmar las horas por WhatsApp automáticamente, sin llamar a nadie</a>
+<a href="/reducir-ausentismo-pacientes-clinica">Cómo reducir el ausentismo de pacientes en una clínica</a>
+<a href="/precio-chatbot-ia-clinica-chile">Cuánto cuesta un chatbot con IA para una clínica en Chile</a>
+<a href="/secretaria-virtual-ia-clinicas-chile">Secretaria virtual con IA para clínicas en Chile: qué es y qué puede hacer</a>
+<a href="/recordatorios-citas-whatsapp-clinica">Recordatorios de citas por WhatsApp para clínicas</a>
+<a href="/waly-vs-secretaria-manual">Waly contra hacerlo a mano: qué cambia de verdad en la clínica</a>
+    </div>
+    <div class="legal">
+      <strong style="color:var(--txt2)">Waly.AI</strong> — Automatización con IA para clínicas dentales,
+      médicas y estéticas en Chile. Hoy funcionando en Clínica Mónaco (Valdivia), Dental Anpalex (Maipú, Santiago) y Clínica Medifis (Temuco).<br>
+      WhatsApp <a href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.AI" rel="nofollow">+56 9 9906 6071</a> ·
+      <a href="https://instagram.com/lukasconejeros" rel="nofollow">@lukasconejeros</a> ·
+      <a href="/">Inicio</a> · <a href="/privacidad.html">Política de privacidad</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
