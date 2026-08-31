@@ -179,6 +179,23 @@ frecuentes.
   (vigencia 1 de diciembre de 2026):
   https://walybot.cl/ley-21719-datos-pacientes-whatsapp-clinica
 
+### Comparaciones con otros proveedores
+
+Escritas con los precios publicados de cada uno, la fecha en que se consultaron y una seccion
+diciendo en que casos conviene el otro y no Waly.IA.
+
+- **Waly.IA o Dentipilot**: los dos se conectan a Dentalink por su API; cambian el canal de WhatsApp
+  (numero de siempre contra API oficial), el tipo de clinica y el precio ($244.000 contra $299.990
+  al mes, los dos sin IVA): https://walybot.cl/waly-vs-dentipilot
+- **Waly.IA o Clinera**: Clinera reemplaza el software de gestion de la clinica y cobra en dolares
+  por creditos; Waly.IA se conecta al software que ya tienes y cobra un fijo en pesos:
+  https://walybot.cl/waly-vs-clinera
+- **Waly.IA o el Contact Center IA del propio Dentalink**: que gana la clinica contratandolo con el
+  fabricante del software y que gana con un proveedor externo; ellos no publican precio:
+  https://walybot.cl/waly-vs-contact-center-ia-dentalink
+- **Waly.IA o seguir haciendolo a mano** con la recepcion:
+  https://walybot.cl/waly-vs-secretaria-manual
+
 ## Resultados medidos en clínicas que ya funcionan
 
 Números tomados de los paneles de producción de dos clínicas chilenas, cada uno con su ventana de

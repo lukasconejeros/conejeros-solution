@@ -155,6 +155,18 @@
     {
       "source": "/whatsapp-clinica-numero-normal-api-oficial-baneos",
       "destination": "/whatsapp-clinica-numero-normal-api-oficial-baneos.html"
+    },
+    {
+      "source": "/waly-vs-clinera",
+      "destination": "/waly-vs-clinera.html"
+    },
+    {
+      "source": "/waly-vs-contact-center-ia-dentalink",
+      "destination": "/waly-vs-contact-center-ia-dentalink.html"
+    },
+    {
+      "source": "/waly-vs-dentipilot",
+      "destination": "/waly-vs-dentipilot.html"
     }
   ],
   "headers": [
