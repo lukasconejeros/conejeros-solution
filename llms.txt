@@ -1,4 +1,4 @@
-# Waly.AI
+# Waly.IA
 
 > Automatización con inteligencia artificial para clínicas dentales, médicas y estéticas en Chile.
 > Un asistente de IA que responde a los pacientes en WhatsApp, Instagram y Facebook las 24 horas,

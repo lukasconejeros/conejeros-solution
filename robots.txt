@@ -1,4 +1,4 @@
-# Waly.AI — https://walybot.cl
+# Waly.IA — https://walybot.cl
 #
 # Content Signals (contentsignals.org): le decimos a los robots de IA qué pueden hacer
 # con lo que leen aquí.
