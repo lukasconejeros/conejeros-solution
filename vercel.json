@@ -2,36 +2,36 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "www.conejeros-solutions.cl"
         }
       ],
-      "destination": "https://walybot.cl/:path*",
+      "destination": "https://walybot.cl/$1",
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "conejeros-solutions.cl"
         }
       ],
-      "destination": "https://walybot.cl/:path*",
+      "destination": "https://walybot.cl/$1",
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "www.walybot.cl"
         }
       ],
-      "destination": "https://walybot.cl/:path*",
+      "destination": "https://walybot.cl/$1",
       "permanent": true
     },
     {
