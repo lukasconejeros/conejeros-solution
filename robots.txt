@@ -1,4 +1,4 @@
-# Waly.AI — https://www.conejeros-solutions.cl
+# Waly.AI — https://walybot.cl
 #
 # Content Signals (contentsignals.org): le decimos a los robots de IA qué pueden hacer
 # con lo que leen aquí.
@@ -10,7 +10,7 @@ User-agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
-Sitemap: https://www.conejeros-solutions.cl/sitemap.xml
+Sitemap: https://walybot.cl/sitemap.xml
 
 # Para agentes: resumen del negocio en texto plano y la home en markdown
 # /llms.txt      · qué es Waly, planes, precios y preguntas frecuentes

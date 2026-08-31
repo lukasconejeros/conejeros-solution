@@ -2,6 +2,39 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.conejeros-solutions.cl"
+        }
+      ],
+      "destination": "https://walybot.cl/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "conejeros-solutions.cl"
+        }
+      ],
+      "destination": "https://walybot.cl/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.walybot.cl"
+        }
+      ],
+      "destination": "https://walybot.cl/:path*",
+      "permanent": true
+    },
+    {
       "source": "/",
       "has": [
         {
@@ -148,7 +181,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\"; title=\"Resumen para agentes de IA\", </index.md>; rel=\"alternate\"; type=\"text/markdown\"; title=\"Home en markdown\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\", <https://www.conejeros-solutions.cl/>; rel=\"canonical\""
+          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\"; title=\"Resumen para agentes de IA\", </index.md>; rel=\"alternate\"; type=\"text/markdown\"; title=\"Home en markdown\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\", <https://walybot.cl/>; rel=\"canonical\""
         }
       ]
     }

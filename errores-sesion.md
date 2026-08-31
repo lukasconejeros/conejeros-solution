@@ -87,3 +87,39 @@ Lukas cuando el envío falle en la cola. **Decidir con Lukas antes de construirl
 exigía ⇒ publicar la web antes que la app habría roto **todas** las reservas con «Necesito un correo
 real». Cuando el cambio toca los dos lados, **primero se despliega la app y después se publica la web** —
 es la misma regla que ya estaba escrita para el 07-08, y sigue valiendo.
+
+---
+
+## 31-08-2026 — El medidor de indexación mentía: Bing y Google devuelven basura a la automatización
+
+**El error:** el 30-08 se afirmó *«`site:conejeros-solutions.cl` da 0 en Google y 0 en Bing»* midiendo con
+`curl` contra `bing.com/search`. **Ese dato no estaba probado.** Al validarlo hoy con dominios de control
+(`mercadolibre.cl`, `miagenda.cl`) el mismo método devolvió **exactamente el mismo «0»** para sitios que
+obviamente sí están indexados ⇒ el instrumento estaba roto, no el sitio.
+
+**Lo que se probó hoy, uno por uno:**
+
+| Método | Qué devolvió |
+|---|---|
+| `curl` a `bing.com/search` | Página degradada sin resultados; la frase «No se encontraron resultados» está en el HTML **siempre**, hasta para `site:mercadolibre.cl` |
+| `lite.duckduckgo.com` (POST) | Respuesta fija de ~14 KB, 0 resultados para todo |
+| Mojeek, Brave, Ecosia por `curl` | Bloqueados |
+| Playwright **headless** contra Bing | 10 resultados de **relleno aleatorio** (duchas, Minecraft) |
+| Playwright **con ventana** contra Bing | Sigue el relleno: para `site:conejeros-solutions.cl` devolvió bancos alemanes |
+| Playwright contra Google | **captcha** siempre |
+| `WebFetch` a Bing | Resultados de alquiler de coches |
+
+**La regla que queda:** *un buscador consultado por script no es una medición.* Si hay que medir
+indexación, las únicas fuentes válidas son **Google Search Console**, **Bing Webmaster Tools** o que
+**Lukas lo mire en su navegador**. Y cualquier medidor nuevo se valida antes con un dominio de control
+que se sabe indexado: si el control también da cero, el cero no vale.
+
+**Lo que sí quedó medido de forma válida** (con la herramienta de búsqueda del asistente, que sí
+devuelve resultados reales y se contrastó con controles): buscando el H1 exacto de nuestra guía de
+precios salen **10 competidores chilenos** con páginas del mismo tipo y **ninguna nuestra**; buscando el
+dominio literal `conejeros-solutions.cl` **no aparece ni una página del sitio**, sale «Conejeros y Cía»
+(otra empresa). Cero menciones en internet = cero enlaces entrantes.
+
+**La causa de fondo, con fecha:** el repo arranca el **01-11-2025**, o sea la web lleva **10 meses**
+publicada, nunca se dio de alta en Search Console ni en Bing Webmaster, y nadie la enlaza. Los
+buscadores descubren webs por enlaces o porque el dueño las registra; no había ninguna de las dos.
