@@ -55,9 +55,9 @@
   <!-- CTA Right side -->
   <rect x="800" y="240" width="340" height="180" rx="20" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
   <text x="970" y="290" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="1">DESDE</text>
-  <text x="970" y="345" font-family="'Segoe UI',Arial,sans-serif" font-size="42" font-weight="900" fill="#FFD580" text-anchor="middle">$160.000</text>
+  <text x="970" y="345" font-family="'Segoe UI',Arial,sans-serif" font-size="42" font-weight="900" fill="#FFD580" text-anchor="middle">$244.000</text>
   <text x="970" y="375" font-family="'Segoe UI',Arial,sans-serif" font-size="16" fill="rgba(255,255,255,0.5)" text-anchor="middle">CLP / mes</text>
-  <text x="970" y="405" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="rgba(255,213,128,0.7)" text-anchor="middle">Primer mes GRATIS</text>
+  <text x="970" y="405" font-family="'Segoe UI',Arial,sans-serif" font-size="12" fill="rgba(255,213,128,0.7)" text-anchor="middle">Incluye 30 días de marcha blanca</text>
 
   <!-- Domain -->
   <text x="970" y="555" font-family="'Segoe UI',Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.3)" text-anchor="middle">walybot.cl</text>
@@ -65,5 +65,5 @@
   <!-- Bottom clients bar -->
   <rect x="60" y="510" width="680" height="1" fill="rgba(255,255,255,0.06)"/>
   <text x="60" y="545" font-family="'Segoe UI',Arial,sans-serif" font-size="13" fill="rgba(255,255,255,0.3)">Clínicas que confían en Waly:</text>
-  <text x="60" y="568" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="600" fill="rgba(255,255,255,0.55)">Clínica Mónaco (Valdivia) · Dental Anpalex (Santiago)</text>
+  <text x="60" y="568" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="600" fill="rgba(255,255,255,0.55)">Dental Anpalex (Santiago) · Clínica Medifis (Temuco)</text>
 </svg>
