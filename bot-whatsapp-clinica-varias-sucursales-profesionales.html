@@ -334,5 +334,40 @@ Sin presentación de ventas.</p>
     </div>
   </div>
 </footer>
+
+  <!-- ══ Meta Pixel — carga inmediata. Antes se diferia 2.5s tras 'load' y el trafico de ads rebotaba antes de registrarse ══ -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','933244542517098');
+  fbq('track','PageView');
+  /* helper global para eventos de conversion */
+  window.oTrack=function(ev,params){try{if(window.fbq){fbq('track',ev,params||{});}}catch(e){}};
+  /* mide clics a WhatsApp en cualquier <a> wa.me como evento Contact */
+  document.addEventListener('click',function(e){
+    try{
+      var a=e.target&&e.target.closest?e.target.closest('a[href*="wa.me"],a[href*="api.whatsapp.com"],a[href*="wa.link"]'):null;
+      if(a){window.oTrack('Contact',{method:'whatsapp'});}
+    }catch(_){}
+  },true);
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=933244542517098&ev=PageView&noscript=1"/></noscript>
+<!-- ══ De donde llego la visita: si viene de una IA, se marca y se prueba ══ -->
+<script>
+(function(){try{
+var r=document.referrer||"",m=[["chatgpt.com","ChatGPT"],["chat.openai.com","ChatGPT"],
+["perplexity.ai","Perplexity"],["gemini.google.com","Gemini"],["bard.google.com","Gemini"],
+["claude.ai","Claude"],["copilot.microsoft.com","Copilot"],["you.com","You.com"],["poe.com","Poe"]],f=null,i;
+for(i=0;i<m.length;i++){if(r.indexOf(m[i][0])>-1){f=m[i][1];break;}}
+if(!f&&/[?&]utm_source=(chatgpt|perplexity|gemini|claude)/i.test(location.search)){f=RegExp.$1;}
+if(!f)return;
+try{localStorage.setItem("waly_origen_ia",JSON.stringify({fuente:f,pagina:location.pathname,fecha:new Date().toISOString()}));}catch(e){}
+var a=document.querySelectorAll('a[href*="wa.me"],a[href*="api.whatsapp.com"]'),c=encodeURIComponent(" (llegué desde "+f+")");
+for(i=0;i<a.length;i++){try{var h=a[i].href;if(h.indexOf("lleg%")>-1)continue;
+a[i].href=h.indexOf("text=")>-1?h.replace(/(text=[^&#]*)/,"$1"+c):h+(h.indexOf("?")>-1?"&":"?")+"text="+c;}catch(e){}}
+try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagina:location.pathname});}}catch(e){}
+}catch(e){}})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
 </body>
 </html>
