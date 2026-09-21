@@ -123,3 +123,34 @@ dominio literal `conejeros-solutions.cl` **no aparece ni una página del sitio**
 **La causa de fondo, con fecha:** el repo arranca el **01-11-2025**, o sea la web lleva **10 meses**
 publicada, nunca se dio de alta en Search Console ni en Bing Webmaster, y nadie la enlaza. Los
 buscadores descubren webs por enlaces o porque el dueño las registra; no había ninguna de las dos.
+
+
+## 20-09-2026 — La web nueva (walybot.cl) llevaba 20 días sin poder reservar
+
+**Síntoma**: nadie lo reportó. Se cazó al preparar la landing: en walybot.cl, elegir día, hora y
+datos terminaba en "Ocurrió un error al agendar". Reproducido con navegador real (Playwright) sobre
+la web publicada: `blocked by CORS policy: No 'Access-Control-Allow-Origin'`.
+
+**Causa**: el 31-08 la web se mudó de conejeros-solutions.cl a walybot.cl, y `/api/agenda-web` de
+whatsapp-conejeros solo le respondía al dominio viejo (lista fija en `route.ts`, con
+`AGENDA_WEB_ORIGENES` que la REEMPLAZABA). El navegador bloqueaba la reserva antes de que llegara:
+no se creó ninguna reunión fantasma, simplemente no entraba ninguna.
+
+**Arreglo** (whatsapp-conejeros `3bd326b`): `ORIGENES_WEB` + `origenPermitido()` en
+`src/lib/agenda-web.ts`, con walybot.cl, www.walybot.cl y el dominio viejo; la variable de EasyPanel
+ahora SUMA. 10 comprobaciones nuevas. Probado con la app levantada en local: walybot.cl recibe el
+permiso, una web cualquiera no.
+
+**Lección (la de fondo)**: una mudanza de dominio tiene casos hermanos fuera del repo de la web. Al
+cambiar de dominio hay que buscar el dominio viejo en TODOS los servicios que la web llama (acá, la
+app de la agenda), no solo en los archivos de la web.
+
+**De paso, medido el 20-09 a las 20:50 con `/api/diag-envio`**: el WhatsApp de la app está
+`disconnected` desde el 19-09 11:02 (caída del VPS) y `TELEFONO_LUKAS` NO está configurado ⇒ aunque
+la reserva entre, la confirmación queda en cola hasta que se escanee el QR, y a Lukas no le llega
+ningún aviso. La prueba de envío en esta app es `outbox.sent=1`, que se escribe DESPUÉS de
+`sock.sendMessage` (sale de la cola), no una confirmación de entrega en el teléfono.
+
+**Acierto**: la confirmación que recibe la persona (`b152d83`) pasó a usted, un párrafo, hora sin
+cero, Waly.IA y el nombre bien escrito aunque lo tipeen mal (13 comprobaciones). Se probó pasando la
+reserva que mandó el navegador por `procesarReserva()` real.
