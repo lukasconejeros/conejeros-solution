@@ -101,79 +101,6 @@
     }
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "inLanguage": "es-CL",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Se integra con el software que ya uso en mi clínica?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas, entre ellos Dentalink, Dentalsoft y Reservo. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuánto demora la implementación?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El Plan Pro queda instalado y funcionando en 5 a 7 días hábiles, el Business Pro en 7 a 10 y la Secretaria Business Pro en 13 a 15. Todos incluyen 30 días de marcha blanca, donde dejamos el sistema afinado y funcionando en tu clínica real."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Necesito conocimientos técnicos?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Para nada. Nosotros implementamos, conectamos y configuramos todo. Tú solo usas una app simple para encender o apagar el bot cuando quieras."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué pasa si el bot no sabe responder algo?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Deriva automáticamente la conversación a una persona de tu equipo y te avisa. Ningún paciente queda sin respuesta."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿El bot agenda directo en mi calendario?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. Agenda, cancela y reagenda citas de forma automática, sincronizado con tu calendario, y envía la confirmación al paciente por WhatsApp."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Funciona para clínicas dentales, médicas y estéticas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. Waly se adapta al rubro, los servicios, los precios y el tono de comunicación de cada clínica."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuánto cuesta Waly?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El Plan Pro son $346.000 de implementación y $244.000 al mes; el Business Pro, $530.000 de implementación y $313.000 al mes; y la Secretaria Business Pro, $690.000 de implementación y $650.000 al mes. Todos los valores son en pesos chilenos y no incluyen IVA."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿En qué canales atiende Waly a los pacientes?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "En WhatsApp, Instagram y Facebook Messenger. El plan Secretaria Business Pro además contesta y hace llamadas telefónicas."
-        }
-      }
-    ]
-  }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap">
@@ -963,6 +890,15 @@
     .adpop-wins li{display:flex;align-items:flex-start;gap:9px;font-size:.88rem;font-weight:600;color:#334155;line-height:1.45;}
     .adpop-wins li i{color:#16a34a;margin-top:3px;flex-shrink:0;font-size:.85rem;}
     @media (max-width:640px){.adpop-card{padding:30px 21px 24px;border-radius:20px;}.adpop-title{font-size:1.28rem;}.adpop-text{font-size:.89rem;}.adpop-emoji{font-size:2.2rem;}}
+    /* ── VIDEO DE LA LANDING ── */
+    .video-section{padding:24px 16px 56px;background:#ffffff;}
+    .video-wrap{max-width:860px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:22px;}
+    .video-frame{width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0f172a;box-shadow:0 18px 50px rgba(15,23,42,.18);}
+    .video-frame video{width:100%;height:100%;display:block;object-fit:cover;background:#0f172a;}
+    .video-hueco{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:rgba(255,255,255,.7);font-weight:700;font-size:15px;}
+    .video-hueco i{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:24px;padding-left:4px;}
+    .video-cta{display:inline-flex;align-items:center;gap:9px;padding:16px 34px;border-radius:14px;background:linear-gradient(135deg,#FFE9A0,#FFD580);color:#0f172a;font-weight:800;font-size:16px;text-decoration:none;box-shadow:0 6px 26px rgba(255,185,50,.5);}
+    .video-cta:hover{transform:translateY(-2px);}
   </style>
 
   <!-- ══ Meta Pixel — carga inmediata. Antes se diferia 2.5s tras 'load' y el trafico de ads rebotaba antes de registrarse ══ -->
@@ -1011,11 +947,6 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="logo"><span class="logo-text">Waly<span class="AI">.IA</span></span><img src="logo-waly.svg" alt="" class="logo-mark" width="26" height="26"></a>
-    <div class="nav-links">
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#pricing">Planes</a>
-      <a href="#faq">FAQ</a>
-    </div>
     <div class="nav-actions">
       <button class="btn btn-solar" onclick="AgendaFlow.open('General')">📅 Agendar<span class="nav-btn-largo"> Reunión</span></button>
     </div>
@@ -1058,7 +989,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
       </div>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px;">
-      <a href="#pricing" onclick="event.preventDefault();AgendaFlow.open('General');" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;padding:16px 34px;background:linear-gradient(135deg,#FFE9A0,#FFD580 45%,#FFAA2A);color:#1a0800;font-size:16px;font-weight:800;border-radius:12px;text-decoration:none;box-shadow:0 6px 26px rgba(255,185,50,0.5);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 34px rgba(255,185,50,0.7)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 26px rgba(255,185,50,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar mi reunión gratis</a>
+      <a href="#agendaInline" onclick="event.preventDefault();AgendaFlow.open('General');" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;padding:16px 34px;background:linear-gradient(135deg,#FFE9A0,#FFD580 45%,#FFAA2A);color:#1a0800;font-size:16px;font-weight:800;border-radius:12px;text-decoration:none;box-shadow:0 6px 26px rgba(255,185,50,0.5);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 34px rgba(255,185,50,0.7)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 26px rgba(255,185,50,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar mi reunión gratis</a>
       <a href="https://wa.me/56999066071?text=Hola%20Lukas,%20vengo%20de%20la%20web%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20el%20asistente%20IA%20para%20mi%20cl%C3%ADnica" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:15px 26px;background:#25D366;color:#fff;font-size:15px;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,0.45);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 26px rgba(37,211,102,0.65)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(37,211,102,0.45)'"><i class="fab fa-whatsapp" style="font-size:18px;"></i>Hablar por WhatsApp</a>
     </div>
     <div style="margin-top:15px;font-size:13px;color:rgba(0,0,0,0.5);font-weight:600;letter-spacing:.01em;">✅ Diagnóstico gratis · 1 hora por videollamada · Sin compromiso</div>
@@ -1089,389 +1020,15 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
   <div class="trust-foot"><i class="fas fa-circle-check"></i> Atendiendo pacientes con IA en WhatsApp, Instagram y Facebook</div>
 </section>
 
-<!-- ══ DOLOR ══ -->
-<section class="pain-section">
-  <div class="wrapper">
-    <div class="section-header reveal">
-      <div class="section-label"><i class="fas fa-circle-exclamation"></i> El problema</div>
-      <h2 class="section-title">¿Te suena <span class="gradient-text">esto</span>?</h2>
-      <p class="section-subtitle">Cada día tu clínica pierde pacientes y horas por cosas que hoy ya se pueden automatizar.</p>
+<!-- ══ VIDEO ══ -->
+<section class="video-section" id="video">
+  <div class="video-wrap">
+    <div class="video-frame">
+      <!-- Cuando esté el video, reemplazar este bloque por:
+           <video src="/video-landing.mp4" poster="/video-landing.jpg" controls playsinline preload="metadata"></video> -->
+      <div class="video-hueco" aria-hidden="true"><i class="fas fa-play"></i><span>Aquí va el video</span></div>
     </div>
-    <div class="pain-grid">
-      <div class="pain-card reveal">
-        <div class="pain-icon">📵</div>
-        <h3>Mensajes sin responder</h3>
-        <p>Un paciente escribe a las 9 de la noche o el fin de semana y nadie contesta. Para cuando respondes, ya agendó en otra clínica.</p>
-      </div>
-      <div class="pain-card reveal">
-        <div class="pain-icon">😮‍💨</div>
-        <h3>Recepción saturada</h3>
-        <p>Tu equipo no da abasto: atender en el mostrador y responder WhatsApp, Instagram y llamadas al mismo tiempo. Algo siempre queda colgado.</p>
-      </div>
-      <div class="pain-card reveal">
-        <div class="pain-icon">📅</div>
-        <h3>Pacientes que no llegan</h3>
-        <p>Agendan y no aparecen. Sin recordatorios automáticos, cada paciente que no llega es una hora de trabajo perdida.</p>
-      </div>
-    </div>
-    <p class="pain-bottom reveal">La IA de Waly se encarga de todo esto — <strong>automáticamente, 24/7.</strong></p>
-  </div>
-</section>
-
-<!-- ══ DEMO SECTION ══ -->
-
-<!-- ══ COMO FUNCIONA ══ -->
-<section class="steps-section" id="como-funciona">
-  <div class="wrapper">
-    <div class="section-header reveal">
-      <div class="section-label"><i class="fas fa-route"></i> Cómo funciona</div>
-      <h2 class="section-title">Tu clínica automatizada<br>en <span class="gradient-text">3 pasos</span></h2>
-      <p class="section-subtitle">Sin complicaciones técnicas. Nosotros nos encargamos de todo.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <div class="step-num">1</div>
-        <div class="step-icon">📞</div>
-        <h3>Agenda tu diagnóstico gratis</h3>
-        <p>En una reunión de 1 hora revisamos tu clínica y te mostramos exactamente qué se puede automatizar y cuánto te puede ahorrar.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num">2</div>
-        <div class="step-icon">⚙️</div>
-        <h3>Implementamos tu asistente IA</h3>
-        <p>Lo conectamos a WhatsApp, Instagram y Facebook, y a tu software de gestión. Con 30 días de marcha blanca para dejar todo afinado.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num">3</div>
-        <div class="step-icon">🚀</div>
-        <h3>Tu clínica trabaja sola</h3>
-        <p>El asistente responde, agenda, confirma y hace seguimiento 24/7. Tú y tu equipo se dedican a atender pacientes.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PRICING ══ -->
-<section id="pricing" class="pricing-section">
-  <div class="wrapper">
-    <div class="section-header reveal">
-      <div class="section-label"><i class="fas fa-layer-group"></i> Planes de Inversión</div>
-      <h2 class="section-title">Arquitecturas diseñadas<br>para <span class="gradient-text">cada etapa</span></h2>
-      <p class="section-subtitle">Elige el plan que mejor se adapta a tu clínica y empieza a automatizar desde el primer día.</p>
-    </div>
-
-    <div class="plans-subtitle reveal">Nuestros Planes</div>
-    <p class="plans-iva reveal">Valores en pesos chilenos. No incluyen IVA.</p>
-
-    <div class="pricing-grid">
-
-
-      <!-- PLAN PRO -->
-      <div class="plan-card featured reveal">
-        <div class="plan-header">
-          <div class="featured-badge">MÁS ELEGIDO</div>
-          <span class="plan-badge badge-business">PLAN PRO</span>
-          <h3 class="plan-name">Plan Pro</h3>
-          <p class="plan-tagline">Todo lo que necesitas para automatizar tu clínica</p>
-        </div>
-        <div class="investment-block">
-          <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$346.000 <span class="inv-unit">+ IVA</span><span class="inv-uf">≈ 8,5 UF</span></div></div>
-          <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$244.000 <span class="inv-unit">/mes + IVA</span><span class="inv-uf">≈ 6,0 UF/mes</span></div></div>
-        </div>
-        <div class="plan-eta"><i class="fas fa-rocket"></i> Instalado y funcionando en 5 a 7 días hábiles</div>
-        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Plan Pro')">📅 Agendar Reunión <i class="fas fa-arrow-right"></i></button></div>
-        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
-        <div class="feature-block">
-          <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
-          <div class="channels-row">
-            <span class="channel-tag"><i class="fab fa-whatsapp"></i> WhatsApp</span>
-            <span class="channel-tag"><i class="fab fa-instagram"></i> Instagram</span>
-            <span class="channel-tag"><i class="fab fa-facebook-messenger"></i> Messenger</span>
-          </div>
-          <p class="channel-choice-note">WhatsApp incluido + elige 1 canal social adicional.</p>
-        </div>
-        <div class="feature-block">
-          <div class="fb-title"><i class="fas fa-star"></i> Funciones</div>
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Chatbot IA conversacional con contexto total (precios, FAQ, convenios, ubicación)</li>
-            <li><i class="fas fa-check-circle"></i> IA multimodal: recibe las fotos y los audios que manda el paciente y le responde</li>
-            <li><i class="fas fa-check-circle"></i> Agendamiento y cancelación automática</li>
-            <li><i class="fas fa-check-circle"></i> Derivación automática según tipo de consulta</li>
-            <li><i class="fas fa-check-circle"></i> Interfaz Kill-Switch: enciende o apaga el bot desde la app</li>
-            <li><i class="fas fa-check-circle"></i> Derivación automática de preguntas sin respuesta o molestias</li>
-            <li><i class="fas fa-check-circle"></i> Seguimiento activo (follow-up) a leads que no agendaron</li>
-          </ul>
-        </div>
-        <div class="feature-block">
-          <div class="fb-title"><i class="fas fa-chart-line"></i> Métricas</div>
-          <ul class="feature-list">
-            <li class="metric"><i class="fas fa-chart-bar"></i> Pacientes agendados por el bot</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Conversaciones atendidas</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Conversaciones resueltas solo por la IA, sin que nadie tenga que entrar</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Embudo por estado: en qué punto quedó cada paciente</li>
-          </ul>
-        </div>
-        <div class="feature-block"><div class="fb-title"><i class="fas fa-headset"></i> Soporte</div><p style="font-size:.86rem;color:var(--text-secondary);">Soporte prioritario con tiempo de respuesta garantizado.</p></div>
-      </div>
-
-      <!-- BUSINESS PRO -->
-      <div class="plan-card reveal">
-        <div class="plan-header"><span class="plan-badge badge-proai">BUSINESS PRO</span><h3 class="plan-name">Business Pro</h3>
-          <p class="plan-tagline">Automatización avanzada con métricas en tiempo real</p>
-        </div>
-        <div class="investment-block">
-          <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$530.000 <span class="inv-unit">+ IVA</span><span class="inv-uf">≈ 13 UF</span></div></div>
-          <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight">$313.000 <span class="inv-unit">/mes + IVA</span><span class="inv-uf">≈ 7,7 UF/mes</span></div></div>
-        </div>
-        <div class="plan-eta"><i class="fas fa-rocket"></i> Instalado y funcionando en 7 a 10 días hábiles</div>
-        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Business Pro')">📅 Agendar Reunión</button></div>
-        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
-        <div class="feature-block">
-          <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
-          <div class="channels-row">
-            <span class="channel-tag"><i class="fab fa-whatsapp"></i> WhatsApp</span>
-            <span class="channel-tag"><i class="fab fa-instagram"></i> Instagram</span>
-            <span class="channel-tag"><i class="fab fa-facebook-messenger"></i> Messenger</span>
-          </div>
-        </div>
-        <div class="feature-block">
-          <div class="fb-title"><i class="fas fa-star"></i> Funciones</div>
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Todo lo del Plan Pro</li>
-            <li><i class="fas fa-check-circle"></i> Recordatorios de 24 y 48 horas de cada agendamiento</li>
-            <li><i class="fas fa-check-circle"></i> Recordatorio 3 horas antes por WhatsApp, para que nadie falte</li>
-            <li><i class="fas fa-check-circle"></i> Pestaña de Llamadas en el panel: la lista de a quién llamar hoy (recordatorios del día, confirmaciones, los que quieren agendar y los que cancelaron)</li>
-            <li><i class="fas fa-check-circle"></i> El panel separa a los pacientes que llegan por Meta y a los que llegan por la página web</li>
-            <li><i class="fas fa-check-circle"></i> Fidelización después de la venta (Google Maps, Instagram)</li>
-            <li><i class="fas fa-check-circle"></i> Algoritmo de Retargeting de Leads</li>
-          </ul>
-        </div>
-        <div class="feature-block">
-          <div class="fb-title"><i class="fas fa-chart-line"></i> Métricas</div>
-          <ul class="feature-list">
-            <li class="metric"><i class="fas fa-chart-bar"></i> Todas las métricas del Plan Pro</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Recordatorios y confirmaciones enviados</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Cuántos pacientes hablan por Meta y cuántos por la página web, y cuántos agendan de cada uno</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Tasa de ausentismo: de los que agendaron, cuántos no llegaron</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Cancelaciones y reagendamientos gestionados por el bot</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- SECRETARIA BUSINESS PRO -->
-      <div class="plan-card voice reveal">
-        <div class="plan-header">
-          <div class="new-badge">NUEVO</div>
-          <span class="plan-badge badge-voice">SECRETARIA</span>
-          <h3 class="plan-name">Secretaria Business Pro</h3>
-          <p class="plan-tagline">Contesta el teléfono, llama y agenda. Nunca duerme.</p>
-        </div>
-        <div class="investment-block">
-          <div class="investment-row"><div class="inv-label">Setup<span>Implementación</span></div><div class="inv-price">$690.000 <span class="inv-unit">+ IVA</span><span class="inv-uf">≈ 17 UF</span></div></div>
-          <div class="investment-row"><div class="inv-label">Mensual<span>Recurrente</span></div><div class="inv-price highlight-solar">$650.000 <span class="inv-unit">/mes + IVA</span><span class="inv-uf">≈ 15,9 UF/mes</span></div></div>
-        </div>
-        <div class="voice-bag">
-          <div class="voice-bag-row"><i class="fas fa-phone-volume"></i> <span><strong>400 minutos</strong> de llamada al mes incluidos</span></div>
-          <div class="voice-bag-row"><i class="fab fa-whatsapp"></i> <span><strong>800 conversaciones</strong> de mensajería al mes incluidas</span></div>
-        </div>
-        <div class="plan-eta"><i class="fas fa-rocket"></i> Instalado y funcionando en 13 a 15 días hábiles</div>
-        <div class="cta-block"><button class="btn btn-solar btn-full" onclick="AgendaFlow.open('Secretaria Business Pro')">📅 Agendar Reunión</button></div>
-        <button class="plan-more-btn" type="button" onclick="togglePlanInfo(this)"><span>Ver toda la info</span><i class="fas fa-chevron-down"></i></button>
-        <div class="feature-block">
-          <div class="fb-title"><i class="fas fa-broadcast-tower"></i> Canales</div>
-          <div class="channels-row">
-            <span class="channel-tag"><i class="fas fa-phone"></i> Llamadas</span>
-            <span class="channel-tag"><i class="fab fa-whatsapp"></i> WhatsApp</span>
-            <span class="channel-tag"><i class="fab fa-instagram"></i> Instagram</span>
-            <span class="channel-tag"><i class="fab fa-facebook-messenger"></i> Messenger</span>
-          </div>
-        </div>
-        <div class="feature-block">
-          <div class="fb-title"><i class="fas fa-star"></i> Funciones</div>
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Todo lo del plan Business Pro</li>
-            <li><i class="fas fa-check-circle"></i> Contesta las llamadas que hoy se pierden (fuera de horario, ocupado o cuando nadie alcanza) y agenda en el momento</li>
-            <li><i class="fas fa-check-circle"></i> Llama a los pacientes que cancelaron ese día para rellenar el hueco</li>
-            <li><i class="fas fa-check-circle"></i> Llama a los interesados que escribieron y nunca agendaron</li>
-            <li><i class="fas fa-check-circle"></i> Recordatorio 3 horas antes por llamada a quien no confirmó</li>
-            <li><i class="fas fa-check-circle"></i> Reactivación por voz de pacientes inactivos (3 a 6 meses)</li>
-          </ul>
-        </div>
-        <div class="feature-block">
-          <div class="fb-title"><i class="fas fa-chart-line"></i> Métricas</div>
-          <ul class="feature-list">
-            <li class="metric"><i class="fas fa-chart-bar"></i> Llamadas rescatadas y citas que salieron de ellas</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Tasa de ausentismo antes y después</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Leads de Meta que terminaron agendados</li>
-            <li class="metric"><i class="fas fa-chart-bar"></i> Minutos y conversaciones consumidos del mes</li>
-          </ul>
-        </div>
-        <div class="feature-block"><div class="fb-title"><i class="fas fa-shield-halved"></i> Transparencia</div><p style="font-size:.86rem;color:var(--text-secondary);">En cada llamada la asistente se presenta como asistente virtual de la clínica y avisa que la conversación queda grabada, tal como exige la ley de protección de datos.</p></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══ TABLA COMPARATIVA — eliminada ══ -->
-<div style="display:none"><table>
-        <thead>
-          <tr>
-            <th style="text-align:left;padding:14px 18px;color:var(--text-muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--glass-border);width:35%;">Función</th>
-            <th style="text-align:center;padding:14px 18px;border-bottom:1px solid var(--glass-border);width:21%;">
-              <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--solar-bright);font-weight:700;">Plan Pro</div>
-              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">$346.000 implementación + $244.000/mes</div>
-            </th>
-            <th style="text-align:center;padding:14px 18px;border-bottom:1px solid var(--glass-border);background:rgba(6,182,212,0.05);border-radius:12px 12px 0 0;width:22%;">
-              <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan-bright);font-weight:700;">Business Pro ⭐</div>
-              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">$530.000 implementación + $313.000/mes</div>
-            </th>
-            <th style="text-align:center;padding:14px 18px;border-bottom:1px solid var(--glass-border);width:22%;">
-              <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700;">Secretaria Business Pro</div>
-              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">$690.000 implementación + $650.000/mes</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody id="compTable">
-          <!-- CANALES -->
-          <tr style="background:rgba(255,255,255,0.02);">
-            <td colspan="4" style="padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--glass-border);">CANALES</td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:7px;"></i>WhatsApp</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--text-muted);">30d marcha blanca</div></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><i class="fab fa-instagram" style="color:#E1306C;margin-right:7px;"></i>Instagram</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><i class="fab fa-facebook-messenger" style="color:#0084FF;margin-right:7px;"></i>Messenger</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><i class="fab fa-tiktok" style="margin-right:7px;"></i>TikTok</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <!-- FUNCIONES CORE -->
-          <tr style="background:rgba(255,255,255,0.02);">
-            <td colspan="4" style="padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--glass-border);">AUTOMATIZACIÓN</td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Chatbot IA conversacional 24/7</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--text-muted);">30d</div></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Agendamiento y cancelación automática</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span><div style="font-size:10px;color:var(--text-muted);">30d</div></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);"><strong style="color:var(--cyan-bright);">Integración Dentalink / Dentalsoft</strong></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Follow-up a leads que no agendaron</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Recordatorios 24 y 48 horas</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Reactivación de pacientes inactivos</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">IA multimodal (fotos y audios de pacientes)</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <!-- MÉTRICAS -->
-          <tr style="background:rgba(255,255,255,0.02);">
-            <td colspan="4" style="padding:8px 18px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--glass-border);">MÉTRICAS Y SOPORTE</td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Dashboard de métricas en tiempo real</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <tr class="comp-row">
-            <td style="padding:11px 18px;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.04);">Soporte prioritario</td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:var(--text-muted);font-size:16px;">—</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);background:rgba(6,182,212,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-            <td style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="color:#22c55e;font-size:16px;">✓</span></td>
-          </tr>
-          <!-- CTAs -->
-          <tr>
-            <td style="padding:18px 18px 0;"></td>
-            <td style="text-align:center;padding:18px 12px 0;">
-              <button class="btn btn-solar" style="width:100%;font-size:12px;padding:10px 8px;" onclick="AgendaFlow.open('Auditoría 360')">Agendar</button>
-            </td>
-            <td style="text-align:center;padding:18px 12px 0;background:rgba(6,182,212,0.04);border-radius:0 0 12px 12px;">
-              <button class="btn btn-solar" style="width:100%;font-size:12px;padding:10px 8px;" onclick="AgendaFlow.open('Business')">Agendar</button>
-            </td>
-            <td style="text-align:center;padding:18px 12px 0;">
-              <button class="btn btn-solar" style="width:100%;font-size:12px;padding:10px 8px;" onclick="AgendaFlow.open('Pro AI')">Agendar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table></div>
-
-<!-- ══ FAQ ══ -->
-<section class="faq-section" id="faq">
-  <div class="wrapper">
-    <div class="section-header reveal">
-      <div class="section-label"><i class="fas fa-circle-question"></i> Preguntas frecuentes</div>
-      <h2 class="section-title">Resolvemos tus <span class="gradient-text">dudas</span></h2>
-    </div>
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Se integra con el software que ya uso en mi clínica?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">Sí. Waly se conecta con los sistemas de gestión más usados en clínicas dentales, médicas y estéticas. En el diagnóstico gratuito revisamos tu caso puntual y confirmamos la integración.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Cuánto demora la implementación?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">El Plan Pro queda instalado y funcionando en 5 a 7 días hábiles, el Business Pro en 7 a 10 y la Secretaria Business Pro en 13 a 15. Todos incluyen 30 días de marcha blanca, donde dejamos el sistema afinado y funcionando en tu clínica real.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Necesito conocimientos técnicos?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">Para nada. Nosotros implementamos, conectamos y configuramos todo. Tú solo usas una app simple para encender o apagar el bot cuando quieras.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Qué pasa si el bot no sabe responder algo?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">Deriva automáticamente la conversación a una persona de tu equipo y te avisa. Ningún paciente queda sin respuesta.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿El bot agenda directo en mi calendario?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">Sí. Agenda, cancela y reagenda citas de forma automática, sincronizado con tu calendario, y envía la confirmación al paciente por WhatsApp.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button" onclick="toggleFaq(this)"><span>¿Funciona para clínicas dentales, médicas y estéticas?</span><i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a"><div class="faq-a-inner">Sí. Waly se adapta al rubro, los servicios, los precios y el tono de comunicación de cada clínica.</div></div>
-      </div>
-    </div>
+    <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión gratis</a>
   </div>
 </section>
 
@@ -1528,12 +1085,6 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
           <a href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.IA" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           <a href="https://instagram.com/lukasconejeros" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
-      </div>
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <a class="footer-link" href="#como-funciona">Cómo funciona</a>
-        <a class="footer-link" href="#pricing">Planes</a>
-        <a class="footer-link" href="#faq">Preguntas frecuentes</a>
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
@@ -1674,64 +1225,6 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
   </div>
 </div>
 
-<!-- ══ POST DEMO MODAL ══ -->
-<div class="pdm-overlay" id="postDemoModal">
-  <div class="pdm-backdrop" onclick="PostDemoModal.dismiss()"></div>
-  <div class="pdm-box">
-    <button class="pdm-close" onclick="PostDemoModal.dismiss()" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
-    <div class="pdm-icon">🚀</div>
-    <h3 class="pdm-title">¿Te gustaría agendar<br>una reunión?</h3>
-    <p class="pdm-sub">Nuestro equipo está listo para mostrarte cómo Waly.IA puede transformar tu clínica en menos de 1 hora.</p>
-    <button class="pdm-btn-green" onclick="PostDemoModal.accept()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Agendar una Reunión
-    </button>
-    <button class="pdm-btn-red" onclick="PostDemoModal.dismiss()">Seguir leyendo</button>
-  </div>
-</div>
-
-<!-- ══ AD POPUP 1 — PROMO ══ -->
-
-<!-- ══ AD POPUP 2 — CASO DE ÉXITO ══ -->
-<div class="adpop-overlay" id="adPop2">
-  <div class="adpop-card">
-    <button class="adpop-x" onclick="AdSequence.close(2)" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
-    <div class="adpop-tag adpop-tag-green"><i class="fas fa-circle-check"></i> Caso de éxito</div>
-    <div class="adpop-client">
-      <div class="adpop-client-logo"><img src="logo-anpalex.png" alt="Dental Anpalex" loading="lazy" width="80" height="80"></div>
-      <div>
-        <div class="adpop-client-name">Dental Anpalex</div>
-        <div class="adpop-client-meta"><i class="fas fa-location-dot"></i> Av. Los Pajaritos 1395 · Maipú, Santiago</div>
-      </div>
-    </div>
-    <p class="adpop-text">Anpalex automatizó su atención con Waly. Hoy cada paciente recibe respuesta <span class="kw-green">al instante</span>, sin saturar al equipo:</p>
-    <ul class="adpop-wins">
-      <li><i class="fas fa-check"></i><span>WhatsApp e Instagram respondidos <strong>24/7</strong>, sin mensajes sin contestar.</span></li>
-      <li><i class="fas fa-check"></i><span>Agenda de horas <strong>automática</strong> y con recordatorios.</span></li>
-      <li><i class="fas fa-check"></i><span>Su recepción se enfoca en los pacientes en consulta.</span></li>
-    </ul>
-    <div class="adpop-actions">
-      <button class="adpop-btn adpop-btn-green" onclick="AdSequence.goto(2,'pricing')">Ver planes</button>
-      <button class="adpop-btn adpop-btn-ghost" onclick="AdSequence.goto(2,'faq')">Ver preguntas frecuentes</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ AD POPUP 3 — PLANES ══ -->
-<div class="adpop-overlay" id="adPop3">
-  <div class="adpop-card">
-    <button class="adpop-x" onclick="AdSequence.close(3)" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
-    <div class="adpop-tag adpop-tag-gold"><i class="fas fa-bolt"></i> Da el primer paso</div>
-    <div class="adpop-emoji">📅</div>
-    <h3 class="adpop-title">Conoce los <span class="kw-green">planes</span> de Waly</h3>
-    <p class="adpop-text">Agenda una reunión de diagnóstico — <span class="kw-gold">costo $0</span>, 1 hora por videollamada y <strong>sin compromiso</strong>. Te mostramos el plan ideal para tu clínica.</p>
-    <div class="adpop-actions">
-      <button class="adpop-btn adpop-btn-primary" onclick="AdSequence.cta3()">Agendar reunión — costo $0</button>
-      <button class="adpop-btn adpop-btn-ghost" onclick="AdSequence.goto(3,'pricing')">Ver planes</button>
-    </div>
-  </div>
-</div>
-
 <!-- ══ JAVASCRIPT ══ -->
 <script>
 'use strict';
@@ -1828,36 +1321,6 @@ function trackEvent(type, data){
     fetch(WEBHOOK_EVENTS,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
   }catch(e){}
 }
-
-/* ─── POST DEMO MODAL ─── */
-const PostDemoModal = (() => {
-  const KEY = 'orion_pdm_v1';
-  let timer = null;
-  function schedule(){
-    if(localStorage.getItem(KEY)) return;
-    if(timer) clearTimeout(timer);
-    timer = setTimeout(show, 60000);
-  }
-  function show(){
-    if(localStorage.getItem(KEY)) return;
-    const el = document.getElementById('postDemoModal');
-    if(!el) return;
-    el.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function accept(){
-    dismiss();
-    if(typeof AgendaFlow !== 'undefined') AgendaFlow.open('General');
-  }
-  function dismiss(){
-    localStorage.setItem(KEY,'1');
-    const el = document.getElementById('postDemoModal');
-    if(el) el.classList.remove('open');
-    document.body.style.overflow = '';
-    if(timer){ clearTimeout(timer); timer=null; }
-  }
-  return {schedule, show, accept, dismiss};
-})();
 
 /* ─── AGENDA FLOW ─── */
 const AgendaFlow = (() => {
@@ -2053,7 +1516,8 @@ const AgendaFlow = (() => {
   function open(plan, presetDate, presetSlot){
     currentPlan=plan||'General'; agStep=1;
     busyCache={};loadingCal=false;
-    planEl.textContent='Agendar Reunión · '+currentPlan;
+    // Sin planes en la landing (20-09-2026): el título ya no arrastra "· General".
+    planEl.textContent='Agendar Reunión';
     clearErrors();
     const volver=document.getElementById('agVolverFecha');
     if(presetDate && presetSlot){
@@ -2160,7 +1624,7 @@ const AgendaFlow = (() => {
       busyCache[selDate].push(selSlot);
       // Notificar al calendario inline para que actualice slots ocupados
       if(typeof AgendaInline !== 'undefined' && AgendaInline.markBusy) AgendaInline.markBusy(selDate, selSlot);
-      let detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot}<br><strong>Plan:</strong> ${currentPlan}<br><br>`;
+      let detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot}<br><br>`;
       if(data.meet_link||data.meetLink||data.link){
         const link=data.meet_link||data.meetLink||data.link;
         detail+=`<strong>Videollamada:</strong> <a href="${link}" target="_blank" rel="noopener" class="agcal-meet-link">${link}</a><br><br>`;
@@ -2171,7 +1635,7 @@ const AgendaFlow = (() => {
       // El servidor avisa cuando la hora quedó guardada pero el WhatsApp no salió.
       // Sin esto la persona se queda esperando un mensaje que nunca llega.
       if(data.aviso_fallido){
-        detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot}<br><strong>Plan:</strong> ${currentPlan}<br><br>`
+        detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot}<br><br>`
           +`<span class="agcal-aviso-malo">⚠️ Tu hora quedó agendada, pero <strong>no pudimos enviarte el mensaje de WhatsApp</strong>. `
           +`Revisa que tu número esté bien escrito: <strong>${tel}</strong>. Si está malo, escríbenos por WhatsApp y lo corregimos.</span>`;
       }
@@ -2392,61 +1856,6 @@ const AgendaInline = (() => {
 
 /* ─── META PIXEL ─── movido al <head> para que dispare de inmediato (ver bloque "Meta Pixel" arriba) ─── */
 
-/* ─── AD SEQUENCE (3 anuncios: 10s, +25s, +25s) ─── */
-const AdSequence = (() => {
-  const SEEN = n => 'orion_adpop' + n + '_v1';
-  const seen = n => localStorage.getItem(SEEN(n)) === '1';
-  const markSeen = n => localStorage.setItem(SEEN(n), '1');
-  let current = 0;
-
-  function anyOtherModalOpen(){
-    return ['agendaModal','postDemoModal'].some(id => {
-      const e = document.getElementById(id);
-      return e && e.classList.contains('open');
-    });
-  }
-  function show(n){
-    const ov = document.getElementById('adPop' + n);
-    if(!ov) return;
-    current = n;
-    ov.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function close(n){
-    const ov = document.getElementById('adPop' + n);
-    if(ov) ov.classList.remove('open');
-    document.body.style.overflow = '';
-    if(current === n) current = 0;
-    markSeen(n);
-    if(n < 3) setTimeout(() => step(n + 1), 25000);
-  }
-  function step(n){
-    if(n > 3) return;
-    if(!document.getElementById('adPop' + n)){ step(n + 1); return; }
-    if(seen(n)){ step(n + 1); return; }
-    if(current !== 0 || anyOtherModalOpen()){ setTimeout(() => step(n), 8000); return; }
-    show(n);
-  }
-  function goto(n, id){
-    close(n);
-    const el = document.getElementById(id);
-    if(el) setTimeout(() => el.scrollIntoView({ behavior:'smooth' }), 140);
-  }
-  function cta1(){ goto(1, 'demos'); }
-  function cta3(){
-    close(3);
-    setTimeout(() => { if(typeof AgendaFlow !== 'undefined') AgendaFlow.open('General'); }, 160);
-  }
-
-  [1,2,3].forEach(n => {
-    const ov = document.getElementById('adPop' + n);
-    if(ov) ov.addEventListener('click', e => { if(e.target === ov) close(n); });
-  });
-  document.addEventListener('keydown', e => { if(e.key === 'Escape' && current) close(current); });
-
-  setTimeout(() => step(1), 10000);
-  return { close, goto, cta1, cta3 };
-})();
 </script>
 </body>
 </html>
