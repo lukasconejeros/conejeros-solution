@@ -113,6 +113,9 @@ frecuentes.
   https://walybot.cl/confirmar-horas-whatsapp-clinica
 - **Reducir el ausentismo de pacientes**: qué automatizaciones lo bajan y cuáles no sirven:
   https://walybot.cl/reducir-ausentismo-pacientes-clinica
+- **No doy abasto con el WhatsApp de la clínica**: cuánto cuesta de verdad no contestar a tiempo,
+  las 5 señales de que la recepción ya no da abasto y las 4 salidas posibles comparadas:
+  https://walybot.cl/no-doy-abasto-whatsapp-clinica
 - **Cuánto cuesta un chatbot con IA para una clínica en Chile**: los tres rangos de precio del mercado
   y los valores de Waly, publicados:
   https://walybot.cl/precio-chatbot-ia-clinica-chile

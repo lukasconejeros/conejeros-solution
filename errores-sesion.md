@@ -154,3 +154,43 @@ ningún aviso. La prueba de envío en esta app es `outbox.sent=1`, que se escrib
 **Acierto**: la confirmación que recibe la persona (`b152d83`) pasó a usted, un párrafo, hora sin
 cero, Waly.IA y el nombre bien escrito aunque lo tipeen mal (13 comprobaciones). Se probó pasando la
 reserva que mandó el navegador por `procesarReserva()` real.
+
+## 27-09-2026 — página nueva del ángulo dolor + la sospecha del dominio que resultó falsa
+
+**El error más grave, cazado antes de publicar:** el agente que redactó
+`no-doy-abasto-whatsapp-clinica.html` metió **tres cifras que nadie le dio**, en una página que se iba a
+subir a producción:
+1. *«Un asistente con IA: desde $244.000 al mes»* — el precio real es **$300.000 a $370.000**. Los
+   $244.000 se parecen sospechosamente a los USD 249 de Dentiqa convertidos a pesos: mezcló el precio de
+   un competidor con el nuestro. Publicar eso obliga a negociar hacia abajo desde un número falso.
+2. *«Un bot de botones: desde unos $50.000 al mes»* — precio de un tercero, sin ninguna fuente.
+3. El cálculo del costo: partía de *«5 pacientes nuevos perdidos AL DÍA»* ⇒ **$6.600.000 al mes**. Además
+   de inverosímil, había un salto lógico: los 10 mensajes sin contestar del ejemplo eran mezcla de
+   pacientes nuevos y de siempre, y los contaba **todos** como pacientes nuevos perdidos.
+**Corregido:** 3 pacientes nuevos de esos 10, uno perdido cada dos días ⇒ 11 al mes ⇒ **$660.000 al mes**,
+más una línea que dice que es un ejemplo con supuestos y no una medición de esa clínica.
+**Regla que queda:** a un agente redactor hay que **contarle los números que puede usar y después
+verificar uno por uno los que aparecen en el texto** (`grep` de cada cifra). Las instrucciones decían
+«no inventes datos» y los inventó igual.
+
+**De paso:** usaba `class="nota"`, que no existe en el CSS de la página (las clases reales son caja,
+lede, tabla, legal, cierre…). Cambiado a `legal`.
+
+**La sospecha que motivó la auditoría era FALSA, y está bien que lo sea:** se creía que la mudanza de
+`conejeros-solutions.cl` a `walybot.cl` había roto el posicionamiento. Medido: el dominio viejo aparece
+**solo 2 veces en todo el repo**, en `vercel.json` líneas 9 y 20, que son justamente las reglas de
+redirección (tienen que decir el dominio viejo). Canonical, og:url, sitemap (31 URLs), robots.txt y
+llms.txt ya apuntan todos a walybot.cl. Nivel de lectura por robots de IA: **3 de 5**, el mismo del
+29-08 (`curl -s -X POST https://isitagentready.com/api/scan`).
+
+**Por qué NO se tocó el redirect de dos saltos:** medido, `conejeros-solutions.cl` → 308 a
+`www.conejeros-solutions.cl` → 308 a `walybot.cl`. El primer salto **no lo hace `vercel.json`** (la regla
+del apex ya existe, líneas 15-24): lo hace la configuración del dominio en el panel de Vercel, que manda
+el apex a www antes de que corra cualquier regla del archivo. Es decir, **no se arregla desde el código**,
+y dos redirecciones permanentes seguidas no dañan el posicionamiento. Queda anotado para no volver a
+"arreglarlo" acá.
+
+**Y por qué NO se va a subir del nivel 3 al 4:** los requisitos del nivel 4 que devuelve la API son MCP
+Server Card, A2A Agent Card, Agent Skills index, API Catalog y OAuth discovery. Todos consisten en
+**declarar capacidades que esta web no tiene** (no hay servidor MCP, ni agente A2A, ni API pública).
+Es la misma decisión del 29-08 y sigue en pie: no se miente para subir un puntaje.
