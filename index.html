@@ -37,7 +37,7 @@
         "price": "200000",
         "priceCurrency": "CLP",
         "priceSpecification": { "@type": "UnitPriceSpecification", "price": "200000", "priceCurrency": "CLP", "valueAddedTaxIncluded": true, "unitText": "MONTH" },
-        "description": "Inteligencia artificial en WhatsApp, sin conexión al software de agenda"
+        "description": "Contesta el WhatsApp de su clínica a toda hora, responde las preguntas frecuentes con la información de su clínica, pasa la conversación a su secretaria cuando hace falta y trae un panel para ver y tomar cada chat. Sin conexión al software de agenda."
       },
       {
         "@type": "Offer",
@@ -45,7 +45,7 @@
         "price": "310000",
         "priceCurrency": "CLP",
         "priceSpecification": { "@type": "UnitPriceSpecification", "price": "310000", "priceCurrency": "CLP", "valueAddedTaxIncluded": true, "unitText": "MONTH" },
-        "description": "Conectado al software de agenda de la clínica"
+        "description": "Todo lo del Esencial. Conectado a Dentalink, Dentalsoft o Reservo: agenda, cancela y cambia horas solo, y confirma las horas el día antes por WhatsApp."
       },
       {
         "@type": "Offer",
@@ -53,7 +53,7 @@
         "price": "420000",
         "priceCurrency": "CLP",
         "priceSpecification": { "@type": "UnitPriceSpecification", "price": "420000", "priceCurrency": "CLP", "valueAddedTaxIncluded": true, "unitText": "MONTH" },
-        "description": "Conectado a la agenda, con acompañamiento completo"
+        "description": "Todo lo del Pro. Campañas para que vuelvan pacientes antiguos, medición mensual (clínica cerrada, inasistencias y anuncios) y una reunión al mes para mejorar el sistema."
       }
     ],
     "provider": {
@@ -220,17 +220,20 @@
     .integra-wa img{height:26px}
     .integra-wa span{font-size:1.25rem;font-weight:700;letter-spacing:-.01em;color:#000;opacity:.5;line-height:1}
     @media (max-width:640px){.integra-bar{padding:26px 16px 24px}.integra-label{font-size:.7rem;margin-bottom:16px}.integra-logos{gap:18px 28px}.integra-logos li{height:24px}.integra-logos img{height:21px}.integra-reservo img{height:18px}.integra-wa img{height:20px}.integra-wa span{font-size:.98rem}}
-    /* ── PLANES (precios sin lista de características) ── */
-    .planes-section{padding:8px 16px 60px;background:#ffffff}
-    .planes-wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px}
+    /* ── PLANES (precio, una línea y viñetas con lo que el producto hace hoy) ── */
+    .planes-section{padding:52px 16px 64px;background:#ffffff}
+    .planes-wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px}
     .planes-title{font-size:2rem;font-weight:900;letter-spacing:-.04em;color:#0f172a;margin:0;text-align:center}
     .precios-grid{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .precio-card{background:#fff;border:1px solid rgba(15,23,42,0.09);border-radius:18px;padding:24px 22px;box-shadow:0 6px 22px rgba(15,23,42,0.06);text-align:left;display:flex;flex-direction:column;gap:8px}
+    .precio-card{background:#fff;border:1px solid rgba(15,23,42,0.09);border-radius:18px;padding:24px 22px;box-shadow:0 6px 22px rgba(15,23,42,0.06);text-align:left;display:flex;flex-direction:column;gap:10px}
     .precio-nombre{font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0891b2}
     .precio-monto{font-size:2rem;font-weight:900;letter-spacing:-.04em;color:#0f172a;line-height:1.1}
     .precio-monto span{font-size:.95rem;font-weight:700;letter-spacing:0;color:#64748b}
     .precios-nota{margin:14px 0 0;text-align:center;font-size:.9rem;font-weight:600;color:#64748b}
-    .precio-linea{margin:0;font-size:.92rem;font-weight:500;color:#475569;line-height:1.45}
+    .precio-linea{margin:0;padding-bottom:12px;border-bottom:1px solid rgba(15,23,42,0.08);font-size:.92rem;font-weight:700;color:#475569;line-height:1.45}
+    .precio-lista{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+    .precio-lista li{position:relative;padding-left:27px;font-size:.9rem;font-weight:500;color:#334155;line-height:1.45}
+    .precio-lista li::before{content:"\2713";position:absolute;left:0;top:2px;width:18px;height:18px;border-radius:50%;background:rgba(8,145,178,0.12);color:#0891b2;font-size:.68rem;font-weight:900;line-height:18px;text-align:center}
     @media (max-width:760px){.precios-grid{grid-template-columns:1fr;gap:12px;max-width:430px;margin:0 auto}.precio-card{padding:18px 20px}.precio-monto{font-size:1.75rem}.planes-title{font-size:1.6rem}}
     @media (max-width:640px){.btn{padding:10px 18px;font-size:.85rem}.btn-lg{padding:14px 24px;font-size:.95rem}}
 
@@ -898,15 +901,29 @@
     .adpop-wins li{display:flex;align-items:flex-start;gap:9px;font-size:.88rem;font-weight:600;color:#334155;line-height:1.45;}
     .adpop-wins li i{color:#16a34a;margin-top:3px;flex-shrink:0;font-size:.85rem;}
     @media (max-width:640px){.adpop-card{padding:30px 21px 24px;border-radius:20px;}.adpop-title{font-size:1.28rem;}.adpop-text{font-size:.89rem;}.adpop-emoji{font-size:2.2rem;}}
-    /* ── VIDEO DE LA LANDING ── */
-    .video-section{padding:24px 16px 56px;background:#ffffff;}
-    .video-wrap{max-width:860px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:22px;}
-    .video-frame{width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0f172a;box-shadow:0 18px 50px rgba(15,23,42,.18);}
-    .video-frame video{width:100%;height:100%;display:block;object-fit:cover;background:#0f172a;}
-    .video-hueco{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:rgba(255,255,255,.7);font-weight:700;font-size:15px;}
+    /* ── PORTADA TIPO LANDING (29-09-2026): título, el video al tiro y un solo botón ── */
+    .hero-section{min-height:auto;display:block;padding:22px 0 44px;}
+    .hero-content{max-width:1000px;padding:0 24px;}
+    .hero-title{font-size:clamp(2.1rem,4.4vw,3.5rem);line-height:1.08;margin-bottom:12px;}
+    .hero-subtitle{font-size:clamp(1rem,1.5vw,1.15rem);max-width:780px;margin:0 auto 18px;line-height:1.5;}
+    /* El video cabe en la primera pantalla: se achica si la ventana es baja. */
+    .hero-video{width:min(100%,780px,max(320px,calc((100vh - 345px) * 16 / 9)));margin:0 auto;animation:fadeInUp .7s ease .5s both;}
+    .hero-cta-wrap{display:flex;justify-content:center;margin-top:22px;}
+    @media (max-width:480px){.hero-section{padding:12px 0 34px}.hero-content{padding:0 16px}.hero-title{font-size:clamp(2rem,9vw,2.6rem);line-height:1.1;margin-bottom:10px}.hero-subtitle{font-size:.98rem;margin-bottom:16px}.hero-video{width:100%}}
+    /* ── VIDEO DE LA LANDING: arranca solo y sin sonido; el botón le pone sonido ── */
+    .video-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0f172a;box-shadow:0 18px 50px rgba(15,23,42,.18);}
+    .video-frame video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;background:#0f172a;opacity:0;transition:opacity .3s;}
+    .video-frame.listo video{opacity:1;}
+    .video-hueco{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:rgba(255,255,255,.7);font-weight:700;font-size:15px;}
     .video-hueco i{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:24px;padding-left:4px;}
-    .video-cta{display:inline-flex;align-items:center;gap:9px;padding:16px 34px;border-radius:14px;background:linear-gradient(135deg,#FFE9A0,#FFD580);color:#0f172a;font-weight:800;font-size:16px;text-decoration:none;box-shadow:0 6px 26px rgba(255,185,50,.5);}
-    .video-cta:hover{transform:translateY(-2px);}
+    .video-frame.listo .video-hueco{display:none;}
+    .video-sonido{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;display:none;align-items:center;gap:8px;padding:11px 20px;border:0;border-radius:999px;background:rgba(15,23,42,.84);color:#fff;font-family:var(--font);font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.35);}
+    .video-sonido:hover{background:rgba(15,23,42,.96);}
+    .video-frame.listo .video-sonido{display:inline-flex;}
+    .video-frame.con-sonido .video-sonido{display:none;}
+    @media (max-width:480px){.video-frame{border-radius:14px}.video-sonido{bottom:10px;padding:9px 16px;font-size:14px}}
+    .video-cta{display:inline-flex;align-items:center;gap:9px;padding:16px 34px;border-radius:14px;background:linear-gradient(135deg,#FFE9A0,#FFD580 45%,#FFAA2A);color:#1a0800;font-weight:800;font-size:16px;text-decoration:none;box-shadow:0 6px 26px rgba(255,185,50,.5);transition:transform .2s,box-shadow .2s;}
+    .video-cta:hover{transform:translateY(-2px);box-shadow:0 10px 34px rgba(255,185,50,.7);}
   </style>
 
   <!-- ══ Meta Pixel — carga inmediata. Antes se diferia 2.5s tras 'load' y el trafico de ads rebotaba antes de registrarse ══ -->
@@ -946,63 +963,57 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
 </head>
 <body>
 
-<!-- ══ SOCIAL FLOATS ══ -->
-<a href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.IA" target="_blank" rel="noopener" class="social-float-btn whatsapp-float" aria-label="Contactar por WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-</a>
-
 <!-- ══ NAV ══ -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="logo"><span class="logo-text">Waly<span class="AI">.IA</span></span><img src="logo-waly.svg" alt="" class="logo-mark" width="26" height="26"></a>
     <div class="nav-actions">
-      <button class="btn btn-solar" onclick="AgendaFlow.open('General')">📅 Agendar<span class="nav-btn-largo"> Reunión</span></button>
+      <button class="btn btn-solar" onclick="AgendaFlow.open('General')"><span>📅 Agendar<span class="nav-btn-largo"> mi reunión</span></span></button>
     </div>
   </div>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- ══ HERO — landing (29-09-2026): el título, el video al tiro y un solo botón ══ -->
 <section class="hero-section">
   <div class="hero-content">
-    <div class="hero-badge"><i class="fas fa-sparkles"></i><span>Automatización con IA para Clínicas Dentales, Médicas y Estéticas</span></div>
     <h1 class="hero-title">Deja de perder pacientes<br>por <span class="gradient">no contestar a tiempo</span></h1>
-    <p class="hero-subtitle">Sin doble gestión, sin copiar datos a mano. Responde a tus pacientes en segundos, 24/7, mientras tu equipo hace lo que importa.</p>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:28px;">
-      <span style="color:rgba(0,0,0,0.4);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;">Responde en</span>
-      <div style="display:flex;align-items:center;justify-content:center;gap:14px;">
-        <div style="width:44px;height:44px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fab fa-whatsapp" style="color:#fff;font-size:22px;line-height:1;"></i></div>
-        <div style="width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fab fa-instagram" style="color:#fff;font-size:20px;line-height:1;"></i></div>
-        <div style="width:44px;height:44px;border-radius:50%;background:#1877F2;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fab fa-facebook-f" style="color:#fff;font-size:20px;line-height:1;"></i></div>
+    <p class="hero-subtitle">Inteligencia artificial que contesta el WhatsApp de su clínica a toda hora.</p>
+    <div class="hero-video" id="video">
+      <div class="video-frame" id="videoFrame">
+        <!-- ══ DÓNDE VA EL VIDEO ══
+             Guardar el archivo como  video/landing-waly.mp4  (carpeta "video" junto a este index.html).
+             Formato: MP4 (H.264 + AAC), idealmente horizontal 16:9 y de menos de ~15 MB.
+             Arranca solo y SIN sonido (los navegadores no dejan que arranque con sonido);
+             el botón "Activar sonido" se lo pone y lo vuelve al segundo 0.
+             Mientras el archivo no exista (o falle), se ve el recuadro "Aquí va el video".
+             Opcional: una imagen de portada en video/landing-waly.jpg y agregar poster="video/landing-waly.jpg". -->
+        <video id="landingVideo" src="video/landing-waly.mp4" autoplay muted playsinline loop preload="auto" aria-label="Video de Waly.IA"></video>
+        <div class="video-hueco" aria-hidden="true"><i class="fas fa-play"></i><span>Aquí va el video</span></div>
+        <button type="button" class="video-sonido" id="videoSonido">🔊 Activar sonido</button>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:20px;">
-      <span style="color:rgba(0,0,0,0.4);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;">Reserva y agenda directo en tu sistema</span>
-      <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;max-width:640px;">
-        <div style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:20px;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#3b82f6" stroke-width="2"/><line x1="3" y1="9" x2="21" y2="9" stroke="#3b82f6" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="#3b82f6" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="#3b82f6" stroke-width="2"/></svg>
-          <span style="font-size:12px;font-weight:700;color:#3b82f6;">Dentalink</span>
-        </div>
-        <div style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:20px;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#8b5cf6" stroke-width="2"/><line x1="3" y1="9" x2="21" y2="9" stroke="#8b5cf6" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="#8b5cf6" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="#8b5cf6" stroke-width="2"/></svg>
-          <span style="font-size:12px;font-weight:700;color:#8b5cf6;">Dentalsoft</span>
-        </div>
-        <div style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.3);border-radius:20px;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#eab308" stroke-width="2"/><line x1="3" y1="9" x2="21" y2="9" stroke="#eab308" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="#eab308" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="#eab308" stroke-width="2"/></svg>
-          <span style="font-size:12px;font-weight:700;color:#eab308;">Reservo</span>
-        </div>
-        <div style="display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:20px;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#f97316" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="#f97316" stroke-width="2"/><line x1="8" y1="12" x2="16" y2="12" stroke="#f97316" stroke-width="2"/></svg>
-          <span style="font-size:12px;font-weight:700;color:#f97316;">+ otros sistemas</span>
-        </div>
-      </div>
+    <div class="hero-cta-wrap">
+      <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
     </div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px;">
-      <a href="#agendaInline" onclick="event.preventDefault();AgendaFlow.open('General');" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;padding:16px 34px;background:linear-gradient(135deg,#FFE9A0,#FFD580 45%,#FFAA2A);color:#1a0800;font-size:16px;font-weight:800;border-radius:12px;text-decoration:none;box-shadow:0 6px 26px rgba(255,185,50,0.5);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 34px rgba(255,185,50,0.7)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 26px rgba(255,185,50,0.5)'"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar mi reunión gratis</a>
-      <a href="https://wa.me/56999066071?text=Hola%20Lukas,%20vengo%20de%20la%20web%20y%20quiero%20saber%20c%C3%B3mo%20funciona%20el%20asistente%20IA%20para%20mi%20cl%C3%ADnica" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:15px 26px;background:#25D366;color:#fff;font-size:15px;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,0.45);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 26px rgba(37,211,102,0.65)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(37,211,102,0.45)'"><i class="fab fa-whatsapp" style="font-size:18px;"></i>Hablar por WhatsApp</a>
-    </div>
-    <div style="margin-top:15px;font-size:13px;color:rgba(0,0,0,0.5);font-weight:600;letter-spacing:.01em;">✅ Diagnóstico gratis · 1 hora por videollamada · Sin compromiso</div>
   </div>
 </section>
+<script>
+/* Video de la portada: se muestra solo cuando de verdad cargó; si falla, queda el recuadro. */
+(function(){
+  var v=document.getElementById('landingVideo'),f=document.getElementById('videoFrame'),b=document.getElementById('videoSonido');
+  if(!v||!f)return;
+  function listo(){if(v.error)return;f.classList.add('listo');var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  function falla(){f.classList.remove('listo');}
+  v.addEventListener('loadeddata',listo);
+  v.addEventListener('error',falla);
+  if(v.error){falla();}else if(v.readyState>=2){listo();}
+  if(b)b.addEventListener('click',function(){
+    v.muted=false;v.currentTime=0;v.controls=true;f.classList.add('con-sonido');
+    /* Si el navegador no deja sonar, vuelve a correr en silencio y reaparece el botón. */
+    var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;v.controls=false;f.classList.remove('con-sonido');var q=v.play();if(q&&q.catch)q.catch(function(){});});
+  });
+})();
+</script>
 
 <!-- ══ SE CONECTA CON — integraciones ══ -->
 <section class="integra-bar" aria-label="Sistemas con los que se conecta Waly">
@@ -1016,18 +1027,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
   </ul>
 </section>
 
-<!-- ══ VIDEO ══ -->
-<section class="video-section" id="video">
-  <div class="video-wrap">
-    <div class="video-frame">
-      <!-- Cuando esté el video, reemplazar este bloque por:
-           <video src="/video-landing.mp4" poster="/video-landing.jpg" controls playsinline preload="metadata"></video> -->
-      <div class="video-hueco" aria-hidden="true"><i class="fas fa-play"></i><span>Aquí va el video</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PLANES — solo nombre, precio y una línea ══ -->
+<!-- ══ PLANES — precio, una línea y lo que el producto hace HOY (verificado 29-09-2026) ══ -->
 <section class="planes-section" id="planes">
   <div class="planes-wrap">
     <h2 class="planes-title">Planes</h2>
@@ -1035,21 +1035,37 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
       <div class="precio-card">
         <div class="precio-nombre">Esencial</div>
         <div class="precio-monto">$200.000 <span>al mes</span></div>
-        <p class="precio-linea">Inteligencia artificial en WhatsApp, sin conexión al software de agenda</p>
+        <p class="precio-linea">Sin conexión al software de agenda</p>
+        <ul class="precio-lista">
+          <li>Contesta el WhatsApp de su clínica a toda hora</li>
+          <li>Responde las preguntas frecuentes con la información de su clínica</li>
+          <li>Pasa la conversación a su secretaria cuando hace falta</li>
+          <li>Panel para ver y tomar cada chat</li>
+        </ul>
       </div>
       <div class="precio-card">
         <div class="precio-nombre">Pro</div>
         <div class="precio-monto">$310.000 <span>al mes</span></div>
-        <p class="precio-linea">Conectado al software de agenda de la clínica</p>
+        <p class="precio-linea">Todo lo del Esencial</p>
+        <ul class="precio-lista">
+          <li>Conectado a Dentalink, Dentalsoft o Reservo</li>
+          <li>Agenda, cancela y cambia horas solo</li>
+          <li>Confirma las horas el día antes por WhatsApp</li>
+        </ul>
       </div>
       <div class="precio-card">
         <div class="precio-nombre">Premium</div>
         <div class="precio-monto">$420.000 <span>al mes</span></div>
-        <p class="precio-linea">Conectado a la agenda, con acompañamiento completo</p>
+        <p class="precio-linea">Todo lo del Pro</p>
+        <ul class="precio-lista">
+          <li>Campañas para que vuelvan pacientes antiguos</li>
+          <li>Medición mensual: clínica cerrada, inasistencias y anuncios</li>
+          <li>Una reunión al mes para mejorar el sistema</li>
+        </ul>
       </div>
     </div>
     <p class="precios-nota">Valores mensuales, IVA incluido.</p>
-    <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión gratis</a>
+    <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
   </div>
 </section>
 
@@ -1103,15 +1119,14 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
         </a>
         <p class="footer-tagline">Automatización con IA para clínicas dentales, médicas y estéticas. Tu clínica responde, agenda y hace seguimiento — 24/7.</p>
         <div class="footer-social">
-          <a href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.IA" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           <a href="https://instagram.com/lukasconejeros" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
-        <a class="footer-link" href="https://wa.me/56999066071?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Waly.IA" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> +56 9 9906 6071</a>
+        <span class="footer-link"><i class="fas fa-phone"></i> +56 9 9906 6071</span>
         <a class="footer-link" href="https://instagram.com/lukasconejeros" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> @lukasconejeros</a>
-        <a class="footer-link" href="#" onclick="event.preventDefault();AgendaFlow.open('General');"><i class="fas fa-calendar-check"></i> Agenda tu diagnóstico gratis</a>
+        <a class="footer-link" href="#" onclick="event.preventDefault();AgendaFlow.open('General');"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
       </div>
       <div class="footer-col">
         <h4>Guías</h4>
