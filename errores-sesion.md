@@ -194,3 +194,22 @@ y dos redirecciones permanentes seguidas no dañan el posicionamiento. Queda ano
 Server Card, A2A Agent Card, Agent Skills index, API Catalog y OAuth discovery. Todos consisten en
 **declarar capacidades que esta web no tiene** (no hay servidor MCP, ni agente A2A, ni API pública).
 Es la misma decisión del 29-08 y sigue en pie: no se miente para subir un puntaje.
+
+## 29-09-2026 — Fuera las clínicas cliente, franja «Se conecta con» y sección de planes
+
+**Pedido de Lukas:** sacar a las clínicas de las páginas, mostrar logos de Dentalink, Dentalsoft,
+WhatsApp, Reservo y Medilink, y 3 planes con solo precio ($200.000 / $310.000 / $420.000).
+
+**Dónde estaban las clínicas (grep de anpalex|medifis|yaber|mónaco):** portada (franja con logos y
+direcciones de Anpalex y Medifis), el pie de 30 guías («Hoy funcionando en Dental Anpalex… y Clínica
+Medifis…»), `llms.txt` (sección «Clínicas que ya usan Waly») y `og-image.svg` (la imagen al compartir
+el link). Yaber y Mónaco no aparecían. Quedan los casos anónimos («un centro médico de Temuco»).
+
+**Error cazado en la captura, no en el código:** la tarjeta de plan salía con el nombre gigante porque
+`index.html` todavía guarda el CSS de la sección de planes vieja (`.plan-card`, `.plan-name` en las
+líneas ~440-490 y ~727-742) aunque ya no exista su HTML. Las clases nuevas se renombraron a
+`precio-card`, `precio-nombre`, etc. **Regla:** en `index.html` buscar el nombre de una clase antes de
+usarla; hay CSS muerto de versiones anteriores que la pisa.
+
+**Captura a 390 px:** Edge headless no achica la ventana bajo ~500 px y la captura sale cortada a la
+derecha. Se captura metiendo la página en un `<iframe style="width:390px">`.

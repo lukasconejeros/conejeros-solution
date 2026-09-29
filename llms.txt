@@ -69,13 +69,6 @@ conversación queda grabada, tal como exige la ley de protección de datos.
 
 Todos los planes incluyen 30 días de marcha blanca para dejar el sistema afinado en la clínica real.
 
-## Clínicas que ya usan Waly
-
-- **Dental Anpalex** — Av. Los Pajaritos 1395, Maipú, Santiago. Odontología, más de 35 años de
-  trayectoria.
-- **Clínica Medifis** — 18 de Septiembre 611, Temuco, Región de La Araucanía. Centro médico
-  especializado en dolor.
-
 ## Preguntas frecuentes
 
 **¿Se integra con el software que ya uso en mi clínica?**
