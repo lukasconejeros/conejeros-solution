@@ -36,6 +36,7 @@
         "name": "Esencial",
         "price": "200000",
         "priceCurrency": "CLP",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "200000", "priceCurrency": "CLP", "valueAddedTaxIncluded": true, "unitText": "MONTH" },
         "description": "Inteligencia artificial en WhatsApp, sin conexión al software de agenda"
       },
       {
@@ -43,6 +44,7 @@
         "name": "Pro",
         "price": "310000",
         "priceCurrency": "CLP",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "310000", "priceCurrency": "CLP", "valueAddedTaxIncluded": true, "unitText": "MONTH" },
         "description": "Conectado al software de agenda de la clínica"
       },
       {
@@ -50,6 +52,7 @@
         "name": "Premium",
         "price": "420000",
         "priceCurrency": "CLP",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "420000", "priceCurrency": "CLP", "valueAddedTaxIncluded": true, "unitText": "MONTH" },
         "description": "Conectado a la agenda, con acompañamiento completo"
       }
     ],
@@ -226,6 +229,7 @@
     .precio-nombre{font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0891b2}
     .precio-monto{font-size:2rem;font-weight:900;letter-spacing:-.04em;color:#0f172a;line-height:1.1}
     .precio-monto span{font-size:.95rem;font-weight:700;letter-spacing:0;color:#64748b}
+    .precios-nota{margin:14px 0 0;text-align:center;font-size:.9rem;font-weight:600;color:#64748b}
     .precio-linea{margin:0;font-size:.92rem;font-weight:500;color:#475569;line-height:1.45}
     @media (max-width:760px){.precios-grid{grid-template-columns:1fr;gap:12px;max-width:430px;margin:0 auto}.precio-card{padding:18px 20px}.precio-monto{font-size:1.75rem}.planes-title{font-size:1.6rem}}
     @media (max-width:640px){.btn{padding:10px 18px;font-size:.85rem}.btn-lg{padding:14px 24px;font-size:.95rem}}
@@ -1044,6 +1048,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
         <p class="precio-linea">Conectado a la agenda, con acompañamiento completo</p>
       </div>
     </div>
+    <p class="precios-nota">Valores mensuales, IVA incluido.</p>
     <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión gratis</a>
   </div>
 </section>
