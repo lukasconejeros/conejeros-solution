@@ -53,6 +53,14 @@
       "destination": "/llms.txt"
     },
     {
+      "source": "/privacidad",
+      "destination": "/privacidad.html"
+    },
+    {
+      "source": "/eliminar-datos",
+      "destination": "/eliminar-datos.html"
+    },
+    {
       "source": "/agendar-citas-whatsapp-dentalink",
       "destination": "/agendar-citas-whatsapp-dentalink.html"
     },
