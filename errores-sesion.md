@@ -213,3 +213,29 @@ usarla; hay CSS muerto de versiones anteriores que la pisa.
 
 **Captura a 390 px:** Edge headless no achica la ventana bajo ~500 px y la captura sale cortada a la
 derecha. Se captura metiendo la página en un `<iframe style="width:390px">`.
+
+## 15-10-2026 — Landing compacta: cifras medidas, franja Ley 21.719 y fuera el recuadro «Aquí va el video»
+
+**Pedido:** que se vea más como landing y más compacta, con «100 % legales con la nueva ley» (o escrito de
+forma que no sea mentira) y cuántas citas agendó el bot y cuánta plata dejó.
+
+**Lo que se publicó y de dónde sale:**
+- Cifras = la medición del 14-10-2026 17:22-18:10 (`conejeros-lab/creativos-waly-ads/DATO-PACIENTES-Y-PLATA-WALY-2026-10-14.md`).
+  «+400 citas» es un PISO de citas nuevas de la IA (61 Anpalex + 197 Medifis + 146 Yaber = 404; sin pruebas
+  ni horas que solo movió; con las movidas son 476). «+120 pacientes» = el estricto (132; 108 nuevos y el
+  resto con 90+ días sin venir, por eso NO dice «120 nuevos»). «+$15 millones» = $16.319.118 de esos 132.
+- Ley: NO dice «100 % legal» ni «cumplimos» (el plan de la ley no está hecho). Solo 4 hechos verificables:
+  contrato de encargo, no vendemos datos, borrar datos (eliminar-datos.html), «no me escriban más» (opt-out
+  determinista en los 3 bots: Medifis y Yaber `handler.ts`, Anpalex `proactivo-regla.ts`).
+
+**Error evitado:** la web publicada mostraba un recuadro negro «Aquí va el video» porque `video/landing-waly.mp4`
+no existe (404). Ahora el bloque queda plegado y aparece solo cuando se sube el archivo (probado con un mp4
+de prueba que se borró después).
+
+**Caso que casi se cuela:** al poner las cifras arriba, el botón «Agendar» quedó bajo el pliegue en 375×667
+(iPhone SE/8) y 320×640, y con video también en 1366×800. Arreglo: en el teléfono el botón va antes de las
+cifras, y en todas las pantallas el video va después del botón. Pruebas: `pruebas.cjs` 85/85 sin video y
+85/85 con video en 390, 375, 320, 768, 1366 y 1920.
+
+**Regla:** las cifras de la portada NO se suben «porque ya pasó tiempo»: se vuelven a medir con el mismo
+método y se cambia la fecha de la nota.

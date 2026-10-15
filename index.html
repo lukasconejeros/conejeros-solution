@@ -924,6 +924,105 @@
     @media (max-width:480px){.video-frame{border-radius:14px}.video-sonido{bottom:10px;padding:9px 16px;font-size:14px}}
     .video-cta{display:inline-flex;align-items:center;gap:9px;padding:16px 34px;border-radius:14px;background:linear-gradient(135deg,#FFE9A0,#FFD580 45%,#FFAA2A);color:#1a0800;font-weight:800;font-size:16px;text-decoration:none;box-shadow:0 6px 26px rgba(255,185,50,.5);transition:transform .2s,box-shadow .2s;}
     .video-cta:hover{transform:translateY(-2px);box-shadow:0 10px 34px rgba(255,185,50,.7);}
+
+    /* ══ LANDING COMPACTA (15-10-2026): cifras en la portada, franja Ley 21.719, video plegado mientras no
+       exista, y menos aire en planes, agenda y pie. Recuerda: 1rem = 18 px en esta web. ══ */
+    .cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:4px auto 0;animation:fadeInUp .7s ease .5s both;}
+    .cifra{background:#fff;border:1px solid rgba(15,23,42,.09);border-radius:16px;padding:16px 16px 14px;box-shadow:0 6px 22px rgba(15,23,42,.06);}
+    .cifra-n{font-size:2.3rem;font-weight:900;letter-spacing:-.045em;line-height:1.05;background:linear-gradient(135deg,var(--cyan-bright) 0%,var(--electric) 35%,var(--primary) 65%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .cifra-n span{font-size:1.05rem;letter-spacing:-.02em;}
+    .cifra-t{margin-top:6px;font-size:.8rem;font-weight:600;line-height:1.4;color:#475569;}
+    .cifras-nota{margin:10px auto 0;font-size:.72rem;font-weight:500;color:#94a3b8;line-height:1.4;}
+    .hero-video:not(.hay-video){height:0;overflow:hidden;margin:0 auto;}
+    .hero-video.hay-video{margin-top:20px;}
+    @media (max-width:640px){
+      /* En el teléfono el botón va antes de las cifras: así se ve sin hacer scroll también en pantallas de 667 px. */
+      .hero-content{display:flex;flex-direction:column;}
+      .hero-cta-wrap{order:1;margin-top:4px;}
+      .cifras{order:2;margin-top:18px;}
+      .cifras-nota{order:3;}
+      .hero-video{order:4;}
+      .cifras{grid-template-columns:1fr;gap:8px;max-width:420px;width:100%;}
+      .cifra{display:flex;align-items:center;gap:14px;padding:11px 14px;text-align:left;}
+      .cifra-n{font-size:1.75rem;flex:0 0 auto;min-width:5.2rem;}
+      .cifra-n span{font-size:.8rem;}
+      .cifra-t{margin-top:0;font-size:.76rem;}
+    }
+
+    .ley-section{padding:34px 16px 32px;background:#fff;}
+    .ley-wrap{max-width:960px;margin:0 auto;}
+    .ley-head{text-align:center;}
+    .ley-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.04em;color:#047857;}
+    .ley-title{margin:12px 0 6px;font-size:1.6rem;font-weight:900;letter-spacing:-.04em;line-height:1.15;color:#0f172a;}
+    .ley-sub{margin:0 auto;max-width:620px;font-size:.88rem;line-height:1.5;color:#475569;}
+    .ley-lista{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+    .ley-lista li{display:flex;flex-direction:column;gap:8px;padding:14px 14px 13px;border:1px solid rgba(15,23,42,.09);border-radius:14px;background:#f8fafc;font-size:.8rem;font-weight:600;line-height:1.4;color:#334155;}
+    .ley-lista i{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(16,185,129,.12);color:#059669;font-size:.8rem;}
+    .ley-lista a{color:#0891b2;text-decoration:underline;text-underline-offset:2px;}
+    .ley-links{margin:14px 0 0;text-align:center;font-size:.78rem;color:#94a3b8;}
+    .ley-links a{color:#64748b;text-decoration:underline;text-underline-offset:2px;}
+    .ley-links a:hover{color:var(--cyan);}
+    @media (max-width:860px){.ley-lista{grid-template-columns:repeat(2,1fr);}}
+    @media (max-width:480px){
+      .ley-section{padding:28px 16px 26px;}
+      .ley-title{font-size:1.32rem;}
+      .ley-lista{grid-template-columns:1fr;gap:7px;}
+      .ley-lista li{flex-direction:row;align-items:center;gap:12px;padding:10px 12px;}
+      .ley-lista i{flex:0 0 auto;}
+    }
+
+    .integra-bar{padding:22px 20px 20px;margin-top:0;}
+    .integra-label{margin-bottom:14px;}
+    .planes-section{padding:38px 16px 44px;background:#f8fafc;border-top:1px solid rgba(15,23,42,.06);}
+    .planes-wrap{gap:20px;}
+    .aginline-section{padding:52px 24px 60px;}
+    .aginline-head{margin-bottom:26px;}
+    @media (max-width:768px){.aginline-section{padding:40px 16px 48px;}}
+    @media (max-width:640px){.integra-bar{padding:18px 16px 16px}.integra-label{margin-bottom:12px}.planes-section{padding:30px 16px 34px}}
+
+    /* Pie compacto: los mismos enlaces (sostienen las guías en Google y ChatGPT), pero más juntos. */
+    footer{padding-bottom:28px;}
+    .footer-cols{gap:26px;padding:36px 0 20px;}
+    .footer-col h4{margin-bottom:10px;}
+    .footer-col a.footer-link{font-size:.82rem;margin-bottom:6px;line-height:1.4;}
+    .footer-bottom{padding-top:18px;font-size:.78rem;}
+    @media (min-width:1001px){.footer-cols{grid-template-columns:1.25fr .75fr 1fr 1fr 1fr 1fr;}}
+    .footer-grupo summary{list-style:none;cursor:pointer;}
+    .footer-grupo summary::-webkit-details-marker{display:none;}
+    @media (min-width:769px){.footer-grupo summary{pointer-events:none;cursor:default;}}
+    @media (max-width:768px){
+      .footer-cols{gap:16px;padding:28px 0 12px;}
+      .footer-col a.footer-link{display:inline-block;margin:0 7px 6px;font-size:.78rem;}
+      .footer-col h4{margin-bottom:8px;}
+      .footer-tagline{font-size:.82rem;margin-top:8px;}
+      .footer-social{margin-top:10px;}
+      .footer-grupo{border-top:1px solid rgba(15,23,42,.07);padding-top:12px;}
+      .footer-grupo summary h4{display:inline-flex;align-items:center;gap:8px;margin-bottom:0;}
+      .footer-grupo summary h4::after{content:'+';font-size:1rem;font-weight:800;color:var(--cyan);letter-spacing:0;}
+      .footer-grupo[open] summary h4::after{content:'–';}
+      .footer-grupo[open] summary{margin-bottom:10px;}
+    }
+
+    /* Teléfono: los 3 planes en carrusel (se ve el borde del siguiente) y el calendario sin aire de sobra. */
+    .planes-desliza{display:none;}
+    @media (max-width:760px){
+      .precios-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;max-width:none;width:calc(100% + 32px);margin:0 -16px;padding:4px 16px 12px;scrollbar-width:none;}
+      .precios-grid::-webkit-scrollbar{display:none;}
+      .precio-card{flex:0 0 82%;scroll-snap-align:center;}
+      .planes-desliza{display:block;margin:-8px 0 0;font-size:.74rem;font-weight:600;color:#94a3b8;}
+      .precios-nota{margin-top:0;}
+    }
+    @media (max-width:640px){
+      .aginline-badge{margin-bottom:14px;padding:7px 14px;font-size:.68rem;}
+      .aginline-title{font-size:1.75rem;margin-bottom:8px;}
+      .aginline-sub{font-size:.9rem;}
+      .aginline-head{margin-bottom:20px;}
+      .aginline-card{padding:16px;}
+      .aginline-tz{margin-bottom:14px;}
+      .aginline-grid{gap:18px;}
+      .aginline-slots-side{min-height:0;}
+      .aginline-slots-list{min-height:96px;}
+    }
   </style>
 
   <!-- ══ Meta Pixel — carga inmediata. Antes se diferia 2.5s tras 'load' y el trafico de ads rebotaba antes de registrarse ══ -->
@@ -978,6 +1077,23 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
   <div class="hero-content">
     <h1 class="hero-title">Deja de perder pacientes<br>por <span class="gradient">no contestar a tiempo</span></h1>
     <p class="hero-subtitle">Inteligencia artificial que contesta el WhatsApp de su clínica a toda hora.</p>
+    <!-- ══ CIFRAS (15-10-2026) — medidas el 14-10-2026 17:22-18:10 en Anpalex, Medifis y Yaber, en el sistema de
+         agenda y de caja de cada clínica (conejeros-lab/creativos-waly-ads/DATO-PACIENTES-Y-PLATA-WALY-2026-10-14.md).
+         · +400 citas: piso de citas NUEVAS que creó la IA (Anpalex 61 + Medifis 197 + Yaber 146 = 404; sin pruebas
+           ni horas que solo movió). Con las movidas son 476.
+         · +120 pacientes: el «estricto» = la IA agendó sola, eran nuevos o llevaban 90+ días sin venir, y se
+           atendieron (132; 130 en la variante más dura). 108 son nuevos, por eso NO dice «120 nuevos» a secas.
+         · +$15 millones: lo que esos 132 pagaron desde esa cita ($16.319.118; Medifis cuenta ventas registradas).
+         Son totales que solo crecen, pero NO se suben sin volver a medir con el mismo método. -->
+    <div class="cifras" aria-label="Resultados medidos">
+      <div class="cifra"><div class="cifra-n">+400</div><div class="cifra-t">citas que la IA dejó puestas en la agenda de la clínica</div></div>
+      <div class="cifra"><div class="cifra-n">+120</div><div class="cifra-t">pacientes nuevos o que no venían hace meses: los agendó la IA sola y ya se atendieron</div></div>
+      <div class="cifra"><div class="cifra-n">+$15<span> millones</span></div><div class="cifra-t">que esos pacientes ya dejaron en las clínicas</div></div>
+    </div>
+    <p class="cifras-nota">Medido el 14 de octubre de 2026 en la agenda y la caja de 3 clínicas en Chile.</p>
+    <div class="hero-cta-wrap">
+      <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
+    </div>
     <div class="hero-video" id="video">
       <div class="video-frame" id="videoFrame">
         <!-- ══ DÓNDE VA EL VIDEO ══
@@ -985,25 +1101,24 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
              Formato: MP4 (H.264 + AAC), idealmente horizontal 16:9 y de menos de ~15 MB.
              Arranca solo y SIN sonido (los navegadores no dejan que arranque con sonido);
              el botón "Activar sonido" se lo pone y lo vuelve al segundo 0.
-             Mientras el archivo no exista (o falle), se ve el recuadro "Aquí va el video".
+             Mientras el archivo no exista (o falle), el bloque queda plegado (15-10-2026); aparece solo al subirlo.
+             Va DESPUÉS del botón: con las cifras arriba, el botón se ve sin hacer scroll aunque haya video.
              Opcional: una imagen de portada en video/landing-waly.jpg y agregar poster="video/landing-waly.jpg". -->
         <video id="landingVideo" src="video/landing-waly.mp4" autoplay muted playsinline loop preload="auto" aria-label="Video de Waly.IA"></video>
         <div class="video-hueco" aria-hidden="true"><i class="fas fa-play"></i><span>Aquí va el video</span></div>
         <button type="button" class="video-sonido" id="videoSonido">🔊 Activar sonido</button>
       </div>
     </div>
-    <div class="hero-cta-wrap">
-      <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
-    </div>
   </div>
 </section>
 <script>
-/* Video de la portada: se muestra solo cuando de verdad cargó; si falla, queda el recuadro. */
+/* Video de la portada: se muestra solo cuando de verdad cargó. Mientras el archivo no exista (o falle),
+   el bloque entero queda plegado (15-10-2026: antes se veía un recuadro «Aquí va el video» en la web publicada). */
 (function(){
-  var v=document.getElementById('landingVideo'),f=document.getElementById('videoFrame'),b=document.getElementById('videoSonido');
+  var v=document.getElementById('landingVideo'),f=document.getElementById('videoFrame'),b=document.getElementById('videoSonido'),c=document.getElementById('video');
   if(!v||!f)return;
-  function listo(){if(v.error)return;f.classList.add('listo');var p=v.play();if(p&&p.catch)p.catch(function(){});}
-  function falla(){f.classList.remove('listo');}
+  function listo(){if(v.error)return;f.classList.add('listo');if(c)c.classList.add('hay-video');var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  function falla(){f.classList.remove('listo');if(c)c.classList.remove('hay-video');}
   v.addEventListener('loadeddata',listo);
   v.addEventListener('error',falla);
   if(v.error){falla();}else if(v.readyState>=2){listo();}
@@ -1025,6 +1140,27 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
     <li class="integra-reservo"><img src="/img/integraciones/reservo.svg" alt="Reservo" width="304" height="75" loading="lazy"></li>
     <li><img src="/img/integraciones/medilink.png" alt="Medilink" width="393" height="96" loading="lazy"></li>
   </ul>
+</section>
+
+<!-- ══ LEY 21.719 (15-10-2026) — solo hechos que hoy son verdad. NO decir «cumplimos» ni «100 % legal»: el plan
+     de la ley (EIPD, bot que dice ser IA, purga) no está hecho (memoria auditoria-ley-21719). Cada punto se
+     respalda en: contrato de encargo (cláusulas de Medifis DÉCIMO y Yaber OCTAVO; a cada clínica nueva se le firma),
+     privacidad.html §3 «no vendemos», eliminar-datos.html (10 días hábiles) y el «no me escriban más» de esa misma página. -->
+<section class="ley-section" aria-labelledby="leyTitulo">
+  <div class="ley-wrap">
+    <div class="ley-head">
+      <div class="ley-badge"><i class="fas fa-shield-halved"></i> Ley 21.719 · Datos personales</div>
+      <h2 class="ley-title" id="leyTitulo">Los datos de tus pacientes son de tu clínica</h2>
+      <p class="ley-sub">La nueva ley de datos personales pide reglas claras a quien maneja datos de pacientes. Estas son las nuestras:</p>
+    </div>
+    <ul class="ley-lista">
+      <li><i class="fas fa-file-signature"></i><span>Firmamos con tu clínica un contrato de encargo de datos.</span></li>
+      <li><i class="fas fa-ban"></i><span>No vendemos los datos de tus pacientes.</span></li>
+      <li><i class="fas fa-eraser"></i><span>Cualquier paciente puede <a href="/eliminar-datos.html">pedir que borremos sus datos</a>.</span></li>
+      <li><i class="fas fa-hand"></i><span>Si escribe «no me escriban más», el asistente deja de escribirle.</span></li>
+    </ul>
+    <p class="ley-links"><a href="/privacidad.html">Política de privacidad</a> · <a href="/ley-21719-datos-pacientes-whatsapp-clinica">Qué cambia con la Ley 21.719</a></p>
+  </div>
 </section>
 
 <!-- ══ PLANES — precio, una línea y lo que el producto hace HOY (verificado 29-09-2026) ══ -->
@@ -1064,6 +1200,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
         </ul>
       </div>
     </div>
+    <p class="planes-desliza">Desliza para ver los 3 planes →</p>
     <p class="precios-nota">Valores mensuales, IVA incluido.</p>
     <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
   </div>
@@ -1128,8 +1265,8 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
         <a class="footer-link" href="https://instagram.com/lukasconejeros" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> @lukasconejeros</a>
         <a class="footer-link" href="#" onclick="event.preventDefault();AgendaFlow.open('General');"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
       </div>
-      <div class="footer-col">
-        <h4>Guías</h4>
+      <details class="footer-col footer-grupo" open>
+        <summary><h4>Guías</h4></summary>
         <a class="footer-link" href="/agendar-citas-whatsapp-dentalink">Agendar citas por WhatsApp con Dentalink</a>
         <a class="footer-link" href="/confirmar-horas-whatsapp-clinica">Confirmar horas por WhatsApp</a>
         <a class="footer-link" href="/recordatorios-citas-whatsapp-clinica">Recordatorios de citas por WhatsApp</a>
@@ -1138,9 +1275,9 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
         <a class="footer-link" href="/secretaria-virtual-ia-clinicas-chile">Secretaria virtual con IA</a>
         <a class="footer-link" href="/precio-chatbot-ia-clinica-chile">Cuánto cuesta un chatbot con IA</a>
         <a class="footer-link" href="/waly-vs-secretaria-manual">Waly contra hacerlo a mano</a>
-      </div>
-      <div class="footer-col">
-        <h4>Médicas y estéticas</h4>
+      </details>
+      <details class="footer-col footer-grupo" open>
+        <summary><h4>Médicas y estéticas</h4></summary>
         <a class="footer-link" href="/bot-whatsapp-clinica-medica-chile">Bot de WhatsApp para centros médicos</a>
         <a class="footer-link" href="/agendar-consultas-medicas-whatsapp-reservo">Agendar consultas médicas con Reservo</a>
         <a class="footer-link" href="/derivar-pacientes-especialidad-whatsapp">Orientar a la especialidad correcta</a>
@@ -1149,24 +1286,29 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
         <a class="footer-link" href="/responder-precios-tratamientos-esteticos-whatsapp">Responder precios sin perder al cliente</a>
         <a class="footer-link" href="/agendar-evaluacion-tratamiento-estetico-whatsapp">Agendar evaluaciones estéticas</a>
         <a class="footer-link" href="/seguimiento-sesiones-tratamiento-estetico-whatsapp">Tratamientos de varias sesiones</a>
-      </div>
-      <div class="footer-col">
-        <h4>Otras especialidades</h4>
+      </details>
+      <details class="footer-col footer-grupo" open>
+        <summary><h4>Otras especialidades</h4></summary>
         <a class="footer-link" href="/bot-whatsapp-kinesiologia-centro-rehabilitacion">Kinesiología y rehabilitación</a>
         <a class="footer-link" href="/bot-whatsapp-dermatologia-consulta-chile">Dermatología</a>
         <a class="footer-link" href="/bot-whatsapp-oftalmologia-consulta-ocular">Oftalmología</a>
         <a class="footer-link" href="/bot-whatsapp-psicologia-consulta-salud-mental">Psicología y salud mental</a>
         <a class="footer-link" href="/bot-whatsapp-clinica-varias-sucursales-profesionales">Clínicas con varias sucursales</a>
-      </div>
-      <div class="footer-col">
-        <h4>Antes de contratar</h4>
+      </details>
+      <details class="footer-col footer-grupo" open>
+        <summary><h4>Antes de contratar</h4></summary>
         <a class="footer-link" href="/resultados-reales-bot-whatsapp-clinica-chile">Resultados reales, medidos</a>
         <a class="footer-link" href="/como-elegir-bot-whatsapp-clinica-chile">Cómo elegir un bot sin equivocarse</a>
         <a class="footer-link" href="/chatbot-botones-vs-asistente-ia-clinica">Chatbot de botones o IA</a>
         <a class="footer-link" href="/whatsapp-clinica-numero-normal-api-oficial-baneos">Número normal, API oficial y baneos</a>
         <a class="footer-link" href="/ley-21719-datos-pacientes-whatsapp-clinica">Ley 21.719 y datos de pacientes</a>
-      </div>
+      </details>
     </div>
+    <script>
+    /* Pie compacto (15-10-2026): en el teléfono los 4 grupos de guías parten cerrados. En el HTML van abiertos
+       (open), así el computador y quien lea sin JavaScript ven todos los enlaces como antes. */
+    (function(){try{if(window.matchMedia('(max-width:768px)').matches){document.querySelectorAll('details.footer-grupo').forEach(function(d){d.open=false;});}}catch(e){}})();
+    </script>
     <div class="footer-bottom">© <span id="year"></span> Waly.IA — Automatización con IA para Clínicas Dentales, Médicas y Estéticas &nbsp;·&nbsp; <a href="/privacidad.html" style="color:var(--text-muted);text-decoration:none;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--text-muted)'">Política de privacidad</a></div>
   </div>
 </footer>
