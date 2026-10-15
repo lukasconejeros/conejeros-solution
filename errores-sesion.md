@@ -239,3 +239,22 @@ cifras, y en todas las pantallas el video va después del botón. Pruebas: `prue
 
 **Regla:** las cifras de la portada NO se suben «porque ya pasó tiempo»: se vuelven a medir con el mismo
 método y se cambia la fecha de la nota.
+
+## 15-10-2026 (2) — Reserva: primero los datos, después el calendario; reunión de 45 minutos
+
+**Pedido:** sacar el calendario de la página; que «Reservar reunión de 45 minutos» pida nombre, cargo, correo,
+WhatsApp y clínica, y recién ahí aparezca el calendario. Sobre el teléfono mal escrito, Lukas eligió «revisar y
+confirmar»: solo pasa un celular chileno y antes del calendario se le muestra su número en grande
+(«¿Está bien escrito?» / «No, lo corrijo»). El correo queda de respaldo si igual se equivoca.
+
+**Cambios:** fuera la sección del calendario grande y su código (`AgendaInline`); `AgendaFlow` reescrito (datos →
+confirmar número → calendario → «Confirmar reunión»); horas de 45 min (mismas horas de inicio); `walybot.cl/#reservar`
+abre la ventana directo. App Conejeros `791e7cd`: horas de 45 min y el cargo en la nota y en el aviso a Lukas.
+«Diagnóstico de una hora» → 45 minutos también en secretaria-virtual, waly-vs-dentipilot y llms.txt.
+
+**Caso hermano que apareció:** hoy se ofrecían horas que ya habían pasado (a las 17:00 dejaba reservar las 9:00 de
+hoy). Arreglado en la web: hoy solo salen las horas que parten en 1 hora o más (`yaPaso`). La app Conejeros todavía
+acepta una hora pasada si alguien la manda a mano: pendiente.
+
+**Pruebas:** `prueba_reserva.cjs` 53/53 (con la app reemplazada por un doble: no se reservó nada de verdad),
+`prueba_hoy.cjs` con reloj fijo, `pruebas.cjs` 85/85. App: test:agenda-web 83+64+23, separación 24.

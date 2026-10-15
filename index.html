@@ -1012,6 +1012,18 @@
       .planes-desliza{display:block;margin:-8px 0 0;font-size:.74rem;font-weight:600;color:#94a3b8;}
       .precios-nota{margin-top:0;}
     }
+    /* Reserva (15-10-2026): los botones abren la ventana; primero datos, después calendario. */
+    button.video-cta{border:0;cursor:pointer;font-family:var(--font);}
+    .ag-paso{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;}
+    .ag-titulo{font-size:1.1rem;font-weight:800;letter-spacing:-.04em;color:var(--text-primary);margin-bottom:16px;line-height:1.3;}
+    .ag-select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2364748b' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+    .ag-select:invalid,.ag-select option[value=""]{color:#94a3b8;}
+    .ag-select option{color:#0f172a;}
+    .ag-confirma-tel{text-align:center;padding:6px 0 2px;}
+    .ag-confirma-txt{font-size:.88rem;color:var(--text-secondary);line-height:1.45;}
+    .ag-confirma-num{margin:12px 0 10px;font-size:1.75rem;font-weight:900;letter-spacing:-.02em;color:var(--text-primary);background:rgba(37,211,102,.08);border:1.5px solid rgba(37,211,102,.35);border-radius:14px;padding:12px 10px;}
+    .ag-confirma-tel .btn{margin-top:16px;}
+    @media (max-width:480px){.ag-confirma-num{font-size:1.45rem;}}
     @media (max-width:640px){
       .aginline-badge{margin-bottom:14px;padding:7px 14px;font-size:.68rem;}
       .aginline-title{font-size:1.75rem;margin-bottom:8px;}
@@ -1067,7 +1079,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
   <div class="nav-inner">
     <a href="#" class="logo"><span class="logo-text">Waly<span class="AI">.IA</span></span><img src="logo-waly.svg" alt="" class="logo-mark" width="26" height="26"></a>
     <div class="nav-actions">
-      <button class="btn btn-solar" onclick="AgendaFlow.open('General')"><span>📅 Agendar<span class="nav-btn-largo"> mi reunión</span></span></button>
+      <button class="btn btn-solar" onclick="AgendaFlow.open('General')"><span>📅 Reservar<span class="nav-btn-largo"> reunión</span></span></button>
     </div>
   </div>
 </nav>
@@ -1092,7 +1104,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
     </div>
     <p class="cifras-nota">Medido el 14 de octubre de 2026 en la agenda y la caja de 3 clínicas en Chile.</p>
     <div class="hero-cta-wrap">
-      <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
+      <button type="button" class="video-cta" onclick="AgendaFlow.open('General')"><i class="fas fa-calendar-check"></i> Reservar reunión de 45 minutos</button>
     </div>
     <div class="hero-video" id="video">
       <div class="video-frame" id="videoFrame">
@@ -1202,46 +1214,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
     </div>
     <p class="planes-desliza">Desliza para ver los 3 planes →</p>
     <p class="precios-nota">Valores mensuales, IVA incluido.</p>
-    <a class="video-cta" href="#agendaInline"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
-  </div>
-</section>
-
-<!-- ══ AGENDA INLINE — CALENDARIO GRANDE AZUL ══ -->
-<section class="aginline-section" id="agendaInline">
-  <div class="aginline-bg-blob"></div>
-  <div class="aginline-wrap">
-    <div class="aginline-head">
-      <div class="aginline-badge"><i class="fas fa-calendar-check"></i> Reunión Gratuita · 1 Hora · Videollamada</div>
-      <h2 class="aginline-title">Reserva tu <span class="aginline-hl">Diagnóstico Gratuito</span></h2>
-      <p class="aginline-sub">Selecciona el día y horario que te acomode. Te confirmamos por WhatsApp en menos de 5 minutos.</p>
-    </div>
-    <div class="aginline-card">
-      <div class="aginline-tz" id="aginlineTZ">🌐 Cargando zona horaria…</div>
-      <div class="aginline-grid">
-        <div class="aginline-cal-side">
-          <div class="aginline-nav">
-            <button class="aginline-arrow" id="aginlinePrev" aria-label="Mes anterior"><i class="fas fa-chevron-left"></i></button>
-            <span class="aginline-month" id="aginlineMonth"></span>
-            <button class="aginline-arrow" id="aginlineNext" aria-label="Mes siguiente"><i class="fas fa-chevron-right"></i></button>
-          </div>
-          <div class="aginline-days" id="aginlineDays"></div>
-          <div class="aginline-legend">
-            <span class="aginline-leg-item"><span class="aginline-leg-dot dot-avail"></span>Disponible</span>
-            <span class="aginline-leg-item"><span class="aginline-leg-dot dot-sel"></span>Seleccionado</span>
-            <span class="aginline-leg-item"><span class="aginline-leg-dot dot-off"></span>No disponible</span>
-          </div>
-        </div>
-        <div class="aginline-slots-side">
-          <div class="aginline-date-title" id="aginlineDateTitle">👈 Elige una fecha disponible</div>
-          <div class="aginline-slots-list" id="aginlineSlotsList">
-            <p class="aginline-placeholder">Selecciona un día en el calendario para ver los horarios disponibles</p>
-          </div>
-          <button class="aginline-confirm" id="aginlineConfirm" disabled>
-            <i class="fas fa-arrow-right"></i> Continuar con mis datos
-          </button>
-        </div>
-      </div>
-    </div>
+    <button type="button" class="video-cta" onclick="AgendaFlow.open('General')"><i class="fas fa-calendar-check"></i> Reservar reunión de 45 minutos</button>
   </div>
 </section>
 
@@ -1263,7 +1236,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
         <h4>Contacto</h4>
         <span class="footer-link"><i class="fas fa-phone"></i> +56 9 9906 6071</span>
         <a class="footer-link" href="https://instagram.com/lukasconejeros" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> @lukasconejeros</a>
-        <a class="footer-link" href="#" onclick="event.preventDefault();AgendaFlow.open('General');"><i class="fas fa-calendar-check"></i> Agendar mi reunión</a>
+        <a class="footer-link" href="#" onclick="event.preventDefault();AgendaFlow.open('General');"><i class="fas fa-calendar-check"></i> Reservar reunión de 45 minutos</a>
       </div>
       <details class="footer-col footer-grupo" open>
         <summary><h4>Guías</h4></summary>
@@ -1319,57 +1292,70 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
     <div class="modal-header">
       <div>
         <div class="modal-plan-name" id="agendaPlanName">Agendar Reunión</div>
-        <div class="modal-plan-sub">Sesión de diagnóstico gratuita · 1 hora · Videollamada · 🇨🇱 Horarios Chile</div>
+        <div class="modal-plan-sub">Diagnóstico gratuito · 45 minutos · Videollamada · 🇨🇱 Horarios Chile</div>
       </div>
       <button class="modal-close" onclick="AgendaFlow.close()"><i class="fas fa-xmark"></i></button>
     </div>
     <div class="modal-progress" id="agendaProgress"></div>
     <div class="modal-body">
 
-      <!-- DATOS (desde el 08-08-2026 va DESPUÉS de elegir la fecha; el id se mantiene) -->
-      <div class="modal-step" id="agStep1">
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;" id="agStep1Label">Paso 2 de 2 — Tus datos</div>
-        <div style="font-size:1.1rem;font-weight:800;letter-spacing:-.04em;color:var(--text-primary);margin-bottom:20px;line-height:1.3;" id="agStep1Title">¿A quién le agendamos la reunión?</div>
-        <div class="preset-banner" id="presetBanner" style="display:none;">
-          <i class="fas fa-calendar-check preset-banner-icon"></i>
-          <div class="preset-banner-info">
-            <div class="preset-banner-title">Reunión seleccionada</div>
-            <div class="preset-banner-detail" id="presetBannerDetail"></div>
+      <!-- DATOS — 15-10-2026: van PRIMERO (Lukas: «que pida los datos y ahí aparezca el calendario»).
+           Antes de pasar al calendario se le muestra su número en grande para que confirme que está bien. -->
+      <div class="modal-step active" id="agStep1">
+        <div class="ag-paso">Paso 1 de 2 — Tus datos</div>
+        <div class="ag-titulo">¿Con quién nos reunimos?</div>
+        <div id="agFormDatos">
+          <div style="position:relative;">
+            <input class="modal-input-field" id="agNombre" type="text" placeholder="👤 Tu nombre y apellido" autocomplete="name" maxlength="80">
+            <div class="field-error-msg" id="errNombre">Escribe tu nombre.</div>
           </div>
-          <button class="preset-banner-edit" type="button" onclick="AgendaFlow.editSelection()">Cambiar</button>
+          <div style="position:relative;">
+            <select class="modal-input-field ag-select" id="agCargo" required>
+              <option value="" selected disabled>💼 Tu cargo en la clínica</option>
+              <option>Dueño o dueña</option>
+              <option>Director o directora médica</option>
+              <option>Administrador o administradora</option>
+              <option>Recepción o secretaría</option>
+              <option>Profesional de la salud</option>
+              <option>Otro</option>
+            </select>
+            <div class="field-error-msg" id="errCargo">Elige tu cargo.</div>
+          </div>
+          <div style="position:relative;">
+            <input class="modal-input-field" id="agEmail" type="email" placeholder="✉️ Tu correo" autocomplete="email" inputmode="email" maxlength="120">
+            <div class="field-error-msg" id="errEmail">Escribe tu correo.</div>
+          </div>
+          <div style="position:relative;">
+            <input class="modal-input-field" id="agTelefono" type="tel" placeholder="💬 Tu WhatsApp: 9 1234 5678" autocomplete="tel" inputmode="tel" maxlength="20">
+            <div class="field-error-msg" id="errTelefono">Escribe tu WhatsApp.</div>
+          </div>
+          <div style="position:relative;">
+            <input class="modal-input-field" id="agEmpresa" type="text" placeholder="🏥 Nombre de tu clínica" autocomplete="organization" maxlength="100">
+            <div class="field-error-msg" id="errEmpresa">Escribe el nombre de tu clínica.</div>
+          </div>
+          <button class="btn btn-primary btn-full btn-lg" id="agStep1Btn" type="button" onclick="AgendaFlow.revisarDatos()">Elegir día y hora <i class="fas fa-arrow-right"></i></button>
         </div>
-        <div style="position:relative;">
-          <input class="modal-input-field" id="agNombre" type="text" placeholder="👤 Tu nombre completo" autocomplete="name">
-          <div class="field-error-msg" id="errNombre">Por favor ingresa tu nombre.</div>
-        </div>
-        <div style="position:relative;">
-          <input class="modal-input-field" id="agEmpresa" type="text" placeholder="🏢 Tu clínica o empresa" autocomplete="organization">
-          <div class="field-error-msg" id="errEmpresa">Por favor ingresa el nombre de tu empresa.</div>
-        </div>
-        <div style="position:relative;">
-          <input class="modal-input-field" id="agTelefono" type="tel" placeholder="💬 WhatsApp +56 9 1234 5678" autocomplete="tel">
-          <div class="field-error-msg" id="errTelefono">Por favor ingresa tu número de WhatsApp.</div>
-        </div>
-        <div style="margin-top:4px;">
-          <button class="btn btn-primary btn-full btn-lg" id="agStep1Btn" onclick="AgendaFlow.nextStep()">Confirmar Reunión <i class="fas fa-calendar-check"></i></button>
-        </div>
-        <div style="margin-top:10px;" id="agVolverFecha">
-          <button class="modal-back btn-full" onclick="AgendaFlow.prevStep()"><i class="fas fa-arrow-left"></i> Volver a la fecha</button>
+        <div class="ag-confirma-tel" id="agConfirmaTel" style="display:none;">
+          <div class="ag-confirma-txt">Te vamos a confirmar la reunión a este WhatsApp:</div>
+          <div class="ag-confirma-num" id="agConfirmaNum"></div>
+          <div class="ag-confirma-txt">¿Está bien escrito?</div>
+          <button class="btn btn-primary btn-full btn-lg" type="button" id="agTelOk" onclick="AgendaFlow.telefonoOk()">Sí, está bien <i class="fas fa-arrow-right"></i></button>
+          <button class="modal-back btn-full" type="button" id="agTelCorregir" style="margin-top:10px;" onclick="AgendaFlow.corregirTelefono()"><i class="fas fa-pen"></i> No, lo corrijo</button>
         </div>
         <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:12px;">🔒 Tus datos son privados y no se compartirán con terceros.</p>
       </div>
 
-      <!-- CALENDARIO (es el PRIMER paso desde el 08-08-2026; el id se mantiene) -->
-      <div class="modal-step active" id="agStep2">
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Paso 1 de 2 — Fecha y horario</div>
-        <div style="font-size:1.1rem;font-weight:800;letter-spacing:-.04em;color:var(--text-primary);margin-bottom:16px;line-height:1.3;">Selecciona cuándo nos reunimos</div>
+      <!-- CALENDARIO — 15-10-2026: aparece DESPUÉS de los datos y su botón ya reserva. -->
+      <div class="modal-step" id="agStep2">
+        <div class="ag-paso">Paso 2 de 2 — Día y hora</div>
+        <div class="ag-titulo">¿Cuándo nos reunimos?</div>
         <div class="agcal-tz-label" id="agcalTZ">🌐 Cargando zona horaria…</div>
         <div class="agcal-wrap">
           <div>
             <div class="agcal-nav">
-              <button class="agcal-arrow" id="agcalPrev">&#8249;</button>
+              <button class="agcal-arrow" id="agcalPrev" type="button" aria-label="Mes anterior">&#8249;</button>
               <span class="agcal-month-label" id="agcalMonthLabel"></span>
-              <button class="agcal-arrow" id="agcalNext">&#8250;</button>
+              <button class="agcal-arrow" id="agcalNext" type="button" aria-label="Mes siguiente">&#8250;</button>
             </div>
             <div class="agcal-grid" id="agcalGrid"></div>
           </div>
@@ -1380,9 +1366,10 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
             </div>
           </div>
         </div>
-        <button class="agcal-confirm-btn" id="agcalConfirmBtn" disabled onclick="AgendaFlow.irADatos()">
-          Continuar con mis datos <i class="fas fa-arrow-right"></i>
+        <button class="agcal-confirm-btn" id="agcalConfirmBtn" type="button" disabled onclick="AgendaFlow.confirm()">
+          <i class="fas fa-calendar-check"></i> Confirmar reunión
         </button>
+        <button class="modal-back btn-full" type="button" style="margin-top:10px;" onclick="AgendaFlow.volverADatos()"><i class="fas fa-arrow-left"></i> Volver a mis datos</button>
       </div>
 
       <!-- STEP 3: Success -->
@@ -1500,83 +1487,137 @@ function trackEvent(type, data){
   }catch(e){}
 }
 
-/* ─── AGENDA FLOW ─── */
+/* ─── AGENDA FLOW ───
+   15-10-2026 (Lukas): «Reservar reunión de 45 minutos» abre esta ventana. PRIMERO pide los datos
+   (nombre, cargo, correo, WhatsApp y clínica), le muestra su número en grande para que confirme que
+   está bien escrito, y DESPUÉS aparece el calendario. El calendario grande de la página se sacó.
+   Las horas son las mismas de la app Conejeros (SLOTS_WEB en whatsapp-conejeros/src/lib/agenda-web.ts). */
 const AgendaFlow = (() => {
   const overlay = document.getElementById('agendaModal');
   const planEl  = document.getElementById('agendaPlanName');
   const progEl  = document.getElementById('agendaProgress');
+  const $ = id => document.getElementById(id);
 
   const SLOTS = [
-    {start:'09:00',end:'10:00',label:'9:00 - 10:00 AM'},
-    {start:'10:30',end:'11:30',label:'10:30 - 11:30 AM'},
-    {start:'12:00',end:'13:00',label:'12:00 - 1:00 PM'},
-    {start:'15:00',end:'16:00',label:'3:00 - 4:00 PM'},
-    {start:'16:30',end:'17:30',label:'4:30 - 5:30 PM'},
-    {start:'18:00',end:'19:00',label:'6:00 - 7:00 PM'}
+    {start:'09:00',end:'09:45',label:'9:00 - 9:45 AM'},
+    {start:'10:30',end:'11:15',label:'10:30 - 11:15 AM'},
+    {start:'12:00',end:'12:45',label:'12:00 - 12:45 PM'},
+    {start:'15:00',end:'15:45',label:'3:00 - 3:45 PM'},
+    {start:'16:30',end:'17:15',label:'4:30 - 5:15 PM'},
+    {start:'18:00',end:'18:45',label:'6:00 - 6:45 PM'}
   ];
   const MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   const DOW    = ['Lu','Ma','Mi','Ju','Vi','Sá','Do'];
+  const CAMPOS = [['agNombre','errNombre'],['agCargo','errCargo'],['agEmail','errEmail'],['agTelefono','errTelefono'],['agEmpresa','errEmpresa']];
 
-  let currentPlan='', agStep=1;
+  let currentPlan='', paso=1;
   let calYear, calMonth, selDate=null, selSlot=null;
   let busyCache={}, loadingCal=false;
-  let presetMode=false;
 
   function toDateStr(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return`${y}-${m}-${dd}`;}
-
-  // Desde el 08-08-2026 el orden es: PRIMERO la fecha, DESPUÉS los datos.
-  // Los ids del HTML se mantienen (agStep1 = datos, agStep2 = calendario) para no
-  // tocar el resto de la página; `pasoVisual` es el que cuenta para los puntitos.
-  let pasoVisual = 1;
 
   function updateProgress(){
     if(!progEl)return;
     progEl.innerHTML='';
-    const total = presetMode ? 1 : 2;
-    for(let i=1;i<=total;i++){const d=document.createElement('div');d.className='progress-dot'+(i<=pasoVisual?' done':'');progEl.appendChild(d);}
-  }
-
-  function irAFecha(){
-    pasoVisual=1;
-    showStep(2);
-    initCal();
-  }
-
-  function irADatos(){
-    if(!selDate||!selSlot) return;   // no se llega a los datos sin hora elegida
-    pasoVisual=2;
-    showStep(1);
-    updateStep1Labels();
+    for(let i=1;i<=2;i++){const d=document.createElement('div');d.className='progress-dot'+(i<=paso?' done':'');progEl.appendChild(d);}
   }
 
   function showStep(n){
-    document.querySelectorAll('.modal-step').forEach(s=>s.classList.remove('active'));
-    const el=document.getElementById(n==='final'?'agStepFinal':'agStep'+n);
+    document.querySelectorAll('#agendaModal .modal-step').forEach(s=>s.classList.remove('active'));
+    const el=$(n==='final'?'agStepFinal':'agStep'+n);
     if(el){el.classList.add('active');void el.offsetWidth;}
-    if(n!=='final') agStep=n; else agStep=3;
+    if(n!=='final') paso=n;
     updateProgress();
   }
 
+  /* ── Datos ── */
+  function clearErrors(){
+    CAMPOS.forEach(([f,m])=>{const a=$(f),b=$(m);if(a)a.classList.remove('field-error');if(b)b.classList.remove('show');});
+  }
+  function showFieldError(fieldId,msgId,msg){
+    const f=$(fieldId),m=$(msgId);
+    if(f) f.classList.add('field-error');
+    if(m){if(msg)m.textContent=msg;m.classList.add('show');}
+  }
+  /** Solo los dígitos del número, con el 56 delante: «9 1234 5678» y «+56912345678» dan lo mismo. */
+  function soloDigitos(bruto){
+    let n=(bruto||'').replace(/[^\d]/g,'');
+    if(/^9\d{8}$/.test(n)) n='56'+n;
+    return n;
+  }
+  /** ¿Es un celular chileno de verdad? La misma regla que usa la app Conejeros al recibir la reserva. */
+  function telefonoChilenoOk(bruto){ return /^569\d{8}$/.test(soloDigitos(bruto)); }
+  /** «56912345678» → «+56 9 1234 5678», para que la persona lo lea de un vistazo. */
+  function telefonoBonito(bruto){
+    const n=soloDigitos(bruto);
+    return `+56 9 ${n.slice(3,7)} ${n.slice(7)}`;
+  }
+  function datos(){
+    return {
+      nombre: $('agNombre').value.trim(),
+      cargo:  $('agCargo').value.trim(),
+      email:  $('agEmail').value.trim(),
+      tel:    $('agTelefono').value.trim(),
+      empresa:$('agEmpresa').value.trim()
+    };
+  }
+  function validarDatos(){
+    clearErrors();
+    const d=datos();
+    let ok=true;
+    if(d.nombre.length<2){showFieldError('agNombre','errNombre','Escribe tu nombre.');ok=false;}
+    if(!d.cargo){showFieldError('agCargo','errCargo','Elige tu cargo en la clínica.');ok=false;}
+    if(!d.email){showFieldError('agEmail','errEmail','Escribe tu correo.');ok=false;}
+    else{const r=isValidEmail(d.email);if(!r.ok){showFieldError('agEmail','errEmail',r.msg==='Formato de correo inválido.'?'Ese correo no está bien escrito. Ejemplo: nombre@clinica.cl':r.msg);ok=false;}}
+    if(!d.tel){showFieldError('agTelefono','errTelefono','Escribe tu WhatsApp.');ok=false;}
+    else if(!telefonoChilenoOk(d.tel)){showFieldError('agTelefono','errTelefono','Ese número no es un celular chileno. Son 9 dígitos y parte con 9: +56 9 1234 5678');ok=false;}
+    if(d.empresa.length<2){showFieldError('agEmpresa','errEmpresa','Escribe el nombre de tu clínica.');ok=false;}
+    if(!ok){const primero=CAMPOS.find(([f])=>$(f).classList.contains('field-error'));if(primero)$(primero[0]).focus();}
+    return ok;
+  }
+  function mostrarConfirmaTel(si){
+    $('agFormDatos').style.display=si?'none':'';
+    $('agConfirmaTel').style.display=si?'':'none';
+  }
+  /** «Elegir día y hora»: revisa los datos y, si están bien, pide confirmar el número. */
+  function revisarDatos(){
+    if(!validarDatos())return;
+    $('agConfirmaNum').textContent=telefonoBonito($('agTelefono').value);
+    mostrarConfirmaTel(true);
+  }
+  function corregirTelefono(){
+    mostrarConfirmaTel(false);
+    const t=$('agTelefono');t.focus();t.select&&t.select();
+  }
+  /** Número confirmado: recién ahora aparece el calendario. */
+  function telefonoOk(){
+    showStep(2);
+    if(calYear===undefined) initCal(); else renderCal();
+  }
+  function volverADatos(){
+    mostrarConfirmaTel(false);
+    showStep(1);
+  }
+
+  /* ── Calendario ── */
   function initCal(){
     const now=new Date();
     calYear=now.getFullYear(); calMonth=now.getMonth();
     renderCal();
     setTZ();
-    document.getElementById('agcalPrev').onclick=()=>{calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCal();};
-    document.getElementById('agcalNext').onclick=()=>{calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCal();};
+    $('agcalPrev').onclick=()=>{calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCal();};
+    $('agcalNext').onclick=()=>{calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCal();};
   }
-
   function setTZ(){
     try{
       const tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
       const off=new Date().toLocaleTimeString('es',{timeZoneName:'short'}).split(' ').pop();
-      document.getElementById('agcalTZ').textContent=`🌐 ${tz} (${off})`;
-    }catch{document.getElementById('agcalTZ').textContent='🌐 America/Santiago';}
+      $('agcalTZ').textContent=`🌐 ${tz} (${off})`;
+    }catch{$('agcalTZ').textContent='🌐 America/Santiago';}
   }
-
   function renderCal(){
-    document.getElementById('agcalMonthLabel').textContent=`${MONTHS[calMonth]} ${calYear}`;
-    const grid=document.getElementById('agcalGrid');
+    $('agcalMonthLabel').textContent=`${MONTHS[calMonth]} ${calYear}`;
+    const grid=$('agcalGrid');
     const today=new Date();today.setHours(0,0,0,0);
     const firstDOW=new Date(calYear,calMonth,1).getDay();
     const startOff=(firstDOW===0)?6:firstDOW-1;
@@ -1600,20 +1641,18 @@ const AgendaFlow = (() => {
     }
     grid.innerHTML=html;
   }
-
   function _selectDate(ds){
     selDate=ds;selSlot=null;
     updateConfirmBtn();renderCal();
     const [y,m,d]=ds.split('-').map(Number);
     const label=new Date(y,m-1,d).toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long'});
-    document.getElementById('agcalDateTitle').textContent=label.charAt(0).toUpperCase()+label.slice(1);
+    $('agcalDateTitle').textContent=label.charAt(0).toUpperCase()+label.slice(1);
     loadSlots(ds);
   }
-
   async function loadSlots(ds){
     if(loadingCal)return;
     loadingCal=true;
-    document.getElementById('agcalSlotsList').innerHTML=`<div class="agcal-spinner-wrap"><div class="agcal-spinner"></div></div>`;
+    $('agcalSlotsList').innerHTML=`<div class="agcal-spinner-wrap"><div class="agcal-spinner"></div></div>`;
     if(busyCache[ds]!==undefined){loadingCal=false;renderSlots(ds);return;}
     try{
       const res=await fetch(`${WEBHOOK_AVAIL}?date=${ds}`,{method:'GET'});
@@ -1622,12 +1661,18 @@ const AgendaFlow = (() => {
     }catch{busyCache[ds]=[];}
     loadingCal=false;renderSlots(ds);
   }
-
+  /** Hoy solo se ofrecen las horas que parten en 1 hora o más (antes se podía reservar hoy una hora ya pasada). */
+  function yaPaso(ds,start){
+    const ahora=new Date();
+    if(ds!==toDateStr(ahora))return false;
+    const [hh,mm]=start.split(':').map(Number);
+    return hh*60+mm < ahora.getHours()*60+ahora.getMinutes()+60;
+  }
   function renderSlots(ds){
     const busy=busyCache[ds]||[];
     let html='';
     SLOTS.forEach(s=>{
-      const isBusy=busy.includes(s.start);
+      const isBusy=busy.includes(s.start)||yaPaso(ds,s.start);
       const isSel=s.start===selSlot;
       let cls='agcal-slot';
       if(isBusy) cls+=' slot-busy';
@@ -1635,154 +1680,45 @@ const AgendaFlow = (() => {
       const badge=isBusy?`<span class="agcal-slot-badge">Ocupado</span>`:(isSel?`<span class="agcal-slot-badge">✓</span>`:'');
       html+=`<div class="${cls}" ${!isBusy?`onclick="AgendaFlow._selectSlot('${s.start}')"`:''}><span>${s.label}</span>${badge}</div>`;
     });
-    document.getElementById('agcalSlotsList').innerHTML=html||`<p class="agcal-placeholder">Sin disponibilidad</p>`;
+    $('agcalSlotsList').innerHTML=html||`<p class="agcal-placeholder">Sin disponibilidad</p>`;
   }
-
   function _selectSlot(start){
     if(!selDate)return;
-    const busy=busyCache[selDate]||[];
-    if(busy.includes(start))return;
+    if((busyCache[selDate]||[]).includes(start)||yaPaso(selDate,start))return;
     selSlot=start;renderSlots(selDate);updateConfirmBtn();
   }
-
   function updateConfirmBtn(){
-    const btn=document.getElementById('agcalConfirmBtn');
+    const btn=$('agcalConfirmBtn');
     if(btn) btn.disabled=!(selDate&&selSlot);
   }
 
-  function clearErrors(){
-    ['agNombre','agEmpresa','agTelefono'].forEach(id=>{
-      const el=document.getElementById(id);if(el)el.classList.remove('field-error');
-    });
-    ['errNombre','errEmpresa','errTelefono'].forEach(id=>{
-      const el=document.getElementById(id);if(el)el.classList.remove('show');
-    });
-  }
-
-  /**
-   * ¿Es un WhatsApp chileno de verdad? Se pide estricto porque es el ÚNICO
-   * contacto: si falta un dígito, la confirmación se manda al vacío y nadie se
-   * entera (el mensaje se encola y sale después). Misma regla que el servidor.
-   */
-  function telefonoChilenoOk(bruto){
-    const n=(bruto||'').replace(/[^\d]/g,'');
-    return /^9\d{8}$/.test(n)||/^569\d{8}$/.test(n);
-  }
-  function showFieldError(fieldId,msgId,msg){
-    const f=document.getElementById(fieldId);
-    const m=document.getElementById(msgId);
-    if(f) f.classList.add('field-error');
-    if(m){if(msg)m.textContent=msg;m.classList.add('show');}
-  }
-
-  function validateStep1(){
+  function open(plan){
+    currentPlan=plan||'General';
+    busyCache={};loadingCal=false;selDate=null;selSlot=null;
+    planEl.textContent='Reservar reunión';
     clearErrors();
-    let ok=true;
-    const nombre=document.getElementById('agNombre').value.trim();
-    const empresa=document.getElementById('agEmpresa').value.trim();
-    const tel=document.getElementById('agTelefono').value.trim();
-    if(!nombre){showFieldError('agNombre','errNombre','Por favor ingresa tu nombre.');ok=false;}
-    if(!empresa){showFieldError('agEmpresa','errEmpresa','Por favor escribe el nombre de tu clínica.');ok=false;}
-    if(!tel){showFieldError('agTelefono','errTelefono','Por favor ingresa tu WhatsApp.');ok=false;}
-    else if(!telefonoChilenoOk(tel)){
-      showFieldError('agTelefono','errTelefono','Ese número no parece un WhatsApp chileno. Escríbelo así: +56 9 1234 5678');
-      ok=false;
-    }
-    return ok;
-  }
-
-  function open(plan, presetDate, presetSlot){
-    currentPlan=plan||'General'; agStep=1;
-    busyCache={};loadingCal=false;
-    // Sin planes en la landing (20-09-2026): el título ya no arrastra "· General".
-    planEl.textContent='Agendar Reunión';
-    clearErrors();
-    const volver=document.getElementById('agVolverFecha');
-    if(presetDate && presetSlot){
-      // Vienen del calendario grande de la página: ya eligieron día y hora.
-      selDate = presetDate;
-      selSlot = presetSlot;
-      presetMode = true;
-      showPresetBanner();
-      if(volver) volver.style.display='none';
-      pasoVisual=1;
-      updateStep1Labels();
-      showStep(1);
-    } else {
-      selDate=null;selSlot=null;
-      presetMode = false;
-      hidePresetBanner();
-      if(volver) volver.style.display='';
-      updateStep1Labels();
-      irAFecha();
-    }
+    mostrarConfirmaTel(false);
+    updateConfirmBtn();
+    if(calYear!==undefined){const now=new Date();calYear=now.getFullYear();calMonth=now.getMonth();renderCal();
+      $('agcalDateTitle').textContent='Elige una fecha';$('agcalSlotsList').innerHTML='<p class="agcal-placeholder">👆 Selecciona un día</p>';}
+    showStep(1);
     overlay.classList.add('open');
     document.body.style.overflow='hidden';
+    setTimeout(()=>{try{$('agNombre').focus({preventScroll:true});}catch(e){}},60);
   }
 
-  function showPresetBanner(){
-    const banner = document.getElementById('presetBanner');
-    const detail = document.getElementById('presetBannerDetail');
-    if(!banner||!detail||!selDate||!selSlot) return;
-    const [y,m,d] = selDate.split('-').map(Number);
-    const dateLabel = new Date(y,m-1,d).toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long'});
-    const slotObj = SLOTS.find(s=>s.start===selSlot);
-    const cap = (s)=>s.charAt(0).toUpperCase()+s.slice(1);
-    detail.textContent = `${cap(dateLabel)} · ${slotObj?.label||selSlot}`;
-    banner.style.display='flex';
-  }
-
-  function hidePresetBanner(){
-    const banner = document.getElementById('presetBanner');
-    if(banner) banner.style.display='none';
-  }
-
-  function updateStep1Labels(){
-    const lbl = document.getElementById('agStep1Label');
-    const ttl = document.getElementById('agStep1Title');
-    const btn = document.getElementById('agStep1Btn');
-    if(presetMode){
-      if(lbl) lbl.textContent = 'Paso 1 de 1 — Confirmar tus datos';
-      if(ttl) ttl.textContent = 'Confirma tus datos para reservar';
-    } else {
-      if(lbl) lbl.textContent = 'Paso 2 de 2 — Tus datos';
-      if(ttl) ttl.textContent = '¿A quién le agendamos la reunión?';
-    }
-    // El botón es siempre el último paso: los datos van al final.
-    if(btn) btn.innerHTML = 'Confirmar Reunión <i class="fas fa-calendar-check"></i>';
-  }
-
-  function editSelection(){
-    presetMode = false;
-    hidePresetBanner();
-    const volver=document.getElementById('agVolverFecha');
-    if(volver) volver.style.display='';
-    updateStep1Labels();
-    irAFecha();
-  }
-
-  // Los datos son el ÚLTIMO paso, así que este botón ya confirma la reserva.
-  function nextStep(){
-    if(!validateStep1())return;
-    confirm();
-  }
-
-  function prevStep(){ irAFecha(); }
-
+  /** «Confirmar reunión»: manda la reserva a la app Conejeros. */
   async function confirm(){
     if(!selDate||!selSlot)return;
-    // Los datos son siempre el último paso, así que el botón es este.
-    const btn = document.getElementById('agStep1Btn');
-    const originalHtml = btn ? btn.innerHTML : '';
-    if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Agendando…';}
-    const nombre=document.getElementById('agNombre').value.trim();
-    const email='';   // ya no se pide correo (08-08-2026)
-    const empresa=document.getElementById('agEmpresa').value.trim();
-    const tel=document.getElementById('agTelefono').value.trim();
+    if(!validarDatos()){volverADatos();return;}
+    const btn=$('agcalConfirmBtn');
+    const originalHtml=btn?btn.innerHTML:'';
+    if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Reservando…';}
+    const d=datos();
     const slotObj=SLOTS.find(s=>s.start===selSlot);
-    const [y,m,d]=selDate.split('-').map(Number);
-    const dateLabel=new Date(y,m-1,d).toLocaleDateString('es-CL',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-    const payload={type:'agenda_booking',nombre,email,empresa,whatsapp:tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?.end||'',hora_label:slotObj?.label||selSlot,plan:currentPlan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
+    const [y,m,dd]=selDate.split('-').map(Number);
+    const dateLabel=new Date(y,m-1,dd).toLocaleDateString('es-CL',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    const payload={type:'agenda_booking',nombre:d.nombre,cargo:d.cargo,email:d.email,empresa:d.empresa,whatsapp:d.tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?.end||'',hora_label:slotObj?.label||selSlot,plan:currentPlan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
     try{
       const res=await fetch(WEBHOOK_BOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       const data=await res.json().catch(()=>({}));
@@ -1792,37 +1728,37 @@ const AgendaFlow = (() => {
         if(res.status===409&&selDate){
           if(!busyCache[selDate])busyCache[selDate]=[];
           if(!busyCache[selDate].includes(selSlot))busyCache[selDate].push(selSlot);
-          selSlot=null;renderSlots(selDate);updateConfirmBtn();
+          selSlot=null;renderSlots(selDate);
         }
-        if(btn){btn.disabled=false;btn.innerHTML=originalHtml||'Confirmar Reunión';}
-        alert(data.error||'No se pudo agendar esa hora. Elige otra o escríbenos por WhatsApp.');
+        if(btn){btn.innerHTML=originalHtml;}
+        updateConfirmBtn();
+        alert(data.error||'No se pudo reservar esa hora. Elige otra o escríbenos por WhatsApp.');
         return;
       }
       if(!busyCache[selDate])busyCache[selDate]=[];
       busyCache[selDate].push(selSlot);
-      // Notificar al calendario inline para que actualice slots ocupados
-      if(typeof AgendaInline !== 'undefined' && AgendaInline.markBusy) AgendaInline.markBusy(selDate, selSlot);
-      let detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot}<br><br>`;
+      let detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot} (45 minutos)<br><br>`;
       if(data.meet_link||data.meetLink||data.link){
         const link=data.meet_link||data.meetLink||data.link;
         detail+=`<strong>Videollamada:</strong> <a href="${link}" target="_blank" rel="noopener" class="agcal-meet-link">${link}</a><br><br>`;
-        detail+='Te acabamos de enviar la confirmación con este enlace por WhatsApp. 🎁';
+        detail+=`Te acabamos de enviar la confirmación con este enlace al WhatsApp <strong>${telefonoBonito(d.tel)}</strong>.`;
       } else {
-        detail+='Te acabamos de enviar la confirmación por WhatsApp. Te llamamos por ahí a la hora acordada. 🎁';
+        detail+=`Te acabamos de enviar la confirmación al WhatsApp <strong>${telefonoBonito(d.tel)}</strong>. Te llamamos por ahí a la hora acordada.`;
       }
       // El servidor avisa cuando la hora quedó guardada pero el WhatsApp no salió.
-      // Sin esto la persona se queda esperando un mensaje que nunca llega.
       if(data.aviso_fallido){
-        detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot}<br><br>`
-          +`<span class="agcal-aviso-malo">⚠️ Tu hora quedó agendada, pero <strong>no pudimos enviarte el mensaje de WhatsApp</strong>. `
-          +`Revisa que tu número esté bien escrito: <strong>${tel}</strong>. Si está malo, escríbenos por WhatsApp y lo corregimos.</span>`;
+        detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot} (45 minutos)<br><br>`
+          +`<span class="agcal-aviso-malo">⚠️ Tu hora quedó reservada, pero <strong>no pudimos enviarte el mensaje de WhatsApp</strong>. `
+          +`Revisa que tu número esté bien escrito: <strong>${telefonoBonito(d.tel)}</strong>. Si está malo, escríbenos por WhatsApp y lo corregimos.</span>`;
       }
-      document.getElementById('agSuccessDetail').innerHTML=detail;
+      $('agSuccessDetail').innerHTML=detail;
+      if(btn){btn.innerHTML=originalHtml;}
       if(window.oTrack)oTrack('Schedule',{content_name:currentPlan});
       showStep('final');
     }catch{
-      if(btn){btn.disabled=false;btn.innerHTML=originalHtml||'Confirmar Reunión';}
-      alert('Ocurrió un error al agendar. Por favor intenta de nuevo o escríbenos por WhatsApp.');
+      if(btn){btn.innerHTML=originalHtml;}
+      updateConfirmBtn();
+      alert('Ocurrió un error al reservar. Intenta de nuevo o escríbenos por WhatsApp.');
     }
   }
 
@@ -1830,158 +1766,13 @@ const AgendaFlow = (() => {
     overlay.classList.remove('open');
     document.body.style.overflow='';
   }
+  function closeAndPromo(){ close(); }
 
-  function closeAndPromo(){
-    close();
-  }
-
-  return {open,close,nextStep,prevStep,confirm,closeAndPromo,_selectDate,_selectSlot,editSelection,irADatos,irAFecha};
+  return {open,close,confirm,closeAndPromo,revisarDatos,corregirTelefono,telefonoOk,volverADatos,_selectDate,_selectSlot};
 })();
 
-/* ─── AGENDA INLINE — CALENDARIO GRANDE AZUL ─── */
-const AgendaInline = (() => {
-  const SLOTS = [
-    {start:'09:00',end:'10:00',label:'9:00 - 10:00 AM'},
-    {start:'10:30',end:'11:30',label:'10:30 - 11:30 AM'},
-    {start:'12:00',end:'13:00',label:'12:00 - 1:00 PM'},
-    {start:'15:00',end:'16:00',label:'3:00 - 4:00 PM'},
-    {start:'16:30',end:'17:30',label:'4:30 - 5:30 PM'},
-    {start:'18:00',end:'19:00',label:'6:00 - 7:00 PM'}
-  ];
-  const MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-  const DOW = ['Lu','Ma','Mi','Ju','Vi','Sá','Do'];
-
-  let calYear, calMonth, selDate=null, selSlot=null;
-  let busyCache={}, loadingCal=false, initialized=false;
-
-  const $ = id => document.getElementById(id);
-  const toDateStr = (d) => {const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return`${y}-${m}-${dd}`;};
-
-  function setTZ(){
-    try{
-      const tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
-      const off=new Date().toLocaleTimeString('es',{timeZoneName:'short'}).split(' ').pop();
-      $('aginlineTZ').textContent=`🌐 ${tz} (${off}) · 🇨🇱 Horario Chile`;
-    }catch{$('aginlineTZ').textContent='🌐 America/Santiago';}
-  }
-
-  function renderCal(){
-    $('aginlineMonth').textContent = `${MONTHS[calMonth]} ${calYear}`;
-    const grid = $('aginlineDays');
-    const today = new Date(); today.setHours(0,0,0,0);
-    const firstDOW = new Date(calYear,calMonth,1).getDay();
-    const startOff = (firstDOW===0)?6:firstDOW-1;
-    const daysInMonth = new Date(calYear,calMonth+1,0).getDate();
-    let html = DOW.map(d=>`<div class="aginline-dow">${d}</div>`).join('');
-    for(let i=0;i<startOff;i++) html += `<div class="aginline-day empty"></div>`;
-    for(let d=1;d<=daysInMonth;d++){
-      const date = new Date(calYear,calMonth,d);
-      const ds = toDateStr(date);
-      const isPast = date < today;
-      const isToday = date.getTime() === today.getTime();
-      const isSel = ds === selDate;
-      const isWknd = date.getDay()===0 || date.getDay()===6;
-      let cls = 'aginline-day';
-      if(isPast||isWknd) cls += ' past unavailable';
-      else cls += ' available';
-      if(isToday) cls += ' today';
-      if(isSel) cls += ' selected';
-      const click = (!isPast&&!isWknd) ? `onclick="AgendaInline._selectDate('${ds}')"` : '';
-      html += `<div class="${cls}" ${click}>${d}</div>`;
-    }
-    grid.innerHTML = html;
-  }
-
-  function _selectDate(ds){
-    selDate = ds; selSlot = null;
-    updateConfirmBtn();
-    renderCal();
-    const [y,m,d] = ds.split('-').map(Number);
-    const label = new Date(y,m-1,d).toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long'});
-    $('aginlineDateTitle').textContent = label.charAt(0).toUpperCase()+label.slice(1) + ' — Horarios disponibles:';
-    loadSlots(ds);
-  }
-
-  async function loadSlots(ds){
-    if(loadingCal) return;
-    loadingCal = true;
-    $('aginlineSlotsList').innerHTML = `<div class="aginline-spinner-wrap"><div class="aginline-spinner"></div></div>`;
-    if(busyCache[ds] !== undefined){loadingCal=false;renderSlots(ds);return;}
-    try{
-      const res = await fetch(`${WEBHOOK_AVAIL}?date=${ds}`,{method:'GET'});
-      const data = await res.json();
-      busyCache[ds] = Array.isArray(data) ? data : (data.busy||data.occupied||[]);
-    }catch{busyCache[ds] = [];}
-    loadingCal = false;
-    renderSlots(ds);
-  }
-
-  function renderSlots(ds){
-    const busy = busyCache[ds]||[];
-    let html = '';
-    SLOTS.forEach(s=>{
-      const isBusy = busy.includes(s.start);
-      const isSel = s.start === selSlot;
-      let cls = 'aginline-slot';
-      if(isBusy) cls += ' aginline-slot-busy';
-      else if(isSel) cls += ' aginline-slot-sel';
-      const badge = isBusy ? `<span class="aginline-slot-badge">Ocupado</span>` : (isSel ? `<span class="aginline-slot-badge">✓ Seleccionado</span>` : `<span class="aginline-slot-badge">Disponible</span>`);
-      html += `<div class="${cls}" ${!isBusy ? `onclick="AgendaInline._selectSlot('${s.start}')"` : ''}><span>${s.label}</span>${badge}</div>`;
-    });
-    $('aginlineSlotsList').innerHTML = html || `<p class="aginline-placeholder">Sin disponibilidad este día</p>`;
-  }
-
-  function _selectSlot(start){
-    if(!selDate) return;
-    const busy = busyCache[selDate]||[];
-    if(busy.includes(start)) return;
-    selSlot = start;
-    renderSlots(selDate);
-    updateConfirmBtn();
-  }
-
-  function updateConfirmBtn(){
-    const btn = $('aginlineConfirm');
-    if(btn) btn.disabled = !(selDate && selSlot);
-  }
-
-  function handleConfirm(){
-    if(!selDate||!selSlot) return;
-    AgendaFlow.open('General', selDate, selSlot);
-  }
-
-  function markBusy(ds, slot){
-    if(!busyCache[ds]) busyCache[ds] = [];
-    if(!busyCache[ds].includes(slot)) busyCache[ds].push(slot);
-    if(selDate === ds){
-      if(selSlot === slot) selSlot = null;
-      renderSlots(ds);
-      updateConfirmBtn();
-    }
-  }
-
-  function init(){
-    if(initialized) return;
-    initialized = true;
-    const now = new Date();
-    calYear = now.getFullYear();
-    calMonth = now.getMonth();
-    setTZ();
-    renderCal();
-    $('aginlinePrev').onclick = () => {calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCal();};
-    $('aginlineNext').onclick = () => {calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCal();};
-    $('aginlineConfirm').onclick = handleConfirm;
-  }
-
-  // Inicializar cuando el DOM está listo
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-  return {init, _selectDate, _selectSlot, markBusy};
-})();
+/* Desde otra página se puede abrir la reserva directo con walybot.cl/#reservar */
+(function(){try{if(location.hash==='#reservar'||location.hash==='#agendaInline'){AgendaFlow.open('General');}}catch(e){}})();
 
 /* ─── AUDIT METRICS COUNTER (animación al hacer scroll) ─── */
 (function initAuditMetrics(){
