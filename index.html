@@ -112,6 +112,8 @@
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <!-- Formulario y calendario de la reunión: compartidos con /metodologia (19-10-2026) -->
+  <link rel="stylesheet" href="/agenda.css">
   <style>
     :root {
       --void:#000000; --surface:#0a0f1e; --glass-bg:rgba(255,255,255,0.02); --glass-border:rgba(255,255,255,0.08); --glass-border-h:rgba(255,255,255,0.16);
@@ -559,81 +561,6 @@
     .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    /* ── MODALS (shared) ── */
-    .modal-overlay{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .3s}
-    .modal-overlay.open{opacity:1;pointer-events:all}
-    .modal-box{width:min(100%,560px);background:linear-gradient(145deg,rgba(10,15,30,0.98),rgba(5,8,20,0.99));border:1px solid rgba(255,255,255,0.11);border-radius:var(--r-xl);overflow:hidden;box-shadow:0 40px 110px rgba(0,0,0,0.85),inset 0 1px 0 rgba(255,255,255,0.07);transform:scale(.95) translateY(16px);transition:transform .3s var(--spring);max-height:90vh;overflow-y:auto}
-    .modal-overlay.open .modal-box{transform:scale(1) translateY(0)}
-    .modal-header{padding:24px 28px 20px;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:flex-start;position:sticky;top:0;background:rgba(10,15,30,0.98);z-index:1}
-    .modal-plan-name{font-size:1.3rem;font-weight:900;letter-spacing:-.05em;background:linear-gradient(135deg,var(--cyan-bright),var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .modal-plan-sub{font-size:.8rem;color:var(--text-muted);margin-top:3px;font-weight:500}
-    .modal-close{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);color:var(--text-muted);width:36px;height:36px;border-radius:999px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:color .2s,background .2s;flex-shrink:0;margin-left:16px}
-    .modal-close:hover{color:var(--text-primary);background:rgba(255,255,255,0.1)}
-    .modal-body{padding:28px}
-    .modal-step{display:none;animation:stepIn .28s var(--spring) both}
-    .modal-step.active{display:block}
-    @keyframes stepIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
-    .modal-input-field{width:100%;padding:13px 18px;background:rgba(0,0,0,0.4);border:1.5px solid rgba(255,255,255,0.09);border-radius:var(--r-sm);color:var(--text-primary);font-family:var(--font);font-size:.94rem;outline:none;transition:border-color .25s,box-shadow .25s;margin-bottom:12px}
-    .modal-input-field::placeholder{color:var(--text-muted)}
-    .modal-input-field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(6,182,212,0.13)}
-    .modal-input-field.field-error{border-color:var(--danger)!important;background:rgba(239,68,68,0.05)!important;}
-    /* En móvil el texto de ayuda de los campos no cabía y salía cortado (nunca bajar de 16px reales: iOS hace zoom solo) */
-    @media (max-width:480px){.modal-input-field{font-size:.9rem;padding:12px 14px}}
-    .modal-nav{display:flex;gap:12px;margin-top:8px}
-    .modal-back{background:none;border:1px solid rgba(255,255,255,0.09);color:var(--text-muted);padding:12px 20px;border-radius:var(--r-sm);cursor:pointer;font-family:var(--font);font-size:.9rem;transition:color .2s,border-color .2s;flex-shrink:0}
-    .modal-back:hover{color:var(--text-primary);border-color:rgba(255,255,255,0.22)}
-    .modal-progress{display:flex;gap:6px;padding:0 28px 16px}
-    .progress-dot{height:3px;flex:1;background:rgba(255,255,255,0.09);border-radius:2px;transition:background .3s}
-    .progress-dot.done{background:var(--cyan)}
-    .modal-final{text-align:center;padding:8px 0}
-    .modal-final-icon{font-size:2.5rem;margin-bottom:16px}
-    .modal-final-title{font-size:1.25rem;font-weight:900;letter-spacing:-.04em;color:var(--text-primary);margin-bottom:10px}
-    .modal-final-desc{font-size:.9rem;color:var(--text-secondary);line-height:1.6;margin-bottom:28px}
-    .field-error-msg{font-size:.78rem;color:var(--danger);margin-top:-8px;margin-bottom:10px;display:none;}
-    .field-error-msg.show{display:block;}
-
-    /* ── AGENDA MODAL CALENDAR ── */
-    .agcal-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
-    @media (max-width:580px){.agcal-wrap{grid-template-columns:1fr;gap:12px;}}
-    .agcal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
-    .agcal-month-label{font-size:.88rem;font-weight:700;color:var(--text-primary);}
-    .agcal-arrow{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--text-secondary);width:28px;height:28px;border-radius:7px;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:background .15s;}
-    .agcal-arrow:hover{background:rgba(255,255,255,0.1);}
-    .agcal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
-    .agcal-dow{text-align:center;font-size:9px;font-weight:700;color:var(--text-muted);text-transform:uppercase;padding:3px 0;}
-    .agcal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:11px;border-radius:6px;cursor:pointer;transition:background .15s,color .15s;color:var(--text-secondary);font-weight:500;border:1.5px solid transparent;user-select:none;}
-    .agcal-day.empty{cursor:default;}
-    .agcal-day.past{color:rgba(255,255,255,0.15);cursor:not-allowed;}
-    .agcal-day.today{border-color:var(--cyan);color:var(--cyan-bright);font-weight:700;}
-    .agcal-day.selected{background:var(--primary);color:#fff;border-color:var(--primary);}
-    .agcal-day.available:not(.past):not(.selected):hover{background:rgba(6,182,212,0.15);color:var(--cyan-bright);}
-    .agcal-day.unavailable:not(.past){color:rgba(255,255,255,0.2);cursor:not-allowed;}
-    .agcal-slots-section{display:flex;flex-direction:column;gap:8px;}
-    .agcal-slots-label{font-size:.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;}
-    .agcal-slots-list{display:flex;flex-direction:column;gap:5px;max-height:220px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.1) transparent;}
-    .agcal-slot{padding:8px 12px;border-radius:8px;font-size:.82rem;font-weight:500;cursor:pointer;border:1.5px solid rgba(255,255,255,0.08);color:var(--text-secondary);background:rgba(255,255,255,0.03);transition:all .15s;display:flex;align-items:center;justify-content:space-between;}
-    .agcal-slot:hover:not(.slot-busy):not(.slot-sel){border-color:var(--cyan);background:rgba(6,182,212,0.1);color:var(--cyan-bright);}
-    .agcal-slot.slot-sel{background:var(--primary);border-color:var(--primary);color:#fff;}
-    .agcal-slot.slot-busy{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2);color:rgba(255,255,255,0.25);cursor:not-allowed;}
-    .agcal-slot-badge{font-size:9px;font-weight:700;padding:2px 6px;border-radius:999px;background:rgba(255,255,255,0.15);}
-    .agcal-slot.slot-busy .agcal-slot-badge{background:rgba(239,68,68,0.15);color:#fca5a5;}
-    .agcal-spinner-wrap{display:flex;align-items:center;justify-content:center;padding:20px;}
-    .agcal-spinner{width:20px;height:20px;border:2.5px solid rgba(255,255,255,0.1);border-top-color:var(--cyan);border-radius:50%;animation:agcalSpin .7s linear infinite;}
-    @keyframes agcalSpin{to{transform:rotate(360deg);}}
-    .agcal-placeholder{font-size:.8rem;color:var(--text-muted);text-align:center;padding:20px 0;}
-    .agcal-tz-label{font-size:.72rem;color:var(--text-muted);padding:4px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:999px;margin-bottom:14px;display:inline-block;}
-    .agcal-date-title{font-size:.82rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;min-height:18px;}
-    .agcal-confirm-btn{width:100%;padding:14px 24px;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);color:#fff;font-size:.96rem;font-weight:700;border:none;border-radius:var(--r-md);cursor:pointer;transition:opacity .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 16px rgba(59,130,246,0.35);letter-spacing:.2px;margin-top:4px;}
-    .agcal-confirm-btn:hover:not(:disabled){opacity:.92;transform:translateY(-1px);box-shadow:0 8px 24px rgba(59,130,246,0.5);}
-    .agcal-confirm-btn:disabled{opacity:.4;cursor:not-allowed;}
-    .agcal-success{text-align:center;padding:20px 0;}
-    .agcal-success-icon{font-size:2.8rem;margin-bottom:14px;}
-    .agcal-success-title{font-size:1.2rem;font-weight:900;letter-spacing:-.04em;color:var(--text-primary);margin-bottom:8px;}
-    .agcal-success-detail{font-size:.88rem;color:var(--text-secondary);line-height:1.65;margin-bottom:24px;}
-    /* Cuando la hora quedó agendada pero el WhatsApp no salió: se avisa, no se esconde. */
-    .agcal-aviso-malo{display:block;text-align:left;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.4);border-radius:12px;padding:14px 16px;color:#b45309;font-size:.86rem;line-height:1.6;}
-    .agcal-meet-link{color:var(--cyan-bright);text-decoration:underline;font-weight:600;word-break:break-all;}
-
     /* ── LEAD GATE ── */
     .lead-gate-overlay{position:fixed;inset:0;z-index:9500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
     .lead-gate-overlay.open{opacity:1;visibility:visible}
@@ -768,36 +695,6 @@
     .section-title{color:#0f172a;}
     .section-subtitle{color:#475569;}
 
-    /* Modals */
-    .modal-box{background:#ffffff;border-color:rgba(0,0,0,0.1);box-shadow:0 40px 80px rgba(0,0,0,0.2);}
-    .modal-header{background:rgba(255,255,255,0.98);border-color:rgba(0,0,0,0.08);}
-    .modal-plan-sub{color:#64748b;}
-    .modal-input-field{background:#f8fafc;border-color:rgba(0,0,0,0.1);color:#0f172a;}
-    .modal-input-field::placeholder{color:#94a3b8;}
-    .modal-input-field:focus{background:#ffffff;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(6,182,212,0.12);}
-    .modal-close{background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.08);color:#64748b;}
-    .modal-close:hover{background:rgba(0,0,0,0.08);color:#0f172a;}
-    .modal-back{border-color:rgba(0,0,0,0.1);color:#64748b;}
-    .modal-back:hover{color:#0f172a;border-color:rgba(0,0,0,0.2);}
-    .progress-dot{background:rgba(0,0,0,0.08);}
-
-    /* Agenda modal calendar */
-    .agcal-arrow{background:#f1f5f9;border-color:rgba(0,0,0,0.1);color:#475569;}
-    .agcal-arrow:hover{background:#e2e8f0;}
-    .agcal-month-label{color:#0f172a;}
-    .agcal-dow{color:#94a3b8;}
-    .agcal-day{color:#374151;}
-    .agcal-day.today{border-color:var(--cyan);color:var(--primary);}
-    .agcal-day.past{color:#d1d5db;}
-    .agcal-tz-label{color:#64748b;background:#f1f5f9;border-color:rgba(0,0,0,0.08);}
-    .agcal-date-title{color:#0f172a;}
-    .agcal-slots-label{color:#64748b;}
-    .agcal-slot{background:#f8fafc;border-color:rgba(0,0,0,0.08);color:#374151;}
-    .agcal-slot:hover:not(.slot-busy):not(.slot-sel){border-color:var(--cyan);background:rgba(6,182,212,0.08);color:var(--primary);}
-    .agcal-placeholder{color:#94a3b8;}
-    .agcal-success-title{color:#0f172a;}
-    .agcal-success-detail{color:#475569;}
-
     /* Lead gate */
     .lead-gate-box{background:#ffffff;border-color:rgba(0,0,0,0.1);}
     .lead-gate-title{color:#0f172a;}
@@ -908,15 +805,12 @@
     .hero-subtitle{font-size:clamp(1rem,1.5vw,1.15rem);max-width:780px;margin:0 auto 18px;line-height:1.5;}
     /* El video cabe en la primera pantalla: se achica si la ventana es baja. */
     .hero-video{width:min(100%,780px,max(320px,calc((100vh - 345px) * 16 / 9)));margin:0 auto;animation:fadeInUp .7s ease .5s both;}
-    .hero-cta-wrap{display:flex;justify-content:center;margin-top:22px;}
     @media (max-width:480px){.hero-section{padding:12px 0 34px}.hero-content{padding:0 16px}.hero-title{font-size:clamp(2rem,9vw,2.6rem);line-height:1.1;margin-bottom:10px}.hero-subtitle{font-size:.98rem;margin-bottom:16px}.hero-video{width:100%}}
-    /* ── VIDEO DE LA LANDING: arranca solo y sin sonido; el botón le pone sonido ── */
+    /* ── VIDEO DE LA LANDING: arranca solo y sin sonido; el botón le pone sonido ──
+       19-10-2026: con portada (poster) se ve desde el primer momento; antes quedaba invisible hasta cargar
+       y empujaba el formulario hacia abajo al aparecer. */
     .video-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0f172a;box-shadow:0 18px 50px rgba(15,23,42,.18);}
-    .video-frame video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;background:#0f172a;opacity:0;transition:opacity .3s;}
-    .video-frame.listo video{opacity:1;}
-    .video-hueco{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:rgba(255,255,255,.7);font-weight:700;font-size:15px;}
-    .video-hueco i{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:24px;padding-left:4px;}
-    .video-frame.listo .video-hueco{display:none;}
+    .video-frame video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;background:#0f172a;}
     .video-sonido{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;display:none;align-items:center;gap:8px;padding:11px 20px;border:0;border-radius:999px;background:rgba(15,23,42,.84);color:#fff;font-family:var(--font);font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.35);}
     .video-sonido:hover{background:rgba(15,23,42,.96);}
     .video-frame.listo .video-sonido{display:inline-flex;}
@@ -933,16 +827,20 @@
     .cifra-n span{font-size:1.05rem;letter-spacing:-.02em;}
     .cifra-t{margin-top:6px;font-size:.8rem;font-weight:600;line-height:1.4;color:#475569;}
     .cifras-nota{margin:10px auto 0;font-size:.72rem;font-weight:500;color:#94a3b8;line-height:1.4;}
-    .hero-video:not(.hay-video){height:0;overflow:hidden;margin:0 auto;}
-    .hero-video.hay-video{margin-top:20px;}
+    /* Si el video no carga (archivo borrado o error), el bloque se pliega: nunca un recuadro negro vacío. */
+    .hero-video.sin-video{display:none;}
+    /* ── FORMULARIO A LA VISTA (19-10-2026): justo debajo del video corto. Al confirmar el número lleva a
+       /metodologia (video largo + calendario). Los estilos de los campos viven en agenda.css. ── */
+    .form-landing{margin:22px auto 0;animation:fadeInUp .7s ease .6s both;}
+    .form-landing .ag-titulo{text-align:center;font-size:1.15rem;}
+    .cifras{margin-top:28px;}
     @media (max-width:640px){
-      /* En el teléfono el botón va antes de las cifras: así se ve sin hacer scroll también en pantallas de 667 px. */
+      /* En el teléfono va todo en columna y en el orden del HTML: video, formulario y después las cifras
+         (antes el botón «Reservar» iba primero y el video al final; Lukas 19-10: el video corto arriba). */
       .hero-content{display:flex;flex-direction:column;}
-      .hero-cta-wrap{order:1;margin-top:4px;}
-      .cifras{order:2;margin-top:18px;}
-      .cifras-nota{order:3;}
-      .hero-video{order:4;}
-      .cifras{grid-template-columns:1fr;gap:8px;max-width:420px;width:100%;}
+      .form-landing{margin-top:16px;}
+      .cifras{margin-top:22px;}
+      .cifras{grid-template-columns:1fr;gap:8px;max-width:420px;width:100%;margin-left:auto;margin-right:auto;}
       .cifra{display:flex;align-items:center;gap:14px;padding:11px 14px;text-align:left;}
       .cifra-n{font-size:1.75rem;flex:0 0 auto;min-width:5.2rem;}
       .cifra-n span{font-size:.8rem;}
@@ -1012,18 +910,8 @@
       .planes-desliza{display:block;margin:-8px 0 0;font-size:.74rem;font-weight:600;color:#94a3b8;}
       .precios-nota{margin-top:0;}
     }
-    /* Reserva (15-10-2026): los botones abren la ventana; primero datos, después calendario. */
+    /* Botones «Reservar» (19-10-2026): ya no abren una ventana; bajan al formulario de arriba (irAlFormulario). */
     button.video-cta{border:0;cursor:pointer;font-family:var(--font);}
-    .ag-paso{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;}
-    .ag-titulo{font-size:1.1rem;font-weight:800;letter-spacing:-.04em;color:var(--text-primary);margin-bottom:16px;line-height:1.3;}
-    .ag-select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2364748b' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
-    .ag-select:invalid,.ag-select option[value=""]{color:#94a3b8;}
-    .ag-select option{color:#0f172a;}
-    .ag-confirma-tel{text-align:center;padding:6px 0 2px;}
-    .ag-confirma-txt{font-size:.88rem;color:var(--text-secondary);line-height:1.45;}
-    .ag-confirma-num{margin:12px 0 10px;font-size:1.75rem;font-weight:900;letter-spacing:-.02em;color:var(--text-primary);background:rgba(37,211,102,.08);border:1.5px solid rgba(37,211,102,.35);border-radius:14px;padding:12px 10px;}
-    .ag-confirma-tel .btn{margin-top:16px;}
-    @media (max-width:480px){.ag-confirma-num{font-size:1.45rem;}}
     @media (max-width:640px){
       .aginline-badge{margin-bottom:14px;padding:7px 14px;font-size:.68rem;}
       .aginline-title{font-size:1.75rem;margin-bottom:8px;}
@@ -1079,16 +967,34 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
   <div class="nav-inner">
     <a href="#" class="logo"><span class="logo-text">Waly<span class="AI">.IA</span></span><img src="logo-waly.svg" alt="" class="logo-mark" width="26" height="26"></a>
     <div class="nav-actions">
-      <button class="btn btn-solar" onclick="AgendaFlow.open('General')"><span>📅 Reservar<span class="nav-btn-largo"> reunión</span></span></button>
+      <button class="btn btn-solar" onclick="irAlFormulario()"><span>📅 Reservar<span class="nav-btn-largo"> reunión</span></span></button>
     </div>
   </div>
 </nav>
 
-<!-- ══ HERO — landing (29-09-2026): el título, el video al tiro y un solo botón ══ -->
+<!-- ══ HERO — landing (19-10-2026): el título, el video corto arriba, el formulario a la vista y las cifras.
+     Lukas: «el video más corto hay que dejarlo al principio para que llenen el formulario y lo lleven a esa
+     página donde está el video más largo». Al confirmar el número se va a /metodologia (metodologia.html). ══ -->
 <section class="hero-section">
   <div class="hero-content">
     <h1 class="hero-title">Deja de perder pacientes<br>por <span class="gradient">no contestar a tiempo</span></h1>
     <p class="hero-subtitle">Inteligencia artificial que contesta el WhatsApp de su clínica a toda hora.</p>
+    <div class="hero-video" id="video">
+      <div class="video-frame" id="videoFrame">
+        <!-- ══ EL VIDEO CORTO (19-10-2026) ══
+             video/landing-intro.mp4 (23 s, 1920×1080, H.264 + AAC) y su portada video/landing-intro.jpg.
+             En el video Lukas dice «responde el formulario, mira el video de seis minutos y nos contactamos
+             contigo por WhatsApp»: por eso el formulario va justo debajo.
+             Arranca solo y SIN sonido (los navegadores no dejan que arranque con sonido); el botón
+             "Activar sonido" se lo pone y lo vuelve al segundo 0. Si el archivo falla, el bloque se pliega. -->
+        <video id="landingVideo" src="video/landing-intro.mp4" poster="video/landing-intro.jpg" autoplay muted playsinline loop preload="auto" aria-label="Video de Waly.IA"></video>
+        <button type="button" class="video-sonido" id="videoSonido">🔊 Activar sonido</button>
+      </div>
+    </div>
+    <!-- ══ FORMULARIO A LA VISTA (19-10-2026): nombre, cargo, correo y WhatsApp (la clínica se sacó). Lo dibuja
+         agenda.js (el mismo de /metodologia). id="reservar": walybot.cl/#reservar y todos los botones
+         «Reservar» bajan acá. ══ -->
+    <div class="reunion-card form-landing" id="reservar"></div>
     <!-- ══ CIFRAS (15-10-2026) — medidas el 14-10-2026 17:22-18:10 en Anpalex, Medifis y Yaber, en el sistema de
          agenda y de caja de cada clínica (conejeros-lab/creativos-waly-ads/DATO-PACIENTES-Y-PLATA-WALY-2026-10-14.md).
          · +400 citas: piso de citas NUEVAS que creó la IA (Anpalex 61 + Medifis 197 + Yaber 146 = 404; sin pruebas
@@ -1103,42 +1009,75 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
       <div class="cifra"><div class="cifra-n">+$15<span> millones</span></div><div class="cifra-t">que esos pacientes ya dejaron en las clínicas</div></div>
     </div>
     <p class="cifras-nota">Medido el 14 de octubre de 2026 en la agenda y la caja de 3 clínicas en Chile.</p>
-    <div class="hero-cta-wrap">
-      <button type="button" class="video-cta" onclick="AgendaFlow.open('General')"><i class="fas fa-calendar-check"></i> Reservar reunión de 45 minutos</button>
-    </div>
-    <div class="hero-video" id="video">
-      <div class="video-frame" id="videoFrame">
-        <!-- ══ DÓNDE VA EL VIDEO ══
-             Guardar el archivo como  video/landing-waly.mp4  (carpeta "video" junto a este index.html).
-             Formato: MP4 (H.264 + AAC), idealmente horizontal 16:9 y de menos de ~15 MB.
-             Arranca solo y SIN sonido (los navegadores no dejan que arranque con sonido);
-             el botón "Activar sonido" se lo pone y lo vuelve al segundo 0.
-             Mientras el archivo no exista (o falle), el bloque queda plegado (15-10-2026); aparece solo al subirlo.
-             Va DESPUÉS del botón: con las cifras arriba, el botón se ve sin hacer scroll aunque haya video.
-             Opcional: una imagen de portada en video/landing-waly.jpg y agregar poster="video/landing-waly.jpg". -->
-        <video id="landingVideo" src="video/landing-waly.mp4" autoplay muted playsinline loop preload="auto" aria-label="Video de Waly.IA"></video>
-        <div class="video-hueco" aria-hidden="true"><i class="fas fa-play"></i><span>Aquí va el video</span></div>
-        <button type="button" class="video-sonido" id="videoSonido">🔊 Activar sonido</button>
-      </div>
-    </div>
   </div>
 </section>
 <script>
-/* Video de la portada: se muestra solo cuando de verdad cargó. Mientras el archivo no exista (o falle),
-   el bloque entero queda plegado (15-10-2026: antes se veía un recuadro «Aquí va el video» en la web publicada). */
+/* Video de la portada: arranca en silencio y en bucle. Si el archivo no existe (o falla), el bloque entero
+   se pliega (15-10-2026: antes se veía un recuadro «Aquí va el video» en la web publicada). */
 (function(){
   var v=document.getElementById('landingVideo'),f=document.getElementById('videoFrame'),b=document.getElementById('videoSonido'),c=document.getElementById('video');
   if(!v||!f)return;
-  function listo(){if(v.error)return;f.classList.add('listo');if(c)c.classList.add('hay-video');var p=v.play();if(p&&p.catch)p.catch(function(){});}
-  function falla(){f.classList.remove('listo');if(c)c.classList.remove('hay-video');}
+  function listo(){if(v.error)return;f.classList.add('listo');if(c)c.classList.remove('sin-video');var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  function falla(){f.classList.remove('listo');if(c)c.classList.add('sin-video');}
   v.addEventListener('loadeddata',listo);
   v.addEventListener('error',falla);
   if(v.error){falla();}else if(v.readyState>=2){listo();}
-  if(b)b.addEventListener('click',function(){
-    v.muted=false;v.currentTime=0;v.controls=true;f.classList.add('con-sonido');
+  else{
+    /* Si el navegador no deja arrancar solo (ahorro de batería en iPhone), igual aparece el botón: si no, quedaba
+       la portada quieta y sin ninguna forma de darle play. */
+    var p0=v.play();if(p0&&p0.catch)p0.catch(function(){if(!v.error)f.classList.add('listo');});
+  }
+  function conSonido(){
+    /* Con sonido ya no se repite: al terminar queda quieto y la persona pasa al formulario de abajo. */
+    v.muted=false;v.loop=false;v.currentTime=0;v.controls=true;f.classList.add('con-sonido');
     /* Si el navegador no deja sonar, vuelve a correr en silencio y reaparece el botón. */
-    var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;v.controls=false;f.classList.remove('con-sonido');var q=v.play();if(q&&q.catch)q.catch(function(){});});
+    var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;v.loop=true;v.controls=false;f.classList.remove('con-sonido');var q=v.play();if(q&&q.catch)q.catch(function(){});});
+  }
+  if(b)b.addEventListener('click',conSonido);
+  /* Tocar el video mientras está en silencio = activar el sonido (después mandan los controles del navegador). */
+  v.addEventListener('click',function(){if(!f.classList.contains('con-sonido'))conSonido();});
+})();
+</script>
+<script src="/agenda.js"></script>
+<script>
+/* Formulario de la portada (19-10-2026). Al confirmar el número, agenda.js guarda los datos (sessionStorage y
+   localStorage, nunca en la URL) y de acá se va a /metodologia: el video largo y debajo el calendario. */
+var formLanding=null;
+(function(){
+  var caja=document.getElementById('reservar');
+  if(!caja||!window.WalyAgenda)return;
+  formLanding=WalyAgenda.formulario({
+    contenedor:caja,
+    titulo:'Responde y mira el video completo',
+    textoBoton:'Ver el video',
+    textoOk:'Sí, está bien, ver el video',
+    alConfirmar:function(){
+      var irse=function(){location.href='/metodologia';};
+      /* Meta: un Lead por cada persona que deja sus datos. Se espera un poco para que el aviso alcance a salir. */
+      try{if(typeof fbq==='function'){fbq('track','Lead',{content_name:'Formulario portada'});setTimeout(irse,350);return;}}catch(e){}
+      irse();
+    }
   });
+  /* Si ya los dejó antes (volvió atrás o vuelve otro día), quedan escritos. */
+  formLanding.rellenar(WalyAgenda.leerDatos());
+})();
+/** Todos los botones «Reservar» (menú, planes y pie) y walybot.cl/#reservar bajan al formulario y ponen el foco
+    en el nombre. Antes abrían la ventana de reserva (AgendaFlow), que se sacó el 19-10-2026. */
+function irAlFormulario(ev){
+  if(ev&&ev.preventDefault)ev.preventDefault();
+  var caja=document.getElementById('reservar');
+  if(!caja)return;
+  try{caja.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){caja.scrollIntoView();}
+  if(formLanding)formLanding.enfocar();
+}
+/* Desde otra página o un anuncio se llega directo con walybot.cl/#reservar (y el viejo #agendaInline). */
+(function(){
+  function revisarHash(){try{if(location.hash==='#reservar'||location.hash==='#agendaInline'){irAlFormulario();}}catch(e){}}
+  window.addEventListener('hashchange',revisarHash);
+  /* Al abrir la página con #reservar, el navegador salta solo al formulario DESPUÉS de cargar y en ese salto
+     suelta el foco: por eso se espera a 'load' (probado: llamándolo antes, el nombre quedaba sin foco). */
+  if(document.readyState==='complete'){setTimeout(revisarHash,60);}
+  else{window.addEventListener('load',function(){setTimeout(revisarHash,60);});}
 })();
 </script>
 
@@ -1214,7 +1153,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
     </div>
     <p class="planes-desliza">Desliza para ver los 3 planes →</p>
     <p class="precios-nota">Valores mensuales, IVA incluido.</p>
-    <button type="button" class="video-cta" onclick="AgendaFlow.open('General')"><i class="fas fa-calendar-check"></i> Reservar reunión de 45 minutos</button>
+    <button type="button" class="video-cta" onclick="irAlFormulario()"><i class="fas fa-calendar-check"></i> Reservar reunión de 45 minutos</button>
   </div>
 </section>
 
@@ -1236,7 +1175,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
         <h4>Contacto</h4>
         <span class="footer-link"><i class="fas fa-phone"></i> +56 9 9906 6071</span>
         <a class="footer-link" href="https://instagram.com/lukasconejeros" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> @lukasconejeros</a>
-        <a class="footer-link" href="#" onclick="event.preventDefault();AgendaFlow.open('General');"><i class="fas fa-calendar-check"></i> Reservar reunión de 45 minutos</a>
+        <a class="footer-link" href="#reservar" onclick="irAlFormulario(event)"><i class="fas fa-calendar-check"></i> Reservar reunión de 45 minutos</a>
       </div>
       <details class="footer-col footer-grupo" open>
         <summary><h4>Guías</h4></summary>
@@ -1286,110 +1225,6 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
   </div>
 </footer>
 
-<!-- ══ AGENDA MODAL ══ -->
-<div class="modal-overlay" id="agendaModal" onclick="if(event.target===this)AgendaFlow.close()">
-  <div class="modal-box">
-    <div class="modal-header">
-      <div>
-        <div class="modal-plan-name" id="agendaPlanName">Agendar Reunión</div>
-        <div class="modal-plan-sub">Diagnóstico gratuito · 45 minutos · Videollamada · 🇨🇱 Horarios Chile</div>
-      </div>
-      <button class="modal-close" onclick="AgendaFlow.close()"><i class="fas fa-xmark"></i></button>
-    </div>
-    <div class="modal-progress" id="agendaProgress"></div>
-    <div class="modal-body">
-
-      <!-- DATOS — 15-10-2026: van PRIMERO (Lukas: «que pida los datos y ahí aparezca el calendario»).
-           Antes de pasar al calendario se le muestra su número en grande para que confirme que está bien. -->
-      <div class="modal-step active" id="agStep1">
-        <div class="ag-paso">Paso 1 de 2 — Tus datos</div>
-        <div class="ag-titulo">¿Con quién nos reunimos?</div>
-        <div id="agFormDatos">
-          <div style="position:relative;">
-            <input class="modal-input-field" id="agNombre" type="text" placeholder="👤 Tu nombre y apellido" autocomplete="name" maxlength="80">
-            <div class="field-error-msg" id="errNombre">Escribe tu nombre.</div>
-          </div>
-          <div style="position:relative;">
-            <select class="modal-input-field ag-select" id="agCargo" required>
-              <option value="" selected disabled>💼 Tu cargo en la clínica</option>
-              <option>Dueño o dueña</option>
-              <option>Director o directora médica</option>
-              <option>Administrador o administradora</option>
-              <option>Recepción o secretaría</option>
-              <option>Profesional de la salud</option>
-              <option>Otro</option>
-            </select>
-            <div class="field-error-msg" id="errCargo">Elige tu cargo.</div>
-          </div>
-          <div style="position:relative;">
-            <input class="modal-input-field" id="agEmail" type="email" placeholder="✉️ Tu correo" autocomplete="email" inputmode="email" maxlength="120">
-            <div class="field-error-msg" id="errEmail">Escribe tu correo.</div>
-          </div>
-          <div style="position:relative;">
-            <input class="modal-input-field" id="agTelefono" type="tel" placeholder="💬 Tu WhatsApp: 9 1234 5678" autocomplete="tel" inputmode="tel" maxlength="20">
-            <div class="field-error-msg" id="errTelefono">Escribe tu WhatsApp.</div>
-          </div>
-          <div style="position:relative;">
-            <input class="modal-input-field" id="agEmpresa" type="text" placeholder="🏥 Nombre de tu clínica" autocomplete="organization" maxlength="100">
-            <div class="field-error-msg" id="errEmpresa">Escribe el nombre de tu clínica.</div>
-          </div>
-          <button class="btn btn-primary btn-full btn-lg" id="agStep1Btn" type="button" onclick="AgendaFlow.revisarDatos()">Elegir día y hora <i class="fas fa-arrow-right"></i></button>
-        </div>
-        <div class="ag-confirma-tel" id="agConfirmaTel" style="display:none;">
-          <div class="ag-confirma-txt">Te vamos a confirmar la reunión a este WhatsApp:</div>
-          <div class="ag-confirma-num" id="agConfirmaNum"></div>
-          <div class="ag-confirma-txt">¿Está bien escrito?</div>
-          <button class="btn btn-primary btn-full btn-lg" type="button" id="agTelOk" onclick="AgendaFlow.telefonoOk()">Sí, está bien <i class="fas fa-arrow-right"></i></button>
-          <button class="modal-back btn-full" type="button" id="agTelCorregir" style="margin-top:10px;" onclick="AgendaFlow.corregirTelefono()"><i class="fas fa-pen"></i> No, lo corrijo</button>
-        </div>
-        <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:12px;">🔒 Tus datos son privados y no se compartirán con terceros.</p>
-      </div>
-
-      <!-- CALENDARIO — 15-10-2026: aparece DESPUÉS de los datos y su botón ya reserva. -->
-      <div class="modal-step" id="agStep2">
-        <div class="ag-paso">Paso 2 de 2 — Día y hora</div>
-        <div class="ag-titulo">¿Cuándo nos reunimos?</div>
-        <div class="agcal-tz-label" id="agcalTZ">🌐 Cargando zona horaria…</div>
-        <div class="agcal-wrap">
-          <div>
-            <div class="agcal-nav">
-              <button class="agcal-arrow" id="agcalPrev" type="button" aria-label="Mes anterior">&#8249;</button>
-              <span class="agcal-month-label" id="agcalMonthLabel"></span>
-              <button class="agcal-arrow" id="agcalNext" type="button" aria-label="Mes siguiente">&#8250;</button>
-            </div>
-            <div class="agcal-grid" id="agcalGrid"></div>
-          </div>
-          <div class="agcal-slots-section">
-            <div class="agcal-date-title" id="agcalDateTitle">Elige una fecha</div>
-            <div class="agcal-slots-list" id="agcalSlotsList">
-              <p class="agcal-placeholder">👆 Selecciona un día</p>
-            </div>
-          </div>
-        </div>
-        <button class="agcal-confirm-btn" id="agcalConfirmBtn" type="button" disabled onclick="AgendaFlow.confirm()">
-          <i class="fas fa-calendar-check"></i> Confirmar reunión
-        </button>
-        <button class="modal-back btn-full" type="button" style="margin-top:10px;" onclick="AgendaFlow.volverADatos()"><i class="fas fa-arrow-left"></i> Volver a mis datos</button>
-      </div>
-
-      <!-- STEP 3: Success -->
-      <div class="modal-step" id="agStepFinal">
-        <div class="agcal-success">
-          <div class="agcal-success-icon">✅</div>
-          <div class="agcal-success-title">¡Reunión Agendada!</div>
-          <div class="agcal-success-detail" id="agSuccessDetail">
-            Te hemos enviado la confirmación por WhatsApp. Te llamamos por ahí a la hora acordada.
-          </div>
-          <button class="btn btn-ghost btn-full" onclick="AgendaFlow.close()">
-            <i class="fas fa-check"></i> Listo
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 <!-- ══ JAVASCRIPT ══ -->
 <script>
 'use strict';
@@ -1398,32 +1233,8 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
 const N8N_BASE          = 'https://n8n-n8n.bvil2a.easypanel.host';
 const WEBHOOK_CHAT      = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/f40ed409-a0b0-4373-b7d7-6abedc56f8dd';
 const WEBHOOK_EVENTS    = 'https://flujos-pruebas-n8n.bvil2a.easypanel.host/webhook_off/c4d5e6f7-a8b9-0123-cdef-234567890123';
-/* La agenda del diagnóstico ya NO pasa por n8n ni por Google Calendar (07-08-2026):
-   la lleva la app de Lukas, que es donde él anota sus reuniones de verdad.
-   Mismo contrato de antes: GET ?date=YYYY-MM-DD -> {busy:[...]}, POST -> {ok, meet_link}. */
-const APP_BASE          = 'https://waly-conejeros.bvil2a.easypanel.host';
-const WEBHOOK_BOOK      = APP_BASE + '/api/agenda-web';
-const WEBHOOK_AVAIL     = APP_BASE + '/api/agenda-web';
+/* La agenda del diagnóstico (la app de Lukas, /api/agenda-web) se llama desde agenda.js desde el 19-10-2026. */
 const WEBHOOK_DEMO      = N8N_BASE + '/webhook/orion-demo-chat';
-
-/* ─── FAKE EMAIL DOMAINS ─── */
-const FAKE_DOMAINS = new Set([
-  'yopmail.com','mailinator.com','tempmail.com','guerrillamail.com','10minutemail.com',
-  'throwam.com','trashmail.com','fakeinbox.com','sharklasers.com','grr.la','spam4.me',
-  'dispostable.com','maildrop.cc','mailnull.com','discard.email','wegwerfmail.de',
-  'mailnesia.com','throwaway.email','getairmail.com','filzmail.com','trashmail.at',
-  'tempr.email','spamfree24.org','getnada.com','trbvm.com','mintemail.com',
-  'guerrillamailblock.com','spamgourmet.com','spamgourmet.net','mailbucket.org',
-  'trashmail.io','tempinbox.com','throwam.net','mailtemp.info','fakemail.net'
-]);
-
-function isValidEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  if (!re.test(email)) return { ok: false, msg: 'Formato de correo inválido.' };
-  const domain = email.split('@')[1].toLowerCase();
-  if (FAKE_DOMAINS.has(domain)) return { ok: false, msg: 'Por favor usa un correo empresarial real.' };
-  return { ok: true };
-}
 
 /* ─── MISC INIT ─── */
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -1487,292 +1298,8 @@ function trackEvent(type, data){
   }catch(e){}
 }
 
-/* ─── AGENDA FLOW ───
-   15-10-2026 (Lukas): «Reservar reunión de 45 minutos» abre esta ventana. PRIMERO pide los datos
-   (nombre, cargo, correo, WhatsApp y clínica), le muestra su número en grande para que confirme que
-   está bien escrito, y DESPUÉS aparece el calendario. El calendario grande de la página se sacó.
-   Las horas son las mismas de la app Conejeros (SLOTS_WEB en whatsapp-conejeros/src/lib/agenda-web.ts). */
-const AgendaFlow = (() => {
-  const overlay = document.getElementById('agendaModal');
-  const planEl  = document.getElementById('agendaPlanName');
-  const progEl  = document.getElementById('agendaProgress');
-  const $ = id => document.getElementById(id);
-
-  const SLOTS = [
-    {start:'09:00',end:'09:45',label:'9:00 - 9:45 AM'},
-    {start:'10:30',end:'11:15',label:'10:30 - 11:15 AM'},
-    {start:'12:00',end:'12:45',label:'12:00 - 12:45 PM'},
-    {start:'15:00',end:'15:45',label:'3:00 - 3:45 PM'},
-    {start:'16:30',end:'17:15',label:'4:30 - 5:15 PM'},
-    {start:'18:00',end:'18:45',label:'6:00 - 6:45 PM'}
-  ];
-  const MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-  const DOW    = ['Lu','Ma','Mi','Ju','Vi','Sá','Do'];
-  const CAMPOS = [['agNombre','errNombre'],['agCargo','errCargo'],['agEmail','errEmail'],['agTelefono','errTelefono'],['agEmpresa','errEmpresa']];
-
-  let currentPlan='', paso=1;
-  let calYear, calMonth, selDate=null, selSlot=null;
-  let busyCache={}, loadingCal=false;
-
-  function toDateStr(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return`${y}-${m}-${dd}`;}
-
-  function updateProgress(){
-    if(!progEl)return;
-    progEl.innerHTML='';
-    for(let i=1;i<=2;i++){const d=document.createElement('div');d.className='progress-dot'+(i<=paso?' done':'');progEl.appendChild(d);}
-  }
-
-  function showStep(n){
-    document.querySelectorAll('#agendaModal .modal-step').forEach(s=>s.classList.remove('active'));
-    const el=$(n==='final'?'agStepFinal':'agStep'+n);
-    if(el){el.classList.add('active');void el.offsetWidth;}
-    if(n!=='final') paso=n;
-    updateProgress();
-  }
-
-  /* ── Datos ── */
-  function clearErrors(){
-    CAMPOS.forEach(([f,m])=>{const a=$(f),b=$(m);if(a)a.classList.remove('field-error');if(b)b.classList.remove('show');});
-  }
-  function showFieldError(fieldId,msgId,msg){
-    const f=$(fieldId),m=$(msgId);
-    if(f) f.classList.add('field-error');
-    if(m){if(msg)m.textContent=msg;m.classList.add('show');}
-  }
-  /** Solo los dígitos del número, con el 56 delante: «9 1234 5678» y «+56912345678» dan lo mismo. */
-  function soloDigitos(bruto){
-    let n=(bruto||'').replace(/[^\d]/g,'');
-    if(/^9\d{8}$/.test(n)) n='56'+n;
-    return n;
-  }
-  /** ¿Es un celular chileno de verdad? La misma regla que usa la app Conejeros al recibir la reserva. */
-  function telefonoChilenoOk(bruto){ return /^569\d{8}$/.test(soloDigitos(bruto)); }
-  /** «56912345678» → «+56 9 1234 5678», para que la persona lo lea de un vistazo. */
-  function telefonoBonito(bruto){
-    const n=soloDigitos(bruto);
-    return `+56 9 ${n.slice(3,7)} ${n.slice(7)}`;
-  }
-  function datos(){
-    return {
-      nombre: $('agNombre').value.trim(),
-      cargo:  $('agCargo').value.trim(),
-      email:  $('agEmail').value.trim(),
-      tel:    $('agTelefono').value.trim(),
-      empresa:$('agEmpresa').value.trim()
-    };
-  }
-  function validarDatos(){
-    clearErrors();
-    const d=datos();
-    let ok=true;
-    if(d.nombre.length<2){showFieldError('agNombre','errNombre','Escribe tu nombre.');ok=false;}
-    if(!d.cargo){showFieldError('agCargo','errCargo','Elige tu cargo en la clínica.');ok=false;}
-    if(!d.email){showFieldError('agEmail','errEmail','Escribe tu correo.');ok=false;}
-    else{const r=isValidEmail(d.email);if(!r.ok){showFieldError('agEmail','errEmail',r.msg==='Formato de correo inválido.'?'Ese correo no está bien escrito. Ejemplo: nombre@clinica.cl':r.msg);ok=false;}}
-    if(!d.tel){showFieldError('agTelefono','errTelefono','Escribe tu WhatsApp.');ok=false;}
-    else if(!telefonoChilenoOk(d.tel)){showFieldError('agTelefono','errTelefono','Ese número no es un celular chileno. Son 9 dígitos y parte con 9: +56 9 1234 5678');ok=false;}
-    if(d.empresa.length<2){showFieldError('agEmpresa','errEmpresa','Escribe el nombre de tu clínica.');ok=false;}
-    if(!ok){const primero=CAMPOS.find(([f])=>$(f).classList.contains('field-error'));if(primero)$(primero[0]).focus();}
-    return ok;
-  }
-  function mostrarConfirmaTel(si){
-    $('agFormDatos').style.display=si?'none':'';
-    $('agConfirmaTel').style.display=si?'':'none';
-  }
-  /** «Elegir día y hora»: revisa los datos y, si están bien, pide confirmar el número. */
-  function revisarDatos(){
-    if(!validarDatos())return;
-    $('agConfirmaNum').textContent=telefonoBonito($('agTelefono').value);
-    mostrarConfirmaTel(true);
-  }
-  function corregirTelefono(){
-    mostrarConfirmaTel(false);
-    const t=$('agTelefono');t.focus();t.select&&t.select();
-  }
-  /** Número confirmado: recién ahora aparece el calendario. */
-  function telefonoOk(){
-    showStep(2);
-    if(calYear===undefined) initCal(); else renderCal();
-  }
-  function volverADatos(){
-    mostrarConfirmaTel(false);
-    showStep(1);
-  }
-
-  /* ── Calendario ── */
-  function initCal(){
-    const now=new Date();
-    calYear=now.getFullYear(); calMonth=now.getMonth();
-    renderCal();
-    setTZ();
-    $('agcalPrev').onclick=()=>{calMonth--;if(calMonth<0){calMonth=11;calYear--;}renderCal();};
-    $('agcalNext').onclick=()=>{calMonth++;if(calMonth>11){calMonth=0;calYear++;}renderCal();};
-  }
-  function setTZ(){
-    try{
-      const tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
-      const off=new Date().toLocaleTimeString('es',{timeZoneName:'short'}).split(' ').pop();
-      $('agcalTZ').textContent=`🌐 ${tz} (${off})`;
-    }catch{$('agcalTZ').textContent='🌐 America/Santiago';}
-  }
-  function renderCal(){
-    $('agcalMonthLabel').textContent=`${MONTHS[calMonth]} ${calYear}`;
-    const grid=$('agcalGrid');
-    const today=new Date();today.setHours(0,0,0,0);
-    const firstDOW=new Date(calYear,calMonth,1).getDay();
-    const startOff=(firstDOW===0)?6:firstDOW-1;
-    const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
-    let html=DOW.map(d=>`<div class="agcal-dow">${d}</div>`).join('');
-    for(let i=0;i<startOff;i++) html+=`<div class="agcal-day empty"></div>`;
-    for(let d=1;d<=daysInMonth;d++){
-      const date=new Date(calYear,calMonth,d);
-      const ds=toDateStr(date);
-      const isPast=date<today;
-      const isToday=date.getTime()===today.getTime();
-      const isSel=ds===selDate;
-      const isWknd=date.getDay()===0||date.getDay()===6;
-      let cls='agcal-day';
-      if(isPast||isWknd) cls+=' past unavailable';
-      else cls+=' available';
-      if(isToday) cls+=' today';
-      if(isSel) cls+=' selected';
-      const click=(!isPast&&!isWknd)?`onclick="AgendaFlow._selectDate('${ds}')"`:'' ;
-      html+=`<div class="${cls}" ${click}>${d}</div>`;
-    }
-    grid.innerHTML=html;
-  }
-  function _selectDate(ds){
-    selDate=ds;selSlot=null;
-    updateConfirmBtn();renderCal();
-    const [y,m,d]=ds.split('-').map(Number);
-    const label=new Date(y,m-1,d).toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long'});
-    $('agcalDateTitle').textContent=label.charAt(0).toUpperCase()+label.slice(1);
-    loadSlots(ds);
-  }
-  async function loadSlots(ds){
-    if(loadingCal)return;
-    loadingCal=true;
-    $('agcalSlotsList').innerHTML=`<div class="agcal-spinner-wrap"><div class="agcal-spinner"></div></div>`;
-    if(busyCache[ds]!==undefined){loadingCal=false;renderSlots(ds);return;}
-    try{
-      const res=await fetch(`${WEBHOOK_AVAIL}?date=${ds}`,{method:'GET'});
-      const data=await res.json();
-      busyCache[ds]=Array.isArray(data)?data:(data.busy||data.occupied||[]);
-    }catch{busyCache[ds]=[];}
-    loadingCal=false;renderSlots(ds);
-  }
-  /** Hoy solo se ofrecen las horas que parten en 1 hora o más (antes se podía reservar hoy una hora ya pasada). */
-  function yaPaso(ds,start){
-    const ahora=new Date();
-    if(ds!==toDateStr(ahora))return false;
-    const [hh,mm]=start.split(':').map(Number);
-    return hh*60+mm < ahora.getHours()*60+ahora.getMinutes()+60;
-  }
-  function renderSlots(ds){
-    const busy=busyCache[ds]||[];
-    let html='';
-    SLOTS.forEach(s=>{
-      const isBusy=busy.includes(s.start)||yaPaso(ds,s.start);
-      const isSel=s.start===selSlot;
-      let cls='agcal-slot';
-      if(isBusy) cls+=' slot-busy';
-      else if(isSel) cls+=' slot-sel';
-      const badge=isBusy?`<span class="agcal-slot-badge">Ocupado</span>`:(isSel?`<span class="agcal-slot-badge">✓</span>`:'');
-      html+=`<div class="${cls}" ${!isBusy?`onclick="AgendaFlow._selectSlot('${s.start}')"`:''}><span>${s.label}</span>${badge}</div>`;
-    });
-    $('agcalSlotsList').innerHTML=html||`<p class="agcal-placeholder">Sin disponibilidad</p>`;
-  }
-  function _selectSlot(start){
-    if(!selDate)return;
-    if((busyCache[selDate]||[]).includes(start)||yaPaso(selDate,start))return;
-    selSlot=start;renderSlots(selDate);updateConfirmBtn();
-  }
-  function updateConfirmBtn(){
-    const btn=$('agcalConfirmBtn');
-    if(btn) btn.disabled=!(selDate&&selSlot);
-  }
-
-  function open(plan){
-    currentPlan=plan||'General';
-    busyCache={};loadingCal=false;selDate=null;selSlot=null;
-    planEl.textContent='Reservar reunión';
-    clearErrors();
-    mostrarConfirmaTel(false);
-    updateConfirmBtn();
-    if(calYear!==undefined){const now=new Date();calYear=now.getFullYear();calMonth=now.getMonth();renderCal();
-      $('agcalDateTitle').textContent='Elige una fecha';$('agcalSlotsList').innerHTML='<p class="agcal-placeholder">👆 Selecciona un día</p>';}
-    showStep(1);
-    overlay.classList.add('open');
-    document.body.style.overflow='hidden';
-    setTimeout(()=>{try{$('agNombre').focus({preventScroll:true});}catch(e){}},60);
-  }
-
-  /** «Confirmar reunión»: manda la reserva a la app Conejeros. */
-  async function confirm(){
-    if(!selDate||!selSlot)return;
-    if(!validarDatos()){volverADatos();return;}
-    const btn=$('agcalConfirmBtn');
-    const originalHtml=btn?btn.innerHTML:'';
-    if(btn){btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Reservando…';}
-    const d=datos();
-    const slotObj=SLOTS.find(s=>s.start===selSlot);
-    const [y,m,dd]=selDate.split('-').map(Number);
-    const dateLabel=new Date(y,m-1,dd).toLocaleDateString('es-CL',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-    const payload={type:'agenda_booking',nombre:d.nombre,cargo:d.cargo,email:d.email,empresa:d.empresa,whatsapp:d.tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?.end||'',hora_label:slotObj?.label||selSlot,plan:currentPlan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
-    try{
-      const res=await fetch(WEBHOOK_BOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-      const data=await res.json().catch(()=>({}));
-      // La agenda puede rechazar la reserva (hora recién ocupada, datos malos).
-      // Sin esto se mostraba "confirmado" aunque no se hubiera agendado nada.
-      if(!res.ok||data.ok===false){
-        if(res.status===409&&selDate){
-          if(!busyCache[selDate])busyCache[selDate]=[];
-          if(!busyCache[selDate].includes(selSlot))busyCache[selDate].push(selSlot);
-          selSlot=null;renderSlots(selDate);
-        }
-        if(btn){btn.innerHTML=originalHtml;}
-        updateConfirmBtn();
-        alert(data.error||'No se pudo reservar esa hora. Elige otra o escríbenos por WhatsApp.');
-        return;
-      }
-      if(!busyCache[selDate])busyCache[selDate]=[];
-      busyCache[selDate].push(selSlot);
-      let detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot} (45 minutos)<br><br>`;
-      if(data.meet_link||data.meetLink||data.link){
-        const link=data.meet_link||data.meetLink||data.link;
-        detail+=`<strong>Videollamada:</strong> <a href="${link}" target="_blank" rel="noopener" class="agcal-meet-link">${link}</a><br><br>`;
-        detail+=`Te acabamos de enviar la confirmación con este enlace al WhatsApp <strong>${telefonoBonito(d.tel)}</strong>.`;
-      } else {
-        detail+=`Te acabamos de enviar la confirmación al WhatsApp <strong>${telefonoBonito(d.tel)}</strong>. Te llamamos por ahí a la hora acordada.`;
-      }
-      // El servidor avisa cuando la hora quedó guardada pero el WhatsApp no salió.
-      if(data.aviso_fallido){
-        detail=`<strong>Fecha:</strong> ${dateLabel}<br><strong>Hora:</strong> ${slotObj?.label||selSlot} (45 minutos)<br><br>`
-          +`<span class="agcal-aviso-malo">⚠️ Tu hora quedó reservada, pero <strong>no pudimos enviarte el mensaje de WhatsApp</strong>. `
-          +`Revisa que tu número esté bien escrito: <strong>${telefonoBonito(d.tel)}</strong>. Si está malo, escríbenos por WhatsApp y lo corregimos.</span>`;
-      }
-      $('agSuccessDetail').innerHTML=detail;
-      if(btn){btn.innerHTML=originalHtml;}
-      if(window.oTrack)oTrack('Schedule',{content_name:currentPlan});
-      showStep('final');
-    }catch{
-      if(btn){btn.innerHTML=originalHtml;}
-      updateConfirmBtn();
-      alert('Ocurrió un error al reservar. Intenta de nuevo o escríbenos por WhatsApp.');
-    }
-  }
-
-  function close(){
-    overlay.classList.remove('open');
-    document.body.style.overflow='';
-  }
-  function closeAndPromo(){ close(); }
-
-  return {open,close,confirm,closeAndPromo,revisarDatos,corregirTelefono,telefonoOk,volverADatos,_selectDate,_selectSlot};
-})();
-
-/* Desde otra página se puede abrir la reserva directo con walybot.cl/#reservar */
-(function(){try{if(location.hash==='#reservar'||location.hash==='#agendaInline'){AgendaFlow.open('General');}}catch(e){}})();
+/* ─── RESERVA ─── la ventana «Reservar reunión» (AgendaFlow) se sacó el 19-10-2026: el formulario va a la vista
+   bajo el video corto (agenda.js + script del hero) y el calendario está en /metodologia (metodologia.html). */
 
 /* ─── AUDIT METRICS COUNTER (animación al hacer scroll) ─── */
 (function initAuditMetrics(){

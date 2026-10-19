@@ -1,0 +1,92 @@
+/* ══ agenda.css (19-10-2026) — el formulario de datos y el calendario de la reunión de 45 minutos.
+   Lo comparten dos páginas, junto con agenda.js:
+   · index.html: el formulario a la vista, justo debajo del video corto.
+   · metodologia.html: el calendario debajo del video largo (y el formulario si alguien entra sin datos).
+   Usa las variables de color de cada página (--cyan, --primary, --accent, --danger, --font, --r-sm, --r-md).
+   Recuerda: en esta web 1rem = 18 px (html{font-size:112.5%}). Antes vivía dentro de index.html como la
+   ventana «Reservar reunión»; los colores son los mismos del modo claro de esa ventana. ══ */
+
+/* Tarjeta blanca donde va el formulario o el calendario */
+.reunion-card{width:100%;max-width:560px;margin:0 auto;background:#fff;border:1px solid rgba(15,23,42,.09);border-radius:20px;padding:22px 24px 16px;box-shadow:0 10px 34px rgba(15,23,42,.08);text-align:left;scroll-margin-top:110px;}
+.reunion-card.ancha{max-width:780px;padding:24px 26px 20px;}
+@media (max-width:480px){.reunion-card,.reunion-card.ancha{padding:18px 16px 14px;border-radius:16px;}}
+/* Los pasos se esconden con el atributo hidden: que ninguna regla con display lo pise. */
+.reunion-card [hidden]{display:none!important;}
+
+.ag-paso{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#94a3b8;margin-bottom:8px;}
+.ag-titulo{font-size:1.1rem;font-weight:800;letter-spacing:-.04em;color:#0f172a;margin-bottom:14px;line-height:1.3;}
+.ag-privado{font-size:.72rem;color:#94a3b8;text-align:center;margin:12px 0 0;line-height:1.4;}
+
+/* ── Campos ── */
+.ag-campo{display:block;width:100%;padding:13px 18px;background:#f8fafc;border:1.5px solid rgba(0,0,0,.1);border-radius:var(--r-sm,8px);color:#0f172a;font-family:var(--font);font-size:.94rem;line-height:1.4;outline:none;transition:border-color .25s,box-shadow .25s;margin-bottom:12px;}
+.ag-campo::placeholder{color:#94a3b8;}
+.ag-campo:focus{background:#fff;border-color:var(--cyan,#06b6d4);box-shadow:0 0 0 3px rgba(6,182,212,.12);}
+.ag-campo.con-error{border-color:var(--danger,#ef4444)!important;background:rgba(239,68,68,.05)!important;}
+/* En el teléfono nunca bajar de 16 px reales: iOS hace zoom solo al tocar el campo (.9rem = 16,2 px). */
+@media (max-width:480px){.ag-campo{font-size:.9rem;padding:12px 14px;}}
+.ag-select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2364748b' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+.ag-select:invalid,.ag-select option[value=""]{color:#94a3b8;}
+.ag-select option{color:#0f172a;}
+.ag-error-msg{font-size:.78rem;color:var(--danger,#ef4444);margin-top:-8px;margin-bottom:10px;display:none;line-height:1.4;}
+.ag-error-msg.show{display:block;}
+
+/* ── Botones ── */
+.ag-boton{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:16px 28px;border:0;border-radius:var(--r-md,14px);background:linear-gradient(135deg,var(--cyan,#06b6d4) 0%,var(--primary,#3b82f6) 55%,var(--accent,#8b5cf6) 100%);color:#fff;font-family:var(--font);font-size:1.02rem;font-weight:800;letter-spacing:-.01em;cursor:pointer;box-shadow:0 0 0 1px rgba(6,182,212,.35),0 6px 22px rgba(6,182,212,.35),inset 0 1px 0 rgba(255,255,255,.2);transition:transform .2s,box-shadow .2s;}
+.ag-boton:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(6,182,212,.55),0 10px 32px rgba(6,182,212,.5),inset 0 1px 0 rgba(255,255,255,.25);}
+@media (max-width:480px){.ag-boton{padding:14px 20px;font-size:.95rem;}}
+.ag-volver{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px;padding:12px 20px;background:none;border:1px solid rgba(0,0,0,.1);border-radius:var(--r-sm,8px);color:#64748b;font-family:var(--font);font-size:.88rem;cursor:pointer;text-decoration:none;transition:color .2s,border-color .2s;}
+.ag-volver:hover{color:#0f172a;border-color:rgba(0,0,0,.2);}
+.ag-link{background:none;border:0;padding:0;color:#0891b2;font-family:var(--font);font-size:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px;cursor:pointer;}
+
+/* ── Confirmar el número (decisión de Lukas del 15-10-2026: se muestra en grande antes de seguir) ── */
+.ag-confirma-tel{text-align:center;padding:4px 0 2px;}
+.ag-confirma-txt{font-size:.88rem;color:#475569;line-height:1.45;}
+.ag-confirma-num{margin:12px 0 10px;font-size:1.75rem;font-weight:900;letter-spacing:-.02em;color:#0f172a;background:rgba(37,211,102,.08);border:1.5px solid rgba(37,211,102,.35);border-radius:14px;padding:12px 10px;}
+.ag-confirma-tel .ag-boton{margin-top:16px;}
+@media (max-width:480px){.ag-confirma-num{font-size:1.45rem;}}
+
+/* ── Calendario (el mismo de la ventana vieja, con letra más grande porque ahora tiene espacio) ── */
+.agcal-quien{font-size:.8rem;color:#475569;line-height:1.5;margin-bottom:12px;}
+.agcal-quien strong{color:#0f172a;}
+.agcal-tz-label{font-size:.72rem;color:#64748b;padding:4px 12px;background:#f1f5f9;border:1px solid rgba(0,0,0,.08);border-radius:999px;margin-bottom:16px;display:inline-block;}
+.agcal-wrap{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:18px;}
+@media (max-width:620px){.agcal-wrap{grid-template-columns:1fr;gap:16px;}}
+.agcal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.agcal-month-label{font-size:.92rem;font-weight:800;color:#0f172a;}
+.agcal-arrow{background:#f1f5f9;border:1px solid rgba(0,0,0,.1);color:#475569;width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+.agcal-arrow:hover{background:#e2e8f0;}
+.agcal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.agcal-dow{text-align:center;font-size:.6rem;font-weight:700;color:#94a3b8;text-transform:uppercase;padding:3px 0;}
+.agcal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.8rem;border-radius:9px;cursor:pointer;transition:background .15s,color .15s;color:#374151;font-weight:600;border:1.5px solid transparent;user-select:none;}
+.agcal-day.empty{cursor:default;}
+.agcal-day.past{color:#d1d5db;cursor:not-allowed;}
+.agcal-day.today{border-color:var(--cyan,#06b6d4);color:var(--primary,#3b82f6);font-weight:800;}
+.agcal-day.selected{background:var(--primary,#3b82f6);color:#fff;border-color:var(--primary,#3b82f6);}
+.agcal-day.available:not(.past):not(.selected){background:#f8fafc;}
+.agcal-day.available:not(.past):not(.selected):hover{background:rgba(6,182,212,.12);color:var(--primary,#3b82f6);}
+.agcal-day.unavailable:not(.past){color:#d1d5db;cursor:not-allowed;}
+.agcal-slots-section{display:flex;flex-direction:column;}
+.agcal-date-title{font-size:.9rem;font-weight:800;color:#0f172a;margin-bottom:10px;min-height:20px;line-height:1.35;}
+.agcal-slots-list{display:flex;flex-direction:column;gap:7px;}
+.agcal-slot{padding:11px 14px;border-radius:10px;font-size:.86rem;font-weight:600;cursor:pointer;border:1.5px solid rgba(0,0,0,.08);color:#374151;background:#f8fafc;transition:all .15s;display:flex;align-items:center;justify-content:space-between;}
+.agcal-slot:hover:not(.slot-busy):not(.slot-sel){border-color:var(--cyan,#06b6d4);background:rgba(6,182,212,.08);color:var(--primary,#3b82f6);}
+.agcal-slot.slot-sel{background:var(--primary,#3b82f6);border-color:var(--primary,#3b82f6);color:#fff;}
+.agcal-slot.slot-busy{background:rgba(239,68,68,.05);border-color:rgba(239,68,68,.18);color:#cbd5e1;cursor:not-allowed;}
+.agcal-slot-badge{font-size:.6rem;font-weight:800;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.25);letter-spacing:.04em;text-transform:uppercase;}
+.agcal-slot.slot-busy .agcal-slot-badge{background:rgba(239,68,68,.12);color:#ef4444;}
+.agcal-spinner-wrap{display:flex;align-items:center;justify-content:center;padding:24px;}
+.agcal-spinner{width:22px;height:22px;border:2.5px solid rgba(0,0,0,.08);border-top-color:var(--cyan,#06b6d4);border-radius:50%;animation:agcalSpin .7s linear infinite;}
+@keyframes agcalSpin{to{transform:rotate(360deg);}}
+.agcal-placeholder{font-size:.82rem;color:#94a3b8;text-align:center;padding:22px 0;}
+.agcal-confirm-btn{width:100%;padding:15px 24px;background:linear-gradient(135deg,var(--primary,#3b82f6) 0%,var(--accent,#8b5cf6) 100%);color:#fff;font-family:var(--font);font-size:.98rem;font-weight:800;border:none;border-radius:var(--r-md,14px);cursor:pointer;transition:opacity .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 16px rgba(59,130,246,.35);letter-spacing:.2px;}
+.agcal-confirm-btn:hover:not(:disabled){opacity:.92;transform:translateY(-1px);box-shadow:0 8px 24px rgba(59,130,246,.5);}
+.agcal-confirm-btn:disabled{opacity:.4;cursor:not-allowed;}
+
+/* ── Reunión agendada ── */
+.agcal-success{text-align:center;padding:14px 0 6px;}
+.agcal-success-icon{font-size:2.6rem;margin-bottom:10px;}
+.agcal-success-title{font-size:1.25rem;font-weight:900;letter-spacing:-.04em;color:#0f172a;margin-bottom:8px;}
+.agcal-success-detail{font-size:.88rem;color:#475569;line-height:1.65;margin-bottom:18px;}
+/* Cuando la hora quedó agendada pero el WhatsApp no salió: se avisa, no se esconde. */
+.agcal-aviso-malo{display:block;text-align:left;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.4);border-radius:12px;padding:14px 16px;color:#b45309;font-size:.86rem;line-height:1.6;}
+.agcal-meet-link{color:#0891b2;text-decoration:underline;font-weight:600;word-break:break-all;}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Waly.IA — Así funciona en tu clínica</title>
+  <meta name="description" content="El video de cómo funciona Waly.IA en una clínica y el calendario para agendar una reunión de 45 minutos." />
+  <!-- Página del embudo (19-10-2026): se llega desde el formulario de la portada. No va a Google
+       (también lo dice la cabecera X-Robots-Tag en vercel.json). -->
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <!-- Formulario y calendario de la reunión: los mismos de la portada -->
+  <link rel="stylesheet" href="/agenda.css">
+  <style>
+    /* Los mismos colores y la misma letra de la portada (index.html, modo claro). Recuerda: 1rem = 18 px. */
+    :root{
+      --cyan:#06b6d4; --cyan-bright:#22d3ee; --primary:#3b82f6; --accent:#8b5cf6; --electric:#0ea5e9; --danger:#ef4444;
+      --text-primary:#0f172a; --text-secondary:#475569; --text-muted:#94a3b8;
+      --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; --r-sm:8px; --r-md:14px; --r-xl:32px;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;overflow-x:hidden;font-size:112.5%;}
+    body{background:#ffffff;color:var(--text-primary);font-family:var(--font);font-size:1rem;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+    /* ── Encabezado: la marca, con el logo SIEMPRE a la derecha del texto (regla de marca de Lukas) ── */
+    .cabecera{display:flex;justify-content:center;padding:16px 24px 0;}
+    .cabecera-inner{display:flex;align-items:center;width:min(100%,1100px);padding:12px 20px;background:rgba(255,255,255,.94);border:1px solid rgba(0,0,0,.09);border-radius:var(--r-xl);box-shadow:0 2px 20px rgba(0,0,0,.07);}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:1.4rem;font-weight:900;letter-spacing:-.035em;flex-shrink:0;line-height:1.3;}
+    .logo-text{background:linear-gradient(135deg,#0f172a 40%,#475569 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .logo-text .AI{color:#06b6d4;-webkit-text-fill-color:#06b6d4;background:none;letter-spacing:.01em;margin-left:.04em;}
+    .logo-mark{width:26px;height:26px;display:block;flex-shrink:0;}
+    @media (max-width:640px){.cabecera{padding:12px 16px 0}.cabecera-inner{padding:10px 15px}.logo{font-size:1.12rem;gap:7px}.logo-mark{width:21px;height:21px}}
+
+    /* ── Título ── */
+    .met{width:min(100%,1000px);margin:0 auto;padding:22px 24px 48px;text-align:center;}
+    .met-titulo{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:900;line-height:1.1;letter-spacing:-.04em;margin-bottom:10px;animation:fadeInUp .6s ease .1s both;}
+    .met-titulo .gradient{background:linear-gradient(135deg,var(--cyan-bright) 0%,var(--electric) 30%,var(--primary) 60%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .met-sub{font-size:clamp(.95rem,1.4vw,1.08rem);color:var(--text-secondary);max-width:720px;margin:0 auto 18px;line-height:1.5;animation:fadeInUp .6s ease .2s both;}
+    @media (max-width:480px){.met{padding:16px 16px 40px}.met-titulo{font-size:clamp(1.6rem,7.6vw,2.1rem);line-height:1.12}.met-sub{font-size:.92rem;margin-bottom:14px}}
+
+    /* ── El video largo: arranca solo y sin sonido; «Activar sonido» lo vuelve al segundo 0 con sonido y con
+       los controles (que traen la pantalla completa). El botón de la esquina lo pone en pantalla completa directo.
+       Cabe en la primera pantalla: se achica si la ventana es baja. ── */
+    .met-video{width:min(100%,960px,max(320px,calc((100vh - 270px) * 16 / 9)));margin:0 auto;animation:fadeInUp .6s ease .3s both;}
+    @media (max-width:480px){.met-video{width:100%}}
+    .video-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0f172a;box-shadow:0 18px 50px rgba(15,23,42,.18);}
+    .video-frame video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;background:#0f172a;}
+    .video-sonido{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;display:none;align-items:center;gap:8px;padding:11px 20px;border:0;border-radius:999px;background:rgba(15,23,42,.84);color:#fff;font-family:var(--font);font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap;box-shadow:0 6px 20px rgba(0,0,0,.35);}
+    .video-sonido:hover{background:rgba(15,23,42,.96);}
+    .video-pantalla{position:absolute;top:12px;right:12px;z-index:2;display:none;align-items:center;justify-content:center;width:42px;height:42px;border:0;border-radius:12px;background:rgba(15,23,42,.72);color:#fff;font-size:16px;cursor:pointer;}
+    .video-pantalla:hover{background:rgba(15,23,42,.92);}
+    .video-frame.listo .video-sonido{display:inline-flex;}
+    .video-frame.listo .video-pantalla{display:flex;}
+    .video-frame.con-sonido .video-sonido,.video-frame.con-sonido .video-pantalla{display:none;}
+    @media (max-width:480px){.video-frame{border-radius:14px}.video-sonido{bottom:10px;padding:9px 16px;font-size:14px}.video-pantalla{top:8px;right:8px;width:36px;height:36px;font-size:14px}}
+    .met-video-falla{display:none;margin:12px auto 0;font-size:.82rem;color:var(--text-secondary);}
+    .met-video.sin-video .video-frame{display:none;}
+    .met-video.sin-video .met-video-falla{display:block;}
+
+    /* ── Debajo del video: «Agenda tu reunión de 45 minutos» con el calendario a la vista ── */
+    .met-agenda{margin-top:34px;scroll-margin-top:16px;}
+    .met-agenda-head{margin-bottom:16px;}
+    .met-agenda-titulo{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:900;letter-spacing:-.04em;line-height:1.15;color:var(--text-primary);}
+    .met-agenda-sub{margin-top:6px;font-size:.86rem;color:var(--text-secondary);}
+    @media (max-width:480px){.met-agenda{margin-top:26px}.met-agenda-titulo{font-size:1.32rem}.met-agenda-sub{font-size:.8rem}}
+
+    /* ── Qué se ve según si ya dejó sus datos (la clase la pone el script de abajo) ──
+       sin-datos: solo el formulario · con-datos: video y calendario · editando: el formulario en vez del calendario */
+    .met-video,.met-agenda-head,#metDatos,#metCalendario{display:none;}
+    body.con-datos .met-video,body.con-datos .met-agenda-head,body.con-datos #metCalendario{display:block;}
+    body.sin-datos #metDatos,body.editando #metDatos{display:block;}
+    body.editando #metCalendario{display:none;}
+    body.sin-datos .met-agenda{margin-top:4px;}
+
+    .met-pie{border-top:1px solid rgba(0,0,0,.06);padding:18px 16px 26px;text-align:center;font-size:.74rem;color:var(--text-muted);background:#f8fafc;}
+    .met-pie a{color:var(--text-muted);text-decoration:none;}
+    .met-pie a:hover{color:var(--cyan);}
+    .met-sin-js{max-width:560px;margin:10px auto 0;font-size:.9rem;color:var(--text-secondary);}
+    .met-sin-js a{color:#0891b2;font-weight:700;}
+  </style>
+
+  <!-- ══ Meta Pixel — el mismo de la portada (index.html), con carga inmediata ══ -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','933244542517098');
+  fbq('track','PageView');
+  /* helper global para eventos de conversion (agenda.js lo usa para 'Schedule' al reservar) */
+  window.oTrack=function(ev,params){try{if(window.fbq){fbq('track',ev,params||{});}}catch(e){}};
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=933244542517098&ev=PageView&noscript=1"/></noscript>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- ══ Fin Meta Pixel ══ -->
+</head>
+<body>
+
+<header class="cabecera">
+  <div class="cabecera-inner">
+    <a href="/" class="logo"><span class="logo-text">Waly<span class="AI">.IA</span></span><img src="/logo-waly.svg" alt="" class="logo-mark" width="26" height="26"></a>
+  </div>
+</header>
+
+<main class="met">
+  <h1 class="met-titulo">Así funciona <span class="gradient">Waly en tu clínica</span></h1>
+  <p class="met-sub" id="metSub">Mira el video y, más abajo, agenda tu reunión de 45 minutos.</p>
+  <noscript><p class="met-sin-js">Para ver el video y agendar necesitas activar JavaScript. También puedes escribirnos por <a href="https://wa.me/56999066071" rel="nofollow">WhatsApp</a>.</p></noscript>
+
+  <!-- ══ EL VIDEO LARGO (19-10-2026) ══
+       video/metodologia-waly.mp4 (5:01, 1280×720, H.264 + AAC, 40 MB, con el índice al principio para que
+       arranque sin bajarlo entero) y su portada video/metodologia-waly.jpg. Cerca del final Lukas dice «le vamos
+       a dejar nuestro calendario aquí abajo»: por eso el calendario va justo debajo. -->
+  <div class="met-video" id="metVideo">
+    <div class="video-frame" id="videoFrame">
+      <video id="metodologiaVideo" src="/video/metodologia-waly.mp4" poster="/video/metodologia-waly.jpg" muted playsinline preload="metadata" aria-label="Video: así funciona Waly.IA en una clínica"></video>
+      <button type="button" class="video-sonido" id="videoSonido">🔊 Activar sonido</button>
+      <button type="button" class="video-pantalla" id="videoPantalla" aria-label="Ver en pantalla completa" title="Pantalla completa"><i class="fas fa-expand" aria-hidden="true"></i></button>
+    </div>
+    <p class="met-video-falla">No pudimos cargar el video. Recarga la página o agenda tu reunión aquí abajo.</p>
+  </div>
+
+  <section class="met-agenda" id="agenda" aria-labelledby="metAgendaTitulo">
+    <div class="met-agenda-head">
+      <h2 class="met-agenda-titulo" id="metAgendaTitulo">Agenda tu reunión de 45 minutos</h2>
+      <p class="met-agenda-sub">Diagnóstico gratuito · Videollamada · 🇨🇱 Horarios de Chile</p>
+    </div>
+    <!-- Formulario: si entró sin datos (o aprieta «Cambiar mis datos»). Los mismos 4 campos de la portada. -->
+    <div class="reunion-card" id="metDatos"></div>
+    <!-- Calendario: el mismo de la ventana vieja; reserva con los datos que dejó en la portada. -->
+    <div class="reunion-card ancha" id="metCalendario"></div>
+  </section>
+</main>
+
+<footer class="met-pie">© <span id="year"></span> Waly.IA &nbsp;·&nbsp; <a href="/">walybot.cl</a> &nbsp;·&nbsp; <a href="/privacidad.html">Política de privacidad</a></footer>
+
+<script src="/agenda.js"></script>
+<script>
+'use strict';
+document.getElementById('year').textContent=new Date().getFullYear();
+
+/* ─── VIDEO ─── en silencio hasta que la persona aprieta «Activar sonido» (o el botón de pantalla completa). */
+const VideoMet=(function(){
+  const v=document.getElementById('metodologiaVideo'),f=document.getElementById('videoFrame');
+  const caja=document.getElementById('metVideo');
+  const bSonido=document.getElementById('videoSonido'),bPantalla=document.getElementById('videoPantalla');
+  let iniciado=false;
+  function listo(){if(!v.error)f.classList.add('listo');}
+  function falla(){f.classList.remove('listo');caja.classList.add('sin-video');}
+  v.addEventListener('loadeddata',listo);
+  v.addEventListener('error',falla);
+  /** Arranca en silencio. Si el navegador no deja (ahorro de batería en iPhone), igual aparece el botón. */
+  function iniciar(){
+    if(iniciado)return;
+    iniciado=true;
+    if(v.error){falla();return;}
+    const p=v.play();
+    if(p&&p.then)p.then(listo).catch(listo);
+  }
+  /** Con sonido: vuelve al segundo 0 y muestra los controles (play, volumen y pantalla completa). */
+  function conSonido(){
+    v.muted=false;v.currentTime=0;v.controls=true;f.classList.add('con-sonido');
+    /* Si el navegador no deja sonar, vuelve a correr en silencio y reaparece el botón. */
+    const p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;v.controls=false;f.classList.remove('con-sonido');const q=v.play();if(q&&q.catch)q.catch(function(){});});
+  }
+  function pantallaCompleta(){
+    if(!f.classList.contains('con-sonido'))conSonido();
+    try{
+      if(v.requestFullscreen){const r=v.requestFullscreen();if(r&&r.catch)r.catch(function(){});}
+      else if(v.webkitEnterFullscreen){v.webkitEnterFullscreen();}       // iPhone
+      else if(v.webkitRequestFullscreen){v.webkitRequestFullscreen();}
+    }catch(e){}
+  }
+  bSonido.addEventListener('click',conSonido);
+  bPantalla.addEventListener('click',pantallaCompleta);
+  /* Tocar el video mientras está en silencio = activar el sonido (después mandan los controles del navegador). */
+  v.addEventListener('click',function(){if(!f.classList.contains('con-sonido'))conSonido();});
+  return {iniciar};
+})();
+
+/* ─── QUÉ SE VE ───
+   Con datos guardados (vienen del formulario de la portada): el video y debajo el calendario.
+   Sin datos (entró directo con el link): primero el formulario ahí mismo; al confirmar el número aparecen. */
+(function(){
+  const W=window.WalyAgenda;
+  const body=document.body;
+  const sub=document.getElementById('metSub');
+  const cajaDatos=document.getElementById('metDatos');
+  const cajaCal=document.getElementById('metCalendario');
+  let cal=null;
+
+  function primerNombre(d){return ((d&&d.nombre)||'').trim().split(/\s+/)[0]||'';}
+  function mostrarContenido(d){
+    body.classList.remove('sin-datos','editando');
+    body.classList.add('con-datos');
+    const n=primerNombre(d);
+    sub.textContent=(n?`Gracias, ${n}. `:'')+'Mira el video y, más abajo, agenda tu reunión de 45 minutos.';
+    if(!cal) cal=W.calendario({contenedor:cajaCal,datos:W.leerDatos,alCambiarDatos:editarDatos,plan:'General'});
+    else cal.actualizarDatos();
+    VideoMet.iniciar();
+  }
+  function editarDatos(){
+    body.classList.add('editando');
+    form.cambiarTextos({titulo:'Corrige tus datos',textoBoton:'Continuar',textoOk:'Sí, está bien, volver al calendario'});
+    form.rellenar(W.leerDatos());
+    form.mostrarCampos();
+    try{cajaDatos.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){cajaDatos.scrollIntoView();}
+    form.enfocar();
+  }
+  const form=W.formulario({
+    contenedor:cajaDatos,
+    titulo:'¿Con quién hablamos?',
+    textoBoton:'Ver el video',
+    textoOk:'Sí, está bien, ver el video',
+    alConfirmar:function(d){
+      const primeraVez=body.classList.contains('sin-datos');
+      /* Meta: el mismo Lead de la portada, para quien llegó directo con el link y dejó sus datos acá. */
+      if(primeraVez){try{if(typeof fbq==='function')fbq('track','Lead',{content_name:'Formulario metodología'});}catch(e){}}
+      mostrarContenido(d);
+      const destino=primeraVez?document.querySelector('.met-titulo'):cajaCal;
+      try{destino.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}
+    }
+  });
+
+  const d=W.leerDatos();
+  if(d){form.rellenar(d);mostrarContenido(d);}
+  else{
+    body.classList.add('sin-datos');
+    sub.textContent='Déjanos tus datos para ver el video y agendar tu reunión de 45 minutos.';
+  }
+})();
+</script>
+</body>
+</html>

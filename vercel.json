@@ -61,6 +61,10 @@
       "destination": "/eliminar-datos.html"
     },
     {
+      "source": "/metodologia",
+      "destination": "/metodologia.html"
+    },
+    {
       "source": "/agendar-citas-whatsapp-dentalink",
       "destination": "/agendar-citas-whatsapp-dentalink.html"
     },
@@ -178,6 +182,24 @@
     }
   ],
   "headers": [
+    {
+      "source": "/metodologia",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/metodologia.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
     {
       "source": "/redes/(.*)",
       "headers": [
