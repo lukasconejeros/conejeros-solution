@@ -312,3 +312,23 @@ de HEAD con solo los 3 archivos de este cambio.
 **Pruebas:** `pruebas.cjs` 196/196 antes (HEAD) → 228/228 después, con la app y el pixel reemplazados por dobles
 (nada sale a la app de verdad). Nuevas: 3 campos sin cargo, el contacto sale una vez con nombre, correo y WhatsApp,
 /metodologia no lo repite, dos toques mandan uno, app caída (500) y app que no contesta (se va a los ~2,5 s).
+
+## 19-10-2026 (tarde) — Video corto sin «Eso, nos vemos» + código por WhatsApp en el formulario
+
+**Video** (`7b61191`, en vivo): Lukas pidió que termine en «…nos contactamos contigo por WhatsApp». Corte del render
+`out/landing-horizontal/INTRO.mp4` a 21,8 s, justo en el silencio (21,44-21,88 s) entre «WhatsApp» y «Eso»; la
+tarjeta de los 3 pasos queda completa. Verificado: transcripción del archivo nuevo termina en «WhatsApp» y el
+Content-Length de walybot.cl = 4.084.775 = el archivo subido. Ojo: el `edit.data.json` de Remotion sigue en 23,13 s;
+si se vuelve a renderizar, hay que volver a cortar.
+
+**Código por WhatsApp** (agenda.js): pasos campos → «Te estamos mandando un código…» → casilla de 4 números. Número
+sin WhatsApp ⇒ vuelve al campo con el aviso. La app no puede (sin red, 401 porque falta Implementar, tope, fallo, o
+15 s sin salir) ⇒ el «¿Está bien escrito?» de antes: nunca se pierde un contacto. Número ya verificado en ese
+navegador (`waly_tel_verificado`) ⇒ no pide código otra vez.
+- Error propio cazado por la prueba: con `maxlength="4"` un código pegado como «48-21» se cortaba en «48-2» y no
+  pasaba. Ahora `maxlength="9"` y el código se limpia a 4 dígitos.
+- La batería vieja (`pruebas.cjs`) fallaba por tiempos: ahora hay una consulta antes del «¿Está bien escrito?». Se le
+  agregó esperar a ese paso y contestar `sin_conexion` al verificar (prueba el camino sin código).
+
+**Pruebas**: `prueba_codigo.cjs` 82/82 (teléfono y computador, Edge, la app reemplazada por un doble) + `pruebas.cjs`
+228/228 ajustada. Nada salió a la app de verdad.

@@ -42,6 +42,15 @@
 .ag-confirma-tel .ag-boton{margin-top:16px;}
 @media (max-width:480px){.ag-confirma-num{font-size:1.45rem;}}
 
+/* ── Código por WhatsApp (19-10-2026, 3): «Te estamos mandando un código…» y la casilla de los 4 números ── */
+.ag-revisando{font-size:.95rem;color:#334155;line-height:1.5;padding:22px 8px;}
+.ag-revisando .fa-spinner{color:#25d366;margin-right:6px;}
+.ag-codigo{margin:10px auto 12px;max-width:220px;text-align:center;font-size:1.9rem;font-weight:800;letter-spacing:.45em;padding:12px 10px 12px 22px;}
+.ag-codigo::placeholder{letter-spacing:.45em;}
+.ag-confirma-tel .ag-error-msg{margin-top:0;}
+.ag-codigo-ayuda{margin-top:14px;font-size:.8rem;color:#64748b;line-height:1.7;}
+.ag-link:disabled{color:#94a3b8;cursor:default;text-decoration:none;font-weight:600;}
+
 /* ── Calendario (el mismo de la ventana vieja, con letra más grande porque ahora tiene espacio) ── */
 .agcal-quien{font-size:.8rem;color:#475569;line-height:1.5;margin-bottom:12px;}
 .agcal-quien strong{color:#0f172a;}
