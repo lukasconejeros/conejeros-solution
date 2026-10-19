@@ -258,3 +258,29 @@ acepta una hora pasada si alguien la manda a mano: pendiente.
 
 **Pruebas:** `prueba_reserva.cjs` 53/53 (con la app reemplazada por un doble: no se reservó nada de verdad),
 `prueba_hoy.cjs` con reloj fijo, `pruebas.cjs` 85/85. App: test:agenda-web 83+64+23, separación 24.
+
+## 19-10-2026 — Video corto + formulario a la vista → /metodologia (video largo + calendario)
+
+**Pedido:** el video corto arriba para que llenen el formulario, sin el nombre de la clínica, y que al llenarlo los
+lleve a la página del video largo. Hecho: `video/landing-intro.mp4` arriba del hero, formulario de 4 campos a la vista
+(nombre, cargo, correo, WhatsApp + confirmar el número), `metodologia.html` (`/metodologia`, noindex) con el video largo
+y el calendario debajo. La lógica y los estilos de la reserva salieron de `index.html` a `agenda.js` y `agenda.css`, que
+usan las dos páginas. Se manda `empresa:''` (la app pone el nombre de la persona en el título).
+
+**Error cazado por la prueba:** `walybot.cl/#reservar` bajaba al formulario pero el nombre quedaba SIN foco. El navegador
+salta solo al `id="reservar"` después de cargar y en ese salto suelta el foco. Arreglo: esperar a `load` (+60 ms).
+`#agendaInline` funcionaba porque ya no existe ningún elemento con ese id.
+
+**Lo que queda abierto (decidir con Lukas):** el video corto dice «nos contactamos contigo por WhatsApp», pero los
+datos del formulario solo viven en el navegador. A la app llegan únicamente si la persona RESERVA. Quien llena el
+formulario y no agenda queda solo como evento `Lead` en Meta (sin nombre ni teléfono). Para cumplir esa frase hace falta
+una ruta pública nueva en whatsapp-conejeros que reciba el lead.
+
+**Lecciones para la próxima:**
+1. Para probar video con Playwright usar `channel:'msedge'`: el Chromium de Playwright no reproduce H.264.
+2. Un chequeo con expresión regular de «los datos no van en la URL» buscaba «8765» y chocaba con el puerto local 8765.
+3. La bandera 🇨🇱 sale como «CL» en Windows (el emoji de bandera no existe ahí). Se sacó de `/metodologia`.
+4. Con portada (`poster`) el video se ve desde el primer momento. Antes quedaba invisible hasta cargar y empujaba lo de abajo.
+
+**Pruebas:** `pruebas.cjs` 196/196 en local (servidor que aplica los rewrites de `vercel.json`) y 196/196 contra
+walybot.cl ya publicado, con la app y el pixel reemplazados por dobles: no se creó ninguna reunión de verdad.
