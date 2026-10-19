@@ -24,9 +24,6 @@
 .ag-campo.con-error{border-color:var(--danger,#ef4444)!important;background:rgba(239,68,68,.05)!important;}
 /* En el teléfono nunca bajar de 16 px reales: iOS hace zoom solo al tocar el campo (.9rem = 16,2 px). */
 @media (max-width:480px){.ag-campo{font-size:.9rem;padding:12px 14px;}}
-.ag-select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2364748b' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
-.ag-select:invalid,.ag-select option[value=""]{color:#94a3b8;}
-.ag-select option{color:#0f172a;}
 .ag-error-msg{font-size:.78rem;color:var(--danger,#ef4444);margin-top:-8px;margin-bottom:10px;display:none;line-height:1.4;}
 .ag-error-msg.show{display:block;}
 

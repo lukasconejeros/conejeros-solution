@@ -1,12 +1,14 @@
 /* ══ agenda.js (19-10-2026) — la reserva de la reunión de 45 minutos, compartida por dos páginas:
-   · index.html: bajo el video corto, el formulario (nombre, cargo, correo y WhatsApp) y después el número
-     en grande para confirmarlo. Al confirmar guarda los datos y lleva a /metodologia.
+   · index.html: bajo el video corto, el formulario (nombre, correo y WhatsApp) y después el número
+     en grande para confirmarlo. Al confirmar guarda los datos, avisa a la app Conejeros (contacto) y lleva a
+     /metodologia.
    · metodologia.html: el video largo y debajo el calendario, que reserva con los datos guardados. Si alguien
      entra directo sin datos, primero ve ahí mismo el mismo formulario.
    Lukas, 19-10-2026: «el video más corto al principio para que llenen el formulario, sácale el nombre de la
    clínica y que los lleve a la página del video más largo». Sin clínica se manda empresa:'' y la app
    Conejeros pone el nombre de la persona en el título de la reunión (agenda-web.ts, `quien`).
    Antes todo esto era la ventana «Reservar reunión» (AgendaFlow) dentro de index.html.
+   19-10-2026 (2), Lukas: «sácale el puesto de la clínica»: fuera el campo cargo (la reserva manda cargo:'').
    Las horas son las mismas de la app Conejeros (SLOTS_WEB en whatsapp-conejeros/src/lib/agenda-web.ts). ══ */
 (function(){
 'use strict';
@@ -15,6 +17,9 @@
    GET ?date=YYYY-MM-DD -> {busy:[...]}, POST -> {ok, meet_link}. */
 const APP_BASE    = 'https://waly-conejeros.bvil2a.easypanel.host';
 const URL_AGENDA  = APP_BASE + '/api/agenda-web';
+/* El contacto (19-10-2026, 2): al confirmar el número la app guarda a la persona, le avisa a Lukas y le programa
+   dos WhatsApp (a los 3 minutos y, si no contesta ni reserva, una hora después). Ver avisarContacto(). */
+const URL_CONTACTO = APP_BASE + '/api/agenda-web/contacto';
 
 /* Dónde quedan los datos entre la portada y /metodologia. sessionStorage primero; localStorage de respaldo
    (si la persona abre el link en otra pestaña o vuelve otro día). Nunca van en la URL: el pixel de Meta y
@@ -32,7 +37,6 @@ const SLOTS = [
 ];
 const MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 const DOW    = ['Lu','Ma','Mi','Ju','Vi','Sá','Do'];
-const CARGOS = ['Dueño o dueña','Director o directora médica','Administrador o administradora','Recepción o secretaría','Profesional de la salud','Otro'];
 
 /* ─── Correos de mentira ─── */
 const FAKE_DOMAINS = new Set([
@@ -69,12 +73,11 @@ function telefonoBonito(bruto){
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function toDateStr(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return`${y}-${m}-${dd}`;}
 
-/* ─── Revisar los 4 datos (los mismos mensajes de la ventana vieja) ─── */
+/* ─── Revisar los 3 datos (los mismos mensajes de la ventana vieja) ─── */
 /** Devuelve la lista de errores: [[campo, mensaje], …]. Vacía = todo bien. */
 function erroresDe(d){
   const e=[];
   if((d.nombre||'').trim().length<2) e.push(['nombre','Escribe tu nombre.']);
-  if(!(d.cargo||'').trim()) e.push(['cargo','Elige tu cargo en la clínica.']);
   const email=(d.email||'').trim();
   if(!email) e.push(['email','Escribe tu correo.']);
   else{const r=isValidEmail(email);if(!r.ok)e.push(['email',r.msg]);}
@@ -86,7 +89,7 @@ function erroresDe(d){
 
 /* ─── Guardar y leer los datos ─── */
 let enMemoria=null; // por si el navegador no deja guardar (modo privado viejo): al menos sirve en esta página
-function limpio(d){ return {nombre:String(d.nombre||'').trim(),cargo:String(d.cargo||'').trim(),email:String(d.email||'').trim(),tel:String(d.tel||'').trim()}; }
+function limpio(d){ return {nombre:String(d.nombre||'').trim(),email:String(d.email||'').trim(),tel:String(d.tel||'').trim()}; }
 function guardarDatos(d){
   const datos=limpio(d);
   enMemoria=datos;
@@ -112,10 +115,46 @@ function leerDatos(){
   return null;
 }
 
+/* ─── Avisar a la app que llegó un contacto (19-10-2026, 2) ───
+   Lukas: «cuando responda el formulario unos 3 minutos después le llegue un mensaje…». La app Conejeros guarda
+   el contacto y programa los mensajes (whatsapp-conejeros/src/lib/contacto-web.ts). Dos reglas:
+   · NUNCA frena la ida al video: se espera como máximo ESPERA_CONTACTO_MS y, conteste o no, se sigue.
+   · Una sola vez por número en esta pestaña: dos toques, volver atrás o pasar de la portada a /metodologia no lo
+     repiten. Si falló (sin red, la app caída) se puede volver a intentar al confirmar otra vez; la app igual
+     descarta un formulario repetido del mismo número. */
+const ESPERA_CONTACTO_MS = 2500;
+const CLAVE_CONTACTO = 'waly_contacto_avisado';
+let avisadosMem = [];
+function avisados(){
+  try{ const l=JSON.parse(sessionStorage.getItem(CLAVE_CONTACTO)||'[]'); if(Array.isArray(l)) return l; }catch(e){}
+  return avisadosMem;
+}
+function marcarAvisado(tel,si){
+  const l=avisados().filter(t=>t!==tel);
+  if(si) l.push(tel);
+  avisadosMem=l;
+  try{sessionStorage.setItem(CLAVE_CONTACTO,JSON.stringify(l));}catch(e){}
+}
+/** Devuelve una promesa que SIEMPRE se resuelve (true si la app lo recibió) en ESPERA_CONTACTO_MS o menos. */
+function avisarContacto(d){
+  const tel=soloDigitos(d.tel);
+  if(avisados().includes(tel)) return Promise.resolve(true);
+  marcarAvisado(tel,true); // antes del fetch: un segundo toque mientras espera no manda otro
+  let envio;
+  try{
+    envio=fetch(URL_CONTACTO,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:d.nombre,email:d.email,whatsapp:d.tel})})
+      .then(r=>{ if(!r.ok) marcarAvisado(tel,false); return r.ok; })
+      .catch(()=>{ marcarAvisado(tel,false); return false; });
+  }catch(e){ marcarAvisado(tel,false); envio=Promise.resolve(false); }
+  const tope=new Promise(res=>setTimeout(()=>res(false),ESPERA_CONTACTO_MS));
+  return Promise.race([envio,tope]);
+}
+
 /* ═══ FORMULARIO ═══
    formulario({contenedor, titulo, textoBoton, textoOk, alConfirmar(datos)})
-   Dibuja los 4 campos dentro del contenedor. Al apretar el botón revisa los datos; si están bien muestra el
-   número en grande («¿Está bien escrito?»). «Sí, está bien» guarda los datos y llama a alConfirmar. */
+   Dibuja los 3 campos dentro del contenedor. Al apretar el botón revisa los datos; si están bien muestra el
+   número en grande («¿Está bien escrito?»). «Sí, está bien» guarda los datos, avisa el contacto a la app
+   (avisarContacto, máximo 2,5 s) y llama a alConfirmar. */
 function formulario(op){
   const raiz=op.contenedor;
   raiz.innerHTML=`
@@ -123,11 +162,6 @@ function formulario(op){
     <form id="agFormDatos" novalidate>
       <input class="ag-campo" id="agNombre" type="text" placeholder="👤 Tu nombre y apellido" aria-label="Tu nombre y apellido" autocomplete="name" maxlength="80">
       <div class="ag-error-msg" id="errNombre" role="alert"></div>
-      <select class="ag-campo ag-select" id="agCargo" required aria-label="Tu cargo en la clínica">
-        <option value="" selected disabled>💼 Tu cargo en la clínica</option>
-        ${CARGOS.map(c=>`<option>${c}</option>`).join('')}
-      </select>
-      <div class="ag-error-msg" id="errCargo" role="alert"></div>
       <input class="ag-campo" id="agEmail" type="email" placeholder="✉️ Tu correo" aria-label="Tu correo" autocomplete="email" inputmode="email" maxlength="120">
       <div class="ag-error-msg" id="errEmail" role="alert"></div>
       <input class="ag-campo" id="agTelefono" type="tel" placeholder="💬 Tu WhatsApp: 9 1234 5678" aria-label="Tu WhatsApp" autocomplete="tel" inputmode="tel" maxlength="20">
@@ -144,10 +178,10 @@ function formulario(op){
     <p class="ag-privado">🔒 Tus datos son privados y no se compartirán con terceros.</p>`;
 
   const $=id=>raiz.querySelector('#'+id);
-  const CAMPOS={nombre:['agNombre','errNombre'],cargo:['agCargo','errCargo'],email:['agEmail','errEmail'],tel:['agTelefono','errTelefono']};
+  const CAMPOS={nombre:['agNombre','errNombre'],email:['agEmail','errEmail'],tel:['agTelefono','errTelefono']};
   const form=$('agFormDatos'), confirma=$('agConfirmaTel');
 
-  function datos(){ return {nombre:$('agNombre').value,cargo:$('agCargo').value,email:$('agEmail').value,tel:$('agTelefono').value}; }
+  function datos(){ return {nombre:$('agNombre').value,email:$('agEmail').value,tel:$('agTelefono').value}; }
   function limpiarErrores(){
     Object.values(CAMPOS).forEach(([f,m])=>{$(f).classList.remove('con-error');$(m).classList.remove('show');});
   }
@@ -167,12 +201,21 @@ function formulario(op){
     mostrarConfirma(false);
     const t=$('agTelefono');t.focus();if(t.select)t.select();
   }
-  /** Número confirmado: se guardan los datos y sigue la página que montó el formulario. */
+  /** Número confirmado: se guardan los datos, se avisa el contacto a la app y sigue la página que montó el
+      formulario. Mientras espera (2,5 s como máximo) el botón queda tomado: dos toques no mandan dos avisos. */
+  let enviando=false;
   function ok(){
+    if(enviando)return;
     const d=datos();
     if(erroresDe(d).length){mostrarConfirma(false);revisar();return;}
     const guardados=guardarDatos(d);
-    if(op.alConfirmar) op.alConfirmar(guardados);
+    enviando=true;
+    const btn=$('agTelOk'), htmlBtn=btn.innerHTML;
+    btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Un momento…';
+    avisarContacto(guardados).then(()=>{
+      enviando=false;btn.disabled=false;btn.innerHTML=htmlBtn;
+      if(op.alConfirmar) op.alConfirmar(guardados);
+    });
   }
   form.addEventListener('submit',revisar);
   $('agTelOk').addEventListener('click',ok);
@@ -183,7 +226,6 @@ function formulario(op){
     rellenar(d){
       if(!d)return;
       $('agNombre').value=d.nombre||'';$('agEmail').value=d.email||'';$('agTelefono').value=d.tel||'';
-      if(d.cargo&&CARGOS.includes(d.cargo))$('agCargo').value=d.cargo;
     },
     /** Vuelve a los campos (sin borrar nada) y pone el foco en el nombre o en el botón de confirmar. */
     enfocar(){
@@ -342,8 +384,8 @@ function calendario(op){
     const slotObj=SLOTS.find(s=>s.start===selSlot);
     const [y,m,dd]=selDate.split('-').map(Number);
     const dateLabel=new Date(y,m-1,dd).toLocaleDateString('es-CL',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-    // empresa va vacía a propósito (19-10-2026): el formulario ya no pregunta la clínica.
-    const payload={type:'agenda_booking',nombre:d.nombre,cargo:d.cargo,email:d.email,empresa:'',whatsapp:d.tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?slotObj.end:'',hora_label:slotObj?slotObj.label:selSlot,plan:plan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
+    // empresa y cargo van vacíos a propósito (19-10-2026): el formulario ya no pregunta la clínica ni el puesto.
+    const payload={type:'agenda_booking',nombre:d.nombre,cargo:'',email:d.email,empresa:'',whatsapp:d.tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?slotObj.end:'',hora_label:slotObj?slotObj.label:selSlot,plan:plan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
     try{
       const res=await fetch(URL_AGENDA,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       const data=await res.json().catch(()=>({}));

@@ -284,3 +284,31 @@ una ruta pública nueva en whatsapp-conejeros que reciba el lead.
 
 **Pruebas:** `pruebas.cjs` 196/196 en local (servidor que aplica los rewrites de `vercel.json`) y 196/196 contra
 walybot.cl ya publicado, con la app y el pixel reemplazados por dobles: no se creó ninguna reunión de verdad.
+
+## 19-10-2026 (2) — Sin el campo cargo, y el contacto llega a la app al confirmar el número
+
+**Pedido (Lukas):** «sácale el puesto de la clínica» y que la persona que llena el formulario reciba un WhatsApp a
+los 3 minutos (y otro a la hora si no contesta). Cierra lo que quedó abierto en la entrada de arriba: hasta hoy los
+datos solo llegaban a la app si la persona reservaba.
+
+**Cambios:** fuera el cargo en todos lados (`CARGOS`, el `<select>`, su validación, `CAMPOS`, `datos()`, `rellenar`,
+lo guardado y el CSS `.ag-select`); la reserva manda `cargo:''`. Al confirmar el número, `avisarContacto` manda
+`{nombre, email, whatsapp}` a `POST /api/agenda-web/contacto` de la app Conejeros (que guarda el contacto, avisa a
+Lukas y programa los dos mensajes). Espera como máximo 2,5 s y se va al video conteste o no; el botón queda tomado
+mientras espera; una sola vez por número en la pestaña (`sessionStorage waly_contacto_avisado`), y si falló se
+reintenta al confirmar otra vez (la app igual descarta un formulario repetido).
+
+**Familia revisada:** el formulario se confirma en 3 lugares (portada, /metodologia sin datos y «Cambiar mis datos»).
+El aviso vive dentro de `formulario()`, así que los 3 avisan; con el mismo número no se repite y con un número
+nuevo sí (es otra persona o un número corregido).
+
+**Orden al publicar:** primero Implementar la app y después subir la web. Si la web sale antes, el aviso del
+contacto da error (la ruta no existe), la persona igual llega al video y no se pierde nada más que ese contacto.
+
+**Trampa:** mientras se probaba, otra conversación estaba reemplazando los videos (`video/*.mp4` y `.jpg`) en este
+mismo árbol y el video largo no cargaba. No se tocaron ni se commitearon: las pruebas se corrieron sobre una copia
+de HEAD con solo los 3 archivos de este cambio.
+
+**Pruebas:** `pruebas.cjs` 196/196 antes (HEAD) → 228/228 después, con la app y el pixel reemplazados por dobles
+(nada sale a la app de verdad). Nuevas: 3 campos sin cargo, el contacto sale una vez con nombre, correo y WhatsApp,
+/metodologia no lo repite, dos toques mandan uno, app caída (500) y app que no contesta (se va a los ~2,5 s).

@@ -991,7 +991,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
         <button type="button" class="video-sonido" id="videoSonido">🔊 Activar sonido</button>
       </div>
     </div>
-    <!-- ══ FORMULARIO A LA VISTA (19-10-2026): nombre, cargo, correo y WhatsApp (la clínica se sacó). Lo dibuja
+    <!-- ══ FORMULARIO A LA VISTA (19-10-2026): nombre, correo y WhatsApp (la clínica y el cargo se sacaron). Lo dibuja
          agenda.js (el mismo de /metodologia). id="reservar": walybot.cl/#reservar y todos los botones
          «Reservar» bajan acá. ══ -->
     <div class="reunion-card form-landing" id="reservar"></div>
@@ -1041,7 +1041,8 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
 <script src="/agenda.js"></script>
 <script>
 /* Formulario de la portada (19-10-2026). Al confirmar el número, agenda.js guarda los datos (sessionStorage y
-   localStorage, nunca en la URL) y de acá se va a /metodologia: el video largo y debajo el calendario. */
+   localStorage, nunca en la URL), le avisa el contacto a la app Conejeros (2,5 s como máximo, nunca frena) y de
+   acá se va a /metodologia: el video largo y debajo el calendario. */
 var formLanding=null;
 (function(){
   var caja=document.getElementById('reservar');
