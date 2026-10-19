@@ -1,7 +1,6 @@
 /* ══ agenda.js (19-10-2026) — la reserva de la reunión de 45 minutos, compartida por dos páginas:
-   · index.html: bajo el video corto, el formulario (nombre, correo y WhatsApp) y después el número
-     en grande para confirmarlo. Al confirmar guarda los datos, avisa a la app Conejeros (contacto) y lleva a
-     /metodologia.
+   · index.html: bajo el video corto, el formulario (nombre, correo y WhatsApp). Al apretar «Ver el video» revisa
+     que el número tenga WhatsApp, guarda los datos, avisa a la app Conejeros (contacto) y lleva a /metodologia.
    · metodologia.html: el video largo y debajo el calendario, que reserva con los datos guardados. Si alguien
      entra directo sin datos, primero ve ahí mismo el mismo formulario.
    Lukas, 19-10-2026: «el video más corto al principio para que llenen el formulario, sácale el nombre de la
@@ -9,9 +8,9 @@
    Conejeros pone el nombre de la persona en el título de la reunión (agenda-web.ts, `quien`).
    Antes todo esto era la ventana «Reservar reunión» (AgendaFlow) dentro de index.html.
    19-10-2026 (2), Lukas: «sácale el puesto de la clínica»: fuera el campo cargo (la reserva manda cargo:'').
-   19-10-2026 (3), Lukas: «que no diga ese es tu número, quiero que lo verifique… la idea es que sea imposible
-   equivocarte en el número». Ahora le llega un código de 4 números por WhatsApp y lo escribe aquí (ver
-   CÓDIGO POR WHATSAPP más abajo). Si la app no puede mandar códigos, vuelve al «¿Está bien escrito?» de antes.
+   19-10-2026 (3), Lukas: «que no diga ese es tu número, quiero que lo verifique». Se hizo con un código de 4
+   números por WhatsApp y (4) el mismo día lo sacó: «es mucho enredo». Queda un solo paso: la app revisa por
+   detrás que el número tenga WhatsApp, sin mandarle nada (ver REVISAR QUE EL NÚMERO TENGA WHATSAPP).
    Las horas son las mismas de la app Conejeros (SLOTS_WEB en whatsapp-conejeros/src/lib/agenda-web.ts). ══ */
 (function(){
 'use strict';
@@ -20,12 +19,9 @@
    GET ?date=YYYY-MM-DD -> {busy:[...]}, POST -> {ok, meet_link}. */
 const APP_BASE    = 'https://waly-conejeros.bvil2a.easypanel.host';
 const URL_AGENDA  = APP_BASE + '/api/agenda-web';
-/* El contacto (19-10-2026, 2): al confirmar el número la app guarda a la persona, le avisa a Lukas y le programa
+/* El contacto (19-10-2026, 2): al apretar «Ver el video» la app guarda a la persona, le avisa a Lukas y le programa
    dos WhatsApp (a los 3 minutos y, si no contesta ni reserva, una hora después). Ver avisarContacto(). */
 const URL_CONTACTO = APP_BASE + '/api/agenda-web/contacto';
-/* El código por WhatsApp (19-10-2026, 3): POST {whatsapp} → token · GET ?token → estado · POST {token,codigo}.
-   Lógica en whatsapp-conejeros/src/lib/verificacion-web.ts. */
-const URL_VERIFICAR = APP_BASE + '/api/agenda-web/verificar';
 
 /* Dónde quedan los datos entre la portada y /metodologia. sessionStorage primero; localStorage de respaldo
    (si la persona abre el link en otra pestaña o vuelve otro día). Nunca van en la URL: el pixel de Meta y
@@ -156,17 +152,18 @@ function avisarContacto(d){
   return Promise.race([envio,tope]);
 }
 
-/* ─── CÓDIGO POR WHATSAPP (19-10-2026, 3) ───
-   Al apretar «Ver el video» la app Conejeros revisa que el número tenga WhatsApp y le manda un código de 4 números
-   desde el WhatsApp de Lukas; la persona lo escribe aquí y recién ahí pasa. Tres reglas:
-   · si el número no tiene WhatsApp, se le dice al tiro y vuelve al campo;
-   · si la app no puede (WhatsApp caído, topes del día, sin red, la app sin Implementar) se sigue con el «¿Está bien
-     escrito?» de antes: un problema de la app nunca deja afuera a un cliente;
-   · un número que ya se verificó en este navegador no pide código otra vez (volver atrás, «Cambiar mis datos»). */
-const ESPERA_PEDIDO_MS = 8000;  // lo que se espera la respuesta al pedir el código
-const ESPERA_ENVIO_MS  = 15000; // lo que se espera a que el WhatsApp con el código salga
-const CADA_MS          = 1000;  // cada cuánto se pregunta cómo va
-const REENVIO_S        = 30;    // igual que ESPERA_REENVIO_S de la app
+/* ─── REVISAR QUE EL NÚMERO TENGA WHATSAPP (19-10-2026, 4) ───
+   Ese mismo día Lukas sacó el código de 4 números: «no me gusta con un código. Es mucho enredo, tiene que poner su
+   correo, su nombre, su número… mucho hueveo». Ahora, al apretar «Ver el video», la app Conejeros le pregunta a
+   WhatsApp si ese número tiene cuenta SIN mandarle nada (whatsapp-conejeros, /api/agenda-web/revisar-numero). Tres reglas:
+   · si el número no tiene WhatsApp, se le dice ahí mismo, bajo el campo, y no pasa;
+   · cualquier otra cosa (la app caída o sin Implementar, el WhatsApp de la app desconectado, topes del día, sin red,
+     más de ESPERA_REVISION_MS) deja pasar directo al video: un problema de la app nunca deja afuera a un cliente;
+   · un número que ya se revisó en este navegador no se vuelve a revisar (volver atrás, «Cambiar mis datos»).
+   Lo que esto NO pilla: un número mal escrito que igual existe (el de otra persona). Era lo que pillaba el código. */
+const URL_REVISAR = APP_BASE + '/api/agenda-web/revisar-numero';
+const ESPERA_REVISION_MS = 6000; // lo más que la persona ve «Revisando tu WhatsApp…» antes de pasar igual
+const CADA_MS            = 700;  // cada cuánto se pregunta cómo va
 const CLAVE_VERIFICADOS = 'waly_tel_verificado';
 let verificadosMem = [];
 function verificados(){
@@ -191,16 +188,35 @@ function pedirJSON(url,opciones,ms){
     .then(r=>r.json().catch(()=>({})).then(j=>({status:r.status,j:j||{}})))
     .then(v=>{clearTimeout(t);return v;},e=>{clearTimeout(t);throw e;});
 }
+/** 'existe', 'no_existe' o 'no_se_sabe', en ESPERA_REVISION_MS o menos. Nunca falla. */
+async function revisarNumero(tel){
+  const hasta=Date.now()+ESPERA_REVISION_MS;
+  const queda=()=>Math.max(1,hasta-Date.now());
+  const leer=e=>e==='verificado'?'existe':(e==='no_existe'?'no_existe':null);
+  let j={};
+  try{ j=(await pedirJSON(URL_REVISAR,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({whatsapp:tel})},queda())).j||{}; }catch(e){}
+  if(j.ok!==true) return 'no_se_sabe';
+  if(leer(j.estado)) return leer(j.estado);   // ya se sabía (revisado en las últimas 24 h)
+  if(!j.token) return 'no_se_sabe';
+  while(hasta-Date.now()>CADA_MS){
+    await dormir(CADA_MS);
+    let e=null;
+    try{ e=(await pedirJSON(`${URL_REVISAR}?token=${encodeURIComponent(j.token)}`,{method:'GET'},queda())).j.estado; }catch(err){}
+    if(leer(e)) return leer(e);
+    if(e==='fallo'||e==='vencido'||e==='bloqueado') return 'no_se_sabe';
+  }
+  return 'no_se_sabe';
+}
 
 /* ═══ FORMULARIO ═══
-   formulario({contenedor, titulo, textoBoton, textoOk, alConfirmar(datos)})
-   Dibuja los 3 campos dentro del contenedor. Al apretar el botón revisa los datos y pide el código por WhatsApp
-   (pasos: campos → revisando → código). Con el código bueno guarda los datos, avisa el contacto a la app
-   (avisarContacto, máximo 2,5 s) y llama a alConfirmar. Si la app no puede mandar el código, muestra el número en
-   grande («¿Está bien escrito?», el paso «confirma» de antes) y «Sí, está bien» hace lo mismo. */
+   formulario({contenedor, titulo, textoBoton, alConfirmar(datos)})
+   Dibuja los 3 campos dentro del contenedor. Al apretar el botón revisa los datos y que el número tenga WhatsApp
+   (revisarNumero). Si está todo bien guarda los datos, avisa el contacto a la app (avisarContacto, 2,5 s como máximo)
+   y llama a alConfirmar. Un solo paso: sin código y sin «¿Está bien escrito?» (19-10-2026, 4). */
 function formulario(op){
   const raiz=op.contenedor;
   const flecha='<i class="fas fa-arrow-right" aria-hidden="true"></i>';
+  let textoBoton=op.textoBoton||'Continuar';
   raiz.innerHTML=`
     <div class="ag-titulo" id="agTitulo">${op.titulo||''}</div>
     <form id="agFormDatos" novalidate>
@@ -210,34 +226,12 @@ function formulario(op){
       <div class="ag-error-msg" id="errEmail" role="alert"></div>
       <input class="ag-campo" id="agTelefono" type="tel" placeholder="💬 Tu WhatsApp: 9 1234 5678" aria-label="Tu WhatsApp" autocomplete="tel" inputmode="tel" maxlength="20">
       <div class="ag-error-msg" id="errTelefono" role="alert"></div>
-      <button class="ag-boton" id="agStep1Btn" type="submit">${op.textoBoton||'Continuar'} ${flecha}</button>
+      <button class="ag-boton" id="agStep1Btn" type="submit">${textoBoton} ${flecha}</button>
     </form>
-    <div class="ag-confirma-tel" id="agRevisando" hidden>
-      <div class="ag-revisando" role="status"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Te estamos mandando un código por WhatsApp…</div>
-    </div>
-    <form class="ag-confirma-tel" id="agCodigo" novalidate hidden>
-      <div class="ag-confirma-txt">Te mandamos un código al WhatsApp</div>
-      <div class="ag-confirma-num" id="agCodigoNum"></div>
-      <label class="ag-confirma-txt" for="agCodigoInput">Escribe aquí los 4 números:</label>
-      <input class="ag-campo ag-codigo" id="agCodigoInput" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="9" placeholder="····" aria-describedby="errCodigo">
-      <div class="ag-error-msg" id="errCodigo" role="alert"></div>
-      <button class="ag-boton" type="submit" id="agCodigoOk">${op.textoBoton||'Continuar'} ${flecha}</button>
-      <div class="ag-codigo-ayuda">¿No te llegó en un minuto? Entonces el número está mal escrito: <button class="ag-link" type="button" id="agCambiarNum">Cambiar número</button><br><button class="ag-link" type="button" id="agOtroCodigo">Mandar otro código</button><br><button class="ag-link" type="button" id="agSinCodigo" hidden>Seguir sin código</button></div>
-    </form>
-    <div class="ag-confirma-tel" id="agConfirmaTel" hidden>
-      <div class="ag-confirma-txt">Este es tu WhatsApp:</div>
-      <div class="ag-confirma-num" id="agConfirmaNum"></div>
-      <div class="ag-confirma-txt">¿Está bien escrito?</div>
-      <button class="ag-boton" type="button" id="agTelOk">${op.textoOk||'Sí, está bien'} ${flecha}</button>
-      <button class="ag-volver" type="button" id="agTelCorregir"><i class="fas fa-pen" aria-hidden="true"></i> No, lo corrijo</button>
-    </div>
     <p class="ag-privado">🔒 Tus datos son privados y no se compartirán con terceros.</p>`;
 
   const $=id=>raiz.querySelector('#'+id);
   const CAMPOS={nombre:['agNombre','errNombre'],email:['agEmail','errEmail'],tel:['agTelefono','errTelefono']};
-  const PASOS={campos:$('agFormDatos'),revisando:$('agRevisando'),codigo:$('agCodigo'),confirma:$('agConfirmaTel')};
-  let paso='campos';
-  function mostrar(p){ paso=p; Object.keys(PASOS).forEach(k=>{PASOS[k].hidden=(k!==p);}); }
 
   function datos(){ return {nombre:$('agNombre').value,email:$('agEmail').value,tel:$('agTelefono').value}; }
   function limpiarErrores(){
@@ -247,163 +241,54 @@ function formulario(op){
     const [f,m]=CAMPOS[campo];
     $(f).classList.add('con-error');const el=$(m);el.textContent=msg;el.classList.add('show');
   }
-  function errorCodigo(msg){
-    const el=$('errCodigo');
-    el.textContent=msg||'';el.classList.toggle('show',!!msg);
-    $('agCodigoInput').classList.toggle('con-error',!!msg);
+
+  /* Mientras revisa, el botón queda tomado y los campos no se pueden cambiar: lo que se revisó es lo que se guarda.
+     «vuelta» corta una revisión que quedó esperando si metodologia.html vuelve a abrir el formulario. */
+  let vuelta=0, ocupado=false;
+  function tomar(si,texto){
+    ocupado=si;
+    const btn=$('agStep1Btn');
+    btn.disabled=si;
+    btn.innerHTML=si?`<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> ${texto}`:`${textoBoton} ${flecha}`;
+    Object.values(CAMPOS).forEach(([f])=>{$(f).readOnly=si;});
   }
 
-  /* «vuelta» corta lo que quedó esperando: si la persona cambia el número mientras se manda el código, la respuesta
-     vieja ya no mueve la pantalla. */
-  let token=null, telToken=null, vuelta=0, reenvioDesde=0, cuentaAtras=null, reintento=false;
-
-  /** «Ver el video»: revisa los datos y, si están bien, pide el código (o pasa directo si ese número ya se verificó). */
-  function revisar(ev){
+  /** «Ver el video»: revisa los datos y que el número tenga WhatsApp (salvo que ya se haya revisado aquí). */
+  async function revisar(ev){
     if(ev)ev.preventDefault();
+    if(ocupado)return;
     limpiarErrores();
-    const errores=erroresDe(datos());
+    const d=datos();
+    const errores=erroresDe(d);
     errores.forEach(([campo,msg])=>errorEn(campo,msg));
     if(errores.length){$(CAMPOS[errores[0][0]][0]).focus();return;}
-    const tel=soloDigitos($('agTelefono').value);
-    if(verificados().includes(tel)){ ok($('agStep1Btn')); return; }
-    reintento=false;
-    pedirCodigo(tel);
-  }
-
-  async function pedirCodigo(tel){
+    const tel=soloDigitos(d.tel);
     const mi=++vuelta;
-    $('agCodigoNum').textContent=telefonoBonito(tel);
-    mostrar('revisando');
-    let res=null;
-    try{ res=await pedirJSON(URL_VERIFICAR,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({whatsapp:tel})},ESPERA_PEDIDO_MS); }catch(e){}
-    if(mi!==vuelta)return;
-    const j=(res&&res.j)||{};
-    if(j.ok===true&&j.token){ token=j.token; telToken=tel; reenvioDesde=Date.now(); return esperarEnvio(mi); }
-    if(j.motivo==='numero_malo'){ mostrar('campos'); errorEn('tel',j.error||'Revisa tu número.'); $('agTelefono').focus(); return; }
-    // Ya hay un código vivo a este número en esta página: sigue sirviendo.
-    if((j.motivo==='espera'||j.motivo==='tope_numero')&&token&&telToken===tel){
-      mostrar('codigo'); errorCodigo(j.error); contarReenvio();
-      // Ya van 3 códigos a este número: la persona no puede quedar atrapada (revisor, 19-10-2026). Sale al «¿Está
-      // bien escrito?», donde ve su número en grande.
-      if(j.motivo==='tope_numero')$('agSinCodigo').hidden=false;
-      return;
-    }
-    // Pidió otro hace menos de 30 s y recargó la página: se espera lo que falta y se pide de nuevo (una vez).
-    if(j.motivo==='espera'&&j.segundos>0&&j.segundos<=REENVIO_S&&!reintento){
-      reintento=true;
-      await dormir(j.segundos*1000+300);
-      if(mi===vuelta) pedirCodigo(tel);
-      return;
-    }
-    // Sin red, la app caída o sin Implementar, WhatsApp de la app desconectado, topes del día: sin código.
-    sinCodigo(tel);
-  }
-
-  async function esperarEnvio(mi){
-    const hasta=Date.now()+ESPERA_ENVIO_MS;
-    while(Date.now()<hasta){
-      await dormir(CADA_MS);
+    if(!verificados().includes(tel)){
+      tomar(true,'Revisando tu WhatsApp…');
+      const r=await revisarNumero(tel);
       if(mi!==vuelta)return;
-      let e=null;
-      try{ const r=await pedirJSON(`${URL_VERIFICAR}?token=${encodeURIComponent(token)}`,{method:'GET'},4000); e=r.j.estado; }catch(err){}
-      if(mi!==vuelta)return;
-      if(e==='enviado'){ abrirCodigo(); return; }
-      if(e==='no_existe'){
-        token=null; mostrar('campos');
+      if(r==='no_existe'){
+        tomar(false);
         errorEn('tel','Ese número no tiene WhatsApp. Revisa que esté bien escrito: son 9 dígitos y parte con 9.');
         const t=$('agTelefono');t.focus();if(t.select)t.select();
         return;
       }
-      if(e==='fallo'||e==='vencido'||e==='bloqueado')break;
+      if(r==='existe')marcarVerificado(tel);
     }
-    if(mi===vuelta) sinCodigo(telToken);
+    seguir(d);
   }
 
-  function abrirCodigo(){
-    $('agCodigoInput').value='';errorCodigo('');$('agSinCodigo').hidden=true;
-    mostrar('codigo');
-    contarReenvio();
-    try{$('agCodigoInput').focus({preventScroll:true});}catch(e){}
-  }
-  /** «Mandar otro código» queda apagado los primeros 30 s, con la cuenta regresiva. */
-  function contarReenvio(){
-    clearInterval(cuentaAtras);
-    const b=$('agOtroCodigo');
-    const pinta=()=>{
-      const s=Math.ceil(REENVIO_S-(Date.now()-reenvioDesde)/1000);
-      if(s>0){b.disabled=true;b.textContent=`Mandar otro código (${s})`;}
-      else{b.disabled=false;b.textContent='Mandar otro código';clearInterval(cuentaAtras);}
-    };
-    pinta();cuentaAtras=setInterval(pinta,1000);
-  }
-  /** La app no pudo mandar el código: el «¿Está bien escrito?» de antes. */
-  function sinCodigo(tel){
-    token=null;
-    $('agConfirmaNum').textContent=telefonoBonito(tel||$('agTelefono').value);
-    mostrar('confirma');
-    try{$('agTelOk').focus({preventScroll:true});}catch(e){}
-  }
-
-  let revisandoCodigo=false;
-  async function enviarCodigo(ev){
-    if(ev)ev.preventDefault();
-    if(revisandoCodigo)return;
-    const c=$('agCodigoInput').value.replace(/\D/g,'');
-    if(c.length!==4){ errorCodigo('Son 4 números. Están en el WhatsApp que te acabamos de mandar.'); return; }
-    if(!token){ sinCodigo(telToken); return; }
-    revisandoCodigo=true;
-    const mi=vuelta;
-    const btn=$('agCodigoOk'), html=btn.innerHTML;
-    btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Revisando…';
-    let r=null;
-    try{ r=await pedirJSON(URL_VERIFICAR,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:token,codigo:c})},ESPERA_PEDIDO_MS); }catch(e){}
-    revisandoCodigo=false;btn.disabled=false;btn.innerHTML=html;
-    if(mi!==vuelta)return; // apretó «Cambiar número» mientras se revisaba: el ok es del número viejo (revisor, 19-10-2026)
-    const j=(r&&r.j)||{};
-    if(j.ok===true){ errorCodigo(''); marcarVerificado(telToken); ok(btn); return; }
-    const m=j.motivo;
-    if(m==='no_coincide') errorCodigo(`Ese código no coincide. Revisa el último WhatsApp que te llegó${j.quedan?` (te quedan ${j.quedan} ${j.quedan===1?'intento':'intentos'})`:''}.`);
-    else if(m==='bloqueado') errorCodigo('Te equivocaste 5 veces con este código. Pide otro más abajo.');
-    else if(m==='vencido') errorCodigo('Ese código ya venció. Pide otro más abajo.');
-    else if(!r||m==='error') errorCodigo('No pudimos revisar el código. Intenta de nuevo.');
-    else errorCodigo('Ese código ya no sirve. Pide otro más abajo.');
-    const inp=$('agCodigoInput');try{inp.focus({preventScroll:true});if(inp.select)inp.select();}catch(e){}
-  }
-  function cambiarNumero(){
-    vuelta++;token=null;clearInterval(cuentaAtras);
-    mostrar('campos');
-    const t=$('agTelefono');t.focus();if(t.select)t.select();
-  }
-
-  /** Número verificado (o confirmado a ojo si no hubo código): se guardan los datos, se avisa el contacto a la app y
-      sigue la página que montó el formulario. Mientras espera (2,5 s como máximo) el botón queda tomado. */
-  let enviando=false;
-  function ok(btn){
-    if(enviando)return;
-    const d=datos();
-    if(erroresDe(d).length){mostrar('campos');revisar();return;}
+  /** Datos listos: se guardan, se avisa el contacto a la app y sigue la página que montó el formulario. */
+  function seguir(d){
     const guardados=guardarDatos(d);
-    enviando=true;
-    btn=btn||$('agTelOk');
-    const htmlBtn=btn.innerHTML;
-    btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Un momento…';
+    tomar(true,'Un momento…');
     avisarContacto(guardados).then(()=>{
-      enviando=false;btn.disabled=false;btn.innerHTML=htmlBtn;
+      tomar(false);
       if(op.alConfirmar) op.alConfirmar(guardados);
     });
   }
   $('agFormDatos').addEventListener('submit',revisar);
-  $('agCodigo').addEventListener('submit',enviarCodigo);
-  $('agCodigoInput').addEventListener('input',e=>{
-    const v=e.target.value.replace(/\D/g,'').slice(0,4);
-    if(e.target.value!==v)e.target.value=v;
-    if(v.length===4)enviarCodigo();
-  });
-  $('agCambiarNum').addEventListener('click',cambiarNumero);
-  $('agSinCodigo').addEventListener('click',()=>{ vuelta++;clearInterval(cuentaAtras);sinCodigo(telToken); });
-  $('agOtroCodigo').addEventListener('click',()=>{ if(telToken){reintento=false;pedirCodigo(telToken);} });
-  $('agTelOk').addEventListener('click',()=>ok($('agTelOk')));
-  $('agTelCorregir').addEventListener('click',cambiarNumero);
 
   return {
     /** Rellena los campos (por ejemplo con lo que dejó la persona la vez anterior). */
@@ -411,19 +296,13 @@ function formulario(op){
       if(!d)return;
       $('agNombre').value=d.nombre||'';$('agEmail').value=d.email||'';$('agTelefono').value=d.tel||'';
     },
-    /** Pone el foco donde corresponde según el paso en que va. */
-    enfocar(){
-      try{
-        if(paso==='confirma')$('agTelOk').focus({preventScroll:true});
-        else if(paso==='codigo')$('agCodigoInput').focus({preventScroll:true});
-        else if(paso==='campos')$('agNombre').focus({preventScroll:true});
-      }catch(e){}
-    },
-    mostrarCampos(){ vuelta++;token=null;clearInterval(cuentaAtras);mostrar('campos');limpiarErrores(); },
+    /** Pone el foco en el primer campo. */
+    enfocar(){ try{$('agNombre').focus({preventScroll:true});}catch(e){} },
+    /** Vuelve a dejar el formulario listo para escribir (metodologia.html, «Cambiar mis datos»). */
+    mostrarCampos(){ vuelta++;tomar(false);limpiarErrores(); },
     cambiarTextos(t){
       if(t.titulo!=null)$('agTitulo').innerHTML=t.titulo;
-      if(t.textoBoton!=null){$('agStep1Btn').innerHTML=`${t.textoBoton} ${flecha}`;$('agCodigoOk').innerHTML=`${t.textoBoton} ${flecha}`;}
-      if(t.textoOk!=null)$('agTelOk').innerHTML=`${t.textoOk} ${flecha}`;
+      if(t.textoBoton!=null){textoBoton=t.textoBoton;if(!ocupado)$('agStep1Btn').innerHTML=`${textoBoton} ${flecha}`;}
     }
   };
 }

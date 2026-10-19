@@ -332,3 +332,15 @@ navegador (`waly_tel_verificado`) ⇒ no pide código otra vez.
 
 **Pruebas**: `prueba_codigo.cjs` 82/82 (teléfono y computador, Edge, la app reemplazada por un doble) + `pruebas.cjs`
 228/228 ajustada. Nada salió a la app de verdad.
+
+## 19-10-2026 (tarde) — SIN código: un solo paso y la app revisa el número por detrás
+Lukas, apenas vio el código: *«no me gusta con un código. Es mucho enredo… mucho hueveo»*. Fuera la casilla del código
+Y el «¿Está bien escrito?» (el 19-10 a las 13:00 ya había dicho que no quería «ese es tu número»). Ahora: 3 campos →
+«Ver el video» → «Revisando tu WhatsApp…» (campos de solo lectura) → `/api/agenda-web/revisar-numero` de la app
+Conejeros, que pregunta a WhatsApp SIN mandar nada. «no_existe» ⇒ error bajo el campo y no pasa; cualquier otra cosa
+(app caída, 401, topes, 6 s sin respuesta) ⇒ pasa. Lo que se pierde: un número mal escrito que existe (de otro).
+- Orden de despliegue pensado antes: ruta nueva ⇒ con la app vieja da 401 y la página pasa directo (nunca un código).
+**Pruebas** (subagente, Edge, la app reemplazada por un doble): `prueba_revisar.cjs` 421/0 (teléfono y computador,
+48 escenarios; peor caso medido 9 s) y `pruebas.cjs` adaptada 259/0; control negativo: la misma prueba contra el código
+viejo se queda en «¿Está bien escrito?». Producción (curl, Origin walybot.cl): su número ⇒ verificado en 1 s,
+569 0000 0000 ⇒ no_existe, /verificar ⇒ sin_conexion, otra web ⇒ 403.

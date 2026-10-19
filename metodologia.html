@@ -212,7 +212,7 @@ const VideoMet=(function(){
   }
   function editarDatos(){
     body.classList.add('editando');
-    form.cambiarTextos({titulo:'Corrige tus datos',textoBoton:'Continuar',textoOk:'Sí, está bien, volver al calendario'});
+    form.cambiarTextos({titulo:'Corrige tus datos',textoBoton:'Continuar'});
     form.rellenar(W.leerDatos());
     form.mostrarCampos();
     try{cajaDatos.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){cajaDatos.scrollIntoView();}
@@ -222,7 +222,6 @@ const VideoMet=(function(){
     contenedor:cajaDatos,
     titulo:'¿Con quién hablamos?',
     textoBoton:'Ver el video',
-    textoOk:'Sí, está bien, ver el video',
     alConfirmar:function(d){
       const primeraVez=body.classList.contains('sin-datos');
       /* Meta: el mismo Lead de la portada, para quien llegó directo con el link y dejó sus datos acá. */

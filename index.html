@@ -1040,7 +1040,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
 </script>
 <script src="/agenda.js"></script>
 <script>
-/* Formulario de la portada (19-10-2026). Al confirmar el número, agenda.js guarda los datos (sessionStorage y
+/* Formulario de la portada (19-10-2026). Al apretar «Ver el video» (y revisar el número), agenda.js guarda los datos (sessionStorage y
    localStorage, nunca en la URL), le avisa el contacto a la app Conejeros (2,5 s como máximo, nunca frena) y de
    acá se va a /metodologia: el video largo y debajo el calendario. */
 var formLanding=null;
@@ -1051,7 +1051,6 @@ var formLanding=null;
     contenedor:caja,
     titulo:'Responde y mira el video completo',
     textoBoton:'Ver el video',
-    textoOk:'Sí, está bien, ver el video',
     alConfirmar:function(){
       var irse=function(){location.href='/metodologia';};
       /* Meta: un Lead por cada persona que deja sus datos. Se espera un poco para que el aviso alcance a salir. */
