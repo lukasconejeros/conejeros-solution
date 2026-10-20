@@ -133,10 +133,23 @@ function idEventoMeta(prefijo){
 function cookie(nombre){
   try{const m=document.cookie.match(new RegExp('(?:^|; )'+nombre+'=([^;]*)'));return m?decodeURIComponent(m[1]):'';}catch(e){return '';}
 }
+/* La etiqueta del anuncio (20-10-2026, apartado «Formularios» de la app): el link del anuncio trae utm_source,
+   utm_medium y utm_campaign. Se guarda en la pestaña al llegar, así se sabe aunque la persona pase a otra página.
+   Con eso la app dice «Anuncio de Meta · reel_sabado_anpalex» en vez de «Entró directo». */
+function utmDeLaVisita(){
+  let ahora=null;
+  try{const q=new URLSearchParams(location.search);const u={source:(q.get('utm_source')||'').slice(0,50),medium:(q.get('utm_medium')||'').slice(0,50),campaign:(q.get('utm_campaign')||'').slice(0,50)};if(u.source)ahora=u;}catch(e){}
+  try{
+    if(ahora){sessionStorage.setItem('waly_utm',JSON.stringify(ahora));return ahora;}
+    const g=JSON.parse(sessionStorage.getItem('waly_utm')||'null');
+    return g&&typeof g.source==='string'&&g.source?g:null;
+  }catch(e){return ahora;}
+}
+utmDeLaVisita();
 function datosMeta(eventoId,contenido){
   let fbc=cookie('_fbc');
   if(!fbc){try{const id=new URLSearchParams(location.search).get('fbclid');if(id)fbc='fb.1.'+Date.now()+'.'+id;}catch(e){}}
-  return {evento_id:eventoId,fbp:cookie('_fbp'),fbc:fbc,url:location.origin+location.pathname,contenido:contenido||''};
+  return {evento_id:eventoId,fbp:cookie('_fbp'),fbc:fbc,url:location.origin+location.pathname,contenido:contenido||'',utm:utmDeLaVisita()};
 }
 /** El aviso del navegador con el mismo id que mandó la app. Sin pixel (bloqueado) no pasa nada. */
 function avisoPixel(evento,params,eventoId){
