@@ -1082,10 +1082,12 @@ var formLanding=null;
     contenedor:caja,
     titulo:'Deja tus datos y mira el video completo',
     textoBoton:'Ver el video',
-    alConfirmar:function(){
+    contenidoMeta:'Formulario portada',
+    alConfirmar:function(d,eventoId){
       var irse=function(){location.href='/metodologia';};
-      /* Meta: un Lead por cada persona que deja sus datos. Se espera un poco para que el aviso alcance a salir. */
-      try{if(typeof fbq==='function'){fbq('track','Lead',{content_name:'Formulario portada'});setTimeout(irse,350);return;}}catch(e){}
+      /* Meta: un Lead por cada persona que deja sus datos, con el MISMO id que la app ya le mandó a Meta con quién
+         es (20-10-2026): Meta lo cuenta una vez. Se espera un poco para que el aviso alcance a salir. */
+      try{if(typeof fbq==='function'){var op={};if(eventoId)op.eventID=eventoId;fbq('track','Lead',{content_name:'Formulario portada'},op);setTimeout(irse,350);return;}}catch(e){}
       irse();
     }
   });

@@ -117,6 +117,32 @@ function leerDatos(){
   return null;
 }
 
+/* ─── Aviso a Meta por la app (20-10-2026) ───
+   Lukas: «que cada gente que responda ese cuestionario vaya a la app… para ponerlos en Meta para que aprenda y le
+   siga saliendo esas soluciones». El pixel avisa «Lead» (formulario) y «Schedule» (reunión reservada) desde el
+   navegador, pero sin decir quién es. Ahora la app Conejeros manda a Meta el mismo aviso desde el servidor con el
+   correo, el teléfono y el nombre CIFRADOS (whatsapp-conejeros/src/lib/meta-capi.ts). Los dos llevan el MISMO id
+   (eventID): Meta lo cuenta una sola vez. Acá se arma ese id y se leen las cookies del pixel (_fbp y _fbc, la que
+   dice de qué anuncio vino). La página va sin lo que viene después del «?». */
+function idEventoMeta(prefijo){
+  let azar='';
+  try{const a=new Uint32Array(2);crypto.getRandomValues(a);azar=a[0].toString(36)+a[1].toString(36);}
+  catch(e){azar=Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);}
+  return (prefijo+'_'+Date.now().toString(36)+'_'+azar).replace(/[^A-Za-z0-9_-]/g,'').slice(0,64);
+}
+function cookie(nombre){
+  try{const m=document.cookie.match(new RegExp('(?:^|; )'+nombre+'=([^;]*)'));return m?decodeURIComponent(m[1]):'';}catch(e){return '';}
+}
+function datosMeta(eventoId,contenido){
+  let fbc=cookie('_fbc');
+  if(!fbc){try{const id=new URLSearchParams(location.search).get('fbclid');if(id)fbc='fb.1.'+Date.now()+'.'+id;}catch(e){}}
+  return {evento_id:eventoId,fbp:cookie('_fbp'),fbc:fbc,url:location.origin+location.pathname,contenido:contenido||''};
+}
+/** El aviso del navegador con el mismo id que mandó la app. Sin pixel (bloqueado) no pasa nada. */
+function avisoPixel(evento,params,eventoId){
+  try{if(typeof fbq==='function'){if(eventoId)fbq('track',evento,params||{},{eventID:eventoId});else fbq('track',evento,params||{});}}catch(e){}
+}
+
 /* ─── Avisar a la app que llegó un contacto (19-10-2026, 2) ───
    Lukas: «cuando responda el formulario unos 3 minutos después le llegue un mensaje…». La app Conejeros guarda
    el contacto y programa los mensajes (whatsapp-conejeros/src/lib/contacto-web.ts). Dos reglas:
@@ -138,13 +164,13 @@ function marcarAvisado(tel,si){
   try{sessionStorage.setItem(CLAVE_CONTACTO,JSON.stringify(l));}catch(e){}
 }
 /** Devuelve una promesa que SIEMPRE se resuelve (true si la app lo recibió) en ESPERA_CONTACTO_MS o menos. */
-function avisarContacto(d){
+function avisarContacto(d,meta){
   const tel=soloDigitos(d.tel);
   if(avisados().includes(tel)) return Promise.resolve(true);
   marcarAvisado(tel,true); // antes del fetch: un segundo toque mientras espera no manda otro
   let envio;
   try{
-    envio=fetch(URL_CONTACTO,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:d.nombre,email:d.email,whatsapp:d.tel})})
+    envio=fetch(URL_CONTACTO,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:d.nombre,email:d.email,whatsapp:d.tel,meta:meta||null})})
       .then(r=>{ if(!r.ok) marcarAvisado(tel,false); return r.ok; })
       .catch(()=>{ marcarAvisado(tel,false); return false; });
   }catch(e){ marcarAvisado(tel,false); envio=Promise.resolve(false); }
@@ -209,7 +235,11 @@ async function revisarNumero(tel){
 }
 
 /* ═══ FORMULARIO ═══
-   formulario({contenedor, titulo, textoBoton, alConfirmar(datos)})
+   formulario({contenedor, titulo, textoBoton, contenidoMeta, contarLead(), alConfirmar(datos, eventoId)})
+   eventoId (20-10-2026) = el id del aviso «Lead» que la app ya le mandó a Meta: la página dispara el pixel con ese
+   mismo id (avisoPixel) para que Meta lo cuente una vez. contenidoMeta = qué formulario fue. contarLead() = false
+   cuando la página NO va a disparar el Lead (metodologia.html al corregir los datos): entonces la app tampoco
+   le avisa a Meta, para que un número corregido no cuente como otra persona.
    Dibuja los 3 campos dentro del contenedor. Al apretar el botón revisa los datos y que el número tenga WhatsApp
    (revisarNumero). Si está todo bien guarda los datos, avisa el contacto a la app (avisarContacto, 2,5 s como máximo)
    y llama a alConfirmar. Un solo paso: sin código y sin «¿Está bien escrito?» (19-10-2026, 4).
@@ -233,7 +263,7 @@ function formulario(op){
       <div class="ag-error-msg" id="errTelefono" role="alert"></div>
       <button class="ag-boton" id="agStep1Btn" type="submit">${textoBoton} ${flecha}</button>
     </form>
-    <p class="ag-privado">🔒 Tus datos son privados y no se compartirán con terceros.</p>`;
+    <p class="ag-privado">🔒 Nunca vendemos tus datos. Medimos nuestros anuncios con Meta (<a href="/privacidad.html" target="_blank" rel="noopener">ver privacidad</a>).</p>`;
 
   const $=id=>raiz.querySelector('#'+id);
   const CAMPOS={nombre:['agNombre','errNombre'],email:['agEmail','errEmail'],tel:['agTelefono','errTelefono']};
@@ -287,10 +317,12 @@ function formulario(op){
   /** Datos listos: se guardan, se avisa el contacto a la app y sigue la página que montó el formulario. */
   function seguir(d){
     const guardados=guardarDatos(d);
+    const cuenta=op.contarLead?op.contarLead():true;
+    const meta=cuenta?datosMeta(idEventoMeta('lead'),op.contenidoMeta):null;
     tomar(true,'Un momento…');
-    avisarContacto(guardados).then(()=>{
+    avisarContacto(guardados,meta).then(()=>{
       tomar(false);
-      if(op.alConfirmar) op.alConfirmar(guardados);
+      if(op.alConfirmar) op.alConfirmar(guardados,meta?meta.evento_id:'');
     });
   }
   $('agFormDatos').addEventListener('submit',revisar);
@@ -454,7 +486,8 @@ function calendario(op){
     const [y,m,dd]=selDate.split('-').map(Number);
     const dateLabel=new Date(y,m-1,dd).toLocaleDateString('es-CL',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
     // empresa y cargo van vacíos a propósito (19-10-2026): el formulario ya no pregunta la clínica ni el puesto.
-    const payload={type:'agenda_booking',nombre:d.nombre,cargo:'',email:d.email,empresa:'',whatsapp:d.tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?slotObj.end:'',hora_label:slotObj?slotObj.label:selSlot,plan:plan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
+    const idReserva=idEventoMeta('reserva');
+    const payload={meta:datosMeta(idReserva,plan),type:'agenda_booking',nombre:d.nombre,cargo:'',email:d.email,empresa:'',whatsapp:d.tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?slotObj.end:'',hora_label:slotObj?slotObj.label:selSlot,plan:plan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
     try{
       const res=await fetch(URL_AGENDA,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       const data=await res.json().catch(()=>({}));
@@ -490,7 +523,7 @@ function calendario(op){
       }
       $('agSuccessDetail').innerHTML=detail;
       btn.innerHTML=originalHtml;
-      try{if(window.oTrack)window.oTrack('Schedule',{content_name:plan});}catch(e){}
+      avisoPixel('Schedule',{content_name:plan},idReserva);
       $('agStep2').hidden=true;
       $('agStepFinal').hidden=false;
       if(op.alReservar) op.alReservar();

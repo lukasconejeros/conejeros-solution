@@ -222,10 +222,14 @@ const VideoMet=(function(){
     contenedor:cajaDatos,
     titulo:'¿Con quién hablamos?',
     textoBoton:'Ver el video',
-    alConfirmar:function(d){
+    contenidoMeta:'Formulario metodología',
+    /* Solo la primera vez cuenta como Lead (igual que el pixel de abajo): corregir los datos no es otra persona. */
+    contarLead:function(){return body.classList.contains('sin-datos');},
+    alConfirmar:function(d,eventoId){
       const primeraVez=body.classList.contains('sin-datos');
-      /* Meta: el mismo Lead de la portada, para quien llegó directo con el link y dejó sus datos acá. */
-      if(primeraVez){try{if(typeof fbq==='function')fbq('track','Lead',{content_name:'Formulario metodología'});}catch(e){}}
+      /* Meta: el mismo Lead de la portada, para quien llegó directo con el link y dejó sus datos acá. Con el id
+         que la app ya le mandó a Meta (20-10-2026), para que lo cuente una vez. */
+      if(primeraVez){try{if(typeof fbq==='function')fbq('track','Lead',{content_name:'Formulario metodología'},eventoId?{eventID:eventoId}:{});}catch(e){}}
       mostrarContenido(d);
       const destino=primeraVez?document.querySelector('.met-titulo'):cajaCal;
       try{destino.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}
