@@ -344,3 +344,22 @@ Conejeros, que pregunta a WhatsApp SIN mandar nada. «no_existe» ⇒ error bajo
 48 escenarios; peor caso medido 9 s) y `pruebas.cjs` adaptada 259/0; control negativo: la misma prueba contra el código
 viejo se queda en «¿Está bien escrito?». Producción (curl, Origin walybot.cl): su número ⇒ verificado en 1 s,
 569 0000 0000 ⇒ no_existe, /verificar ⇒ sin_conexion, otra web ⇒ 403.
+
+## 19-10-2026 (noche) — Lectura fácil de la portada
+**Pedido (Lukas):** «la landing no se deja leer bien». La auditoría de lectura (Edge, teléfono y computador) midió:
+formulario fuera de la primera pantalla en computador (empezaba a 833 px con 768), qué hace Waly recién en los planes,
+grises de 13 px con contraste 2,6 a 1, la frase clave del título en degradado (2,4 a 1), cifras seguidas con frases de
+85 letras y «su clínica» mezclado con «tu clínica». No eligió titular: se usó el recomendado (su idea pulida).
+
+**Cambios:** título «Deja de perder pacientes por no contestar el WhatsApp» en un solo color; bajo él las 3 cosas que
+hace (contesta, deja la hora en la agenda, confirma el día antes); en computador video y formulario lado a lado; etiqueta
+arriba de cada campo (agenda.js, vale también para /metodologia); grises a #475569/#64748b y 15 px; una cifra por fila,
++130 y +$16 millones (las del video, decidido el 15-10) y «entre junio y el 14 de octubre»; «tu clínica» en los planes;
+planes uno debajo del otro en el teléfono (fuera el carrusel); la Ley debajo de los planes; menú y planes dicen «Ver el
+video» como el formulario (fuera el botón naranja «Reservar»).
+
+**Trampa:** el puerto 8771 lo tenía tomado otro servidor viejo (de otra conversación) que servía una versión con el campo
+cargo: la batería falló en la versión de partida por eso, no por la web. Antes de probar, mirar que el servidor propio
+arrancó (`srv.log` sin EADDRINUSE) y usar un puerto libre.
+
+**Lo que se pierde:** en el teléfono la página quedó más larga (los 3 planes ya no van de lado).

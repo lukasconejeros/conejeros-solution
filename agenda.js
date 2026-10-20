@@ -212,7 +212,9 @@ async function revisarNumero(tel){
    formulario({contenedor, titulo, textoBoton, alConfirmar(datos)})
    Dibuja los 3 campos dentro del contenedor. Al apretar el botón revisa los datos y que el número tenga WhatsApp
    (revisarNumero). Si está todo bien guarda los datos, avisa el contacto a la app (avisarContacto, 2,5 s como máximo)
-   y llama a alConfirmar. Un solo paso: sin código y sin «¿Está bien escrito?» (19-10-2026, 4). */
+   y llama a alConfirmar. Un solo paso: sin código y sin «¿Está bien escrito?» (19-10-2026, 4).
+   Cada campo lleva su etiqueta arriba (19-10-2026, 5): antes solo tenía el texto gris de adentro, que desaparece
+   al escribir y casi no se leía. */
 function formulario(op){
   const raiz=op.contenedor;
   const flecha='<i class="fas fa-arrow-right" aria-hidden="true"></i>';
@@ -220,11 +222,14 @@ function formulario(op){
   raiz.innerHTML=`
     <div class="ag-titulo" id="agTitulo">${op.titulo||''}</div>
     <form id="agFormDatos" novalidate>
-      <input class="ag-campo" id="agNombre" type="text" placeholder="👤 Tu nombre y apellido" aria-label="Tu nombre y apellido" autocomplete="name" maxlength="80">
+      <label class="ag-etiqueta" for="agNombre">Tu nombre y apellido</label>
+      <input class="ag-campo" id="agNombre" type="text" placeholder="Ej: Carolina Rojas" autocomplete="name" maxlength="80">
       <div class="ag-error-msg" id="errNombre" role="alert"></div>
-      <input class="ag-campo" id="agEmail" type="email" placeholder="✉️ Tu correo" aria-label="Tu correo" autocomplete="email" inputmode="email" maxlength="120">
+      <label class="ag-etiqueta" for="agEmail">Tu correo</label>
+      <input class="ag-campo" id="agEmail" type="email" placeholder="Ej: carolina@tuclinica.cl" autocomplete="email" inputmode="email" maxlength="120">
       <div class="ag-error-msg" id="errEmail" role="alert"></div>
-      <input class="ag-campo" id="agTelefono" type="tel" placeholder="💬 Tu WhatsApp: 9 1234 5678" aria-label="Tu WhatsApp" autocomplete="tel" inputmode="tel" maxlength="20">
+      <label class="ag-etiqueta" for="agTelefono">Tu WhatsApp</label>
+      <input class="ag-campo" id="agTelefono" type="tel" placeholder="Ej: 9 1234 5678" autocomplete="tel" inputmode="tel" maxlength="20">
       <div class="ag-error-msg" id="errTelefono" role="alert"></div>
       <button class="ag-boton" id="agStep1Btn" type="submit">${textoBoton} ${flecha}</button>
     </form>

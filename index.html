@@ -37,7 +37,7 @@
         "price": "200000",
         "priceCurrency": "CLP",
         "priceSpecification": { "@type": "UnitPriceSpecification", "price": "200000", "priceCurrency": "CLP", "valueAddedTaxIncluded": true, "unitText": "MONTH" },
-        "description": "Contesta el WhatsApp de su clínica a toda hora, responde las preguntas frecuentes con la información de su clínica, pasa la conversación a su secretaria cuando hace falta y trae un panel para ver y tomar cada chat. Sin conexión al software de agenda."
+        "description": "Contesta el WhatsApp de tu clínica a toda hora, responde las preguntas frecuentes con la información de tu clínica, pasa la conversación a tu secretaria cuando hace falta y trae un panel para ver y tomar cada chat. Sin conexión al software de agenda."
       },
       {
         "@type": "Offer",
@@ -213,7 +213,7 @@
     .btn-solar:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 0 0 1px rgba(255,213,128,0.75),0 12px 44px rgba(255,185,50,0.6),inset 0 1px 0 rgba(255,255,255,0.4)}
     /* ── SE CONECTA CON (integraciones) ── */
     .integra-bar{padding:34px 20px 30px;text-align:center;background:#f8fafc;border-top:1px solid rgba(15,23,42,0.06);border-bottom:1px solid rgba(15,23,42,0.06);margin-top:8px}
-    .integra-label{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#94a3b8;margin-bottom:20px}
+    .integra-label{font-size:.84rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#475569;margin-bottom:20px}
     .integra-logos{list-style:none;margin:0 auto;padding:0;max-width:900px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:22px 44px}
     .integra-logos li{display:flex;align-items:center;justify-content:center;height:30px}
     .integra-logos img{height:28px;width:auto;display:block;filter:grayscale(1) brightness(0);opacity:.5}
@@ -221,7 +221,7 @@
     .integra-wa{gap:8px}
     .integra-wa img{height:26px}
     .integra-wa span{font-size:1.25rem;font-weight:700;letter-spacing:-.01em;color:#000;opacity:.5;line-height:1}
-    @media (max-width:640px){.integra-bar{padding:26px 16px 24px}.integra-label{font-size:.7rem;margin-bottom:16px}.integra-logos{gap:18px 28px}.integra-logos li{height:24px}.integra-logos img{height:21px}.integra-reservo img{height:18px}.integra-wa img{height:20px}.integra-wa span{font-size:.98rem}}
+    @media (max-width:640px){.integra-bar{padding:26px 16px 24px}.integra-label{margin-bottom:16px}.integra-logos{gap:18px 28px}.integra-logos li{height:24px}.integra-logos img{height:21px}.integra-reservo img{height:18px}.integra-wa img{height:20px}.integra-wa span{font-size:.98rem}}
     /* ── PLANES (precio, una línea y viñetas con lo que el producto hace hoy) ── */
     .planes-section{padding:52px 16px 64px;background:#ffffff}
     .planes-wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px}
@@ -628,7 +628,7 @@
     /* ═══════════════════════════════════════
        LIGHT MODE — FONDO BLANCO
     ═══════════════════════════════════════ */
-    :root{--void:#ffffff;--surface:#f1f5f9;--glass-bg:rgba(0,0,0,0.02);--glass-border:rgba(0,0,0,0.08);--glass-border-h:rgba(0,0,0,0.14);--text-primary:#0f172a;--text-secondary:#475569;--text-muted:#94a3b8;}
+    :root{--void:#ffffff;--surface:#f1f5f9;--glass-bg:rgba(0,0,0,0.02);--glass-border:rgba(0,0,0,0.08);--glass-border-h:rgba(0,0,0,0.14);--text-primary:#0f172a;--text-secondary:#475569;--text-muted:#64748b;}
     body{background:#ffffff;color:#0f172a;}
     body::before{display:none;}
     .solar-sun,.glow-blob,#star-canvas{display:none;}
@@ -712,7 +712,7 @@
     /* Footer */
     footer{background:#f8fafc;border-color:rgba(0,0,0,0.08);padding-bottom:120px;}
     .footer-logo-text{background:linear-gradient(to bottom,#0f172a 30%,#475569);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .footer-bottom{color:#94a3b8;border-color:rgba(0,0,0,0.06);}
+    .footer-bottom{color:#64748b;border-color:rgba(0,0,0,0.06);}
 
     /* btn-ghost on white bg */
     .btn-ghost{background:rgba(0,0,0,0.04);color:#475569;border-color:rgba(0,0,0,0.1);}
@@ -801,11 +801,13 @@
     /* ── PORTADA TIPO LANDING (29-09-2026): título, el video al tiro y un solo botón ── */
     .hero-section{min-height:auto;display:block;padding:22px 0 44px;}
     .hero-content{max-width:1000px;padding:0 24px;}
-    .hero-title{font-size:clamp(2.1rem,4.4vw,3.5rem);line-height:1.08;margin-bottom:12px;}
-    .hero-subtitle{font-size:clamp(1rem,1.5vw,1.15rem);max-width:780px;margin:0 auto 18px;line-height:1.5;}
+    /* 19-10-2026: título en un solo color oscuro (sin el degradado) y un poco más chico, porque ahora es más largo. */
+    .hero-title{font-size:clamp(2rem,3.9vw,3.1rem);line-height:1.08;margin-bottom:12px;color:#0f172a;text-wrap:balance;}
+    .hero-subtitle{font-size:clamp(1rem,1.5vw,1.15rem);max-width:780px;margin:0 auto 10px;line-height:1.5;color:#334155;}
     /* El video cabe en la primera pantalla: se achica si la ventana es baja. */
     .hero-video{width:min(100%,780px,max(320px,calc((100vh - 345px) * 16 / 9)));margin:0 auto;animation:fadeInUp .7s ease .5s both;}
-    @media (max-width:480px){.hero-section{padding:12px 0 34px}.hero-content{padding:0 16px}.hero-title{font-size:clamp(2rem,9vw,2.6rem);line-height:1.1;margin-bottom:10px}.hero-subtitle{font-size:.98rem;margin-bottom:16px}.hero-video{width:100%}}
+    @media (max-width:640px){.solo-pc{display:none;}}
+    @media (max-width:480px){.hero-section{padding:12px 0 34px}.hero-content{padding:0 16px}.hero-title{font-size:clamp(1.6rem,7.6vw,2.2rem);line-height:1.12;margin-bottom:10px}.hero-subtitle{font-size:.98rem;margin-bottom:10px}.hero-video{width:100%}}
     /* ── VIDEO DE LA LANDING: arranca solo y sin sonido; el botón le pone sonido ──
        19-10-2026: con portada (poster) se ve desde el primer momento; antes quedaba invisible hasta cargar
        y empujaba el formulario hacia abajo al aparecer. */
@@ -821,12 +823,14 @@
 
     /* ══ LANDING COMPACTA (15-10-2026): cifras en la portada, franja Ley 21.719, video plegado mientras no
        exista, y menos aire en planes, agenda y pie. Recuerda: 1rem = 18 px en esta web. ══ */
-    .cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:4px auto 0;animation:fadeInUp .7s ease .5s both;}
-    .cifra{background:#fff;border:1px solid rgba(15,23,42,.09);border-radius:16px;padding:16px 16px 14px;box-shadow:0 6px 22px rgba(15,23,42,.06);}
-    .cifra-n{font-size:2.3rem;font-weight:900;letter-spacing:-.045em;line-height:1.05;background:linear-gradient(135deg,var(--cyan-bright) 0%,var(--electric) 35%,var(--primary) 65%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .cifra-n span{font-size:1.05rem;letter-spacing:-.02em;}
-    .cifra-t{margin-top:6px;font-size:.8rem;font-weight:600;line-height:1.4;color:#475569;}
-    .cifras-nota{margin:10px auto 0;font-size:.72rem;font-weight:500;color:#94a3b8;line-height:1.4;}
+    /* 19-10-2026: una cifra por fila (número a la izquierda, frase corta a la derecha), número en azul sólido (el
+       degradado celeste no se leía) y la nota de dónde salen en gris oscuro de 15 px (antes 13 px y 2,6 a 1). */
+    .cifras{display:flex;flex-direction:column;gap:8px;max-width:600px;width:100%;margin:4px auto 0;animation:fadeInUp .7s ease .5s both;}
+    .cifra{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid rgba(15,23,42,.09);border-radius:16px;padding:12px 20px;box-shadow:0 6px 22px rgba(15,23,42,.06);text-align:left;}
+    .cifra-n{flex:0 0 6.4rem;font-size:2.1rem;font-weight:900;letter-spacing:-.04em;line-height:1.05;color:#1d4ed8;white-space:nowrap;}
+    .cifra-n span{display:block;font-size:.9rem;font-weight:800;letter-spacing:0;line-height:1.2;}
+    .cifra-t{font-size:.94rem;font-weight:600;line-height:1.4;color:#334155;}
+    .cifras-nota{margin:12px auto 0;max-width:600px;font-size:.84rem;font-weight:500;color:#475569;line-height:1.45;}
     /* Si el video no carga (archivo borrado o error), el bloque se pliega: nunca un recuadro negro vacío. */
     .hero-video.sin-video{display:none;}
     /* ── FORMULARIO A LA VISTA (19-10-2026): justo debajo del video corto. Al confirmar el número lleva a
@@ -834,17 +838,34 @@
     .form-landing{margin:22px auto 0;animation:fadeInUp .7s ease .6s both;}
     .form-landing .ag-titulo{text-align:center;font-size:1.15rem;}
     .cifras{margin-top:28px;}
+    /* ── QUÉ HACE WALY, bajo el título (19-10-2026): 3 frases cortas con un visto. En computador van en una fila;
+       en el teléfono, una debajo de la otra. ── */
+    .hero-hace{list-style:none;margin:0 auto 20px;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;animation:fadeInUp .7s ease .5s both;}
+    .hero-hace li{position:relative;padding-left:29px;font-size:1rem;font-weight:700;color:#0f172a;line-height:1.4;text-align:left;}
+    .hero-hace li::before{content:"\2713";position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:rgba(8,145,178,.14);color:#0e7490;font-size:.7rem;font-weight:900;line-height:20px;text-align:center;}
+    /* ── VIDEO Y FORMULARIO LADO A LADO en computador (19-10-2026): antes el video empujaba el formulario fuera de
+       la primera pantalla (empezaba a 833 px con una pantalla de 768). Si el video no carga, el formulario queda solo
+       y centrado. ── */
+    @media (min-width:900px){
+      .hero-content{max-width:1080px;}
+      .hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(340px,1fr);gap:24px;align-items:center;}
+      .hero-grid .hero-video{width:100%;}
+      .hero-grid .form-landing{margin:0;max-width:none;}
+      .hero-grid .hero-video.sin-video + .form-landing{grid-column:1 / -1;max-width:560px;margin:0 auto;}
+      .form-landing .ag-titulo{font-size:1.1rem;}
+    }
     @media (max-width:640px){
       /* En el teléfono va todo en columna y en el orden del HTML: video, formulario y después las cifras
          (antes el botón «Reservar» iba primero y el video al final; Lukas 19-10: el video corto arriba). */
       .hero-content{display:flex;flex-direction:column;}
+      .hero-hace{flex-direction:column;align-items:flex-start;width:max-content;max-width:100%;gap:5px;margin-bottom:16px;}
+      .hero-hace li{font-size:.95rem;}
       .form-landing{margin-top:16px;}
-      .cifras{margin-top:22px;}
-      .cifras{grid-template-columns:1fr;gap:8px;max-width:420px;width:100%;margin-left:auto;margin-right:auto;}
-      .cifra{display:flex;align-items:center;gap:14px;padding:11px 14px;text-align:left;}
-      .cifra-n{font-size:1.75rem;flex:0 0 auto;min-width:5.2rem;}
-      .cifra-n span{font-size:.8rem;}
-      .cifra-t{margin-top:0;font-size:.76rem;}
+      .cifras{margin-top:22px;max-width:420px;}
+      .cifra{gap:12px;padding:11px 14px;}
+      .cifra-n{flex-basis:5.3rem;font-size:1.65rem;}
+      .cifra-n span{font-size:.78rem;}
+      .cifra-t{font-size:.86rem;}
     }
 
     .ley-section{padding:34px 16px 32px;background:#fff;}
@@ -852,13 +873,13 @@
     .ley-head{text-align:center;}
     .ley-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.04em;color:#047857;}
     .ley-title{margin:12px 0 6px;font-size:1.6rem;font-weight:900;letter-spacing:-.04em;line-height:1.15;color:#0f172a;}
-    .ley-sub{margin:0 auto;max-width:620px;font-size:.88rem;line-height:1.5;color:#475569;}
+    .ley-sub{margin:0 auto;max-width:620px;font-size:.92rem;line-height:1.5;color:#334155;}
     .ley-lista{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-    .ley-lista li{display:flex;flex-direction:column;gap:8px;padding:14px 14px 13px;border:1px solid rgba(15,23,42,.09);border-radius:14px;background:#f8fafc;font-size:.8rem;font-weight:600;line-height:1.4;color:#334155;}
+    .ley-lista li{display:flex;flex-direction:column;gap:8px;padding:14px 14px 13px;border:1px solid rgba(15,23,42,.09);border-radius:14px;background:#f8fafc;font-size:.88rem;font-weight:600;line-height:1.4;color:#334155;}
     .ley-lista i{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(16,185,129,.12);color:#059669;font-size:.8rem;}
     .ley-lista a{color:#0891b2;text-decoration:underline;text-underline-offset:2px;}
-    .ley-links{margin:14px 0 0;text-align:center;font-size:.78rem;color:#94a3b8;}
-    .ley-links a{color:#64748b;text-decoration:underline;text-underline-offset:2px;}
+    .ley-links{margin:14px 0 0;text-align:center;font-size:.84rem;color:#475569;}
+    .ley-links a{color:#475569;text-decoration:underline;text-underline-offset:2px;}
     .ley-links a:hover{color:var(--cyan);}
     @media (max-width:860px){.ley-lista{grid-template-columns:repeat(2,1fr);}}
     @media (max-width:480px){
@@ -883,7 +904,7 @@
     .footer-cols{gap:26px;padding:36px 0 20px;}
     .footer-col h4{margin-bottom:10px;}
     .footer-col a.footer-link{font-size:.82rem;margin-bottom:6px;line-height:1.4;}
-    .footer-bottom{padding-top:18px;font-size:.78rem;}
+    .footer-bottom{padding-top:18px;font-size:.82rem;}
     @media (min-width:1001px){.footer-cols{grid-template-columns:1.25fr .75fr 1fr 1fr 1fr 1fr;}}
     .footer-grupo summary{list-style:none;cursor:pointer;}
     .footer-grupo summary::-webkit-details-marker{display:none;}
@@ -901,17 +922,13 @@
       .footer-grupo[open] summary{margin-bottom:10px;}
     }
 
-    /* Teléfono: los 3 planes en carrusel (se ve el borde del siguiente) y el calendario sin aire de sobra. */
-    .planes-desliza{display:none;}
-    @media (max-width:760px){
-      .precios-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;max-width:none;width:calc(100% + 32px);margin:0 -16px;padding:4px 16px 12px;scrollbar-width:none;}
-      .precios-grid::-webkit-scrollbar{display:none;}
-      .precio-card{flex:0 0 82%;scroll-snap-align:center;}
-      .planes-desliza{display:block;margin:-8px 0 0;font-size:.74rem;font-weight:600;color:#94a3b8;}
-      .precios-nota{margin-top:0;}
-    }
+    /* Teléfono: los 3 planes uno debajo del otro (19-10-2026). Hasta hoy iban en un carrusel de lado y Pro y Premium
+       quedaban escondidos: había que deslizar para verlos. */
+    @media (max-width:760px){.precios-nota{margin-top:0;}}
     /* Botones «Reservar» (19-10-2026): ya no abren una ventana; bajan al formulario de arriba (irAlFormulario). */
     button.video-cta{border:0;cursor:pointer;font-family:var(--font);}
+    .planes-section .video-cta{background:linear-gradient(135deg,var(--cyan) 0%,var(--primary) 55%,var(--accent) 100%);color:#fff;box-shadow:0 0 0 1px rgba(6,182,212,.35),0 6px 22px rgba(6,182,212,.35);}
+    .planes-section .video-cta:hover{box-shadow:0 0 0 1px rgba(6,182,212,.55),0 10px 32px rgba(6,182,212,.5);}
     @media (max-width:640px){
       .aginline-badge{margin-bottom:14px;padding:7px 14px;font-size:.68rem;}
       .aginline-title{font-size:1.75rem;margin-bottom:8px;}
@@ -967,7 +984,7 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
   <div class="nav-inner">
     <a href="#" class="logo"><span class="logo-text">Waly<span class="AI">.IA</span></span><img src="logo-waly.svg" alt="" class="logo-mark" width="26" height="26"></a>
     <div class="nav-actions">
-      <button class="btn btn-solar" onclick="irAlFormulario()"><span>📅 Reservar<span class="nav-btn-largo"> reunión</span></span></button>
+      <button class="btn btn-primary" onclick="irAlFormulario()"><i class="fas fa-play" aria-hidden="true"></i><span>Ver el video</span></button>
     </div>
   </div>
 </nav>
@@ -977,8 +994,18 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
      página donde está el video más largo». Al confirmar el número se va a /metodologia (metodologia.html). ══ -->
 <section class="hero-section">
   <div class="hero-content">
-    <h1 class="hero-title">Deja de perder pacientes<br>por <span class="gradient">no contestar a tiempo</span></h1>
-    <p class="hero-subtitle">Inteligencia artificial que contesta el WhatsApp de su clínica a toda hora.</p>
+    <!-- LECTURA FÁCIL (19-10-2026): el título entero en un solo color (el degradado celeste se leía 2,4 a 1) y,
+         justo debajo, las 3 cosas que hace Waly (antes recién aparecían en los planes, muy abajo). -->
+    <h1 class="hero-title">Deja de perder pacientes<br class="solo-pc"> por no contestar el WhatsApp</h1>
+    <p class="hero-subtitle">Una inteligencia artificial conectada al WhatsApp de tu clínica:</p>
+    <ul class="hero-hace" aria-label="Qué hace Waly">
+      <li>Contesta a tus pacientes al tiro</li>
+      <li>Deja la hora puesta en tu agenda</li>
+      <li>Confirma la hora el día antes</li>
+    </ul>
+    <!-- En computador el video y el formulario van lado a lado: así el formulario se ve sin bajar.
+         En el teléfono van uno debajo del otro (video y después formulario). -->
+    <div class="hero-grid">
     <div class="hero-video" id="video">
       <div class="video-frame" id="videoFrame">
         <!-- ══ EL VIDEO CORTO (19-10-2026) ══
@@ -995,20 +1022,24 @@ try{if(typeof fbq==="function"){fbq("trackCustom","VisitaDesdeIA",{fuente:f,pagi
          agenda.js (el mismo de /metodologia). id="reservar": walybot.cl/#reservar y todos los botones
          «Reservar» bajan acá. ══ -->
     <div class="reunion-card form-landing" id="reservar"></div>
+    </div>
     <!-- ══ CIFRAS (15-10-2026) — medidas el 14-10-2026 17:22-18:10 en Anpalex, Medifis y Yaber, en el sistema de
          agenda y de caja de cada clínica (conejeros-lab/creativos-waly-ads/DATO-PACIENTES-Y-PLATA-WALY-2026-10-14.md).
+         Ventanas: Anpalex desde el 17-06, Medifis desde el 21-07 y Yaber desde el 22-09, todas hasta el 14-10-2026.
          · +400 citas: piso de citas NUEVAS que creó la IA (Anpalex 61 + Medifis 197 + Yaber 146 = 404; sin pruebas
            ni horas que solo movió). Con las movidas son 476.
-         · +120 pacientes: el «estricto» = la IA agendó sola, eran nuevos o llevaban 90+ días sin venir, y se
-           atendieron (132; 130 en la variante más dura). 108 son nuevos, por eso NO dice «120 nuevos» a secas.
-         · +$15 millones: lo que esos 132 pagaron desde esa cita ($16.319.118; Medifis cuenta ventas registradas).
+         · +130 pacientes: el «estricto» = la IA agendó sola, eran nuevos o llevaban 90+ días sin venir, y se
+           atendieron (132). 108 son nuevos, por eso NO dice «130 nuevos» a secas.
+         · +$16 millones: lo que esos 132 pagaron desde esa cita ($16.319.118; Medifis cuenta ventas registradas).
+         19-10-2026: +120 → +130 y +$15 → +$16 millones, las mismas cifras que dice el video (decidido el 15-10).
+         Una cifra por fila y con frases cortas: las 3 seguidas con textos de 85 letras cansaban.
          Son totales que solo crecen, pero NO se suben sin volver a medir con el mismo método. -->
     <div class="cifras" aria-label="Resultados medidos">
-      <div class="cifra"><div class="cifra-n">+400</div><div class="cifra-t">citas que la IA dejó puestas en la agenda de la clínica</div></div>
-      <div class="cifra"><div class="cifra-n">+120</div><div class="cifra-t">pacientes nuevos o que no venían hace meses: los agendó la IA sola y ya se atendieron</div></div>
-      <div class="cifra"><div class="cifra-n">+$15<span> millones</span></div><div class="cifra-t">que esos pacientes ya dejaron en las clínicas</div></div>
+      <div class="cifra"><div class="cifra-n">+400</div><div class="cifra-t">citas que la IA dejó puestas en la agenda</div></div>
+      <div class="cifra"><div class="cifra-n">+130</div><div class="cifra-t">pacientes nuevos o que no venían hace meses, agendados por la IA</div></div>
+      <div class="cifra"><div class="cifra-n">+$16<span> millones</span></div><div class="cifra-t">que esos pacientes ya dejaron en las clínicas</div></div>
     </div>
-    <p class="cifras-nota">Medido el 14 de octubre de 2026 en la agenda y la caja de 3 clínicas en Chile.</p>
+    <p class="cifras-nota">Medido entre junio y el 14 de octubre de 2026 en la agenda y la caja de 3 clínicas de Chile.</p>
   </div>
 </section>
 <script>
@@ -1049,7 +1080,7 @@ var formLanding=null;
   if(!caja||!window.WalyAgenda)return;
   formLanding=WalyAgenda.formulario({
     contenedor:caja,
-    titulo:'Responde y mira el video completo',
+    titulo:'Deja tus datos y mira el video completo',
     textoBoton:'Ver el video',
     alConfirmar:function(){
       var irse=function(){location.href='/metodologia';};
@@ -1093,26 +1124,7 @@ function irAlFormulario(ev){
   </ul>
 </section>
 
-<!-- ══ LEY 21.719 (15-10-2026) — solo hechos que hoy son verdad. NO decir «cumplimos» ni «100 % legal»: el plan
-     de la ley (EIPD, bot que dice ser IA, purga) no está hecho (memoria auditoria-ley-21719). Cada punto se
-     respalda en: contrato de encargo (cláusulas de Medifis DÉCIMO y Yaber OCTAVO; a cada clínica nueva se le firma),
-     privacidad.html §3 «no vendemos», eliminar-datos.html (10 días hábiles) y el «no me escriban más» de esa misma página. -->
-<section class="ley-section" aria-labelledby="leyTitulo">
-  <div class="ley-wrap">
-    <div class="ley-head">
-      <div class="ley-badge"><i class="fas fa-shield-halved"></i> Ley 21.719 · Datos personales</div>
-      <h2 class="ley-title" id="leyTitulo">Los datos de tus pacientes son de tu clínica</h2>
-      <p class="ley-sub">La nueva ley de datos personales pide reglas claras a quien maneja datos de pacientes. Estas son las nuestras:</p>
-    </div>
-    <ul class="ley-lista">
-      <li><i class="fas fa-file-signature"></i><span>Firmamos con tu clínica un contrato de encargo de datos.</span></li>
-      <li><i class="fas fa-ban"></i><span>No vendemos los datos de tus pacientes.</span></li>
-      <li><i class="fas fa-eraser"></i><span>Cualquier paciente puede <a href="/eliminar-datos.html">pedir que borremos sus datos</a>.</span></li>
-      <li><i class="fas fa-hand"></i><span>Si escribe «no me escriban más», el asistente deja de escribirle.</span></li>
-    </ul>
-    <p class="ley-links"><a href="/privacidad.html">Política de privacidad</a> · <a href="/ley-21719-datos-pacientes-whatsapp-clinica">Qué cambia con la Ley 21.719</a></p>
-  </div>
-</section>
+
 
 <!-- ══ PLANES — precio, una línea y lo que el producto hace HOY (verificado 29-09-2026) ══ -->
 <section class="planes-section" id="planes">
@@ -1124,9 +1136,9 @@ function irAlFormulario(ev){
         <div class="precio-monto">$200.000 <span>al mes</span></div>
         <p class="precio-linea">Sin conexión al software de agenda</p>
         <ul class="precio-lista">
-          <li>Contesta el WhatsApp de su clínica a toda hora</li>
-          <li>Responde las preguntas frecuentes con la información de su clínica</li>
-          <li>Pasa la conversación a su secretaria cuando hace falta</li>
+          <li>Contesta el WhatsApp de tu clínica a toda hora</li>
+          <li>Responde las preguntas frecuentes con la información de tu clínica</li>
+          <li>Pasa la conversación a tu secretaria cuando hace falta</li>
           <li>Panel para ver y tomar cada chat</li>
         </ul>
       </div>
@@ -1151,9 +1163,31 @@ function irAlFormulario(ev){
         </ul>
       </div>
     </div>
-    <p class="planes-desliza">Desliza para ver los 3 planes →</p>
     <p class="precios-nota">Valores mensuales, IVA incluido.</p>
-    <button type="button" class="video-cta" onclick="irAlFormulario()"><i class="fas fa-calendar-check"></i> Reservar reunión de 45 minutos</button>
+    <!-- 19-10-2026: un solo llamado en toda la página («Ver el video», el mismo del formulario). Antes este botón
+         decía «Reservar reunión» y bajaba igual al formulario de «Ver el video»: dos nombres para lo mismo. -->
+    <button type="button" class="video-cta" onclick="irAlFormulario()"><i class="fas fa-play" aria-hidden="true"></i> Ver el video y reservar la reunión</button>
+  </div>
+</section>
+
+<!-- ══ LEY 21.719 (15-10-2026; desde el 19-10 va DEBAJO de los planes: en el teléfono separaba el formulario de los precios) — solo hechos que hoy son verdad. NO decir «cumplimos» ni «100 % legal»: el plan
+     de la ley (EIPD, bot que dice ser IA, purga) no está hecho (memoria auditoria-ley-21719). Cada punto se
+     respalda en: contrato de encargo (cláusulas de Medifis DÉCIMO y Yaber OCTAVO; a cada clínica nueva se le firma),
+     privacidad.html §3 «no vendemos», eliminar-datos.html (10 días hábiles) y el «no me escriban más» de esa misma página. -->
+<section class="ley-section" aria-labelledby="leyTitulo">
+  <div class="ley-wrap">
+    <div class="ley-head">
+      <div class="ley-badge"><i class="fas fa-shield-halved"></i> Ley 21.719 · Datos personales</div>
+      <h2 class="ley-title" id="leyTitulo">Los datos de tus pacientes son de tu clínica</h2>
+      <p class="ley-sub">La nueva ley de datos personales pide reglas claras a quien maneja datos de pacientes. Estas son las nuestras:</p>
+    </div>
+    <ul class="ley-lista">
+      <li><i class="fas fa-file-signature"></i><span>Firmamos con tu clínica un contrato de encargo de datos.</span></li>
+      <li><i class="fas fa-ban"></i><span>No vendemos los datos de tus pacientes.</span></li>
+      <li><i class="fas fa-eraser"></i><span>Cualquier paciente puede <a href="/eliminar-datos.html">pedir que borremos sus datos</a>.</span></li>
+      <li><i class="fas fa-hand"></i><span>Si escribe «no me escriban más», el asistente deja de escribirle.</span></li>
+    </ul>
+    <p class="ley-links"><a href="/privacidad.html">Política de privacidad</a> · <a href="/ley-21719-datos-pacientes-whatsapp-clinica">Qué cambia con la Ley 21.719</a></p>
   </div>
 </section>
 
