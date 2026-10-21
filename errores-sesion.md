@@ -363,3 +363,16 @@ cargo: la batería falló en la versión de partida por eso, no por la web. Ante
 arrancó (`srv.log` sin EADDRINUSE) y usar un puerto libre.
 
 **Lo que se pierde:** en el teléfono la página quedó más larga (los 3 planes ya no van de lado).
+
+## 21-10-2026 (noche) — Videos v2 y cuánto del video ven
+**Pedido (Lukas):** «me gusta lo que dices, hazlo» a la revisión de videos. Hecho: `235323f` (medir-video.js: cada hito
+una vez por pestaña a la app Conejeros, sin datos de la persona) y `05734fc` (corto 21 s con el resultado primero y
+subtítulos, sin «de seis minutos»; largo 4:17 sin los 4 pasos, sin «400, 600 o un millón», sin «3 horas antes» y sin
+«con otra clínica»). Cómo se hicieron: `conejeros-lab/creativos-waly-ads/edit-landing-horizontal/cortar_intro.py`,
+`preparar.py` y `cortar_largo_web.py`.
+**Para leer los números:** los dos videos arrancan sin sonido, así que «play» ≈ visita; lo que dice si lo miraron es
+«sonido» y s25…s100. Las visitas de Lukas también cuentan.
+**Cortes en un video ya renderizado:** se corta el MISMO largo de video (en cuadros) y de audio (en un silencio medido
+cada 10 ms): así no se desfasan aunque el instante del corte difiera unos ms. Revisar cada corte transcribiéndolo.
+**Pruebas:** `prueba_medir.cjs` 27/27 (Edge 390 y 1366, app reemplazada; contra la versión anterior 0 avisos). En vivo:
+Content-Length de los dos videos = los archivos subidos.
