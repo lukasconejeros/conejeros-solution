@@ -376,3 +376,14 @@ subtítulos, sin «de seis minutos»; largo 4:17 sin los 4 pasos, sin «400, 600
 cada 10 ms): así no se desfasan aunque el instante del corte difiera unos ms. Revisar cada corte transcribiéndolo.
 **Pruebas:** `prueba_medir.cjs` 27/27 (Edge 390 y 1366, app reemplazada; contra la versión anterior 0 avisos). En vivo:
 Content-Length de los dos videos = los archivos subidos.
+
+## 21-10-2026 (noche) — Video largo v3: vuelve «recordatorios de 3 horas» y sin tarjetas que saltan
+**Reclamo (Lukas):** «sacaste la parte de confirmaciones 24 horas y recordatorios de 3 horas, eso tienes que dejarlo» y
+«un microsegundo quedó mal cortado: una animación de un microsegundo y pasa directo a otra».
+**Error mío:** saqué «y recordatorios de tres horas antes» por mi cuenta (en Anpalex es 1 hora) aunque él no lo pidió, y
+el corte dejaba la tarjeta de confirmaciones a medio armar desapareciendo en 1 cuadro.
+**Medido:** revisados TODOS los cortes cuadro a cuadro (c-8, c-4, c-1, c, c+3, c+8): 7 cortes con una tarjeta que
+aparece/desaparece/cambia en 1 cuadro (4 venían de la edición del Editor Waly, 3 de mis cortes) + el salto a blanco del
+final. Arreglo: se funde solo el rectángulo de la tarjeta (3-8 cuadros), la cara queda con su corte seco. v3 = 4:18.
+**Regla:** cortar un video que ya trae tarjetas quemadas = revisar cada corte cuadro a cuadro buscando tarjetas que saltan,
+no solo transcribir el audio. Y una frase que él dijo no se saca sin preguntarle.
