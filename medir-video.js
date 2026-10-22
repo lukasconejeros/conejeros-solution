@@ -12,6 +12,9 @@
    porque el último cuadro no siempre avisa. */
 (function(){
   'use strict';
+  /* Modo prueba (21-10-2026, window.WALY_PRUEBA lo decide la página antes del pixel): las visitas de prueba no se
+     miden, para que no se mezclen con las de la gente. */
+  if(window.WALY_PRUEBA===true)return;
   var URL_VIDEO='https://waly-conejeros.bvil2a.easypanel.host/api/agenda-web/video';
   var VIDEOS={landingVideo:'intro',metodologiaVideo:'metodologia'};
   var CLAVE='waly_visita';

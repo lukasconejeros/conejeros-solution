@@ -400,3 +400,21 @@ hoja de cuadros. Y no escribir «sin guion» en la página: a los dos se les man
 **Pruebas viejas:** pruebas.cjs, prueba_revisar.cjs y prueba_meta.cjs fallaban IGUAL antes de este cambio porque no
 conocían el aviso de videos (`/api/agenda-web/video`, del 21-10): se les enseñó a contestarlo 204. Quedaron 414/0, 421/0
 y 80/0; prueba_medir 27/0 y la nueva prueba_testimonios 49/0 (390, 360 y 1366: play, uno a la vez, sin scroll de lado).
+
+## 21-10-2026 (noche) — Modo prueba: las pruebas no cuentan para Meta
+**Pedido (Lukas):** «que estas pruebas no cuenten para el estudio de Meta». Del 19 al 21-10 todos los Lead/Schedule del
+pixel fueron pruebas nuestras (6 avisos el 21-10).
+**Hecho:** abrir cualquier página con `?prueba` (o `?prueba=1`) lo prende en ese navegador (`localStorage waly_prueba`),
+`?prueba=0` lo apaga. Prendido: el pixel no se carga (ni PageView, ni Lead, ni Schedule, ni VisitaDesdeIA; `fbq` no
+existe y `oTrack` no hace nada), `medir-video.js` no mide y agenda.js manda `prueba:true` en el contacto y la reserva
+(la app no se lo avisa a Meta y no lo cuenta en «Formularios»). Cartel abajo a la izquierda «Modo prueba · no cuenta
+para Meta», sin tomar los clics. Sin almacenamiento vale solo para esa visita. El número de Lukas cuenta como prueba
+igual (lo decide la app), aunque la página no esté en modo prueba: OJO, eso solo frena el aviso del SERVIDOR; el pixel
+del navegador sí se dispara si no se abrió con `?prueba`.
+**Decisión:** el pixel queda envuelto en `if(!window.WALY_PRUEBA){…}` en vez de un `fbq` de mentira: si la decisión
+fallara, el pixel carga como siempre (nunca se pierde una visita real por un error del modo prueba). En 31 de las 33
+páginas el pixel está al final del body: la decisión va justo antes, igual que en el <head> de la portada y /metodologia.
+**Pruebas:** `prueba_modo.cjs` nueva, 45/41 contra la versión anterior y 86/0 después (Edge 390 y 1366; las 33
+páginas con y sin `?prueba`; con el botón pegado abajo en el teléfono el cartel tapa una esquina de 22 px, pero el
+toque llega igual). Las viejas, iguales que antes: pruebas 414/0, prueba_revisar 421/0, prueba_meta 80/0,
+prueba_medir 27/0, prueba_testimonios 49/0.

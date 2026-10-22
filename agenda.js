@@ -151,6 +151,12 @@ function datosMeta(eventoId,contenido){
   if(!fbc){try{const id=new URLSearchParams(location.search).get('fbclid');if(id)fbc='fb.1.'+Date.now()+'.'+id;}catch(e){}}
   return {evento_id:eventoId,fbp:cookie('_fbp'),fbc:fbc,url:location.origin+location.pathname,contenido:contenido||'',utm:utmDeLaVisita()};
 }
+/* Modo prueba (21-10-2026). Lukas: «que estas pruebas no cuenten para el estudio de Meta». Lo decide cada página
+   ANTES del pixel (window.WALY_PRUEBA, en el <head> o justo antes del pixel): con ?prueba no carga el pixel, así que
+   avisoPixel y los Lead de las páginas no hacen nada (fbq no existe). Acá solo se le avisa a la app con prueba:true:
+   el formulario y la reserva siguen su camino normal, pero la app no se los manda a Meta ni los cuenta en «Formularios». */
+function conPrueba(cuerpo){ if(window.WALY_PRUEBA===true) cuerpo.prueba=true; return cuerpo; }
+
 /** El aviso del navegador con el mismo id que mandó la app. Sin pixel (bloqueado) no pasa nada. */
 function avisoPixel(evento,params,eventoId){
   try{if(typeof fbq==='function'){if(eventoId)fbq('track',evento,params||{},{eventID:eventoId});else fbq('track',evento,params||{});}}catch(e){}
@@ -183,7 +189,7 @@ function avisarContacto(d,meta){
   marcarAvisado(tel,true); // antes del fetch: un segundo toque mientras espera no manda otro
   let envio;
   try{
-    envio=fetch(URL_CONTACTO,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:d.nombre,email:d.email,whatsapp:d.tel,meta:meta||null})})
+    envio=fetch(URL_CONTACTO,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(conPrueba({nombre:d.nombre,email:d.email,whatsapp:d.tel,meta:meta||null}))})
       .then(r=>{ if(!r.ok) marcarAvisado(tel,false); return r.ok; })
       .catch(()=>{ marcarAvisado(tel,false); return false; });
   }catch(e){ marcarAvisado(tel,false); envio=Promise.resolve(false); }
@@ -500,7 +506,7 @@ function calendario(op){
     const dateLabel=new Date(y,m-1,dd).toLocaleDateString('es-CL',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
     // empresa y cargo van vacíos a propósito (19-10-2026): el formulario ya no pregunta la clínica ni el puesto.
     const idReserva=idEventoMeta('reserva');
-    const payload={meta:datosMeta(idReserva,plan),type:'agenda_booking',nombre:d.nombre,cargo:'',email:d.email,empresa:'',whatsapp:d.tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?slotObj.end:'',hora_label:slotObj?slotObj.label:selSlot,plan:plan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone};
+    const payload=conPrueba({meta:datosMeta(idReserva,plan),type:'agenda_booking',nombre:d.nombre,cargo:'',email:d.email,empresa:'',whatsapp:d.tel,fecha:selDate,fecha_label:dateLabel,hora:selSlot,hora_fin:slotObj?slotObj.end:'',hora_label:slotObj?slotObj.label:selSlot,plan:plan,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone});
     try{
       const res=await fetch(URL_AGENDA,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       const data=await res.json().catch(()=>({}));
