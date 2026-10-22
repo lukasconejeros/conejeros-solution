@@ -387,3 +387,16 @@ aparece/desaparece/cambia en 1 cuadro (4 venían de la edición del Editor Waly,
 final. Arreglo: se funde solo el rectángulo de la tarjeta (3-8 cuadros), la cara queda con su corte seco. v3 = 4:18.
 **Regla:** cortar un video que ya trae tarjetas quemadas = revisar cada corte cuadro a cuadro buscando tarjetas que saltan,
 no solo transcribir el audio. Y una frase que él dijo no se saca sin preguntarle.
+
+## 21-10-2026 (noche) — Testimonios de Daniela y Lucas + «en 10 días / en 30 días»
+**Pedido (Lukas):** con permiso de Anpalex y Medifis, «las dos fidelizaciones, los videos completos… solo con los
+subtítulos, como más natural… con 5 estrellas», y «en 10 días tu agente de IA funcionando, en 30 días un cambio real».
+**Hecho:** sección «Lo que dicen las clínicas» (debajo de «Se conecta con») y franja de plazos (justo antes de Planes).
+Videos: `conejeros-lab/creativos-waly-ads/testimonios-web/armar.py` — los clips de WhatsApp enteros y en orden (solo sin
+el silencio de cada punta), texto escrito a mano y alineado con la voz (MMS_FA), subtítulos Figtree 800 quemados,
+720×1290, −16 LUFS. `preload="none"`: no pesan nada hasta que alguien aprieta play.
+**Ojo con:** la portada que sale sola puede pillar los ojos cerrados (pasó con Daniela): elegir el cuadro mirando una
+hoja de cuadros. Y no escribir «sin guion» en la página: a los dos se les mandó una guía para grabar.
+**Pruebas viejas:** pruebas.cjs, prueba_revisar.cjs y prueba_meta.cjs fallaban IGUAL antes de este cambio porque no
+conocían el aviso de videos (`/api/agenda-web/video`, del 21-10): se les enseñó a contestarlo 204. Quedaron 414/0, 421/0
+y 80/0; prueba_medir 27/0 y la nueva prueba_testimonios 49/0 (390, 360 y 1366: play, uno a la vez, sin scroll de lado).

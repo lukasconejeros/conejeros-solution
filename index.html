@@ -833,6 +833,41 @@
     .cifras-nota{margin:12px auto 0;max-width:600px;font-size:.84rem;font-weight:500;color:#475569;line-height:1.45;}
     /* Si el video no carga (archivo borrado o error), el bloque se pliega: nunca un recuadro negro vacío. */
     .hero-video.sin-video{display:none;}
+    /* ══ TESTIMONIOS (21-10-2026): los videos completos de Daniela (Anpalex) y Lucas (Medifis), verticales, con
+       subtítulos quemados. No arrancan solos: portada + botón grande de play, y se oyen con sonido. En el teléfono
+       van en fila y se deslizan de lado (una tarjeta y un pedazo de la otra), para no sumar 1.400 px de alto. ══ */
+    .testi-section{padding:50px 16px 30px;background:#fff}
+    .testi-wrap{max-width:900px;margin:0 auto;text-align:center}
+    .testi-title{font-size:2rem;font-weight:900;letter-spacing:-.04em;color:#0f172a;margin:0 0 6px;line-height:1.15}
+    .testi-sub{font-size:.95rem;font-weight:500;color:#475569;margin:0 0 24px;line-height:1.45}
+    .testi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:640px;margin:0 auto}
+    .testi-card{margin:0;display:flex;flex-direction:column;background:#fff;border:1px solid rgba(15,23,42,.09);border-radius:18px;overflow:hidden;box-shadow:0 6px 22px rgba(15,23,42,.07);text-align:left}
+    .testi-video{position:relative;aspect-ratio:720/1290;background:#0f172a}
+    .testi-video video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;background:#0f172a}
+    .testi-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;width:74px;height:74px;border:0;border-radius:50%;background:rgba(15,23,42,.74);color:#fff;font-size:26px;cursor:pointer;box-shadow:0 8px 26px rgba(0,0,0,.35);transition:transform .2s,background .2s}
+    .testi-play i{margin-left:5px}
+    .testi-play:hover{background:rgba(15,23,42,.92);transform:translate(-50%,-50%) scale(1.06)}
+    .testi-dura{position:absolute;right:10px;bottom:10px;z-index:2;padding:4px 9px;border-radius:999px;background:rgba(15,23,42,.74);color:#fff;font-size:13px;font-weight:700}
+    .testi-video.jugando .testi-play,.testi-video.jugando .testi-dura{display:none}
+    .testi-pie{padding:14px 18px 18px}
+    .testi-estrellas{color:#f59e0b;font-size:1.05rem;letter-spacing:3px;line-height:1}
+    .testi-cita{margin:9px 0 10px;font-size:.92rem;font-weight:600;line-height:1.45;color:#1e293b}
+    .testi-quien{font-size:.84rem;line-height:1.4;color:#475569}
+    .testi-quien strong{display:block;color:#0f172a;font-weight:800}
+    @media (max-width:640px){
+      .testi-section{padding:38px 16px 22px}.testi-title{font-size:1.6rem}.testi-sub{margin-bottom:18px}
+      .testi-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px 10px;scrollbar-width:none}
+      .testi-grid::-webkit-scrollbar{display:none}
+      .testi-card{flex:0 0 78%;scroll-snap-align:center}
+    }
+    /* ══ PLAZOS (21-10-2026): «en 10 días tu agente funcionando, en 30 días un cambio real», justo antes de los planes. ══ */
+    .plazos-section{padding:22px 16px 6px;background:#fff}
+    .plazos{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:640px;margin:0 auto}
+    .plazo{display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:16px;background:#eff6ff;border:1px solid #bfdbfe;text-align:left}
+    .plazo-i{flex:0 0 42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#1d4ed8;color:#fff;font-size:18px}
+    .plazo-n{font-size:1.25rem;font-weight:900;letter-spacing:-.03em;line-height:1.1;color:#1d4ed8}
+    .plazo-t{margin-top:2px;font-size:.9rem;font-weight:600;line-height:1.35;color:#334155}
+    @media (max-width:640px){.plazos{grid-template-columns:1fr;gap:10px;max-width:430px}}
     /* ── FORMULARIO A LA VISTA (19-10-2026): justo debajo del video corto. Al confirmar el número lleva a
        /metodologia (video largo + calendario). Los estilos de los campos viven en agenda.css. ── */
     .form-landing{margin:22px auto 0;animation:fadeInUp .7s ease .6s both;}
@@ -1128,6 +1163,75 @@ function irAlFormulario(ev){
     <li class="integra-reservo"><img src="/img/integraciones/reservo.svg" alt="Reservo" width="304" height="75" loading="lazy"></li>
     <li><img src="/img/integraciones/medilink.png" alt="Medilink" width="393" height="96" loading="lazy"></li>
   </ul>
+</section>
+
+<!-- ══ TESTIMONIOS (21-10-2026) — pedido de Lukas: «las dos fidelizaciones, los videos completos… no es necesario que
+     esté editado, solo con los subtítulos, como más natural… con 5 estrellas». Anpalex y Medifis dieron permiso para
+     subirlos con su nombre (Lukas, 21-10-2026; antes, el 29-09, se habían sacado los nombres de clínicas de la página).
+     Son los clips que mandaron por WhatsApp, enteros y en orden (solo sin el silencio de cada punta), con subtítulos:
+     conejeros-lab/creativos-waly-ads/testimonios-web/armar.py. Las citas son frases textuales de cada video. ══ -->
+<section class="testi-section" id="testimonios" aria-labelledby="testiTitulo">
+  <div class="testi-wrap">
+    <h2 class="testi-title" id="testiTitulo">Lo que dicen las clínicas</h2>
+    <p class="testi-sub">Lo grabaron ellos mismos, con su teléfono.</p>
+    <div class="testi-grid">
+      <figure class="testi-card">
+        <div class="testi-video">
+          <video src="video/testimonio-daniela.mp4" poster="video/testimonio-daniela.jpg" preload="none" playsinline width="720" height="1290" aria-label="Testimonio de Daniela Reyes, administradora de la Clínica Dental Anpalex"></video>
+          <button type="button" class="testi-play" aria-label="Ver el video de Daniela"><i class="fas fa-play" aria-hidden="true"></i></button>
+          <span class="testi-dura" aria-hidden="true">1:50</span>
+        </div>
+        <figcaption class="testi-pie">
+          <div class="testi-estrellas" aria-hidden="true">★★★★★</div>
+          <p class="testi-cita">«Si perdiste algún paciente, Waly te los recapta. Se los súper recomiendo, de verdad, no se van a arrepentir.»</p>
+          <div class="testi-quien"><strong>Daniela Reyes</strong>Administradora · Clínica Dental Anpalex</div>
+        </figcaption>
+      </figure>
+      <figure class="testi-card">
+        <div class="testi-video">
+          <video src="video/testimonio-lucas.mp4" poster="video/testimonio-lucas.jpg" preload="none" playsinline width="720" height="1290" aria-label="Testimonio de Lucas Urrutia, gerente de Clínica Medifis"></video>
+          <button type="button" class="testi-play" aria-label="Ver el video de Lucas"><i class="fas fa-play" aria-hidden="true"></i></button>
+          <span class="testi-dura" aria-hidden="true">1:42</span>
+        </div>
+        <figcaption class="testi-pie">
+          <div class="testi-estrellas" aria-hidden="true">★★★★★</div>
+          <p class="testi-cita">«Si algo no anda bien, lo reportamos enseguida y el equipo de Waly se encarga de solucionar este problema en el mismo día.»</p>
+          <div class="testi-quien"><strong>Lucas Urrutia</strong>Gerente · Clínica Medifis, Temuco</div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<script>
+/* Testimonios: el play grande arranca el video con sonido y muestra los controles. Un solo video suena a la vez
+   (también calla el de la portada si alguien le había puesto sonido). Si el archivo falla, vuelve la portada. */
+(function(){
+  var cajas=document.querySelectorAll('.testi-video');
+  function callarOtros(v){
+    var todos=document.querySelectorAll('video');
+    for(var i=0;i<todos.length;i++){var o=todos[i];if(o!==v&&!o.paused&&!o.muted)o.pause();}
+  }
+  for(var i=0;i<cajas.length;i++)(function(c){
+    var v=c.querySelector('video'),b=c.querySelector('.testi-play');
+    if(!v)return;
+    function jugar(){
+      c.classList.add('jugando');v.controls=true;
+      var p=v.play();if(p&&p.catch)p.catch(function(){if(v.paused){c.classList.remove('jugando');v.controls=false;}});
+    }
+    if(b)b.addEventListener('click',jugar);
+    v.addEventListener('play',function(){c.classList.add('jugando');v.controls=true;callarOtros(v);});
+    v.addEventListener('error',function(){c.classList.remove('jugando');v.controls=false;});
+  })(cajas[i]);
+})();
+</script>
+
+<!-- ══ PLAZOS (21-10-2026) — pedido de Lukas: «en 10 días tu agente de inteligencia artificial funcionando y en 30 días
+     un cambio real en tu clínica». Calza con el video largo (instalación «7 a 10 días»). ══ -->
+<section class="plazos-section" aria-label="Plazos">
+  <div class="plazos">
+    <div class="plazo"><div class="plazo-i"><i class="fas fa-rocket" aria-hidden="true"></i></div><div><div class="plazo-n">En 10 días</div><div class="plazo-t">tu agente de inteligencia artificial funcionando</div></div></div>
+    <div class="plazo"><div class="plazo-i"><i class="fas fa-chart-line" aria-hidden="true"></i></div><div><div class="plazo-n">En 30 días</div><div class="plazo-t">un cambio real en tu clínica</div></div></div>
+  </div>
 </section>
 
 
