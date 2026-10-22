@@ -156,6 +156,14 @@ function datosMeta(eventoId,contenido){
    avisoPixel y los Lead de las páginas no hacen nada (fbq no existe). Acá solo se le avisa a la app con prueba:true:
    el formulario y la reserva siguen su camino normal, pero la app no se los manda a Meta ni los cuenta en «Formularios». */
 function conPrueba(cuerpo){ if(window.WALY_PRUEBA===true) cuerpo.prueba=true; return cuerpo; }
+/* La app también da por prueba el número de Lukas aunque la página no traiga ?prueba (22-10-2026, revisor: el pixel
+   igual mandaba el Lead y el aviso decía «no se mandó a Meta»). Si la app contesta prueba:true, desde acá la página
+   tampoco le avisa nada a Meta (fbq queda mudo) y este navegador queda en modo prueba para las páginas siguientes. */
+function pruebaDesdeApp(){
+  window.WALY_PRUEBA=true;
+  try{localStorage.setItem('waly_prueba','1');}catch(e){}
+  window.fbq=function(){};
+}
 
 /** El aviso del navegador con el mismo id que mandó la app. Sin pixel (bloqueado) no pasa nada. */
 function avisoPixel(evento,params,eventoId){
@@ -190,7 +198,10 @@ function avisarContacto(d,meta){
   let envio;
   try{
     envio=fetch(URL_CONTACTO,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(conPrueba({nombre:d.nombre,email:d.email,whatsapp:d.tel,meta:meta||null}))})
-      .then(r=>{ if(!r.ok) marcarAvisado(tel,false); return r.ok; })
+      .then(r=>{
+        if(!r.ok){ marcarAvisado(tel,false); return false; }
+        return r.json().then(j=>{ if(j&&j.prueba===true) pruebaDesdeApp(); return true; },()=>true);
+      })
       .catch(()=>{ marcarAvisado(tel,false); return false; });
   }catch(e){ marcarAvisado(tel,false); envio=Promise.resolve(false); }
   const tope=new Promise(res=>setTimeout(()=>res(false),ESPERA_CONTACTO_MS));

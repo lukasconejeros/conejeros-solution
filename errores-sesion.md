@@ -418,3 +418,9 @@ páginas el pixel está al final del body: la decisión va justo antes, igual qu
 páginas con y sin `?prueba`; con el botón pegado abajo en el teléfono el cartel tapa una esquina de 22 px, pero el
 toque llega igual). Las viejas, iguales que antes: pruebas 414/0, prueba_revisar 421/0, prueba_meta 80/0,
 prueba_medir 27/0, prueba_testimonios 49/0.
+**22-10, corrección del revisor (sonnet):** con el número de Lukas y SIN `?prueba` el pixel del navegador igual mandaba
+el Lead y el Schedule, mientras el aviso a Lukas decía «no se mandó a Meta». Ahora agenda.js lee la respuesta del
+contacto: si la app dice `prueba:true`, `fbq` queda mudo y el navegador pasa a modo prueba para las páginas siguientes
+(la reserva ya sale con `prueba:true`). `prueba_modo.cjs` caso f: 4 fallas con 0e70159, 93/0 con el arreglo. Viejas
+iguales: 414/0, 421/0 (una corrida dio 420/1 por lentitud del PC en 5j, repetida 421/0 y 421/0 con la versión
+anterior), 80/0, 27/0, 49/0. Lo que queda: el PageView de esa visita sí llega (no es un Lead).
