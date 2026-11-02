@@ -231,6 +231,8 @@
     .precio-nombre{font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0891b2}
     .precio-monto{font-size:2rem;font-weight:900;letter-spacing:-.04em;color:#0f172a;line-height:1.1}
     .precio-monto span{font-size:.95rem;font-weight:700;letter-spacing:0;color:#64748b}
+    .precio-impl{margin:-4px 0 0;font-size:.85rem;font-weight:600;color:#64748b}
+    .precio-impl b{color:#0f172a;font-weight:800}
     .precios-nota{margin:14px 0 0;text-align:center;font-size:.9rem;font-weight:600;color:#64748b}
     .precio-linea{margin:0;padding-bottom:12px;border-bottom:1px solid rgba(15,23,42,0.08);font-size:.92rem;font-weight:700;color:#475569;line-height:1.45}
     .precio-lista{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
@@ -1255,7 +1257,8 @@ function irAlFormulario(ev){
 
 
 
-<!-- ══ PLANES — precio, una línea y lo que el producto hace HOY (verificado 29-09-2026) ══ -->
+<!-- ══ PLANES — precio, una línea y lo que el producto hace HOY (verificado 29-09-2026). 02-11-2026: se suma el precio de
+     implementación bajo la mensualidad (un lead avisó que no estaba); montos iguales a la propuesta PDF del 28-10. ══ -->
 <section class="planes-section" id="planes">
   <div class="planes-wrap">
     <h2 class="planes-title">Planes</h2>
@@ -1263,6 +1266,7 @@ function irAlFormulario(ev){
       <div class="precio-card">
         <div class="precio-nombre">Esencial</div>
         <div class="precio-monto">$200.000 <span>al mes</span></div>
+        <p class="precio-impl">+ <b>$200.000</b> de implementación, una sola vez</p>
         <p class="precio-linea">Sin conexión al software de agenda</p>
         <ul class="precio-lista">
           <li>Contesta el WhatsApp de tu clínica a toda hora</li>
@@ -1274,6 +1278,7 @@ function irAlFormulario(ev){
       <div class="precio-card">
         <div class="precio-nombre">Pro</div>
         <div class="precio-monto">$310.000 <span>al mes</span></div>
+        <p class="precio-impl">+ <b>$346.000</b> de implementación, una sola vez</p>
         <p class="precio-linea">Todo lo del Esencial</p>
         <ul class="precio-lista">
           <li>Conectado a Dentalink, Dentalsoft o Reservo</li>
@@ -1284,6 +1289,7 @@ function irAlFormulario(ev){
       <div class="precio-card">
         <div class="precio-nombre">Premium</div>
         <div class="precio-monto">$420.000 <span>al mes</span></div>
+        <p class="precio-impl">+ <b>$530.000</b> de implementación, una sola vez</p>
         <p class="precio-linea">Todo lo del Pro</p>
         <ul class="precio-lista">
           <li>Campañas para que vuelvan pacientes antiguos</li>
@@ -1292,7 +1298,7 @@ function irAlFormulario(ev){
         </ul>
       </div>
     </div>
-    <p class="precios-nota">Valores mensuales, IVA incluido.</p>
+    <p class="precios-nota">Valores con IVA incluido. La implementación se paga una sola vez, al principio.</p>
     <!-- 19-10-2026: un solo llamado en toda la página («Ver el video», el mismo del formulario). Antes este botón
          decía «Reservar reunión» y bajaba igual al formulario de «Ver el video»: dos nombres para lo mismo. -->
     <button type="button" class="video-cta" onclick="irAlFormulario()"><i class="fas fa-play" aria-hidden="true"></i> Ver el video y reservar la reunión</button>
