@@ -33,10 +33,10 @@ const SLOTS = [
   {start:'09:00',end:'09:45',label:'9:00 - 9:45 AM'},
   {start:'10:30',end:'11:15',label:'10:30 - 11:15 AM'},
   {start:'12:00',end:'12:45',label:'12:00 - 12:45 PM'},
+  {start:'14:00',end:'14:45',label:'2:00 - 2:45 PM'},
   {start:'15:00',end:'15:45',label:'3:00 - 3:45 PM'},
-  {start:'16:30',end:'17:15',label:'4:30 - 5:15 PM'},
-  {start:'18:00',end:'18:45',label:'6:00 - 6:45 PM'}
-];
+  {start:'18:30',end:'19:15',label:'6:30 - 7:15 PM'}
+]; /* 17-11-2026, Lukas: salen 16:30 y 18:00 (de 16 a 18 ve a su bebé), entran 14:00 y 18:30. Igual que SLOTS_WEB de la app. */
 const MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 const DOW    = ['Lu','Ma','Mi','Ju','Vi','Sá','Do'];
 
